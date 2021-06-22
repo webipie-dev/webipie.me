@@ -29,13 +29,6 @@ const userSchema = new Schema({
     ref: "portfolio",
     required: false
   },
-  phoneNumber: { type: String, default: '' },
-  description: { type: String, default: '' },
-  github: { type: String, default: '' },
-  linkedIn: { type: String, default: '' },
-  website: { type: String, default: '' },
-  facebook: { type: String, default: '' },
-  CV: { type: String, default: '' },
 },
   {
     toJSON: {
