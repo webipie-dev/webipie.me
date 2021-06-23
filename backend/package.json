@@ -21,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.12.14",
+    "mongoose-schema-extend": "^0.2.2",
     "passport": "^0.4.1",
     "passport-facebook-token": "^4.0.0",
     "passport-google-oauth": "^2.0.0",
