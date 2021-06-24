@@ -75,7 +75,7 @@ module.exports = {
         res.cookie('access_token', token, {
             httpOnly: true
         });
-        return res.status(200).json({ token });
+        return res.status(200).json({ token, name, email });
     },
 
     signIn: async (req, res, next) => {
@@ -85,7 +85,7 @@ module.exports = {
             httpOnly: true
         });
 
-        res.status(200).json({ token, portfolioIds: req.user.portfolioID, verified: req.user.local.verified });
+        res.status(200).json({ token, portfolioId: req.user.portfolioID, verified: req.user.local.verified });
     },
 
     confirmEmail: async(req, res, next) => {

@@ -5,7 +5,7 @@ const testimonialSchema = new Schema({
     name: {type: String, default: ''},
     position: {type: String, default: ''},
     photo: {type: String, default: ''},
-    testimonial: {type: String, default: ''},
+    description: {type: String, default: ''},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio", default: ''}
 });
 

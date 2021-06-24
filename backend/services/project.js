@@ -4,11 +4,11 @@ const ApiError = require("../errors/api-error");
 
 
 const getProjects = async (req, res, next) => {
-  if(!req.query.portfolio){
+  if(!req.query.portfolioId){
     return next(ApiError.BadRequest('you have to pass the portfolioID'));
   }
 
-  const projects = await Project.find()
+  const projects = await Project.find({portfolio: portfolioId})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });

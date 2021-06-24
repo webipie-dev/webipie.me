@@ -10,9 +10,8 @@ const passportJWT = passport.authenticate('jwt', { session: false });
 // passportJWT.unless = require('express-unless');
 
 
-
 //get all projects
-router.get('', projectService.getProjects)
+router.get('all/:portfolioId', [validation.portfolioId], validateRequest, projectService.getProjects)
 
 // getProjectbyId
 router.get('/:id', [

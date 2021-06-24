@@ -5,7 +5,10 @@ const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
 
 const portfolioSchema = new Schema({
-  phoneNumber: {type: String, required: true, unique: true},
+  url: {type: String, required: true, unique: true},
+  name: {type: String, required: true, unique: true},
+  description: {type: String, required: false},
+  phoneNumber: {type: String, required: false},
   github: {type: String, required: false, unique: true},
   linkedin: {type: String, required: false, unique: true},
   CV: {type: String, required: false, unique: true},
