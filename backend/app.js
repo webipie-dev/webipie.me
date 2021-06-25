@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user');
 const projectRoutes = require('./routes/project');
 const portfolioRoutes = require('./routes/portfolio');
 const workExperienceRoutes = require('./routes/work_experience');
+const volunteeringExperienceRoutes = require('./routes/volunteering_experience');
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
 
@@ -41,6 +42,7 @@ app
   .use('/portfolio', portfolioRoutes)
   .use('/project', projectRoutes)
   .use('/workexperience', workExperienceRoutes)
+  .use('/volunteeringexperience', volunteeringExperienceRoutes)
   .use('/testimonial', testimonialRoutes)
   .use('/achievement', achievementRoutes);
 

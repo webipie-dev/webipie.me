@@ -1,5 +1,6 @@
 const util = require('util');
 const { check }  = require('express-validator');
+const mongoose = require('mongoose');
 
 let portfolioValidation = {
   /**

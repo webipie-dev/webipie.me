@@ -30,7 +30,7 @@ router.delete('/delete', passportJWT, testimonialService.deleteAllTestimonials);
 
 router.patch('/:id', passportJWT, [
   validation.id
-], validateRequest , testimonialtService.editOneTestimonial);
+], validateRequest , testimonialService.editOneTestimonial);
 
 
 module.exports = router;

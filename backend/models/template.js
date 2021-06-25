@@ -18,4 +18,5 @@ const templateSchema = new Schema({
 });
 
 
-module.exports = templateSchema;
+module.exports.templateSchema = templateSchema;
+module.exports.Template = mongoose.model('Template', templateSchema);

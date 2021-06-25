@@ -6,7 +6,7 @@ const testimonialSchema = new Schema({
     position: {type: String, default: ''},
     photo: {type: String, default: ''},
     description: {type: String, default: ''},
-    portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio", default: ''}
+    portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
 });
 
 module.exports.testimonialSchema = testimonialSchema;

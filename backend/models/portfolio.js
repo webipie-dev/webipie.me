@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const templateSchema = require('./template');
+const {templateSchema} = require('./template');
 const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
+const SoftSkill = require('./soft_skill');
 
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},
@@ -10,13 +11,16 @@ const portfolioSchema = new Schema({
   description: {type: String, required: false},
   phoneNumber: {type: String, required: false},
   github: {type: String, required: false, unique: true},
-  linkedin: {type: String, required: false, unique: true},
+  linkedIn: {type: String, required: false, unique: true},
   CV: {type: String, required: false, unique: true},
   creationDate: {type: Date, default: Date.now()},
   template: templateSchema,
-  porjects: {type: [Schema.Types.ObjectID], ref: "Porject", default: ''},
-  achievements: {type: [achievementSchema], default: ''},
-  testimonials: {type: [testimonialSchema], default: ''},
+  porjects: {type: [Schema.Types.ObjectID], ref: "Porject"},
+  achievements: {type: [achievementSchema]},
+  testimonials: {type: [testimonialSchema]},
+  softSkills: {type: [Schema.Types.ObjectID], ref: "SoftSkill"},
+  workExperiences: {type: [Schema.Types.ObjectID], ref: "WorkExperience"},
+  volunteeringExperiences: {type: [Schema.Types.ObjectID], ref: "VolunteeringExperience"},
 },
   {
     toJSON: {

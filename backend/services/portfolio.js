@@ -1,5 +1,5 @@
 const Portfolio = require('../models/portfolio');
-const Template = require('../models/template');
+const {Template} = require('../models/template');
 const ApiError = require("../errors/api-error");
 const { User } = require('../models/user');
 
@@ -41,14 +41,14 @@ const addPortfolio = async (req, res, next) => {
 
   const { name, templateId } = req.body
 
-  let getTemplate = await Template.findById(templateId)
+  let getTemplate = await Template.findById(templateId);
 
   if (!getTemplate) {
     next(ApiError.NotFound('Template not Found'));
     return;
   }
 
-  getTemplate.id= templateId
+  getTemplate.id = templateId
   const portfolioSubdomain = name.toLowerCase().replace(/\s/g, '').replace(/'/, '');
 
   const portfolio = new Portfolio({
@@ -68,6 +68,7 @@ const addPortfolio = async (req, res, next) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
+      console.log(portfolio);
   res.status(201).send(portfolio);
 
 }

@@ -1,4 +1,4 @@
-const WorkExperience = require('../models/work_experience');
+const {WorkExperience} = require('../models/work_experience');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
 

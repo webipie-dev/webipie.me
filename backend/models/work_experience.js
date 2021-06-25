@@ -10,7 +10,7 @@ const workExperienceSchema = Schema({
     skills: {type: [String], required: false, default: ''},
     date: {type: Date, required: false, default: ''},
     city: {type: String, required: false, default: ''},
-    portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio", default: ''}
+    portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
   
   },
     {
@@ -25,4 +25,5 @@ const workExperienceSchema = Schema({
 );
     
 
-module.exports = mongoose.model('WorkExperience', workExperienceSchema);
+module.exports.workExperienceSchema = workExperienceSchema;
+module.exports.WorkExperience = mongoose.model('WorkExperience', workExperienceSchema);

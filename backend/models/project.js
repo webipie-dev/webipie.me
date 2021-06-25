@@ -10,7 +10,7 @@ const projectSchema = Schema({
   date: {type: Date, required: false, default: ''},
   link: {type: String, required: false, default: ''},
   github: {type: String, required: false, default: ''},
-  portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio", default: ''}
+  portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
 
 },
     {
