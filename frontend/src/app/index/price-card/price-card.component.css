@@ -1,0 +1,94 @@
+.card{
+    margin-top:50px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
+    border-radius: 10px;
+    max-width: 500px;
+    padding:20px;
+    text-align: center;
+}
+.title{
+    width:100%;
+    text-align: center;
+}
+h1{
+    font-weight: 900;
+}
+h2{
+    font-weight: 400;
+    font-size:32px;
+    color:#87e45b;
+}
+.title p{
+    margin-top:10px;
+}
+p{
+    color:darkgrey;
+    font-size:18px;
+}
+.elements{
+    margin-top:60px;
+    
+}
+.element{
+    margin-top:30px;
+    display: flex;
+    justify-content: center;
+}
+.element p{
+    margin-right:50px;
+}
+.btn{
+    text-align: center;
+    padding:10px;
+    border-radius:30px;
+    padding-right:30px;
+    padding-left:30px;
+    margin-top:50px;
+    border:1px solid black;
+    background-color: transparent;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.primary {
+    background-color: #6bb55c;
+    margin-right:auto;
+    z-index:1000;
+
+}
+.primary h1{
+    margin-top: 10px;
+    color:white !important;
+    font-weight: 300;
+    font-size:28px;
+    padding:30px;
+}
+.primary h2{
+    font-weight: 700;
+    color:white;
+    font-size:50px;
+    margin-top:0px ;
+}
+.primary p,.primary .link{
+    color :white !important;
+}
+.link {
+    color:green;
+}
+.no{
+    color:black;
+}
+.primary .btn{
+    background-color:#87e45b;
+    color:white;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-right:0px;
+    border: 1px solid #87e45b;
+    transition: background-color 0.75s ease-out;
+}
+.primary .btn:hover{
+    background-color: transparent;
+    border: 1px solid white;
+}

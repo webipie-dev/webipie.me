@@ -1,0 +1,39 @@
+<div class="container">
+    <div [class]="scrolled? 'back scrolled':'back unscrolled'"></div>
+    <div class="content">
+        <div class="left">
+            <img [style.width]="scrolled? '80px':'100px'" src="assets/SVG/logo.svg">
+        </div>
+        <div [class]="scrolled? 'right blacked':'right'">
+            <div class="menu" (click)="onMenuClick($event)">
+                <fa-icon [icon]="menu" [style.color]="scrolled? 'black':'white'"></fa-icon>
+            </div>
+            <a href="#"><h3 class="active">home</h3><div class="line full"></div></a>
+            <a href="#"><h3>about us</h3><div class="line"></div></a>
+            <a href="#"><h3>pricing</h3><div class="line"></div></a>
+            <a href="#"><h3>contact us</h3><div class="line"></div></a>
+            <a href="#"><div [class]="scrolled? 'button active blackedbutton':'button active '"><div [class]="scrolled? 'circle blackedcircle':'circle'"></div><h3>Sign up</h3></div></a>
+            <a href="#"><div [class]="scrolled? 'button active blackedbutton':'button active '"><div [class]="scrolled? 'circle blackedcircle':'circle'"></div><h3>Sign in</h3></div></a>
+        </div>
+        
+    </div>
+    <div [class]="!menuactive? 'slidemenu inactivee':'slidemenu activee'">
+        <fa-icon [icon]="leftarrow" (click)="onMenuClick($event)"></fa-icon>
+        <div class="account">
+            <a href="#"><h3>Sign Up</h3></a>
+            <a href="#"><h3>Sign In</h3></a>
+        </div>
+        <div class="element">
+            <a href="#"><fa-icon [icon]="home"></fa-icon><h3>Home</h3></a>
+        </div>
+        <div class="element">
+            <a href="#"><fa-icon [icon]="aboutus"></fa-icon><h3>About us</h3></a>
+        </div>
+        <div class="element">
+            <a href="#"><fa-icon [icon]="pricing"></fa-icon><h3>Pricing</h3></a>
+        </div>
+        <div class="element">
+            <a href="#"><fa-icon [icon]="contactus"></fa-icon><h3>Contact us</h3></a>
+        </div>
+    </div>
+</div>
