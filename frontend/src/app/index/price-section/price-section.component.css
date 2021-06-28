@@ -1,0 +1,21 @@
+.container{
+    width:70%;
+    max-width: 1400px;
+    margin:auto;
+    padding:50px;
+    margin-top:50px;
+    color:white;
+    font-family: 'Montserrat',sans-serif;
+    text-align: center;
+}
+h1{
+    color:#57984c;
+    font-size: 3rem;
+}
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+}

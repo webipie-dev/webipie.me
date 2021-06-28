@@ -1,0 +1,80 @@
+.footer{
+    width:100%;
+    background-color:#3b6c46;
+    color:white;
+    font-family: 'Montserrat',sans-serif;
+    text-align: center;
+    font-size: 14px;
+}
+.content{
+    width:90%;
+    margin:auto;
+    padding-top:50px;
+    padding-bottom:50px;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    color:white;
+    flex-flow:wrap;
+    
+}
+h1{
+    letter-spacing: 10px;
+    margin-bottom:15px;
+}
+.icons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    width:150px;
+}
+.element{
+    margin-top:30px;
+    text-align: left;
+    display: block;
+    width:80%;
+    max-width: 200px;
+    margin-right:auto;
+    margin-left:auto;
+    text-align: left;
+}
+fa-icon{
+    background-color: white;
+    border-radius: 100px;
+    color:black;
+    font-size:16px;
+    padding:6px;
+    margin-right:auto;
+    margin-left: 0px;
+    margin-bottom:10px;
+    transition: background-color 0.5s ease;
+}
+fa-icon:hover{
+    background-color: transparent;
+    color:white;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+.facebook{
+    padding-right:9px;
+    padding-left:9px;
+}
+.instagram{
+    padding-right:7px;
+    padding-left:7px;
+}
+p{
+    margin-top:15px;
+}
+h2{
+    color:white;
+    font-weight: 700;
+    font-size:20px;
+}
+a p{
+    margin-bottom:2px;
+}
