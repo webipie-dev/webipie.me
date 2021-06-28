@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: 'edit',
     loadChildren: () => import('../portfolio-edit/portfolio-edit.module')
-      .then(m => m.PortfolioEditModule)
+      .then(m => m.PortfolioEditModule),
+    data: { preload: true}
   }
 ];
 

@@ -8,7 +8,12 @@ import {Observable, of} from 'rxjs';
 export class CustomPreloadingStrategyService implements PreloadingStrategy {
 
   preload(route: Route, fn: () => Observable<any>): Observable<any> {
-    if (route.data && route.data.preload) {
+    // const webipieDomain = window.location.hostname === 'webipie.me';
+    /***
+     * to be changed with the above comment
+     ***/
+    const webipieDomain = false;
+    if (route.data && route.data.preload && webipieDomain) {
       return fn();
     }
     return of(null);
