@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PriceCardComponent } from './price-card/price-card.component';
 import { PriceSectionComponent } from './price-section/price-section.component';
 import { InViewportModule } from 'ng-in-viewport';
+import { HowitworksSectionComponent } from './howitworks-section/howitworks-section.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { InViewportModule } from 'ng-in-viewport';
     FrontpageComponent,
     FooterComponent,
     PriceCardComponent,
-    PriceSectionComponent
+    PriceSectionComponent,
+    HowitworksSectionComponent
   ],
   imports: [
     CommonModule,
