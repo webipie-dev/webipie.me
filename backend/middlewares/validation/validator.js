@@ -49,7 +49,7 @@ let validation = {
    is a mongoose Id
    */
   portfolioId: util.promisify(
-    body('portfolioId')
+    check('portfolioId')
       .custom((input) => mongoose.Types.ObjectId.isValid(input))
       .withMessage('portfolioId must be valid')
   ),
