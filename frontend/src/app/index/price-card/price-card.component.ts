@@ -9,15 +9,15 @@ export class PriceCardComponent implements OnInit {
   @Input() class : String = '';
   title:String='';
   cost:String='';
-  constructor() { 
-    
+  constructor() {
+
   }
 
   ngOnInit(): void {
     if(this.class =="card primary"){
       this.title='PREMIUM PACK';
       this.cost='$150';
-    }else{
+    } else {
       this.title='STANDARD PACK';
       this.cost='$100';
     }
