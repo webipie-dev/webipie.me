@@ -33,17 +33,17 @@ app.use(cors());
 
 //swagger documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app
-  .use(bodyParser.urlencoded({extended: true}))
-  .use(bodyParser.json())
-  .use('/user', userRoutes)
-  .use('/portfolio', portfolioRoutes)
-  .use('/project', projectRoutes)
-  .use('/workexperience', workExperienceRoutes)
-  .use('/volunteeringexperience', volunteeringExperienceRoutes)
-  .use('/testimonial', testimonialRoutes)
-  .use('/achievement', achievementRoutes);
+    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.json())
+    .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+    .use('/user', userRoutes)
+    .use('/portfolio', portfolioRoutes)
+    .use('/project', projectRoutes)
+    .use('/workexperience', workExperienceRoutes)
+    .use('/volunteeringexperience', volunteeringExperienceRoutes)
+    .use('/testimonial', testimonialRoutes)
+    .use('/achievement', achievementRoutes);
 
 module.exports = app;
