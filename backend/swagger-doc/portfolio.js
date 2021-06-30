@@ -85,9 +85,9 @@
  *           schema:
  *             $ref: '#/components/schemas/Portfolio'    # Reference to object definition
  * 
- * /portfolio/all/names:
+ * /portfolio/all/urls:
  *  get:
- *    description: Use to request one portfolio by url
+ *    description: Use to request urls of all portfolios
  *    tags:
  *      - Portfolio
  *    parameters:
