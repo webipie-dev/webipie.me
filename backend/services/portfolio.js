@@ -138,7 +138,7 @@ const changeTemplate = async (req, res, next) => {
 module.exports = {
   getOnePortfolio,
   getPortfolioByUrl,
-  getPortfolioNames,
+  getPortfolioUrls,
   addPortfolio,
   editPortfolio,
   changeTemplate
