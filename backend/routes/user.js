@@ -22,7 +22,7 @@ router.route('/confirmation/:token')
     .get(userService.confirmEmail);
 
 router.route('/confirmation/resend/:token')
-    .post(userService.resend);
+    .get(userService.resend);
 
 // router.route('/oauth/google')
 //     .post(passport.authenticate('googleToken', { session: false }), storeOwnerService.googleOAuth);

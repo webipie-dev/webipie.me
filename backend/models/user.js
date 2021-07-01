@@ -25,7 +25,7 @@ const userSchema = new Schema({
     email: { type: String, lowercase: true, default: '' }
   },
   portfolioID: {
-    type: [Schema.Types.ObjectID],
+    type: Schema.Types.ObjectID,
     ref: "portfolio",
     required: false
   },

@@ -49,10 +49,32 @@ let validation = {
    is a mongoose Id
    */
   portfolioId: util.promisify(
-    body('portfolioId')
+    check('portfolioId')
       .custom((input) => mongoose.Types.ObjectId.isValid(input))
       .withMessage('portfolioId must be valid')
-  )
+  ),
+
+  /**
+   Must pass the following rules: 
+   is not an empty string
+   is a minimum of 8 caharacters long
+   */
+  description: util.promisify(
+  check('description')
+      .not().isEmpty().withMessage('Description can\'t be empty.')
+      .isLength({ min: 8}).withMessage('description is too short')
+  ),
+
+  /**
+   Must pass the following rules: 
+   is not an empty string
+   is a minimum of 8 caharacters long
+   */
+  title: util.promisify(
+  check('title')
+      .not().isEmpty().withMessage('Title can\'t be empty.')
+      .isLength({ min: 8}).withMessage('Title is too short')
+  ),
 };
 
 

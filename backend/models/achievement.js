@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const achievementSchema = new Schema({
     description: {type: String, default: ''},
     title: {type: String, default: ''},
-    portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio", default: ''}
+    portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
 });
 
 module.exports.achievementSchema = achievementSchema;
