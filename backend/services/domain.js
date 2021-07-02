@@ -37,5 +37,3 @@ const createDomain = function (subdomain){
 module.exports = {
   createDomain
 };
-
-createDomain("test");
