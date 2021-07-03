@@ -39,7 +39,7 @@ h1{
 }
 h3{
     font-weight: 400;
-    color:#74c263;
+    color:#6d944e;
     font-size:2rem;
     margin-bottom:40px;
 }
@@ -64,6 +64,11 @@ input{
     outline: none;
     height:inherit;
 }
+.error{
+    background-color: #f8dfe0;
+    padding:10px;
+    color:#e45047;
+}
 .pass{
     
     width:48%;
@@ -74,19 +79,19 @@ button{
     margin-top:20px;
     width:100%;
     padding:10px;
-    background-color: #74c263;
+    background-color: #6d944e;
     color:white;
     font-size:2rem;
     font-weight: 400;
-    border:1px solid #74c263;
+    border:1px solid #6d944e;
     border-radius: 10px;
     transition: background-color 0.5s ease;
     cursor: pointer;
 }
 button:hover{
-    color:#74c263;
+    color:#6d944e;
     background-color: white;
-    border:1px solid #74c263;
+    border:1px solid #6d944e;
 }
 .line{
     width:100%;
@@ -105,7 +110,6 @@ button:hover{
 }
 fa-icon{
     font-size:3rem;
-    color:#74c263;
     margin:auto;
     cursor: pointer;
     transition: color 0.5s ease;

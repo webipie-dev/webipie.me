@@ -13,6 +13,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //Delaying the card animation for a bit
     setInterval(()=>{
       this.delay=true;
     },100)
