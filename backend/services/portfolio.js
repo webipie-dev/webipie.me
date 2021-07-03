@@ -68,7 +68,7 @@ const addPortfolio = async (req, res, next) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-      console.log(portfolio);
+  console.log(portfolio);
   res.status(201).send(portfolio);
 
 }

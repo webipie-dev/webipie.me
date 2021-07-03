@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 
 const templateSchema = new Schema({
     id: {type: Schema.Types.ObjectID, ref: "Template"},
-    name: {type: String, default: ''},
+    name: {type: String, unique: true},
     header: {
-      img: { type: String, default: '' },
-      title: { type: String, default: '' },
-      description: { type: String, default: '' },
-      mainButton: { type: String, default: '' }
+      img: { type: String },
+      title: { type: String },
+      description: { type: String },
+      mainButton: { type: String }
     },
     colorChart: {type: {}, default: {}},
     colorChartOptions: {type: [{}], default: []},
-    font: { type: String, default: ''},
+    font: { type: String},
     fontOptions: { type: [String], default: []}
 });
 

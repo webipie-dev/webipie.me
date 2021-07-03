@@ -29,6 +29,11 @@ const userSchema = new Schema({
     ref: "portfolio",
     required: false
   },
+  role: {
+    type: String,
+    enum: ["admin", "user"],
+    default: "user"
+  }
 },
   {
     toJSON: {
