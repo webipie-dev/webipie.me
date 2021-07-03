@@ -1,0 +1,15 @@
+app-header{
+    position: fixed;
+    width:100%;
+    top:0px;
+    left:0px;
+    z-index: 10;
+}
+.body{
+    position: relative;
+    z-index:1;
+    width:100vw;
+    min-height: 100vh;
+    height:fit-content;
+    background-color: #68b357;
+}

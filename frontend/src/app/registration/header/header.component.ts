@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit(): void {
-    if(this.router.url != '/'){
+    if(this.router.url === '/register'){
       this.scrolled=true;
     }
   }

@@ -1,0 +1,21 @@
+<div [class]="delay? 'card':'card hidden'">
+    <h1>Welcome</h1>
+    <h3>Sign up to Webipie</h3>
+
+    <p>Enter details</p>
+    <form action="" method="">
+        <div class="input"><input type="text" placeholder="Username"></div>
+        <div class="input"><input type="email" placeholder="Email Adress"></div>
+        <div class="input pass" style="margin-right:3%"><input type="password" placeholder="Password"></div>
+        <div class="input pass"><input type="password" placeholder="Repeat Password"></div>
+        <button type="submit">Sign Up</button>
+    </form>
+    <p style="margin: auto;margin-top:20px">Already have an account ? Login <a href="#" style="color:#74c263;font-weight:700">here</a></p>
+    <div class="line"></div>
+    <p style="margin:auto;margin-bottom:5px;">Or sign up using</p>
+    <div class="logos">
+        <fa-icon [icon]="google"></fa-icon>
+        <fa-icon [icon]="linkedin"></fa-icon>
+    </div>
+    
+</div>
