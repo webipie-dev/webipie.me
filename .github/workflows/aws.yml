@@ -101,6 +101,7 @@ jobs:
       env:
         CLOUDFRONT_DISTRIBUTION_ID: ${{ steps.set-config.outputs.cloudfront_distribution_id }}
       run: |
+        cd frontend
         echo "installing angular"
         npm install @angular/cli
         echo "installing dependencies"
