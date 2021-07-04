@@ -92,8 +92,8 @@ jobs:
       if: startsWith(github.event.head_commit.message, 'SKIP_BACKEND') != true
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: webipie
-        cluster: webipie
+        service: webipieme
+        cluster: webipieme
         wait-for-service-stability: true
 
     - name: Build and deploy front-end
