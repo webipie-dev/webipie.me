@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const {templateSchema} = require('./template');
 const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
-const SoftSkill = require('./soft_skill');
 
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},

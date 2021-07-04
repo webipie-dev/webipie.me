@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const projectSchema = Schema({
   name: {type: String, required: true},
-  description: {type: String, required: false},
+  description: {type: String, required: true},
   imgs: {type: [String], required: false},
   tags: {type: [String], required: false},
   skills: {type: [String], required: false},

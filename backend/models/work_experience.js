@@ -1,14 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// TODO: change service 
 const workExperienceSchema = Schema({
+    title: {type: String, required: true},
     description: {type: String, required: false},
     position: {type: String, required: false},
     company: {type: String, required: false},
     imgs: {type: [String], required: false},
     tags: {type: [String], required: false},
     skills: {type: [String], required: false},
-    date: {type: Date, required: false},
+    begin_date: {type: Date, required: true},
+    end_date: {type: Date, required: true},
     city: {type: String, required: false},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
   

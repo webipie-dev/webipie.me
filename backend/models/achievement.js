@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const achievementSchema = new Schema({
-    description: {type: String},
+    description: {type: String, required: false},
     title: {type: String, required: true},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
 });

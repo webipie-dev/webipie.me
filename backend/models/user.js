@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const { string, boolean } = require('joi');
 
+
+// TODO: name and email out of local
 const userSchema = new Schema({
   methods: {
     type: [String],
@@ -11,10 +13,10 @@ const userSchema = new Schema({
     default: []
   },
   local: {
-    name: { type: String, default: '' },
-    email: { type: String, lowercase: true, default: '' },
-    password: { type: String, default: '' },
-    verified: { type: Boolean, default: false }
+    name: { type: String, required: true},
+    email: { type: String, lowercase: true, required: true},
+    password: { type: String, required: true},
+    verified: { type: Boolean, default: false, required: true}
   },
   google: {
     id: { type: String, default: '' },
