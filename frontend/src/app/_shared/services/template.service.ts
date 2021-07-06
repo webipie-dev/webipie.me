@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import {GenericService} from "./generic.service";
+import {TemplateModel} from "../models/template.model";
 import {HttpClient} from "@angular/common/http";
-import {AchievementModel} from "../models/AchievementModel";
-import {PortfolioModel} from "../models/portfolio.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AchievementService extends GenericService<AchievementModel>{
+export class TemplateService extends GenericService<TemplateModel>{
 
   constructor(protected http: HttpClient) {
     super(http);
-    this.suffix = 'achievement';
+    this.suffix = '/template';
   }
 }

@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import {GenericService} from "./generic.service";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {PortfolioModel} from "../models/portfolio.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class PortfolioService extends GenericService<any> {
+export class PortfolioService extends GenericService<PortfolioModel> {
 
   constructor(protected http: HttpClient) {
     super(http);

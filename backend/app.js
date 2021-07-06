@@ -13,6 +13,7 @@ const workExperienceRoutes = require('./routes/work_experience');
 const volunteeringExperienceRoutes = require('./routes/volunteering_experience');
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
+const softSkillsRoutes = require('./routes/soft_skill');
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -43,6 +44,7 @@ app
     .use('/project', projectRoutes)
     .use('/workexperience', workExperienceRoutes)
     .use('/volunteeringexperience', volunteeringExperienceRoutes)
+    .use('/softskills', softSkillsRoutes)
     .use('/testimonial', testimonialRoutes)
     .use('/achievement', achievementRoutes);
 

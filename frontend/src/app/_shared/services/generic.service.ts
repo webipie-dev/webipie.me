@@ -24,10 +24,10 @@ export class GenericService<T extends GenericModel> {
   }
 
   public getById(id: string): Observable<T> {
-    return this.http.get(this.getUrl() + this.suffix + '/' + id) as unknown as Observable<T>;
+    return this.http.get(this.getUrl() + this.suffix + '/' + id) as Observable<T>;
   }
 
-  public getMany(query?: string): Observable<T> {
+  public getMany(query?: string): Observable<[T]> {
     // query is an object of elements you want to filter the documents with
     const httpOptions: {[key: string]: any} = {
       headers: new HttpHeaders({
@@ -35,11 +35,11 @@ export class GenericService<T extends GenericModel> {
       }),
       params: query
     };
-    return this.http.get(this.getUrl() + this.suffix, httpOptions) as unknown as Observable<T>;
+    return this.http.get(this.getUrl() + this.suffix, httpOptions) as Observable<[T]>;
   }
 
-  public getManyByIds(arrayIds: string[]): Observable<T> {
-    return this.http.get(this.getUrl() + this.suffix + '/many') as Observable<T>;
+  public getManyByIds(arrayIds: string[]): Observable<[T]> {
+    return this.http.get(this.getUrl() + this.suffix + '/many') as Observable<[T]>;
   }
 
   public addOne(body: T): Observable<T> {
@@ -47,7 +47,7 @@ export class GenericService<T extends GenericModel> {
   }
 
   public edit(id: string, body: T): Observable<T> {
-    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body) as unknown as Observable<T>;
+    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body) as Observable<T>;
   }
 
   public deleteMany(body: {ids: string[]}): Observable<T> {
@@ -55,6 +55,6 @@ export class GenericService<T extends GenericModel> {
   }
 
   public deleteAll(): Observable<T> {
-    return this.http.delete(this.getUrl() + this.suffix + '/delete') as unknown as Observable<T>;
+    return this.http.delete(this.getUrl() + this.suffix + '/delete') as Observable<T>;
   }
 }

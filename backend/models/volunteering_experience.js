@@ -11,7 +11,6 @@ const volunteeringExperienceSchema = Schema({
     date: {type: Date, required: false, default: ''},
     city: {type: String, required: false, default: ''},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
-  
   },
     {
         toJSON: {

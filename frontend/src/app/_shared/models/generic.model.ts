@@ -1,3 +1,3 @@
-export class GenericModel {
-  id: string | undefined;
+export interface GenericModel {
+  id: string;
 }
