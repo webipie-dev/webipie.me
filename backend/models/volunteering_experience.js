@@ -10,8 +10,8 @@ const volunteeringExperienceSchema = Schema({
     imgs: {type: [String], required: false},
     tags: {type: [String], required: false},
     skills: {type: [String], required: false},
-    begin_date: {type: Date, required: true},
-    end_date: {type: Date, required: true},
+    beginDate: {type: Date, required: true},
+    endDate: {type: Date, required: true},
     city: {type: String, required: false},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
   
