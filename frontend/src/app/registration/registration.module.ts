@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignupComponent } from './signup/signup.component';
 import { CardComponent } from './signup/card/card.component';
+import { SigninComponent } from './signin/signin.component';
 
 
 
@@ -14,7 +15,8 @@ import { CardComponent } from './signup/card/card.component';
     RegistrationComponent,
     HeaderComponent,
     SignupComponent,
-    CardComponent
+    CardComponent,
+    SigninComponent
   ],
   imports: [
     CommonModule,
