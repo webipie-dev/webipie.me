@@ -1,0 +1,117 @@
+.card{
+    width:80%;
+    max-width: 700px;
+    min-height: fit-content;
+    border-radius: 15px;
+    background-color: white;
+    text-align: left;
+    padding:30px;
+    margin:auto;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.349);
+    transition: transform 1s ease-out,opacity 1.5s ease-out;
+    opacity: 1;
+    overflow: hidden;
+}
+.above{
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: inherit;
+    width:inherit;
+    background-color: #74c263;
+    z-index: 100;
+}
+.hidden{
+    opacity: 0;
+    transform: translateY(-100px);
+}
+p,h1,h3{
+    width: fit-content;
+    text-align: left;
+}
+p{
+    margin:5px;
+}
+h1{
+    font-weight: 700;
+    font-size:3rem;
+}
+h3{
+    font-weight: 400;
+    color:#6d944e;
+    font-size:2rem;
+    margin-bottom:40px;
+}
+.input{
+    min-width: 170px;
+    width:100%;
+    display: block;
+    padding-top:15px;
+    padding-bottom:15px;
+    margin-bottom:10px;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    font-size:1.2rem;
+}
+input{
+    margin-left:20px;
+    border:none;
+    height:100%;
+    width:80%;
+    font-size:1.3rem;
+    text-decoration: none;
+    outline: none;
+    height:inherit;
+}
+.error{
+    background-color: #f8dfe0;
+    padding:10px;
+    color:#e45047;
+}
+.pass{
+    min-width: 200px;
+    display: inline-block !important;
+}
+button{
+    margin-top:20px;
+    width:100%;
+    padding:10px;
+    background-color: #6d944e;
+    color:white;
+    font-size:2rem;
+    font-weight: 400;
+    border:1px solid #6d944e;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+}
+button:hover{
+    color:#6d944e;
+    background-color: white;
+    border:1px solid #6d944e;
+}
+.line{
+    width:100%;
+    height:1px;
+    background-color: lightgray;
+    display: inline-block;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+.logos{
+    display: flex;
+    justify-content: center;
+    width:80%;
+    margin:auto;
+    margin-top: 10px;
+}
+fa-icon{
+    font-size:3rem;
+    margin:auto;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+fa-icon:hover{
+    color:darkgreen;
+}
