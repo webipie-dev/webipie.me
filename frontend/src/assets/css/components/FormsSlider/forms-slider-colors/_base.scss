@@ -1,0 +1,22 @@
+//  Core
+
+@each $color, $value in $theme-colors {
+  .slider-#{$color} {
+    .noUi-handle {
+      border: 2px solid $value;
+      @include border-radius(100%);
+      background: $white;
+      cursor: default;
+      transition: box-shadow 200ms;
+    }
+
+    .noUi-connect {
+      background: $value;
+    }
+
+    .noUi-active {
+      border-color: darken($value, 15%);
+      box-shadow: 0 0.46875rem 2.1875rem rgba($value, 0.8), 0 0.125rem 0.5875rem rgba($value, 0.9);
+    }
+  }
+}

@@ -1,1 +1,26 @@
-<p>dashboard works!</p>
+
+<div [class]="'app-wrapper ' + globals.contentBackground"
+[ngClass]="{
+'header-drawer-open' : globals.toggleHeaderDrawer,
+'app-sidebar-collapsed' : globals.toggleSidebar,
+'app-footer-fixed' : globals.footerFixed,
+'search-wrapper-open' : globals.hoverHeaderSearch,
+'app-sidebar-mobile-open' : globals.toggleSidebarMobile,
+'app-sidebar-fixed' : globals.sidebarFixed,
+'app-header-fixed' : globals.headerFixed
+}
+">
+<app-sidebar></app-sidebar>
+<div class="app-main">
+   <app-header></app-header>
+   <div class="app-content">
+       <div class="app-content--inner">
+           <div class="app-content--inner__wrapper">
+               <router-outlet></router-outlet>
+           </div>
+       </div>
+       <!-- <app-footer></app-footer> -->
+   </div>
+</div>
+
+</div>

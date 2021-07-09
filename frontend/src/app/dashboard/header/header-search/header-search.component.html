@@ -1,0 +1,9 @@
+<div class="header-search-wrapper">
+    <div class="search-wrapper" [ngClass]="searchActive ? 'is-active' : ''">
+        <label class="icon-wrapper text-black" for="header-search-input">
+          <i class="fas fa-search"></i>
+<!--            <fa-icon [icon]="['fas', 'search']"></fa-icon>-->
+        </label>
+        <input (blur)="this.globals.hoverHeaderSearch = false; searchActive = false;" (focus)="this.globals.hoverHeaderSearch = true; searchActive = true;" class="form-control" id="header-search-input" name="header-search-input" placeholder="Search terms..." type="search">
+    </div>
+</div>

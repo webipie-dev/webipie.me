@@ -1,0 +1,92 @@
+//  Core
+
+.wizard.vertical {
+  background: $secondary;
+  @include border-bottom-radius($card-border-radius);
+
+  .steps-indicator {
+    width: 30%;
+    float: left;
+    border-bottom: 0;
+    @include border-bottom-left-radius($card-border-radius);
+    flex-direction: column;
+
+    li {
+      padding: 0 0 ($spacer * 1.5);
+
+      &:after {
+        display: none;
+      }
+
+      a {
+        .step-indicator {
+          &:after {
+            content: "";
+            background: $gray-400;
+            width: 2px;
+            @include border-radius($border-radius-lg);
+            height: 16px;
+            display: block;
+            position: absolute;
+            bottom: -$spacer;
+            left: 50%;
+            margin-left: -1px;
+            top: 115%;
+          }
+        }
+
+        .label {
+          flex-grow: 1;
+        }
+      }
+
+      &:last-child {
+        a .step-indicator {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .wizard-steps {
+    width: 70%;
+    border-left: $card-border-color solid 1px;
+    float: right;
+    background: $white;
+  }
+
+  .actions {
+    background: $white;
+    border-left: 0;
+    @include border-bottom-right-radius($card-border-radius);
+  }
+}
+
+// Responsive
+
+@include media-breakpoint-down(sm) {
+  .vertical {
+    .actions,
+    .wizard-steps {
+      border-left: 0;
+      float: none;
+      width: 100%;
+    }
+
+    .wizard-steps {
+      width: auto;
+      background: $white;
+      float: none;
+      @include border-radius($border-radius);
+      border: $card-border-color solid 1px;
+      padding: $spacer;
+      margin: $spacer;
+
+      ul li a .step-indicator:after {
+        height: 26px;
+      }
+    }
+  }
+}

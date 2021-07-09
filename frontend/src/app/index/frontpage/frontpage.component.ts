@@ -4,7 +4,7 @@ import { faMouse } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-frontpage',
   templateUrl: './frontpage.component.html',
-  styleUrls: ['./frontpage.component.css']
+  styleUrls: ['./frontpage.component.scss']
 })
 export class FrontpageComponent implements OnInit {
   mouse = faMouse;

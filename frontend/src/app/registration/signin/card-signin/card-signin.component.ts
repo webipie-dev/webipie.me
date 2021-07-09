@@ -4,7 +4,7 @@ import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-card-signin',
   templateUrl: './card-signin.component.html',
-  styleUrls: ['./card-signin.component.css']
+  styleUrls: ['./card-signin.component.scss']
 })
 export class CardSigninComponent implements OnInit {
 

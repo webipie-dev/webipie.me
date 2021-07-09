@@ -1,0 +1,26 @@
+<div class='app-sidebar--header'>
+  <div class='nav-logo'>
+    <a routerLink='/dashboard-default' title='Bamburgh Angular Admin Dashboard with NGX Bootstrap PRO'>
+      <i>
+        <img alt='Webipie logo' src='assets/SVG/logo.svg'>
+      </i>
+      <span>WebiPie.me</span>
+    </a>
+  </div>
+  <button (click)='toggleSidebarCollapse()' class='btn btn-sm collapse-sidebar-btn' placement='right'
+          tooltip='Collapse sidebar'>
+    <!-- <i class="far fa-dot-circle"></i> -->
+           <fa-icon [icon]="dotCircle" size="lg"></fa-icon>
+  </button>
+  <button (click)='toggleSidebarMobileOpen()' [ngClass]="{'is-active' : globals.toggleSidebarMobile}"
+          class='navbar-toggler hamburger hamburger--elastic toggle-mobile-sidebar-btn' type='button'>
+    <span class='hamburger-box'>
+        <span class='hamburger-inner'></span>
+    </span>
+  </button>
+  <button (click)='toggleSidebarCollapse()' class='expand-sidebar-btn btn btn-sm' placement='right'
+          tooltip='Expand sidebar' type='button'>
+    <!-- <i class="fas fa-arrows-alt-h"></i> -->
+   <fa-icon [icon]="arrowsAltH"></fa-icon>
+  </button>
+</div>
