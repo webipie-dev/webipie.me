@@ -13,6 +13,7 @@ const workExperienceRoutes = require('./routes/work_experience');
 const volunteeringExperienceRoutes = require('./routes/volunteering_experience');
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
+const {cvUploadRoute, imageUploadRoute, videoUploadRoute} = require('./routes/upload')
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -44,6 +45,9 @@ app
   .use('/workexperience', workExperienceRoutes)
   .use('/volunteeringexperience', volunteeringExperienceRoutes)
   .use('/testimonial', testimonialRoutes)
-  .use('/achievement', achievementRoutes);
+  .use('/achievement', achievementRoutes)
+  /*.use('/upload/cv', cvUploadRoute)
+  .use('/upload/image', imageUploadRoute)
+  .use('/upload/video', videoUploadRoute)*/;
 
 module.exports = app;
