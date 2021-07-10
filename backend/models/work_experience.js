@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// TODO: change service 
 const workExperienceSchema = Schema({
     title: {type: String, required: true},
     description: {type: String, required: false},
