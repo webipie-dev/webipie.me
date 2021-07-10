@@ -13,6 +13,7 @@ const workExperienceRoutes = require('./routes/work_experience');
 const volunteeringExperienceRoutes = require('./routes/volunteering_experience');
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
+const softSkillsRoutes = require('./routes/soft_skill');
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -33,17 +34,18 @@ app.use(cors());
 
 //swagger documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app
-  .use(bodyParser.urlencoded({extended: true}))
-  .use(bodyParser.json())
-  .use('/user', userRoutes)
-  .use('/portfolio', portfolioRoutes)
-  .use('/project', projectRoutes)
-  .use('/workexperience', workExperienceRoutes)
-  .use('/volunteeringexperience', volunteeringExperienceRoutes)
-  .use('/testimonial', testimonialRoutes)
-  .use('/achievement', achievementRoutes);
+    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.json())
+    .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+    .use('/user', userRoutes)
+    .use('/portfolio', portfolioRoutes)
+    .use('/project', projectRoutes)
+    .use('/workexperience', workExperienceRoutes)
+    .use('/volunteeringexperience', volunteeringExperienceRoutes)
+    .use('/softskills', softSkillsRoutes)
+    .use('/testimonial', testimonialRoutes)
+    .use('/achievement', achievementRoutes);
 
 module.exports = app;

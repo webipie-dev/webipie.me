@@ -4,13 +4,13 @@ const ApiError = require("../errors/api-error");
 const { User } = require('../models/user');
 const { createDomain } = require('../services/domain');
 
-const getPortfolioNames = async (req,res) => {
-  const names =await Portfolio.find({}).select({ "name": 1, "_id": 0})
+const getPortfolioUrls = async (req,res) => {
+  const urls =await Portfolio.find({}).select({ "url": 1, "_id": 0})
     .catch((err) => {
     res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  res.status(200).send(names);
+  res.status(200).send(urls);
 }
 
 const getOnePortfolio = async (req, res) => {
@@ -139,7 +139,7 @@ const changeTemplate = async (req, res, next) => {
 module.exports = {
   getOnePortfolio,
   getPortfolioByUrl,
-  getPortfolioNames,
+  getPortfolioUrls,
   addPortfolio,
   editPortfolio,
   changeTemplate

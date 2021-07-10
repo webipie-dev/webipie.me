@@ -15,7 +15,7 @@ const portfolioSchema = new Schema({
   CV: {type: String, required: false, unique: true},
   creationDate: {type: Date, default: Date.now()},
   template: templateSchema,
-  porjects: {type: [Schema.Types.ObjectID], ref: "Porject"},
+  projects: {type: [Schema.Types.ObjectID], ref: "Porject"},
   achievements: {type: [achievementSchema]},
   testimonials: {type: [testimonialSchema]},
   softSkills: {type: [Schema.Types.ObjectID], ref: "SoftSkill"},
