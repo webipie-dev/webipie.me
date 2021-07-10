@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+var multer = require('multer');
+
 
 const app = express();
 
@@ -13,6 +15,9 @@ const workExperienceRoutes = require('./routes/work_experience');
 const volunteeringExperienceRoutes = require('./routes/volunteering_experience');
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
+const healthcheckRoutes = require('./routes/healthCheck');
+const fileUploadRoutes = require('./routes/upload');
+
 const {cvUploadRoute, imageUploadRoute, videoUploadRoute} = require('./routes/upload')
 
 // Extended: https://swagger.io/specification/#infoObject
@@ -32,13 +37,16 @@ const swaggerOptions = {
 
 app.use(cors());
 
+app.use(express.static('./public'));
+app.use('/uploads', express.static('uploads'));
+
 //swagger documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app
-  .use(bodyParser.urlencoded({extended: true}))
-  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({extended: true, limit: '30mb'}))
+  .use(bodyParser.json({ limit: '30mb', extended: true }))
   .use('/user', userRoutes)
   .use('/portfolio', portfolioRoutes)
   .use('/project', projectRoutes)
@@ -46,8 +54,13 @@ app
   .use('/volunteeringexperience', volunteeringExperienceRoutes)
   .use('/testimonial', testimonialRoutes)
   .use('/achievement', achievementRoutes)
-  /*.use('/upload/cv', cvUploadRoute)
-  .use('/upload/image', imageUploadRoute)
-  .use('/upload/video', videoUploadRoute)*/;
+  .use('/health_check', healthcheckRoutes)
+  .use('/upload', fileUploadRoutes);
+
+
+  
+
+
+console.log(app._router.stack[app._router.stack.length -1].handle)
 
 module.exports = app;

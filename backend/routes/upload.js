@@ -1,6 +1,10 @@
 var multer = require('multer');
 var AWS = require('aws-sdk');
-const {uuid} = require('uuidv4');
+const { v4: uuidv4 } = require('uuid');
+const express = require('express');
+const router = express.Router();
+const multerS3 = require("multer-s3");
+
 
 const { accessKeyId, secretAccessKey, awsS3Bucket } = require('../configuration/index');
 
@@ -10,40 +14,70 @@ AWS.config.update({
     region: 'eu-central-1',
 });
 
-var s3 = new AWS.S3();
+var s3 = new AWS.S3({
+  Bucket: "webipie.me-uploads"
+});
 
-const getUploadRoute = function(name, limit){
-    multer({
-        dest: `./pubic/uploads/${name}/`, 
-        limits : { fileSize:limit },
-        rename: function (fieldname, filename) {
-            return `${uuid()}/${filename}`;
-        },
-        onFileUploadData: function (file, data, req, res) {
-          var params = {
-            Bucket: awsS3Bucket,
-            Key: `/${name}/${file.name}`,
-            Body: data
-          };
-      
-          s3.putObject(params, function (perr, pres) {
-            if (perr) {
-              console.log(`Error uploading data to /${name}/${file.name}: `, perr);
-            } else {
-              console.log(`Successfully uploaded data to /${name}/${file.name}`);
-            }
-          });
-        }
-      });
-      
+const getFileFilter = function(mimetypes){
+  return (req, file, cb) => {
+    if (mimetypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error(`Invalid file type, allowed mimetypes: ${mimetypes}`), false);
+    }
+  };
 }
 
-const cvUploadRoute = getUploadRoute("cv", 5242880)
-const imageUploadRoute = getUploadRoute("image", 5242880)
-const videoUploadRoute = getUploadRoute("video", 26214400)
+const getUpload = function(name, limit, fileFilter){
+    return multer({
+        fileFilter: fileFilter,
+        limits : { fileSize:limit },
+        storage: multerS3({
+          acl: "public-read",
+          s3,
+          bucket: 'webipie.me-uploads',
+          key: function (req, file, cb) {
+            cb(null, `${name}/${uuidv4()}/${file.originalname}`);
+          },
+        }),
 
-module.exports = {
-    cvUploadRoute,
-    imageUploadRoute,
-    videoUploadRoute
-  };
+      }).single('file');
+}
+
+const getUploadHandler = function(name, limit, fileFilter){
+  const upload = getUpload(name, limit, fileFilter)
+  return function (req, res) {
+
+    upload(req, res, function (err) {
+      if (err) {
+        return res.json({
+          success: false,
+          errors: {
+            title: `File upload ${name} operation failed`,
+            detail: err.message,
+            error: err,
+          },
+        });
+      }
+  
+      res.status(200).json({ success: true, url: req.file.location })
+    });
+  }
+}
+
+const cvUpload = getUploadHandler("cv", 5242880, getFileFilter(["application/pdf"]))
+const imageUpload = getUploadHandler("image", 5242880, getFileFilter(["image/jpeg", "image/png"]))
+const videoUpload = getUploadHandler("video", 26214400, getFileFilter(["video/mp4", "video/mpeg", "video/ogg", "video/webm", "video/3gpp", "video/3gpp2"]))
+
+
+
+router.post("/cv", cvUpload);
+router.post('/image/', imageUpload)
+router.post('/video/', videoUpload)
+
+
+  
+
+
+
+module.exports = router;

@@ -51,10 +51,11 @@ mongoose.connect('mongodb+srv://webipie:webipiepass@webipieme.ydbo1.mongodb.net/
     console.log('connection failed');
   });
 
-const onListening = () => {
-  const bind = typeof port === "string" ? "pipe " + port : "port " + port;
-  debug("Listening on " + bind);
-};
+  const onListening = () => {
+    const addr = server.address();
+    const bind = typeof port === "string" ? "pipe " + port : "port " + port;
+    console.log(`Listening on http://localhost:${port}`);
+  };
 
 const port = normalizePort(process.env.PORT || 8000);
 app.set("port", port);
