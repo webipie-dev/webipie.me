@@ -1,0 +1,37 @@
+//  Core
+
+.br-rating-icons-default {
+  .br-unit {
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 28px;
+    height: 28px;
+    font-size: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: $transition-base;
+    background-color: transparent !important;
+    opacity: 1 !important;
+
+    &:before {
+      content: "\f383";
+    }
+
+    &.br-active,
+    &.br-selected {
+      &:before {
+        content: "\f384";
+      }
+    }
+  }
+}

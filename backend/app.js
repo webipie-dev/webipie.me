@@ -14,6 +14,8 @@ const volunteeringExperienceRoutes = require('./routes/volunteering_experience')
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
 const templateRoutes = require('./routes/template');
+const softSkillsRoutes = require('./routes/soft_skill');
+
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -24,7 +26,7 @@ const swaggerOptions = {
         version: "1.0.0",
         title: "Webipie API",
         description: "Webipie API Information",
-        servers: ["http://localhost:3000"]
+        servers: ["http://localhost:8000"]
       }
     },
     apis: ["./swagger-doc/*.js"]
@@ -34,18 +36,19 @@ app.use(cors());
 
 //swagger documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app
-  .use(bodyParser.urlencoded({extended: true}))
-  .use(bodyParser.json())
-  .use('/user', userRoutes)
-  .use('/portfolio', portfolioRoutes)
-  .use('/project', projectRoutes)
-  .use('/workexperience', workExperienceRoutes)
-  .use('/volunteeringexperience', volunteeringExperienceRoutes)
-  .use('/testimonial', testimonialRoutes)
-  .use('/achievement', achievementRoutes)
-  .use('/template', templateRoutes);
+    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.json())
+    .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+    .use('/user', userRoutes)
+    .use('/portfolio', portfolioRoutes)
+    .use('/project', projectRoutes)
+    .use('/workexperience', workExperienceRoutes)
+    .use('/volunteeringexperience', volunteeringExperienceRoutes)
+    .use('/softskills', softSkillsRoutes)
+    .use('/testimonial', testimonialRoutes)
+    .use('/achievement', achievementRoutes)
+    .use('/template', templateRoutes);
 
 module.exports = app;

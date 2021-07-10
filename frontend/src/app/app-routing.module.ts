@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SignupComponent } from './registration/signup/signup.component';
 import {CustomPreloadingStrategyService} from "./_shared/services/custom-preloading-strategy.service";
 
 const routes: Routes = [

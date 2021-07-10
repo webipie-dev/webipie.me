@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-price-card',
   templateUrl: './price-card.component.html',
-  styleUrls: ['./price-card.component.css']
+  styleUrls: ['./price-card.component.scss'],
 })
 export class PriceCardComponent implements OnInit {
   @Input() class : String = '';

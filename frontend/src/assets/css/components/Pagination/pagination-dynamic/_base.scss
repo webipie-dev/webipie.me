@@ -1,0 +1,61 @@
+//  Core
+
+.pagination {
+  .ngx-pagination {
+    @include list-unstyled;
+
+    li {
+      a {
+        @include border-radius($border-radius-xs);
+        margin: 0 ($spacer / 3.5);
+        transition: $transition-base;
+        position: relative;
+        padding: $pagination-padding-y $pagination-padding-x;
+        color: $pagination-color;
+        border: $pagination-border-color solid 1px;
+
+        &:hover {
+          background: $pagination-hover-bg;
+          color: $pagination-hover-color;
+          border-color: $pagination-hover-border-color;
+        }
+
+        &::after,
+        &::before {
+          display: none !important;
+        }
+      }
+
+      &::after,
+      &::before {
+        display: none !important;
+      }
+
+      span {
+        &::after,
+        &::before {
+          display: none !important;
+        }
+      }
+
+      &.current {
+        background: $pagination-active-bg;
+        box-shadow: $box-shadow-sm;
+        color: $pagination-active-color;
+        cursor: pointer;
+        border-color: $pagination-active-border-color;
+        padding: $pagination-padding-y $pagination-padding-x;
+        @include border-radius($border-radius-xs);
+      }
+
+      &.pagination-next,
+      &.pagination-previous {
+        span {
+          padding: $pagination-padding-y 0;
+          @include border-radius($border-radius-xs);
+          border: transparent solid 1px;
+        }
+      }
+    }
+  }
+}
