@@ -1,0 +1,23 @@
+.cos-container{
+    border-bottom: 2px solid white;
+    width:100vw;
+    color:white;
+    font-family: 'Roboto',sans-serif !important;
+    font-weight: 600 !important;
+    height:80px;
+}
+.cos-menu{
+    margin:auto;
+    width:80%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.cos-right a{
+    margin:20px;
+}
+.cos-left h1{
+    font-size: 30px;
+}

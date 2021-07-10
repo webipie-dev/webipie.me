@@ -1,0 +1,42 @@
+.cos-container{
+    width:100vw;
+    min-height: 100vh;
+    
+
+    -webkit-animation: AnimationName 2s ease infinite;
+    -moz-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+.cos-content{
+    width:80%;
+    max-width: 1200px;
+    margin: auto;
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    text-align: center;
+}
+.cos-content h1{
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.342);
+    margin-bottom: -2px;
+    font-size:7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
