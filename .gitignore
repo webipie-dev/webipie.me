@@ -1,5 +1,6 @@
 backend/node_modules
 frontend/node_modules
+backend/configuration/index.js
 
 # IDEs and editors
 /.idea
@@ -31,4 +32,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
+scripts/*

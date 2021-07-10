@@ -2,6 +2,7 @@ const Portfolio = require('../models/portfolio');
 const {Template} = require('../models/template');
 const ApiError = require("../errors/api-error");
 const { User } = require('../models/user');
+const { createDomain } = require('../services/domain');
 
 const getPortfolioUrls = async (req,res) => {
   const urls =await Portfolio.find({}).select({ "url": 1, "_id": 0})
@@ -33,7 +34,7 @@ const getPortfolioByUrl = async (req,res) => {
 }
 
 const addPortfolio = async (req, res, next) => {
-
+  // TODO: email verification error doesn't return a readable error
   const foundPortfolio = await User.findOne({name: req.body.name});
   if(foundPortfolio){
     return next(ApiError.BadRequest('Portfolio name is already in use'));
@@ -50,7 +51,6 @@ const addPortfolio = async (req, res, next) => {
 
   getTemplate.id = templateId
   const portfolioSubdomain = name.toLowerCase().replace(/\s/g, '').replace(/'/, '');
-
   const portfolio = new Portfolio({
     name,
     url: portfolioSubdomain + '.webipie.me',
@@ -67,6 +67,7 @@ const addPortfolio = async (req, res, next) => {
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+  createDomain(portfolioSubdomain)
 
       console.log(portfolio);
   res.status(201).send(portfolio);

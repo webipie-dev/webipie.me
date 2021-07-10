@@ -24,7 +24,7 @@ const swaggerOptions = {
         version: "1.0.0",
         title: "Webipie API",
         description: "Webipie API Information",
-        servers: ["http://localhost:3000"]
+        servers: ["http://localhost:8000"]
       }
     },
     apis: ["./swagger-doc/*.js"]

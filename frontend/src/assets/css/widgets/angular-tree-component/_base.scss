@@ -1,0 +1,146 @@
+// Angular tree component
+
+.tree-children.tree-children-no-padding {
+  padding-left: 0;
+}
+
+.tree-children {
+  padding-left: ($spacer / 3);
+  overflow: hidden;
+}
+
+.node-drop-slot {
+  display: block;
+  height: 2px;
+}
+
+.node-drop-slot.is-dragging-over {
+  background: $gray-100;
+  height: 33px;
+  border: 1px dotted $gray-500;
+  border-radius: $border-radius-sm;
+}
+
+.toggle-children-wrapper-expanded .toggle-children {
+  transform: rotate(90deg);
+}
+
+.toggle-children-wrapper-collapsed .toggle-children {
+  transform: rotate(0);
+}
+
+.toggle-children-wrapper {
+  display: block;
+  height: 15px;
+  width: 20px;
+}
+
+.toggle-children {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAM1BMVEUAAACHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZSHjZRD8XdwAAAAEHRSTlMAAQIDBAYKI0p3f7XFx8/7vCTl1wAAADZJREFUCFuNx7kRACAMA0Hx/6D+qyXBYwICLtoDkJqHFBe7XuHvVXKYYz/I8nJX28twUw2ELNq6YAJK4eBgPAAAAABJRU5ErkJggg==");
+  height: 15px;
+  width: 12px;
+  display: block;
+  position: relative;
+  top: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: $transition-base;
+}
+
+.toggle-children-placeholder {
+  display: inline-block;
+  height: 10px;
+  position: relative;
+  top: 0;
+}
+
+.node-content-wrapper {
+  display: inline-block;
+  padding: ($spacer / 4) ($spacer / 1.5);
+  border-radius: $border-radius-sm;
+  transition: $transition-base;
+  background: $dark-neutral;
+}
+
+.node-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 2px 0;
+}
+
+.node-content-wrapper-active,
+.node-content-wrapper.node-content-wrapper-active:hover,
+.node-content-wrapper-active.node-content-wrapper-focused {
+  background: rgba($primary, 0.9);
+  color: color-yiq($primary);
+}
+
+.node-content-wrapper:hover,
+.node-content-wrapper-focused {
+  background: rgba($primary, 0.7);
+  color: color-yiq($primary);
+}
+
+.node-content-wrapper.is-dragging-over {
+  background: $primary;
+  color: color-yiq($primary);
+  @include border-radius($border-radius-sm);
+}
+
+.node-content-wrapper.is-dragging-over-disabled {
+  opacity: 0.5;
+}
+
+tree-viewport {
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  overflow: auto;
+  display: block;
+}
+
+.tree-children {
+  padding-left: ($spacer / 3);
+}
+
+.empty-tree-drop-slot .node-drop-slot {
+  height: 20px;
+  min-width: 100px;
+}
+
+.angular-tree-component {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+tree-root .angular-tree-component-rtl {
+  direction: rtl;
+}
+
+tree-root .angular-tree-component-rtl .toggle-children-wrapper-collapsed .toggle-children {
+  transform: rotate(180deg) !important;
+}
+
+tree-root .angular-tree-component-rtl .tree-children {
+  padding-right: ($spacer / 3);
+  padding-left: 0;
+}
+
+tree-node-checkbox {
+  padding: 4px 8px 0 0;
+}
+
+.tree-node-leaf {
+  padding-left: 25px;
+}
+
+.tree-node-level-1 {
+  padding-left: 0;
+}
