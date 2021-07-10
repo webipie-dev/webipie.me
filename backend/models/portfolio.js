@@ -17,11 +17,11 @@ const portfolioSchema = new Schema({
   porjects: {type: [Schema.Types.ObjectID], ref: "Porject"},
   achievements: {type: [achievementSchema]},
   testimonials: {type: [testimonialSchema]},
-  softSkills: [{
-    skill: {type: Schema.Types.ObjectID, ref: "SoftSkill"},
+  technicalSkills: [{
+    skill: {type: Schema.Types.ObjectID, ref: "TechnicalSkill"},
     level:{type: Number, required: false, min: 0, max: 10}
   }],
-  technicalSkills: {type: [Schema.Types.ObjectID], ref: "TechnicalSkill"},
+  softSkills: {type: [Schema.Types.ObjectID], ref: "SoftSkill"},
   workExperiences: {type: [Schema.Types.ObjectID], ref: "WorkExperience"},
   volunteeringExperiences: {type: [Schema.Types.ObjectID], ref: "VolunteeringExperience"},
 },
