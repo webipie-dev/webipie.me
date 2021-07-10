@@ -8,6 +8,8 @@ import { SignupComponent } from './signup/signup.component';
 import { CardComponent } from './signup/card/card.component';
 import { SigninComponent } from './signin/signin.component';
 import { CardSigninComponent } from './signin/card-signin/card-signin.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { ConfirmationCardComponent } from './confirmation/confirmation-card/confirmation-card.component';
 
 
 
@@ -18,7 +20,9 @@ import { CardSigninComponent } from './signin/card-signin/card-signin.component'
     SignupComponent,
     CardComponent,
     SigninComponent,
-    CardSigninComponent
+    CardSigninComponent,
+    ConfirmationComponent,
+    ConfirmationCardComponent
   ],
   imports: [
     CommonModule,
