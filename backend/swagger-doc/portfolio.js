@@ -52,7 +52,7 @@
  *                          type: string
  *                      header:
  *                          type: object
- *                          example: {img: http://localhost:3000/backend/images/carbon.png, title: tata, description: tata, mainButton: tata }
+ *                          example: {img: http://localhost:8000/backend/images/carbon.png, title: tata, description: tata, mainButton: tata }
  *                      colorChart:
  *                          type: object
  *                      colorChartOptions:

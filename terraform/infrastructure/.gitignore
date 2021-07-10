@@ -1,0 +1,11 @@
+# Compiled files
+*.tfstate
+*.tfstate.backup
+.terraform.tfstate.lock.info
+
+# Module directory
+.terraform/
+secrets.tfvars
+#rendered files
+set_config_to_github.bash
+*.pub
