@@ -13,7 +13,9 @@ const workExperienceRoutes = require('./routes/work_experience');
 const volunteeringExperienceRoutes = require('./routes/volunteering_experience');
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
+const templateRoutes = require('./routes/template');
 const softSkillsRoutes = require('./routes/soft_skill');
+
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -46,6 +48,7 @@ app
     .use('/volunteeringexperience', volunteeringExperienceRoutes)
     .use('/softskills', softSkillsRoutes)
     .use('/testimonial', testimonialRoutes)
-    .use('/achievement', achievementRoutes);
+    .use('/achievement', achievementRoutes)
+    .use('/template', templateRoutes);
 
 module.exports = app;

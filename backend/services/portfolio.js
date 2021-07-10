@@ -69,7 +69,7 @@ const addPortfolio = async (req, res, next) => {
     });
   createDomain(portfolioSubdomain)
 
-      console.log(portfolio);
+  console.log(portfolio);
   res.status(201).send(portfolio);
 
 }

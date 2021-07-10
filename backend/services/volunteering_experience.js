@@ -30,17 +30,20 @@ const getOneVolunteeringExperience = async (req, res, next) => {
 };
 
 const addVolunteeringExperience = async (req, res, next) => {
-  let { name, description, organisation, position, tags, skills, date, city, portfolioId } = req.body
+  let { name, description, organisation, position, tags, skills, beginDate, endDate, city, portfolioId } = req.body
 
   const portfolio = await Portfolio.findById(portfolioId)
-
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
     return;
   }
 
+  if(beginDate >= endDate){
+    return next(ApiError.BadRequest('End date should be bigger than begin date.'));
+  }
+
   const volunteeringExperience = new VolunteeringExperience({
-    name, description, organisation, position, tags, skills, imgs, date, city, portfolio
+    name, description, organisation, position, tags, skills, imgs,  beginDate, endDate, city, portfolio
   });
 
   await volunteeringExperience.save();

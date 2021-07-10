@@ -30,17 +30,20 @@ const getOneWorkExperience = async (req, res, next) => {
 };
 
 const addWorkExperience = async (req, res, next) => {
-  let { name, description, company, position, tags, skills, date, city, portfolioId } = req.body
+  let { name, description, company, position, tags, skills, beginDate, endDate, city, portfolioId } = req.body
 
   const portfolio = await Portfolio.findById(portfolioId)
-
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
     return;
   }
 
+  if(beginDate >= endDate){
+    return next(ApiError.BadRequest('End date should be bigger than begin date.'));
+  }
+
   const workExperience = new WorkExperience({
-    name, description, company, position, tags, skills, imgs, date, city, portfolio
+    name, description, company, position, tags, skills, imgs, beginDate, endDate, city, portfolio
   });
 
   await workExperience.save();

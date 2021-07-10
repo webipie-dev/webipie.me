@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const technicalSkillSchema = Schema({
-  name: {type: String, required: true, default: ''},
-  level: {type: Number, required: false, default: '', min: 0, max: 10},
-  icon: {type: String, required: false, default: ''},
+  name: {type: String, required: true},
+  icon: {type: String, required: false},
 },
     {
         toJSON: {
