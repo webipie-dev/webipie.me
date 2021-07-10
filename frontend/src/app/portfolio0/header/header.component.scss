@@ -1,5 +1,6 @@
 .cos-container{
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.151);
     width:100vw;
     color:white;
     font-family: 'Roboto',sans-serif !important;
@@ -17,7 +18,11 @@
 }
 .cos-right a{
     margin:20px;
+    transition: color 0.5s ease-out;
 }
 .cos-left h1{
     font-size: 30px;
+}
+.cos-right a:hover{
+    color:#202e37 !important;
 }
