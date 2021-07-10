@@ -1,0 +1,50 @@
+//  Core
+
+.toggle-switch-square {
+  .switch {
+    @include border-radius($border-radius-sm);
+  }
+
+  small {
+    @include border-radius($border-radius-sm);
+  }
+}
+
+.toggle-switch-line {
+  .switch {
+    small {
+      border: transparent solid 1px;
+      top: 50%;
+    }
+
+    &.switch-small {
+      height: 8px;
+
+      small {
+        margin-top: -($sw-sm-knob-size / 2);
+      }
+    }
+
+    &.switch-medium {
+      height: 8px;
+
+      small {
+        margin-top: -($sw-md-knob-size / 2);
+      }
+    }
+
+    &.switch-large {
+      height: 8px;
+
+      small {
+        margin-top: -($sw-lg-knob-size / 2);
+      }
+    }
+  }
+
+  &:hover {
+    small {
+      border-color: $gray-700;
+    }
+  }
+}
