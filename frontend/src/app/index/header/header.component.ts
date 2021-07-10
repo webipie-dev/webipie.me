@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { faAddressCard, faArrowLeft, faBars, faHome, faMoneyBill, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   menu = faBars;
@@ -15,9 +16,12 @@ export class HeaderComponent implements OnInit {
   leftarrow = faArrowLeft;
   menuactive = false;
   scrolled = false;
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
+    if(this.router.url != '/'){
+      this.scrolled=true;
+    }
   }
   onMenuClick(event:any){
     if(!this.menuactive){

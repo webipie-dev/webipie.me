@@ -1,0 +1,99 @@
+.cos-container{
+    width:100vw;
+    min-height: 100vh;
+    
+
+    -webkit-animation: AnimationName 2s ease infinite;
+    -moz-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+}
+@media screen and (max-width:400px) {
+    .cos-content h1{
+        font-size:5rem !important;
+    }
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+.cos-content{
+    width:80%;
+    max-width: 1200px;
+    margin: auto;
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    text-align: center;
+    margin-bottom:100px;
+}
+.cos-content h1{
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.342);
+    margin-bottom: -2px;
+    font-size:7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.cos-download{
+    padding:15px;
+    border: 2px solid white;
+    width: 260px;
+    height:60px;
+    position: relative;
+    display: flex;
+    margin: auto;
+    margin-top:20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: box-shadow 1s ease,transform 0.5s ease-out;
+}
+.cos-download:hover{
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.336);
+    transform:scale(1.05)
+}
+.cos-download fa-icon{
+    position: absolute;
+    top:-2px;
+    right:-15px;
+    font-size:30px;
+    background-color: white;
+    color:black;
+    padding:7.5px;
+    padding-right:10px;
+    padding-left:10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-sizing: content-box;
+}
+.cos-bottom{
+    position: absolute;
+    bottom:10px;
+    font-size: 1.7rem;
+}
+.cos-bottom h2{
+    font-size: 1.4rem;
+}
+.cos-bottom .fa-icon{
+    position: relative;
+    animation: bounce 1s  alternate infinite !important;
+}
+@keyframes bounce {
+    0%{
+        transform: translateY(0px);
+    }100%{
+        transform: translateY(-6px);
+    }
+}

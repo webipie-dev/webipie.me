@@ -1,0 +1,54 @@
+// Collapsed Sidebar
+.app-sidebar-collapsed {
+  .app-sidebar:not(:hover) {
+    .app-sidebar--content {
+      .sidebar-navigation {
+        li {
+          &.sidebar-header {
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 0;
+
+            span {
+              visibility: hidden;
+              opacity: 0;
+              height: 0;
+              overflow: hidden;
+            }
+
+            &:after {
+              height: 1px;
+              content: "";
+              position: absolute;
+              width: 80%;
+              left: 10%;
+            }
+          }
+
+          &.sidebar-header:not(:first-child) {
+            &:after {
+              background: rgba($black, 0.2);
+            }
+          }
+
+          span {
+            span:not(.sidebar-icon-wrapper) {
+              visibility: hidden;
+              opacity: 0;
+            }
+
+            .sidebar-icon-wrapper {
+              margin-right: 0;
+              text-align: center;
+            }
+          }
+
+          .sidebar-submenu {
+            height: 0;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}
