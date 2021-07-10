@@ -10,7 +10,6 @@ export class IndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('I got here')
   }
 
 }

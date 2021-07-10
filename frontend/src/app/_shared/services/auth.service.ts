@@ -18,19 +18,30 @@ export class AuthService extends GenericService<any>{
     return UtilsUrl.url;
   }
 
-  public signUp(credentials: { [key: string]: any}) {
-    return this.http.post(this.getUrl() + this.suffix + '/signup', credentials) as unknown as Observable<any>;
+  public signUp(credentials: { [key: string]: any}): Observable<any> {
+    return this.http.post(this.getUrl() + this.suffix + '/signup', credentials) as Observable<any>;
   }
 
-  public signIn(credentials: { [key: string]: any}) {
-    return this.http.post(this.getUrl() + this.suffix + '/signin', credentials) as unknown as Observable<any>;
+  public signIn(credentials: { [key: string]: any}): Observable<any> {
+    return this.http.post(this.getUrl() + this.suffix + '/signin', credentials) as Observable<any>;
   }
 
-  public sendConfirmation(token: string) {
-    return this.http.get(this.getUrl() + this.suffix + '/confirmation/' + token) as unknown as Observable<any>;
+  public sendConfirmation(token: string): Observable<any> {
+    return this.http.get(this.getUrl() + this.suffix + '/confirmation/' + token) as Observable<any>;
   }
 
-  public resendConfirmation(token: string) {
-    return this.http.get(this.getUrl() + this.suffix + '/resend/confirmation/' + token) as unknown as Observable<any>;
+  public resendConfirmation(token: string): Observable<any> {
+    return this.http.get(this.getUrl() + this.suffix + '/resend/confirmation/' + token) as Observable<any>;
   }
+
+  public isLoggedIn(): boolean {
+    return localStorage.getItem('token') !== null;
+  }
+
+  public logout() {}
+
+  public signInWithGoogle() {}
+
+  public signInWithLinkedIn() {}
+
 }
