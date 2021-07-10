@@ -18,7 +18,6 @@ const testimonialRoutes = require('./routes/testimonial');
 const healthcheckRoutes = require('./routes/healthCheck');
 const fileUploadRoutes = require('./routes/upload');
 
-const {cvUploadRoute, imageUploadRoute, videoUploadRoute} = require('./routes/upload')
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
