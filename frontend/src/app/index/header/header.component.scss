@@ -1,7 +1,16 @@
+a{
+    text-decoration: none;
+    color:inherit;
+}
+*{
+    margin:0px;
+    padding:0px;
+    font-family:'Montserrat',sans-serif;
+}
 .container{
     position: relative;
     padding-top:20px;
-    width:100%;
+    width:100vw;
     height:100px;
     color:white;
 }
@@ -186,7 +195,7 @@ img{
     transform: scale(0.9);
 }
 .blacked a h3{
-    color: rgb(29, 29, 29) ;
+    color: rgb(29, 29, 29) !important;
 }
 .blackedbutton{
     border-color: rgb(29, 29, 29);

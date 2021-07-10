@@ -1,3 +1,8 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family:'Montserrat',sans-serif;
+}
 .container{
     position: relative;
     padding-top:20px;
@@ -138,6 +143,10 @@ img{
 .account h3{
     margin: 10px;
     font-weight: 600 !important;
+}
+a{
+    text-decoration: none;
+    color:inherit;
 }
 .element{
     margin-top:10px;
