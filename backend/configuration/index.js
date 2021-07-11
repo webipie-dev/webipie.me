@@ -5,6 +5,7 @@ module.exports = {
         USER: 'confirmation@webipie.com',
         PASSWORD: 'webipie4win',
     },
+    contactEmail: 'contact@webipie.me',
   awsEndPoint: 'https://webipie-images.s3.eu-west-3.amazonaws.com/',
   accessKeyId: 'AKIAZNH4SLOQGVT7RRUH',
   secretAccessKey: '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',

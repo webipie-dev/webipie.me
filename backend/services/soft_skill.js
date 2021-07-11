@@ -48,5 +48,6 @@ const addSoftSkills = async (req, res, next) => {
 
 module.exports = {
     getAllSoftSkills,
-    getSoftSkills
+    getSoftSkills,
+    addSoftSkills
 };
