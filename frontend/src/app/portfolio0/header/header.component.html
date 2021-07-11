@@ -1,12 +1,14 @@
 <div class="cos-container">
-    <div class="cos-menu">
+    <div [class]="scrolled? 'cos-scroll cos-show':'cos-scroll'"></div>
+    <div class="cos-menu" [style.color]="scrolled? '#202e37 !important':'white'">
         <div class="cos-left">
             <h1>JOHN DOE</h1>
         </div>
         <div class="cos-right">
             <a href="#">HOME</a>
-            <a href="#">ABOUT ME</a>
-            <a href="#">EXPERIENCE</a>
+            <a (click)="clickAboutme($event)">ABOUT ME</a>
+            <a (click)="clickExpertise($event)">EXPERTISE</a>
+            <a (click)="clickExperience($event)">EXPERIENCE</a>
             <a href="#">CONTACT ME</a>
         </div>
     </div>

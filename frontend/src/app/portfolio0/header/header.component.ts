@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  scrolled = false;
+  @Output() aboutmeClick = new EventEmitter<any>();
+  @Output() expertiseClick = new EventEmitter<any>();
+  @Output() experienceClick = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  clickAboutme(event:any){
+    this.aboutmeClick.emit(event);
+  }
+  clickExpertise(event:any){
+    this.expertiseClick.emit(event);
+  }
+  clickExperience(event:any){
+    this.experienceClick.emit(event);
+  }
+  @HostListener('window:scroll', ['$event']) 
+    doSomething(event:any) {
+      if(window.pageYOffset > 100){
+        this.scrolled=true;
+      }else{
+        this.scrolled=false;
+      }
+    }
 }

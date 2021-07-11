@@ -2,4 +2,9 @@ app-header{
     position: fixed;
     top:0px;
     left:0px;
+    z-index: 20;
+}
+app-aboutme-section{
+    position: relative;
+    z-index:2;
 }

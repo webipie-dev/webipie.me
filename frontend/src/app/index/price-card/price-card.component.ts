@@ -14,7 +14,7 @@ export class PriceCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.class =="card primary"){
+    if(this.class =="cardd primary"){
       this.title='PREMIUM PACK';
       this.cost='$150';
     } else {

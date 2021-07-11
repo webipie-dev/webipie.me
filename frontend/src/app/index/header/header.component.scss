@@ -7,14 +7,14 @@ a{
     padding:0px;
     font-family:'Montserrat',sans-serif;
 }
-.container{
+.containerr{
     position: relative;
     padding-top:20px;
     width:100vw;
-    height:100px;
+    height:110px;
     color:white;
 }
-.content{
+.contentt{
     position: relative;
     z-index: 100;
     width:90%;
@@ -42,6 +42,7 @@ a{
 }
 h3{
     font-weight: 300;
+    font-size: 1.2rem;
 }
 .left{
     margin-right:40px;
@@ -99,13 +100,13 @@ img{
 .button:hover > h3{
     color:#7cdc9f !important;
 }
-.menu{
+.menuu{
     cursor: pointer;
     display: none;
     font-size:1.6rem;
 }
 @media screen and (max-width:1200px){
-    .menu{
+    .menuu{
         display:block;
     }
     .right a{
