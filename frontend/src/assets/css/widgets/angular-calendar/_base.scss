@@ -1,0 +1,15 @@
+// Angular Calendar
+
+// Core
+
+@import "calendar-month-view";
+@import "calendar-week-view";
+@import "calendar-day-view";
+@import "calendar-tooltip";
+
+@mixin cal-theme($overrides) {
+  @include cal-month-view-theme($overrides);
+  @include cal-week-view-theme($overrides);
+  @include cal-day-view-theme($overrides);
+  @include cal-tooltip-theme($overrides);
+}

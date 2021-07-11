@@ -17,6 +17,8 @@ const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
 const healthcheckRoutes = require('./routes/healthCheck');
 const fileUploadRoutes = require('./routes/upload');
+const templateRoutes = require('./routes/template');
+const softSkillsRoutes = require('./routes/soft_skill');
 
 
 // Extended: https://swagger.io/specification/#infoObject
@@ -41,25 +43,21 @@ app.use('/uploads', express.static('uploads'));
 
 //swagger documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app
   .use(bodyParser.urlencoded({extended: true, limit: '30mb'}))
   .use(bodyParser.json({ limit: '30mb', extended: true }))
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
   .use('/user', userRoutes)
   .use('/portfolio', portfolioRoutes)
   .use('/project', projectRoutes)
   .use('/workexperience', workExperienceRoutes)
   .use('/volunteeringexperience', volunteeringExperienceRoutes)
+  .use('/softskills', softSkillsRoutes)
   .use('/testimonial', testimonialRoutes)
   .use('/achievement', achievementRoutes)
   .use('/health_check', healthcheckRoutes)
-  .use('/upload', fileUploadRoutes);
-
-
-  
-
-
-console.log(app._router.stack[app._router.stack.length -1].handle)
+  .use('/upload', fileUploadRoutes)
+  .use('/template', templateRoutes);
 
 module.exports = app;

@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const softSkillSchema = Schema({
-  title: {type: String, required: true, default: ''},
-  description: {type: String, required: false, default: ''},
+  title: {type: String, required: true},
+  description: {type: String, required: false},
 },
     {
         toJSON: {

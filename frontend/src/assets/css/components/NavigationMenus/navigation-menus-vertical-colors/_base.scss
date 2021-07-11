@@ -1,0 +1,64 @@
+//  Core
+
+@each $color, $value in $theme-colors {
+  .nav-neutral-#{$color} {
+    .nav-item {
+      .nav-link {
+        &.active,
+        &:hover {
+          color: $value;
+          background: rgba($value, 0.05);
+
+          &::before {
+            background: $value;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-#{$color} {
+    .nav-item {
+      .nav-link {
+        &.active,
+        &:hover {
+          color: color-yiq($value);
+          background: $value;
+
+          &::before {
+            background: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-transparent {
+  .nav-item {
+    .nav-link {
+      &.active,
+      &:hover {
+        background: transparent;
+
+        &::before {
+          background: transparent;
+        }
+      }
+
+      &.text-white-50 {
+        &.active,
+        &:hover {
+          color: $white !important;
+        }
+      }
+
+      &.text-black-50 {
+        &.active,
+        &:hover {
+          color: $black !important;
+        }
+      }
+    }
+  }
+}

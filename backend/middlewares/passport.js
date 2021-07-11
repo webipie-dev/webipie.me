@@ -67,6 +67,9 @@ passport.use('googleToken' , new GoogleTokenStrategy({
 }));
 
 
+// TODO: replace facebook startegy with linkedin startegy 
+// https://levelup.gitconnected.com/step-by-step-guide-to-authenticate-users-with-linkedin-in-your-express-app-10af68b91b13
+
 // FACEBOOK OAUTH STRATEGY
 passport.use('facebookToken' , new FacebookTokenStrategy({
   clientID : '348023999826107',

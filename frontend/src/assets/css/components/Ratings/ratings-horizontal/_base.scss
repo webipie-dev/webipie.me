@@ -1,0 +1,25 @@
+//  Core
+
+.br-rating-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .br-unit {
+    display: block;
+    width: 14px;
+    height: 28px;
+    float: left;
+    margin: 1px;
+    text-align: center;
+    transition: $transition-base;
+    @include border-radius($border-radius-xs);
+  }
+
+  .br-text {
+    width: 20px;
+    margin-left: ($spacer / 2);
+    font-size: $font-size-base;
+    font-weight: 500;
+  }
+}

@@ -2,16 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const volunteeringExperienceSchema = Schema({
-    description: {type: String, required: false, default: ''},
-    position: {type: String, required: false, default: ''},
-    organisation: {type: String, required: false, default: ''},
-    imgs: {type: [String], required: false, default: ''},
-    tags: {type: [String], required: false, default: ''},
-    skills: {type: [String], required: false, default: ''},
-    date: {type: Date, required: false, default: ''},
-    city: {type: String, required: false, default: ''},
+    title: {type: String, required: true},
+    description: {type: String, required: false},
+    position: {type: String, required: false},
+    organisation: {type: String, required: true},
+    imgs: {type: [String], required: false},
+    tags: {type: [String], required: false},
+    skills: {type: [String], required: false},
+    beginDate: {type: Date, required: true},
+    endDate: {type: Date, required: true},
+    city: {type: String, required: false},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
-  
   },
     {
         toJSON: {

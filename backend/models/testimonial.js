@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const testimonialSchema = new Schema({
-    name: {type: String, default: ''},
-    position: {type: String, default: ''},
-    photo: {type: String, default: ''},
-    description: {type: String, default: ''},
+    name: {type: String, required: true},
+    position: {type: String, required: false},
+    photo: {type: String, required: false},
+    description: {type: String, required: true},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
 });
 
