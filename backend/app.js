@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+var multer = require('multer');
+
 
 const app = express();
 
@@ -13,6 +15,8 @@ const workExperienceRoutes = require('./routes/work_experience');
 const volunteeringExperienceRoutes = require('./routes/volunteering_experience');
 const achievementRoutes = require('./routes/achievement');
 const testimonialRoutes = require('./routes/testimonial');
+const healthcheckRoutes = require('./routes/healthCheck');
+const fileUploadRoutes = require('./routes/upload');
 const templateRoutes = require('./routes/template');
 const softSkillsRoutes = require('./routes/soft_skill');
 
@@ -34,21 +38,26 @@ const swaggerOptions = {
 
 app.use(cors());
 
+app.use(express.static('./public'));
+app.use('/uploads', express.static('uploads'));
+
 //swagger documentation
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app
-    .use(bodyParser.urlencoded({extended: true}))
-    .use(bodyParser.json())
-    .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
-    .use('/user', userRoutes)
-    .use('/portfolio', portfolioRoutes)
-    .use('/project', projectRoutes)
-    .use('/workexperience', workExperienceRoutes)
-    .use('/volunteeringexperience', volunteeringExperienceRoutes)
-    .use('/softskills', softSkillsRoutes)
-    .use('/testimonial', testimonialRoutes)
-    .use('/achievement', achievementRoutes)
-    .use('/template', templateRoutes);
+  .use(bodyParser.urlencoded({extended: true, limit: '30mb'}))
+  .use(bodyParser.json({ limit: '30mb', extended: true }))
+  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+  .use('/user', userRoutes)
+  .use('/portfolio', portfolioRoutes)
+  .use('/project', projectRoutes)
+  .use('/workexperience', workExperienceRoutes)
+  .use('/volunteeringexperience', volunteeringExperienceRoutes)
+  .use('/softskills', softSkillsRoutes)
+  .use('/testimonial', testimonialRoutes)
+  .use('/achievement', achievementRoutes)
+  .use('/health_check', healthcheckRoutes)
+  .use('/upload', fileUploadRoutes)
+  .use('/template', templateRoutes);
 
 module.exports = app;

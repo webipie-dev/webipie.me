@@ -8,6 +8,7 @@ module.exports = {
   awsEndPoint: 'https://webipie-images.s3.eu-west-3.amazonaws.com/',
   accessKeyId: 'AKIAZNH4SLOQGVT7RRUH',
   secretAccessKey: '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',
+  awsS3Bucket: 'webipie.me-images',
   awsRegion: 'eu-central-1',
   webipiePhoneNumber: '+18555501648',
   twilioAccountSid: 'ACda015434d90cbd519253c5b3fedfc9c3',
