@@ -3,7 +3,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-var multer = require('multer');
 
 
 const app = express();
@@ -19,6 +18,7 @@ const healthcheckRoutes = require('./routes/healthCheck');
 const fileUploadRoutes = require('./routes/upload');
 const templateRoutes = require('./routes/template');
 const softSkillsRoutes = require('./routes/soft_skill');
+const contactRoutes = require('./routes/contact');
 
 
 // Extended: https://swagger.io/specification/#infoObject
@@ -58,6 +58,7 @@ app
   .use('/achievement', achievementRoutes)
   .use('/health_check', healthcheckRoutes)
   .use('/upload', fileUploadRoutes)
-  .use('/template', templateRoutes);
+  .use('/template', templateRoutes)
+  .use('/contact', contactRoutes);
 
 module.exports = app;

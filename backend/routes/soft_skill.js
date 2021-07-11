@@ -17,10 +17,10 @@ router.get('/:portfolioId', passportJWT, [validation.portfolioId], validateReque
 router.patch('', passportJWT, [validation.portfolioId, validation.ids], validateRequest, softSkillService.addSoftSkills);
 
 // delete Many soft skills
-router.delete('', validation.ids, passportJWT, softSkillService.deleteManySoftSkills);
+//router.delete('', validation.ids, passportJWT, softSkillService.deleteManySoftSkills);
 
 //delete All soft skills
-router.delete('/delete', passportJWT, [validation.portfolioId], validateRequest, softSkillService.deleteAllSoftSkills);
+//router.delete('/delete', passportJWT, [validation.portfolioId], validateRequest, softSkillService.deleteAllSoftSkills);
 
 
 module.exports = router;
