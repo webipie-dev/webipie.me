@@ -11,6 +11,9 @@ import { SkillComponent } from './expertise-section/skill/skill.component';
 import { ExperienceSectionComponent } from './experience-section/experience-section.component';
 import { PortfolioSectionComponent } from './portfolio-section/portfolio-section.component';
 import { ProjectComponent } from './portfolio-section/project/project.component';
+import { TestimonialsSectionComponent } from './testimonials-section/testimonials-section.component';
+import { TestimonialComponent } from './testimonials-section/testimonial/testimonial.component';
+import { ContactSectionComponent } from './contact-section/contact-section.component';
 
 
 
@@ -24,7 +27,10 @@ import { ProjectComponent } from './portfolio-section/project/project.component'
     SkillComponent,
     ExperienceSectionComponent,
     PortfolioSectionComponent,
-    ProjectComponent
+    ProjectComponent,
+    TestimonialsSectionComponent,
+    TestimonialComponent,
+    ContactSectionComponent
   ],
   imports: [
     CommonModule,

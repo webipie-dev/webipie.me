@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   @Output() aboutmeClick = new EventEmitter<any>();
   @Output() expertiseClick = new EventEmitter<any>();
   @Output() experienceClick = new EventEmitter<any>();
+  @Output() testimonialsClick = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -22,6 +23,9 @@ export class HeaderComponent implements OnInit {
   }
   clickExperience(event:any){
     this.experienceClick.emit(event);
+  }
+  clickTestimonials(event:any){
+    this.testimonialsClick.emit(event);
   }
   @HostListener('window:scroll', ['$event']) 
     doSomething(event:any) {
