@@ -11,6 +11,10 @@ import { HeaderMenuComponent } from './header/header-menu/header-menu.component'
 import { HeaderUserboxComponent } from './header/header-userbox/header-userbox.component';
 import { SidebarCollapsedComponent } from './sidebar/sidebar-collapsed/sidebar-collapsed.component';
 import { SidebarComponent } from './sidebar/sidebar/sidebar.component';
+import { ErrorModalComponent } from '../_shared/components/error-modal/error-modal.component';
+import { SuccessModalComponent } from '../_shared/components/success-modal/success-modal.component';
+import { WarningModalComponent } from '../_shared/components/warning-modal/warning-modal.component';
+import { InfoModalComponent } from '../_shared/components/info-modal/info-modal.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FeatherModule } from 'angular-feather';
@@ -53,6 +57,9 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { ThemeOptions } from '../_shared/theme-options';
+import { GeneralInfosComponent } from './general-infos/general-infos.component';
+import { WrapperSimpleComponent } from '../_shared/components/wrapper-simple/wrapper-simple.component';
+import { FooterComponent } from './footer/footer.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -70,7 +77,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HeaderComponent,
     HeaderMenuComponent,
     HeaderSearchComponent,
-    HeaderUserboxComponent
+    HeaderUserboxComponent,
+    GeneralInfosComponent,
+    WrapperSimpleComponent,
+    FooterComponent,
+    ErrorModalComponent,
+    SuccessModalComponent,
+    WarningModalComponent,
+    InfoModalComponent,
   ],
   imports: [
     CommonModule,
