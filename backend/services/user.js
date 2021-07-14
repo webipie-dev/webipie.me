@@ -150,14 +150,14 @@ module.exports = {
 
     },
 
-    // googleOAuth: async (req, res, next) => {
+    googleOAuth: async (req, res, next) => {
 
-    //     const token = signToken(req.user);
-    //     res.cookie('access_token', token, {
-    //         httpOnly: true
-    //     });
-    //     res.status(200).json({ token, storeId: req.user.storeID });
-    // },
+        const token = signToken(req.user);
+        res.cookie('access_token', token, {
+            httpOnly: true
+        });
+        res.status(200).json({ token, storeId: req.user.storeID });
+    },
 
     // facebookOAuth: async (req, res, next) => {
     //     const token = signToken(req.user);
