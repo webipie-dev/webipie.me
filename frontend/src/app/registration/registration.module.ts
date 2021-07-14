@@ -10,6 +10,7 @@ import { SigninComponent } from './signin/signin.component';
 import { CardSigninComponent } from './signin/card-signin/card-signin.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ConfirmationCardComponent } from './confirmation/confirmation-card/confirmation-card.component';
+import { LinkedinVerifComponent } from './linkedin-verif/linkedin-verif.component';
 
 
 
@@ -22,7 +23,8 @@ import { ConfirmationCardComponent } from './confirmation/confirmation-card/conf
     SigninComponent,
     CardSigninComponent,
     ConfirmationComponent,
-    ConfirmationCardComponent
+    ConfirmationCardComponent,
+    LinkedinVerifComponent
   ],
   imports: [
     CommonModule,

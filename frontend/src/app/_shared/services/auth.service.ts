@@ -42,6 +42,8 @@ export class AuthService extends GenericService<any>{
 
   public signInWithGoogle() {}
 
-  public signInWithLinkedIn() {}
+  public signInWithLinkedIn(linkedinToken?: string): Observable<any> {
+    return this.http.get(this.getUrl() + this.suffix + '/auth/linkedin') as Observable<any>
+  }
 
 }

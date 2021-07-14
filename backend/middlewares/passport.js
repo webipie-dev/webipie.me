@@ -4,10 +4,16 @@ const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleTokenStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookTokenStrategy = require('passport-facebook-token');
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 
 const config = require('../configuration/index');
 const {User} = require('../models/user');
 const ApiError = require("../errors/api-error");
+
+const LINKEDIN_CLIENT_ID = "77oj8s50xw1yt7";
+const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
+const Linkedin = require('node-linkedin')(LINKEDIN_CLIENT_ID, LINKEDIN_CLIENT_SECRET);
+
 
 // JSON WEB TOKENS STRATEGY
 passport.use(new JwtStrategy({
@@ -102,6 +108,25 @@ passport.use('facebookToken' , new FacebookTokenStrategy({
     done(error, false, error.message);
   }
 }));
+
+/***
+ * passport linkedin strategy
+ */
+
+passport.use(new LinkedInStrategy({
+      clientID: LINKEDIN_CLIENT_ID,
+      clientSecret: LINKEDIN_CLIENT_SECRET,
+      callbackURL: "http://127.0.0.1:8000/auth/linkedin/callback",
+      scope: ['r_emailaddress', 'r_basicprofile'],
+      passReqToCallback: true
+    },
+    function (req, accessToken, refreshToken, profile, done) {
+      req.session.accessToken = accessToken;
+      console.log('i got here')
+      process.nextTick(function () {
+        return done(null, profile);
+      });
+    }));
 
 
 // LOCAL STRATEGY
