@@ -42,12 +42,12 @@ export class SidebarMenuService {
       {
         "title": "Skills",
         "type": "simple",
-        "link": "/dashboard-analytics"
+        "link": "/dashboard/skills"
       },
       {
         "title": "Experience",
         "type": "simple",
-        "link": "/dashboard-sales"
+        "link": "/dashboard/experience"
       },
       {
         "title": "Projects",
