@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-soft-skill.component.scss']
 })
 export class AddSoftSkillComponent implements OnInit {
-
+  someValue = 5;
   constructor() { }
 
   ngOnInit(): void {

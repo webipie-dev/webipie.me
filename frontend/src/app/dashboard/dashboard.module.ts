@@ -69,6 +69,7 @@ import { AddHardSkillComponent } from './skills/add-hard-skill/add-hard-skill.co
 import { ExperienceComponent } from './experience/experience.component';
 import { AddExperienceComponent } from './experience/add-experience/add-experience.component';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import { NouisliderModule } from 'ng2-nouislider';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
 };
@@ -107,6 +108,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FeatherModule.pick(icons),
     FontAwesomeModule,
     UiSwitchModule,
+    NouisliderModule,
     ButtonsModule.forRoot(),
     CollapseModule.forRoot(),
     TimepickerModule.forRoot(),

@@ -21,14 +21,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']" class="mx-auto"></fa-icon></span>
                             </div>
-                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDaterangepicker class="form-control" placeholder="Select date" type="text">
+                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Still on the job ?</label>
                         <div class="m-2">
-                        
-                            <ui-switch [checked]="true"></ui-switch>
+                            <ui-switch [checked]="false"></ui-switch>
                         </div>
                     </div>
                     
@@ -38,7 +37,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']" class="mx-auto"></fa-icon></span>
                             </div>
-                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDaterangepicker class="form-control" placeholder="Select date" type="text">
+                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
                         </div>
                     </div>
                     <button class="mt-1 btn btn-primary">Add Experience</button>

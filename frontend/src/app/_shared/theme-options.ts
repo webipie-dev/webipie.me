@@ -12,13 +12,13 @@ export class ThemeOptions {
 
   // Sidebar
 
-  toggleSidebar = false;
-  toggleSidebarMobile = false;
+  toggleSidebar = true;
+  toggleSidebarMobile = true;
   sidebarBackground = '';
-  sidebarBackgroundStyle = 'dark';
+  sidebarBackgroundStyle = 'light';
   sidebarFixed = true;
   sidebarLighterStyle = false;
-  sidebarShadow = false;
+  sidebarShadow = true;
   sidebarFooter = false;
   sidebarUserbox = false;
 

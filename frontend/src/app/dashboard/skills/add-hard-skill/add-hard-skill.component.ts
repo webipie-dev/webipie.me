@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-hard-skill.component.scss']
 })
 export class AddHardSkillComponent implements OnInit {
-
+  someValue = 5;
   constructor() { }
 
   ngOnInit(): void {
