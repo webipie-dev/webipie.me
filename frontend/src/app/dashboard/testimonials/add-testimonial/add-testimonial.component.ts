@@ -2,16 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
 
 @Component({
-  selector: 'app-general-infos',
-  templateUrl: './general-infos.component.html',
-  styleUrls: ['./general-infos.component.scss']
+  selector: 'app-add-testimonial',
+  templateUrl: './add-testimonial.component.html',
+  styleUrls: ['./add-testimonial.component.scss']
 })
-export class GeneralInfosComponent implements OnInit {
-
-
-   constructor( ) {
-  }
-  ngOnInit(): void {
+export class AddTestimonialComponent implements OnInit {
+  
+  constructor() {
   }
 
   public type: string = 'component';
@@ -72,4 +69,7 @@ export class GeneralInfosComponent implements OnInit {
 
   public onUploadSuccess(): void {
   }
+  ngOnInit(): void {
+  }
+
 }

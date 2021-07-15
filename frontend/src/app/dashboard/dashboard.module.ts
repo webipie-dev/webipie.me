@@ -15,7 +15,7 @@ import { ErrorModalComponent } from '../_shared/components/error-modal/error-mod
 import { SuccessModalComponent } from '../_shared/components/success-modal/success-modal.component';
 import { WarningModalComponent } from '../_shared/components/warning-modal/warning-modal.component';
 import { InfoModalComponent } from '../_shared/components/info-modal/info-modal.component';
-
+import { HeaderNotificationComponent } from './header/header-notification/header-notification.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FeatherModule } from 'angular-feather';
 import { Calendar, Activity, Bell, Settings, Search, Grid, Users, LifeBuoy, CloudDrizzle, Coffee, Box, Briefcase, Layers, Printer } from 'angular-feather/icons';
@@ -62,7 +62,7 @@ import { WrapperSimpleComponent } from '../_shared/components/wrapper-simple/wra
 import { FooterComponent } from './footer/footer.component';
 import { SkillsComponent } from './skills/skills.component';
 import { WrapperSeamlessComponent } from '../_shared/components/wrapper-seamless/wrapper-seamless.component';
-import { faFacebook, faTwitter, faAngular, faVuejs, faReact, faHtml5, faGoogle, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faTwitter, faAngular, faVuejs, faReact, faHtml5, faGoogle, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon } from '@fortawesome/free-solid-svg-icons';
 import { AddSoftSkillComponent } from './skills/add-soft-skill/add-soft-skill.component';
 import { AddHardSkillComponent } from './skills/add-hard-skill/add-hard-skill.component';
@@ -70,12 +70,23 @@ import { ExperienceComponent } from './experience/experience.component';
 import { AddExperienceComponent } from './experience/add-experience/add-experience.component';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { NouisliderModule } from 'ng2-nouislider';
+import { ProjectsComponent } from './projects/projects.component';
+import { AddProjectComponent } from './projects/add-project/add-project.component';
+import { DropzoneModule } from 'ngx-dropzone-wrapper'; import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper'; import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import { AchievementsComponent } from './achievements/achievements.component';
+import { AddAchievementComponent } from './achievements/add-achievement/add-achievement.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { AddTestimonialComponent } from './testimonials/add-testimonial/add-testimonial.component';
+import { ProfileComponent } from './profile/profile.component'; 
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
 };
 
 @NgModule({
   declarations: [
+    
     DashboardComponent,
     SidebarComponent,
     SidebarCollapsedComponent,
@@ -87,6 +98,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HeaderMenuComponent,
     HeaderSearchComponent,
     HeaderUserboxComponent,
+    HeaderNotificationComponent,
     GeneralInfosComponent,
     WrapperSimpleComponent,
     WrapperSeamlessComponent,
@@ -100,10 +112,18 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AddHardSkillComponent,
     ExperienceComponent,
     AddExperienceComponent,
+    ProjectsComponent,
+    AddProjectComponent,
+    AchievementsComponent,
+    AddAchievementComponent,
+    TestimonialsComponent,
+    AddTestimonialComponent,
+    ProfileComponent,
     
   ],
   imports: [
     CommonModule,
+    DropzoneModule,
     PerfectScrollbarModule,
     FeatherModule.pick(icons),
     FontAwesomeModule,
@@ -137,6 +157,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 })
 export class DashboardModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faCalendarAlt,faFacebook, faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faTwitter, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager,  faAngular, faVuejs, faReact, faHtml5, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faGoogle, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon);
+    library.addIcons(faBell,faLinkedinIn,faCalendarAlt,faFacebook, faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faTwitter, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager,  faAngular, faVuejs, faReact, faHtml5, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faGoogle, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon);
   }
  }

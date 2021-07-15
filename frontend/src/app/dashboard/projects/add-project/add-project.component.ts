@@ -1,17 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
+import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'ngx-dropzone-wrapper';
 
 @Component({
-  selector: 'app-general-infos',
-  templateUrl: './general-infos.component.html',
-  styleUrls: ['./general-infos.component.scss']
+  selector: 'app-add-project',
+  templateUrl: './add-project.component.html',
+  styleUrls: ['./add-project.component.scss']
 })
-export class GeneralInfosComponent implements OnInit {
-
-
-   constructor( ) {
-  }
-  ngOnInit(): void {
+export class AddProjectComponent implements OnInit {
+  bsInlineValue = new Date();
+  bsInlineRangeValue: Date[];
+  bsRangeValue!: Date[];
+  maxDate = new Date();
+  
+  constructor() {
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
 
   public type: string = 'component';
@@ -72,4 +75,7 @@ export class GeneralInfosComponent implements OnInit {
 
   public onUploadSuccess(): void {
   }
+  ngOnInit(): void {
+  }
+
 }

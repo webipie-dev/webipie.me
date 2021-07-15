@@ -1,16 +1,16 @@
 <app-wrapper-seamless>
-    <div class="col-xl-7">
+    <div class="col-xl-7 ">
         <div class="card card-box mb-5">
-            <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Experience</h5>
+            <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Project</h5>
                 <form>
-                    <div class="position-relative form-group"><label for="exampleEmail">Company</label><input class="form-control"
+                    <div class="position-relative form-group"><label for="exampleEmail">Title</label><input class="form-control"
                                                                                                             id="exampleEmail"
                                                                                                             name="name"
-                                                                                                            placeholder="Company"
+                                                                                                            placeholder="Title"
                                                                                                             type="text">
                     </div>
-                    <div class="position-relative form-group"><label for="examplePassword">Position</label><input
-                            class="form-control" id="examplePassword" name="password" placeholder="Position"
+                    <div class="position-relative form-group"><label for="examplePassword">Subtitle</label><input
+                            class="form-control" id="examplePassword" name="password" placeholder="Subtitle"
                             type="text"></div>
                     
                     <div class="position-relative form-group"><label for="exampleText">Description</label><textarea
@@ -24,12 +24,6 @@
                             <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Still on the job ?</label>
-                        <div class="m-2">
-                            <ui-switch [checked]="false"></ui-switch>
-                        </div>
-                    </div>
                     
                     <div class="form-group">
                         <label>End Date</label>
@@ -40,7 +34,12 @@
                             <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
                         </div>
                     </div>
-                    <button class="mt-1 btn btn-slack">Add Experience</button>
+                    <label>Picture</label>
+                    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></dropzone>
+                    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+                    <div class="divider my-4"></div>
+                    <button class="mt-1 btn btn-slack">Add Project</button>
+                    
                 </form>
             </div>
         </div>

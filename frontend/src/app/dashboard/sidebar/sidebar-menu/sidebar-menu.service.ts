@@ -52,17 +52,17 @@ export class SidebarMenuService {
       {
         "title": "Projects",
         "type": "simple",
-        "link": "/dashboard-reports"
+        "link": "/dashboard/projects"
       },
       {
         "title": "Achievements",
         "type": "simple",
-        "link": "/dashboard-real-estate"
+        "link": "/dashboard/achievements"
       },
       {
         "title": "Testimonials",
         "type": "simple",
-        "link": "/dashboard-server-status"
+        "link": "/dashboard/testimonials"
       },
     ]
   },
@@ -77,10 +77,10 @@ export class SidebarMenuService {
     "type": "header"
   },
   {
-    "title": "Profil",
+    "title": "Profile",
     "type": "simple",
     "icon": "<i class=\"pe-7s-user\"></i>",
-    "link": "/profil"
+    "link": "/dashboard/profile"
   },
   {
     "title": "Preferences",
