@@ -45,7 +45,7 @@
  *              template:
  *                  type: object
  *                  properties:
- *                      _id:
+ *                      id:
  *                         type: string
  *                         format: uuid
  *                      name:
@@ -116,6 +116,13 @@
  *    description: Use to add one portfolio
  *    tags:
  *      - Portfolio
+ *    parameters:
+ *       - in: header
+ *         name: Authorization
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         required: true
  *    requestBody:
  *       required: true
  *       content:
@@ -154,6 +161,12 @@
  *           type: string
  *         required: true
  *         description: unique ID of the portfolio to edit
+ *       - in: header
+ *         name: Authorization
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         required: true
  *    requestBody:
  *       required: true
  *       content:

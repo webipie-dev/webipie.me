@@ -85,7 +85,8 @@ function validateuser(user) {
         authSchema: Joi.object().keys({
           name: Joi.string().min(5),
           email: Joi.string().email({minDomainSegments: 2}).required(),
-          password: Joi.string().required().min(5)
+          password: Joi.string().required().min(5),
+          role: Joi.string()
         })
     }
 

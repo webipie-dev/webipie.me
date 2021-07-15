@@ -26,7 +26,7 @@ const getOnePortfolio = async (req, res) => {
 
 const getPortfolioByUrl = async (req,res) => {
   const { url } = req.params;
-  const portfolio = await portfolio.findOne({url})
+  const portfolio = await Portfolio.findOne({url})
     .catch((err) => {
       res.status(400).json({errors: err.message});
     });
@@ -92,20 +92,21 @@ const editPortfolio = async (req, res, next) => {
       edits[key] = req.body[key];
     }
   }
-  console.log()
+
+
   const portfolio = await Portfolio.updateOne({_id: id}, { $set: edits })
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  if (portflio){
+  if (portfolio){
     if (portfolio.nModified === 0) {
       next(ApiError.NotFound('No portfolios modified'));
       return;
     }
   }
 
-  const portfolioEdited = await Portfolio.findById(id)
+  const portfolioEdited = await Portfolio.findById(id);
 
   res.status(200).send(portfolioEdited)
 

@@ -20,11 +20,12 @@ module.exports = {
         const { error } = validateuser(req.body);
         if (error) return next(ApiError.BadRequest(error.details[0].message));
       
-        const { name,email,password } = req.body;
+        const { name,email,password,role } = req.body;
       
         let finduser = await User.findOne({ "local.email": email });
         if (finduser) return next(ApiError.BadRequest('Email is already in use'));
 
+        console.log('here');
         finduser = await User.find({
             $or: [
               { "google.email": email },
@@ -59,6 +60,7 @@ module.exports = {
                 email: email,
                 password: password.trim()
             },
+            role: role
         });
         await newuser.save();
         const token = signToken(newuser);

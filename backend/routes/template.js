@@ -12,15 +12,15 @@ const isAdmin = require("../middlewares/auth_role");
 router.get('', templateService.getTemplates);
 
 // add template 
-router.post('', passportJWT, isAdmin, templateService.addTemplate);
+router.post('', passportJWT, isAdmin(), templateService.addTemplate);
 
 // edit template
-router.patch('/:id', passportJWT, isAdmin, templateService.editTemplate);
+router.patch('/:id', passportJWT, isAdmin(), templateService.editTemplate);
 
 // delete template
-router.delete('/:id', passportJWT, isAdmin, templateService.deleteTemplate);
+router.delete('/:id', passportJWT, isAdmin(), templateService.deleteTemplate);
 
 // delete all templates
-router.delete('/delete', passportJWT, isAdmin, templateService.deleteTemplate);
+router.delete('/delete', passportJWT, isAdmin(), templateService.deleteTemplate);
 
 module.exports = router;

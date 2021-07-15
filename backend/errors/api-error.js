@@ -7,6 +7,7 @@ class ApiError{
     }
   
     static BadRequest(msg) {
+      console.log(msg);
       return new ApiError(400, msg)
     }
   
