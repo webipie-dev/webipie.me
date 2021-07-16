@@ -1,0 +1,47 @@
+.cos-container{
+    display: flex;
+    width:100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:20px;
+}
+.cos-left,.cos-right{
+    
+    width:90%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.cos-left{
+    max-width:300px;
+}
+.cos-right{
+    max-width:700px;
+}
+.cos-right p{
+    padding:0px;
+    margin:0px;
+    color:#f2b63f;
+    font-weight: 700;
+    font-size:1.3rem;
+}
+.loading{
+    width:80%;
+    background-color: #f1f5f8;
+    border-radius: 30px;
+    height:40px;
+    position: relative;
+}
+
+.level{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:60%;
+    height:100%;
+    background-color: #f2b63f;
+    box-shadow: 0 0 10px #f2b63f;
+    border-radius: 30px;
+}

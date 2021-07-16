@@ -4,7 +4,6 @@ isAdmin = () => {
         if(!user) {
             done(null, false)
         }
-
         if(user.role == "admin"){
              next();
         }

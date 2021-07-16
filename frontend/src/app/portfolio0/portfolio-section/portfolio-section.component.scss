@@ -1,0 +1,71 @@
+.cos-container{
+    background-color: white;
+    width: 100vw;
+    min-height: 100vh;
+    color:#202e37;
+}
+.cos-content{
+    margin:auto;
+    width:80%;
+    min-height: 100vh;
+    max-width: 1200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+.cos-content h3{
+    margin-top:100px;
+    font-size: 1rem;
+    color:#7b7b7b;
+}
+.cos-content h1{
+    font-size:calc(40px + 3vw);
+    font-weight: 700;
+    letter-spacing: -5px;
+}
+.cos-nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 600px;
+}
+.cos-btn{
+    padding:5px;
+    padding-right:20px;
+    padding-left:20px;
+    border:2px solid #202e37;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    margin-bottom:10px;
+}
+.cos-btn:hover , .active{
+    color:white;
+    background-color: #202e37;
+}
+.cos-project-container div{
+    width:300px;
+    opacity:1;
+    transition: flex-grow 1000ms linear,width 1s ease,opacity 0.75s ease;
+}
+.inactive{
+    opacity: 0;
+    width:0px !important;
+}
+.cos-btn p{
+    padding:0px;
+    margin:0px;
+}
+.cos-project-container{
+    margin-top:20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    max-width: 1000px;
+}
+.cos-project-container *{
+    margin:10px;
+}
