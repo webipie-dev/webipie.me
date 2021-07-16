@@ -13,23 +13,12 @@ const userSchema = new Schema({
     default: []
   },
   email: { type: String, required: true },
-  profilePicture: { type: String, required: false },
-  linkedinId: { type: String, required: false},
   name: { type: String, required: true },
-  local: {
-    name: { type: String, required: false},
-    email: { type: String, lowercase: true, required: false},
-    password: { type: String, required: false},
-    verified: { type: Boolean, default: false, required: false}
-  },
-  google: {
-    id: { type: String, default: '' },
-    email: { type: String, lowercase: true, default: '' }
-  },
-  facebook: {
-    id: { type: String, default: '' },
-    email: { type: String, lowercase: true, default: '' }
-  },
+  verified: { type: Boolean, default: false },
+  profilePicture: { type: String, required: false },
+  password: { type: String, required: false },
+  linkedinId: { type: String, required: false},
+  googleId: { type: String, required: true },
   portfolioID: {
     type: Schema.Types.ObjectID,
     ref: "portfolio",
@@ -60,12 +49,12 @@ userSchema.pre('save' , async function(next){
       //the user schema is instantiated
       const user = this;
       //check if the storeOwner has been modified to know if the password has already been hashed
-      if (!user.isModified('local.password')) {
+      if (!user.isModified('password')) {
         next();
       }
 
       const salt = await bcrypt.genSalt(10);
-      this.local.password = await bcrypt.hash(this.local.password, salt);
+      this.password = await bcrypt.hash(this.password, salt);
       next();
     } catch (error) {
         next(error);
@@ -74,7 +63,7 @@ userSchema.pre('save' , async function(next){
 
 userSchema.methods.isValidPassword = async function (newPassword) {
   try {
-    return await bcrypt.compare(newPassword, this.local.password);
+    return await bcrypt.compare(newPassword, this.password);
   } catch (error) {
     throw new Error(error);
   }

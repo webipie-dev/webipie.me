@@ -25,7 +25,7 @@ passport.use(new JwtStrategy({
       }
 
       // If user's email is not verified it, return error
-      if(user.methods.includes("local") && user.local.verified == false){
+      if(user.methods.includes("local") && user.verified === false){
         return done(ApiError.Forbidden('email must be verified!'), false);
       }
 
@@ -105,7 +105,7 @@ passport.use(new LocalStrategy({
 }, async (email, password, done) => {
   try {
     // Find the user given the email
-    let user = await User.findOne({ "local.email": email });
+    let user = await User.findOne({ "email": email });
 
     // If not, handle it
     if (!user) {
