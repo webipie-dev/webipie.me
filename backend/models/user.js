@@ -18,7 +18,7 @@ const userSchema = new Schema({
   profilePicture: { type: String, required: false },
   password: { type: String, required: false },
   linkedinId: { type: String, required: false},
-  googleId: { type: String, required: true },
+  googleId: { type: String, required: false },
   portfolioID: {
     type: Schema.Types.ObjectID,
     ref: "portfolio",

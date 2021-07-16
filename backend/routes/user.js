@@ -24,7 +24,7 @@ router.route('/confirmation/:token')
 router.route('/confirmation/resend/:token')
     .get(userService.resend);
 
-router.post('/auth/linkedin', userService.loginWithLinkedin);
+router.post('/oauth/linkedin', userService.loginWithLinkedin);
 
 // router.route('/oauth/google')
 //     .post(passport.authenticate('googleToken', { session: false }), storeOwnerService.googleOAuth);
