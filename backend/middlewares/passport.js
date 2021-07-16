@@ -39,8 +39,9 @@ passport.use(new JwtStrategy({
 
 // GOOGLE OAUTH STRATEGY
 passport.use('googleToken' , new GoogleTokenStrategy({
-  clientID : '790108924491-t5da8keoe1srskluak4jpi4oue78gcai.apps.googleusercontent.com',
-  clientSecret : 'oQwzeTlMcqnoAT96ZsQpZkFQ'
+  clientID : '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com',
+  clientSecret : 'jl6kALTXXLHndRViUlCXqQbL',
+  callbackURL: "http://localhost:4200"
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     const existingUser = await User.findOne({"google.id" : profile.id});
