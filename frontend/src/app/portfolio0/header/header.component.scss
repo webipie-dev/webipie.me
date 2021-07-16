@@ -1,4 +1,5 @@
 .cos-container{
+    position: relative;
     border-bottom: 1px solid white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.151);
     width:100vw;
@@ -6,8 +7,11 @@
     font-family: 'Roboto',sans-serif !important;
     font-weight: 600 !important;
     height:80px;
+    z-index:12;
 }
 .cos-menu{
+    position: relative;
+    z-index: 10;
     margin:auto;
     width:80%;
     max-width: 1200px;
@@ -15,14 +19,38 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    transition: color 0.5s ease;
+}
+@media screen and (max-width:1100px) {
+    .cos-right{
+        display: none;
+    }
 }
 .cos-right a{
     margin:20px;
     transition: color 0.5s ease-out;
+    cursor: pointer;
 }
 .cos-left h1{
-    font-size: 30px;
+    font-size: 20px;
+    font-weight:700;
+    margin: 0px;
+    letter-spacing: 5px;
 }
 .cos-right a:hover{
     color:#202e37 !important;
+}
+.cos-scroll{
+    z-index:2;
+    background-color: white;
+    position: absolute;
+    top:0px;
+    left:0px;
+    height:100%;
+    width:100%;
+    transform: translateY(-100%);
+    transition: transform 0.75s ease-out;
+}
+.cos-show{
+    transform: translateY(0px) !important;
 }

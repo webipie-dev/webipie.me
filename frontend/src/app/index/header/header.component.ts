@@ -8,7 +8,7 @@ import { faAddressCard, faArrowLeft, faBars, faHome, faMoneyBill, faPhoneAlt } f
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  menu = faBars;
+  menuu = faBars;
   home = faHome;
   aboutus = faAddressCard;
   contactus = faPhoneAlt;
