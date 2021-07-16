@@ -27,9 +27,8 @@ module.exports = {
     signUp: async (req, res, next) => {
         const {error} = validateuser(req.body);
         if (error) return next(ApiError.BadRequest(error.details[0].message));
-
+      
         const {name, email, password} = req.body;
-
         let findUser = await User.findOne({email});
 
         // if user already exists
