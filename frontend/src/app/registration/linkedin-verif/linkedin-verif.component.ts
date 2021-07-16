@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../_shared/services/auth.service";
 
 @Component({
@@ -10,12 +10,16 @@ import {AuthService} from "../../_shared/services/auth.service";
 export class LinkedinVerifComponent implements OnInit {
 
   linkedInToken?: string;
-  constructor(private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.linkedInToken = this.route.snapshot.queryParams["code"];
     this.authService.signInWithLinkedIn(this.linkedInToken).subscribe(res => {
-      console.log(res)})
+      localStorage.setItem('token', res.jwtToken);
+      this.router.navigate(['/dashboard']);
+    }, error => {
+      console.log(error)
+    });
     console.log(this.linkedInToken)
   }
 

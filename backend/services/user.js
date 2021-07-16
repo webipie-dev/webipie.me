@@ -4,6 +4,14 @@ const { JWT_SECRET, EMAIL } = require('../configuration/index');
 const bcrypt = require('bcrypt');
 const ApiError = require("../errors/api-error");
 const { sendEmail } = require('./email');
+const https = require('https');
+const querystring = require('querystring');
+const validateRequest = require("../middlewares/validate-request");
+const validation = require("../middlewares/validation/validator");
+const LINKEDIN_CLIENT_ID = "77oj8s50xw1yt7";
+const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
+const axios = require('axios');
+
 
 signToken = user => {
     return JWT.sign({
@@ -127,6 +135,78 @@ module.exports = {
             if (emailError)
                 return res.status(500).json({msg:'Technical Issue!, Please click on resend for verify your Email.'});
         }
+    },
+
+    loginWithLinkedin: async (req, res, next) => {
+        // get the token from frontend
+        const {token} = req.body
+
+        // get an access token from linkedin API
+        const result = await axios
+            .post("https://www.linkedin.com/oauth/v2/accessToken", querystring.stringify({
+                grant_type: "authorization_code",
+                code: token,
+                redirect_uri: 'http://localhost:4200/register/linkedin-verif',
+                client_id: LINKEDIN_CLIENT_ID,
+                client_secret: LINKEDIN_CLIENT_SECRET
+            }));
+        const accessToken = result.data.access_token;
+
+        // get the user's email address
+        const emailRequest = await axios
+            .get('https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))&oauth2_access_token=' + accessToken);
+        const email = emailRequest.data.elements[0]['handle~'].emailAddress;
+
+        //check if the user already exists or not
+        let user = await User.findOne({ email });
+
+        // if the user exists, we check whether he signed up with linkedin or not
+        if(user) {
+            // if not with linkedin, we update the user's information
+            if(user.methods.indexOf('linkedin') === -1) {
+                // get user profile with the access token
+                const profile = await axios
+                    .get('https://api.linkedin.com/v2/me',
+                        { headers: {
+                                'Authorization': `Bearer ${accessToken}`,
+                                'cache-control': 'no-cache',
+                                'X-Restli-Protocol-Version': '2.0.0'}
+                        });
+                user.methods.push('linkedin');
+                user.profilePicture = profile.profilePicture;
+                user.linkedinId = profile.id;
+                await user.save();
+            }
+        }
+
+        // if it doesn't exist, we create a new user
+        else {
+            // get user profile with the access token
+            const profile = await axios
+                .get('https://api.linkedin.com/v2/me',
+                    { headers: {
+                            'Authorization': `Bearer ${accessToken}`,
+                            'cache-control': 'no-cache',
+                            'X-Restli-Protocol-Version': '2.0.0'}
+                    });
+
+            user = new User({
+                methods: ['linkedin'],
+                email,
+                profilePicture: profile.profilePicture,
+                linkedinId: profile.id,
+                name: profile.localizedFirstName + ' ' + profile.localizedLastName
+            });
+            await user.save();
+        }
+
+        // we return a jwt
+        const jwtToken = signToken(user);
+        res.cookie('access_token', jwtToken, {
+            httpOnly: true
+        });
+
+        res.status(200).json({ jwtToken, portfolioId: user.portfolioID });
     },
 
     changePwd: async (req,res,next) =>{

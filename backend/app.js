@@ -37,7 +37,6 @@ const swaggerOptions = {
   };
 
 app.use(cors());
-
 app.use(express.static('./public'));
 app.use('/uploads', express.static('uploads'));
 
@@ -45,8 +44,8 @@ app.use('/uploads', express.static('uploads'));
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app
-  .use(bodyParser.urlencoded({extended: true, limit: '30mb'}))
-  .use(bodyParser.json({ limit: '30mb', extended: true }))
+  .use(bodyParser.urlencoded({extended: true}))
+  .use(bodyParser.json({  extended: true }))
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
   .use('/user', userRoutes)
   .use('/portfolio', portfolioRoutes)

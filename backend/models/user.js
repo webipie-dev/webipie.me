@@ -12,11 +12,15 @@ const userSchema = new Schema({
     required: true,
     default: []
   },
+  email: { type: String, required: true },
+  profilePicture: { type: String, required: false },
+  linkedinId: { type: String, required: false},
+  name: { type: String, required: true },
   local: {
-    name: { type: String, required: true},
-    email: { type: String, lowercase: true, required: true},
-    password: { type: String, required: true},
-    verified: { type: Boolean, default: false, required: true}
+    name: { type: String, required: false},
+    email: { type: String, lowercase: true, required: false},
+    password: { type: String, required: false},
+    verified: { type: Boolean, default: false, required: false}
   },
   google: {
     id: { type: String, default: '' },
