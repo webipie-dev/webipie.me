@@ -13,12 +13,12 @@ export class ThemeOptions {
   // Sidebar
 
   toggleSidebar = false;
-  toggleSidebarMobile = false;
-  sidebarBackground = '';
+  toggleSidebarMobile = true;
+  sidebarBackground = 'bg-vicious-stance';
   sidebarBackgroundStyle = 'dark';
   sidebarFixed = true;
-  sidebarLighterStyle = false;
-  sidebarShadow = false;
+  sidebarLighterStyle = true;
+  sidebarShadow = true;
   sidebarFooter = false;
   sidebarUserbox = false;
 

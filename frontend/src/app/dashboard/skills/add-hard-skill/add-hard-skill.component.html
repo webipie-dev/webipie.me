@@ -1,0 +1,22 @@
+<app-wrapper-seamless>
+    <div class="col-xl-5">
+        <div class="card card-box mb-5">
+            <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Soft Skill</h5>
+                <form>
+                    <div class="position-relative form-group"><label for="exampleEmail">Title</label><input class="form-control"
+                                                                                                            id="exampleEmail"
+                                                                                                            name="name"
+                                                                                                            placeholder="Skill title"
+                                                                                                            type="text">
+                    </div>
+                    <div class="position-relative form-group"><label for="examplePassword">Subtitle</label><input
+                            class="form-control" id="examplePassword" name="password" placeholder="Subtitle"
+                            type="text"></div>
+                    <div class="position-relative form-group"><label for="exampleSelect">Select Skill level</label><nouislider [min]="0" [max]="10" [step]="1" [(ngModel)]="someValue" [tooltips]="[ true ]"></nouislider></div>
+                    
+                    <button class="mt-1 btn btn-slack">Add Skill</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</app-wrapper-seamless>

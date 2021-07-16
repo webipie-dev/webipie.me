@@ -1,0 +1,24 @@
+<button (click)="openModal(successModal)" class="btn btn-primary m-2" type="button">{{buttonText}}</button>
+<ng-template #successModal>
+    <div class="text-center p-5">
+        <div class="avatar-icon-wrapper rounded-circle m-0">
+            <div class="d-inline-flex justify-content-center p-0 rounded-circle avatar-icon-wrapper bg-neutral-success text-success m-0 d-130">
+                <fa-icon [icon]="['far', 'lightbulb']" class="d-flex align-self-center display-3"></fa-icon>
+            </div>
+        </div>
+        <h4 class="font-weight-bold mt-4">{{messageText}}</h4>
+        <!-- <p class="mb-0 font-size-lg text-muted">You can later review your options.</p> -->
+        <div class="pt-4">
+            <button (click)="decline()" class="btn btn-pill btn-neutral-dark mx-1" type="button">
+                <span class="btn-wrapper--label">
+                    {{cancelButtonText}}
+                </span>
+            </button>
+            <button (click)="confirm()" class="btn btn-pill btn-success mx-1" type="button">
+                <span class="btn-wrapper--label">
+                    {{acceptButtonText}}
+                </span>
+            </button>
+        </div>
+    </div>
+</ng-template>
