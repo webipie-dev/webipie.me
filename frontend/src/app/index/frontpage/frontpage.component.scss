@@ -7,7 +7,7 @@
     background: rgb(28,56,36);
 background: radial-gradient(circle, #234633 10%, rgba(16,35,9,1) 100%);
 }
-.container{
+.containerr{
     position: relative;
 width:100vw;
 height:100vh;
@@ -197,13 +197,13 @@ flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
 }
-.card{
+.cardd{
     background: white;
     margin: auto;
     margin-bottom:20px;
-    max-width: 250px;
+    max-width: 350px;
     width: 80%;
-    min-height:200px;
+    min-height:300px;
     border-radius: 30px;
     padding-top: 40px;
     padding-bottom:40px;
@@ -214,15 +214,15 @@ flex-direction: column;
     cursor: pointer;
     transition: transform 0.75s ease-out;
 }
-.card:hover{
+.cardd:hover{
     transform: translateY(-20px) rotateZ(-5deg);
 }
-.card h2{
+.cardd h2{
     color:#57984c;
     margin-bottom: 15px;
     font-weight: 600;
 }
-.card p{
+.cardd p{
     
     color:black;
 }
@@ -265,8 +265,8 @@ flex-direction: column;
 .butt:hover > .slider{
     width:100%;
 }
-.price-section *{
-    top:200;
+.price-section{
+    top:50px;
     position: relative;
     z-index:100;
 }
@@ -274,5 +274,6 @@ app-footer{
     position: relative;
 }
 .howitworks{
+    top:50px;
     position: relative;
 }

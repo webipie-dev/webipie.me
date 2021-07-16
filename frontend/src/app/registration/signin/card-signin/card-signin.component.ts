@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-card-signin',
@@ -18,5 +19,10 @@ export class CardSigninComponent implements OnInit {
     setInterval(()=>{
       this.delay=true;
     },100)
+  }
+
+  signinWithLinkedin() {
+    window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&state=true&client_id=${
+      environment.LINKEDIN_API_KEY}&redirect_uri=${environment.LINKEDIN_REDIRECT_URL}&scope=r_liteprofile%20r_emailaddress`;
   }
 }

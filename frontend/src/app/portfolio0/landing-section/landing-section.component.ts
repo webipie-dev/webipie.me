@@ -11,6 +11,7 @@ export class LandingSectionComponent implements OnInit {
   primaryColor="#79ebfe";
   secondaryColor="#e184fe";
   download = faDownload;
+  speed = 2;
   arrowDown = faArrowAltCircleDown;
   constructor() { }
 

@@ -1,0 +1,82 @@
+body{
+    overflow: hidden !important;
+}
+.cos-container{
+    background-color: #f2f2f2 !important;
+    width:100vw;
+    min-height: 100vh;
+    z-index:2;
+    position: relative;
+}
+.cos-triangle{
+    width:200vw;
+    transform: rotateZ(-3deg);
+    min-height: 10vh;
+    
+    background-color: #f2f2f2;
+    z-index:2;
+    background-color: none;
+}
+.cos-image{
+    overflow: hidden;
+    border-radius: 200px;
+    width:100%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.cos-image img{
+    width:100%;
+}
+.cos-content{
+    margin:auto;
+    width:80%;
+    min-height: 95vh;
+    max-width: 1200px;
+    padding-top:50px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+    align-items: center;
+}
+.cos-right,.cos-left{
+    width:100%;
+    max-width: 500px;
+    color:#202e37;
+}
+.cos-firstletter{
+    display: inline-block;
+    font-size:5rem;
+    margin-right:5px;
+    color:#e184fe;
+    font-weight: 800;
+    text-decoration: underline;
+}
+.cos-left h1{
+    letter-spacing: 5px;
+    font-weight: 600;
+    font-size: 3rem;
+}
+.cos-left h3{
+    letter-spacing: 5px;
+    margin-top:30px;
+    font-size:1.5rem;
+    color:#b2b2b2;
+    font-weight:400;
+    font-family: 'Roboto',sans-serif;
+}
+.cos-left h2{
+    letter-spacing: 6px;
+    margin-top:30px;
+    font-size:2.5rem;
+    font-weight:700;
+    margin-bottom:20px;
+}
+.cos-triangle-container{
+    width:100vw;
+    height: fit-content;
+    overflow: hidden;
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    margin-top:-10vh;
+}

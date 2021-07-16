@@ -4,9 +4,9 @@ isAdmin = async (req, next, done) => {
         done(null, false)
     }
 
-    if(user.role == "admin"){
+    if(user.role === "admin"){
         next();
-        return;
+
     }
     else{
         done(null,user)
