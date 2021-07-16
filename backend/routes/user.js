@@ -3,15 +3,15 @@ const JWT = require('jsonwebtoken');
 const passport = require('passport');
 const passportConf = require('../middlewares/passport');
 const userService = require('../services/user');
-
+const { URLSearchParams } = require('url')
+const jwt = require('jsonwebtoken')
+const fetch = require('node-fetch')
 // const {JWT_SECRET} = require('../configuration');
 const { validateuser , user } = require('../models/user');
 const passportJWT = passport.authenticate('jwt', { session: false });
 const passportSignIn = passport.authenticate('local', { session: false });
-
 const validateRequest = require("../middlewares/validate-request");
 const validation = require("../middlewares/validation/validator");
-
 router.route('/signup')
     .post(userService.signUp);
 
@@ -26,6 +26,8 @@ router.route('/confirmation/resend/:token')
 
 router.route('/oauth/google')
     .post(passport.authenticate('googleToken', { session: false , scope: ['https://www.googleapis.com/auth/userinfo.email']}), userService.googleOAuth);
+
+router.post('/oauth/linkedin', userService.loginWithLinkedin);
 
 // router.route('/oauth/facebook')
 //     .post(passport.authenticate('facebookToken', { session: false }), storeOwnerService.facebookOAuth);

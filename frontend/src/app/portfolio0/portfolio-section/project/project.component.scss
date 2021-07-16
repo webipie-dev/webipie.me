@@ -1,0 +1,16 @@
+.cos-container{
+    cursor: pointer;
+    position: relative;
+    width:100%;
+    max-width: 300px;
+    height:220px;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+.cos-container:hover{
+    transform: scale(1.02);
+
+}
+.cos-container img{
+    min-height: 100%;
+}

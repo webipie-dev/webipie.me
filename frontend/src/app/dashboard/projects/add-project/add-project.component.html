@@ -1,0 +1,47 @@
+<app-wrapper-seamless>
+    <div class="col-xl-7 ">
+        <div class="card card-box mb-5">
+            <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Project</h5>
+                <form>
+                    <div class="position-relative form-group"><label for="exampleEmail">Title</label><input class="form-control"
+                                                                                                            id="exampleEmail"
+                                                                                                            name="name"
+                                                                                                            placeholder="Title"
+                                                                                                            type="text">
+                    </div>
+                    <div class="position-relative form-group"><label for="examplePassword">Subtitle</label><input
+                            class="form-control" id="examplePassword" name="password" placeholder="Subtitle"
+                            type="text"></div>
+                    
+                    <div class="position-relative form-group"><label for="exampleText">Description</label><textarea
+                            class="form-control" id="exampleText" name="text"></textarea></div>
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <div class="input-group input-group-lg mb-5">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']" class="mx-auto"></fa-icon></span>
+                            </div>
+                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <div class="input-group input-group-lg mb-5">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']" class="mx-auto"></fa-icon></span>
+                            </div>
+                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
+                        </div>
+                    </div>
+                    <label>Picture</label>
+                    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></dropzone>
+                    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+                    <div class="divider my-4"></div>
+                    <button class="mt-1 btn btn-slack">Add Project</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</app-wrapper-seamless>

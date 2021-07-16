@@ -4,10 +4,10 @@ const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleTokenStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookTokenStrategy = require('passport-facebook-token');
-
 const config = require('../configuration/index');
 const {User} = require('../models/user');
 const ApiError = require("../errors/api-error");
+
 
 // JSON WEB TOKENS STRATEGY
 passport.use(new JwtStrategy({
@@ -25,7 +25,7 @@ passport.use(new JwtStrategy({
       }
 
       // If user's email is not verified it, return error
-      if(user.methods.includes("local") && user.local.verified == false){
+      if(user.methods.includes("local") && user.verified === false){
         return done(ApiError.Forbidden('email must be verified!'), false);
       }
 
@@ -67,10 +67,6 @@ passport.use('googleToken' , new GoogleTokenStrategy({
   }
 }));
 
-
-// TODO: replace facebook startegy with linkedin startegy 
-// https://levelup.gitconnected.com/step-by-step-guide-to-authenticate-users-with-linkedin-in-your-express-app-10af68b91b13
-
 // FACEBOOK OAUTH STRATEGY
 passport.use('facebookToken' , new FacebookTokenStrategy({
   clientID : '348023999826107',
@@ -104,14 +100,13 @@ passport.use('facebookToken' , new FacebookTokenStrategy({
   }
 }));
 
-
 // LOCAL STRATEGY
 passport.use(new LocalStrategy({
   usernameField: 'email'
 }, async (email, password, done) => {
   try {
     // Find the user given the email
-    let user = await User.findOne({ "local.email": email });
+    let user = await User.findOne({ "email": email });
 
     // If not, handle it
     if (!user) {
