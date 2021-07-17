@@ -77,7 +77,9 @@ import { AchievementsComponent } from './achievements/achievements.component';
 import { AddAchievementComponent } from './achievements/add-achievement/add-achievement.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AddTestimonialComponent } from './testimonials/add-testimonial/add-testimonial.component';
-import { ProfileComponent } from './profile/profile.component'; 
+import { ProfileComponent } from './profile/profile.component';
+import { EducationComponent } from './education/education.component';
+import { AddEducationComponent } from './education/add-education/add-education.component'; 
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -119,6 +121,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TestimonialsComponent,
     AddTestimonialComponent,
     ProfileComponent,
+    EducationComponent,
+    AddEducationComponent,
     
   ],
   imports: [

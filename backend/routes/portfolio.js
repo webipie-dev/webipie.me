@@ -23,12 +23,13 @@ router.post('', passportJWT, [
     portfolioValidator.name,
 ], validateRequest, portfolioService.addPortfolio);
 
-
+// edit portfolio
 router.patch('/:id', passportJWT, [
   validation.id
 ], validateRequest , portfolioService.editPortfolio);
 
-router.patch('/change-template/:id', portfolioService.changeTemplate)
+// change template of portfolio
+router.patch('/change-template/:id', passportJWT, portfolioService.changeTemplate);
 
 
 module.exports = router;

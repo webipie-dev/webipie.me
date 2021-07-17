@@ -45,6 +45,11 @@ export class SidebarMenuService {
         "link": "/dashboard/skills"
       },
       {
+        "title": "Education",
+        "type": "simple",
+        "link": "/dashboard/education"
+      },
+      {
         "title": "Experience",
         "type": "simple",
         "link": "/dashboard/experience"
