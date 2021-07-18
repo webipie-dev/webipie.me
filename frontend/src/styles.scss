@@ -9,7 +9,18 @@ a{
     text-decoration: none;
     color:inherit;
 }
-
+.disabled-button {
+  cursor: not-allowed;
+  color: #779164 !important;
+  background-color: #b3c1b2 !important;
+  border-color: #b3c1b2 !important;
+}
+.disabled-button:hover {
+  cursor: not-allowed;
+  color: #779164 !important;
+  background-color: #adbaac !important;
+  border-color: #b3c1b2 !important;
+}
 body{
     overflow-x: hidden;
 }

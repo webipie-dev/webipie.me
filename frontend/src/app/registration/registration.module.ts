@@ -4,6 +4,7 @@ import { RegistrationComponent } from './registration.component';
 import {RegistrationRoutingModule} from "./registration-routing.module";
 import { HeaderComponent } from './header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from "@angular/forms";
 import { SignupComponent } from './signup/signup.component';
 import { CardComponent } from './signup/card/card.component';
 import { SigninComponent } from './signin/signin.component';
@@ -29,7 +30,8 @@ import { LinkedinVerifComponent } from './linkedin-verif/linkedin-verif.componen
   imports: [
     CommonModule,
     RegistrationRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ]
 })
 export class RegistrationModule { }

@@ -3,7 +3,6 @@ import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import {ActivatedRoute, Router} from "@angular/router";
 import { environment } from '../../../../environments/environment';
 import {AuthService} from "../../../_shared/services/auth.service";
-import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-card',
@@ -14,8 +13,11 @@ export class CardComponent implements OnInit {
   delay=false;
   google=faGoogle;
   linkedin=faLinkedinIn;
-  email?: string;
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private http: HttpClient) { }
+  email: string = '';
+  name = '';
+  password = '';
+  confirmPassword = '';
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
     //Delaying the card animation for a bit
@@ -24,8 +26,18 @@ export class CardComponent implements OnInit {
     },100)
   }
 
+  isValidForm(): boolean {
+    return (this.email !== '' && this.name !== '' && this.password === this.confirmPassword && this.password !== '')
+  }
+
   signUp(): void{
-    this.router.navigate(['../confirmation'], { relativeTo: this.route, queryParams: { email: this.email ?? 'webipie.me@gmail.com'}})
+    this.authService.signUp({ name: this.name, email: this.email, password: this.password}).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['../confirmation'], {
+        relativeTo: this.route,
+        queryParams: {email: this.email ?? 'webipie.me@gmail.co m'}
+      }).then(r => console.log(r))
+    })
   }
 
   signUpWithLinkedin() {

@@ -12,6 +12,8 @@ export class CardSigninComponent implements OnInit {
   delay=false;
   google=faGoogle;
   linkedin=faLinkedinIn
+  email: string = '';
+  password: string = '';
   constructor() { }
 
   ngOnInit(): void {
@@ -21,8 +23,16 @@ export class CardSigninComponent implements OnInit {
     },100)
   }
 
-  signinWithLinkedin() {
+  isValidForm(): boolean {
+    return this.email !== '' && this.password !== '';
+  }
+
+  signinWithLinkedin(): void {
     window.location.href = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&state=true&client_id=${
       environment.LINKEDIN_API_KEY}&redirect_uri=${environment.LINKEDIN_REDIRECT_URL}&scope=r_liteprofile%20r_emailaddress`;
+  }
+
+  signIn() {
+    console.log('not so much disabled')
   }
 }
