@@ -40,7 +40,17 @@ export class AuthService extends GenericService<any>{
 
   public logout() {}
 
-  public signInWithGoogle() {}
+  public signInWithGoogle(googleToken?: string) {
+    let httpOptions: any;
+    httpOptions = {
+      headers: {
+        'Access-Control-Allow-Origin': this.getUrl(),
+        'Access-Control-Allow-Credentials': 'true'
+      },
+      access_token: googleToken 
+    };
+    return this.http.post(this.getUrl() + this.suffix + '/oauth/google', httpOptions) as Observable<any>
+  }
 
   public signInWithLinkedIn(linkedinToken?: string): Observable<any> {
     return this.http.post(this.getUrl() + this.suffix + '/oauth/linkedin', { token: linkedinToken }) as Observable<any>

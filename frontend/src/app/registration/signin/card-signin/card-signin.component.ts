@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { AuthService } from 'src/app/_shared/services/auth.service';
 import {environment} from "../../../../environments/environment";
+import Swal from 'sweetalert2';
+import { SocialAuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 @Component({
   selector: 'app-card-signin',
@@ -14,7 +19,11 @@ export class CardSigninComponent implements OnInit {
   linkedin=faLinkedinIn
   email: string = '';
   password: string = '';
-  constructor() { }
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+    private route: ActivatedRoute,
+    private authSocial: SocialAuthService) { }
 
   ngOnInit(): void {
     //Delaying the card animation for a bit
@@ -33,6 +42,59 @@ export class CardSigninComponent implements OnInit {
   }
 
   signIn() {
-    console.log('not so much disabled')
+    this.authService.signIn({ email: this.email, password: this.password}).subscribe(result => {
+      //console.log(res);
+
+      localStorage.setItem('token', result['token']);
+
+      if (result['portfolioId']){
+        localStorage.setItem('portfolioId',result['portfolioId']);
+        this.router.navigate(['dashboard']);
+      }
+      else{
+        this.router.navigate(['templates']);
+      }
+    }, error => {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'email or/and password are incorrect!',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
+    })
   }
+
+  signInWithGoogle(): void {
+    this.authSocial.signIn(GoogleLoginProvider.PROVIDER_ID)
+    .then(x => {
+      console.log(x);
+      this.authService.signInWithGoogle(x['authToken'])
+        .subscribe(result => {
+          // set token in localStorage
+          localStorage.setItem('token', result['token']);
+
+          
+          if (result['portfolioId']){
+            localStorage.setItem('portfolioId',result['portfolioId']);
+            this.router.navigate(['dashboard']);
+          }
+          else{
+            this.router.navigate(['templates']);
+          }
+
+        }, 
+        error => {
+          console.log(error);
+          Swal.fire({
+            title: 'Error!',
+            text: 'Something wrong with google email',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
+        }
+      );
+    })
+  }
+
 }

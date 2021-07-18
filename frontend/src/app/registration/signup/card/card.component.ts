@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
       console.log(res);
       this.router.navigate(['../confirmation'], {
         relativeTo: this.route,
-        queryParams: {email: this.email ?? 'webipie.me@gmail.co m'}
+        queryParams: {email: this.email ?? 'webipie.me@gmail.com'}
       }).then(r => console.log(r))
     })
   }

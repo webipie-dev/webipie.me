@@ -12,6 +12,8 @@ import { CardSigninComponent } from './signin/card-signin/card-signin.component'
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ConfirmationCardComponent } from './confirmation/confirmation-card/confirmation-card.component';
 import { LinkedinVerifComponent } from './linkedin-verif/linkedin-verif.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 
 
@@ -31,7 +33,24 @@ import { LinkedinVerifComponent } from './linkedin-verif/linkedin-verif.componen
     CommonModule,
     RegistrationRoutingModule,
     FontAwesomeModule,
-    FormsModule
-  ]
+    FormsModule,
+    SocialLoginModule
+  ],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
 })
 export class RegistrationModule { }

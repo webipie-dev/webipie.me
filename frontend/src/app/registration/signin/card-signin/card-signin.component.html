@@ -16,7 +16,7 @@
     <div class="line"></div>
     <p style="margin:auto;margin-bottom:5px;">Or login using</p>
     <div class="logos">
-        <fa-icon style="color:#DB4437" [icon]="google"></fa-icon>
+        <fa-icon style="color:#DB4437" [icon]="google" (click)="signInWithGoogle()"></fa-icon>
         <fa-icon style="color:#0072b1" [icon]="linkedin" (click)="signinWithLinkedin()"></fa-icon>
     </div>
 
