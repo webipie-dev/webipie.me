@@ -24,10 +24,14 @@ router.route('/confirmation/:token')
 router.route('/confirmation/resend/:token')
     .get(userService.resend);
 
+router.route('/verified')
+    .get(passportJWT, userService.userVerified)
+
 router.route('/oauth/google')
     .post(passport.authenticate('googleToken', { session: false , scope: ['https://www.googleapis.com/auth/userinfo.email']}), userService.googleOAuth);
 
-router.post('/oauth/linkedin', userService.loginWithLinkedin);
+router.route('/oauth/linkedin')
+    .post(userService.linkedinOAuth);
 
 // router.route('/oauth/facebook')
 //     .post(passport.authenticate('facebookToken', { session: false }), storeOwnerService.facebookOAuth);
