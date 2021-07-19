@@ -15,16 +15,11 @@ export class HeaderComponent implements OnInit {
   pricing = faMoneyBill;
   leftarrow = faArrowLeft;
   menuactive = false;
-  scrolled = false;
+  scrolled = true;
   constructor(private router : Router) { }
 
   ngOnInit(): void {
-    if(this.router.url === '/register'){
-      this.scrolled=true;
-    }
-    if(this.router.url === '/register/choose-template'){
-      this.scrolled=true;
-    }
+    
   }
   onMenuClick(event:any){
     if(!this.menuactive){
@@ -33,15 +28,4 @@ export class HeaderComponent implements OnInit {
       this.menuactive = false;
     }
   }
-  @HostListener('window:scroll', ['$event']) 
-    doSomething(event:any) {
-      if(this.router.url !== '/register/choose-template'){
-        if(window.pageYOffset > 100 ){
-          this.scrolled=true;
-        }else{
-          this.scrolled=false;
-        }
-      }
-      
-    }
 }

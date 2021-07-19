@@ -14,6 +14,7 @@ import { AddAchievementComponent } from "./achievements/add-achievement/add-achi
 import { TestimonialsComponent } from "./testimonials/testimonials.component";
 import { AddTestimonialComponent } from "./testimonials/add-testimonial/add-testimonial.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { DesignComponent } from "./design/design.component";
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'design',
+        component: DesignComponent
       },
     ]
   },

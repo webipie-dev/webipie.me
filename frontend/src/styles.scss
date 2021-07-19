@@ -11,7 +11,7 @@ a{
 }
 
 body{
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 body::-webkit-scrollbar {
     width: 10px;

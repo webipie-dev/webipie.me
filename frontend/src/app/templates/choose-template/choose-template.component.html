@@ -1,0 +1,27 @@
+<div class="cos-container">
+    
+    <div class="cos">
+        <h1>Choose a template</h1>
+        <div class="bt arrow-right" (click)="rightArrow(target)">
+            <fa-icon [icon]="arrowright"></fa-icon>
+        </div>
+        <div class="bt arrow-left" (click)="leftArrow(target)">
+            <fa-icon [icon]="arrowleft"></fa-icon>
+        </div>
+    
+        <div class="cos-content">
+            <div class="fade"></div>
+            
+            
+            <div class="cos-carousel" [style.transform]="'translateX(-'+positionY+'px)'">
+            <div #target><app-card-templates></app-card-templates></div>
+            
+            <div #target><app-card-templates></app-card-templates></div>
+            <div #target><app-card-templates [selected]='true'></app-card-templates></div>
+            <div #target><app-card-templates></app-card-templates></div>
+            <div #target><app-card-templates></app-card-templates></div>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-slack" type="button">Next</button>
+    </div>
+</div>

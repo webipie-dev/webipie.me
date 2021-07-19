@@ -25,6 +25,12 @@ const routes: Routes = [
     loadChildren: () => import('./registration/registration.module')
       .then(m => m.RegistrationModule),
     data: {preload: true}
+  },
+  {
+    path: 'templates',
+    loadChildren: () => import('./templates/templates.module')
+      .then(m => m.TemplatesModule),
+    data: {preload: true}
   }
 ];
 
