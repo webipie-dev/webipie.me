@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-templates',
@@ -8,14 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardTemplatesComponent implements OnInit {
   @Input() selected=false;
   constructor() { }
-
+  @Output() selectEmitter = new EventEmitter<boolean>();
   ngOnInit(): void {
   }
   select(){
     if(this.selected){
-      this.selected=false;
+      this.selectEmitter.emit(false);
     }else{
-      this.selected=true;
+      this.selectEmitter.emit(true);
     }
   }
 }

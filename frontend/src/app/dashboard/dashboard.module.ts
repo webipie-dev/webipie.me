@@ -84,6 +84,7 @@ import { FontPickerModule } from 'ngx-font-picker';
 import { FONT_PICKER_CONFIG } from 'ngx-font-picker';
 import { FontPickerConfigInterface } from 'ngx-font-picker';
 import { AutosizeModule } from 'ngx-autosize';
+import { GeneralComponent } from './design/general/general.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -128,6 +129,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     AddTestimonialComponent,
     ProfileComponent,
     DesignComponent,
+    GeneralComponent,
     
   ],
   imports: [

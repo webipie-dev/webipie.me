@@ -14,12 +14,11 @@
             
             
             <div class="cos-carousel" [style.transform]="'translateX(-'+positionY+'px)'">
-            <div #target><app-card-templates></app-card-templates></div>
-            
-            <div #target><app-card-templates></app-card-templates></div>
-            <div #target><app-card-templates [selected]='true'></app-card-templates></div>
-            <div #target><app-card-templates></app-card-templates></div>
-            <div #target><app-card-templates></app-card-templates></div>
+                
+            <div  *ngFor="let card of selected; let i = index" >
+                <app-card-templates (selectEmitter)="select(i,$event)" [selected]="selected[i]"></app-card-templates>
+            </div>
+            <div #target><app-card-templates  style="position: absolute;top:0;left:0px;opacity:0;z-index:-1;"></app-card-templates></div>
             </div>
         </div>
         <button class="btn btn-lg btn-slack" type="button">Next</button>
