@@ -69,7 +69,7 @@ export class CardSigninComponent implements OnInit {
     this.authSocial.signIn(GoogleLoginProvider.PROVIDER_ID)
     .then(x => {
       console.log(x);
-      this.authService.signInWithGoogle(x['authToken'])
+      this.authService.signInWithGoogle(x['idToken'])
         .subscribe(result => {
           // set token in localStorage
           localStorage.setItem('token', result['token']);

@@ -43,10 +43,6 @@ export class AuthService extends GenericService<any>{
   public signInWithGoogle(googleToken?: string) {
     let httpOptions: any;
     httpOptions = {
-      headers: {
-        'Access-Control-Allow-Origin': this.getUrl(),
-        'Access-Control-Allow-Credentials': 'true'
-      },
       access_token: googleToken 
     };
     return this.http.post(this.getUrl() + this.suffix + '/oauth/google', httpOptions) as Observable<any>

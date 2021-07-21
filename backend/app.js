@@ -36,6 +36,7 @@ const swaggerOptions = {
     apis: ["./swagger-doc/*.js"]
   };
 
+
 app.use(cors());
 app.use(express.static('./public'));
 app.use('/uploads', express.static('uploads'));

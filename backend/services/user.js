@@ -11,6 +11,7 @@ const validation = require("../middlewares/validation/validator");
 const LINKEDIN_CLIENT_ID = "77oj8s50xw1yt7";
 const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
 const axios = require('axios');
+const {OAuth2Client} = require('google-auth-library');
 
 
 signToken = user => {
@@ -243,5 +244,50 @@ module.exports = {
     //     });
     //     res.status(200).json({ token, storeId: req.user.storeID });
     // }
+
+
+    loginWithGoogle: async (req, res, next) => {
+
+        const {access_token} = req.body
+        const oAuth2Client = new OAuth2Client(
+            '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com',
+            'jl6kALTXXLHndRViUlCXqQbL',
+            "http://localhost:4200"
+        );
+            
+
+        const ticket = await oAuth2Client.verifyIdToken({
+            idToken: access_token,
+            audience: '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com'
+        })
+        const user = ticket.getPayload();
+
+
+        const existingUser = await User.findOne({"email" : user.email});
+        if (existingUser){
+            console.log('user already exists in BD');
+            const token = signToken(existingUser);
+            return res.status(200).json({token, portfolioId: existingUser.portfolioID})
+        }
+
+        if(! user.email_verified){
+            return next(ApiError.BadRequest('Email must be verified.'));
+        }
+
+        console.log('User dosen\'t exist we create new one');
+
+        const newUser = new User({
+            method: ['google'],
+            email: user.email,
+            name: user.name,
+            profilePicture: user.picture,
+            googleId: user.sub,
+            verified: true
+        });
+
+        await newUser.save();
+        const token = signToken(newUser);
+        res.status(200).json({ token, portfolioId: newUser.portfolioID });
+    }
 
 }
