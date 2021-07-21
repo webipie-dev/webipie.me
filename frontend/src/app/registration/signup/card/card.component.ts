@@ -3,6 +3,7 @@ import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import {ActivatedRoute, Router} from "@angular/router";
 import { environment } from '../../../../environments/environment';
 import {AuthService} from "../../../_shared/services/auth.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-card',
@@ -10,9 +11,9 @@ import {AuthService} from "../../../_shared/services/auth.service";
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  delay=false;
-  google=faGoogle;
-  linkedin=faLinkedinIn;
+  delay = false;
+  google = faGoogle;
+  linkedin = faLinkedinIn;
   email: string = '';
   name = '';
   password = '';
@@ -32,11 +33,19 @@ export class CardComponent implements OnInit {
 
   signUp(): void{
     this.authService.signUp({ name: this.name, email: this.email, password: this.password}).subscribe(res => {
-      console.log(res);
+      localStorage.setItem('token', res.token);
       this.router.navigate(['../confirmation'], {
         relativeTo: this.route,
-        queryParams: {email: this.email ?? 'webipie.me@gmail.com'}
+        queryParams: {email: this.email}
       }).then(r => console.log(r))
+    }, error => {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'email or/and password are incorrect!',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
     })
   }
 

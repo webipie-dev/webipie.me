@@ -4,7 +4,6 @@ const {JWT_SECRET, EMAIL} = require('../configuration/index');
 const bcrypt = require('bcrypt');
 const ApiError = require("../errors/api-error");
 const {sendEmail} = require('./email');
-const https = require('https');
 const querystring = require('querystring');
 const validateRequest = require("../middlewares/validate-request");
 const validation = require("../middlewares/validation/validator");
@@ -53,7 +52,7 @@ module.exports = {
             res.cookie('access_token', token, {
                 httpOnly: true
             });
-            res.status(200).json({token, portfolioIds: findUser.portfolioID});
+            res.status(200).json({token, portfolioId: findUser.portfolioID});
         }
 
 
@@ -78,7 +77,7 @@ module.exports = {
         res.cookie('access_token', token, {
             httpOnly: true
         });
-        return res.status(200).json({token, name, email});
+        return res.status(200).json({token, verified: newUser.verified});
     },
 
     signIn: async (req, res, next) => {
@@ -130,7 +129,7 @@ module.exports = {
         }
     },
 
-    loginWithLinkedin: async (req, res, next) => {
+    linkedinOAuth: async (req, res, next) => {
         // get the token from frontend
         const {token} = req.body
 
@@ -237,13 +236,6 @@ module.exports = {
         res.status(200).json({ token, storeId: req.user.storeID });
     },
 
-    // facebookOAuth: async (req, res, next) => {
-    //     const token = signToken(req.user);
-    //     res.cookie('access_token', token, {
-    //         httpOnly: true
-    //     });
-    //     res.status(200).json({ token, storeId: req.user.storeID });
-    // }
 
 
     loginWithGoogle: async (req, res, next) => {
@@ -288,6 +280,14 @@ module.exports = {
         await newUser.save();
         const token = signToken(newUser);
         res.status(200).json({ token, portfolioId: newUser.portfolioID });
-    }
+    },
 
+    userVerified: async (req, res, next) => {
+        const token = req.user;
+        if(token.verified) {
+            return res.status(200).json({verified: true});
+        } else {
+            return res.status(200).json({verified: false});
+        }
+    },
 }

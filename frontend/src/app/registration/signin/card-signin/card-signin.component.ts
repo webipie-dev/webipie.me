@@ -20,8 +20,8 @@ export class CardSigninComponent implements OnInit {
   email: string = '';
   password: string = '';
   constructor(
-    private authService: AuthService, 
-    private router: Router, 
+    private authService: AuthService,
+    private router: Router,
     private route: ActivatedRoute,
     private authSocial: SocialAuthService) { }
 
@@ -43,8 +43,6 @@ export class CardSigninComponent implements OnInit {
 
   signIn() {
     this.authService.signIn({ email: this.email, password: this.password}).subscribe(result => {
-      //console.log(res);
-
       localStorage.setItem('token', result['token']);
 
       if (result['portfolioId']){
@@ -72,18 +70,15 @@ export class CardSigninComponent implements OnInit {
       this.authService.signInWithGoogle(x['idToken'])
         .subscribe(result => {
           // set token in localStorage
-          localStorage.setItem('token', result['token']);
-
-          
-          if (result['portfolioId']){
-            localStorage.setItem('portfolioId',result['portfolioId']);
+          localStorage.setItem('token', result.token);
+          if (result.portfolioId){
+            localStorage.setItem('portfolioId',result.portfolioId);
             this.router.navigate(['dashboard']);
           }
           else{
             this.router.navigate(['templates']);
           }
-
-        }, 
+        },
         error => {
           console.log(error);
           Swal.fire({
