@@ -9,5 +9,6 @@
   <p>We have sent an email to <span class="email">{{email}}</span> to confirm the validity of your account.</p>
   <p class="mt-3">After receiving the email, follow the link to get access to your dashboard and start customizing your portfolio </p>
   <div class="line"></div>
-  <button type="submit">Resend Email</button>
+  <button (click)="resendEmail()" type="submit">Resend Email</button>
+  <button (click)="emailConfirmed()" type="submit">Already Confirmed</button>
 </div>

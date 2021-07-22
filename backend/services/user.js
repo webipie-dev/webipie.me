@@ -4,13 +4,13 @@ const {JWT_SECRET, EMAIL} = require('../configuration/index');
 const bcrypt = require('bcrypt');
 const ApiError = require("../errors/api-error");
 const {sendEmail} = require('./email');
-const https = require('https');
 const querystring = require('querystring');
 const validateRequest = require("../middlewares/validate-request");
 const validation = require("../middlewares/validation/validator");
 const LINKEDIN_CLIENT_ID = "77oj8s50xw1yt7";
 const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
 const axios = require('axios');
+const {OAuth2Client} = require('google-auth-library');
 
 
 signToken = user => {
@@ -52,7 +52,7 @@ module.exports = {
             res.cookie('access_token', token, {
                 httpOnly: true
             });
-            res.status(200).json({token, portfolioIds: findUser.portfolioID});
+            res.status(200).json({token, portfolioId: findUser.portfolioID});
         }
 
 
@@ -77,7 +77,7 @@ module.exports = {
         res.cookie('access_token', token, {
             httpOnly: true
         });
-        return res.status(200).json({token, name, email});
+        return res.status(200).json({token, verified: newUser.verified});
     },
 
     signIn: async (req, res, next) => {
@@ -129,7 +129,7 @@ module.exports = {
         }
     },
 
-    loginWithLinkedin: async (req, res, next) => {
+    linkedinOAuth: async (req, res, next) => {
         // get the token from frontend
         const {token} = req.body
 
@@ -236,12 +236,58 @@ module.exports = {
         res.status(200).json({ token, storeId: req.user.storeID });
     },
 
-    // facebookOAuth: async (req, res, next) => {
-    //     const token = signToken(req.user);
-    //     res.cookie('access_token', token, {
-    //         httpOnly: true
-    //     });
-    //     res.status(200).json({ token, storeId: req.user.storeID });
-    // }
 
+
+    loginWithGoogle: async (req, res, next) => {
+
+        const {access_token} = req.body
+        const oAuth2Client = new OAuth2Client(
+            '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com',
+            'jl6kALTXXLHndRViUlCXqQbL',
+            "http://localhost:4200"
+        );
+            
+
+        const ticket = await oAuth2Client.verifyIdToken({
+            idToken: access_token,
+            audience: '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com'
+        })
+        const user = ticket.getPayload();
+
+
+        const existingUser = await User.findOne({"email" : user.email});
+        if (existingUser){
+            console.log('user already exists in BD');
+            const token = signToken(existingUser);
+            return res.status(200).json({token, portfolioId: existingUser.portfolioID})
+        }
+
+        if(! user.email_verified){
+            return next(ApiError.BadRequest('Email must be verified.'));
+        }
+
+        console.log('User dosen\'t exist we create new one');
+
+        const newUser = new User({
+            method: ['google'],
+            email: user.email,
+            name: user.name,
+            profilePicture: user.picture,
+            googleId: user.sub,
+            verified: true
+        });
+
+        await newUser.save();
+        const token = signToken(newUser);
+        res.status(200).json({ token, portfolioId: newUser.portfolioID });
+    },
+
+    userVerified: async (req, res, next) => {
+        const token = req.user;
+        if(token.verified) {
+            return res.status(200).json({verified: true});
+        } else {
+            return res.status(200).json({verified: false});
+        }
+    },
 }

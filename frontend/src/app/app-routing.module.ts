@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignupComponent } from './registration/signup/signup.component';
 import {CustomPreloadingStrategyService} from "./_shared/services/custom-preloading-strategy.service";
+import { 
+  AuthGuardService as AuthGuard 
+} from './_shared/services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -18,7 +20,8 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module')
       .then(m => m.DashboardModule),
-    data: {preload: true}
+    canActivate: [AuthGuard],
+    data: {preload: true, expectedRole: 'user'}
   },
   {
     path: 'register',
