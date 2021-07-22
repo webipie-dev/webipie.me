@@ -12,6 +12,7 @@ import { CardSigninComponent } from './signin/card-signin/card-signin.component'
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ConfirmationCardComponent } from './confirmation/confirmation-card/confirmation-card.component';
 import { LinkedinVerifComponent } from './linkedin-verif/linkedin-verif.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 
@@ -22,14 +23,15 @@ import { GoogleLoginProvider } from 'angularx-social-login';
     RegistrationComponent,
     HeaderComponent,
     SignupComponent,
-    CardComponent,
     SigninComponent,
+    CardComponent,
     CardSigninComponent,
     ConfirmationComponent,
     ConfirmationCardComponent,
-    LinkedinVerifComponent
+    LinkedinVerifComponent,
   ],
   imports: [
+    SlickCarouselModule,
     CommonModule,
     RegistrationRoutingModule,
     FontAwesomeModule,
