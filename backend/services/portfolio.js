@@ -4,6 +4,8 @@ const ApiError = require("../errors/api-error");
 const { User } = require('../models/user');
 const { createDomain } = require('../services/domain');
 const geoip = require('geoip-lite');
+const date = require('date-and-time')
+
 
 const getPortfolioUrls = async (req,res) => {
   const urls =await Portfolio.find({}).select({ "url": 1, "_id": 0})
@@ -52,6 +54,14 @@ const getPortfolioByUrl = async (req,res) => {
       })   
     }
   }
+
+  if (!portfolio.visitsPerDay)
+    portfolio.visitsPerDay = {}
+  let today = date.format(new Date(Date.now()),'YYYY-MM-DD');
+  let todayCount = portfolio.visitsPerDay.get(today);
+  if (!todayCount)
+    todayCount = 0;
+  portfolio.visitsPerDay.set(today, todayCount+1);
   res.status(200).send(portfolio);
   portfolio.save()
 }

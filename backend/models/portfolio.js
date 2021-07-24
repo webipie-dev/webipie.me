@@ -27,6 +27,10 @@ const portfolioSchema = new Schema({
   visits: {
     type: Map,
     of: {ip: String, date: Date, country: String, count: Number}
+  },
+  visitsPerDay: {
+    type: Map,
+    of: Number
   }
 },
   {
