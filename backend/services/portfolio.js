@@ -44,8 +44,11 @@ const getPortfolioByUrl = async (req,res) => {
       if (!portfolio.visits)
         portfolio.visits = {}
       
+      let cnt = portfolio.visits.count
+      if(!cnt)
+        cnt = 0
       portfolio.visits.set(ip.replace(/\./g, '-').replace(/:/g, '_'), {
-        ip: ip, date: Date.now(), country: geo.country
+        ip: ip, date: Date.now(), country: geo.country, count: cnt + 1
       })   
     }
   }

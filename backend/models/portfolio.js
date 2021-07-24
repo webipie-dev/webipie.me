@@ -26,7 +26,7 @@ const portfolioSchema = new Schema({
   volunteeringExperiences: {type: [Schema.Types.ObjectID], ref: "VolunteeringExperience"},
   visits: {
     type: Map,
-    of: {ip: String, date: Date, country: String}
+    of: {ip: String, date: Date, country: String, count: Number}
   }
 },
   {
