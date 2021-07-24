@@ -2,16 +2,11 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
 
 @Component({
-  selector: 'app-add-experience',
-  templateUrl: './add-experience.component.html',
-  styleUrls: ['./add-experience.component.scss']
+  selector: 'app-add-volunteer',
+  templateUrl: './add-volunteer.component.html',
+  styleUrls: ['./add-volunteer.component.scss']
 })
-export class AddExperienceComponent implements OnInit {
-
-  bsInlineValue = new Date();
-  bsInlineRangeValue: Date[];
-  bsRangeValue!: Date[];
-  maxDate = new Date();
+export class AddVolunteerComponent implements OnInit {
 
   public type: string = 'component';
 
@@ -28,10 +23,7 @@ export class AddExperienceComponent implements OnInit {
   @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
 
-  constructor() {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-  }
+  constructor() {}
   ngOnInit(): void {
   }
 
@@ -78,5 +70,6 @@ export class AddExperienceComponent implements OnInit {
 
   public onUploadSuccess(): void {
   }
+
 
 }
