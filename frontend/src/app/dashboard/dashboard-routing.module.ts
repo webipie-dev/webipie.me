@@ -14,12 +14,17 @@ import { AddAchievementComponent } from "./achievements/add-achievement/add-achi
 import { TestimonialsComponent } from "./testimonials/testimonials.component";
 import { AddTestimonialComponent } from "./testimonials/add-testimonial/add-testimonial.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children : [
+      {
+        path: '',
+        component: HomeComponent
+      },
       {
         path: 'general-infos',
         component: GeneralInfosComponent

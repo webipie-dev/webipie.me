@@ -1,0 +1,70 @@
+<div class="card card-box mb-5">
+    <div class="card-body p-0">
+        <div class="row mt-4">
+            <div class="col">
+                <div class="text-center">
+                    <div>
+                        <fa-icon [icon]="['fas', 'user']" class="font-size-xxl text-success"></fa-icon>
+                    </div>
+                    <div class="mt-3 line-height-sm">
+                        <b class="font-size-lg">{{nusers}}</b>
+                        <span class="text-black-50 d-block">users</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <div>
+                        <fa-icon [icon]="['fas', 'eye']" class="font-size-xxl text-danger"></fa-icon>
+                    </div>
+                    <div class="mt-3 line-height-sm">
+                        <b class="font-size-lg">{{nvisits}}</b>
+                        <span class="text-black-50 d-block">visits</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-center">
+                    <div>
+                        <fa-icon [icon]="['fas', 'chart-bar']" class="font-size-xxl text-info"></fa-icon>
+                    </div>
+                    <div class="mt-3 line-height-sm">
+                        <b class="font-size-lg">{{visitsPerDay}}</b>
+                        <span class="text-black-50 d-block">visits per day</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider mt-4"></div>
+    </div>
+    <div class="card-footer bg-light text-center">
+        <div class="pt-4 pr-4 pl-4">
+            <apx-chart
+                    [chart]="{
+                                type: 'line',
+                                height: '100',
+                                sparkline: {
+                                    enabled: true
+                                }
+                            }"
+                    [colors]="['#3c44b1']"
+                    [markers]="{
+                                size: 0
+                            }"
+                    [series]="visits"
+                    [stroke]="{
+                                    curve: 'smooth',
+                                    width: 4
+                            }"
+                    [xaxis]="{
+                                crosshairs: {
+                                    width: 1
+                                }
+                            }"
+                    [yaxis]="{
+                                min: 0
+                            }"
+            ></apx-chart>
+        </div>
+    </div>
+</div>
