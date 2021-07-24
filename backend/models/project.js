@@ -7,7 +7,6 @@ const projectSchema = Schema({
   imgs: {type: [String], required: false},
   tags: {type: [String], required: false},
   skills: {type: [String], required: false},
-  date: {type: Date, required: false},
   link: {type: String, required: false},
   github: {type: String, required: false},
   portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
