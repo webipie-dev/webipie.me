@@ -13,7 +13,7 @@
     overflow: hidden;
     padding:10px;
     .cos-carousel{
-        width: 20000px;
+        width: 2000px;
         display: flex;
         justify-content:stretch;
         flex-wrap: wrap;
@@ -32,11 +32,6 @@
         width:900px;
     }
 }
-@media screen and (max-width:1300px) {
-    .cos-content{
-        width:900px;
-    }
-}
 @media screen and (max-width:1100px) {
     .cos-content{
         width:600px;
@@ -45,12 +40,18 @@
 @media screen and (max-width:700px) {
     .cos-content{
         width:300px;
+        overflow-x:scroll !important;
     }
 }
 @media screen and (max-width:400px) {
     .cos-content{
         width:78%;
+        
     }
+    .arrow-left,.arrow-right{
+        visibility: hidden;
+    }
+    
 }
 .bt{
     font-size:calc(30px + 3vw);
