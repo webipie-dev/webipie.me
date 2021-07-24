@@ -1,7 +1,9 @@
 import {GenericModel} from "./generic.model";
 
 export interface AchievementModel extends GenericModel {
-  description?: string,
   title: string,
+  description?: string,
+  image?: string,
+  date: Date,
   portfolio: string,
 }

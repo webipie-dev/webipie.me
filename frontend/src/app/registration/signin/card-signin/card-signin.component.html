@@ -7,16 +7,17 @@
     </div>
     -->
     <p>Enter details</p>
-    <form action="" method="">
-        <div class="input"><input type="email" placeholder="Email Adress"></div>
-        <div class="input"><input type="password" placeholder="Password"></div>
-        <button type="submit">Login</button>
+    <form>
+        <div class="input"><input type="email" name="email" [(ngModel)]="email" placeholder="Email Adress"></div>
+        <div class="input pass"><input type="password" name="password" [(ngModel)]="password" placeholder="Password"></div>
+        <button type="submit" (click)="signIn()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()">Login</button>
     </form>
     <p style="margin: auto;margin-top:20px">Don't have an account? sign up <a [routerLink]="['/register/signup']" style="color:#6d944e;font-weight:700">here</a></p>
+
     <div class="line"></div>
     <p style="margin:auto;margin-bottom:5px;">Or login using</p>
     <div class="logos">
-        <fa-icon style="color:#DB4437" [icon]="google"></fa-icon>
+        <fa-icon style="color:#DB4437" [icon]="google" (click)="signInWithGoogle()"></fa-icon>
         <fa-icon style="color:#0072b1" [icon]="linkedin" (click)="signinWithLinkedin()"></fa-icon>
     </div>
 

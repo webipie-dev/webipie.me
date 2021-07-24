@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-testimonials-section',
@@ -10,45 +10,18 @@ export class TestimonialsSectionComponent implements OnInit {
   secondaryColor="#e184fe";
   speed = 2;
   position = 0;
-  elements = 4;
-  inView=[false,false,false,false,false,false,false];
-  @ViewChild('target') target?: ElementRef<HTMLElement>;
+  elements = 5;
   constructor() { }
-  makeActive(i:number){
-    for(let j=0; j<this.inView.length;j++){
-      this.inView[j]=false;
-    }
-    this.inView[i]=true;
-  }
+
   ngOnInit(): void {
-    
-    if(window.innerWidth<1000){
-      this.elements = this.inView.length;
-      this.makeActive(this.inView.length-this.elements);
-    }else{
-      this.makeActive(this.inView.length-this.elements-2);
-    }
-    
     setInterval(()=>{
       
-      if(this.elements && this.target){
-        this.position += this.target.nativeElement.offsetWidth;
+      if(this.elements){
+        this.position += 340;
         this.elements --;
-        if(window.innerWidth<1000){
-          this.makeActive(this.inView.length-this.elements);
-        }else{
-          this.makeActive(this.inView.length-this.elements-2);
-        }
-        
       }else{
-        this.elements = 4;
+        this.elements = 5;
         this.position = 0;
-        if(window.innerWidth<1000){
-          this.elements = this.inView.length;
-          this.makeActive(this.inView.length-this.elements);
-        }else{
-          this.makeActive(this.inView.length-this.elements-2);
-        }
       }
     },4000)
   }

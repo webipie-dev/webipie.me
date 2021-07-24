@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
 
 @Component({
   selector: 'app-achievements',
@@ -11,5 +12,4 @@ export class AchievementsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

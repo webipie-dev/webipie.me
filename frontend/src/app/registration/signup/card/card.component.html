@@ -8,12 +8,12 @@
     -->
     <p>Enter details</p>
 
-    <form action="" method="">
-        <div class="input"><input type="text" placeholder="Username"></div>
-        <div class="input"><input type="email" placeholder="Email Adress"></div>
-        <div class="input pass" style="margin-right:3%"><input type="password" placeholder="Password"></div>
-        <div class="input pass"><input type="password" placeholder="Repeat Password"></div>
-        <button type="submit" (click)="signUp()">Sign Up</button>
+    <form>
+        <div class="input"><input type="text" name="name" [(ngModel)]="name" placeholder="Full Name"></div>
+        <div class="input"><input type="email" name="email" [(ngModel)]="email" placeholder="Email Address"></div>
+        <div class="input pass" style="margin-right:3%"><input type="password" name="password" [(ngModel)]="password" placeholder="Password"></div>
+        <div class="input pass"><input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Repeat Password"></div>
+        <button type="submit" (click)="signUp()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()">Sign Up</button>
     </form>
     <p style="margin: auto;margin-top:20px">Already have an account ? Login <a [routerLink]="['/register/signin']" style="color:#6d944e;font-weight:700">here</a></p>
     <div class="line"></div>

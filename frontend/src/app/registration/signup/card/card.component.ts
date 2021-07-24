@@ -3,7 +3,7 @@ import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import {ActivatedRoute, Router} from "@angular/router";
 import { environment } from '../../../../environments/environment';
 import {AuthService} from "../../../_shared/services/auth.service";
-import {HttpClient} from "@angular/common/http";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-card',
@@ -11,11 +11,14 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  delay=false;
-  google=faGoogle;
-  linkedin=faLinkedinIn;
-  email?: string;
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, private http: HttpClient) { }
+  delay = false;
+  google = faGoogle;
+  linkedin = faLinkedinIn;
+  email: string = '';
+  name = '';
+  password = '';
+  confirmPassword = '';
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
     //Delaying the card animation for a bit
@@ -24,8 +27,26 @@ export class CardComponent implements OnInit {
     },100)
   }
 
+  isValidForm(): boolean {
+    return (this.email !== '' && this.name !== '' && this.password === this.confirmPassword && this.password !== '')
+  }
+
   signUp(): void{
-    this.router.navigate(['../confirmation'], { relativeTo: this.route, queryParams: { email: this.email ?? 'webipie.me@gmail.com'}})
+    this.authService.signUp({ name: this.name, email: this.email, password: this.password}).subscribe(res => {
+      localStorage.setItem('token', res.token);
+      this.router.navigate(['../confirmation'], {
+        relativeTo: this.route,
+        queryParams: {email: this.email}
+      }).then(r => console.log(r))
+    }, error => {
+      console.log(error);
+      Swal.fire({
+        title: 'Error!',
+        text: 'email or/and password are incorrect!',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
+    })
   }
 
   signUpWithLinkedin() {

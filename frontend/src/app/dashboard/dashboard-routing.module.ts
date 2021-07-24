@@ -15,6 +15,7 @@ import { TestimonialsComponent } from "./testimonials/testimonials.component";
 import { AddTestimonialComponent } from "./testimonials/add-testimonial/add-testimonial.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { DesignComponent } from "./design/design.component";
+import {AddVolunteerComponent} from "./experience/add-volunteer/add-volunteer.component";
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'experience/addexperience',
         component: AddExperienceComponent
+      },
+      {
+        path: 'experience/addvolunteer',
+        component: AddVolunteerComponent
       },
       {
         path: 'projects',

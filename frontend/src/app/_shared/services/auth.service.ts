@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {UtilsUrl} from "../utils/utils-url";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {GenericService} from "./generic.service";
 import {Observable} from "rxjs";
 
@@ -26,11 +26,13 @@ export class AuthService extends GenericService<any>{
     return this.http.post(this.getUrl() + this.suffix + '/signin', credentials) as Observable<any>;
   }
 
-  public sendConfirmation(token: string): Observable<any> {
+  public sendConfirmation(): Observable<any> {
+    const token = localStorage.get('token')
     return this.http.get(this.getUrl() + this.suffix + '/confirmation/' + token) as Observable<any>;
   }
 
-  public resendConfirmation(token: string): Observable<any> {
+  public resendConfirmation(): Observable<any> {
+    const token = localStorage.get('token')
     return this.http.get(this.getUrl() + this.suffix + '/resend/confirmation/' + token) as Observable<any>;
   }
 
@@ -40,10 +42,27 @@ export class AuthService extends GenericService<any>{
 
   public logout() {}
 
-  public signInWithGoogle() {}
+  public signInWithGoogle(googleToken?: string) {
+    let httpOptions: any;
+    httpOptions = {
+      access_token: googleToken 
+    };
+    return this.http.post(this.getUrl() + this.suffix + '/oauth/google', httpOptions) as Observable<any>
+  }
 
   public signInWithLinkedIn(linkedinToken?: string): Observable<any> {
-    return this.http.post(this.getUrl() + this.suffix + '/oauth/linkedin', { token: linkedinToken }) as Observable<any>
+    return this.http.post(this.getUrl() + this.suffix + '/oauth/linkedin', { token: linkedinToken }) as Observable<any>;
+  }
+
+  public isVerified(): Observable<{verified: boolean}> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.getUrl() + this.suffix + '/verified', httpOptions) as unknown as Observable<{verified: boolean}>;
   }
 
 }
