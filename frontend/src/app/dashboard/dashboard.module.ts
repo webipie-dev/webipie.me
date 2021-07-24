@@ -60,7 +60,6 @@ import { ThemeOptions } from '../_shared/theme-options';
 import { GeneralInfosComponent } from './general-infos/general-infos.component';
 import { WrapperSimpleComponent } from '../_shared/components/wrapper-simple/wrapper-simple.component';
 import { FooterComponent } from './footer/footer.component';
-import { SkillsComponent } from './skills/skills.component';
 import { WrapperSeamlessComponent } from '../_shared/components/wrapper-seamless/wrapper-seamless.component';
 import { faFacebook, faTwitter, faAngular, faVuejs, faReact, faHtml5, faGoogle, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon } from '@fortawesome/free-solid-svg-icons';
@@ -85,6 +84,8 @@ import { FONT_PICKER_CONFIG } from 'ngx-font-picker';
 import { FontPickerConfigInterface } from 'ngx-font-picker';
 import { AutosizeModule } from 'ngx-autosize';
 import { GeneralComponent } from './design/general/general.component';
+import { SkillsSectionComponent } from './design/skills-section/skills-section.component';
+import { SkillsComponent } from './skills/skills.component';
 import { AddVolunteerComponent } from './experience/add-volunteer/add-volunteer.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -117,7 +118,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     SuccessModalComponent,
     WarningModalComponent,
     InfoModalComponent,
-    SkillsComponent,
+    SkillsSectionComponent,
     AddSoftSkillComponent,
     AddHardSkillComponent,
     ExperienceComponent,
@@ -131,8 +132,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ProfileComponent,
     DesignComponent,
     GeneralComponent,
-    AddVolunteerComponent,
-    
+    SkillsComponent,
+    AddVolunteerComponent
   ],
   imports: [
     CommonModule,

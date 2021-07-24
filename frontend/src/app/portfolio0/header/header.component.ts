@@ -11,9 +11,13 @@ export class HeaderComponent implements OnInit {
   @Output() expertiseClick = new EventEmitter<any>();
   @Output() experienceClick = new EventEmitter<any>();
   @Output() testimonialsClick = new EventEmitter<any>();
+  @Output() contactClick = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
+  }
+  clickContact(event:any){
+    this.contactClick.emit(event);
   }
   clickAboutme(event:any){
     this.aboutmeClick.emit(event);
