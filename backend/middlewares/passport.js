@@ -44,6 +44,7 @@ passport.use('googleToken' , new GoogleTokenStrategy({
   callbackURL: "http://localhost:4200"
 }, async (accessToken, refreshToken, profile, done) => {
   try {
+    console.log(profile);
     const existingUser = await User.findOne({"google.id" : profile.id});
     if (existingUser){
       console.log('user already exists in BD');

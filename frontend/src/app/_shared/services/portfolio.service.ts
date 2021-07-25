@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {GenericService} from "./generic.service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PortfolioModel} from "../models/portfolio.model";
 
@@ -36,5 +36,16 @@ export class PortfolioService extends GenericService<PortfolioModel> {
         });
       }
     });
+  }
+
+  changeTemplate(id: string, body: any){
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.patch(this.getUrl() + this.suffix + '/change-template/' + id, body, httpOptions);
   }
 }

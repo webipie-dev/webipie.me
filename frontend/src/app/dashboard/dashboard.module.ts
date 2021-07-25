@@ -80,12 +80,21 @@ import { AddTestimonialComponent } from './testimonials/add-testimonial/add-test
 import { ProfileComponent } from './profile/profile.component';
 import { EducationComponent } from './education/education.component';
 import { AddEducationComponent } from './education/add-education/add-education.component'; 
-
+import { DesignComponent } from './design/design.component'; 
+import { ColorPickerModule } from 'ngx-color-picker';
+import { FontPickerModule } from 'ngx-font-picker';
+import { FONT_PICKER_CONFIG } from 'ngx-font-picker';
+import { FontPickerConfigInterface } from 'ngx-font-picker';
+import { AutosizeModule } from 'ngx-autosize';
+import { GeneralComponent } from './design/general/general.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
 };
-
+const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
+  // Change this to your Google API key
+  apiKey: 'AIzaSyBhWqjEHa0rSVAZs-bFDZoT9tkgKUg2sx0'
+};
 @NgModule({
   declarations: [
     
@@ -123,12 +132,15 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ProfileComponent,
     EducationComponent,
     AddEducationComponent,
+    DesignComponent,
+    GeneralComponent,
     
   ],
   imports: [
     CommonModule,
     DropzoneModule,
     PerfectScrollbarModule,
+    AccordionModule.forRoot(),
     FeatherModule.pick(icons),
     FontAwesomeModule,
     UiSwitchModule,
@@ -148,7 +160,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TooltipModule.forRoot(),
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
-
+    ColorPickerModule,
+    FontPickerModule,
+    AutosizeModule,
     DashboardRoutingModule
   ],
   providers: [
@@ -156,6 +170,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
+    {
+      provide: FONT_PICKER_CONFIG,
+      useValue: DEFAULT_FONT_PICKER_CONFIG
+    }
+    ,
     ThemeOptions
   ]
 })

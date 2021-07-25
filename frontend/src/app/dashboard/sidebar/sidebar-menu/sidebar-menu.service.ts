@@ -75,7 +75,7 @@ export class SidebarMenuService {
     "title": "Design",
     "type": "simple",
     "icon": "<i class=\"pe-7s-magic-wand\"> </i>",
-    "link": "/summaryDashboard"
+    "link": "/dashboard/design"
   },
   {
     "title": "Settings",

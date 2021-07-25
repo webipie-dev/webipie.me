@@ -6,7 +6,6 @@ import { faAddressCard, faArrowLeft, faBars, faHome, faMoneyBill, faPhoneAlt } f
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class HeaderComponent implements OnInit {
   menu = faBars;
@@ -23,6 +22,9 @@ export class HeaderComponent implements OnInit {
     if(this.router.url === '/register'){
       this.scrolled=true;
     }
+    if(this.router.url === '/register/choose-template'){
+      this.scrolled=true;
+    }
   }
   onMenuClick(event:any){
     if(!this.menuactive){
@@ -33,10 +35,13 @@ export class HeaderComponent implements OnInit {
   }
   @HostListener('window:scroll', ['$event']) 
     doSomething(event:any) {
-      if(window.pageYOffset > 100){
-        this.scrolled=true;
-      }else{
-        this.scrolled=false;
+      if(this.router.url !== '/register/choose-template'){
+        if(window.pageYOffset > 100 ){
+          this.scrolled=true;
+        }else{
+          this.scrolled=false;
+        }
       }
+      
     }
 }

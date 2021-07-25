@@ -16,6 +16,7 @@ import { AddTestimonialComponent } from "./testimonials/add-testimonial/add-test
 import { ProfileComponent } from "./profile/profile.component";
 import { EducationComponent } from "./education/education.component";
 import { AddEducationComponent } from "./education/add-education/add-education.component";
+import { DesignComponent } from "./design/design.component";
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'design',
+        component: DesignComponent
       },
     ]
   },
