@@ -3,6 +3,9 @@ const {Template} = require('../models/template');
 const ApiError = require("../errors/api-error");
 const { User } = require('../models/user');
 const { createDomain } = require('../services/domain');
+const geoip = require('geoip-lite');
+const date = require('date-and-time')
+
 
 const getPortfolioUrls = async (req,res) => {
   const urls =await Portfolio.find({}).select({ "url": 1, "_id": 0})
@@ -30,17 +33,48 @@ const getPortfolioByUrl = async (req,res) => {
     .catch((err) => {
       res.status(400).json({errors: err.message});
     });
+  
+  let ip;
+  console.log(`req ip: ${req.ip}, x-forwarded-for: ${req.headers["x-forwarded-for"]}`)
+  if(req.headers["x-forwarded-for"])
+    ip = req.headers["x-forwarded-for"]
+  else if (req.ip)
+    ip = req.ip
+  if(ip && ip != '::1'){
+    const geo = geoip.lookup(ip);
+    if(geo && geo.country){
+      if (!portfolio.visits)
+        portfolio.visits = {}
+      
+      let cnt = portfolio.visits.count
+      if(!cnt)
+        cnt = 0
+      portfolio.visits.set(ip.replace(/\./g, '-').replace(/:/g, '_'), {
+        ip: ip, date: Date.now(), country: geo.country, count: cnt + 1
+      })   
+    }
+  }
+
+  if (!portfolio.visitsPerDay)
+    portfolio.visitsPerDay = {}
+  let today = date.format(new Date(Date.now()),'YYYY-MM-DD');
+  let todayCount = portfolio.visitsPerDay.get(today);
+  if (!todayCount)
+    todayCount = 0;
+  portfolio.visitsPerDay.set(today, todayCount+1);
   res.status(200).send(portfolio);
+  portfolio.save()
 }
 
 const addPortfolio = async (req, res, next) => {
   // TODO: email verification error doesn't return a readable error
-  const foundPortfolio = await User.findOne({name: req.body.name});
+  const name = req.user.name + (""+Math.random()).substring(2,7);
+  const foundPortfolio = await Portfolio.findOne({name});
   if(foundPortfolio){
     return next(ApiError.BadRequest('Portfolio name is already in use'));
   }
 
-  const { name, templateId } = req.body
+  const { templateId } = req.body
 
   let getTemplate = await Template.findById(templateId);
 
@@ -64,13 +98,14 @@ const addPortfolio = async (req, res, next) => {
 
 
   await portfolio.save()
-    .catch((err) => {
-      res.status(400).json({errors: [{ message: err.message }]});
-    });
+    //.catch((err) => {
+      //return res.status(400).json({errors: [{ message: err.message }]});
+    //});
+
   createDomain(portfolioSubdomain)
 
   console.log(portfolio);
-  res.status(201).send(portfolio);
+  res.status(201).json(portfolio);
 
 }
 

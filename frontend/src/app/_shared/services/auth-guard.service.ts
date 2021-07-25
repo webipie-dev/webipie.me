@@ -15,11 +15,14 @@ export class AuthGuardService implements CanActivate {
 
     const token = localStorage.getItem('token') as string;
     // decode the token to get its payload
-    const tokenPayload: any = jwt_decode(token);
+    const tokenPayload: any = jwt_decode(token) || "";
+
     if (
       !this.auth.isLoggedIn()
-      // || tokenPayload.role !== expectedRole
+      
+      || tokenPayload.role !== expectedRole
     ) {
+
       this.router.navigate(['/register/signin']);
       return false;
     }

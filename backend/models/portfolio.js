@@ -18,6 +18,7 @@ const portfolioSchema = new Schema({
   creationDate: {type: Date, default: Date.now()},
   template: templateSchema,
   projects: {type: [Schema.Types.ObjectID], ref: "Porject"},
+  education: {type: [Schema.Types.ObjectID], ref: "Education"},
   achievements: {type: [achievementSchema]},
   testimonials: {type: [testimonialSchema]},
   technicalSkills: [{
@@ -27,6 +28,14 @@ const portfolioSchema = new Schema({
   softSkills: {type: [Schema.Types.ObjectID], ref: "SoftSkill"},
   workExperiences: {type: [Schema.Types.ObjectID], ref: "WorkExperience"},
   volunteeringExperiences: {type: [Schema.Types.ObjectID], ref: "VolunteeringExperience"},
+  visits: {
+    type: Map,
+    of: {ip: String, date: Date, country: String, count: Number}
+  },
+  visitsPerDay: {
+    type: Map,
+    of: Number
+  }
 },
   {
     toJSON: {

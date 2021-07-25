@@ -7,8 +7,6 @@ const validateRequest = require("../middlewares/validate-request");
 const validation = require("../middlewares/validation/validator");
 const projectValidator = require("../middlewares/validation/project-validator");
 const passportJWT = passport.authenticate('jwt', { session: false });
-// passportJWT.unless = require('express-unless');
-
 
 //get all projects
 router.get('all/:portfolioId', [validation.portfolioId], validateRequest, projectService.getProjects)

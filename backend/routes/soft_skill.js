@@ -14,10 +14,10 @@ router.get('', softSkillService.getAllSoftSkills)
 router.get('/:portfolioId', passportJWT, [validation.portfolioId], validateRequest, softSkillService.getSoftSkills)
 
 // add soft skills
-router.patch('', passportJWT, [validation.portfolioId, validation.ids], validateRequest, softSkillService.addSoftSkills);
+router.post('', passportJWT, [validation.portfolioId, validation.ids], validateRequest, softSkillService.addSoftSkills);
 
-// delete Many soft skills
-//router.delete('', validation.ids, passportJWT, softSkillService.deleteManySoftSkills);
+// delete soft skills
+router.delete('', validation.ids, passportJWT, softSkillService.deleteSoftSkills);
 
 //delete All soft skills
 //router.delete('/delete', passportJWT, [validation.portfolioId], validateRequest, softSkillService.deleteAllSoftSkills);

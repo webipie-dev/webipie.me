@@ -20,6 +20,11 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { FeatherModule } from 'angular-feather';
 import { Calendar, Activity, Bell, Settings, Search, Grid, Users, LifeBuoy, CloudDrizzle, Coffee, Box, Briefcase, Layers, Printer } from 'angular-feather/icons';
 import { HeaderComponent } from './header/header/header.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { NgxFlagIconCssModule } from 'ngx-flag-icon-css';
+
 const icons = {
    Calendar,
    Activity,
@@ -77,6 +82,10 @@ import { AddAchievementComponent } from './achievements/add-achievement/add-achi
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AddTestimonialComponent } from './testimonials/add-testimonial/add-testimonial.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component'; 
+
+import { EducationComponent } from './education/education.component';
+import { AddEducationComponent } from './education/add-education/add-education.component'; 
 import { DesignComponent } from './design/design.component'; 
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FontPickerModule } from 'ngx-font-picker';
@@ -131,6 +140,9 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     TestimonialsComponent,
     AddTestimonialComponent,
     ProfileComponent,
+    HomeComponent,
+    EducationComponent,
+    AddEducationComponent,
     DesignComponent,
     GeneralComponent,
     SkillsComponent,
@@ -161,6 +173,10 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     TooltipModule.forRoot(),
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
+    NgApexchartsModule,
+    NgProgressModule,
+    NgProgressRouterModule,
+    NgxFlagIconCssModule,
     ColorPickerModule,
     FontPickerModule,
     AutosizeModule,
@@ -181,6 +197,6 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
 })
 export class DashboardModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faStopwatch,faBell,faLinkedinIn,faCalendarAlt,faFacebook, faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faTwitter, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager,  faAngular, faVuejs, faReact, faHtml5, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faGoogle, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon);
+    library.addIcons(faStopwatch, faBell, faLinkedinIn, faCalendarAlt, faFacebook, faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faTwitter, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager,  faAngular, faVuejs, faReact, faHtml5, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faGoogle, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon, faUser, faKeyboard, faEye, faChartBar);
   }
  }

@@ -27,7 +27,7 @@ export class SidebarMenuService {
     "title": "Home",
     "type": "simple",
     "icon": "<i class=\"pe-7s-safe\"> </i>",
-    "link": "dashboard"
+    "link": "/dashboard/"
   },
   {
     "title": "Portfolio",
@@ -43,6 +43,11 @@ export class SidebarMenuService {
         "title": "Skills",
         "type": "simple",
         "link": "/dashboard/skills"
+      },
+      {
+        "title": "Education",
+        "type": "simple",
+        "link": "/dashboard/education"
       },
       {
         "title": "Experience",

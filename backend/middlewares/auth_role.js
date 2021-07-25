@@ -1,6 +1,7 @@
 isAdmin = () => { 
     return (req, res, next, done)=>{
         const user = req.user;
+        console.log(user);
         if(!user) {
             done(null, false)
         }

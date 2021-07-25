@@ -45,13 +45,18 @@ export class CardSigninComponent implements OnInit {
     this.authService.signIn({ email: this.email, password: this.password}).subscribe(result => {
       localStorage.setItem('token', result['token']);
 
-      if (result['portfolioId']){
-        localStorage.setItem('portfolioId',result['portfolioId']);
-        this.router.navigate(['dashboard']);
+      if(result['verified']){
+        if (result['portfolioId']){
+          localStorage.setItem('portfolioId',result['portfolioId']);
+          this.router.navigate(['dashboard']);
+        }
+        else{
+          this.router.navigate(['templates/choose-template']);
+        }
+      }else{
+        this.router.navigate(['confirmation']);
       }
-      else{
-        this.router.navigate(['templates']);
-      }
+      
     }, error => {
       console.log(error);
       Swal.fire({

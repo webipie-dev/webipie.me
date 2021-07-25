@@ -42,11 +42,18 @@ export class GenericService<T extends GenericModel> {
     return this.http.get(this.getUrl() + this.suffix + '/many') as Observable<[T]>;
   }
 
-  public addOne(body: T): Observable<T> {
-    return this.http.post(this.getUrl() + this.suffix, body) as Observable<T>;
+  public addOne(body: any): Observable<T> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.post(this.getUrl() + this.suffix, body, httpOptions) as Observable<T>;
   }
 
-  public edit(id: string, body: T): Observable<T> {
+  public edit(id: string, body: any): Observable<T> {
     return this.http.patch(this.getUrl() + this.suffix + '/' + id, body) as Observable<T>;
   }
 
