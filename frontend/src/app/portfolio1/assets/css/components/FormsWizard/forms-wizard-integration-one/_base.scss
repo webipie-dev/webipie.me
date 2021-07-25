@@ -1,0 +1,62 @@
+//  Core
+
+.wizard-alternate {
+  .steps-indicator {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: ($spacer / 2);
+
+      a {
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: center;
+        font-size: $font-size-lg;
+        color: $gray-600;
+        cursor: pointer;
+        padding: ($spacer) ($spacer * 3);
+        @include border-radius($border-radius-sm);
+        transition: $transition-base;
+
+        .step-indicator {
+          margin-bottom: ($spacer / 1.5);
+          color: $blue;
+
+          div {
+            transition: $transition-base;
+          }
+        }
+      }
+
+      a:hover {
+        .step-indicator {
+          .bg-neutral-first {
+            color: color-yiq($blue);
+            background: $blue !important;
+          }
+        }
+      }
+
+      &.current a {
+        background: $gray-100;
+        color: $gray-800;
+      }
+
+      &.done a {
+        background: $success-neutral;
+        color: $gray-900;
+
+        .step-indicator {
+          .bg-neutral-first {
+            color: color-yiq($success);
+            background: $success !important;
+          }
+        }
+      }
+    }
+  }
+}
