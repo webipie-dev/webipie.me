@@ -78,6 +78,8 @@ import { AddAchievementComponent } from './achievements/add-achievement/add-achi
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AddTestimonialComponent } from './testimonials/add-testimonial/add-testimonial.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EducationComponent } from './education/education.component';
+import { AddEducationComponent } from './education/add-education/add-education.component'; 
 import { DesignComponent } from './design/design.component'; 
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FontPickerModule } from 'ngx-font-picker';
@@ -128,6 +130,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     TestimonialsComponent,
     AddTestimonialComponent,
     ProfileComponent,
+    EducationComponent,
+    AddEducationComponent,
     DesignComponent,
     GeneralComponent,
     

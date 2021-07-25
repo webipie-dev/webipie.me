@@ -14,6 +14,8 @@ import { AddAchievementComponent } from "./achievements/add-achievement/add-achi
 import { TestimonialsComponent } from "./testimonials/testimonials.component";
 import { AddTestimonialComponent } from "./testimonials/add-testimonial/add-testimonial.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { EducationComponent } from "./education/education.component";
+import { AddEducationComponent } from "./education/add-education/add-education.component";
 import { DesignComponent } from "./design/design.component";
 
 const routes: Routes = [
@@ -36,6 +38,14 @@ const routes: Routes = [
       {
         path: 'skills/addhardskill',
         component: AddHardSkillComponent
+      },
+      {
+        path: 'education',
+        component: EducationComponent
+      },
+      {
+        path: 'education/addeducation',
+        component: AddEducationComponent
       },
       {
         path: 'experience',
