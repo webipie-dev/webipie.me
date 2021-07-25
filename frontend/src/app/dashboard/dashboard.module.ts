@@ -21,6 +21,10 @@ import { FeatherModule } from 'angular-feather';
 import { Calendar, Activity, Bell, Settings, Search, Grid, Users, LifeBuoy, CloudDrizzle, Coffee, Box, Briefcase, Layers, Printer } from 'angular-feather/icons';
 import { HeaderComponent } from './header/header/header.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { NgxFlagIconCssModule } from 'ngx-flag-icon-css';
+
 const icons = {
    Calendar,
    Activity,
@@ -148,7 +152,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccordionModule.forRoot(),
     AlertModule.forRoot(),
     NgApexchartsModule,
-
+    NgProgressModule,
+    NgProgressRouterModule,
+    NgxFlagIconCssModule,
     DashboardRoutingModule
   ],
   providers: [

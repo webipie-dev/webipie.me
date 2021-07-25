@@ -1,6 +1,11 @@
 import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 
+type CountryVisit = {
+  country: string;
+  count: number;
+  icon: string
+};
 
 @Component({
   selector: 'app-home',
@@ -14,6 +19,7 @@ export class HomeComponent implements OnInit {
   nusers: number
   nvisits: number
   visitsPerDay: number
+  visitsPerCountry: CountryVisit[]
   constructor() {
     let visitsInLastNDays = this.getVisits(this.portfolio.visitsPerDay, this.lastNDays)
     this.visits = [
@@ -30,6 +36,9 @@ export class HomeComponent implements OnInit {
       this.visitsPerDay += visitsInLastNDays[i]
     }
     this.visitsPerDay = this.visitsPerDay / visitsInLastNDays.length
+    this.visitsPerCountry = this.getVisitsPerCountry(this.portfolio.visits)
+    console.log(this.visitsPerCountry)
+
   }
 
   ngOnInit(): void {}
@@ -45,7 +54,6 @@ export class HomeComponent implements OnInit {
 
     for(var i = 0; i < lastNDays; i++){
       let currentDay = formatDate(today, 'YYYY-MM-dd', 'en-US')
-      console.log(currentDay)
       if(currentDay in visitsPerDay)
         visits.push(visitsPerDay[currentDay])
       else
@@ -57,16 +65,43 @@ export class HomeComponent implements OnInit {
     return visits.reverse()
   }
   getNVisits(visits: any):number {
-    let nvisits = 0
-    for (const ip in visits) {
-      nvisits += visits[ip]["count"]
+    if (visits)
+    {
+      let nvisits = 0
+      for (const ip in visits) {
+        nvisits += visits[ip]["count"]
+      }
+      return nvisits
     }
-    return nvisits
+    else
+      return 0
   }
   getNUsers(visits: any):number {
     if (visits)
       return Object.keys(visits).length
     else
       return 0
+  }
+  getVisitsPerCountry(visits: any):CountryVisit[] {
+    if(visits){
+      let countryVisits: Map<string,number> = new Map<string,number>()
+      for (const ip in visits) {
+        if(countryVisits.has(visits[ip]["country"])){
+          let cnVisits = countryVisits.get(visits[ip]["country"])
+          if(cnVisits)
+            countryVisits.set(visits[ip]["country"], cnVisits + visits[ip]["count"])
+        }
+        else{
+          countryVisits.set(visits[ip]["country"],  visits[ip]["count"])
+        }
+      }
+      let rows: CountryVisit[] = []
+      countryVisits.forEach((count: number, country: string) => {
+        let cnVisit: CountryVisit = {country: country, count: count, icon: `flag-icon flag-icon-${country.toLowerCase()}`}
+        rows.push(cnVisit)
+      })
+      return rows
+    }
+    return []
   }
 }
