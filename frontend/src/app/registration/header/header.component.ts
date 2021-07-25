@@ -16,8 +16,9 @@ export class HeaderComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit(): void {
-    if(this.router.url === '/register/choose-template' || this.router.url === '/register/linkedin-verif'){
+    if(this.router.url === '/register/choose-template' || this.router.url.includes('/register/linkedin-verif')){
       this.scrolled=true;
+      console.log(this.router.url.indexOf('/register/linkedin-verif') );
     }
   }
   onMenuClick(event:any){
