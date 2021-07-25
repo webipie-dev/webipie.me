@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { TemplateModel } from 'src/app/_shared/models/template.model';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
+import { TemplateService } from 'src/app/_shared/services/template.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-choose-template',
@@ -10,10 +16,22 @@ export class ChooseTemplateComponent implements OnInit {
   arrowright = faArrowAltCircleRight;
   arrowleft = faArrowAltCircleLeft;
   positionY = 0;
-  selected = [false,false,false,false,false,false];
-  constructor() { }
+  selected = new Array();
+  templates = new Array();
+  selectedTemplate: TemplateModel | undefined;
+  constructor(private templateService: TemplateService,
+    private portfolioService: PortfolioService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.templateService.getMany().subscribe(
+      result => {
+        this.templates = result;
+        this.selected.length = result.length;
+        this.selected.fill(false);
+        console.log(this.selected);
+      }
+    );
   }
   rightArrow(el:HTMLElement){
     this.positionY += el.offsetWidth;
@@ -35,5 +53,42 @@ export class ChooseTemplateComponent implements OnInit {
     console.log(this.selected);
     this.selected[i]=value;
     console.log(this.selected);
+
+    console.log(this.selected.indexOf(true));
+    if(this.selected.indexOf(true)>-1){
+      this.selectedTemplate = this.templates[i];
+    }else{
+      this.selectedTemplate = undefined;
+    }
+    
+
+  }
+
+  submit(){
+    if(this.selectedTemplate){
+      const portfolioId = localStorage.getItem('portfolioId') as string;
+      if(localStorage.getItem('portfolioId')){
+        this.portfolioService.changeTemplate(portfolioId, {template: this.selectedTemplate}).subscribe(
+          result => {
+            this.router.navigate(['dashboard']);
+          }
+        );
+      }else{
+        this.portfolioService.addOne({templateId: this.selectedTemplate.id}).subscribe(
+          result => {
+            localStorage.setItem('portfolioId', result['id']);
+            this.router.navigate(['dashboard']);
+          }
+        );
+      }
+    }else{
+      Swal.fire({
+        title: 'Error!',
+        text: 'You must select a template to choose.',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+    }
+    
   }
 }
