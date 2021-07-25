@@ -20,7 +20,6 @@ router.get('/all/urls', portfolioService.getPortfolioUrls);
 // addPortfolio
 router.post('', passportJWT, [
     portfolioValidator.templateId,
-    portfolioValidator.name,
 ], validateRequest, portfolioService.addPortfolio);
 
 
