@@ -1,5 +1,5 @@
-.container{
-    width:70%;
+.containerr{
+    width:100%;
     max-width: 1400px;
     margin:auto;
     padding:50px;
@@ -24,5 +24,13 @@ p{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    width:100%;
     margin:auto;
+    overflow: hidden;
+    
+}
+@media screen and (max-width:1300px) {
+    .card-container{
+        flex-direction: column;
+    }
 }

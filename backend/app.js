@@ -18,6 +18,8 @@ const healthcheckRoutes = require('./routes/healthCheck');
 const fileUploadRoutes = require('./routes/upload');
 const templateRoutes = require('./routes/template');
 const softSkillsRoutes = require('./routes/soft_skill');
+const technicalSkillsRoutes = require('./routes/technical_skill');
+const educationRoutes = require('./routes/education');
 const contactRoutes = require('./routes/contact');
 
 
@@ -35,6 +37,7 @@ const swaggerOptions = {
     },
     apis: ["./swagger-doc/*.js"]
   };
+
 
 app.use(cors());
 app.use(express.static('./public'));
@@ -58,6 +61,8 @@ app
   .use('/health_check', healthcheckRoutes)
   .use('/upload', fileUploadRoutes)
   .use('/template', templateRoutes)
+  .use('/education', educationRoutes)
+  .use('/technicalskills', technicalSkillsRoutes)
   .use('/contact', contactRoutes);
 
 module.exports = app;

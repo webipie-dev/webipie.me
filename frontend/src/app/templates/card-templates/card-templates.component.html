@@ -1,0 +1,9 @@
+<div class="cos-container" [style.border]="selected? '4px solid #62b085':'0px solid'">
+    <div class="cos-image">
+        <img src="assets/back.jpeg">
+    </div>
+    <div class="cos-content">
+        <button class="btn btn-sm m-2 btn-slack" (click)="select()">{{selected? 'Unselect':'Select'}}</button>
+        <button class="btn btn-sm m-2 btn-neutral-dark">Preview</button>
+    </div>
+</div>

@@ -68,12 +68,13 @@ const getPortfolioByUrl = async (req,res) => {
 
 const addPortfolio = async (req, res, next) => {
   // TODO: email verification error doesn't return a readable error
-  const foundPortfolio = await User.findOne({name: req.body.name});
+  const name = req.user.name + (""+Math.random()).substring(2,7);
+  const foundPortfolio = await Portfolio.findOne({name});
   if(foundPortfolio){
     return next(ApiError.BadRequest('Portfolio name is already in use'));
   }
 
-  const { name, templateId } = req.body
+  const { templateId } = req.body
 
   let getTemplate = await Template.findById(templateId);
 
@@ -97,13 +98,14 @@ const addPortfolio = async (req, res, next) => {
 
 
   await portfolio.save()
-    .catch((err) => {
-      res.status(400).json({errors: [{ message: err.message }]});
-    });
+    //.catch((err) => {
+      //return res.status(400).json({errors: [{ message: err.message }]});
+    //});
+
   createDomain(portfolioSubdomain)
 
   console.log(portfolio);
-  res.status(201).send(portfolio);
+  res.status(201).json(portfolio);
 
 }
 

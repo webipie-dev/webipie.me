@@ -1,18 +1,19 @@
-.card{
-    width:80%;
+.cardd{
+    width:100%;
     max-width: 700px;
     min-height: fit-content;
     border-radius: 15px;
     background-color: white;
     text-align: left;
     padding:30px;
-    margin:auto;
+    box-sizing: border-box;
     display: block;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.349);
     transition: transform 1s ease-out,opacity 1.5s ease-out;
     opacity: 1;
     overflow: hidden;
     color:black !important;
+    margin-bottom: 100px;
 }
 .above{
     position: absolute;
@@ -36,7 +37,7 @@ p{
 }
 h1{
     font-weight: 700;
-    font-size:3rem;
+    font-size:calc(20px + 2vw)
 }
 h3{
     font-weight: 400;
@@ -44,26 +45,22 @@ h3{
     font-size:2rem;
     margin-bottom:40px;
 }
-.input{
-    min-width: 170px;
-    width:100%;
-    display: block;
-    padding-top:15px;
-    padding-bottom:15px;
-    margin-bottom:10px;
-    border-radius: 10px;
-    border: 1px solid lightgrey;
-    font-size:1.2rem;
-}
 input{
-    margin-left:20px;
     border:none;
     height:100%;
-    width:80%;
+    width:100%;
     font-size:1.3rem;
     text-decoration: none;
     outline: none;
     height:inherit;
+    box-sizing: border-box;
+    padding:20px;
+    border:1px solid lightgrey;
+    border-radius: 10px;
+    margin-bottom:10px;
+}
+input:focus{
+    border:1px solid #6d944e !important;
 }
 .error{
     background-color: #f8dfe0;
@@ -71,6 +68,8 @@ input{
     color:#e45047;
 }
 .pass{
+    
+    width:48%;
     min-width: 200px;
     display: inline-block !important;
 }

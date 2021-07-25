@@ -15,6 +15,7 @@ const portfolioSchema = new Schema({
   creationDate: {type: Date, default: Date.now()},
   template: templateSchema,
   projects: {type: [Schema.Types.ObjectID], ref: "Porject"},
+  education: {type: [Schema.Types.ObjectID], ref: "Education"},
   achievements: {type: [achievementSchema]},
   testimonials: {type: [testimonialSchema]},
   technicalSkills: [{

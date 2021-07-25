@@ -1,0 +1,23 @@
+.cos-container{
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    width:fit-content;
+    max-width: 900px;
+    width:90%;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border 0.25s ease;
+}
+.cos-image{
+    width:100%;
+    
+    img{
+        width:100%;
+    }
+}
+.cos-content{
+    padding:20px;
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: content-box;
+}
