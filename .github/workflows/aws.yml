@@ -4,6 +4,7 @@ on:
       - devops
       - master
       - dev
+      - ip-tracking
 
 name: Project Deployment
 

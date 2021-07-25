@@ -25,6 +25,14 @@ const portfolioSchema = new Schema({
   softSkills: {type: [Schema.Types.ObjectID], ref: "SoftSkill"},
   workExperiences: {type: [Schema.Types.ObjectID], ref: "WorkExperience"},
   volunteeringExperiences: {type: [Schema.Types.ObjectID], ref: "VolunteeringExperience"},
+  visits: {
+    type: Map,
+    of: {ip: String, date: Date, country: String, count: Number}
+  },
+  visitsPerDay: {
+    type: Map,
+    of: Number
+  }
 },
   {
     toJSON: {

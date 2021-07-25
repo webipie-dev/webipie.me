@@ -31,6 +31,7 @@
             ],
             "styles": [
               "src/assets/css/base.scss",
+              "node_modules/flag-icon-css/css/flag-icon.min.css",
               "node_modules/pe7-icon/dist/scss/pe-icon-7-stroke.scss",
               "src/styles.scss"
             ],
