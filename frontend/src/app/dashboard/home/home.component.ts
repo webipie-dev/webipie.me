@@ -7,6 +7,14 @@ type CountryVisit = {
   icon: string
 };
 
+type UserVisit = {
+  country: string;
+  count: number;
+  icon: string,
+  date: Date,
+  ip: string
+};
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,6 +28,7 @@ export class HomeComponent implements OnInit {
   nvisits: number
   visitsPerDay: number
   visitsPerCountry: CountryVisit[]
+  userVisits: UserVisit[]
   constructor() {
     let visitsInLastNDays = this.getVisits(this.portfolio.visitsPerDay, this.lastNDays)
     this.visits = [
@@ -37,7 +46,8 @@ export class HomeComponent implements OnInit {
     }
     this.visitsPerDay = this.visitsPerDay / visitsInLastNDays.length
     this.visitsPerCountry = this.getVisitsPerCountry(this.portfolio.visits)
-    console.log(this.visitsPerCountry)
+    this.userVisits = this.getUserVisits(this.portfolio.visits)
+    console.log(this.userVisits)
 
   }
 
@@ -99,6 +109,26 @@ export class HomeComponent implements OnInit {
       countryVisits.forEach((count: number, country: string) => {
         let cnVisit: CountryVisit = {country: country, count: count, icon: `flag-icon flag-icon-${country.toLowerCase()}`}
         rows.push(cnVisit)
+      })
+      return rows
+    }
+    return []
+  }
+  getUserVisits(visits: any):UserVisit[] {
+    if(visits){
+      let rows: UserVisit[] = []
+      for (const ip in visits) {
+        let userVisit: UserVisit = {
+          country: visits[ip]["country"],
+          count: visits[ip]["count"],
+          date: new Date(Date.parse(visits[ip]["date"])),
+          ip: visits[ip]["ip"],
+          icon: `flag-icon flag-icon-${visits[ip]["country"].toLowerCase()}`
+        }
+        rows.push(userVisit)
+      }
+      rows.sort((a, b) =>{
+        return b.date.getDate() - a.date.getDate()
       })
       return rows
     }

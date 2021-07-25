@@ -118,3 +118,30 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-hover table-striped table-bordered mb-5">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Country</th>
+                <th scope="col">IP</th>
+                <th scope="col">Last Visit</th>
+                <th scope="col">Visits</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userVisit of userVisits">
+                <th scope="row">
+                    <div class="align-box-row">
+                        <span class="flag-icon" [class] = "userVisit.icon"></span>&nbsp;
+                        <span>{{userVisit.country}}</span>
+                    </div>
+                </th>
+                <td>{{userVisit.ip}}</td>
+                <td>{{userVisit.date | date:'medium'}}</td>
+                <td>{{userVisit.count}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
