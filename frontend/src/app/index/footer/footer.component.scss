@@ -28,6 +28,28 @@ h1{
     flex-wrap: wrap;
     justify-content: left;
     width:150px;
+    div{
+        background-color: white;
+        border-radius: 100px;
+        color:black;
+        font-size:16px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:30px;
+        height:30px;
+        margin-right:auto;
+        margin-left: 0px;
+        box-sizing: border-box;
+        margin-bottom:10px;
+        transition: background-color 0.5s ease;
+    }
+    div:hover{
+        background-color: transparent;
+        color:white;
+        cursor: pointer;
+    }
 }
 .element{
     margin-top:30px;
@@ -39,33 +61,9 @@ h1{
     margin-left:auto;
     text-align: left;
 }
-fa-icon{
-    background-color: white;
-    border-radius: 100px;
-    color:black;
-    font-size:16px;
-    padding:6px;
-    margin-right:auto;
-    margin-left: 0px;
-    margin-bottom:10px;
-    transition: background-color 0.5s ease;
-}
-fa-icon:hover{
-    background-color: transparent;
-    color:white;
-    cursor: pointer;
-}
 a{
     text-decoration: none;
     color:inherit;
-}
-.facebook{
-    padding-right:9px;
-    padding-left:9px;
-}
-.instagram{
-    padding-right:7px;
-    padding-left:7px;
 }
 p{
     margin-top:15px;

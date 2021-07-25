@@ -30,7 +30,7 @@ const getOneProject = async (req, res, next) => {
 };
 
 const addProject = async (req, res, next) => {
-  let { name, description, tags, skills, imgs, date, link, github, portfolioId } = req.body
+  let { name, description, tags, skills, imgs, link, github, portfolioId } = req.body
 
   const portfolio = await Portfolio.findById(portfolioId)
 
@@ -40,7 +40,7 @@ const addProject = async (req, res, next) => {
   }
 
   const project = new Project({
-    name, description, tags, skills, imgs, date, link, github, portfolio
+    name, description, tags, skills, imgs, link, github, portfolio
   });
 
   await project.save();

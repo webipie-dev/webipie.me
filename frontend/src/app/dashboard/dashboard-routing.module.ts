@@ -18,6 +18,7 @@ import { HomeComponent } from "./home/home.component";
 import { EducationComponent } from "./education/education.component";
 import { AddEducationComponent } from "./education/add-education/add-education.component";
 import { DesignComponent } from "./design/design.component";
+import {AddVolunteerComponent} from "./experience/add-volunteer/add-volunteer.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
       {
         path: 'experience/addexperience',
         component: AddExperienceComponent
+      },
+      {
+        path: 'experience/addvolunteer',
+        component: AddVolunteerComponent
       },
       {
         path: 'projects',

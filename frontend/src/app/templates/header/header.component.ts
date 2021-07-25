@@ -1,6 +1,6 @@
-import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faAddressCard, faArrowLeft, faBars, faHome, faMoneyBill, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +8,9 @@ import { faAddressCard, faArrowLeft, faBars, faHome, faMoneyBill, faPhoneAlt } f
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  menu = faBars;
-  home = faHome;
-  aboutus = faAddressCard;
-  contactus = faPhoneAlt;
-  pricing = faMoneyBill;
-  leftarrow = faArrowLeft;
+  menuu = faBars;
+  leftarrow = faTimes;
+  rightArrow = faAngleRight;
   menuactive = false;
   scrolled = true;
   constructor(private router : Router) { }
