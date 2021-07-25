@@ -1,19 +1,25 @@
 
         <div class="p-4 m-3">
             <div class="heading-3 text-center m-3">Color Palettes</div>
-            <div class="row">
+            <div class="row align-items-center" *ngFor="let colorPalette of colorPalettes">
+                <div class="col-xl-1 col-md-1">
+                    <div class="form-check m-2 text-center"><input class="form-check-input"
+                        name="colorPalette"
+                        type="radio" checked></div>
+                </div>
+                
                 <div class="col-xl-6 col-md-6">
                     <div class="m-3">
                         <div class="heading-2 text-center m-2">Primary Color</div>
-                        <input [(colorPicker)]="color1" [style.background]="color1"
-                               class="form-control border-0"/>
+                        <div [style.background]="colorPalette[0]"
+                               class="form-control border-0"></div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-md-6">
+                <div class="col-xl-5 col-md-5">
                     <div class="m-3">
                         <div class="heading-32 text-center m-2">Secondary Color</div>
-                        <input [(colorPicker)]="color2" [style.background]="color2"
-                               class="form-control border-0"/>
+                        <div [style.background]="colorPalette[1]"
+                               class="form-control border-0"></div>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ export class GeneralComponent implements OnInit {
   color1 = '#50aeaa';
   color2 = '#000000';
   toggle=true;
+  colorPalettes=[['#50aeaa','#000000'],["#79ebfe","#e184fe"]];
   private _presetFonts = ['Arial', 'Times', 'Courier', 'Lato', 'Open Sans', 'Roboto Slab','Montserrat'];
   public font: FontInterface = new Font({
     family: 'Roboto',
