@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from '../_shared/services/portfolio.service';
 import { ThemeOptions } from '../_shared/theme-options';
 
 @Component({
@@ -8,9 +9,17 @@ import { ThemeOptions } from '../_shared/theme-options';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public globals: ThemeOptions) { }
+  constructor(
+    public globals: ThemeOptions,
+    private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
+    const id = localStorage.getItem('portfolioId') || "";
+    this.portfolioService.getById(id).subscribe(
+      result => {
+        localStorage.setItem("portfolio", JSON.stringify(result));
+      }
+    );
   }
 
 }
