@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TestimonialService} from "../../../_shared/services/testimonial.service";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import {PortfolioModel} from "../../../_shared/models/portfolio.model";
 
 @Component({
   selector: 'app-add-testimonial',
@@ -84,10 +86,8 @@ export class AddTestimonialComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('I`\'ve been called');
-    console.log(this.testimonialForm.value);
-    this.testimonialService.addOne(this.testimonialForm.value).subscribe(result => {
-      console.log(result)
+    this.testimonialService.addOne(this.testimonialForm.value).subscribe( (result) => {
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
     });
   }
 }

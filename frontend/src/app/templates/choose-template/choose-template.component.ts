@@ -59,7 +59,7 @@ export class ChooseTemplateComponent implements OnInit {
     }
   }
   select(i:number,value:boolean){
-    
+
     for(let j = 0;j<this.selected.length;j++){
       this.selected[j] = false;
     }
@@ -73,7 +73,7 @@ export class ChooseTemplateComponent implements OnInit {
     }else{
       this.selectedTemplate = undefined;
     }
-    
+
 
   }
 
@@ -89,7 +89,7 @@ export class ChooseTemplateComponent implements OnInit {
       }else{
         this.portfolioService.addOne({templateId: this.selectedTemplate.id}).subscribe(
           result => {
-            localStorage.setItem('portfolioId', result['id']);
+            localStorage.setItem('portfolioId', result.elementAdded.id);
             this.router.navigate(['dashboard']);
           }
         );
@@ -102,6 +102,6 @@ export class ChooseTemplateComponent implements OnInit {
         confirmButtonText: 'Cool'
       })
     }
-    
+
   }
 }

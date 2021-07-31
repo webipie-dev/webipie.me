@@ -1,4 +1,4 @@
-const Achievement = require('../models/achievement');
+const {Achievement} = require('../models/achievement');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
 
@@ -30,21 +30,22 @@ const getOneAchievement = async (req, res, next) => {
 };
 
 const addAchievement = async (req, res, next) => {
-  let { description, title, portfolioId } = req.body
+  let { description, title, portfolioId, date, image } = req.body
+  if(date) date = new Date(date);
 
-  const portfolio = await Portfolio.findById(portfolioId)
-
+  let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
     return;
   }
 
   const achievement = new Achievement({
-    description, title, portfolio
+    description, title, "portfolio": portfolioId, date, image
   });
 
   await achievement.save();
-  res.status(201).send(achievement);
+  portfolio = await Portfolio.findOneAndUpdate({"_id":portfolioId}, { $push: { achievements: achievement } }, {new: true})
+  res.status(201).send({achievement, portfolio});
 
 };
 
@@ -52,7 +53,7 @@ const editOneAchievement = async (req, res, next) => {
 
   // separating the id
   const { id } = req.params;
-  const achievement = await Achievement.findById(id)
+  let achievement = await Achievement.findById(id)
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
@@ -62,6 +63,7 @@ const editOneAchievement = async (req, res, next) => {
     return;
   }
 
+  const edits = {};
   for(let key in req.body) {
     edits[key] = req.body[key];
   }
@@ -80,18 +82,36 @@ const editOneAchievement = async (req, res, next) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  res.status(200).send(achievementEdited);
+  achievement = await Achievement.findById(id);  
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": achievement.portfolio}, 
+    { $set: { "achievements.$[elem]" : achievement } } , 
+    { arrayFilters: [ { "elem._id": achievement._id } ] , new: true}
+  );  
+  res.status(200).send({achievementEdited, portfolio});
 };
 
 
 const deleteManyAchievements = async (req, res, next) => {
   //get achievements ids
-  const { ids } = req.body;
+  const { ids, portfolioId } = req.body;
 
-  const deletedAchievements = await Achievemnent.deleteMany({_id: {$in: ids}})
+  const deletedAchievements = await Achievement.deleteMany({_id: {$in: ids}})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": portfolioId}, 
+    {
+      $pull: { 
+        achievements: { 
+          _id: { $in: ids }
+        }
+      }
+    },  
+    {new: true}
+  );
 
   if (deletedAchievements) {
     if (deletedAchievements.deletedCount === 0) {
@@ -103,7 +123,7 @@ const deleteManyAchievements = async (req, res, next) => {
     }
   }
 
-  res.status(200).send(deletedAchievements);
+  res.status(200).send({deletedAchievements, portfolio});
 };
 
 const deleteAllAchievements = async (req, res, next) => {

@@ -32,7 +32,7 @@ const getOneTestimonial = async (req, res, next) => {
 const addTestimonial = async (req, res, next) => {
   let { name, position, photo, description, portfolioId } = req.body
 
-  const portfolio = await Portfolio.findById(portfolioId)
+  let portfolio = await Portfolio.findById(portfolioId)
 
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
@@ -40,11 +40,12 @@ const addTestimonial = async (req, res, next) => {
   }
 
   const testimonial = new Testimonial({
-    name, position, photo, description, portfolio
+    name, position, photo, description, "portfolio": portfolioId
   });
 
   await testimonial.save();
-  res.status(201).send(testimonial);
+  portfolio = await Portfolio.findOneAndUpdate({"_id":portfolioId}, { $push: { testimonials: testimonial } }, {new: true})
+  res.status(201).send({testimonial, portfolio});
 
 };
 
@@ -52,7 +53,7 @@ const editOneTestimonial = async (req, res, next) => {
 
   // separating the id
   const { id } = req.params;
-  const testimonial = await Testimonial.findById(id)
+  let testimonial = await Testimonial.findById(id)
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
@@ -62,6 +63,7 @@ const editOneTestimonial = async (req, res, next) => {
     return;
   }
 
+  const edits = {};
   for(let key in req.body) {
     edits[key] = req.body[key];
   }
@@ -80,18 +82,36 @@ const editOneTestimonial = async (req, res, next) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  res.status(200).send(testimonialEdited);
+  testimonial = await Testimonial.findById(id);
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": testimonial.portfolio}, 
+    { $set: { "testimonials.$[elem]" : testimonial } } , 
+    { arrayFilters: [ { "elem._id": testimonial._id } ] , new: true}
+  );
+  res.status(200).send({testimonialEdited, portfolio});
 };
 
 
 const deleteManyTestimonials = async (req, res, next) => {
   //get testimonials ids
-  const { ids } = req.body;
+  const { ids, portfolioId } = req.body;
 
-  const deletedTestimonials = await Achievemnent.deleteMany({_id: {$in: ids}})
+  const deletedTestimonials = await Testimonial.deleteMany({_id: {$in: ids}})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": portfolioId}, 
+    {
+      $pull: { 
+        testimonials: { 
+          _id: { $in: ids }
+        }
+      }
+    },  
+    {new: true}
+  );
 
   if (deletedTestimonials) {
     if (deletedTestimonials.deletedCount === 0) {
@@ -103,7 +123,7 @@ const deleteManyTestimonials = async (req, res, next) => {
     }
   }
 
-  res.status(200).send(deletedTestimonials);
+  res.status(200).send({deletedTestimonials, portfolio});
 };
 
 const deleteAllTestimonials = async (req, res, next) => {
