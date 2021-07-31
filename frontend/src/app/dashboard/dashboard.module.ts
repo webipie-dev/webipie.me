@@ -24,24 +24,6 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { NgxFlagIconCssModule } from 'ngx-flag-icon-css';
-
-const icons = {
-   Calendar,
-   Activity,
-   Bell,
-   Settings,
-   Search,
-   Grid,
-   Users,
-   LifeBuoy,
-   CloudDrizzle,
-   Coffee,
-   Box,
-   Briefcase,
-   Layers,
-   Printer
-};
-
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
@@ -57,7 +39,6 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule } from 'ngx-bootstrap/alert';
-
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -82,11 +63,10 @@ import { AddAchievementComponent } from './achievements/add-achievement/add-achi
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AddTestimonialComponent } from './testimonials/add-testimonial/add-testimonial.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component'; 
-
+import { HomeComponent } from './home/home.component';
 import { EducationComponent } from './education/education.component';
-import { AddEducationComponent } from './education/add-education/add-education.component'; 
-import { DesignComponent } from './design/design.component'; 
+import { AddEducationComponent } from './education/add-education/add-education.component';
+import { DesignComponent } from './design/design.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FontPickerModule } from 'ngx-font-picker';
 import { FONT_PICKER_CONFIG } from 'ngx-font-picker';
@@ -97,6 +77,7 @@ import { SkillsSectionComponent } from './design/skills-section/skills-section.c
 import { SkillsComponent } from './skills/skills.component';
 import { AddVolunteerComponent } from './experience/add-volunteer/add-volunteer.component';
 import { TestimonialsSectionComponent } from './design/testimonials-section/testimonials-section.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -105,9 +86,25 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
   apiKey: 'AIzaSyBhWqjEHa0rSVAZs-bFDZoT9tkgKUg2sx0'
 };
+
+const icons = {
+  Calendar,
+  Activity,
+  Bell,
+  Settings,
+  Search,
+  Grid,
+  Users,
+  LifeBuoy,
+  CloudDrizzle,
+  Coffee,
+  Box,
+  Briefcase,
+  Layers,
+  Printer
+};
 @NgModule({
   declarations: [
-    
     DashboardComponent,
     SidebarComponent,
     SidebarCollapsedComponent,
@@ -180,6 +177,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ColorPickerModule,
     FontPickerModule,
     AutosizeModule,
+    ReactiveFormsModule,
+    FormsModule,
     DashboardRoutingModule
   ],
   providers: [

@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {TestimonialService} from "../../../_shared/services/testimonial.service";
 
 @Component({
   selector: 'app-add-testimonial',
@@ -7,8 +9,8 @@ import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'n
   styleUrls: ['./add-testimonial.component.scss']
 })
 export class AddTestimonialComponent implements OnInit {
-  
-  constructor() {
+
+  constructor(private formBuilder: FormBuilder, private testimonialService: TestimonialService) {
   }
 
   public type: string = 'component';
@@ -26,14 +28,22 @@ export class AddTestimonialComponent implements OnInit {
   @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
 
+  testimonialForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    position: ['', Validators.required],
+    description: ['', Validators.required],
+    photo: ['']
+  });
+
+  ngOnInit(): void {
+  }
+
   public toggleType(): void {
     this.type = (this.type === 'component') ? 'directive' : 'component';
-
   }
 
   public toggleDisabled(): void {
     this.disabled = !this.disabled;
-
   }
 
   public toggleAutoReset(): void {
@@ -57,11 +67,10 @@ export class AddTestimonialComponent implements OnInit {
     } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
       this.componentRef.directiveRef.reset();
     }
-
-
   }
 
   public onUploadInit(): void {
+    document.getElementById('hiddenImageInput')?.click();
   }
 
   public onUploadError(): void {
@@ -69,7 +78,16 @@ export class AddTestimonialComponent implements OnInit {
 
   public onUploadSuccess(): void {
   }
-  ngOnInit(): void {
+
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files;
   }
 
+  onSubmit() {
+    console.log('I`\'ve been called');
+    console.log(this.testimonialForm.value);
+    this.testimonialService.addOne(this.testimonialForm.value).subscribe(result => {
+      console.log(result)
+    });
+  }
 }

@@ -50,6 +50,9 @@ export class GenericService<T extends GenericModel> {
     const httpOptions = {
       headers: httpHeaders
     };
+    if(localStorage.getItem('portfolioId')) {
+      body.portfolioId = localStorage.getItem('portfolioId');
+    }
     return this.http.post(this.getUrl() + this.suffix, body, httpOptions) as Observable<T>;
   }
 

@@ -1,4 +1,4 @@
-const Testimonial = require('../models/testimonial');
+const {Testimonial} = require('../models/testimonial');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
 
@@ -30,7 +30,7 @@ const getOneTestimonial = async (req, res, next) => {
 };
 
 const addTestimonial = async (req, res, next) => {
-  let { name, poistion, photo, description, portfolioId } = req.body
+  let { name, position, photo, description, portfolioId } = req.body
 
   const portfolio = await Portfolio.findById(portfolioId)
 
@@ -40,7 +40,7 @@ const addTestimonial = async (req, res, next) => {
   }
 
   const testimonial = new Testimonial({
-    name, poistion, photo, description, portfolio
+    name, position, photo, description, portfolio
   });
 
   await testimonial.save();
