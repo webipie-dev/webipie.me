@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 const {templateSchema} = require('./template');
 const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
+const {workExperienceSchema} = require('./work_experience');
+const {volunteeringExperienceSchema} = require('./volunteering_experience');
 
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},
@@ -26,8 +28,8 @@ const portfolioSchema = new Schema({
     level:{type: Number, required: false, min: 0, max: 10}
   }],
   softSkills: {type: [Schema.Types.ObjectID], ref: "SoftSkill"},
-  workExperiences: {type: [Schema.Types.ObjectID], ref: "WorkExperience"},
-  volunteeringExperiences: {type: [Schema.Types.ObjectID], ref: "VolunteeringExperience"},
+  workExperiences: {type: [workExperienceSchema]},
+  volunteeringExperiences: {type: [volunteeringExperienceSchema]},
   visits: {
     type: Map,
     of: {ip: String, date: Date, country: String, count: Number}

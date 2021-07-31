@@ -30,9 +30,11 @@ const getOneWorkExperience = async (req, res, next) => {
 };
 
 const addWorkExperience = async (req, res, next) => {
-  let { name, description, company, position, tags, skills, beginDate, endDate, city, portfolioId } = req.body
+  let { title, description, company, position, skills, imgs, beginDate, endDate, city, portfolioId } = req.body;
+  if(beginDate) beginDate = new Date(beginDate);
+  if (endDate) endDate =  new Date(endDate);
 
-  const portfolio = await Portfolio.findById(portfolioId)
+  let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
     return;
@@ -43,11 +45,12 @@ const addWorkExperience = async (req, res, next) => {
   }
 
   const workExperience = new WorkExperience({
-    name, description, company, position, tags, skills, imgs, beginDate, endDate, city, portfolio
+    title, description, company, position, skills, imgs, beginDate, endDate, city, "portfolio": portfolioId
   });
 
   await workExperience.save();
-  res.status(201).send(workExperience);
+  portfolio = await Portfolio.findOneAndUpdate({"_id":portfolioId}, { $push: { workExperiences: workExperience } }, {new: true})
+  res.status(201).send({workExperience, portfolio});
 
 };
 
@@ -55,10 +58,10 @@ const editOneWorkExperience = async (req, res, next) => {
 
   // separating the id
   const { id } = req.params;
-  const workExperience = await WorkExperience.findById(id)
+  let workExperience = await WorkExperience.findById(id)
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
-    });
+  });
 
   if (!workExperience) {
     next(ApiError.NotFound('Work Experience Not Found'));
@@ -83,37 +86,61 @@ const editOneWorkExperience = async (req, res, next) => {
         "filter": { _id: id},
         "update":{ $set: edits }
       }
-    })
-    await bulkQueries.push({
-      updateOne: {
-        "filter": { _id: id},
-        "update": { $addToSet: {imgs: {$each: imgs} } }
-      }
-    })
-    await bulkQueries.push({
-    updateOne: {
-      "filter": { _id: id},
-      "update": { $pull : {imgs: {$in: deletedImages}}}
+    });
+    if(imgs){
+      await bulkQueries.push({
+        updateOne: {
+          "filter": { _id: id},
+          "update": { $addToSet: {imgs: {$each: imgs} } }
+        }
+      })
     }
-  })
+    if(deletedImages){
+      await bulkQueries.push({
+        updateOne: {
+          "filter": { _id: id},
+          "update": { $pull : {imgs: {$in: deletedImages}}}
+        }
+      })
+    } 
+
 
   const workExperienceEdited = await WorkExperience.bulkWrite(bulkQueries, {ordered: false})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+  
+  workExperience = await WorkExperience.findById(id);  
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": workExperience.portfolio}, 
+    { $set: { "workExperiences.$[elem]" : workExperience } } , 
+    { arrayFilters: [ { "elem._id": workExperience._id } ] , new: true}
+  );
 
-  res.status(200).send(workExperienceEdited);
+  res.status(200).send({workExperienceEdited, portfolio});
 };
 
 
 const deleteManyWorkExperiences = async (req, res, next) => {
   //get work experiences ids
-  const { ids } = req.body;
+  const { ids, portfolioId } = req.body;
 
   const deletedWorkExperiences = await WorkExperience.deleteMany({_id: {$in: ids}})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+  
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": portfolioId}, 
+    {
+      $pull: { 
+        workExperiences: { 
+          _id: { $in: ids }
+        }
+      }
+    },  
+    {new: true}
+  );
 
   if (deletedWorkExperiences) {
     if (deletedWorkExperiences.deletedCount === 0) {
@@ -125,7 +152,7 @@ const deleteManyWorkExperiences = async (req, res, next) => {
     }
   }
 
-  res.status(200).send(deletedWorkExperiences);
+  res.status(200).send({deletedWorkExperiences, portfolio});
 };
 
 const deleteAllWorkExperiences = async (req, res, next) => {

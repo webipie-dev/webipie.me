@@ -7,10 +7,9 @@ const volunteeringExperienceSchema = Schema({
     position: {type: String, required: false},
     organisation: {type: String, required: true},
     imgs: {type: [String], required: false},
-    tags: {type: [String], required: false},
     skills: {type: [String], required: false},
     beginDate: {type: Date, required: true},
-    endDate: {type: Date, required: true},
+    endDate: {type: Date, required: false},
     city: {type: String, required: false},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
   },
@@ -26,5 +25,5 @@ const volunteeringExperienceSchema = Schema({
 );
 
 
-module.exports.volunteeringExperienceSchem = volunteeringExperienceSchema;
+module.exports.volunteeringExperienceSchema = volunteeringExperienceSchema;
 module.exports.VolunteeringExperience = mongoose.model('VolunteeringExperience', volunteeringExperienceSchema);
