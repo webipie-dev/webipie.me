@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WorkExperienceModel} from "../../_shared/models/work-experience.model";
 
 @Component({
   selector: 'app-experience',
@@ -9,7 +10,10 @@ export class ExperienceComponent implements OnInit {
 
   constructor() { }
 
+  workExperience?: [WorkExperienceModel];
+
   ngOnInit(): void {
+    this.workExperience = JSON.parse(localStorage.getItem('portfolio')!).workExperiences
   }
 
 }

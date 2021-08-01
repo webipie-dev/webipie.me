@@ -8,47 +8,38 @@
                 <thead>
                 <tr>
                     <th class="text-uppercase bg-secondary">Profile</th>
-                    <th class="text-uppercase bg-secondary">Rating</th>
                     <th class="text-uppercase bg-secondary" style="width:45%">Description</th>
                     <th class="text-uppercase bg-secondary text-center">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr *ngFor="let testimonial of testimonials">
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="avatar-icon-wrapper avatar-icon-sm mr-3">
                                 <div class="avatar-icon"><img alt="..." src="assets/johndoe.jpeg"/></div>
                             </div>
                             <div>
-                                Brody Dixon
-                                <span class="text-black-50 font-size-sm d-block">Engineer</span>
+                              {{testimonial.name}}
+                                <span class="text-black-50 font-size-sm d-block">{{testimonial.position}}</span>
                             </div>
                         </div>
                     </td>
-                    <td class="font-weight-bold">
-                        Very Good
-                    </td>
                     <td>
-                        Description
+                      {{testimonial.description}}
                     </td>
                     <td class="text-center">
-                        <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="View Details">
+                      <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+                        <span class="btn-wrapper--icon">
+                            <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+                        </span>
+                      </button>
+                      <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                              tooltip="Remove">
                             <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'plus-circle']" class="font-size-lg"></fa-icon>
+                                <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                             </span>
-                        </button>
-                        <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="modify">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'cog']" class="font-size-lg"></fa-icon>
-                            </span>
-                        </button>
-                        <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                            tooltip="Remove">
-                                <span class="btn-wrapper--icon">
-                                    <fa-icon [icon]="['far', 'times']" class="font-size-lg"></fa-icon>
-                                </span>
-                        </button>
+                      </button>
                     </td>
                 </tr>
                 </tbody>
@@ -65,4 +56,3 @@
         </div>
     </div>
 </div>
-        

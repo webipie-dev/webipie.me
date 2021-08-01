@@ -3,33 +3,48 @@
     <div class="row col-xl-7 col-md-12">
         <div class="card card-box col-xl-12 col-md-12 mb-5">
             <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Testimonial</h5>
-                <form>
+                <form [formGroup]="testimonialForm" (ngSubmit)="onSubmit()">
                     <div class="position-relative form-group"><label for="exampleEmail">First & Last Name</label>
                       <input class="form-control"
                              id="exampleEmail"
                              name="name"
                              placeholder="John Doe"
-                             type="text">
+                             formControlName="name"
+                             type="text"
+                      >
                     </div>
                     <div class="position-relative form-group"><label for="examplePassword">Position</label>
                       <input class="form-control"
                              id="examplePassword"
-                             name="password"
+                             name="postion"
                              placeholder="Developer"
-                            type="text">
+                             type="text"
+                             formControlName="position"
+                      >
                     </div>
                     <div class="position-relative form-group"><label for="exampleText">Description</label>
                       <textarea class="form-control"
                                 id="exampleText"
-                                name="text">
+                                name="text"
+                                formControlName="description"
+                      >
                       </textarea>
                     </div>
 
                     <label>Picture</label>
-                    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></dropzone>
+                    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'" (click)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()" formControlName="photo"></dropzone>
                     <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+                    <input
+                      (change)="onImagePicked($event)"
+                      id="hiddenImageInput"
+                      accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
+                      style="display: none"
+                      multiple
+                      name="imgs" type="file"
+                      formControlName="photo"
+                    />
                     <div class="divider my-4"></div>
-                    <button class="mt-1 btn btn-slack">Add Testimonial</button>
+                    <button class="mt-1 btn btn-slack" [disabled]="!testimonialForm.valid">Add Testimonial</button>
                 </form>
             </div>
         </div>

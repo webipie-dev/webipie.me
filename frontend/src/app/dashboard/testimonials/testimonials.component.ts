@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TestimonialModel} from "../../_shared/models/testimonial.model";
 
 @Component({
   selector: 'app-testimonials',
@@ -9,7 +10,10 @@ export class TestimonialsComponent implements OnInit {
 
   constructor() { }
 
+  testimonials?: [TestimonialModel];
+
   ngOnInit(): void {
+    this.testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials;
   }
 
 }

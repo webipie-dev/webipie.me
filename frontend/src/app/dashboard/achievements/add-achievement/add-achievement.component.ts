@@ -1,5 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {FormBuilder, Validators} from "@angular/forms";
+import {AchievementService} from "../../../_shared/services/achievement.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-achievement',
@@ -8,10 +11,15 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
 })
 export class AddAchievementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private achievementService: AchievementService,
+              private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-  }
+  achievementForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    date: ['', Validators.required],
+    image: ['']
+  });
 
   public type: string = 'component';
 
@@ -27,6 +35,9 @@ export class AddAchievementComponent implements OnInit {
 
   @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+
+  ngOnInit(): void {
+  }
 
   public toggleType(): void {
     this.type = (this.type === 'component') ? 'directive' : 'component';
@@ -59,16 +70,22 @@ export class AddAchievementComponent implements OnInit {
     } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
       this.componentRef.directiveRef.reset();
     }
-
-
   }
 
   public onUploadInit(): void {
+    document.getElementById('hiddenImageInput')?.click();
   }
 
   public onUploadError(): void {
   }
 
   public onUploadSuccess(): void {
+  }
+
+  onSubmit() {
+    this.achievementService.addOne(this.achievementForm.value).subscribe((result) => {
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
+    });
   }
 }
