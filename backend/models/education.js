@@ -5,7 +5,7 @@ const educationSchema = Schema({
     title: {type: String, required: true},
     level: {type: String, required: false},
     beginDate: {type: Date, required: true},
-    endDate: {type: Date, required: true},
+    endDate: {type: Date, required: false},
     city: {type: String, required: false},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
   
@@ -22,4 +22,5 @@ const educationSchema = Schema({
 );
     
 
+module.exports.educationSchema = educationSchema;
 module.exports.Education = mongoose.model('Education', educationSchema);

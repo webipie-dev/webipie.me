@@ -5,6 +5,8 @@ const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
 const {workExperienceSchema} = require('./work_experience');
 const {volunteeringExperienceSchema} = require('./volunteering_experience');
+const {projectSchema} = require('./project');
+const {educationSchema} = require('./education');
 
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},
@@ -19,8 +21,8 @@ const portfolioSchema = new Schema({
   CV: {type: String, required: false, unique: true},
   creationDate: {type: Date, default: Date.now()},
   template: templateSchema,
-  projects: {type: [Schema.Types.ObjectID], ref: "Porject"},
-  education: {type: [Schema.Types.ObjectID], ref: "Education"},
+  projects: {type: [projectSchema]},
+  education: {type: [educationSchema]},
   achievements: {type: [achievementSchema]},
   testimonials: {type: [testimonialSchema]},
   technicalSkills: [{
