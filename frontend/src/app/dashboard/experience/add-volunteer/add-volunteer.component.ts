@@ -3,6 +3,8 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
 import {VolunteeringExperienceService} from "../../../_shared/services/volunteering-experience.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import {VolunteeringExperienceModel} from "../../../_shared/models/volunteering-experience.model";
 
 @Component({
   selector: 'app-add-volunteer',
@@ -27,6 +29,10 @@ export class AddVolunteerComponent implements OnInit {
     cancelReset: null
   };
 
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  volunteerExperience: VolunteeringExperienceModel = {} as VolunteeringExperienceModel;
+
   @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
@@ -43,6 +49,16 @@ export class AddVolunteerComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['volunteerId']) {
+        this.edit = true;
+        this.fillEditForm(params['volunteerId']);
+      }
+    });
+  }
+
+  public fillEditForm(volunteerId: string): void {
+    this.volunteerExperience = (JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences.filter((volunteer: VolunteeringExperienceModel) => volunteer.id === volunteerId ))[0];
   }
 
   public toggleType(): void {
@@ -91,10 +107,17 @@ export class AddVolunteerComponent implements OnInit {
   }
 
   onSubmit() {
-    this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe((result) => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
-    });
+    if(!this.edit) {
+      this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.volunteeringExperienceService.edit(this.volunteerExperience.id, this.volunteeringExperienceForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
   }
 
 }

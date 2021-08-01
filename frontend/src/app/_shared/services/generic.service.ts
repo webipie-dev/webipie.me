@@ -44,21 +44,17 @@ export class GenericService<T extends GenericModel> {
   }
 
   public addOne(body: any): Observable<{[index: string]: T | PortfolioModel}> {
-    let httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')!
-    });
-    const httpOptions = {
-      headers: httpHeaders
-    };
     if(localStorage.getItem('portfolioId')) {
       body.portfolioId = localStorage.getItem('portfolioId');
     }
-    return this.http.post(this.getUrl() + this.suffix, body, httpOptions) as Observable<{[index: string]: T | PortfolioModel}>;
+    return this.http.post(this.getUrl() + this.suffix, body, this.addJWT()) as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
   public edit(id: string, body: any): Observable<{[index: string]: T | PortfolioModel}> {
-    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body) as Observable<{[index: string]: T | PortfolioModel}>;
+    if(localStorage.getItem('portfolioId')) {
+      body.portfolioId = localStorage.getItem('portfolioId');
+    }
+    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body, this.addJWT()) as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
   public deleteMany(body: {ids: string[]}): Observable<T> {
@@ -67,5 +63,16 @@ export class GenericService<T extends GenericModel> {
 
   public deleteAll(): Observable<T> {
     return this.http.delete(this.getUrl() + this.suffix + '/delete') as Observable<T>;
+  }
+
+  private addJWT() {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return httpOptions
   }
 }

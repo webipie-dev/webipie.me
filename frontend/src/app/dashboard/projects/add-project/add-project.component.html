@@ -1,7 +1,12 @@
 <div class="row col-xl-12 col-md-12 justify-content-center">
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
-      <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Project</h5>
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold font-size-lg mb-4">
+          <span *ngIf="!edit">Add</span>
+          <span *ngIf="edit">Edit</span>
+          Project
+        </h5>
         <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
           <div class="position-relative form-group"><label for="exampleEmail">Title</label>
             <input class="form-control"
@@ -10,6 +15,7 @@
                    placeholder="Title"
                    type="text"
                    formControlName="name"
+                   [(ngModel)]="project.name"
             >
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
@@ -17,6 +23,7 @@
                       id="exampleText"
                       name="text"
                       formControlName="description"
+                      [(ngModel)]="project.description"
             ></textarea>
           </div>
           <div class="position-relative form-group">
@@ -45,6 +52,7 @@
                    placeholder="Title"
                    type="text"
                    formControlName="skills"
+                   [(ngModel)]="project.skills"
             >
           </div>
           <div class="position-relative form-group"><label for="exampleEmail">Link</label>
@@ -54,6 +62,7 @@
                    placeholder="Link"
                    type="text"
                    formControlName="link"
+                   [(ngModel)]="project.link"
             >
           </div>
           <div class="position-relative form-group"><label for="exampleEmail">Github Repo</label>
@@ -63,10 +72,15 @@
                    placeholder="Github Repo"
                    type="text"
                    formControlName="github"
+                   [(ngModel)]="project.github"
             >
           </div>
           <div class="divider my-4"></div>
-          <button class="mt-1 btn btn-slack" [disabled]="!projectForm.valid">Add Project</button>
+          <button class="mt-1 btn btn-slack" [disabled]="!projectForm.valid">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Project
+          </button>
         </form>
       </div>
     </div>

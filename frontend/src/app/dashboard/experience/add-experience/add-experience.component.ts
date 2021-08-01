@@ -3,6 +3,8 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
 import {WorkExperienceService} from "../../../_shared/services/work-experience.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import {WorkExperienceModel} from "../../../_shared/models/work-experience.model";
 
 @Component({
   selector: 'app-add-experience',
@@ -34,6 +36,11 @@ export class AddExperienceComponent implements OnInit {
     cancelReset: null
   };
 
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  workExperience: WorkExperienceModel = {} as WorkExperienceModel;
+
+
   @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
@@ -50,6 +57,16 @@ export class AddExperienceComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['workId']) {
+        this.edit = true;
+        this.fillEditForm(params['workId']);
+      }
+    });
+  }
+
+  public fillEditForm(workId: string): void {
+    this.workExperience = (JSON.parse(localStorage.getItem('portfolio')!).workExperiences.filter((workExperience: WorkExperienceModel) => workExperience.id === workId ))[0];
   }
 
   public toggleType(): void {
@@ -98,11 +115,17 @@ export class AddExperienceComponent implements OnInit {
   }
 
   onSubmit() {
-    this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
-      console.log('got here')
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
-    });
+    if(!this.edit) {
+      this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.workExperienceService.edit(this.workExperience.id, this.workExperienceForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
   }
 
 }

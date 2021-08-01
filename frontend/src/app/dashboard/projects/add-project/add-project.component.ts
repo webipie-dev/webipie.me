@@ -3,6 +3,8 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from 'ngx
 import {FormBuilder, Validators} from "@angular/forms";
 import {ProjectService} from "../../../_shared/services/project.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ProjectModel} from "../../../_shared/models/project.model";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 
 @Component({
   selector: 'app-add-project',
@@ -33,6 +35,9 @@ export class AddProjectComponent implements OnInit {
     errorReset: null,
     cancelReset: null
   };
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  project: ProjectModel = {} as ProjectModel;
 
   @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
@@ -47,6 +52,16 @@ export class AddProjectComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['projectId']) {
+        this.edit = true;
+        this.fillEditForm(params['projectId']);
+      }
+    });
+  }
+
+  public fillEditForm(projectId: string): void {
+    this.project = (JSON.parse(localStorage.getItem('portfolio')!).projects.filter((project: ProjectModel) => project.id === projectId))[0];
   }
 
   public toggleType(): void {
@@ -92,9 +107,16 @@ export class AddProjectComponent implements OnInit {
   }
 
   onSubmit() {
-    this.projectService.addOne(this.projectForm.value).subscribe((result) => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
-    });
+    if(!this.edit) {
+      this.projectService.addOne(this.projectForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.projectService.edit(this.project.id, this.projectForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
   }
 }
