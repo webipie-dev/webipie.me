@@ -1,5 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {VolunteeringExperienceService} from "../../../_shared/services/volunteering-experience.service";
+import {FormBuilder, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-volunteer',
@@ -7,6 +10,9 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
   styleUrls: ['./add-volunteer.component.scss']
 })
 export class AddVolunteerComponent implements OnInit {
+
+  constructor(private formBuilder: FormBuilder, private volunteeringExperienceService: VolunteeringExperienceService,
+              private router: Router, private route: ActivatedRoute) {}
 
   public type: string = 'component';
 
@@ -23,7 +29,18 @@ export class AddVolunteerComponent implements OnInit {
   @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
 
-  constructor() {}
+  volunteeringExperienceForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    organisation: ['', Validators.required],
+    position: [''],
+    imgs: [''],
+    skills: [''],
+    beginDate: ['', Validators.required],
+    endDate: [''],
+    city: ['']
+  });
+
   ngOnInit(): void {
   }
 
@@ -63,6 +80,7 @@ export class AddVolunteerComponent implements OnInit {
   }
 
   public onUploadInit(): void {
+    document.getElementById('hiddenImageInput')?.click();
   }
 
   public onUploadError(): void {
@@ -71,5 +89,11 @@ export class AddVolunteerComponent implements OnInit {
   public onUploadSuccess(): void {
   }
 
+  onSubmit() {
+    this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe( (result) => {
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
+    });
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WorkExperienceModel} from "../../_shared/models/work-experience.model";
+import {VolunteeringExperienceModel} from "../../_shared/models/volunteering-experience.model";
 
 @Component({
   selector: 'app-experience',
@@ -10,10 +11,12 @@ export class ExperienceComponent implements OnInit {
 
   constructor() { }
 
-  workExperience?: [WorkExperienceModel];
+  workExperiences?: [WorkExperienceModel];
+  volunteeringExperiences?: [VolunteeringExperienceModel];
 
   ngOnInit(): void {
-    this.workExperience = JSON.parse(localStorage.getItem('portfolio')!).workExperiences
+    this.workExperiences = JSON.parse(localStorage.getItem('portfolio')!).workExperiences;
+    this.volunteeringExperiences = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences;
   }
 
 }

@@ -18,9 +18,10 @@
             </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let work of workExperience">
+              <tr *ngFor="let work of workExperiences">
                 <td>
-                    <div><a [routerLink]="" class="font-weight-bold text-black" title="...">Company Name</a><span class="text-black-50 d-block">Senior Consultant</span></div>
+                    <div><a [routerLink]="" class="font-weight-bold text-black" title="...">Company Name</a>
+                      <span class="text-black-50 d-block">{{work.position}}</span></div>
                 </td>
                 <td class="text-center">
                     <span class="font-weight-bold">{{ work.beginDate | date }}</span>
@@ -90,18 +91,19 @@
             </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let volunteering of volunteeringExperiences">
                 <td>
-                    <div><a [routerLink]="" class="font-weight-bold text-black" title="...">Company Name</a><span class="text-black-50 d-block">Senior Consultant</span></div>
+                    <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{volunteering.organisation}}</a>
+                      <span class="text-black-50 d-block">{{volunteering.position}}</span></div>
                 </td>
                 <td class="text-center">
-                    <span class="font-weight-bold">10 Mai 2020</span>
+                    <span class="font-weight-bold">{{volunteering.beginDate | date }}</span>
                 </td>
                 <td class="text-center">
-                    <span class="font-weight-bold">Present</span>
+                    <span class="font-weight-bold">{{volunteering.endDate | date }}</span>
                 </td>
                 <td class="text-left">
-                    <span class="font-weight-regular">Description</span>
+                    <span class="font-weight-regular">{{volunteering.description}}</span>
                 </td>
                 <td class="text-right">
                     <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
