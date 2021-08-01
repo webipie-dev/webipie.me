@@ -43,7 +43,7 @@ export class GenericService<T extends GenericModel> {
     return this.http.get(this.getUrl() + this.suffix + '/many') as Observable<[T]>;
   }
 
-  public addOne(body: any): Observable<{elementAdded: T, portfolio?: PortfolioModel}> {
+  public addOne(body: any): Observable<{[index: string]: T | PortfolioModel}> {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')!
@@ -54,11 +54,11 @@ export class GenericService<T extends GenericModel> {
     if(localStorage.getItem('portfolioId')) {
       body.portfolioId = localStorage.getItem('portfolioId');
     }
-    return this.http.post(this.getUrl() + this.suffix, body, httpOptions) as Observable<{elementAdded: T, portfolio?: PortfolioModel}>;
+    return this.http.post(this.getUrl() + this.suffix, body, httpOptions) as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
-  public edit(id: string, body: any): Observable<{result: T, portfolio?: PortfolioModel}> {
-    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body) as Observable<{result: T, portfolio?: PortfolioModel}>;
+  public edit(id: string, body: any): Observable<{[index: string]: T | PortfolioModel}> {
+    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body) as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
   public deleteMany(body: {ids: string[]}): Observable<T> {

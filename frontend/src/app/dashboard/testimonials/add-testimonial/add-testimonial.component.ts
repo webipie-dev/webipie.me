@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {TestimonialService} from "../../../_shared/services/testimonial.service";
-import {TestimonialModel} from "../../../_shared/models/testimonial.model";
-import {PortfolioModel} from "../../../_shared/models/portfolio.model";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-testimonial',
@@ -12,7 +11,8 @@ import {PortfolioModel} from "../../../_shared/models/portfolio.model";
 })
 export class AddTestimonialComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private testimonialService: TestimonialService) {
+  constructor(private formBuilder: FormBuilder, private testimonialService: TestimonialService,
+              private router: Router, private route: ActivatedRoute) {
   }
 
   public type: string = 'component';
@@ -88,6 +88,7 @@ export class AddTestimonialComponent implements OnInit {
   onSubmit() {
     this.testimonialService.addOne(this.testimonialForm.value).subscribe( (result) => {
       localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
     });
   }
 }
