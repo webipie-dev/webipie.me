@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-add-soft-skill',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSoftSkillComponent implements OnInit {
   someValue = 5;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

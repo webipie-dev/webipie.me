@@ -1,28 +1,29 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Router } from '@angular/router';
-import { SidebarMenuService } from './sidebar-menu.service';
-import { ThemeOptions } from 'src/app/_shared/theme-options';
+import {Component, HostListener, OnInit} from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Router} from '@angular/router';
+import {SidebarMenuService} from './sidebar-menu.service';
+import {ThemeOptions} from 'src/app/_shared/theme-options';
 
 @Component({
   selector: 'app-sidebar-menu',
   templateUrl: './sidebar-menu.component.html',
   animations: [
     trigger('slide', [
-      state('up', style({ height: 0, opacity: '0' })),
-      state('down', style({ height: '*', opacity: '1' })),
+      state('up', style({height: 0, opacity: '0'})),
+      state('down', style({height: '*', opacity: '1'})),
       transition('up <=> down', animate(200))
     ])
   ]
 })
 export class SidebarMenuComponent implements OnInit {
-  menus : any;
+  menus: any;
+
   constructor(
-      public globals: ThemeOptions,
-      private sidebarMenuService: SidebarMenuService,
-      private router: Router
+    public globals: ThemeOptions,
+    private sidebarMenuService: SidebarMenuService,
+    private router: Router
   ) {
-    this.menus = [ ...sidebarMenuService.getMenuList() ];
+    this.menus = [...sidebarMenuService.getMenuList()];
   }
 
   private innerWidth: any;

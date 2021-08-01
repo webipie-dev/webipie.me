@@ -1,69 +1,57 @@
 <div class="card card-box mb-5">
-    <div class="card-header-alt p-4">
-        <h6 class="font-weight-bold font-size-lg mb-1 text-black">Achievements</h6>
-        <p class="text-black-50 mb-0">Tell us more about your success and achievements</p>
+  <div class="card-header-alt p-4">
+    <h6 class="font-weight-bold font-size-lg mb-1 text-black">Achievements</h6>
+    <p class="text-black-50 mb-0">Tell us more about your success and achievements</p>
 
-    </div>
+  </div>
 
-    <div class="divider"></div>
-    <div class="card-body pt-2 px-4 pb-4">
-        <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
-            <thead>
-            <tr>
-                <th>Achievements</th>
-                <th class="text-center">Date</th>
-                <th class="text-left" style="width:50%">Description</th>
-                <th class="text-right">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
+  <div class="divider"></div>
+  <div class="card-body pt-2 px-4 pb-4">
+    <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
+      <thead>
+      <tr>
+        <th>Achievements</th>
+        <th class="text-center">Date</th>
+        <th class="text-left" style="width:50%">Description</th>
+        <th class="text-right">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
 
-            <tr *ngFor="let achievement of achievements">
-                <td>
-                    <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{achievement.title}} </span></div>
-                </td>
-                <td class="text-center">
-                    <span class="font-weight-bold">{{achievement.date | date }}</span>
-                </td>
-                <td class="text-left">
-                    <span class="font-weight-regular">{{achievement.description}}</span>
-                </td>
-                <td class="text-right">
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+      <tr *ngFor="let achievement of achievements">
+        <td>
+          <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{achievement.title}} </span></div>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-bold">{{achievement.date | date }}</span>
+        </td>
+        <td class="text-left">
+          <span class="font-weight-regular">{{achievement.description}}</span>
+        </td>
+        <td class="text-right">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Remove">
+          </button>
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                  tooltip="Remove">
                             <span class="btn-wrapper--icon">
                                 <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                             </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Up">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Down">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="card-footer d-flex justify-content-center">
-            <div>
-                <a routerLink='addachievement'>
-                    <button class="btn btn-sm btn-slack" type="button">
-                        Add new Achievement
-                    </button>
-                </a>
-            </div>
-        </div>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer d-flex justify-content-center">
+      <div>
+        <a routerLink='addachievement'>
+          <button class="btn btn-sm btn-slack" type="button">
+            Add new Achievement
+          </button>
+        </a>
+      </div>
     </div>
+  </div>
 </div>

@@ -2,49 +2,71 @@
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Project</h5>
-        <form>
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
           <div class="position-relative form-group"><label for="exampleEmail">Title</label>
             <input class="form-control"
                    id="Title"
                    name="name"
                    placeholder="Title"
-                   type="text">
+                   type="text"
+                   formControlName="name"
+            >
           </div>
-          <div class="position-relative form-group"><label for="exampleText">Description</label><textarea
-            class="form-control" id="exampleText" name="text"></textarea></div>
+          <div class="position-relative form-group"><label for="exampleText">Description</label>
+            <textarea class="form-control"
+                      id="exampleText"
+                      name="text"
+                      formControlName="description"
+            ></textarea>
+          </div>
           <div class="position-relative form-group">
             <label>Images</label>
-            <dropzone (error)="onUploadError()" (init)="onUploadInit()" (success)="onUploadSuccess()" *ngIf="type === 'component'"
+            <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
+                      *ngIf="type === 'component'"
                       [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'"
                       class="dropzone-container"></dropzone>
           </div>
 
-          <div (error)="onUploadError()" (init)="onUploadInit()" (success)="onUploadSuccess()"
+          <div (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
                *ngIf="type === 'directive'" [disabled]="disabled" [dropzone]="config"
                class="dropzone dropzone-container"></div>
+          <input
+            id="hiddenImageInput"
+            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
+            style="display: none"
+            multiple
+            name="imgs" type="file"
+            formControlName="photo"
+          />
           <div class="position-relative form-group"><label for="exampleEmail">Skills</label>
             <input class="form-control"
                    id="exampleEmail"
                    name="name"
                    placeholder="Title"
-                   type="text">
+                   type="text"
+                   formControlName="skills"
+            >
           </div>
-          <div class="position-relative form-group"><label for="exampleEmail">Url</label>
+          <div class="position-relative form-group"><label for="exampleEmail">Link</label>
             <input class="form-control"
                    id="exampleEmail"
                    name="name"
-                   placeholder="Title"
-                   type="text">
+                   placeholder="Link"
+                   type="text"
+                   formControlName="link"
+            >
           </div>
           <div class="position-relative form-group"><label for="exampleEmail">Github Repo</label>
             <input class="form-control"
                    id="exampleEmail"
                    name="name"
-                   placeholder="Title"
-                   type="text">
+                   placeholder="Github Repo"
+                   type="text"
+                   formControlName="github"
+            >
           </div>
           <div class="divider my-4"></div>
-          <button class="mt-1 btn btn-slack">Add Project</button>
+          <button class="mt-1 btn btn-slack" [disabled]="!projectForm.valid">Add Project</button>
         </form>
       </div>
     </div>

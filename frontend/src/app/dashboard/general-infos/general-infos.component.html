@@ -1,40 +1,59 @@
 <app-wrapper-simple sectionHeading="General Infos">
-<form>
+  <form>
     <div class="form-row">
-        <div class="col-md-3">
-            <div class="position-relative form-group"><label for="exampleEmail11">First Name</label><input class="form-control" id="exampleEmail11" name="email" placeholder="First Name" type="text"></div>
-        </div>
-        <div class="col-md-3">
-            <div class="position-relative form-group"><label for="examplePassword11">Last Name</label><input class="form-control" id="examplePassword11" name="password" placeholder="Last name" type="text"></div>
-        </div>
-        <div class="col-md-6">
-            <div class="position-relative form-group"><label for="examplePassword11">Current Position</label><input class="form-control" id="examplePassword11" name="password" placeholder="Ex : Developer" type="text"></div>
-        </div>
+      <div class="col-md-3">
+        <div class="position-relative form-group"><label for="exampleEmail11">First Name</label><input
+          class="form-control" id="exampleEmail11" name="email" placeholder="First Name" type="text"></div>
+      </div>
+      <div class="col-md-3">
+        <div class="position-relative form-group"><label for="examplePassword11">Last Name</label><input
+          class="form-control" id="examplePassword11" name="password" placeholder="Last name" type="text"></div>
+      </div>
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="examplePassword11">Current Position</label><input
+          class="form-control" id="examplePassword11" name="password" placeholder="Ex : Developer" type="text"></div>
+      </div>
     </div>
     <div class="form-row">
-        <div class="col-md-6">
-            <div class="position-relative form-group"><label for="exampleEmail11">Email</label><input class="form-control" id="exampleEmail11" name="email" placeholder="Email" type="email"></div>
-        </div>
-        <div class="col-md-6">
-            <div class="position-relative form-group"><label for="examplePassword11">Phone</label><input class="form-control" id="examplePassword11" name="password" placeholder="Phone Number" type="number"></div>
-        </div>
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="exampleEmail11">Email</label><input class="form-control"
+                                                                                                  id="exampleEmail11"
+                                                                                                  name="email"
+                                                                                                  placeholder="Email"
+                                                                                                  type="email"></div>
+      </div>
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="examplePassword11">Phone</label><input
+          class="form-control" id="examplePassword11" name="password" placeholder="Phone Number" type="number"></div>
+      </div>
     </div>
     <div class="form-row">
-        <div class="col-md-6">
-            <div class="position-relative form-group"><label for="exampleEmail11">Github</label><input class="form-control" id="exampleEmail11" name="email" placeholder="Github" type="text"></div>
-        </div>
-        <div class="col-md-6">
-            <div class="position-relative form-group"><label for="examplePassword11">LinkedIn</label><input class="form-control" id="examplePassword11" name="password" placeholder="LinkedIn" type="text"></div>
-        </div>
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="exampleEmail11">Github</label><input class="form-control"
+                                                                                                   id="exampleEmail11"
+                                                                                                   name="email"
+                                                                                                   placeholder="Github"
+                                                                                                   type="text"></div>
+      </div>
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="examplePassword11">LinkedIn</label><input
+          class="form-control" id="examplePassword11" name="password" placeholder="LinkedIn" type="text"></div>
+      </div>
     </div>
-    
+
     <label for="exampleAddress2">Picture</label>
-    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></dropzone>
-    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
+              [message]="'Click or drag images here to upload'" (init)="onUploadInit()" (error)="onUploadError()"
+              (success)="onUploadSuccess()"></dropzone>
+    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled"
+         (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
 
     <label for="exampleAddress2">CV</label>
-    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled" [message]="'Click or drag files here to upload'" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></dropzone>
-    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
+              [message]="'Click or drag files here to upload'" (init)="onUploadInit()" (error)="onUploadError()"
+              (success)="onUploadSuccess()"></dropzone>
+    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled"
+         (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
     <button class="mt-2 btn btn-slack">Save</button>
-</form>
+  </form>
 </app-wrapper-simple>

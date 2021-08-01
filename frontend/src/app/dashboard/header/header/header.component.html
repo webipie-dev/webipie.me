@@ -2,20 +2,22 @@
     'app-header--shadow' : globals.headerShadow,
     'app-header--opacity-bg' : globals.headerTransparentBg
     }">
-    <div class="app-header--pane">
-        <button [ngClass]="{'is-active' : globals.toggleSidebarMobile}" class="navbar-toggler hamburger hamburger--elastic toggle-mobile-sidebar-btn" (click)="toggleSidebarMobileOpen()" type="button">
+  <div class="app-header--pane">
+    <button [ngClass]="{'is-active' : globals.toggleSidebarMobile}"
+            class="navbar-toggler hamburger hamburger--elastic toggle-mobile-sidebar-btn"
+            (click)="toggleSidebarMobileOpen()" type="button">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
-        </button>
-        <app-header-search></app-header-search>
-        <app-header-menu></app-header-menu>
-    </div>
-    <div class="app-header--pane">
-        
-    </div>
-    <div class="app-header--pane">
-        <app-header-notification></app-header-notification>
-        <app-header-userbox></app-header-userbox>
-    </div>
+    </button>
+    <app-header-search></app-header-search>
+    <app-header-menu></app-header-menu>
+  </div>
+  <div class="app-header--pane">
+
+  </div>
+  <div class="app-header--pane">
+    <app-header-notification></app-header-notification>
+    <app-header-userbox></app-header-userbox>
+  </div>
 </div>

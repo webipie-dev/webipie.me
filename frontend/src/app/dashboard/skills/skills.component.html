@@ -1,175 +1,145 @@
 <app-wrapper-seamless sectionHeading="Skills">
-    <div class="row">
-        <div class="col-xl-5">
-            <div class="card card-box mb-5">
-                <div class="card-header pr-2">
-                    <div class="card-header--title">
-                        Hard Skills
+  <div class="row">
+    <div class="col-xl-5">
+      <div class="card card-box mb-5">
+        <div class="card-header pr-2">
+          <div class="card-header--title">
+            Hard Skills
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover text-nowrap mb-0 table-borderless">
+              <thead>
+              <tr>
+                <th class="text-left">SKill</th>
+                <th class="text-center" style="width:30%">Level</th>
+                <th class="text-center">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <a [routerLink]="" class="font-weight-bold text-black" title="...">
+                        Front-End Development
+                      </a>
+                      <span class="text-black-50 d-block">Angular</span>
                     </div>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover text-nowrap mb-0 table-borderless">
-                            <thead>
-                            <tr>
-                                <th class="text-left">SKill</th>
-                                <th class="text-center" style="width:30%">Level</th>
-                                <th class="text-center">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <a [routerLink]="" class="font-weight-bold text-black" title="...">
-                                                Front-End Development
-                                            </a>
-                                            <span class="text-black-50 d-block">Angular</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <progressbar [value]="50" class="progress-bar-rounded" type="info">50%</progressbar>
-                                </td>
-                                <td class="text-center">
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+                  </div>
+                </td>
+                <td>
+                  <progressbar [value]="50" class="progress-bar-rounded" type="info">50%</progressbar>
+                </td>
+                <td class="text-center">
+                  <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
                                             <span class="btn-wrapper--icon">
                                                 <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                                             </span>
-                                    </button>
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                                        tooltip="Remove">
+                  </button>
+                  <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                          tooltip="Remove">
                                             <span class="btn-wrapper--icon">
                                                 <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                                             </span>
-                                    </button>
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                                        tooltip="Go Down">
-                                            <span class="btn-wrapper--icon">
-                                                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
-                                            </span>
-                                    </button>
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                                        tooltip="Go Up">
-                                            <span class="btn-wrapper--icon">
-                                                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
-                                            </span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <a [routerLink]="" class="font-weight-bold text-black" title="...">
-                                                Front-End Development
-                                            </a>
-                                            <span class="text-black-50 d-block">Angular</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <progressbar [value]="90" class="progress-bar-rounded" type="success">90%</progressbar>
-                                </td>
-                                <td class="text-center">
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <a [routerLink]="" class="font-weight-bold text-black" title="...">
+                        Front-End Development
+                      </a>
+                      <span class="text-black-50 d-block">Angular</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <progressbar [value]="90" class="progress-bar-rounded" type="success">90%</progressbar>
+                </td>
+                <td class="text-center">
+                  <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
                                             <span class="btn-wrapper--icon">
                                                 <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                                             </span>
-                                    </button>
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                                        tooltip="Remove">
+                  </button>
+                  <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                          tooltip="Remove">
                                             <span class="btn-wrapper--icon">
                                                 <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                                             </span>
-                                    </button>
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                                        tooltip="Go Up">
-                                            <span class="btn-wrapper--icon">
-                                                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
-                                            </span>
-                                    </button>
-                                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                                        tooltip="Go Down">
-                                            <span class="btn-wrapper--icon">
-                                                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
-                                            </span>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <div>
-                        <a routerLink='addhardskill'>
-                            <button class="btn btn-sm btn-slack" type="button">
-                                Add new Skill
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="col-xl-7">
-            <div class="card card-box mb-5">
-                <div class="card-header">
-                    <div class="card-header--title font-size-lg text-dark">
-                        Soft Skills
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover text-nowrap mb-0">
-                        <thead>
-                        <tr>
-                            <th class="text-left" style="width: 180px;">Skill</th>
-                            <th class="text-center">Description</th>
-                            <th class="text-center"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="font-weight-bold">
-                                Tickets Management
-                            </td>
-                            <td class="text-center">
-                                Description
-                            </td>
-                            <td class="text-center">
-                                <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="View Details">
-                                    <span class="btn-wrapper--icon">
-                                        <fa-icon [icon]="['fas', 'plus-circle']" class="font-size-lg"></fa-icon>
-                                    </span>
-                                </button>
-                                <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="modify">
-                                    <span class="btn-wrapper--icon">
-                                        <fa-icon [icon]="['fas', 'cog']" class="font-size-lg"></fa-icon>
-                                    </span>
-                                </button>
-                                <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                                    tooltip="Remove">
-                                        <span class="btn-wrapper--icon">
-                                            <fa-icon [icon]="['fas', 'times']" class="font-size-lg"></fa-icon>
-                                        </span>
-                                </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <div>
-                        <a routerLink='addsoftskill'>
-                        <button class="btn btn-sm btn-slack" type="button"  >
-                            Add new Skill
-                        </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="card-footer d-flex justify-content-between">
+          <div>
+            <a routerLink='addhardskill'>
+              <button class="btn btn-sm btn-slack" type="button">
+                Add new Skill
+              </button>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="col-xl-7">
+      <div class="card card-box mb-5">
+        <div class="card-header">
+          <div class="card-header--title font-size-lg text-dark">
+            Soft Skills
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover text-nowrap mb-0">
+            <thead>
+            <tr>
+              <th class="text-left" style="width: 180px;">Skill</th>
+              <th class="text-center">Description</th>
+              <th class="text-center"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="font-weight-bold">
+                Tickets Management
+              </td>
+              <td class="text-center">
+                Description
+              </td>
+              <td class="text-center">
+                <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="modify">
+                  <span class="btn-wrapper--icon">
+                    <fa-icon [icon]="['fas', 'cog']" class="font-size-lg"></fa-icon>
+                  </span>
+                </button>
+                <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                        tooltip="Remove">
+                  <span class="btn-wrapper--icon">
+                    <fa-icon [icon]="['fas', 'times']" class="font-size-lg"></fa-icon>
+                  </span>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <div>
+            <a routerLink='addsoftskill'>
+              <button class="btn btn-sm btn-slack" type="button">
+                Add new Skill
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </app-wrapper-seamless>
-    

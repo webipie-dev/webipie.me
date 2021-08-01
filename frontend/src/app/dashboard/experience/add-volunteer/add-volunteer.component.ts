@@ -12,7 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class AddVolunteerComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private volunteeringExperienceService: VolunteeringExperienceService,
-              private router: Router, private route: ActivatedRoute) {}
+              private router: Router, private route: ActivatedRoute) {
+  }
 
   public type: string = 'component';
 
@@ -26,8 +27,8 @@ export class AddVolunteerComponent implements OnInit {
     cancelReset: null
   };
 
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
   volunteeringExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -90,9 +91,9 @@ export class AddVolunteerComponent implements OnInit {
   }
 
   onSubmit() {
-    this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe( (result) => {
+    this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe((result) => {
       localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
+      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
     });
   }
 

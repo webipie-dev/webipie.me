@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProjectModel} from "../../_shared/models/project.model";
 
 @Component({
   selector: 'app-projects',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+
+  projects?: [ProjectModel]
 
   ngOnInit(): void {
+    this.projects = JSON.parse(localStorage.getItem('portfolio')!).projects;
   }
 
 }

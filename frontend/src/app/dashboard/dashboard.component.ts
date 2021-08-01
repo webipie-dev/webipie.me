@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from '../_shared/services/portfolio.service';
-import { ThemeOptions } from '../_shared/theme-options';
+import {Component, OnInit} from '@angular/core';
+import {PortfolioService} from '../_shared/services/portfolio.service';
+import {ThemeOptions} from '../_shared/theme-options';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +11,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public globals: ThemeOptions,
-    private portfolioService: PortfolioService) { }
+    private portfolioService: PortfolioService) {
+  }
 
   ngOnInit(): void {
     const id = localStorage.getItem('portfolioId') || "";

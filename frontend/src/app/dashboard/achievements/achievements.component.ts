@@ -1,5 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {Component, OnInit} from '@angular/core';
 import {AchievementModel} from "../../_shared/models/achievement.model";
 
 @Component({
@@ -9,7 +8,8 @@ import {AchievementModel} from "../../_shared/models/achievement.model";
 })
 export class AchievementsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   achievements?: [AchievementModel];
 

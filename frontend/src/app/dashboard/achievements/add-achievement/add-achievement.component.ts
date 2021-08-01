@@ -12,7 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class AddAchievementComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private achievementService: AchievementService,
-              private router: Router, private route: ActivatedRoute) { }
+              private router: Router, private route: ActivatedRoute) {
+  }
 
   achievementForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -33,8 +34,8 @@ export class AddAchievementComponent implements OnInit {
     cancelReset: null
   };
 
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
   ngOnInit(): void {
   }
@@ -85,7 +86,7 @@ export class AddAchievementComponent implements OnInit {
   onSubmit() {
     this.achievementService.addOne(this.achievementForm.value).subscribe((result) => {
       localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
+      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
     });
   }
 }

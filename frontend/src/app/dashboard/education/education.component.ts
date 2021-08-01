@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {EducationModel} from "../../_shared/models/education.model";
 
 @Component({
   selector: 'app-education',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EducationComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+
+  educationList?: [EducationModel];
 
   ngOnInit(): void {
+    this.educationList = JSON.parse(localStorage.getItem('portfolio')!).education;
   }
 
 }

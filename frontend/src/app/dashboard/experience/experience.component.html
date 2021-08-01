@@ -1,146 +1,122 @@
 <div class="card card-box mb-5">
-    <div class="card-header-alt p-4">
-        <h6 class="font-weight-bold font-size-lg mb-1 text-black">Professional Experience</h6>
-        <p class="text-black-50 mb-0">Report What your professional career was like</p>
+  <div class="card-header-alt p-4">
+    <h6 class="font-weight-bold font-size-lg mb-1 text-black">Professional Experience</h6>
+    <p class="text-black-50 mb-0">Report What your professional career was like</p>
 
-    </div>
+  </div>
 
-    <div class="divider"></div>
-    <div class="card-body pt-2 px-4 pb-4">
-        <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
-            <thead>
-            <tr>
-                <th>Company & Position</th>
-                <th class="text-center">Start Date</th>
-                <th class="text-center">End Date</th>
-                <th class="text-left" style="width:40%">Description</th>
-                <th class="text-right">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let work of workExperiences">
-                <td>
-                    <div><a [routerLink]="" class="font-weight-bold text-black" title="...">Company Name</a>
-                      <span class="text-black-50 d-block">{{work.position}}</span></div>
-                </td>
-                <td class="text-center">
-                    <span class="font-weight-bold">{{ work.beginDate | date }}</span>
-                </td>
-                <td class="text-center">
-                    <span class="font-weight-bold">{{ work.endDate | date }}</span>
-                </td>
-                <td class="text-left">
-                    <span class="font-weight-regular">{{ work.description }}</span>
-                </td>
-                <td class="text-right">
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+  <div class="divider"></div>
+  <div class="card-body pt-2 px-4 pb-4">
+    <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
+      <thead>
+      <tr>
+        <th>Company & Position</th>
+        <th class="text-center">Start Date</th>
+        <th class="text-center">End Date</th>
+        <th class="text-left" style="width:40%">Description</th>
+        <th class="text-right">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let work of workExperiences">
+        <td>
+          <div><a [routerLink]="" class="font-weight-bold text-black" title="...">Company Name</a>
+            <span class="text-black-50 d-block">{{work.position}}</span></div>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-bold">{{ work.beginDate | date }}</span>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-bold">{{ work.endDate | date }}</span>
+        </td>
+        <td class="text-left">
+          <span class="font-weight-regular">{{ work.description }}</span>
+        </td>
+        <td class="text-right">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Remove">
+          </button>
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                  tooltip="Remove">
                             <span class="btn-wrapper--icon">
                                 <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                             </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Up">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Down">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="card-footer d-flex justify-content-center">
-            <div>
-                <a routerLink='addexperience'>
-                    <button class="btn btn-sm btn-slack" type="button">
-                        Add new Professional Experience
-                    </button>
-                </a>
-            </div>
-        </div>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer d-flex justify-content-center">
+      <div>
+        <a routerLink='addexperience'>
+          <button class="btn btn-sm btn-slack" type="button">
+            Add new Professional Experience
+          </button>
+        </a>
+      </div>
     </div>
+  </div>
 </div>
 <div class="card card-box mb-5">
-    <div class="card-header-alt p-4">
-        <h6 class="font-weight-bold font-size-lg mb-1 text-black">Volunteering Experience</h6>
-        <p class="text-black-50 mb-0">Report What your volunteering work was like</p>
+  <div class="card-header-alt p-4">
+    <h6 class="font-weight-bold font-size-lg mb-1 text-black">Volunteering Experience</h6>
+    <p class="text-black-50 mb-0">Report What your volunteering work was like</p>
 
-    </div>
+  </div>
 
-    <div class="divider"></div>
-    <div class="card-body pt-2 px-4 pb-4">
-        <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
-            <thead>
-            <tr>
-                <th>Company & Position</th>
-                <th class="text-center">Start Date</th>
-                <th class="text-center">End Date</th>
-                <th class="text-left" style="width:40%">Description</th>
-                <th class="text-right">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let volunteering of volunteeringExperiences">
-                <td>
-                    <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{volunteering.organisation}}</a>
-                      <span class="text-black-50 d-block">{{volunteering.position}}</span></div>
-                </td>
-                <td class="text-center">
-                    <span class="font-weight-bold">{{volunteering.beginDate | date }}</span>
-                </td>
-                <td class="text-center">
-                    <span class="font-weight-bold">{{volunteering.endDate | date }}</span>
-                </td>
-                <td class="text-left">
-                    <span class="font-weight-regular">{{volunteering.description}}</span>
-                </td>
-                <td class="text-right">
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+  <div class="divider"></div>
+  <div class="card-body pt-2 px-4 pb-4">
+    <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
+      <thead>
+      <tr>
+        <th>Company & Position</th>
+        <th class="text-center">Start Date</th>
+        <th class="text-center">End Date</th>
+        <th class="text-left" style="width:40%">Description</th>
+        <th class="text-right">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let volunteering of volunteeringExperiences">
+        <td>
+          <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{volunteering.organisation}}</a>
+            <span class="text-black-50 d-block">{{volunteering.position}}</span></div>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-bold">{{volunteering.beginDate | date }}</span>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-bold">{{volunteering.endDate | date }}</span>
+        </td>
+        <td class="text-left">
+          <span class="font-weight-regular">{{volunteering.description}}</span>
+        </td>
+        <td class="text-right">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Remove">
+          </button>
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                  tooltip="Remove">
                             <span class="btn-wrapper--icon">
                                 <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                             </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Up">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Down">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="card-footer d-flex justify-content-center">
-            <div>
-                <a routerLink='addvolunteer'>
-                    <button class="btn btn-sm btn-slack" type="button">
-                        Add new Volunteering Work
-                    </button>
-                </a>
-            </div>
-        </div>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer d-flex justify-content-center">
+      <div>
+        <a routerLink='addvolunteer'>
+          <button class="btn btn-sm btn-slack" type="button">
+            Add new Volunteering Work
+          </button>
+        </a>
+      </div>
     </div>
+  </div>
 </div>

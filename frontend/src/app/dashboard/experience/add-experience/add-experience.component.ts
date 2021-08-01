@@ -34,8 +34,8 @@ export class AddExperienceComponent implements OnInit {
     cancelReset: null
   };
 
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -98,10 +98,10 @@ export class AddExperienceComponent implements OnInit {
   }
 
   onSubmit() {
-    this.workExperienceService.addOne(this.workExperienceForm.value).subscribe( (result) => {
+    this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
       console.log('got here')
       localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
+      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
     });
   }
 

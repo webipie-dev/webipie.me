@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ThemeOptions } from 'src/app/_shared/theme-options';
+import {Component, OnInit} from '@angular/core';
+import {ThemeOptions} from 'src/app/_shared/theme-options';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +8,8 @@ import { ThemeOptions } from 'src/app/_shared/theme-options';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public globals: ThemeOptions) { }
+  constructor(public globals: ThemeOptions) {
+  }
 
   ngOnInit(): void {
   }

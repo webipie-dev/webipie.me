@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TestimonialModel} from "../../_shared/models/testimonial.model";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-testimonials',
@@ -8,7 +9,8 @@ import {TestimonialModel} from "../../_shared/models/testimonial.model";
 })
 export class TestimonialsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+  }
 
   testimonials?: [TestimonialModel];
 
@@ -16,4 +18,7 @@ export class TestimonialsComponent implements OnInit {
     this.testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials;
   }
 
+  editTestimonial(id: string) {
+    this.router.navigate(['addtestimonial'], { relativeTo: this.route, queryParams: { testimonialId: id } });
+  }
 }

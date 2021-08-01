@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from 'ngx-dropzone-wrapper';
 import {FormBuilder, Validators} from "@angular/forms";
 import {TestimonialService} from "../../../_shared/services/testimonial.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 
 @Component({
   selector: 'app-add-testimonial',
@@ -26,9 +27,11 @@ export class AddTestimonialComponent implements OnInit {
     errorReset: null,
     cancelReset: null
   };
-
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  testimonial: TestimonialModel = {} as TestimonialModel;
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
   testimonialForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -38,6 +41,17 @@ export class AddTestimonialComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['testimonialId']) {
+        this.edit = true;
+        this.fillEditForm(params['testimonialId']);
+      }
+    });
+  }
+
+  public fillEditForm(testimonialId: string): void {
+    this.testimonial = (JSON.parse(localStorage.getItem('portfolio')!).testimonials.filter((testimonial: TestimonialModel) => testimonial.id === testimonialId ))[0];
+    console.log(this.testimonial);
   }
 
   public toggleType(): void {
@@ -86,9 +100,9 @@ export class AddTestimonialComponent implements OnInit {
   }
 
   onSubmit() {
-    this.testimonialService.addOne(this.testimonialForm.value).subscribe( (result) => {
+    this.testimonialService.addOne(this.testimonialForm.value).subscribe((result) => {
       localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
+      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
     });
   }
 }

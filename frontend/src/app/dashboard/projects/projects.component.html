@@ -1,73 +1,61 @@
 <div class="card card-box mb-5">
-    <div class="card-header-alt p-4">
-        <h6 class="font-weight-bold font-size-lg mb-1 text-black">Projects</h6>
-        <p class="text-black-50 mb-0">Report What your professional projects were like</p>
-        
-    </div>
-    
-    <div class="divider"></div>
-    <div class="card-body pt-2 px-4 pb-4">
-        <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
-            <thead>
-            <tr>
-                <th>Title & Subtitle</th>
-                <th class="text-center">Start Date</th>
-                <th class="text-center">End Date</th>
-                <th class="text-left" style="width:40%">Description</th>
-                <th class="text-right">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            
-            <tr>
-                <td>
-                    <div><span [routerLink]="" class="font-weight-bold text-black" title="...">Project Name</span><span class="text-black-50 d-block">Project Subtitle</span></div>
-                </td>
-                <td class="text-center">
-                    <span class="font-weight-bold">10 Mai 2020</span>
-                </td>
-                <td class="text-center">
-                    <span class="font-weight-bold">Present</span>
-                </td>
-                <td class="text-left">
-                    <span class="font-weight-regular">Description</span>
-                </td>
-                <td class="text-right">
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+  <div class="card-header-alt p-4">
+    <h6 class="font-weight-bold font-size-lg mb-1 text-black">Projects</h6>
+    <p class="text-black-50 mb-0">Report What your professional projects were like</p>
+
+  </div>
+
+  <div class="divider"></div>
+  <div class="card-body pt-2 px-4 pb-4">
+    <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Github</th>
+        <th class="text-center">Link</th>
+        <th class="text-right">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr *ngFor="let project of projects">
+        <td>
+          <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{ project.name }}</span></div>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-regular">{{ project.description }}</span>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-regular">{{ project.github }}</span>
+        </td>
+        <td class="text-center">
+          <span class="font-weight-regular">{{ project.link }}</span>
+        </td>
+        <td class="text-right">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Remove">
+          </button>
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                  tooltip="Remove">
                             <span class="btn-wrapper--icon">
                                 <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                             </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Up">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                    <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                        tooltip="Go Down">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
-                            </span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="card-footer d-flex justify-content-center">
-            <div>
-                <a routerLink='addproject'>
-                    <button class="btn btn-sm btn-slack" type="button">
-                        Add new Project
-                    </button>
-                </a>
-            </div>
-        </div>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer d-flex justify-content-center">
+      <div>
+        <a routerLink='addproject'>
+          <button class="btn btn-sm btn-slack" type="button">
+            Add new Project
+          </button>
+        </a>
+      </div>
     </div>
+  </div>
 </div>

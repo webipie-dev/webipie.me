@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WorkExperienceModel} from "../../_shared/models/work-experience.model";
 import {VolunteeringExperienceModel} from "../../_shared/models/volunteering-experience.model";
 
@@ -9,7 +9,8 @@ import {VolunteeringExperienceModel} from "../../_shared/models/volunteering-exp
 })
 export class ExperienceComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   workExperiences?: [WorkExperienceModel];
   volunteeringExperiences?: [VolunteeringExperienceModel];
