@@ -1,5 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {WorkExperienceService} from "../../../_shared/services/work-experience.service";
+import {FormBuilder, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-experience',
@@ -7,6 +10,12 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
   styleUrls: ['./add-experience.component.scss']
 })
 export class AddExperienceComponent implements OnInit {
+
+  constructor(private formBuilder: FormBuilder, private workExperienceService: WorkExperienceService,
+              private router: Router, private route: ActivatedRoute) {
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+  }
 
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -28,10 +37,18 @@ export class AddExperienceComponent implements OnInit {
   @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
 
-  constructor() {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-  }
+  workExperienceForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    position: [''],
+    company: [''],
+    imgs: [''],
+    skills: [''],
+    beginDate: ['', Validators.required],
+    endDate: [''],
+    city: ['']
+  });
+
   ngOnInit(): void {
   }
 
@@ -71,12 +88,21 @@ export class AddExperienceComponent implements OnInit {
   }
 
   public onUploadInit(): void {
+    document.getElementById('hiddenImageInput')?.click();
   }
 
   public onUploadError(): void {
   }
 
   public onUploadSuccess(): void {
+  }
+
+  onSubmit() {
+    this.workExperienceService.addOne(this.workExperienceForm.value).subscribe( (result) => {
+      console.log('got here')
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.router.navigate(['..'], { relativeTo: this.route }).then(r => console.log(r))
+    });
   }
 
 }

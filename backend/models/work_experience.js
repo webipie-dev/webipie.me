@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const workExperienceSchema = Schema({
     title: {type: String, required: true},
-    description: {type: String, required: false},
+    description: {type: String, required: true},
     position: {type: String, required: false},
     company: {type: String, required: false},
     imgs: {type: [String], required: false},

@@ -29,22 +29,17 @@
                       {{testimonial.description}}
                     </td>
                     <td class="text-center">
-                        <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="View Details">
+                      <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+                        <span class="btn-wrapper--icon">
+                            <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+                        </span>
+                      </button>
+                      <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
+                              tooltip="Remove">
                             <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'plus-circle']" class="font-size-lg"></fa-icon>
+                                <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                             </span>
-                        </button>
-                        <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="modify">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'cog']" class="font-size-lg"></fa-icon>
-                            </span>
-                        </button>
-                        <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                            tooltip="Remove">
-                                <span class="btn-wrapper--icon">
-                                    <fa-icon [icon]="['far', 'times']" class="font-size-lg"></fa-icon>
-                                </span>
-                        </button>
+                      </button>
                     </td>
                 </tr>
                 </tbody>
