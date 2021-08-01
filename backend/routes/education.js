@@ -14,7 +14,7 @@ router.get('', educationService.getEducation)
 router.post('', passportJWT, [validation.portfolioId], validateRequest, educationService.addEducation);
 
 // edit education
-router.patch('/:id', passportJWT, [validation.portfolioId], validateRequest, educationService.editOneEducation);
+router.patch('/:id', passportJWT, validateRequest, educationService.editOneEducation);
 
 // delete education
 router.delete('', validation.ids, passportJWT, educationService.deleteEducation);
