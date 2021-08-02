@@ -13,8 +13,13 @@
                              type="text">
                     </div>
                     <div class="position-relative form-group"><label for="exampleSelect">Select Skill level</label><nouislider [min]="0" [max]="10" [step]="1" [(ngModel)]="someValue" [tooltips]="[ true ]"></nouislider></div>
-
-                    <button class="mt-1 btn btn-slack">Add Hard Skill</button>
+                    <label for="exampleEmail">Tags</label>
+                    <ng-select [(ngModel)]="selectedSkills" [multiple]="true">
+                        <ng-option *ngFor="let skill of skills" [value]="skill.id">{{skill.name}}</ng-option>
+                        <ng-option [value]="'custom'">Custom</ng-option>
+                        <ng-option [value]="'custom'">Other Skills</ng-option>
+                    </ng-select>   
+                    <button class="mt-2 btn btn-slack">Add Hard Skill</button>
                 </form>
             </div>
         </div>

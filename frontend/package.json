@@ -24,6 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@ng-select/ng-select": "^7.2.0",
     "@ngx-progressbar/core": "^5.3.2",
     "@ngx-progressbar/router": "^5.3.2",
     "angular-feather": "^6.1.0",

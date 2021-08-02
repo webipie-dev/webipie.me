@@ -15,31 +15,33 @@
                     
                     <div class="position-relative form-group"><label for="exampleText">Description</label><textarea
                             class="form-control" id="exampleText" name="text"></textarea></div>
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <div class="input-group input-group-lg mb-5">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']" class="mx-auto"></fa-icon></span>
-                            </div>
-                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Still on the job ?</label>
-                        <div class="m-2">
-                            <ui-switch [checked]="false"></ui-switch>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>End Date</label>
-                        <div class="input-group input-group-lg mb-5">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']" class="mx-auto"></fa-icon></span>
-                            </div>
-                            <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker class="form-control" placeholder="Select date" type="text">
-                        </div>
-                    </div>
+                            
+                              <div class="row">
+                                <div class="form-group col-xl-6 col-md-12">
+                                  <label>Start Date</label>
+                                  <div class="input-group input-group-lg mb-5">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
+                                                                              class="mx-auto"></fa-icon></span>
+                                    </div>
+                                    <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
+                                           class="form-control" placeholder="Select date" type="text">
+                                  </div>
+                                </div>
+                                
+                      
+                                <div class="form-group col-xl-6 col-md-12">
+                                  <label>End Date</label>
+                                  <div class="input-group input-group-lg mb-5">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
+                                                                              class="mx-auto"></fa-icon></span>
+                                    </div>
+                                    <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
+                                           class="form-control" placeholder="Select date" type="text">
+                                  </div>
+                                </div>
+                              </div>
                     <button class="mt-1 btn btn-slack">Add Education</button>
                 </form>
             </div>

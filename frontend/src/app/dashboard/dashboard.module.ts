@@ -97,6 +97,7 @@ import { SkillsSectionComponent } from './design/skills-section/skills-section.c
 import { SkillsComponent } from './skills/skills.component';
 import { AddVolunteerComponent } from './experience/add-volunteer/add-volunteer.component';
 import { TestimonialsSectionComponent } from './design/testimonials-section/testimonials-section.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -180,7 +181,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ColorPickerModule,
     FontPickerModule,
     AutosizeModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    NgSelectModule
   ],
   providers: [
     {
