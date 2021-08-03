@@ -1,4 +1,4 @@
-const TechnicalSkill = require('../models/technical_skill');
+const {TechnicalSkill} = require('../models/technical_skill');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
 
@@ -28,15 +28,13 @@ const addTechnicalSkills = async (req, res, next) => {
     let { skills, portfolioId } = req.body;
     let ids = [];
   
-    const portfolio = await Portfolio.findById(portfolioId); 
+    let portfolio = await Portfolio.findById(portfolioId); 
     if (!portfolio) {
       next(ApiError.NotFound('Portfolio Not Found'));
       return;
     }
 
-    for (const [key, value] of Object.entries(skills)) {
-        ids.push(value);
-    }
+    ids = skills.map(a => a.id);
     const technicalSkills = await TechnicalSkill.find({'_id': { $in: ids }});
     if (!technicalSkills) {
         next(ApiError.NotFound('Should add technical skills.'));
@@ -47,39 +45,36 @@ const addTechnicalSkills = async (req, res, next) => {
         let skill = technicalSkills.find( obj => obj.id === skills[key].id);
         return {skill: skill, level: skills[key].level};
     });
-    const addedTechnicalSkills = await Portfolio.updateOne({_id: portfolioId}, {
+    portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId}, {
       $push: {
         technicalSkills: results
       }
-    })
-    .select('technicalSkills -_id')
+    }, {new: true})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
   
-    res.status(200).send(addedTechnicalSkills);
+    res.status(200).send(portfolio);
 };
 
 
 const deleteTechnicalSkills = async (req, res, next) => {
   //get technical skills ids
-  const { ids } = req.body;
+  const { ids,portfolioId } = req.body;
 
-  const deletedTechnicalSkills = await Portfolio.updateOne({
+  const portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId},
+    {
       $pull: { 
         technicalSkills: { 
-          $elemMatch: {
-            "skill.id": { $in: ids }
-          } 
+          _id: { $in: ids }
         }
       } 
-    })
-    .select('technicalSkills -_id')
+    }, { new: true })
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  if (deletedTechnicalSkills) {
+  /* if (deletedTechnicalSkills) {
     if (deletedTechnicalSkills.deletedCount === 0) {
       next(ApiError.NotFound('No technical skills found to delete'));
       return;
@@ -87,9 +82,9 @@ const deleteTechnicalSkills = async (req, res, next) => {
       next(ApiError.NotFound(`${ids.length} TechnicalSkills to be deleted but ${deletedTechnicalSkills.deletedCount} are found and deleted`));
       return;
     }
-  }
+  } */
 
-  res.status(200).send(deletedTechnicalSkills);
+  res.status(200).send(portfolio);
 };
   
 
