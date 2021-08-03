@@ -3,6 +3,8 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
 import {FormBuilder, Validators} from "@angular/forms";
 import {AchievementService} from "../../../_shared/services/achievement.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import {AchievementModel} from "../../../_shared/models/achievement.model";
 
 @Component({
   selector: 'app-add-achievement',
@@ -34,10 +36,24 @@ export class AddAchievementComponent implements OnInit {
     cancelReset: null
   };
 
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  achievement: AchievementModel = {} as AchievementModel;
+
   @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['achievementId']) {
+        this.edit = true;
+        this.fillEditForm(params['achievementId']);
+      }
+    });
+  }
+
+  public fillEditForm(achievementId: string): void {
+    this.achievement = (JSON.parse(localStorage.getItem('portfolio')!).achievements.filter((achievement: AchievementModel) => achievement.id === achievementId ))[0];
   }
 
   public toggleType(): void {
@@ -84,9 +100,16 @@ export class AddAchievementComponent implements OnInit {
   }
 
   onSubmit() {
-    this.achievementService.addOne(this.achievementForm.value).subscribe((result) => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
-    });
+    if(!this.edit) {
+      this.achievementService.addOne(this.achievementForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.achievementService.edit(this.achievement.id, this.achievementForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
   }
 }

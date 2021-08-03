@@ -1,7 +1,12 @@
 <div class="row col-xl-12 col-md-12 justify-content-center">
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
-      <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Volunteering Experience</h5>
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold font-size-lg mb-4">
+          <span *ngIf="!edit">Add</span>
+          <span *ngIf="edit">Edit</span>
+          Volunteering Experience
+        </h5>
         <form [formGroup]="volunteeringExperienceForm" (ngSubmit)="onSubmit()">
           <div class="position-relative form-group"><label for="title">Title</label>
             <input class="form-control"
@@ -9,6 +14,7 @@
                    name="name"
                    type="text"
                    formControlName="title"
+                   [(ngModel)]="volunteerExperience.title"
             >
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
@@ -16,6 +22,7 @@
                       id="exampleText"
                       name="text"
                       formControlName="description"
+                      [(ngModel)]="volunteerExperience.description"
             >
             </textarea>
           </div>
@@ -25,6 +32,7 @@
                    name="password"
                    type="text"
                    formControlName="position"
+                   [(ngModel)]="volunteerExperience.position"
             >
           </div>
           <div class="position-relative form-group"><label for="organisation">Organisation</label>
@@ -33,6 +41,7 @@
                    name="password"
                    type="text"
                    formControlName="organisation"
+                   [(ngModel)]="volunteerExperience.organisation"
             >
           </div>
           <div class="form-group">
@@ -48,6 +57,7 @@
                      placeholder="Select date"
                      type="text"
                      formControlName="beginDate"
+                     [(ngModel)]="volunteerExperience.beginDate"
               >
             </div>
           </div>
@@ -71,6 +81,7 @@
                      placeholder="Select date"
                      type="text"
                      formControlName="endDate"
+                     [(ngModel)]="volunteerExperience.endDate"
               >
             </div>
           </div>
@@ -97,16 +108,26 @@
             <input class="form-control"
                    id="city"
                    name="password"
-                   type="text">
+                   type="text"
+                   formControlName="city"
+                   [(ngModel)]="volunteerExperience.city"
+            >
           </div>
           <div class="position-relative form-group"><label for="skills">Skills</label>
             <input class="form-control"
                    id="skills"
                    name="password"
-                   type="text">
+                   type="text"
+                   formControlName="skills"
+                   [(ngModel)]="volunteerExperience.skills"
+            >
           </div>
           <div class="divider my-4"></div>
-          <button class="mt-1 btn btn-slack" [disabled]="!volunteeringExperienceForm.valid">Add Experience</button>
+          <button class="mt-1 btn btn-slack" [disabled]="!volunteeringExperienceForm.valid">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Experience
+          </button>
         </form>
       </div>
     </div>

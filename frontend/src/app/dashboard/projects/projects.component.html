@@ -33,7 +33,7 @@
           <span class="font-weight-regular">{{ project.link }}</span>
         </td>
         <td class="text-right">
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editProject(project.id)">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>

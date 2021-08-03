@@ -30,6 +30,7 @@ export class AddTestimonialComponent implements OnInit {
   // check if we are editing a testimonial or adding a new one
   edit = false;
   testimonial: TestimonialModel = {} as TestimonialModel;
+
   @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
   @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
@@ -51,7 +52,6 @@ export class AddTestimonialComponent implements OnInit {
 
   public fillEditForm(testimonialId: string): void {
     this.testimonial = (JSON.parse(localStorage.getItem('portfolio')!).testimonials.filter((testimonial: TestimonialModel) => testimonial.id === testimonialId ))[0];
-    console.log(this.testimonial);
   }
 
   public toggleType(): void {
@@ -100,9 +100,16 @@ export class AddTestimonialComponent implements OnInit {
   }
 
   onSubmit() {
-    this.testimonialService.addOne(this.testimonialForm.value).subscribe((result) => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-      this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
-    });
+    if(!this.edit) {
+      this.testimonialService.addOne(this.testimonialForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.testimonialService.edit(this.testimonial.id, this.testimonialForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
   }
 }

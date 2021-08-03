@@ -53,7 +53,11 @@
             formControlName="photo"
           />
           <div class="divider my-4"></div>
-          <button class="mt-1 btn btn-slack" [disabled]="!testimonialForm.valid">Add Testimonial</button>
+          <button class="mt-1 btn btn-slack" [disabled]="!testimonialForm.valid">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Testimonial
+          </button>
         </form>
       </div>
     </div>

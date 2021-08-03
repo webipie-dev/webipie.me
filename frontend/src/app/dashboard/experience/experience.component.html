@@ -20,7 +20,7 @@
       <tbody>
       <tr *ngFor="let work of workExperiences">
         <td>
-          <div><a [routerLink]="" class="font-weight-bold text-black" title="...">Company Name</a>
+          <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{work.company}}</a>
             <span class="text-black-50 d-block">{{work.position}}</span></div>
         </td>
         <td class="text-center">
@@ -33,7 +33,7 @@
           <span class="font-weight-regular">{{ work.description }}</span>
         </td>
         <td class="text-right">
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editWork(work.id)">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>
@@ -94,7 +94,7 @@
           <span class="font-weight-regular">{{volunteering.description}}</span>
         </td>
         <td class="text-right">
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editVolunteer(volunteering.id)">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>
