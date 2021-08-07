@@ -99,6 +99,7 @@ import { AddVolunteerComponent } from './experience/add-volunteer/add-volunteer.
 import { TestimonialsSectionComponent } from './design/testimonials-section/testimonials-section.component';
 import { ExperienceSectionComponent } from './design/experience-section/experience-section.component';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
+import { ContactSectionComponent } from './design/contact-section/contact-section.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -150,7 +151,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     SkillsComponent,
     AddVolunteerComponent,
     TestimonialsSectionComponent,
-    ExperienceSectionComponent
+    ExperienceSectionComponent,
+    ContactSectionComponent
   ],
   imports: [
     CommonModule,
