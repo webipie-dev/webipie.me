@@ -3,26 +3,19 @@
     <div class="row col-xl-12 col-md-12 m-2">
         <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
       </div>
-    <div class="row m-2 col-xl-7 col-md-12">
+    <div class="row col-xl-7 col-md-12">
         <div class="card card-box col-xl-12 col-md-12 mb-5">
             <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Soft Skill</h5>
                 <form>
                     
                     <div class="position-relative form-group"><label for="exampleEmail">Title</label>
-                      <input class="form-control"
-                             id="exampleEmail"
-                             name="name"
-                             placeholder="Skill title"
-                             type="text">
+                        <ng-select [(ngModel)]="selectedSkills"
+                        [items]="skills">
+                        </ng-select> 
                     </div>
                     <div class="position-relative form-group"><label for="exampleText">Description</label><textarea
-                            class="form-control" id="exampleText" name="text"></textarea></div>
-                    <label for="exampleEmail">Tags</label>
-                    <ng-select [(ngModel)]="selectedSkills" [multiple]="true">
-                        <ng-option *ngFor="let skill of skills" [value]="skill.id">{{skill.name}}</ng-option>
-                        <ng-option [value]="'custom'">Custom</ng-option>
-                        <ng-option [value]="'custom'">Other Skills</ng-option>
-                    </ng-select>        
+                            class="form-control" id="exampleText" name="text" placeholder="Description"></textarea></div>
+                    
                     <button class="mt-3 btn btn-slack">Add Skill</button>
                 </form>
             </div>
