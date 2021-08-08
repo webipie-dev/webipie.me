@@ -146,7 +146,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .noUi-handle {
-  border: 2px solid $primary;
+  border: 2px solid #62b085;
   @include border-radius(100%);
   background: $white;
   cursor: default;
@@ -154,7 +154,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 
 .noUi-active {
-  border-color: darken($primary, 15%);
+  border-color: darken(#62b085, 15%);
   box-shadow: 0 0.46875rem 2.1875rem rgba($primary, 0.8), 0 0.125rem 0.5875rem rgba($primary, 0.9);
 }
 
@@ -292,7 +292,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   color: $white;
   text-align: center;
   text-decoration: none;
-  background-color: rgba($gray-900, 0.9);
+  background-color: rgba(#62b085, 0.9);
   border-radius: $border-radius-sm;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
   min-width: 70px;
@@ -309,7 +309,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
     margin-left: -5px;
     border-width: 5px 5px 0;
     left: 50%;
-    border-top-color: rgba($gray-900, 0.9);
+    border-top-color: rgba(#62b085, 0.9);
   }
 }
 

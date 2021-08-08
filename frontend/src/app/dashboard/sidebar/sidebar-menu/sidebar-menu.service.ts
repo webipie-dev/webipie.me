@@ -109,7 +109,9 @@ export class SidebarMenuService {
 
     getMenuItemByUrl(aMenus: MenuItem[], aUrl: string): any {
         for (const theMenu of aMenus) {
-            if (theMenu.link && theMenu.link === aUrl) {
+            if (theMenu.link && theMenu.link == aUrl) {
+              
+              console.log(aUrl);
                 return theMenu;
             }
 
@@ -128,6 +130,7 @@ export class SidebarMenuService {
         return aMenus.map((aMenu: MenuItem) => {
             if (aMenu === aCurrentMenu) {
                 aMenu.active = !aMenu.active;
+                console.log(aCurrentMenu.link);
             } else {
                 aMenu.active = false;
             }
