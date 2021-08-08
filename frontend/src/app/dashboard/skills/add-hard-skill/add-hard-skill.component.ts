@@ -47,12 +47,12 @@ export class AddHardSkillComponent implements OnInit {
     }
     if(!this.edit) {
       this.technicalSkillsService.addOne({skill: {id: this.selectedSkill, level: this.level}}).subscribe((result) => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       });
     } else {
       this.technicalSkillsService.edit(this.technicalSkill.id, {skill: {id: this.selectedSkill, level: this.level}}).subscribe(result => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       })
     }

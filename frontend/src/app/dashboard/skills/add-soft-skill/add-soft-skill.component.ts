@@ -43,12 +43,12 @@ export class AddSoftSkillComponent implements OnInit {
     }
     if(!this.edit) {
       this.softSkillService.addOne({id: this.selectedSkill}).subscribe((result) => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       });
     } else {
       this.softSkillService.edit(this.softSkill.id, {id: this.selectedSkill}).subscribe(result => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       })
     }
