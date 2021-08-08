@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders, HttpParamsOptions} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GenericModel} from '../models/generic.model';
 import {UtilsUrl} from '../utils/utils-url';
@@ -47,39 +47,34 @@ export class GenericService<T extends GenericModel> {
     if(localStorage.getItem('portfolioId')) {
       body.portfolioId = localStorage.getItem('portfolioId');
     }
-    return this.http.post(this.getUrl() + this.suffix, body, this.addJWT()) as Observable<{[index: string]: T | PortfolioModel}>;
+    return this.http.post(this.getUrl() + this.suffix, body, GenericService.addJWT()) as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
   public edit(id: string, body: any): Observable<{[index: string]: T | PortfolioModel}> {
     if(localStorage.getItem('portfolioId')) {
       body.portfolioId = localStorage.getItem('portfolioId');
     }
-    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body, this.addJWT()) as Observable<{[index: string]: T | PortfolioModel}>;
+    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body, GenericService.addJWT()) as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
   public deleteMany(body: any): Observable<{[index: string]: T | PortfolioModel}> {
     if(localStorage.getItem('portfolioId')) {
       body.portfolioId = localStorage.getItem('portfolioId');
     }
-    const httpOptions = {
-      headers: this.addJWT(),
-      body
-    };
-    return this.http.request('delete', this.getUrl() + this.suffix, {body, headers: this.addJWT().headers}) as unknown as Observable<{[index: string]: T | PortfolioModel}>;
+    return this.http.request('delete', this.getUrl() + this.suffix, {body, headers: GenericService.addJWT().headers}) as unknown as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
   public deleteAll(): Observable<T> {
     return this.http.delete(this.getUrl() + this.suffix + '/delete') as Observable<T>;
   }
 
-  private addJWT() {
+  private static addJWT() {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')!
     });
-    const httpOptions = {
+    return {
       headers: httpHeaders
-    };
-    return httpOptions
+    }
   }
 }

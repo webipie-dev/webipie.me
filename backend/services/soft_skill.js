@@ -33,7 +33,7 @@ const addSoftSkills = async (req, res, next) => {
       return;
     }
 
-    const softSkill = await SoftSkill.findById({'_id': id});
+    const softSkill = await SoftSkill.findById(id);
     if (!softSkill) {
         next(ApiError.NotFound('Should add soft skills.'));
         return;
@@ -42,7 +42,7 @@ const addSoftSkills = async (req, res, next) => {
     portfolio = await Portfolio.findOneAndUpdate(
         {
             _id: portfolioId,
-            'technicalSkills.skill._id': {$ne: softSkill._id}
+            'softSkills._id': {$ne: softSkill._id}
         },
         {
             $push: {
@@ -53,7 +53,10 @@ const addSoftSkills = async (req, res, next) => {
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
-  
+
+    if(!portfolio) {
+        return next(ApiError.NotFound('You seem to already have this skill, try adding another skill !'));
+    }
     res.status(200).send(portfolio);
 };
 
