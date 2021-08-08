@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ThemeOptions } from 'src/app/_shared/theme-options';
+import {Component} from '@angular/core';
+import {ThemeOptions} from 'src/app/_shared/theme-options';
 
 @Component({
   selector: 'app-sidebar-collapsed',
@@ -7,7 +7,8 @@ import { ThemeOptions } from 'src/app/_shared/theme-options';
 })
 export class SidebarCollapsedComponent {
 
-  constructor(public globals: ThemeOptions) {}
+  constructor(public globals: ThemeOptions) {
+  }
 
   toggleSidebarMobileOpen() {
     this.globals.toggleSidebarMobile = !this.globals.toggleSidebarMobile;

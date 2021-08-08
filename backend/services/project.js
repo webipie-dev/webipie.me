@@ -1,4 +1,4 @@
-const Project = require('../models/project');
+const {Project} = require('../models/project');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
 
@@ -30,21 +30,21 @@ const getOneProject = async (req, res, next) => {
 };
 
 const addProject = async (req, res, next) => {
-  let { name, description, tags, skills, imgs, link, github, portfolioId } = req.body
+  let { name, description, skills, imgs, link, github, portfolioId } = req.body
 
-  const portfolio = await Portfolio.findById(portfolioId)
-
+  let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
     return;
   }
 
   const project = new Project({
-    name, description, tags, skills, imgs, link, github, portfolio
+    name, description, skills, imgs, link, github, "portfolio": portfolioId
   });
 
   await project.save();
-  res.status(201).send(project);
+  portfolio = await Portfolio.findOneAndUpdate({"_id":portfolioId}, { $push: { projects: project } }, {new: true})
+  res.status(201).send({project, portfolio});
 
 };
 
@@ -52,7 +52,7 @@ const editOneProject = async (req, res, next) => {
 
   // separating the id
   const { id } = req.params;
-  const project = await Project.findById(id)
+  let project = await Project.findById(id)
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
@@ -81,36 +81,60 @@ const editOneProject = async (req, res, next) => {
         "update":{ $set: edits }
       }
     })
-    await bulkQueries.push({
-      updateOne: {
-        "filter": { _id: id},
-        "update": { $addToSet: {imgs: {$each: imgs} } }
-      }
-    })
-    await bulkQueries.push({
-    updateOne: {
-      "filter": { _id: id},
-      "update": { $pull : {imgs: {$in: deletedImages}}}
+    if(imgs){
+      await bulkQueries.push({
+        updateOne: {
+          "filter": { _id: id},
+          "update": { $addToSet: {imgs: {$each: imgs} } }
+        }
+      })
     }
-  })
+    if(deletedImages){
+      await bulkQueries.push({
+        updateOne: {
+          "filter": { _id: id},
+          "update": { $pull : {imgs: {$in: deletedImages}}}
+        }
+      })
+    }
+   
 
   const projectEdited = await Project.bulkWrite(bulkQueries, {ordered: false})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+  
+  project = await Project.findById(id);  
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": project.portfolio}, 
+    { $set: { "projects.$[elem]" : project } } , 
+    { arrayFilters: [ { "elem._id": project._id } ] , new: true}
+  );  
 
-  res.status(200).send(projectEdited);
+  res.status(200).send({projectEdited, portfolio});
 };
 
 
 const deleteManyProjects = async (req, res, next) => {
   //get projects ids
-  const { ids } = req.body;
+  const { ids, portfolioId } = req.body;
 
   const deletedProjects = await Project.deleteMany({_id: {$in: ids}})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": portfolioId}, 
+    {
+      $pull: { 
+        projects: { 
+          _id: { $in: ids }
+        }
+      }
+    },  
+    {new: true}
+  );
 
   if (deletedProjects) {
     if (deletedProjects.deletedCount === 0) {
@@ -122,7 +146,7 @@ const deleteManyProjects = async (req, res, next) => {
     }
   }
 
-  res.status(200).send(deletedProjects);
+  res.status(200).send({deletedProjects, portfolio});
 };
 
 const deleteAllProjects = async (req, res, next) => {

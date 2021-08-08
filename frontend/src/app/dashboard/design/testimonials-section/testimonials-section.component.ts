@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-testimonials-section',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./testimonials-section.component.scss']
 })
 export class TestimonialsSectionComponent implements OnInit {
+
   textAlignment = [false,true];
   someValue = 5;
   constructor() { }
@@ -35,6 +36,7 @@ export class TestimonialsSectionComponent implements OnInit {
     }
     this.change(s);
   }
+
   ngOnInit(): void {
   }
 

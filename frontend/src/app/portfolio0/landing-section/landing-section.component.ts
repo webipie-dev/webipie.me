@@ -13,9 +13,11 @@ export class LandingSectionComponent implements OnInit {
   download = faDownload;
   speed = 2;
   arrowDown = faArrowAltCircleDown;
+  name: string = '';
   constructor() { }
 
   ngOnInit(): void {
+    this.name = JSON.parse(localStorage.getItem('portfolio')!).name;
   }
 
 }

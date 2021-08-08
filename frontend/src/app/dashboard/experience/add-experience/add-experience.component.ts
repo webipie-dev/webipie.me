@@ -1,5 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {WorkExperienceService} from "../../../_shared/services/work-experience.service";
+import {FormBuilder, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import {WorkExperienceModel} from "../../../_shared/models/work-experience.model";
 
 @Component({
   selector: 'app-add-experience',
@@ -7,6 +12,12 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
   styleUrls: ['./add-experience.component.scss']
 })
 export class AddExperienceComponent implements OnInit {
+
+  constructor(private formBuilder: FormBuilder, private workExperienceService: WorkExperienceService,
+              private router: Router, private route: ActivatedRoute) {
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+  }
 
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -25,14 +36,37 @@ export class AddExperienceComponent implements OnInit {
     cancelReset: null
   };
 
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  workExperience: WorkExperienceModel = {} as WorkExperienceModel;
 
-  constructor() {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
-  }
+
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
+
+  workExperienceForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    position: [''],
+    company: [''],
+    imgs: [''],
+    skills: [''],
+    beginDate: ['', Validators.required],
+    endDate: [''],
+    city: ['']
+  });
+
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['workId']) {
+        this.edit = true;
+        this.fillEditForm(params['workId']);
+      }
+    });
+  }
+
+  public fillEditForm(workId: string): void {
+    this.workExperience = (JSON.parse(localStorage.getItem('portfolio')!).workExperiences.filter((workExperience: WorkExperienceModel) => workExperience.id === workId ))[0];
   }
 
   public toggleType(): void {
@@ -71,12 +105,27 @@ export class AddExperienceComponent implements OnInit {
   }
 
   public onUploadInit(): void {
+    document.getElementById('hiddenImageInput')?.click();
   }
 
   public onUploadError(): void {
   }
 
   public onUploadSuccess(): void {
+  }
+
+  onSubmit() {
+    if(!this.edit) {
+      this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.workExperienceService.edit(this.workExperience.id, this.workExperienceForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
   }
 
 }

@@ -3,27 +3,49 @@
     <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
   </div>
   <div class="row col-xl-7 col-md-12">
-      <div class="card card-box col-xl-12 col-md-12 mb-5">
-      <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add Achievement</h5>
-        <form>
+    <div class="card card-box col-xl-12 col-md-12 mb-5">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold font-size-lg mb-4">
+          <span *ngIf="!edit">Add</span>
+          <span *ngIf="edit">Edit</span>
+          Achievement
+        </h5>
+        <form [formGroup]="achievementForm" (ngSubmit)="onSubmit()">
           <div class="position-relative form-group"><label for="exampleEmail">Title</label>
             <input class="form-control"
                    id="exampleEmail"
                    name="name"
                    placeholder="Title"
-                   type="text">
+                   type="text"
+                   formControlName="title"
+                   [(ngModel)]="achievement.title"
+            >
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
                       id="exampleText"
-                      name="text">
+                      name="text"
+                      formControlName="description"
+                      [(ngModel)]="achievement.description"
+            >
             </textarea>
           </div>
           <div class="position-relative form-group"><label>Picture</label>
-            <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></dropzone>
-            <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+            <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
+                      [message]="'Click or drag images here to upload'" (click)="onUploadInit()"
+                      (error)="onUploadError()" (success)="onUploadSuccess()" formControlName="image"></dropzone>
+            <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config"
+                 [disabled]="disabled" (click)="onUploadInit()" (error)="onUploadError()"
+                 (success)="onUploadSuccess()"></div>
           </div>
-
+          <input
+            id="hiddenImageInput"
+            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
+            style="display: none"
+            multiple
+            name="imgs" type="file"
+            formControlName="photo"
+          />
 
           <div class="form-group">
             <label>Date</label>
@@ -35,12 +57,22 @@
                   </fa-icon>
                 </span>
               </div>
-              <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                     class="form-control" placeholder="Select date" type="text">
+              <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }"
+                     bsDatepicker
+                     class="form-control"
+                     placeholder="Select date"
+                     type="text"
+                     formControlName="date"
+                     [(ngModel)]="achievement.date"
+              >
             </div>
           </div>
           <div class="divider my-4"></div>
-          <button class="mt-1 btn btn-slack">Add Achievement</button>
+          <button class="mt-1 btn btn-slack" [disabled]="!achievementForm.valid">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Achievement
+          </button>
         </form>
       </div>
     </div>

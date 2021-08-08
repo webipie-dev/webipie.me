@@ -1,12 +1,12 @@
 <div class="user-box position-relative ml-2" dropdown>
   <a dropdownToggle
-          [routerLink]=""
-          class="p-0 d-flex align-items-center"
+     [routerLink]=""
+     class="p-0 d-flex align-items-center"
   >
     <div class="d-block p-0 avatar-icon-wrapper">
       <span class="badge badge-circle badge-success p-top-a">Online</span>
       <div class="avatar-icon rounded">
-        <img src="assets/johndoe.jpeg" alt="..." />
+        <img src="assets/johndoe.jpeg" alt="..."/>
       </div>
     </div>
     <div class="d-none d-xl-block pl-2">
@@ -26,7 +26,7 @@
       <li class="list-group-item rounded-top">
         <ul class="nav nav-neutral-primary nav-pills flex-column">
           <li
-                  class="nav-header d-flex text-dark pt-1 pb-2 font-weight-bold align-items-center"
+            class="nav-header d-flex text-dark pt-1 pb-2 font-weight-bold align-items-center"
           >
             <div>
               Profile options
@@ -48,18 +48,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="">
-              Check Website
+            <a (click)="changeTemplate()" class="nav-link" [routerLink]="">
+              Change Template
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="">
+            <a (click)="openSite()" class="nav-link" [routerLink]="">
               Preview
             </a>
           </li>
         </ul>
       </li>
-      
+
       <li class="list-group-item rounded-bottom p-3 text-center">
         <a [routerLink]="" class="btn btn-facebook" tooltip="Facebook">
         <span class="btn-wrapper--icon">

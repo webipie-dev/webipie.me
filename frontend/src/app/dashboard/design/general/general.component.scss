@@ -1,13 +1,20 @@
-.selected{
-    border:2px solid #50aeaa;text-align: center;padding:10px;border-radius: 10px;box-sizing: content-box;
+.selected {
+  border: 2px solid #50aeaa;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: content-box;
 }
-.image-cropped-circular{
-    border-radius: 300px;
+
+.image-cropped-circular {
+  border-radius: 300px;
 }
-.image-cropped-rectangle{
-    border-radius: 15px;
-    position: relative;
+
+.image-cropped-rectangle {
+  border-radius: 15px;
+  position: relative;
 }
-img{
-    width:150px;
+
+img {
+  width: 150px;
 }

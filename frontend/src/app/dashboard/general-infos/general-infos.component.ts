@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from 'ngx-dropzone-wrapper';
 
 @Component({
   selector: 'app-general-infos',
@@ -9,8 +9,9 @@ import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'n
 export class GeneralInfosComponent implements OnInit {
 
 
-   constructor( ) {
+  constructor() {
   }
+
   ngOnInit(): void {
   }
 
@@ -26,8 +27,8 @@ export class GeneralInfosComponent implements OnInit {
     cancelReset: null
   };
 
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
   public toggleType(): void {
     this.type = (this.type === 'component') ? 'directive' : 'component';
@@ -71,5 +72,19 @@ export class GeneralInfosComponent implements OnInit {
   }
 
   public onUploadSuccess(): void {
+  }
+
+
+
+  files: File[] = [];
+
+  onSelect(event: any) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
   }
 }

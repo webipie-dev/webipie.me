@@ -42,6 +42,7 @@
     "ngx-autosize": "^1.8.4",
     "ngx-bootstrap": "^6.2.0",
     "ngx-color-picker": "^11.0.0",
+    "ngx-dropzone": "^3.0.0",
     "ngx-dropzone-wrapper": "^10.0.1",
     "ngx-flag-icon-css": "^1.0.1",
     "ngx-font-picker": "^11.0.1",

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {GenericService} from "./generic.service";
+import {EducationModel} from "../models/education.model";
 import {HttpClient} from "@angular/common/http";
-import {WorkExperienceModel} from "../models/work-experience.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class WorkExperienceService extends GenericService<WorkExperienceModel>{
+export class EducationService extends GenericService<EducationModel>{
 
   constructor(protected http: HttpClient) {
-    super(http)
-    this.suffix = '/workexperience'
+    super(http);
+    this.suffix = '/education';
   }
 }
