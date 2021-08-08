@@ -42,11 +42,12 @@
     </div>
 
     <label for="exampleAddress2">Picture</label>
-    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
-              [message]="'Click or drag images here to upload'" (init)="onUploadInit()" (error)="onUploadError()"
-              (success)="onUploadSuccess()"></dropzone>
-    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled"
-         (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+    <ngx-dropzone [multiple]="false" [disabled]="files.length > 0" (change)="onSelect($event)">
+      <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+      <ngx-dropzone-preview *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
 
     <label for="exampleAddress2">CV</label>
     <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
@@ -54,6 +55,9 @@
               (success)="onUploadSuccess()"></dropzone>
     <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled"
          (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+
+    
+
     <button class="mt-2 btn btn-slack">Save</button>
   </form>
 </app-wrapper-simple>
