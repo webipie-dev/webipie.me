@@ -201,6 +201,7 @@ import {AddVolunteerComponent} from './experience/add-volunteer/add-volunteer.co
 import {TestimonialsSectionComponent} from './design/testimonials-section/testimonials-section.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/};
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -276,6 +277,7 @@ const icons = {
     FormsModule,
     DropzoneModule,
     PerfectScrollbarModule,
+    NgxDropzoneModule,
     AccordionModule.forRoot(),
     FeatherModule.pick(icons),
     FontAwesomeModule,
