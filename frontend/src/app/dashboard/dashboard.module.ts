@@ -39,168 +39,7 @@ import {NgApexchartsModule} from 'ng-apexcharts';
 import {NgProgressModule} from '@ngx-progressbar/core';
 import {NgProgressRouterModule} from '@ngx-progressbar/router';
 import {NgxFlagIconCssModule} from 'ngx-flag-icon-css';
-import {ButtonsModule} from 'ngx-bootstrap/buttons';
-import {CollapseModule} from 'ngx-bootstrap/collapse';
-import {TimepickerModule} from 'ngx-bootstrap/timepicker';
-import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
-import {CarouselModule} from 'ngx-bootstrap/carousel';
-import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
-import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
-import {ModalModule} from 'ngx-bootstrap/modal';
-import {PaginationModule} from 'ngx-bootstrap/pagination';
-import {ProgressbarModule} from 'ngx-bootstrap/progressbar';
-import {TabsModule} from 'ngx-bootstrap/tabs';
-import {PopoverModule} from 'ngx-bootstrap/popover';
-import {TooltipModule} from 'ngx-bootstrap/tooltip';
-import {AccordionModule} from 'ngx-bootstrap/accordion';
-import {AlertModule} from 'ngx-bootstrap/alert';
-import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
-import {ThemeOptions} from '../_shared/theme-options';
-import {GeneralInfosComponent} from './general-infos/general-infos.component';
-import {WrapperSimpleComponent} from '../_shared/components/wrapper-simple/wrapper-simple.component';
-import {FooterComponent} from './footer/footer.component';
-import {WrapperSeamlessComponent} from '../_shared/components/wrapper-seamless/wrapper-seamless.component';
-import {
-  faAngular,
-  faDiscord,
-  faDribbble,
-  faFacebook,
-  faGithub,
-  faGoogle,
-  faHtml5,
-  faInstagram,
-  faLinkedinIn,
-  faPinterest,
-  faReact,
-  faSlack,
-  faTwitter,
-  faVuejs,
-  faYoutube
-} from '@fortawesome/free-brands-svg-icons';
-import {
-  faAddressCard,
-  faAlignCenter,
-  faAngleDown,
-  faAngleLeft,
-  faAngleRight,
-  faAngleUp,
-  faArrowDown,
-  faArrowLeft,
-  faArrowRight,
-  faArrowsAltH,
-  faArrowUp,
-  faAward,
-  faBars,
-  faBell,
-  faBirthdayCake,
-  faBomb,
-  faBuilding,
-  faBusAlt,
-  faCalendarAlt,
-  faCameraRetro,
-  faCarBattery,
-  faCaretRight,
-  faChartBar,
-  faCheckCircle,
-  faChevronDown,
-  faChevronLeft,
-  faChevronRight,
-  faChevronUp,
-  faClock,
-  faCog,
-  faCommentDots,
-  faComments,
-  faCubes,
-  faDotCircle,
-  faDownload,
-  faEllipsisH,
-  faEllipsisV,
-  faEnvelope,
-  faExternalLinkAlt,
-  faEye,
-  faEyeDropper,
-  faFileAlt,
-  faFileArchive,
-  faFileAudio,
-  faFileCode,
-  faFileExcel,
-  faFileImage,
-  faFilePdf,
-  faFileVideo,
-  faFileWord,
-  faFilm,
-  faFolder,
-  faFolderOpen,
-  faGem,
-  faImages,
-  faInfoCircle,
-  faKeyboard,
-  faLemon,
-  faLifeRing,
-  faLightbulb,
-  faLink,
-  faMap,
-  faMapMarkerAlt,
-  faNetworkWired,
-  faObjectGroup,
-  faPager,
-  faPlayCircle,
-  faPlus,
-  faPlusCircle,
-  faPrint,
-  faQuestionCircle,
-  faQuoteRight,
-  faReply,
-  faSave,
-  faSearch,
-  faShapes,
-  faShareSquare,
-  faSignOutAlt,
-  faSitemap,
-  faSlidersH,
-  faStar,
-  faStarHalfAlt,
-  faStopwatch,
-  faSync,
-  faTable,
-  faTachometerAlt,
-  faThumbsUp,
-  faTimes,
-  faTimesCircle,
-  faTrashAlt,
-  faUnlockAlt,
-  faUpload,
-  faUser,
-  faUserCircle
-} from '@fortawesome/free-solid-svg-icons';
-import {AddSoftSkillComponent} from './skills/add-soft-skill/add-soft-skill.component';
-import {AddHardSkillComponent} from './skills/add-hard-skill/add-hard-skill.component';
-import {ExperienceComponent} from './experience/experience.component';
-import {AddExperienceComponent} from './experience/add-experience/add-experience.component';
-import {UiSwitchModule} from 'ngx-ui-switch';
-import {NouisliderModule} from 'ng2-nouislider';
-import {ProjectsComponent} from './projects/projects.component';
-import {AddProjectComponent} from './projects/add-project/add-project.component';
-import {DropzoneConfigInterface, DropzoneModule} from 'ngx-dropzone-wrapper';
-import {AchievementsComponent} from './achievements/achievements.component';
-import {AddAchievementComponent} from './achievements/add-achievement/add-achievement.component';
-import {TestimonialsComponent} from './testimonials/testimonials.component';
-import {AddTestimonialComponent} from './testimonials/add-testimonial/add-testimonial.component';
-import {ProfileComponent} from './profile/profile.component';
-import {HomeComponent} from './home/home.component';
-import {EducationComponent} from './education/education.component';
-import {AddEducationComponent} from './education/add-education/add-education.component';
-import {DesignComponent} from './design/design.component';
-import {ColorPickerModule} from 'ngx-color-picker';
-import {FONT_PICKER_CONFIG, FontPickerConfigInterface, FontPickerModule} from 'ngx-font-picker';
-import {AutosizeModule} from 'ngx-autosize';
-import {GeneralComponent} from './design/general/general.component';
-import {SkillsSectionComponent} from './design/skills-section/skills-section.component';
-import {SkillsComponent} from './skills/skills.component';
-import {AddVolunteerComponent} from './experience/add-volunteer/add-volunteer.component';
-import {TestimonialsSectionComponent} from './design/testimonials-section/testimonials-section.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 const icons = {
@@ -260,11 +99,11 @@ import { AddAchievementComponent } from './achievements/add-achievement/add-achi
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { AddTestimonialComponent } from './testimonials/add-testimonial/add-testimonial.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component'; 
+import { HomeComponent } from './home/home.component';
 
 import { EducationComponent } from './education/education.component';
-import { AddEducationComponent } from './education/add-education/add-education.component'; 
-import { DesignComponent } from './design/design.component'; 
+import { AddEducationComponent } from './education/add-education/add-education.component';
+import { DesignComponent } from './design/design.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FontPickerModule } from 'ngx-font-picker';
 import { FONT_PICKER_CONFIG } from 'ngx-font-picker';
@@ -288,23 +127,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   // Change this to your Google API key
   apiKey: 'AIzaSyBhWqjEHa0rSVAZs-bFDZoT9tkgKUg2sx0'
-};
-
-const icons = {
-  Calendar,
-  Activity,
-  Bell,
-  Settings,
-  Search,
-  Grid,
-  Users,
-  LifeBuoy,
-  CloudDrizzle,
-  Coffee,
-  Box,
-  Briefcase,
-  Layers,
-  Printer
 };
 
 @NgModule({
