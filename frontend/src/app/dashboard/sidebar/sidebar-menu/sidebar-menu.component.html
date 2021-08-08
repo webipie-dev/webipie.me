@@ -9,6 +9,7 @@
           <span>
             <span class="sidebar-icon-wrapper" [innerHTML]="menu.icon"></span>
             <span>{{menu.title}}</span>
+            <span *ngIf="menu.type === 'dropdown'" class="ml-5"> <fa-icon [icon]="['fas', 'chevron-down']"></fa-icon> </span>
           </span>
           <span>
             <span *ngIf="menu.badge" class="badge badge-pill" [ngClass]="menu.badge.class">{{menu.badge.text}}</span>

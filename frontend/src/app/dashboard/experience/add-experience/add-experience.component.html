@@ -1,4 +1,7 @@
 <div class="row col-xl-12 col-md-12 justify-content-center">
+  <div class="row col-xl-12 col-md-12 m-2">
+    <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
+  </div>
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -63,18 +66,35 @@
             </div>
           </div>
           <div class="form-group">
+
             <label>Still on the job ?</label>
             <div class="m-2">
               <ui-switch [checked]="false"></ui-switch>
             </div>
           </div>
-
-          <div class="form-group">
-            <label>End Date</label>
-            <div class="input-group input-group-lg mb-5">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
-                                                        class="mx-auto"></fa-icon></span>
+          <div class="row">
+            <div class="form-group col-xl-6 col-md-12">
+              <label>Start Date</label>
+              <div class="input-group input-group-lg mb-5">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
+                                                          class="mx-auto"></fa-icon></span>
+                </div>
+                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
+                       class="form-control" placeholder="Select date" type="text">
+              </div>
+            </div>
+            
+  
+            <div class="form-group col-xl-6 col-md-12">
+              <label>End Date</label>
+              <div class="input-group input-group-lg mb-5">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
+                                                          class="mx-auto"></fa-icon></span>
+                </div>
+                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
+                       class="form-control" placeholder="Select date" type="text">
               </div>
               <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }"
                      bsDatepicker
@@ -84,8 +104,10 @@
                      formControlName="endDate"
                      [(ngModel)]="workExperience.endDate"
               >
+
             </div>
           </div>
+          
           <div class="form-group">
             <label>Images</label>
             <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
@@ -131,6 +153,15 @@
             Experience</button>
         </form>
       </div>
+    </div>
+  </div>
+  <div class="row m-2 col-xl-5 col-md-12">
+    <div class="card-info">
+        <div class="info-container">
+            <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
+            <h1>Tips & Information</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+        </div>
     </div>
   </div>
 </div>

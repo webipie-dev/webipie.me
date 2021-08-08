@@ -1,0 +1,51 @@
+.cos-triangle{
+    width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-right: 40px solid #202e37;
+      border-bottom: 20px solid transparent;
+      position: absolute;
+      top:5px;
+    z-index:1;
+    left:-20px;
+}
+.cos-bubble{
+    position: relative;
+    background-color: #202e37;
+    min-height:50px;
+    padding:13px;
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 17px;
+}
+.rectangle{
+    border-radius: 0px !important;
+}
+.outline{
+    border : 1px solid #202e37;
+    background-color: white !important;
+    color : #202e37;
+    .cos-triangle{
+        visibility: hidden !important;
+    }
+}
+.cos-bubble h2{
+    position: relative;
+    z-index: 10;
+    padding:0px;
+    margin:0px;
+    font-size: 1.3rem;
+}
+fa-icon{
+    position: relative;
+    background-color: #cccccc;
+    color:white;
+    padding:5px;
+    top:15px;
+    padding-right:7px;
+    padding-left:7px;
+    border-radius: 100px;
+    border:5px solid #f2f2f2;
+    font-size:1.4rem;
+}

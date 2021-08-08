@@ -1,0 +1,22 @@
+.card-info{
+    width:100%;
+    background-color: white;
+    border-radius: 10px;
+    border-bottom: 3px solid #62b085;
+    padding:40px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    height:fit-content;
+    .info-container{
+        text-align: center;
+    }
+    fa-icon{
+        color:#62b085;
+        font-size:4rem;
+    }
+    h1{
+        font-weight: 700;
+        font-size:calc(10px + 1.5vw) !important;
+        color: #62b085;
+    }
+}

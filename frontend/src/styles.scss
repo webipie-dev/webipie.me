@@ -44,3 +44,18 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.back-btn{
+  font-size:2rem;
+  padding-bottom:20px;
+  box-sizing: border-box;
+  height:50px;
+  width:40px;
+  display: block;
+  box-shadow: 0 0 0px white;
+  transition: transform 0.5s ease,color 0.5s ease;
+}
+.back-btn:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px white;
+  color:rgb(145, 145, 145);
+}

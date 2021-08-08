@@ -121,7 +121,6 @@ export class SidebarMenuService {
         }
       }
     }
-
     return undefined;
   }
 

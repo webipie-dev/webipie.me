@@ -11,6 +11,7 @@ import { PriceSectionComponent } from './price-section/price-section.component';
 import { InViewportModule } from 'ng-in-viewport';
 import { HowitworksSectionComponent } from './howitworks-section/howitworks-section.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { HeaderLoggedinComponent } from './header-loggedin/header-loggedin.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     FooterComponent,
     PriceCardComponent,
     PriceSectionComponent,
-    HowitworksSectionComponent
+    HowitworksSectionComponent,
+    HeaderLoggedinComponent
   ],
   imports: [
     CommonModule,
