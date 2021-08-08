@@ -1,5 +1,12 @@
 <div class="app-header-menu d-flex justify-content-between">
-	<button class="btn m-2 btn-neutral-success" type="button">Preview</button>
-	<button class="btn m-2 btn-neutral-dark" type="button">Go to website</button>
+	<style>
+		@media screen and (max-width : 600px) {
+			.hideifsmall{
+				display: none;
+			}
+		}
+	</style>
+	<button class="btn m-2 btn-neutral-success hideifsmall" type="button">Preview</button>
+	<button class="btn m-2 btn-neutral-dark hideifsmall" type="button">Go to website</button>
 	<div class="divider mx-4"></div>
 </div>

@@ -1,4 +1,11 @@
-<div class="header-search-wrapper">
+<style>
+  @media screen and (max-width:600px) {
+    .search-wrapper{
+      width:250%;
+    }
+  }
+</style>
+<div class="header-search-wrapper ">
     <div class="search-wrapper" [ngClass]="searchActive ? 'is-active' : ''">
         <label class="icon-wrapper text-black" for="header-search-input">
           <i class="fas fa-search"></i>
