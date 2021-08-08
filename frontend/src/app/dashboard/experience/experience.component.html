@@ -38,11 +38,10 @@
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>
           </button>
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                  tooltip="Remove">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
-                            </span>
+          <button (click)="removeWork(work.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+            <span class="btn-wrapper--icon">
+              <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
+            </span>
           </button>
         </td>
       </tr>
@@ -95,15 +94,14 @@
         </td>
         <td class="text-right">
           <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editVolunteer(volunteering.id)">
-                        <span class="btn-wrapper--icon">
-                            <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
-                        </span>
+            <span class="btn-wrapper--icon">
+              <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+            </span>
           </button>
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30"
-                  tooltip="Remove">
-                            <span class="btn-wrapper--icon">
-                                <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
-                            </span>
+          <button (click)="removeVolunteer(volunteering.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+            <span class="btn-wrapper--icon">
+              <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
+            </span>
           </button>
         </td>
       </tr>

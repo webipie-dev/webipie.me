@@ -25,7 +25,7 @@ const getSoftSkills = async (req, res, next) => {
 };
 
 const addSoftSkills = async (req, res, next) => {
-    let { ids, portfolioId } = req.body
+    const { id, portfolioId } = req.body
   
     let portfolio = await Portfolio.findById(portfolioId); 
     if (!portfolio) {
@@ -33,17 +33,22 @@ const addSoftSkills = async (req, res, next) => {
       return;
     }
 
-    const softSkills = await SoftSkill.find({'_id': { $in: ids }});
-    if (!softSkills) {
+    const softSkill = await SoftSkill.findById({'_id': id});
+    if (!softSkill) {
         next(ApiError.NotFound('Should add soft skills.'));
         return;
     }
   
-    portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId}, {
-      $push: {
-        softSkills: softSkills
-      }
-    },
+    portfolio = await Portfolio.findOneAndUpdate(
+        {
+            _id: portfolioId,
+            'technicalSkills.skill._id': {$ne: softSkill._id}
+        },
+        {
+            $push: {
+                softSkills: softSkill
+            }
+            },
     { new: true })
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
@@ -51,7 +56,6 @@ const addSoftSkills = async (req, res, next) => {
   
     res.status(200).send(portfolio);
 };
-
 
 const deleteSoftSkills = async (req, res, next) => {
   //get soft skills ids

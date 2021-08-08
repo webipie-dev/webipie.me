@@ -25,8 +25,7 @@ const getTechnicalSkills = async (req, res, next) => {
 };
 
 const addTechnicalSkills = async (req, res, next) => {
-    let { skills, portfolioId } = req.body;
-    let ids = [];
+    const { skill, portfolioId } = req.body;
   
     let portfolio = await Portfolio.findById(portfolioId); 
     if (!portfolio) {
@@ -34,26 +33,24 @@ const addTechnicalSkills = async (req, res, next) => {
       return;
     }
 
-    ids = skills.map(a => a.id);
-    const technicalSkills = await TechnicalSkill.find({'_id': { $in: ids }});
-    if (!technicalSkills) {
+    const technicalSkill = await TechnicalSkill.findById(skill.id);
+    if (!technicalSkill) {
         next(ApiError.NotFound('Should add technical skills.'));
         return;
     }
-  
-    let results = Object.keys(skills).map( key => {
-        let skill = technicalSkills.find( obj => obj.id === skills[key].id);
-        return {skill: skill, level: skills[key].level};
-    });
-    portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId}, {
+
+    const result = {skill: technicalSkill, level: skill.level}
+    portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId, 'technicalSkills.skill._id': {$ne: technicalSkill._id}}, {
       $push: {
-        technicalSkills: results
+        technicalSkills: result
       }
     }, {new: true})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
-  
+    if(!portfolio) {
+        next(ApiError.NotFound('You seem to already have this skill, try adding another skill !'));
+    }
     res.status(200).send(portfolio);
 };
 

@@ -57,8 +57,15 @@ export class GenericService<T extends GenericModel> {
     return this.http.patch(this.getUrl() + this.suffix + '/' + id, body, this.addJWT()) as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
-  public deleteMany(body: {ids: string[]}): Observable<T> {
-    return this.http.delete(this.getUrl() + this.suffix) as Observable<T>;
+  public deleteMany(body: any): Observable<{[index: string]: T | PortfolioModel}> {
+    if(localStorage.getItem('portfolioId')) {
+      body.portfolioId = localStorage.getItem('portfolioId');
+    }
+    const httpOptions = {
+      headers: this.addJWT(),
+      body
+    };
+    return this.http.request('delete', this.getUrl() + this.suffix, {body, headers: this.addJWT().headers}) as unknown as Observable<{[index: string]: T | PortfolioModel}>;
   }
 
   public deleteAll(): Observable<T> {

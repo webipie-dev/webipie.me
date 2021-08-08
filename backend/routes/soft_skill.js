@@ -14,7 +14,7 @@ router.get('', softSkillService.getAllSoftSkills)
 router.get('/:portfolioId', passportJWT, [validation.portfolioId], validateRequest, softSkillService.getSoftSkills)
 
 // add soft skills
-router.post('', passportJWT, [validation.portfolioId, validation.ids], validateRequest, softSkillService.addSoftSkills);
+router.post('', passportJWT, [validation.portfolioId, validation.id], validateRequest, softSkillService.addSoftSkills);
 
 // delete soft skills
 router.delete('', validation.ids, passportJWT, softSkillService.deleteSoftSkills);

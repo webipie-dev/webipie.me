@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EducationModel} from "../../_shared/models/education.model";
+import {EducationService} from "../../_shared/services/education.service";
 
 @Component({
   selector: 'app-education',
@@ -8,7 +9,7 @@ import {EducationModel} from "../../_shared/models/education.model";
 })
 export class EducationComponent implements OnInit {
 
-  constructor() {
+  constructor(private educationService: EducationService) {
   }
 
   educationList?: [EducationModel];
@@ -17,4 +18,10 @@ export class EducationComponent implements OnInit {
     this.educationList = JSON.parse(localStorage.getItem('portfolio')!).education;
   }
 
+  removeEducation(id: string) {
+    this.educationService.deleteMany({ids: [id]}).subscribe(result => {
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.ngOnInit();
+    })
+  }
 }

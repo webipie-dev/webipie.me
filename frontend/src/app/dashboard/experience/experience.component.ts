@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {WorkExperienceModel} from "../../_shared/models/work-experience.model";
 import {VolunteeringExperienceModel} from "../../_shared/models/volunteering-experience.model";
 import {ActivatedRoute, Router} from "@angular/router";
+import {SoftSkillService} from "../../_shared/services/soft-skill.service";
+import {TechnicalSkillService} from "../../_shared/services/technical-skill.service";
+import {VolunteeringExperienceService} from "../../_shared/services/volunteering-experience.service";
+import {WorkExperienceService} from "../../_shared/services/work-experience.service";
 
 @Component({
   selector: 'app-experience',
@@ -10,7 +14,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ExperienceComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute,
+              private volunteeringExperienceService: VolunteeringExperienceService, private workExperienceService: WorkExperienceService) {
   }
 
   workExperiences?: [WorkExperienceModel];
@@ -27,5 +32,19 @@ export class ExperienceComponent implements OnInit {
 
   editVolunteer(id: string) {
     this.router.navigate(['addvolunteer'], { relativeTo: this.route, queryParams: { volunteerId: id } });
+  }
+
+  removeVolunteer(id: string) {
+    this.volunteeringExperienceService.deleteMany({ids: [id]}).subscribe(result => {
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.ngOnInit();
+    })
+  }
+
+  removeWork(id: string) {
+    this.workExperienceService.deleteMany({ids: [id]}).subscribe(result => {
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.ngOnInit();
+    })
   }
 }

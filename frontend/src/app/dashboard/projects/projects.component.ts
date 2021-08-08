@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectModel} from "../../_shared/models/project.model";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ProjectService} from "../../_shared/services/project.service";
 
 @Component({
   selector: 'app-projects',
@@ -9,7 +10,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute,
+              private projectService: ProjectService) {
   }
 
   projects?: [ProjectModel]
@@ -20,5 +22,12 @@ export class ProjectsComponent implements OnInit {
 
   editProject(id: string) {
     this.router.navigate(['addproject'], { relativeTo: this.route, queryParams: { projectId: id } });
+  }
+
+  removeProject(id: string) {
+    this.projectService.deleteMany({ids: [id]}).subscribe(result => {
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.ngOnInit();
+    })
   }
 }

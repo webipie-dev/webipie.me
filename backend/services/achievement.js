@@ -16,7 +16,6 @@ const getAchievements = async (req, res, next) => {
   res.status(200).send(achievements);
 };
 
-
 const getOneAchievement = async (req, res, next) => {
   //get achievement id
   const { id } = req.params;
@@ -91,11 +90,9 @@ const editOneAchievement = async (req, res, next) => {
   res.status(200).send({achievementEdited, portfolio});
 };
 
-
 const deleteManyAchievements = async (req, res, next) => {
   //get achievements ids
   const { ids, portfolioId } = req.body;
-
   const deletedAchievements = await Achievement.deleteMany({_id: {$in: ids}})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});

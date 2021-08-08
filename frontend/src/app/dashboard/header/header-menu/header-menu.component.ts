@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {environment} from "../../../../environments/environment";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header-menu',
@@ -7,9 +9,18 @@ import {Component, OnInit} from '@angular/core';
 export class HeaderMenuComponent implements OnInit {
 
 
-  constructor() {
+  constructor(private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+  }
+
+  openSite() {
+    const url = JSON.parse(localStorage.getItem('portfolio')!).url + environment.PORT;
+    window.open('//' + 'google.com', '_blank');
+  }
+
+  changeTemplate() {
+    this.router.navigate(['/templates/choose-template']);
   }
 }

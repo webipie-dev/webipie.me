@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@ng-select/ng-select": "^7.2.0",
     "@angular/animations": "~12.0.5",
     "@angular/cdk": "^12.1.3",
     "@angular/common": "~12.0.5",
