@@ -101,6 +101,7 @@ import { ExperienceSectionComponent } from './design/experience-section/experien
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { ContactSectionComponent } from './design/contact-section/contact-section.component';
 import { EducationSectionComponent } from './design/education-section/education-section.component';
+import { ProjectsSectionComponent } from './design/projects-section/projects-section.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -154,7 +155,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     TestimonialsSectionComponent,
     ExperienceSectionComponent,
     ContactSectionComponent,
-    EducationSectionComponent
+    EducationSectionComponent,
+    ProjectsSectionComponent
   ],
   imports: [
     CommonModule,
