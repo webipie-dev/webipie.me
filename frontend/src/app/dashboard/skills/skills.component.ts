@@ -22,7 +22,6 @@ export class SkillsComponent implements OnInit {
   }
 
   removeSoftSkill(id: string) {
-    console.log(id)
     this.softSkillService.deleteMany({ids: [id]}).subscribe(result => {
       localStorage.setItem('portfolio', JSON.stringify(result))
       this.ngOnInit();
