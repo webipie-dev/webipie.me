@@ -121,6 +121,7 @@ import { EducationSectionComponent } from './design/education-section/education-
 import { ProjectsSectionComponent } from './design/projects-section/projects-section.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxDropzoneModule,NgxDropzoneComponent } from 'ngx-dropzone';
+import { AchievementsSectionComponent } from './design/achievements-section/achievements-section.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -175,7 +176,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ExperienceSectionComponent,
     ContactSectionComponent,
     EducationSectionComponent,
-    ProjectsSectionComponent
+    ProjectsSectionComponent,
+    AchievementsSectionComponent
   ],
   imports: [
     CommonModule,
