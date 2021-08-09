@@ -12,7 +12,7 @@
             <a href="#"><h3>about us</h3><div class="line"></div></a>
             <a href="#"><h3>pricing</h3><div class="line"></div></a>
             <a href="#"><h3>contact us</h3><div class="line"></div></a>
-            <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
+            <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
             <a><img class="avatar" src="assets/johndoe.jpeg"> Welcome, Mr John Doe</a>
         </div>
 
@@ -20,7 +20,7 @@
     <div [class]="!menuactive? 'slidemenu inactivee':'slidemenu activee'">
         <fa-icon [icon]="leftarrow" (click)="onMenuClick($event)"></fa-icon>
         <div class="account">
-            <a [routerLink]="['/dashboard']"><button class="btn btn-sm btn-outline-dark">Dashboard</button></a>
+            <a [routerLink]="['/dashboard/home']"><button class="btn btn-sm btn-outline-dark">Dashboard</button></a>
             <a [routerLink]="['/register/signup']"><button class="btn btn-sm btn-slack">Sign Up</button></a>
         </div>
         <div class="element">
