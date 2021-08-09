@@ -40,7 +40,7 @@ import {NgProgressModule} from '@ngx-progressbar/core';
 import {NgProgressRouterModule} from '@ngx-progressbar/router';
 import {NgxFlagIconCssModule} from 'ngx-flag-icon-css';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { NgxDropzoneModule } from 'ngx-dropzone';
+
 
 const icons = {
    Calendar,
@@ -120,6 +120,7 @@ import { ContactSectionComponent } from './design/contact-section/contact-sectio
 import { EducationSectionComponent } from './design/education-section/education-section.component';
 import { ProjectsSectionComponent } from './design/projects-section/projects-section.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxDropzoneModule,NgxDropzoneComponent } from 'ngx-dropzone';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
