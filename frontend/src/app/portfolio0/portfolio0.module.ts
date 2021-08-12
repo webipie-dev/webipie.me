@@ -14,6 +14,8 @@ import { ProjectComponent } from './portfolio-section/project/project.component'
 import { TestimonialsSectionComponent } from './testimonials-section/testimonials-section.component';
 import { TestimonialComponent } from './testimonials-section/testimonial/testimonial.component';
 import { ContactSectionComponent } from './contact-section/contact-section.component';
+import { EducationSectionComponent } from './education-section/education-section.component';
+import { AchievementsSectionComponent } from './achievements-section/achievements-section.component';
 
 
 
@@ -30,7 +32,9 @@ import { ContactSectionComponent } from './contact-section/contact-section.compo
     ProjectComponent,
     TestimonialsSectionComponent,
     TestimonialComponent,
-    ContactSectionComponent
+    ContactSectionComponent,
+    EducationSectionComponent,
+    AchievementsSectionComponent
   ],
   imports: [
     CommonModule,
