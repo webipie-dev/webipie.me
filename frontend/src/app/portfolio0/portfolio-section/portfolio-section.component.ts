@@ -1,5 +1,5 @@
+  
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { setTime } from 'ngx-bootstrap/chronos/utils/date-setters';
 
 @Component({
   selector: 'app-portfolio-section',
@@ -7,17 +7,13 @@ import { setTime } from 'ngx-bootstrap/chronos/utils/date-setters';
   styleUrls: ['./portfolio-section.component.scss']
 })
 export class PortfolioSectionComponent implements OnInit {
-
+  globalTag="All";
   constructor(private renderer: Renderer2) { }
-
+  projects = [['All','Design','Photoshop'],['All','Design'],['All','Illustrator','Indesign'],['All','Illustrator'],['All','Design'],['All','Design']];
   ngOnInit(): void {
   }
-  hide(event:any){
-    console.log(event.currentTarget);
-    let target = event.currentTarget;
-    this.renderer.setAttribute(event.currentTarget,'class','inactive');
-    setTimeout(()=>{
-      this.renderer.setStyle(target,'display','none');
-    },1000)
+  changeTag(s:string){
+    this.globalTag = s;
+    console.log(s);
   }
 }
