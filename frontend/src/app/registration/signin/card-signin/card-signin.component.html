@@ -12,7 +12,7 @@
         <div class="input"><input type="password" name="password" [(ngModel)]="password" placeholder="Password"></div>
         <button type="submit" (click)="signIn()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()">Login</button>
     </form>
-    <p style="margin: auto;margin-top:20px">Don't have an account? sign up <a [routerLink]="['/register/signup']" style="color:#6d944e;font-weight:700">here</a></p>
+    <p style="margin: auto;margin-top:20px">Don't have an account? sign up <a [routerLink]="['/register/signup']" style="color:#3aaf85;font-weight:700">here</a></p>
 
     <div class="line"></div>
     <p style="margin:auto;margin-bottom:5px;">Or login using</p>
