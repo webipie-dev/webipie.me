@@ -10,7 +10,7 @@
             <div [ngClass]="globalTag=='Indesign'? 'cos-btn active':'cos-btn'" (click)='changeTag("Indesign")'><p>Indesign</p></div>
         </div>
         <div class="cos-project-container">
-            <app-project-element *ngFor="let project of projects; let i=index" [globalTag]="globalTag" [tags]="project"></app-project-element>
+            <app-project-element *ngFor="let project of projects; let i=index" [project]="project" [globalTag]="globalTag" [tags]="project.skills"></app-project-element>
         </div>
     </div>
 </div>
