@@ -13,9 +13,17 @@ export class ContactSectionComponent implements OnInit {
   linkedin = faLinkedinIn;
   mail = faEnvelope;
   phone = faPhone;
+  email = "johndoe@gmail.com";
+  phoneNumber = "55 555 555";
+  icon : string = "";
+  card : string = "";
   constructor() { }
 
   ngOnInit(): void {
+    this.phoneNumber = JSON.parse(localStorage.getItem('portfolio')!).phoneNumber;
+    this.email = JSON.parse(localStorage.getItem('portfolio')!).email;
+    if(JSON.parse(localStorage.getItem('portfolio')!).template.contact.socialMediaIcon == 2) this.icon = 'square';
+    if(JSON.parse(localStorage.getItem('portfolio')!).template.contact.contactCard == 1) this.card = 'fullysquare';
   }
 
 }
