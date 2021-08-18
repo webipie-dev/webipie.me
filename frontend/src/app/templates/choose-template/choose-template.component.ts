@@ -34,6 +34,8 @@ export class ChooseTemplateComponent implements OnInit {
       this.inView = 2;
     }else if(window.innerWidth<1400){
       this.inView = 3;
+    }else{
+      this.inView = 4;
     }
     if(this.target) this.carouselwidth = this.selected.length * this.target.nativeElement.offsetWidth;
     this.templateService.getMany().subscribe(

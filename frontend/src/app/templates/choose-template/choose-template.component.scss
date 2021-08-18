@@ -16,12 +16,11 @@
         width: 2000px;
         display: flex;
         justify-content:stretch;
-        flex-wrap: wrap;
         transition: transform 0.5s ease-in-out;
         flex-direction: row;
         div{
             max-width:300px;
-            width:75vw;
+            width:90vw;
             
         }
     }
