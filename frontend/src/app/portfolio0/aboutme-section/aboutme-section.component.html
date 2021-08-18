@@ -7,13 +7,15 @@
     <div class="cos-content">
         <div class="cos-left">
             <h1><div class="cos-firstletter">A</div>bout me</h1>
-            <h3>HELLO LOREM</h3>
-            <h2>I'm a developer.</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae corporis maiores asperiores provident nobis, tempore assumenda non obcaecati rem ea illum ratione esse odio cumque? Placeat velit unde eum ipsa?</p>
+            <h3>HELLO</h3>
+            <h2>I'm a {{position}}</h2>
+            <p>{{description}}</p>
+            <a href="{{github}}">Github</a><br>
+            <a href="{{linkedin}}">Linkedin</a>
         </div>
         <div class="cos-right">
-            <div class="cos-image">
-                <img src="assets/johndoe.jpg">
+            <div class="cos-image {{square? 'square':''}}">
+                <img src="{{picture}}">
             </div>
         </div>
     </div>
