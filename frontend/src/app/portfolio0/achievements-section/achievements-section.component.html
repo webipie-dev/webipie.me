@@ -1,14 +1,12 @@
 <div class="cos-container">
     <div class="cos-content">
-        <h3>WHAT I DID</h3>
-        <h1>My Experience</h1>
+        <h3>WHAT I ACHIEVED</h3>
+        <h1>My Achievements</h1>
         <div class="cos-experiences">
-            <div *ngFor="let work of workExperiences" class="cos-element">
+            <div *ngFor="let achievement of achievements" class="cos-element">
                 <div class="cos-left">
-                    <h4>{{work.title}}</h4>
-                    <h5 *ngIf="work.company">{{work.company}}</h5>
-                    <h6 *ngIf="work.position">{{work.position}}</h6>
-                  <p>{{work.description}}</p>
+                    <h4>{{achievement.title}}</h4>
+                    <p>{{achievement.description}}</p>
                 </div>
                 <div class="cos-middle">
                     <div class="cos-line"></div>
@@ -17,8 +15,9 @@
                 <div class="cos-right">
                     <div class="cos-bubble">
                         <div class="cos-triangle">
+
                         </div>
-                        <h2>{{work.beginDate | date}} - <span *ngIf="work.endDate">{{work.endDate | date}}</span><span *ngIf="!work.endDate">Present</span></h2>
+                        <h2>{{achievement.date | date}}</h2>
                     </div>
                 </div>
             </div>

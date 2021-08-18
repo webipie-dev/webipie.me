@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 
 @Component({
   selector: 'app-testimonial',
@@ -9,8 +10,8 @@ export class TestimonialComponent implements OnInit {
 
   constructor() { }
 
+  @Input() testimonial?: TestimonialModel;
   ngOnInit(): void {
-    
   }
 
 }
