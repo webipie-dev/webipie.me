@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CustomPreloadingStrategyService} from "./_shared/services/custom-preloading-strategy.service";
+import {environment} from "../environments/environment";
 import { 
   AuthGuardService as AuthGuard 
 } from './_shared/services/auth-guard.service';
@@ -37,8 +38,21 @@ const routes: Routes = [
   }
 ];
 
+const templateRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: () => {
+      return import('./portfolio0/portfolio0.module')
+            .then(m => m.Portfolio0Module);
+    }
+  }
+];
+
+const isCurrentDomainWebipie = (window.location.hostname === environment.websiteDomainName || window.location.hostname === `www.${environment.websiteDomainName}` || window.location.hostname === 'localhost');
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {preloadingStrategy: CustomPreloadingStrategyService})],
+  imports: [RouterModule.forRoot(isCurrentDomainWebipie? routes: templateRoutes, {preloadingStrategy: CustomPreloadingStrategyService})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

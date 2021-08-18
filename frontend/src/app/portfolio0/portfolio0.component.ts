@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from '../_shared/services/portfolio.service';
 
 @Component({
   selector: 'app-portfolio0',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class Portfolio0Component implements OnInit {
   favIcon: HTMLLinkElement | null = document.querySelector('#app-icon');
 
-  constructor() { }
+  constructor(private portfolioService: PortfolioService) { 
+  }
 
   changeIcon() {
     if(this.favIcon){
@@ -17,7 +19,14 @@ export class Portfolio0Component implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.setPortfolio()
     this.changeIcon()
+  }
+
+  async setPortfolio(){
+    let result = await this.portfolioService.getPortfolioByUrl().toPromise()
+    console.log(result);
+    localStorage.setItem("portfolio", JSON.stringify(result));
   }
 
   scroll(el : HTMLElement){

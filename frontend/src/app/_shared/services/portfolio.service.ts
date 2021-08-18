@@ -18,24 +18,8 @@ export class PortfolioService extends GenericService<PortfolioModel> {
     return this.http.get(this.getUrl() + this.suffix + '/all/urls') as unknown as Observable<any>;
   }
 
-  getPortfolioByUrl(): Promise<boolean> {
-    return new Promise(resolve => {
-      if (
-        window.location.hostname === 'webipie.com' ||
-        window.location.hostname === 'www.webipie.com' // ||
-       // window.location.hostname === encryptStorage.getItem('store')?.url
-      ) {
-        resolve(true);
-      } else {
-        // any to be changed by Portfolio
-        this.http.get<any>(this.getUrl() + this.suffix + '/url/' + window.location.hostname).subscribe( store => {
-          if (store){
-            // encryptStorage.setItem('store', store);
-          }
-          resolve(true);
-        });
-      }
-    });
+  getPortfolioByUrl(): Observable<PortfolioModel> {
+    return this.http.get<any>(this.getUrl() + this.suffix + '/url/' + window.location.hostname) as Observable<PortfolioModel>
   }
 
   changeTemplate(id: string, body: any){
