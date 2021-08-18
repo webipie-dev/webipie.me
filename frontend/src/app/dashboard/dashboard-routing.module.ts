@@ -98,12 +98,6 @@ const routes: Routes = [
         component: DesignComponent
       },
     ]
-  },
-  {
-    path: 'edit',
-    loadChildren: () => import('../portfolio-edit/portfolio-edit.module')
-      .then(m => m.PortfolioEditModule),
-    data: {preload: true}
   }
 ];
 

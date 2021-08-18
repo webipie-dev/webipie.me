@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DesignEditService} from "../../_shared/services/design-edit.service";
+import {TemplateModel} from "../../_shared/models/template.model";
 
 @Component({
   selector: 'app-testimonials-section',
@@ -14,8 +16,9 @@ export class TestimonialsSectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.speed = JSON.parse(localStorage.getItem('portfolio')!).template.testimonials.carouselSpeed
     setInterval(()=>{
-      
+
       if(this.elements){
         this.position += 340;
         this.elements --;
@@ -25,5 +28,4 @@ export class TestimonialsSectionComponent implements OnInit {
       }
     },4000)
   }
-
 }

@@ -12,7 +12,7 @@ export class GeneralComponent implements OnInit {
   someValue = 3;
   toggle=true;
   colorPalettes=[['#50aeaa','#000000'],["#79ebfe","#e184fe"]];
-  private _presetFonts = ['Arial', 'Times', 'Courier', 'Lato', 'Open Sans', 'Roboto Slab','Montserrat'];
+  presetFonts = ['Arial', 'Times', 'Courier', 'Lato', 'Open Sans', 'Roboto Slab','Montserrat'];
 
   public font: FontInterface = new Font({
     family: 'Roboto',
@@ -25,8 +25,6 @@ export class GeneralComponent implements OnInit {
   public sizeSelect: boolean = false;
   public styleSelect: boolean = false;
 
-  public presetFonts = this._presetFonts;
-
   constructor() {
   }
 
@@ -35,7 +33,7 @@ export class GeneralComponent implements OnInit {
   }
 
   public togglePresetFonts(): void {
-    this.presetFonts = this.presetFonts.length ? [] : this._presetFonts;
+    this.presetFonts = this.presetFonts.length ? [] : this.presetFonts;
   }
 
   public toggleExtraOptions(): void {
