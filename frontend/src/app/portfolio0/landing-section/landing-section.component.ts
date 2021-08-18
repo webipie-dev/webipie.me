@@ -12,12 +12,17 @@ export class LandingSectionComponent implements OnInit {
   secondaryColor="#e184fe";
   download = faDownload;
   speed = 2;
+  position = '';
   arrowDown = faArrowAltCircleDown;
   name: string = '';
   constructor() { }
 
   ngOnInit(): void {
     this.name = JSON.parse(localStorage.getItem('portfolio')!).name;
+    this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart.font_color;
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart.secondary_color;
+    this.speed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
   }
 
 }
