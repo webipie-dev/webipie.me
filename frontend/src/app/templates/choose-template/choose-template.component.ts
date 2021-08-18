@@ -37,16 +37,21 @@ export class ChooseTemplateComponent implements OnInit {
     }else{
       this.inView = 4;
     }
-    if(this.target) this.carouselwidth = this.selected.length * this.target.nativeElement.offsetWidth;
     this.templateService.getMany().subscribe(
-      result => {
-        this.templates = result;
-        this.selected.length = result.length;
-        this.selected.fill(false);
-        console.log(this.selected);
-      }
+      result => this.modify(result)
     );
+    
+    
 
+  }
+  modify(result:any){
+    
+      this.templates = result;
+      this.selected.length = result.length;
+      this.selected.fill(false);
+      console.log(this.selected);
+      if(this.target) console.log(this.carouselwidth = this.selected.length * this.target.nativeElement.offsetWidth);
+    
   }
   rightArrow(el:HTMLElement){
     this.positionY += el.offsetWidth;
