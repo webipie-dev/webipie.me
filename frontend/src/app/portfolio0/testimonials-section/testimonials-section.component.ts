@@ -20,6 +20,9 @@ export class TestimonialsSectionComponent implements OnInit {
   @ViewChild('target') target?: ElementRef<HTMLElement>;
 
   ngOnInit(): void {
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart.font_color;
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart.secondary_color;
+    this.speed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
     this.testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials ?? [];
     this.inView = new Array(this.testimonials?.length).fill(false) ?? [];
     if(window.innerWidth<1000){
