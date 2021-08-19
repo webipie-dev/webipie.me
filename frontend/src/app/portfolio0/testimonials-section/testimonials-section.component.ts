@@ -48,7 +48,7 @@ export class TestimonialsSectionComponent implements OnInit {
           this.elements = this.inView.length;
           this.makeActive(this.inView.length-this.elements);
         }else{
-          this.makeActive(this.inView.length-this.elements-2);
+          this.makeActive(this.inView.length-this.elements-1);
         }
       }
     },4000)

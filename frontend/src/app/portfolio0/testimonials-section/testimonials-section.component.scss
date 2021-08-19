@@ -61,7 +61,8 @@
     transition: transform 0.75s ease;
 }
 .cos-testimonial{
-    width:300px;
+    width:fit-content;
+    max-width: 300px;
     margin:auto;
     margin-bottom:0px;
     opacity: 0.4;

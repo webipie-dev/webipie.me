@@ -12,12 +12,13 @@ import {TechnicalSkillDeveloperModel} from "../../_shared/models/technical-skill
 export class ExpertiseSectionComponent implements OnInit {
   watch = faStopwatch;
   softSkills?: [SoftSkillModel];
-  hardSkills?: [TechnicalSkillDeveloperModel]
+  hardSkills?: [TechnicalSkillDeveloperModel];
   constructor() { }
 
   ngOnInit(): void {
     this.softSkills = JSON.parse(localStorage.getItem('portfolio')!).softSkills;
     this.hardSkills = JSON.parse(localStorage.getItem('portfolio')!).technicalSkills;
+    
   }
 
 }
