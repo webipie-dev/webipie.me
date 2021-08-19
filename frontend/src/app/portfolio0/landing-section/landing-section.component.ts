@@ -22,8 +22,8 @@ export class LandingSectionComponent implements OnInit {
     this.name = JSON.parse(localStorage.getItem('portfolio')!).name;
     this.cv = JSON.parse(localStorage.getItem('portfolio')!).cv;
     this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
-    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart.font_color;
-    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart.secondary_color;
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.speed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
   }
 

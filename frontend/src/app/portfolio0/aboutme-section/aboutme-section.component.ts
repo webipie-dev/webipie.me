@@ -12,11 +12,11 @@ export class AboutmeSectionComponent implements OnInit {
   description = "description";
   position : string = '';
   square : boolean = false;
-  secondaryColor = "#e184fe";
+  secondaryColor:string = "#e184fe";
   constructor() { }
 
   ngOnInit(): void {
-    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart.secondary_color;
+    console.log(this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1]);
     this.github = JSON.parse(localStorage.getItem('portfolio')!).github;
     this.linkedin = JSON.parse(localStorage.getItem('portfolio')!).linkedin;
     this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
