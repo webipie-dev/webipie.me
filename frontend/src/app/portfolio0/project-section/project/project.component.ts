@@ -31,8 +31,6 @@ export class ProjectComponent implements OnInit,OnChanges {
         this.pos+= this.imgWidth;
         this.pic++;
       }
-      
-      console.log(this.pos);
     },4000)
   }
   ngOnChanges(changes: any) {
@@ -48,7 +46,7 @@ export class ProjectComponent implements OnInit,OnChanges {
     }
   }
   onResize(el: HTMLElement){
-    console.log(el.offsetWidth);
+    this.imgWidth = el.offsetWidth;
   }
   click(el: HTMLElement){
     el.setAttribute('class','overlay show');
