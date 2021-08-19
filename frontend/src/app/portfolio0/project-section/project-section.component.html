@@ -2,7 +2,7 @@
     <div class="cos-content">
         <h3>MY WORKS</h3>
         <h1>My Portfolio</h1>
-        <div class="cos-nav">
+        <div class="cos-nav {{button == 2? 'square':''}}">
             <div [ngClass]="globalTag=='All'? 'cos-btn active':'cos-btn'" (click)='changeTag("All")'><p>All</p></div>
             <div [ngClass]="globalTag=='Design'? 'cos-btn active':'cos-btn'"(click)='changeTag("Design")'><p>Design</p></div>
             <div [ngClass]="globalTag=='Photoshop'? 'cos-btn active':'cos-btn'" (click)='changeTag("Photoshop")'><p>Photoshop</p></div>

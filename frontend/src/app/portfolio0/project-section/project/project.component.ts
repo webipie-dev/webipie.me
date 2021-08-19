@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 import {ProjectModel} from "../../../_shared/models/project.model";
 
 @Component({
@@ -11,10 +12,28 @@ export class ProjectComponent implements OnInit,OnChanges {
   @Input() globalTag = "All";
   @Input() tags? = ["none"];
   @Input() project?: ProjectModel;
+  pos = 0;
+  imgWidth=1100;
   class = "cos-container";
   compare = true;
+  img=['','',''];
+  pic=0;
+  close = faTimesCircle;
+  template = 2;
   ngOnInit(): void {
-    console.log(this.project)
+    this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
+    if(window.innerWidth<1100)this.imgWidth=window.innerWidth;
+    setInterval(()=>{
+      if(this.pic==this.img.length){
+        this.pic = 0;
+        this.pos = 0;
+      }else{
+        this.pos+= this.imgWidth;
+        this.pic++;
+      }
+      
+      console.log(this.pos);
+    },4000)
   }
   ngOnChanges(changes: any) {
     // to be changed when filtering
@@ -27,5 +46,14 @@ export class ProjectComponent implements OnInit,OnChanges {
     }else{
       this.class="cos-container";
     }
+  }
+  onResize(el: HTMLElement){
+    console.log(el.offsetWidth);
+  }
+  click(el: HTMLElement){
+    el.setAttribute('class','overlay show');
+  }
+  exit(el: HTMLElement){
+    el.setAttribute('class','overlay')
   }
 }

@@ -16,7 +16,7 @@ export class AchievementsSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.achievements = JSON.parse(localStorage.getItem('portfolio')!).achievements;
-    this.divider = JSON.parse(localStorage.getItem('portfolio')!).template.achievements.dividerIcon;
+    this.divider = JSON.parse(localStorage.getItem('portfolio')!).template.achievement.dividerIcon;
     switch(this.divider){
       case 1: {
         this.check = faCheck;
@@ -28,7 +28,7 @@ export class AchievementsSectionComponent implements OnInit {
         this.check = faCalendarCheck;
       }
     }
-    this.template = JSON.parse(localStorage.getItem('portfolio')!).template.achievements.dataContainer;
+    this.template = JSON.parse(localStorage.getItem('portfolio')!).template.achievement.dataContainer;
   }
   
 

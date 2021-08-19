@@ -9,10 +9,12 @@ import {ProjectModel} from "../../_shared/models/project.model";
 })
 export class ProjectSectionComponent implements OnInit {
   globalTag="All";
+  button = 1;
   constructor(private renderer: Renderer2) { }
   projects?: [ProjectModel];
   ngOnInit(): void {
     this.projects = JSON.parse(localStorage.getItem('portfolio')!).projects;
+    this.button = JSON.parse(localStorage.getItem('portfolio')!).template.project.button;
   }
   changeTag(s:string){
     this.globalTag = s;
