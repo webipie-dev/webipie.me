@@ -13,12 +13,13 @@ export class ExpertiseSectionComponent implements OnInit {
   watch = faStopwatch;
   softSkills?: [SoftSkillModel];
   hardSkills?: [TechnicalSkillDeveloperModel];
+  softSkillsTemplate?= 1;
   constructor() { }
 
   ngOnInit(): void {
     this.softSkills = JSON.parse(localStorage.getItem('portfolio')!).softSkills;
     this.hardSkills = JSON.parse(localStorage.getItem('portfolio')!).technicalSkills;
-    
+    this.softSkillsTemplate = JSON.parse(localStorage.getItem('portfolio')!).template.softSkills;
   }
 
 }
