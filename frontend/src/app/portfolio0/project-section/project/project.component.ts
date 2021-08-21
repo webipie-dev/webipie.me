@@ -8,6 +8,8 @@ import {ProjectModel} from "../../../_shared/models/project.model";
   styleUrls: ['./project.component.scss']
 })
 export class ProjectComponent implements OnInit,OnChanges {
+  secondaryColor: any;
+  primaryColor: any;
   constructor() { }
   @Input() globalTag = "All";
   @Input() tags? = ["none"];
@@ -21,6 +23,9 @@ export class ProjectComponent implements OnInit,OnChanges {
   close = faTimesCircle;
   template = 2;
   ngOnInit(): void {
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
+    
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
     if(window.innerWidth<1100)this.imgWidth=window.innerWidth;
     setInterval(()=>{

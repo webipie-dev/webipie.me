@@ -1,6 +1,6 @@
 <div class="cos-container">
     <div [class]="scrolled? 'cos-scroll cos-show':'cos-scroll'"></div>
-    <div class="cos-menu" [style.color]="scrolled? '#202e37 !important':'white'">
+    <div class="cos-menu" [style.color]="scrolled? color+' !important':'white'" [style.filter]="scrolled? 'brightness(90%)!important':''">
         <div class="cos-left">
             <h1 style="text-transform: uppercase;text-align: center;">{{name}}</h1>
         </div>

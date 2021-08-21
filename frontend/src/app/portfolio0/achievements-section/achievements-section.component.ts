@@ -12,9 +12,14 @@ export class AchievementsSectionComponent implements OnInit {
   achievements?: [AchievementModel];
   divider?= 1;
   template?= 2;
+  secondaryColor: any;
+  primaryColor: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
+    
     this.achievements = JSON.parse(localStorage.getItem('portfolio')!).achievements;
     this.divider = JSON.parse(localStorage.getItem('portfolio')!).template.achievement.dividerIcon;
     switch(this.divider){

@@ -12,11 +12,16 @@ export class ExperienceSectionComponent implements OnInit {
   check = faCheck;
   divider?= 1;
   template?= 2;
+  secondaryColor: any;
+  primaryColor: any;
   constructor() { }
 
   workExperiences?: [WorkExperienceModel]
 
   ngOnInit(): void {
+
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.workExperiences = JSON.parse(localStorage.getItem('portfolio')!).workExperiences;
     this.divider = JSON.parse(localStorage.getItem('portfolio')!).template.experience.dividerIcon;
     switch(this.divider){

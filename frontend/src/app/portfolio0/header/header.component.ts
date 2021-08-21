@@ -7,7 +7,8 @@ import { Component, HostListener, OnInit, Output, EventEmitter } from '@angular/
 })
 export class HeaderComponent implements OnInit {
   scrolled = false;
-  name : string = "John Doe"
+  name : string = "John Doe";
+  color : string = "#202e37";
   @Output() aboutmeClick = new EventEmitter<any>();
   @Output() expertiseClick = new EventEmitter<any>();
   @Output() experienceClick = new EventEmitter<any>();
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = JSON.parse(localStorage.getItem('portfolio')!).name;
+    this.color = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
   }
   clickContact(event:any){
     this.contactClick.emit(event);
