@@ -22,7 +22,15 @@ export class ProjectSectionComponent implements OnInit {
     this.button = JSON.parse(localStorage.getItem('portfolio')!).template.project.button;
   }
   hover(e:any){
-    e.target.setAttribute('style','background-color:'+this.primaryColor);
+    if(!e.target.getAttribute('class').includes('active')){
+      e.target.setAttribute('style','background-color:'+this.primaryColor+';border-color:'+this.primaryColor);
+    }
+    
+  }
+  unhover(e:any){
+    if(!e.target.getAttribute('class').includes('active')){
+      e.target.setAttribute('style','background-color:inherit;color:'+this.primaryColor+';border-color:'+this.primaryColor);
+    }
   }
   changeTag(s:string){
     this.globalTag = s;

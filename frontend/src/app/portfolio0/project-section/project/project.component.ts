@@ -23,6 +23,7 @@ export class ProjectComponent implements OnInit,OnChanges {
   close = faTimesCircle;
   template = 2;
   ngOnInit(): void {
+    console.log(this.tags)
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     
@@ -40,12 +41,11 @@ export class ProjectComponent implements OnInit,OnChanges {
   }
   ngOnChanges(changes: any) {
     // to be changed when filtering
-    this.compare = true;
-    if(!this.compare){
+    if(!this.tags?.includes(this.globalTag) && this.globalTag!="All"){
         this.class="cos-container inactive";
         setTimeout(()=>{
           this.class="cos-container inactive invisible";
-        },1000)
+        },400)
     }else{
       this.class="cos-container";
     }
