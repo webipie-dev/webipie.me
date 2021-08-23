@@ -15,6 +15,17 @@
     align-items: center;
     padding-bottom: 50px;
 }
+.square{
+    border-radius: 0px !important;
+}
+.outline{
+    border : 1px solid #202e37;
+    background-color: transparent !important;
+    color : #202e37 !important;
+    .cos-triangle{
+        visibility: hidden !important;
+    }
+}
 .cos-content h3{
     margin-top:100px;
     font-size: 1rem;

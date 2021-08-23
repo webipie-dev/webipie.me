@@ -7,6 +7,7 @@ body{
     min-height: 100vh;
     z-index:2;
     position: relative;
+    
 }
 .cos-triangle{
     width:200vw;
@@ -24,6 +25,9 @@ body{
     max-width: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+.square{
+    border-radius: 15px !important;
+}
 .cos-image img{
     width:100%;
 }
@@ -34,6 +38,7 @@ body{
     max-width: 1200px;
     padding-top:50px;
     display: flex;
+    padding-bottom:50px;
     flex-wrap: wrap-reverse;
     justify-content: space-around;
     align-items: center;
@@ -47,7 +52,6 @@ body{
     display: inline-block;
     font-size:5rem;
     margin-right:5px;
-    color:#e184fe;
     font-weight: 800;
     text-decoration: underline;
 }

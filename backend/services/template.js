@@ -12,18 +12,17 @@ const getTemplates = async (req, res, next) => {
 };
 
 const addTemplate = async (req, res, next) => {
-  let { name, header, colorChart, colorChartOptions, font, fontOptions } = req.body
+  const { name, colorChart, colorChartOptions, font, fontOptions } = req.body;
 
   const foundTemplate = await Template.findOne({"name": name});
   if(foundTemplate) return res.status(500).send("Template already exits");
-  
+
   const template = new Template({
-    name, header, colorChart, colorChartOptions, font, fontOptions 
+    name, colorChart, colorChartOptions, font, fontOptions
   });
 
   await template.save();
   res.status(201).send(template);
-
 };
 
 const editTemplate= async (req, res, next) => {
@@ -64,7 +63,6 @@ const editTemplate= async (req, res, next) => {
   res.status(200).send(templateEdited);
 };
 
-
 const deleteTemplate= async (req, res, next) => {
 
   // separating the id
@@ -93,8 +91,6 @@ const deleteAllTemplates = async (req, res, next) => {
 
   res.status(200).send(deletedTemplates);
 };
-
-
 
 module.exports = {
     getTemplates,

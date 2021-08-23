@@ -20,6 +20,17 @@
     font-size: 1rem;
     color:#7b7b7b;
 }
+.square{
+    border-radius: 0px !important;
+}
+.outline{
+    border : 1px solid #202e37;
+    background-color: transparent !important;
+    color : #202e37 !important;
+    .cos-triangle{
+        visibility: hidden !important;
+    }
+}
 .cos-content h1{
     font-size:calc(40px + 3vw);
     font-weight: 700;

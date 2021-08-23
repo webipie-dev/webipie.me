@@ -1,81 +1,23 @@
 <div class="cos-container">
     <div class="cos-content">
         <h3>WHAT I STUDIED</h3>
-        <h1>My Education</h1>
+        <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'">My Education</h1>
         <div class="cos-experiences">
-            <div class="cos-element">
+            <div *ngFor="let element of education" class="cos-element">
                 <div class="cos-left">
-                    <h4>LOREM IPSUM</h4>
-                    <h5>ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores reiciendis quas distinctio maxime aperiam soluta praesentium doloremque tempora iusto, modi at debitis, esse dolorem aliquid non ipsam excepturi. Quis, dicta.</p>
+                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">{{element.title}}</h4>
+                    <h5 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">{{element.level}}</h5>
+                    <h6 [style]="'color:'+primaryColor">{{element.city}}</h6>
                 </div>
                 <div class="cos-middle">
                     <div class="cos-line"></div>
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble">
-                        <div class="cos-triangle">
-                            
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
+                        <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
-                        <h2>MAY 2020 - Present</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="cos-element">
-                <div class="cos-left">
-                    <h4>LOREM IPSUM</h4>
-                    <h5>ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores reiciendis quas distinctio maxime aperiam soluta praesentium doloremque tempora iusto, modi at debitis, esse dolorem aliquid non ipsam excepturi. Quis, dicta.</p>
-                </div>
-                <div class="cos-middle">
-                    <div class="cos-line"></div>
-                    <fa-icon [icon]='check'></fa-icon>
-                </div>
-                <div class="cos-right">
-                    <div class="cos-bubble">
-                        <div class="cos-triangle">
-                            
-                        </div>
-                        <h2>MAY 2020 - Present</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="cos-element">
-                <div class="cos-left cos-alignleft">
-                    <h4>LOREM IPSUM</h4>
-                    <h5>ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores reiciendis quas distinctio maxime aperiam soluta praesentium doloremque tempora iusto, modi at debitis, esse dolorem aliquid non ipsam excepturi. Quis, dicta.</p>
-                </div>
-                <div class="cos-middle">
-                    <div class="cos-line"></div>
-                    <fa-icon [icon]='check'></fa-icon>
-                </div>
-                <div class="cos-right">
-                    <div class="cos-bubble goright">
-                        <div class="cos-triangle">
-                            
-                        </div>
-                        <h2>MAY 2020 - Present</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="cos-element">
-                <div class="cos-left">
-                    <h4>LOREM IPSUM</h4>
-                    <h5>ipsum</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores reiciendis quas distinctio maxime aperiam soluta praesentium doloremque tempora iusto, modi at debitis, esse dolorem aliquid non ipsam excepturi. Quis, dicta.</p>
-                </div>
-                <div class="cos-middle">
-                    <div class="cos-line"></div>
-                    <fa-icon [icon]='check'></fa-icon>
-                </div>
-                <div class="cos-right">
-                    <div class="cos-bubble">
-                        <div class="cos-triangle">
-                            
-                        </div>
-                        <h2>MAY 2020 - Present</h2>
+                        <h2>{{element.beginDate | date}} - <span *ngIf="element.endDate">{{element.endDate | date}}</span><span *ngIf="!element.endDate">Present</span></h2>
                     </div>
                 </div>
             </div>

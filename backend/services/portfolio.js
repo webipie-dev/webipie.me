@@ -49,7 +49,7 @@ const getPortfolioByUrl = async (req,res) => {
       ip = req.headers["x-forwarded-for"]
     else if (req.ip)
       ip = req.ip
-    if(ip && ip != '::1'){
+    if(ip && ip !== '::1'){
       const geo = geoip.lookup(ip);
       if(geo && geo.country){
         let ipKey = ip.replace(/\./g, '-').replace(/:/g, '_')
@@ -160,8 +160,9 @@ const editPortfolio = async (req, res, next) => {
 
 const changeTemplate = async (req, res, next) => {
   const { id } = req.params
-  let templateId = req.body.templateId;
-  let template = await Template.findById(templateId)
+  const { templateId } = req.body;
+  const template = await Template.findById(templateId)
+
   if (!template) {
     next(ApiError.NotFound('Template not Found'));
     return;
