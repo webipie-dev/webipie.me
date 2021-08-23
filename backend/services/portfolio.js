@@ -3,6 +3,9 @@ const {Template} = require('../models/template');
 const ApiError = require("../errors/api-error");
 const { User } = require('../models/user');
 const { createDomain } = require('../services/domain');
+const geoip = require('geoip-lite');
+const date = require('date-and-time')
+
 
 const getPortfolioUrls = async (req,res) => {
   const urls =await Portfolio.find({}).select({ "url": 1, "_id": 0})
@@ -26,21 +29,63 @@ const getOnePortfolio = async (req, res) => {
 
 const getPortfolioByUrl = async (req,res) => {
   const { url } = req.params;
-  const portfolio = await portfolio.findOne({url})
+  const noLog = req.query.noLog;
+  const portfolio = await Portfolio.findOne({url})
     .catch((err) => {
       res.status(400).json({errors: err.message});
     });
+  
+  if (!portfolio.visitsPerDay)
+    portfolio.visitsPerDay = {}
+  
+  if (!portfolio.visits)
+    portfolio.visits = {}
+  
+  let ip;
+  console.log(`req ip: ${req.ip}, x-forwarded-for: ${req.headers["x-forwarded-for"]}`)
+  if (! noLog)
+  {  
+    if(req.headers["x-forwarded-for"])
+      ip = req.headers["x-forwarded-for"]
+    else if (req.ip)
+      ip = req.ip
+    if(ip && ip != '::1'){
+      const geo = geoip.lookup(ip);
+      if(geo && geo.country){
+        let ipKey = ip.replace(/\./g, '-').replace(/:/g, '_')
+        
+        let visit = portfolio.visits.get(ipKey)
+        let cnt
+        if(visit)
+          cnt = visit.count
+        if(!cnt)
+          cnt = 0
+        portfolio.visits.set(ipKey, {
+          ip: ip, date: Date.now(), country: geo.country, count: cnt + 1
+        })   
+      }
+    }
+
+    
+    let today = date.format(new Date(Date.now()),'YYYY-MM-DD');
+    let todayCount = portfolio.visitsPerDay.get(today);
+    if (!todayCount)
+      todayCount = 0;
+    portfolio.visitsPerDay.set(today, todayCount+1);
+  }
   res.status(200).send(portfolio);
+  portfolio.save()
 }
 
 const addPortfolio = async (req, res, next) => {
   // TODO: email verification error doesn't return a readable error
-  const foundPortfolio = await User.findOne({name: req.body.name});
+  const name = req.user.name + (""+Math.random()).substring(2,7);
+  const foundPortfolio = await Portfolio.findOne({name});
   if(foundPortfolio){
     return next(ApiError.BadRequest('Portfolio name is already in use'));
   }
 
-  const { name, templateId } = req.body
+  const { templateId } = req.body
 
   let getTemplate = await Template.findById(templateId);
 
@@ -64,13 +109,14 @@ const addPortfolio = async (req, res, next) => {
 
 
   await portfolio.save()
-    .catch((err) => {
-      res.status(400).json({errors: [{ message: err.message }]});
-    });
+    //.catch((err) => {
+      //return res.status(400).json({errors: [{ message: err.message }]});
+    //});
+
   createDomain(portfolioSubdomain)
 
   console.log(portfolio);
-  res.status(201).send(portfolio);
+  res.status(201).json(portfolio);
 
 }
 
@@ -92,20 +138,21 @@ const editPortfolio = async (req, res, next) => {
       edits[key] = req.body[key];
     }
   }
-  console.log()
+
+
   const portfolio = await Portfolio.updateOne({_id: id}, { $set: edits })
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  if (portflio){
+  if (portfolio){
     if (portfolio.nModified === 0) {
       next(ApiError.NotFound('No portfolios modified'));
       return;
     }
   }
 
-  const portfolioEdited = await Portfolio.findById(id)
+  const portfolioEdited = await Portfolio.findById(id);
 
   res.status(200).send(portfolioEdited)
 

@@ -1,0 +1,29 @@
+.cos-container{
+    width: 100vw;
+    display: flex;
+    min-height: 100vh;
+    padding:20px;
+    justify-content: center;
+    color:rgb(146, 146, 146);
+    background-color: rgb(241, 241, 241);
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    img{
+        width: 70%;
+        max-width: 200px;
+        margin-bottom:50px;
+    }
+    h1{
+        font-size:1.3rem;
+        font-weight: 500;
+        font-family:"Montserrat",sans-serif;
+    }
+    .loading{
+        margin:auto;
+        width:100%;
+        text-align: center;
+        letter-spacing: -1px;
+    }
+    
+}

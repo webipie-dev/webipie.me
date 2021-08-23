@@ -1,16 +1,17 @@
-isAdmin = async (req, next, done) => {
-    const user = req.user;
-    if(!user) {
-        done(null, false)
+isAdmin = () => { 
+    return (req, res, next, done)=>{
+        const user = req.user;
+        console.log(user);
+        if(!user) {
+            done(null, false)
+        }
+        if(user.role == "admin"){
+             next();
+        }
+        else{
+            done(null,user)
+        }  
     }
-
-    if(user.role == "admin"){
-        next();
-        return;
-    }
-    else{
-        done(null,user)
-    }  
 };
 
 module.exports = isAdmin;

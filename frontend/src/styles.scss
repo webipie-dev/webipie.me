@@ -9,6 +9,56 @@ a{
     text-decoration: none;
     color:inherit;
 }
+.disabled-button {
+  cursor: not-allowed;
+  color: #779164 !important;
+  background-color: #b3c1b2 !important;
+  border-color: #b3c1b2 !important;
+}
+.disabled-button:hover {
+  cursor: not-allowed;
+  color: #779164 !important;
+  background-color: #adbaac !important;
+  border-color: #b3c1b2 !important;
+}
 body{
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+}
+body::-webkit-scrollbar {
+    width: 10px;
+}
+body::-webkit-scrollbar-track{
+    background-color: rgb(231, 231, 231);
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(153, 153, 153);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.back-btn{
+  font-size:2rem;
+  padding-bottom:20px;
+  box-sizing: border-box;
+  height:50px;
+  width:40px;
+  display: block;
+  box-shadow: 0 0 0px white;
+  transition: transform 0.5s ease,color 0.5s ease;
+}
+.back-btn:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px white;
+  color:rgb(145, 145, 145);
+}
+.wrap-reverse{
+  flex-wrap: wrap-reverse;
 }

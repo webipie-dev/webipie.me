@@ -5,9 +5,7 @@ const projectSchema = Schema({
   name: {type: String, required: true},
   description: {type: String, required: true},
   imgs: {type: [String], required: false},
-  tags: {type: [String], required: false},
   skills: {type: [String], required: false},
-  date: {type: Date, required: false},
   link: {type: String, required: false},
   github: {type: String, required: false},
   portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
@@ -24,4 +22,5 @@ const projectSchema = Schema({
     }
 );
 
-module.exports = mongoose.model('Project', projectSchema);
+module.exports.projectSchema = projectSchema;
+module.exports.Project = mongoose.model('Project', projectSchema);

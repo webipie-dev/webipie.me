@@ -1,0 +1,101 @@
+<div class="row col-xl-12 col-md-12 m-2">
+  <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
+</div>
+<div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
+  
+  <div class="row col-xl-7 col-md-12">
+    <div class="card card-box col-xl-12 col-md-12 mb-5">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold font-size-lg mb-4">
+          <span *ngIf="!edit">Add</span>
+          <span *ngIf="edit">Edit</span>
+          Project
+        </h5>
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+          <div class="position-relative form-group"><label for="exampleEmail">Title</label>
+            <input class="form-control"
+                   id="Title"
+                   name="name"
+                   placeholder="Title"
+                   type="text"
+                   formControlName="name"
+                   [(ngModel)]="project.name"
+            >
+          </div>
+          <div class="position-relative form-group"><label for="exampleText">Description</label>
+            <textarea class="form-control"
+                      id="exampleText"
+                      name="text"
+                      formControlName="description"
+                      [(ngModel)]="project.description"
+            ></textarea>
+          </div>
+          <div class="position-relative form-group">
+            <label>Images</label>
+            <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
+                      *ngIf="type === 'component'"
+                      [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'"
+                      class="dropzone-container"></dropzone>
+          </div>
+
+          <div (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
+               *ngIf="type === 'directive'" [disabled]="disabled" [dropzone]="config"
+               class="dropzone dropzone-container"></div>
+          <input
+            id="hiddenImageInput"
+            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
+            style="display: none"
+            multiple
+            name="imgs" type="file"
+            formControlName="photo"
+          />
+          <div class="position-relative form-group"><label for="exampleEmail">Skills</label>
+            <input class="form-control"
+                   id="exampleEmail"
+                   name="name"
+                   placeholder="Title"
+                   type="text"
+                   formControlName="skills"
+                   [(ngModel)]="project.skills"
+            >
+          </div>
+          <div class="position-relative form-group"><label for="exampleEmail">Link</label>
+            <input class="form-control"
+                   id="exampleEmail"
+                   name="name"
+                   placeholder="Link"
+                   type="text"
+                   formControlName="link"
+                   [(ngModel)]="project.link"
+            >
+          </div>
+          <div class="position-relative form-group"><label for="exampleEmail">Github Repo</label>
+            <input class="form-control"
+                   id="exampleEmail"
+                   name="name"
+                   placeholder="Github Repo"
+                   type="text"
+                   formControlName="github"
+                   [(ngModel)]="project.github"
+            >
+          </div>
+          <div class="divider my-4"></div>
+          <button class="mt-1 btn btn-slack" [disabled]="!projectForm.valid">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Project
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row m-2 col-xl-5 col-md-12">
+    <div class="card-info">
+        <div class="info-container">
+            <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
+            <h1>Tips & Information</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+        </div>
+    </div>
+  </div>
+</div>

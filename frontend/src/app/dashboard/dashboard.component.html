@@ -1,6 +1,5 @@
-
 <div [class]="'app-wrapper ' + globals.contentBackground"
-[ngClass]="{
+     [ngClass]="{
 'header-drawer-open' : globals.toggleHeaderDrawer,
 'app-sidebar-collapsed' : globals.toggleSidebar,
 'app-footer-fixed' : globals.footerFixed,
@@ -10,17 +9,17 @@
 'app-header-fixed' : globals.headerFixed
 }
 ">
-<app-sidebar></app-sidebar>
-<div class="app-main">
-   <app-header></app-header>
-   <div class="app-content">
-       <div class="app-content--inner">
-           <div class="app-content--inner__wrapper">
-               <router-outlet></router-outlet>
-           </div>
-       </div>
-       <!-- <app-footer></app-footer> -->
-   </div>
-</div>
+  <app-sidebar></app-sidebar>
+  <div class="app-main">
+    <app-header></app-header>
+    <div class="app-content">
+      <div class="app-content--inner">
+        <div class="app-content--inner__wrapper">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
 
 </div>

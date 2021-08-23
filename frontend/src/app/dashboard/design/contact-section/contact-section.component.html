@@ -1,0 +1,96 @@
+<div class="p-2 m-2">
+    <div class="heading-3 text-center m-3">Social Media Icons</div>
+    <div class="row">
+        <div class="col-xl-12 col-md-12">
+            <div class="row m-4 flex-layout justify-content-center text-center">
+                <div class="col-xl-4 col-md-4 mt-4">
+                    <div class="cos-socials-container col-xl-12 row justify-content-center m-2">
+                        <div class="cos-social"><fa-icon [icon]="['fab','google']"></fa-icon></div>
+                        <div class="cos-social"><fa-icon [icon]="['fab','facebook-f']"></fa-icon></div>
+                        <div class="cos-social"><fa-icon [icon]="['fab','twitter']"></fa-icon></div>
+                    </div>
+                    <div class="form-check text-center m-2"><input class="form-check-input"
+                        name="icons"
+                        type="radio" checked></div>
+                </div>
+                <div class="col-xl-4 col-md-4 mt-4">
+                        <div class="cos-socials-container col-xl-12 row justify-content-center m-2">
+                            <div class="cos-social square"><fa-icon [icon]="['fab','google']"></fa-icon></div>
+                            <div class="cos-social square"><fa-icon [icon]="['fab','facebook-f']"></fa-icon></div>
+                            <div class="cos-social square"><fa-icon [icon]="['fab','twitter']"></fa-icon></div>
+                        </div>
+                    <div class="form-check text-center m-2"><input class="form-check-input"
+                        name="icons"
+                        type="radio"></div>
+                </div>
+                <div class="col-xl-4 col-md-4 mt-4">
+                    <div class="cos-socials-container col-xl-12 row justify-content-center m-2">
+                        <div class="cos-social mid-square"><fa-icon [icon]="['fab','google']"></fa-icon></div>
+                        <div class="cos-social mid-square"><fa-icon [icon]="['fab','facebook-f']"></fa-icon></div>
+                        <div class="cos-social mid-square"><fa-icon [icon]="['fab','twitter']"></fa-icon></div>
+                    </div>
+                <div class="form-check text-center m-2"><input class="form-check-input"
+                    name="icons"
+                    type="radio"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-header m-2"></div>   
+    <div class="heading-3 text-center m-3">Contact Card</div>
+    <div class="row">
+        <div class="col-xl-12 col-md-12">
+            <div class="row m-2 col-xl-12 col-md-12 flex-layout justify-content-center text-center">
+                    
+                <div class='cos-element m-2 col-xl-5 col-md-5 text-center' [style.border]="textAlignment[0]? '2px solid #72d4af !important':''" (click)="select(1)">
+                    <h2 style="text-align: left;">Contact Form</h2>
+                    <div class="cos-form">
+                        <div class="cos-left">
+                            <label style="text-align: left;">Your name</label>
+                            <input type="text" style="border-radius: 0px;" placeholder="Your Name" />
+                            <label style="text-align: left;">Mail</label>
+                            <input type="email" style="border-radius: 0px;" placeholder="Your Email" />
+                            <label style="text-align: left;">Phone</label>
+                            <input type="number" style="border-radius: 0px;" placeholder="Your Phone" />
+                        </div>
+                        <div class="cos-right">
+                            <label style="text-align: left;">Message</label>
+                            <textarea placeholder="Your Message" style="border-radius: 0px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="cos-btn-container" style="margin-bottom:20px;">
+                    <button type="submit" class="cos-btn" style="border-radius: 0px;">Send Message</button>
+                    </div>
+                        <div class="form-check text-center m-2"><input class="form-check-input" value="second"
+                            name="contact"
+                            type="radio" [checked]="textAlignment[0]" (change)="onItemChange($event)"></div>
+                    </div>
+                    <div class='cos-element m-2 col-xl-5 col-md-5 text-center' [style.border]="textAlignment[1]? '2px solid #72d4af !important':''" (click)="select(2)">
+                        
+                            <h2 style="text-align: left;">Contact Form</h2>
+                            <div class="cos-form">
+                                <div class="cos-left">
+                                    <label style="text-align: left;">Your name</label>
+                                    <input type="text" placeholder="Your Name" />
+                                    <label style="text-align: left;">Mail</label>
+                                    <input type="email" placeholder="Your Email" />
+                                    <label style="text-align: left;">Phone</label>
+                                    <input type="number" placeholder="Your Phone" />
+                                </div>
+                                <div class="cos-right">
+                                    <label>Message</label>
+                                    <textarea placeholder="Your Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="cos-btn-container" style="margin-bottom:20px;">
+                            <button type="submit" class="cos-btn">Send Message</button>
+                            </div>
+                        <div class="form-check text-center m-2" ><input class="form-check-input" value="second"
+                            name="contact"
+                            type="radio" [checked]="textAlignment[1]" (change)="onItemChange($event)"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

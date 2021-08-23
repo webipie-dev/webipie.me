@@ -1,4 +1,4 @@
-const SoftSkill = require('../models/soft_skill');
+const {SoftSkill} = require('../models/soft_skill');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
 
@@ -25,28 +25,73 @@ const getSoftSkills = async (req, res, next) => {
 };
 
 const addSoftSkills = async (req, res, next) => {
-    let { ids, portfolioId } = req.body
+    const { id, portfolioId } = req.body
   
-    const portfolio = await Portfolio.findById(portfolioId);
-  
+    let portfolio = await Portfolio.findById(portfolioId); 
     if (!portfolio) {
       next(ApiError.NotFound('Portfolio Not Found'));
       return;
     }
 
-    const softSkills = await SoftSkill.find({'_id': { $in: ids }});
-
-    if (!softSkills) {
+    const softSkill = await SoftSkill.findById(id);
+    if (!softSkill) {
         next(ApiError.NotFound('Should add soft skills.'));
         return;
     }
   
-    
-  
-  };
+    portfolio = await Portfolio.findOneAndUpdate(
+        {
+            _id: portfolioId,
+            'softSkills._id': {$ne: softSkill._id}
+        },
+        {
+            $push: {
+                softSkills: softSkill
+            }
+            },
+    { new: true })
+    .catch((err) => {
+      res.status(400).json({errors: [{ message: err.message }]});
+    });
+
+    if(!portfolio) {
+        return next(ApiError.NotFound('You seem to already have this skill, try adding another skill !'));
+    }
+    res.status(200).send(portfolio);
+};
+
+const deleteSoftSkills = async (req, res, next) => {
+  //get soft skills ids
+  const { ids, portfolioId } = req.body;
+
+  const portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId},{
+      $pull: { 
+        softSkills: { 
+          _id: { $in: ids } 
+        }
+      } 
+    }, { new: true })
+    .catch((err) => {
+      res.status(400).json({errors: [{ message: err.message }]});
+    });
+
+  /* if (deletedSoftSkills) {
+    if (deletedSoftSkills.deletedCount === 0) {
+      next(ApiError.NotFound('No soft skills found to delete'));
+      return;
+    }else if (deletedSoftSkills.deletedCount < ids.length) {
+      next(ApiError.NotFound(`${ids.length} softskils to be deleted but ${deletedSoftSkills.deletedCount} are found and deleted`));
+      return;
+    }
+  } */
+
+  res.status(200).send(portfolio);
+};
   
 
 module.exports = {
     getAllSoftSkills,
-    getSoftSkills
+    getSoftSkills,
+    addSoftSkills,
+    deleteSoftSkills
 };

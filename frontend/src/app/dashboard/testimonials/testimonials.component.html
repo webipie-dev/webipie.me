@@ -1,0 +1,57 @@
+<div class="col-xl-12">
+  <div class="card card-box mb-5">
+    <div class="font-size-lg px-3 py-4 font-weight-bold">
+      Testimonials
+    </div>
+    <div class="table-responsive">
+      <table class="table table-borderless text-nowrap mb-0">
+        <thead>
+        <tr>
+          <th class="text-uppercase bg-secondary">Profile</th>
+          <th class="text-uppercase bg-secondary" style="width:45%">Description</th>
+          <th class="text-uppercase bg-secondary text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let testimonial of testimonials">
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="avatar-icon-wrapper avatar-icon-sm mr-3">
+                <div class="avatar-icon"><img alt="..." src="assets/johndoe.jpeg"/></div>
+              </div>
+              <div>
+                {{testimonial.name}}
+                <span class="text-black-50 font-size-sm d-block">{{testimonial.position}}</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            {{testimonial.description}}
+          </td>
+          <td class="text-center">
+            <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editTestimonial(testimonial.id)">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button (click)="removeTestimonial(testimonial.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="card-footer d-flex justify-content-center">
+        <div>
+          <a routerLink='addtestimonial'>
+            <button class="btn btn-sm btn-slack" type="button">
+              Add new Testimonial
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

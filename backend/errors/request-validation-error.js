@@ -16,7 +16,6 @@ class RequestValidationError{
   
     static Internal(msg) {
       return new RequestValidationError(500, msg)
-  
     }
   }
   

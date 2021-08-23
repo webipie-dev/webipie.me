@@ -1,0 +1,103 @@
+.cos-container{
+    position: relative;
+    top:0px;
+    width:100vw;
+    min-height: 100vh;
+    padding-top:200px;
+    background-color: rgb(238, 238, 238);
+}
+.cos-content{
+    position: relative;
+    width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding:10px;
+    .cos-carousel{
+        width: 2000px;
+        display: flex;
+        justify-content:stretch;
+        flex-wrap: wrap;
+        transition: transform 0.5s ease-in-out;
+        flex-direction: row;
+        div{
+            max-width:300px;
+            width:75vw;
+            
+        }
+    }
+    
+}
+@media screen and (max-width:1400px) {
+    .cos-content{
+        width:900px;
+    }
+}
+@media screen and (max-width:1100px) {
+    .cos-content{
+        width:600px;
+    }
+}
+@media screen and (max-width:700px) {
+    .cos-content{
+        width:300px;
+        overflow-x:scroll !important;
+    }
+}
+@media screen and (max-width:400px) {
+    .cos-content{
+        width:78%;
+        
+    }
+    .arrow-left,.arrow-right{
+        visibility: hidden;
+    }
+    
+}
+.bt{
+    font-size:calc(30px + 3vw);
+    color:darkgrey;
+    z-index: 20;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+.bt:hover{
+    color: black;
+}
+.fade {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 30%,rgba(255,255,255,1) 100%);
+    position: absolute;
+  }
+.arrow-right{
+    position: absolute;
+    right:0px;
+    top:120px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+.arrow-left{
+    position: absolute;
+    left:0px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+.cos{
+    position: relative;
+    width:94%;
+    max-width: 1800px;
+    text-align: center;
+    margin:auto;
+    
+}
+.cos h1{
+    margin-bottom:30px;
+    font-weight:700;
+    color:rgb(37, 37, 37) !important;
+}
+.cos button{
+    margin-top:100px;
+    margin-bottom:100px;
+}

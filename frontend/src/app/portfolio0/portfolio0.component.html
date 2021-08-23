@@ -1,2 +1,20 @@
-<app-header></app-header>
+<app-header (aboutmeClick)="scroll(aboutme)" (contactClick)="scroll(contact)" (expertiseClick)="scroll(expertise)" (experienceClick)="scroll(experience)" (testimonialsClick)="scroll(testimonials)"></app-header>
 <app-landing-section></app-landing-section>
+<div #aboutme>
+<app-aboutme-section></app-aboutme-section>
+</div>
+<div #expertise>
+<app-expertise-section></app-expertise-section>
+</div>
+<div #experience>
+<app-experience-section></app-experience-section>
+</div>
+<div #portfolio>
+<app-portfolio-section></app-portfolio-section>
+</div>
+<div #testimonials>
+<app-testimonials-section></app-testimonials-section>
+</div>
+<div #contact>
+<app-contact-section></app-contact-section>
+</div>

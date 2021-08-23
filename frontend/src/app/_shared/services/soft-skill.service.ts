@@ -12,4 +12,5 @@ export class SoftSkillService extends GenericService<SoftSkillModel>{
     super(http);
     this.suffix = '/softskills';
   }
+
 }

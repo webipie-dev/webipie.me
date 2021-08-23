@@ -1,26 +1,22 @@
-import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faAddressCard, faArrowLeft, faBars, faHome, faMoneyBill, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class HeaderComponent implements OnInit {
-  menu = faBars;
-  home = faHome;
-  aboutus = faAddressCard;
-  contactus = faPhoneAlt;
-  pricing = faMoneyBill;
-  leftarrow = faArrowLeft;
+  menuu = faBars;
+  leftarrow = faTimes;
+  rightArrow = faAngleRight;
   menuactive = false;
   scrolled = false;
   constructor(private router : Router) { }
 
   ngOnInit(): void {
-    if(this.router.url === '/register'){
+    if(this.router.url === '/register/choose-template' || this.router.url === '/register/linkedin-verif'){
       this.scrolled=true;
     }
   }
@@ -33,10 +29,13 @@ export class HeaderComponent implements OnInit {
   }
   @HostListener('window:scroll', ['$event']) 
     doSomething(event:any) {
-      if(window.pageYOffset > 100){
-        this.scrolled=true;
-      }else{
-        this.scrolled=false;
+      if(this.router.url != '/register/choose-template'){
+        if(window.pageYOffset > 100 ){
+          this.scrolled=true;
+        }else{
+          this.scrolled=false;
+        }
       }
+      
     }
 }

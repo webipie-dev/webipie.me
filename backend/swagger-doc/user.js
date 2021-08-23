@@ -71,6 +71,31 @@
  *                      verified:
  *                          type: boolean
  *
+ * /user/oauth/google:
+ *  post:
+ *    description: Use to sign up a user with google account 
+ *    tags:
+ *      - User
+ *    requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *              type: object
+ *              properties:
+ *                  access_token:
+ *                      type: string
+ *    responses:
+ *      '200':
+ *        content:  # Response body
+ *          application/json:  # Media type
+ *           schema:
+ *             type: object
+ *             properties:
+ *                      token:
+ *                          type: string
+ *                          format: uuid
+
  */
 
 // GET

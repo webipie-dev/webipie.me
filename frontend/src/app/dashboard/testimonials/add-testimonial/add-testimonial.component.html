@@ -1,0 +1,80 @@
+<div class="row col-xl-12 col-md-12 m-2">
+  <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
+</div>
+<div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
+  
+  <div class="row col-xl-6 col-md-12">
+    <div class="card card-box col-xl-12 col-md-12 mb-5">
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold font-size-lg mb-4">
+          <span *ngIf="!edit">Add</span>
+          <span *ngIf="edit">Edit</span>
+          Testimonial
+        </h5>
+        <form [formGroup]="testimonialForm" (ngSubmit)="onSubmit()">
+          <div class="position-relative form-group"><label for="exampleEmail">First & Last Name</label>
+            <input class="form-control"
+                   id="exampleEmail"
+                   name="name"
+                   placeholder="John Doe"
+                   formControlName="name"
+                   type="text"
+                   [(ngModel)]="testimonial.name"
+            >
+          </div>
+          <div class="position-relative form-group"><label for="examplePassword">Position</label>
+            <input class="form-control"
+                   id="examplePassword"
+                   name="postion"
+                   placeholder="Developer"
+                   type="text"
+                   formControlName="position"
+                   [(ngModel)]="testimonial.position"
+            >
+          </div>
+          <div class="position-relative form-group"><label for="exampleText">Description</label>
+            <textarea class="form-control"
+                      id="exampleText"
+                      name="text"
+                      formControlName="description"
+                      [(ngModel)]="testimonial.description"
+            >
+                      </textarea>
+          </div>
+
+          <label>Picture</label>
+          <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
+                    [message]="'Click or drag images here to upload'" (click)="onUploadInit()" (error)="onUploadError()"
+                    (success)="onUploadSuccess()" formControlName="photo"></dropzone>
+          <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config"
+               [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()"
+               (success)="onUploadSuccess()"></div>
+          <input
+            (change)="onImagePicked($event)"
+            id="hiddenImageInput"
+            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
+            style="display: none"
+            multiple
+            name="imgs" type="file"
+            formControlName="photo"
+          />
+          <div class="divider my-4"></div>
+          <button class="mt-1 btn btn-slack" [disabled]="!testimonialForm.valid">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Testimonial
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row m-2 col-xl-5 col-md-12">
+    <div class="card-info">
+      <div class="info-container">
+        <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
+        <h1>Tips & Information</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+      </div>
+    </div>
+  </div>
+</div>

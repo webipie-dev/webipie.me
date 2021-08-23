@@ -11,5 +11,7 @@ export class Portfolio0Component implements OnInit {
 
   ngOnInit(): void {
   }
-
+  scroll(el : HTMLElement){
+    el.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
 }

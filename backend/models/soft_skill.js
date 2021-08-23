@@ -16,4 +16,5 @@ const softSkillSchema = Schema({
     }
 );
 
-module.exports = mongoose.model('SoftSkill', softSkillSchema);
+module.exports.softSkillSchema = softSkillSchema;
+module.exports.SoftSkill = mongoose.model('SoftSkill', softSkillSchema);

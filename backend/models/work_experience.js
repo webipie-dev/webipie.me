@@ -3,14 +3,13 @@ const Schema = mongoose.Schema;
 
 const workExperienceSchema = Schema({
     title: {type: String, required: true},
-    description: {type: String, required: false},
+    description: {type: String, required: true},
     position: {type: String, required: false},
     company: {type: String, required: false},
     imgs: {type: [String], required: false},
-    tags: {type: [String], required: false},
     skills: {type: [String], required: false},
     beginDate: {type: Date, required: true},
-    endDate: {type: Date, required: true},
+    endDate: {type: Date, required: false},
     city: {type: String, required: false},
     portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
   

@@ -1,0 +1,115 @@
+<app-wrapper-seamless sectionHeading="Skills">
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="card card-box mb-5">
+        <div class="card-header pr-2">
+          <div class="card-header--title">
+            Hard Skills
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover text-nowrap mb-0 table-borderless">
+              <thead>
+              <tr>
+                <th class="text-left">SKill</th>
+                <th class="text-center" style="width:30%">Level</th>
+                <th class="text-center">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let hardSkill of hardSkills">
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <a [routerLink]="" class="font-weight-bold text-black" title="...">
+                        {{hardSkill.skill.name}}
+                      </a>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <progressbar [value]="hardSkill.level * 10" class="progress-bar-rounded" type="info">{{hardSkill.level * 10}}%</progressbar>
+
+                </td>
+                <td class="text-center">
+                  <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+                    <span class="btn-wrapper--icon">
+                      <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+                    </span>
+                  </button>
+                  <button (click)="removeTechnicalSkill(hardSkill._id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+                    <span class="btn-wrapper--icon">
+                      <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
+                    </span>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <div>
+            <a routerLink='addhardskill'>
+              <button class="btn btn-sm btn-slack" type="button">
+                Add new Skill
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <div class="card card-box mb-5">
+        <div class="card-header">
+          <div class="card-header--title font-size-lg text-dark">
+            Soft Skills
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover text-nowrap mb-0">
+            <thead>
+            <tr>
+              <th class="text-left" style="width: 180px;">Skill</th>
+              <th class="text-center">Description</th>
+              <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let softSkill of softSkills">
+              <td class="font-weight-bold">
+                {{softSkill.title}}
+              </td>
+              <td class="text-center">
+                {{softSkill.description}}
+              </td>
+              <td class="text-center">
+                <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+                  <span class="btn-wrapper--icon">
+                    <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+                  </span>
+                </button>
+                <button (click)="removeSoftSkill(softSkill.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+                  <span class="btn-wrapper--icon">
+                    <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
+                  </span>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <div>
+            <a routerLink='addsoftskill'>
+              <button class="btn btn-sm btn-slack" type="button">
+                Add new Skill
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-wrapper-seamless>

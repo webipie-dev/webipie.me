@@ -1,0 +1,18 @@
+<div class="cos-container">
+    <div class="cos-content">
+        <h3>MY SKILLS</h3>
+        <h1>My Expertise</h1>
+        <div class="cos-text-container">
+            <div *ngFor="let softSkill of softSkills" class="cos-element">
+                <div class="cos-title">
+                    <fa-icon [icon]="watch"></fa-icon>
+                    <h2>{{softSkill.title}}</h2>
+                </div>
+                <p>{{softSkill.description}}</p>
+            </div>
+        </div>
+        <div class="cos-skill-container">
+            <app-skill *ngFor="let hardSkill of hardSkills" [hardSkill]="hardSkill"></app-skill>
+        </div>
+    </div>
+</div>

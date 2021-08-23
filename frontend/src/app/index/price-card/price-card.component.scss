@@ -1,10 +1,12 @@
-.card{
+.cardd{
     margin-top:50px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
     border-radius: 10px;
-    max-width: 500px;
+    max-width: 300px;
     padding:20px;
+    width:100%;
+    box-sizing: border-box;
     text-align: center;
 }
 .title{
@@ -13,6 +15,7 @@
 }
 h1{
     font-weight: 900;
+    color:rgb(36, 36, 36);
 }
 h2{
     font-weight: 400;

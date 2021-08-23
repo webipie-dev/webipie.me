@@ -1,0 +1,174 @@
+
+.row {
+  flex-wrap: wrap;
+}
+
+.cos-element {
+  max-width: 400px;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 0 20px #202e3710;
+  border-radius: 10px;
+  padding: 40px;
+  padding-bottom: 30px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border: 1px solid lightgrey;
+  overflow: hidden;
+  min-height: 400px;
+  cursor: pointer;
+
+  .form-check {
+    position: absolute;
+    bottom: 40px;
+    text-align: center;
+    width: 80%;
+  }
+
+  fa-icon {
+    padding: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background-color: #d4eff6;
+    border-radius: 20px;
+    color: #72dde7;
+    font-size: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    overflow: hidden;
+    height: 80px;
+
+    img {
+      width: 100%;
+      object-position: center;
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+}
+
+.selected {
+  border: 2px solid #72d4af;
+}
+
+.cos-element p {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.cos-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 80%;
+}
+
+.cos-title h2 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.cos-text-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.cos-skill-container {
+  width: 100%;
+}
+
+.cos-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cos-left, .cos-right {
+
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cos-left {
+  max-width: 300px;
+}
+
+.cos-right {
+  max-width: 700px;
+}
+
+.cos-right p {
+  padding: 0px;
+  margin: 0px;
+  color: #f2b63f;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.loading {
+  width: 80%;
+  background-color: #f1f5f8;
+  border-radius: 30px;
+  height: 40px;
+  position: relative;
+}
+
+.level {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 60%;
+  height: 100%;
+  background-color: #f2b63f;
+  box-shadow: 0 0 10px #f2b63f;
+  border-radius: 30px;
+}
+
+.stars {
+  min-height: 100px;
+
+  fa-icon {
+    color: #f2b63f;
+    font-size: 1.5rem;
+
+    input {
+      margin: none;
+    }
+  }
+
+  .form-check {
+    position: absolute;
+    bottom: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  p {
+    padding: 0px;
+    margin: 0px;
+    color: #f2b63f;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-left: 10px;
+  }
+}

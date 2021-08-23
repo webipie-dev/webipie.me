@@ -1,11 +1,8 @@
 .cos-container{
     width:100vw;
-    min-height: 100vh;
-    
-
-    -webkit-animation: AnimationName 2s ease infinite;
-    -moz-animation: AnimationName 2s ease infinite;
-    animation: AnimationName 2s ease infinite;
+    min-height: 110vh;
+    z-index:1;
+    background-attachment: fixed;
 }
 @media screen and (max-width:400px) {
     .cos-content h1{
@@ -43,9 +40,10 @@
 .cos-content h1{
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.342);
     margin-bottom: -2px;
-    font-size:7rem;
+    font-size:8rem;
     font-weight: 700;
     letter-spacing: 2px;
+    font-family: 'Roboto',sans-serif;
 }
 .cos-download{
     padding:15px;

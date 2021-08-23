@@ -1,17 +1,17 @@
 <div class="user-box position-relative ml-2" dropdown>
   <a dropdownToggle
-          [routerLink]=""
-          class="p-0 d-flex align-items-center"
+     [routerLink]=""
+     class="p-0 d-flex align-items-center"
   >
     <div class="d-block p-0 avatar-icon-wrapper">
       <span class="badge badge-circle badge-success p-top-a">Online</span>
       <div class="avatar-icon rounded">
-        <img src="assets/images/avatars/avatar7.jpg" alt="..." />
+        <img src="assets/johndoe.jpeg" alt="..."/>
       </div>
     </div>
     <div class="d-none d-xl-block pl-2">
-      <div class="font-weight-bold">
-        Emma Taylor
+      <div class="text-black-50 font-weight-bold">
+        John Doe
       </div>
       <span class="text-black-50">
         Senior accountant
@@ -26,7 +26,7 @@
       <li class="list-group-item rounded-top">
         <ul class="nav nav-neutral-primary nav-pills flex-column">
           <li
-                  class="nav-header d-flex text-primary pt-1 pb-2 font-weight-bold align-items-center"
+            class="nav-header d-flex text-dark pt-1 pb-2 font-weight-bold align-items-center"
           >
             <div>
               Profile options
@@ -48,41 +48,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="">
-              Active tasks
+            <a (click)="changeTemplate()" class="nav-link" [routerLink]="">
+              Change Template
+            </a>
+          </li>
+          <li class="nav-item">
+            <a (click)="openSite()" class="nav-link" [routerLink]="">
+              Preview
             </a>
           </li>
         </ul>
       </li>
-      <li class="list-group-item bg-transparent p-0">
-        <div class="grid-menu grid-menu-2col">
-          <div class="py-3">
-            <div class="d-flex justify-content-center">
-              <div class="d-flex align-items-center">
-                <div>
-                  <fa-icon
-                          [icon]="['far', 'chart-bar']"
-                          class="font-size-xxl text-info"
-                  ></fa-icon>
-                </div>
-                <div class="pl-3 line-height-sm">
-                  <b class="font-size-lg">$9,693</b>
-                  <span class="text-black-50 d-block">revenue</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
+
       <li class="list-group-item rounded-bottom p-3 text-center">
         <a [routerLink]="" class="btn btn-facebook" tooltip="Facebook">
         <span class="btn-wrapper--icon">
           <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
         </span>
         </a>
-        <a [routerLink]="" class="btn btn-dribbble mr-2 ml-2" tooltip="Dribbble">
+        <a [routerLink]="" class="btn btn-google mr-2 ml-2" tooltip="LinkedIn">
         <span class="btn-wrapper--icon">
-          <fa-icon [icon]="['fab', 'dribbble']"></fa-icon>
+          <fa-icon [icon]="['fab', 'linkedin-in']"></fa-icon>
         </span>
         </a>
         <a [routerLink]="" class="btn btn-twitter" tooltip="Twitter">
