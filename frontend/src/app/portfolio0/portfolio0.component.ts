@@ -19,14 +19,7 @@ export class Portfolio0Component implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.setPortfolio()
     this.changeIcon()
-  }
-
-  async setPortfolio(){
-    let result = await this.portfolioService.getPortfolioByUrl().toPromise()
-    console.log(result);
-    localStorage.setItem("portfolio", JSON.stringify(result));
   }
 
   scroll(el : HTMLElement){
