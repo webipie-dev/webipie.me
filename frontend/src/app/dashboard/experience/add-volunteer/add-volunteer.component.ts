@@ -1,10 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {Component, OnInit} from '@angular/core';
 import {VolunteeringExperienceService} from "../../../_shared/services/volunteering-experience.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 import {VolunteeringExperienceModel} from "../../../_shared/models/volunteering-experience.model";
+import { UploadService } from 'src/app/_shared/services/upload.service';
 
 @Component({
   selector: 'app-add-volunteer',
@@ -13,35 +12,23 @@ import {VolunteeringExperienceModel} from "../../../_shared/models/volunteering-
 })
 export class AddVolunteerComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private volunteeringExperienceService: VolunteeringExperienceService,
-              private router: Router, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, 
+              private volunteeringExperienceService: VolunteeringExperienceService,
+              private router: Router, 
+              private route: ActivatedRoute,
+              private uploadService: UploadService) {
   }
-
-  public type: string = 'component';
-
-  public disabled: boolean = false;
-
-  public config: DropzoneConfigInterface = {
-    clickable: true,
-    maxFiles: 1,
-    autoReset: null,
-    errorReset: null,
-    cancelReset: null
-  };
 
   // check if we are editing a testimonial or adding a new one
   edit = false;
   volunteerExperience: VolunteeringExperienceModel = {} as VolunteeringExperienceModel;
-
-  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
 
   volunteeringExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
     organisation: ['', Validators.required],
     position: [''],
-    imgs: [''],
+    img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
     endDate: [''],
@@ -60,53 +47,29 @@ export class AddVolunteerComponent implements OnInit {
   public fillEditForm(volunteerId: string): void {
     this.volunteerExperience = (JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences.filter((volunteer: VolunteeringExperienceModel) => volunteer.id === volunteerId ))[0];
   }
+  
+  images: File[] = [];
 
-  public toggleType(): void {
-    this.type = (this.type === 'component') ? 'directive' : 'component';
-
+  onSelect(event: any) {
+    this.images = [];
+    this.images.push(...event.addedFiles);
+    console.log(this.images);
   }
 
-  public toggleDisabled(): void {
-    this.disabled = !this.disabled;
-
+  onRemove(event: any) {
+    console.log(event);
+    this.images.splice(this.images.indexOf(event), 1);
   }
 
-  public toggleAutoReset(): void {
-    this.config.autoReset = this.config.autoReset ? null : 5000;
-    this.config.errorReset = this.config.errorReset ? null : 5000;
-    this.config.cancelReset = this.config.cancelReset ? null : 5000;
-  }
+  async onSubmit() {
+    let formData = new FormData();
 
-  public toggleMultiUpload(): void {
-    this.config.maxFiles = this.config.maxFiles ? 0 : 1;
-  }
-
-  public toggleClickAction(): void {
-    this.config.clickable = !this.config.clickable;
-
-  }
-
-  public resetDropzoneUploads(): void {
-    if (this.type === 'directive' && this.directiveRef) {
-      this.directiveRef.reset();
-    } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
-      this.componentRef.directiveRef.reset();
+    if(this.images[0]){
+      formData.append("file", this.images[0]);
+      const image = await this.uploadService.imageUpload(formData);
+      if(image.success) this.volunteeringExperienceForm.controls['img'].setValue(image.url);
     }
 
-
-  }
-
-  public onUploadInit(): void {
-    document.getElementById('hiddenImageInput')?.click();
-  }
-
-  public onUploadError(): void {
-  }
-
-  public onUploadSuccess(): void {
-  }
-
-  onSubmit() {
     if(!this.edit) {
       this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))

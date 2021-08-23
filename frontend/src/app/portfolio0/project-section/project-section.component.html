@@ -1,0 +1,16 @@
+<div class="cos-container">
+    <div class="cos-content">
+        <h3>MY WORKS</h3>
+        <h1 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">My Portfolio</h1>
+        <div class="cos-nav {{button == 2? 'square':''}}">
+            <div [ngClass]="globalTag=='All'? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag=='All'? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag("All")'><p>All</p></div>
+            <div [ngClass]="globalTag=='Design'? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag=='Design'? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag("Design")'><p>Design</p></div>
+            <div [ngClass]="globalTag=='Photoshop'? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag=='Photoshop'? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)"(click)='changeTag("Photoshop")'><p>Photoshop</p></div>
+            <div [ngClass]="globalTag=='Illustrator'? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag=='Illustrator'? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag("Illustrator")'><p>Illustrator</p></div>
+            <div [ngClass]="globalTag=='Indesign'? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag=='Indesign'? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag("Indesign")'><p>Indesign</p></div>
+        </div>
+        <div class="cos-project-container">
+            <app-project-element *ngFor="let project of projects; let i=index" [project]="project" [globalTag]="globalTag" [tags]="project.skills"></app-project-element>
+        </div>
+    </div>
+</div>

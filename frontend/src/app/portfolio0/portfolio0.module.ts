@@ -9,11 +9,13 @@ import { AboutmeSectionComponent } from './aboutme-section/aboutme-section.compo
 import { ExpertiseSectionComponent } from './expertise-section/expertise-section.component';
 import { SkillComponent } from './expertise-section/skill/skill.component';
 import { ExperienceSectionComponent } from './experience-section/experience-section.component';
-import { PortfolioSectionComponent } from './portfolio-section/portfolio-section.component';
-import { ProjectComponent } from './portfolio-section/project/project.component';
+import { ProjectSectionComponent } from './project-section/project-section.component';
+import { ProjectComponent } from './project-section/project/project.component';
 import { TestimonialsSectionComponent } from './testimonials-section/testimonials-section.component';
 import { TestimonialComponent } from './testimonials-section/testimonial/testimonial.component';
 import { ContactSectionComponent } from './contact-section/contact-section.component';
+import { EducationSectionComponent } from './education-section/education-section.component';
+import { AchievementsSectionComponent } from './achievements-section/achievements-section.component';
 
 
 
@@ -26,11 +28,13 @@ import { ContactSectionComponent } from './contact-section/contact-section.compo
     ExpertiseSectionComponent,
     SkillComponent,
     ExperienceSectionComponent,
-    PortfolioSectionComponent,
+    ProjectSectionComponent,
     ProjectComponent,
     TestimonialsSectionComponent,
     TestimonialComponent,
-    ContactSectionComponent
+    ContactSectionComponent,
+    EducationSectionComponent,
+    AchievementsSectionComponent
   ],
   imports: [
     CommonModule,

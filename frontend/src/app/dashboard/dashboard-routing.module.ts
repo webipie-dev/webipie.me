@@ -19,12 +19,17 @@ import {EducationComponent} from "./education/education.component";
 import {AddEducationComponent} from "./education/add-education/add-education.component";
 import {DesignComponent} from "./design/design.component";
 import {AddVolunteerComponent} from "./experience/add-volunteer/add-volunteer.component";
+import {LogoutComponent} from "./logout/logout.component";
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
+      {
+        path: 'logout',
+        component: LogoutComponent
+      },
       {
         path: 'home',
         component: HomeComponent

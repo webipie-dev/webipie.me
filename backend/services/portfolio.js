@@ -28,39 +28,52 @@ const getOnePortfolio = async (req, res) => {
 
 const getPortfolioByUrl = async (req,res) => {
   const { url } = req.params;
+  const noLog = req.query.noLog;
   const portfolio = await Portfolio.findOne({url})
     .catch((err) => {
       res.status(400).json({errors: err.message});
     });
   
-  let ip;
-  console.log(`req ip: ${req.ip}, x-forwarded-for: ${req.headers["x-forwarded-for"]}`)
-  if(req.headers["x-forwarded-for"])
-    ip = req.headers["x-forwarded-for"]
-  else if (req.ip)
-    ip = req.ip
-  if(ip && ip !== '::1'){
-    const geo = geoip.lookup(ip);
-    if(geo && geo.country){
-      if (!portfolio.visits)
-        portfolio.visits = {}
-      
-      let cnt = portfolio.visits.count
-      if(!cnt)
-        cnt = 0
-      portfolio.visits.set(ip.replace(/\./g, '-').replace(/:/g, '_'), {
-        ip: ip, date: Date.now(), country: geo.country, count: cnt + 1
-      })   
-    }
-  }
-
   if (!portfolio.visitsPerDay)
     portfolio.visitsPerDay = {}
-  let today = date.format(new Date(Date.now()),'YYYY-MM-DD');
-  let todayCount = portfolio.visitsPerDay.get(today);
-  if (!todayCount)
-    todayCount = 0;
-  portfolio.visitsPerDay.set(today, todayCount+1);
+  
+  if (!portfolio.visits)
+    portfolio.visits = {}
+  
+  let ip;
+  console.log(`req ip: ${req.ip}, x-forwarded-for: ${req.headers["x-forwarded-for"]}`)
+  if (! noLog)
+  {  
+    if(req.headers["x-forwarded-for"])
+      ip = req.headers["x-forwarded-for"]
+    else if (req.ip)
+      ip = req.ip
+    if(ip && ip !== '::1'){
+      const geo = geoip.lookup(ip);
+      if(geo && geo.country){
+        let ipKey = ip.replace(/\./g, '-').replace(/:/g, '_')
+        if (!portfolio.visits)
+          portfolio.visits = {}
+        
+        let visit = portfolio.visits.get(ipKey)
+        let cnt
+        if(visit)
+          cnt = visit.count
+        if(!cnt)
+          cnt = 0
+        portfolio.visits.set(ipKey, {
+          ip: ip, date: Date.now(), country: geo.country, count: cnt + 1
+        })   
+      }
+    }
+
+    
+    let today = date.format(new Date(Date.now()),'YYYY-MM-DD');
+    let todayCount = portfolio.visitsPerDay.get(today);
+    if (!todayCount)
+      todayCount = 0;
+    portfolio.visitsPerDay.set(today, todayCount+1);
+  }
   res.status(200).send(portfolio);
   portfolio.save()
 };
@@ -162,8 +175,9 @@ const editPortfolioDesign = async (req, res, next) => {
 
 const changeTemplate = async (req, res, next) => {
   const { id } = req.params
-  let templateId = req.body.templateId;
-  let template = await Template.findById(templateId);
+  const { templateId } = req.body;
+  const template = await Template.findById(templateId)
+  
   if (!template) {
     next(ApiError.NotFound('Template not Found'));
     return;

@@ -28,20 +28,28 @@ const getFileFilter = function(mimetypes){
   };
 }
 
-const getUpload = function(name, limit, fileFilter){
-    return multer({
-        fileFilter: fileFilter,
-        limits : { fileSize:limit },
-        storage: multerS3({
-          acl: "public-read",
-          s3,
-          bucket: 'webipie.me-uploads',
-          key: function (req, file, cb) {
-            cb(null, `${name}/${uuidv4()}/${file.originalname}`);
-          },
-        }),
+const getMulter = function(name, limit, fileFilter){
+  return multer({
+    fileFilter: fileFilter,
+    limits : { fileSize:limit },
+    storage: multerS3({
+      acl: "public-read",
+      s3,
+      bucket: 'webipie.me-uploads',
+      key: function (req, file, cb) {
+        cb(null, `${name}/${uuidv4()}/${file.originalname}`);
+      },
+    }),
 
-      }).single('file');
+  })
+}
+
+const getUpload = function(name, limit, fileFilter){
+    return getMulter(name, limit, fileFilter).single('file');
+}
+
+const getMultiUpload = function(name, limit, fileFilter){
+    return getMulter(name, limit, fileFilter).array('file', 10)
 }
 
 const getUploadHandler = function(name, limit, fileFilter){
@@ -65,9 +73,35 @@ const getUploadHandler = function(name, limit, fileFilter){
   }
 }
 
+const getMultiUploadHandler = function(name, limit, fileFilter){
+  const upload = getMultiUpload(name, limit, fileFilter)
+  return function (req, res) {
+
+    upload(req, res, function (err) {
+      if (err) {
+        return res.json({
+          success: false,
+          errors: {
+            title: `File upload ${name} operation failed`,
+            detail: err.message,
+            error: err,
+          },
+        });
+      }
+  
+      res.status(200).json({ success: true, urls: req.files.map(element => element.location) })
+    });
+  }
+}
+
 const cvUpload = getUploadHandler("cv", 5242880, getFileFilter(["application/pdf"]))
 const imageUpload = getUploadHandler("image", 5242880, getFileFilter(["image/jpeg", "image/png"]))
 const videoUpload = getUploadHandler("video", 26214400, getFileFilter(["video/mp4", "video/mpeg", "video/ogg", "video/webm", "video/3gpp", "video/3gpp2"]))
+
+
+const cvMultiUpload = getMultiUploadHandler("cv", 5242880, getFileFilter(["application/pdf"]))
+const imageMultiUpload = getMultiUploadHandler("image", 5242880, getFileFilter(["image/jpeg", "image/png"]))
+const videoMultiUpload = getMultiUploadHandler("video", 26214400, getFileFilter(["video/mp4", "video/mpeg", "video/ogg", "video/webm", "video/3gpp", "video/3gpp2"]))
 
 
 
@@ -75,9 +109,9 @@ router.post("/cv", cvUpload);
 router.post('/image/', imageUpload)
 router.post('/video/', videoUpload)
 
-
-  
-
+router.post("/multi/cv", cvMultiUpload);
+router.post('/multi/image/', imageMultiUpload)
+router.post('/multi/video/', videoMultiUpload)
 
 
 module.exports = router;
