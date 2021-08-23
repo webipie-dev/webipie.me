@@ -4,5 +4,9 @@ export const environment = {
   LINKEDIN_SECRET: 'W8tanXzQrWJpjH6y',
   LINKEDIN_REDIRECT_URL: 'https://webipie.me/register/linkedin-verif',
   LINKEDIN_SCOPE: "r_liteprofile%20r_emailaddress",
+  backendDomainName: 'api.webipie.me',
+  backendPort: 8000,
+  backendProtocol: 'https',
+  websiteDomainName: 'webipie.me',
   PORT: ''
 };

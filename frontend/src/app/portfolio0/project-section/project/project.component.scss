@@ -1,0 +1,29 @@
+.cos-container{
+    cursor: pointer;
+    position: relative;
+    width:100%;
+    max-width: 300px;
+    height:220px;
+    margin:10px;
+    overflow: hidden;
+    transition: transform 0.5s ease,flex-grow 1000ms linear,width 1s ease,opacity 0.75s ease,flex 1000ms ease,margin 1s ease;
+}
+.cos-container:hover{
+    transform: scale(1.02);
+
+}
+.cos-container img{
+    min-height: 100%;
+}
+.inactive{
+    opacity: 0;
+    margin-left:0px;
+    margin-right:0px;
+    width:0px !important;
+}
+.invisible{
+    top:0px;
+    display:hidden;
+    opacity:0;
+    
+}

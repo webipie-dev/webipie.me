@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="col-xl-6">
     <div class="card card-box mb-5">
       <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add education</h5>
@@ -20,7 +20,7 @@
             <input class="form-control"
                    formControlName="level"
                    id="examplePassword"
-                   name="password"
+                   name="level"
                    placeholder="Level"
                    type="text"
             >
@@ -33,12 +33,17 @@
                   <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
                                                           class="mx-auto"></fa-icon></span>
                 </div>
-                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }"
+                       bsDatepicker
+                       class="form-control"
+                       placeholder="Select date"
+                       type="text"
+                       formControlName="beginDate"
+                >
               </div>
             </div>
-            
-  
+
+
             <div class="form-group col-xl-6 col-md-12">
               <label>End Date</label>
               <div class="input-group input-group-lg mb-5">
@@ -46,8 +51,13 @@
                   <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
                                                           class="mx-auto"></fa-icon></span>
                 </div>
-                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }"
+                       bsDatepicker
+                       class="form-control"
+                       placeholder="Select date" 
+                       type="text"
+                       formControlName="endDate"
+                >
               </div>
 
             </div>
