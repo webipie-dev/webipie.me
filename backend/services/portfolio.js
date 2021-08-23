@@ -52,8 +52,6 @@ const getPortfolioByUrl = async (req,res) => {
       const geo = geoip.lookup(ip);
       if(geo && geo.country){
         let ipKey = ip.replace(/\./g, '-').replace(/:/g, '_')
-        if (!portfolio.visits)
-          portfolio.visits = {}
         
         let visit = portfolio.visits.get(ipKey)
         let cnt
@@ -76,7 +74,7 @@ const getPortfolioByUrl = async (req,res) => {
   }
   res.status(200).send(portfolio);
   portfolio.save()
-};
+}
 
 const addPortfolio = async (req, res, next) => {
   // TODO: email verification error doesn't return a readable error

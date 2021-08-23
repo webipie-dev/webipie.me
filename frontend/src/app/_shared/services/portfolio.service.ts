@@ -23,6 +23,7 @@ export class PortfolioService extends GenericService<PortfolioModel> {
     return new Promise(resolve => {
       if (
         window.location.hostname === 'webipie.me' ||
+        window.location.hostname === 'localhost' ||
         window.location.hostname === 'www.webipie.me'
       ) {
         resolve(true);
