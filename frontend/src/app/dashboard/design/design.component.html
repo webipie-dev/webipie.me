@@ -65,5 +65,5 @@
     </accordion-group>
 </accordion>
 <app-wrapper-seamless class="row flew-layout justify-content-center">
-  <button class="btn m-2 btn-square btn-slack" type="button">Save</button>
+  <button class="btn m-2 btn-square btn-slack" (click)="submitChanges()" type="button" [disabled]="designEditService.testChange()">Save</button>
 </app-wrapper-seamless>

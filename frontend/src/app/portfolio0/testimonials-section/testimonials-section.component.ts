@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {DesignEditService} from "../../_shared/services/design-edit.service";
 import {TestimonialModel} from "../../_shared/models/testimonial.model";
 
 @Component({
@@ -13,6 +14,7 @@ export class TestimonialsSectionComponent implements OnInit {
   primaryColor="#79ebfe";
   secondaryColor="#e184fe";
   speed = 2;
+  backgroundSpeed = 2;
   position = 0;
   elements = 4;
   inView: Boolean[] = [];
@@ -20,9 +22,10 @@ export class TestimonialsSectionComponent implements OnInit {
   @ViewChild('target') target?: ElementRef<HTMLElement>;
 
   ngOnInit(): void {
+    this.speed = JSON.parse(localStorage.getItem('portfolio')!).template.testimonials.carouselSpeed
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
-    this.speed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
+    this.backgroundSpeed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
     this.testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials ?? [];
     this.inView = new Array(this.testimonials?.length).fill(false) ?? [];
     
@@ -53,7 +56,7 @@ export class TestimonialsSectionComponent implements OnInit {
           this.makeActive(this.inView.length-this.elements-2);
         }
       }
-    },JSON.parse(localStorage.getItem('portfolio')!).template.testimonials.carouselSpeed * 1000)
+    },this.speed * 1000)
   }
 
   makeActive(i:number){

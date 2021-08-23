@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Font, FontInterface} from 'ngx-font-picker';
+import {DesignEditService} from "../../_shared/services/design-edit.service";
 
 @Component({
   selector: 'app-design',
@@ -24,11 +25,11 @@ export class DesignComponent implements OnInit {
 
   public presetFonts = this._presetFonts;
 
-  constructor() {
+  constructor(public designEditService: DesignEditService) {
   }
 
   ngOnInit(): void {
-
+    console.log(this.designEditService.testChange())
   }
 
   public togglePresetFonts(): void {
@@ -38,5 +39,9 @@ export class DesignComponent implements OnInit {
   public toggleExtraOptions(): void {
     this.sizeSelect = !this.sizeSelect;
     this.styleSelect = !this.styleSelect;
+  }
+
+  public submitChanges(): void {
+    this.designEditService.submitValues();
   }
 }
