@@ -3,20 +3,14 @@
         <h3>MY WORKS</h3>
         <h1>My Portfolio</h1>
         <div class="cos-nav">
-            <div class="cos-btn active"><p>All</p></div>
-            <div class="cos-btn"><p>Design</p></div>
-            <div class="cos-btn"><p>Photoshop</p></div>
-            <div class="cos-btn"><p>Illustrator</p></div>
-            <div class="cos-btn"><p>Indesign</p></div>
+            <div [ngClass]="globalTag=='All'? 'cos-btn active':'cos-btn'" (click)='changeTag("All")'><p>All</p></div>
+            <div [ngClass]="globalTag=='Design'? 'cos-btn active':'cos-btn'"(click)='changeTag("Design")'><p>Design</p></div>
+            <div [ngClass]="globalTag=='Photoshop'? 'cos-btn active':'cos-btn'" (click)='changeTag("Photoshop")'><p>Photoshop</p></div>
+            <div [ngClass]="globalTag=='Illustrator'? 'cos-btn active':'cos-btn'" (click)='changeTag("Illustrator")'><p>Illustrator</p></div>
+            <div [ngClass]="globalTag=='Indesign'? 'cos-btn active':'cos-btn'" (click)='changeTag("Indesign")'><p>Indesign</p></div>
         </div>
         <div class="cos-project-container">
-            <div (click)="hide($event)"><app-project-element></app-project-element></div>
-            <div (click)="hide($event)"><app-project-element></app-project-element></div>
-            <div (click)="hide($event)"><app-project-element></app-project-element></div>
-            <div (click)="hide($event)"><app-project-element></app-project-element></div>
-            <div (click)="hide($event)"><app-project-element></app-project-element></div>
-            <div (click)="hide($event)"><app-project-element></app-project-element></div>
-            <div (click)="hide($event)"><app-project-element></app-project-element></div>
+            <app-project-element *ngFor="let project of projects; let i=index" [globalTag]="globalTag" [tags]="project"></app-project-element>
         </div>
     </div>
 </div>

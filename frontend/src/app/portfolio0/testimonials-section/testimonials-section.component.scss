@@ -49,7 +49,9 @@
 .cos-cont{
     margin-top:50px;
     overflow: hidden;
-    width:1000px;
+    width:900px;
+    padding:5px;
+    box-sizing: border-box;
 }
 .testimonials-containers{
     width:fit-content;
@@ -59,8 +61,8 @@
     transition: transform 0.75s ease;
 }
 .cos-testimonial{
-    flex-shrink: 0;
-    margin:20px;
+    width:300px;
+    margin:auto;
     margin-bottom:0px;
     opacity: 0.4;
     transform: scale(0.98);
