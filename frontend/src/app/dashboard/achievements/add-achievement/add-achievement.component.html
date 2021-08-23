@@ -31,22 +31,17 @@
             >
             </textarea>
           </div>
-          <div class="position-relative form-group"><label>Picture</label>
-            <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
-                      [message]="'Click or drag images here to upload'" (click)="onUploadInit()"
-                      (error)="onUploadError()" (success)="onUploadSuccess()" formControlName="image"></dropzone>
-            <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config"
-                 [disabled]="disabled" (click)="onUploadInit()" (error)="onUploadError()"
-                 (success)="onUploadSuccess()"></div>
+
+          <div class="form-group">
+            <label for="image">Image</label>
+            <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
           </div>
-          <input
-            id="hiddenImageInput"
-            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-            style="display: none"
-            multiple
-            name="imgs" type="file"
-            formControlName="photo"
-          />
 
           <div class="form-group">
             <label>Date</label>
