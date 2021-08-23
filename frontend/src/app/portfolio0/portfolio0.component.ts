@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from '../_shared/services/portfolio.service';
 
 @Component({
   selector: 'app-portfolio0',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portfolio0.component.scss']
 })
 export class Portfolio0Component implements OnInit {
+  favIcon: HTMLLinkElement | null = document.querySelector('#app-icon');
 
-  constructor() { }
+  constructor(private portfolioService: PortfolioService) { 
+  }
 
+  changeIcon() {
+    if(this.favIcon){
+      this.favIcon.href = JSON.parse(localStorage.getItem('portfolio')!).picture;
+      this.favIcon.type ="image/gif/png"
+    }
+  }
   ngOnInit(): void {
+    this.changeIcon()
   }
 
   scroll(el : HTMLElement){
