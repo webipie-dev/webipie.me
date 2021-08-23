@@ -127,7 +127,7 @@ const editPortfolio = async (req, res, next) => {
 
   if('name' in req.body){
     const user = await User.findOne({name: req.body.name});
-    if(store){
+    if(user){
       return next(ApiError.BadRequest('Portfolio name is already in use'));
     }
   }

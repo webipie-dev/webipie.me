@@ -51,21 +51,24 @@
     overflow: hidden;
     width:900px;
     padding:5px;
-    box-sizing: border-box;
 }
 .testimonials-containers{
     width:fit-content;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: flex-start;
     transition: transform 0.75s ease;
 }
 .cos-testimonial{
-    width:300px;
+    width:90%;
+    max-width: 300px;
+    min-height:500px;
     margin:auto;
     margin-bottom:0px;
     opacity: 0.4;
     transform: scale(0.98);
+    padding:10px;
     transition: transform 0.5s ease,opacity 1s ease;
 }
 .active{

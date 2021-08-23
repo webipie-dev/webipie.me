@@ -1,6 +1,6 @@
 <div class="cos-container" *ngIf="testimonial">
-    <img [src]="testimonial.photo ? testimonial.photo: 'assets/johndoe.jpg'">
-    <h4>{{testimonial.name}}</h4>
-    <h5>{{testimonial.position}}</h5>
-    <p>{{testimonial.description}}</p>
+    <img [src]="testimonial.photo ? testimonial.photo: 'assets/johndoe.jpg'" [class]="square? 'square':''">
+    <h4 [style.textAlign]='textAlign'>{{testimonial.name}}</h4>
+    <h5 [style.textAlign]='textAlign'>{{testimonial.position}}</h5>
+    <p [style.textAlign]='textAlign'>{{testimonial.description}}</p>
 </div>

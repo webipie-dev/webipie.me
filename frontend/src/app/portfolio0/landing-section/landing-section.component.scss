@@ -4,11 +4,6 @@
     z-index:1;
     background-attachment: fixed;
 }
-@media screen and (max-width:400px) {
-    .cos-content h1{
-        font-size:5rem !important;
-    }
-}
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
@@ -23,6 +18,9 @@
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
+}
+a:hover{
+ color:inherit;   
 }
 .cos-content{
     width:80%;
@@ -40,7 +38,7 @@
 .cos-content h1{
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.342);
     margin-bottom: -2px;
-    font-size:8rem;
+    font-size:calc(30px + 6vw);
     font-weight: 700;
     letter-spacing: 2px;
     font-family: 'Roboto',sans-serif;

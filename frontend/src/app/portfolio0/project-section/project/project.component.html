@@ -1,4 +1,32 @@
-<div [ngClass]="class" #target>
+<div [ngClass]="class" #target (click)="click(toggle)">
     <img src="assets/back.jpeg">
 </div>
-
+<div class="overlay" #toggle (click)="exit(toggle)">
+    <div class="cos-card {{template==2? 'bottom':''}}" #card (window:resize)="onResize(card)">
+        <div class="button" (click)="exit(toggle)">
+            <fa-icon [icon]="close" [style]="'color:'+primaryColor"></fa-icon>
+        </div>
+        <div class="images {{template==2? 'bordered':''}}">
+            <div class="images-container" [style]="'transform:translateX(-'+pos+'px)'">
+                <div class="image">
+                    <img src="assets/back.jpeg">
+                </div>
+                <div class="image">
+                    <img src="assets/back.jpeg">
+                </div>
+                <div class="image">
+                    <img src="assets/back.jpeg">
+                </div>
+                <div class="image">
+                    <img src="assets/back.jpeg">
+                </div>
+            </div>
+            
+        </div>
+        <div class="cos-content">
+            <h1 [style]="'color:'+primaryColor+'!important;filter:brightness(80%)'">Title</h1>
+            <p [style]="'color:'+primaryColor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ratione deserunt similique consequatur animi facere repellendus eius excepturi obcaecati, quasi provident officia quaerat quis rerum libero dolor temporibus nobis asperiores!</p>
+        </div>
+        
+    </div>
+</div>

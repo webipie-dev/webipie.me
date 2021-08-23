@@ -12,12 +12,18 @@ import {TechnicalSkillDeveloperModel} from "../../_shared/models/technical-skill
 export class ExpertiseSectionComponent implements OnInit {
   watch = faStopwatch;
   softSkills?: [SoftSkillModel];
-  hardSkills?: [TechnicalSkillDeveloperModel]
+  hardSkills?: [TechnicalSkillDeveloperModel];
+  softSkillsTemplate?= 1;
+  secondaryColor: any;
+  primaryColor: any;
   constructor() { }
 
   ngOnInit(): void {
     this.softSkills = JSON.parse(localStorage.getItem('portfolio')!).softSkills;
     this.hardSkills = JSON.parse(localStorage.getItem('portfolio')!).technicalSkills;
+    this.softSkillsTemplate = JSON.parse(localStorage.getItem('portfolio')!).template.softSkills;
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
   }
 
 }
