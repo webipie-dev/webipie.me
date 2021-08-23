@@ -6,7 +6,6 @@ const { createDomain } = require('../services/domain');
 const geoip = require('geoip-lite');
 const date = require('date-and-time')
 
-
 const getPortfolioUrls = async (req,res) => {
   const urls =await Portfolio.find({}).select({ "url": 1, "_id": 0})
     .catch((err) => {
@@ -14,7 +13,7 @@ const getPortfolioUrls = async (req,res) => {
     });
 
   res.status(200).send(urls);
-}
+};
 
 const getOnePortfolio = async (req, res) => {
   //get portfolio id
@@ -25,7 +24,7 @@ const getOnePortfolio = async (req, res) => {
     });
 
   res.status(200).send(portfolio);
-}
+};
 
 const getPortfolioByUrl = async (req,res) => {
   const { url } = req.params;
@@ -40,7 +39,7 @@ const getPortfolioByUrl = async (req,res) => {
     ip = req.headers["x-forwarded-for"]
   else if (req.ip)
     ip = req.ip
-  if(ip && ip != '::1'){
+  if(ip && ip !== '::1'){
     const geo = geoip.lookup(ip);
     if(geo && geo.country){
       if (!portfolio.visits)
@@ -64,7 +63,7 @@ const getPortfolioByUrl = async (req,res) => {
   portfolio.visitsPerDay.set(today, todayCount+1);
   res.status(200).send(portfolio);
   portfolio.save()
-}
+};
 
 const addPortfolio = async (req, res, next) => {
   // TODO: email verification error doesn't return a readable error
@@ -107,7 +106,7 @@ const addPortfolio = async (req, res, next) => {
   console.log(portfolio);
   res.status(201).json(portfolio);
 
-}
+};
 
 const editPortfolio = async (req, res, next) => {
   // getting the id
@@ -116,7 +115,7 @@ const editPortfolio = async (req, res, next) => {
 
   if('name' in req.body){
     const user = await User.findOne({name: req.body.name});
-    if(store){
+    if(user){
       return next(ApiError.BadRequest('Portfolio name is already in use'));
     }
   }
@@ -147,15 +146,29 @@ const editPortfolio = async (req, res, next) => {
 
 };
 
+const editPortfolioDesign = async (req, res, next) => {
+  const {id} = req.params;
+  const {template} = req.body;
+  const portfolio = await Portfolio.findById(id);
+  if(!portfolio) {
+    return next(ApiError.NotFound('Portfolio not Found'));
+  }
+
+  portfolio.template = template;
+  await portfolio.save();
+
+  res.status(200).send(portfolio);
+};
+
 const changeTemplate = async (req, res, next) => {
   const { id } = req.params
   let templateId = req.body.templateId;
-  let template = await Template.findById(templateId)
+  let template = await Template.findById(templateId);
   if (!template) {
     next(ApiError.NotFound('Template not Found'));
     return;
   }
-  const portfolio = await Portfolio.updateOne({_id: id}, { $set: {
+  const portfolio = await Portfolio.updateOne({id}, { $set: {
     template: template
     } })
     .catch((err) => {
@@ -178,7 +191,8 @@ module.exports = {
   getPortfolioUrls,
   addPortfolio,
   editPortfolio,
-  changeTemplate
+  changeTemplate,
+  editPortfolioDesign
 };
 
 

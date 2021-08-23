@@ -27,6 +27,11 @@ router.patch('/:id', passportJWT, [
   validation.id
 ], validateRequest , portfolioService.editPortfolio);
 
+// edit portfolio design
+router.patch('/template/:id', passportJWT, [
+    validation.id
+], validateRequest, portfolioService.editPortfolioDesign)
+
 // change template of portfolio
 router.patch('/change-template/:id', passportJWT, portfolioService.changeTemplate);
 

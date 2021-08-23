@@ -68,7 +68,7 @@ export class GenericService<T extends GenericModel> {
     return this.http.delete(this.getUrl() + this.suffix + '/delete') as Observable<T>;
   }
 
-  private static addJWT() {
+  protected static addJWT() {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')!
