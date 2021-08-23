@@ -17,8 +17,7 @@ router.get('/:id', [
 
 // addTestimonial
 router.post('', passportJWT, [validation.portfolioId,
-//   validation.description,
-//   validation.title,
+   validation.description,
 ], validateRequest, testimonialService.addTestimonial);
 
 // deleteManyTestimonials

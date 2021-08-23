@@ -1,0 +1,78 @@
+.cos-btn{
+    padding:5px;
+    padding-right:20px;
+    padding-left:20px;
+    border:2px solid #202e37;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    margin-bottom:10px;
+}
+.cos-btn:hover , .active{
+    color:white;
+    background-color: #202e37;
+}
+.cos-btn p{
+    padding:0px;
+    margin:0px;
+}
+
+.mid-square{
+    border-radius: 15px;
+}
+.square{
+    border-radius: 0px;
+}
+.cos-element{
+    width:100%;
+    text-align: left;
+    box-shadow: 0 0 20px #202e3710;
+    border-radius: 10px;
+    padding:40px;
+    padding-bottom:30px;
+    padding-top:50px;
+    box-sizing: border-box;
+    margin-top:20px;
+    border:1px solid lightgrey;
+    overflow: hidden;
+    min-height: 400px;
+    cursor: pointer;
+    .form-check{
+        position: absolute;
+        bottom:40px;
+        text-align: center;
+        width:80%;
+    }
+    fa-icon{
+        padding:15px;
+        padding-right:25px;
+        padding-left:25px;
+        background-color: #d4eff6;
+        border-radius: 20px;
+        color:#72dde7;
+        font-size:1.5rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    }
+    .img{
+        position: absolute;
+        top:0px;
+        left:0px;
+        width:100%;
+        overflow: hidden;
+        height:220px;
+        
+        img{
+            width:100%;
+            object-position: center;
+            object-fit: cover;
+            height:100%;
+        }
+    }
+}
+.bottom{
+    border-bottom: 4px solid #202e37 !important;
+}
+.rounded{
+    border-bottom-left-radius: 300px !important;
+    border-bottom-right-radius: 300px !important;
+}

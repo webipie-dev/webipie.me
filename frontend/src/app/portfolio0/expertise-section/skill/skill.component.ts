@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TechnicalSkillDeveloperModel} from "../../../_shared/models/technical-skill-developer";
 
 @Component({
   selector: 'app-skill',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skill.component.scss']
 })
 export class SkillComponent implements OnInit {
+
+  @Input() hardSkill!: TechnicalSkillDeveloperModel;
 
   constructor() { }
 

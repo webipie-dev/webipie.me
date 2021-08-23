@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AddVolunteerComponent } from './add-volunteer.component';
+import {AddVolunteerComponent} from './add-volunteer.component';
 
 describe('AddVolunteerComponent', () => {
   let component: AddVolunteerComponent;
@@ -8,9 +8,9 @@ describe('AddVolunteerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddVolunteerComponent ]
+      declarations: [AddVolunteerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

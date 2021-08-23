@@ -1,5 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {FormBuilder, Validators} from "@angular/forms";
+import {AchievementService} from "../../../_shared/services/achievement.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import {AchievementModel} from "../../../_shared/models/achievement.model";
 
 @Component({
   selector: 'app-add-achievement',
@@ -8,10 +13,16 @@ import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx
 })
 export class AddAchievementComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder, private achievementService: AchievementService,
+              private router: Router, private route: ActivatedRoute) {
   }
+
+  achievementForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    date: ['', Validators.required],
+    image: ['']
+  });
 
   public type: string = 'component';
 
@@ -25,8 +36,25 @@ export class AddAchievementComponent implements OnInit {
     cancelReset: null
   };
 
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  achievement: AchievementModel = {} as AchievementModel;
+
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['achievementId']) {
+        this.edit = true;
+        this.fillEditForm(params['achievementId']);
+      }
+    });
+  }
+
+  public fillEditForm(achievementId: string): void {
+    this.achievement = (JSON.parse(localStorage.getItem('portfolio')!).achievements.filter((achievement: AchievementModel) => achievement.id === achievementId ))[0];
+  }
 
   public toggleType(): void {
     this.type = (this.type === 'component') ? 'directive' : 'component';
@@ -59,16 +87,29 @@ export class AddAchievementComponent implements OnInit {
     } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
       this.componentRef.directiveRef.reset();
     }
-
-
   }
 
   public onUploadInit(): void {
+    document.getElementById('hiddenImageInput')?.click();
   }
 
   public onUploadError(): void {
   }
 
   public onUploadSuccess(): void {
+  }
+
+  onSubmit() {
+    if(!this.edit) {
+      this.achievementService.addOne(this.achievementForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.achievementService.edit(this.achievement.id, this.achievementForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
   }
 }

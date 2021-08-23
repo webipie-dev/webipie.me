@@ -1,5 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from 'ngx-dropzone-wrapper';
+import {FormBuilder, Validators} from "@angular/forms";
+import {TestimonialService} from "../../../_shared/services/testimonial.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 
 @Component({
   selector: 'app-add-testimonial',
@@ -7,8 +11,9 @@ import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'n
   styleUrls: ['./add-testimonial.component.scss']
 })
 export class AddTestimonialComponent implements OnInit {
-  
-  constructor() {
+
+  constructor(private formBuilder: FormBuilder, private testimonialService: TestimonialService,
+              private router: Router, private route: ActivatedRoute) {
   }
 
   public type: string = 'component';
@@ -22,18 +27,39 @@ export class AddTestimonialComponent implements OnInit {
     errorReset: null,
     cancelReset: null
   };
+  // check if we are editing a testimonial or adding a new one
+  edit = false;
+  testimonial: TestimonialModel = {} as TestimonialModel;
 
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
+  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
+  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
+
+  testimonialForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    position: ['', Validators.required],
+    description: ['', Validators.required],
+    photo: ['']
+  });
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if(params['testimonialId']) {
+        this.edit = true;
+        this.fillEditForm(params['testimonialId']);
+      }
+    });
+  }
+
+  public fillEditForm(testimonialId: string): void {
+    this.testimonial = (JSON.parse(localStorage.getItem('portfolio')!).testimonials.filter((testimonial: TestimonialModel) => testimonial.id === testimonialId ))[0];
+  }
 
   public toggleType(): void {
     this.type = (this.type === 'component') ? 'directive' : 'component';
-
   }
 
   public toggleDisabled(): void {
     this.disabled = !this.disabled;
-
   }
 
   public toggleAutoReset(): void {
@@ -57,11 +83,10 @@ export class AddTestimonialComponent implements OnInit {
     } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
       this.componentRef.directiveRef.reset();
     }
-
-
   }
 
   public onUploadInit(): void {
+    document.getElementById('hiddenImageInput')?.click();
   }
 
   public onUploadError(): void {
@@ -69,7 +94,22 @@ export class AddTestimonialComponent implements OnInit {
 
   public onUploadSuccess(): void {
   }
-  ngOnInit(): void {
+
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files;
   }
 
+  onSubmit() {
+    if(!this.edit) {
+      this.testimonialService.addOne(this.testimonialForm.value).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      });
+    } else {
+      this.testimonialService.edit(this.testimonial.id, this.testimonialForm.value).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      })
+    }
+  }
 }

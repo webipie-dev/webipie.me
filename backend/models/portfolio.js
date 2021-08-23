@@ -3,6 +3,12 @@ const Schema = mongoose.Schema;
 const {templateSchema} = require('./template');
 const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
+const {workExperienceSchema} = require('./work_experience');
+const {volunteeringExperienceSchema} = require('./volunteering_experience');
+const {projectSchema} = require('./project');
+const {educationSchema} = require('./education');
+const {softSkillSchema} = require('./soft_skill');
+const {technicalSkillSchema} =  require('./technical_skill');
 
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},
@@ -17,17 +23,17 @@ const portfolioSchema = new Schema({
   CV: {type: String, required: false, unique: true},
   creationDate: {type: Date, default: Date.now()},
   template: templateSchema,
-  projects: {type: [Schema.Types.ObjectID], ref: "Porject"},
-  education: {type: [Schema.Types.ObjectID], ref: "Education"},
+  projects: {type: [projectSchema]},
+  education: {type: [educationSchema]},
   achievements: {type: [achievementSchema]},
   testimonials: {type: [testimonialSchema]},
   technicalSkills: [{
-    skill: {type: Schema.Types.ObjectID, ref: "TechnicalSkill"},
+    skill: {type: technicalSkillSchema},
     level:{type: Number, required: false, min: 0, max: 10}
   }],
-  softSkills: {type: [Schema.Types.ObjectID], ref: "SoftSkill"},
-  workExperiences: {type: [Schema.Types.ObjectID], ref: "WorkExperience"},
-  volunteeringExperiences: {type: [Schema.Types.ObjectID], ref: "VolunteeringExperience"},
+  softSkills: {type: [softSkillSchema]},
+  workExperiences: {type: [workExperienceSchema]},
+  volunteeringExperiences: {type: [volunteeringExperienceSchema]},
   visits: {
     type: Map,
     of: {ip: String, date: Date, country: String, count: Number}

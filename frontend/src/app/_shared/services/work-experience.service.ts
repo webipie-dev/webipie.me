@@ -10,6 +10,6 @@ export class WorkExperienceService extends GenericService<WorkExperienceModel>{
 
   constructor(protected http: HttpClient) {
     super(http)
-    this.suffix = 'workexperience'
+    this.suffix = '/workexperience'
   }
 }
