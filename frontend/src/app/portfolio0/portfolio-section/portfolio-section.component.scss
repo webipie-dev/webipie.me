@@ -62,21 +62,7 @@
 .cos-project-container{
     margin-top:20px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
-    width:fit-content;
     max-width: 1000px;
-}
-@media screen and (max-width:1200px) {
-    .cos-project-container{
-        margin-top:20px;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        max-width: 1000px;
-    }
-
-    .cos-project-container *{
-        margin:10px;
-    }
 }
