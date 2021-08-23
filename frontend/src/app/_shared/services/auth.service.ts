@@ -40,12 +40,16 @@ export class AuthService extends GenericService<any>{
     return localStorage.getItem('token') !== null;
   }
 
-  public logout() {}
+  public logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('portfolio');
+    localStorage.removeItem('portfolioId');
+  }
 
   public signInWithGoogle(googleToken?: string) {
     let httpOptions: any;
     httpOptions = {
-      access_token: googleToken 
+      access_token: googleToken
     };
     return this.http.post(this.getUrl() + this.suffix + '/oauth/google', httpOptions) as Observable<any>
   }

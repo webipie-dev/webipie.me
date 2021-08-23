@@ -3,8 +3,6 @@ const router = express.Router();
 const templateService = require('../services/template');
 
 const passport = require('passport');
-const validateRequest = require("../middlewares/validate-request");
-const validation = require("../middlewares/validation/validator");
 const passportJWT = passport.authenticate('jwt', { session: false });
 const isAdmin = require("../middlewares/auth_role");
 

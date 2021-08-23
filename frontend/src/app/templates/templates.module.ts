@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { TemplatesRoutingModule } from './templates-routing.module';
 import { ChooseTemplateComponent } from './choose-template/choose-template.component';
-
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -19,6 +19,7 @@ import { ChooseTemplateComponent } from './choose-template/choose-template.compo
   ],
   imports: [
     CommonModule,
+    FormsModule,
     TemplatesRoutingModule,
     FontAwesomeModule,
   ]

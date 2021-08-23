@@ -10,6 +10,7 @@ export class TemplatesComponent implements OnInit {
   arrowright = faArrowAltCircleRight;
   arrowleft = faArrowAltCircleLeft;
   positionY = 0;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +21,5 @@ export class TemplatesComponent implements OnInit {
   leftArrow(el:HTMLElement){
     this.positionY -= el.offsetWidth;
   }
-  
+
 }

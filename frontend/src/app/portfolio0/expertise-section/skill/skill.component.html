@@ -1,14 +1,24 @@
 <div class="cos-container">
     <div class="cos-left">
-        <h2>Lorem Ipsum</h2>
+        <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">{{hardSkill.skill.name}}</h2>
     </div>
     <div class="cos-right">
-        <div class="loading">
+        
+        <div *ngIf="hardSkillsTemplate == 1" class="loading">
             <div class="level">
-
             </div>
-            
         </div>
-        <p>60%</p>
+        <p *ngIf="hardSkillsTemplate == 1">{{hardSkill.level * 10}} %</p>
+        <div class="stars" *ngIf="hardSkillsTemplate == 2">
+            <fa-icon *ngFor="let level of levels" [icon]="star" [style]="level? '':'color:lightgrey'"></fa-icon>
+            <p>{{hardSkill.level/2 | number:'1.0-0'}}/5</p>
+        </div>
+        <div class="stars" *ngIf="hardSkillsTemplate == 3">
+            <div class="m-2 btn btn-success p-2" *ngIf="hardSkill.level/2 > 4 && hardSkill.level/2 <= 5">5/5</div>
+            <div class="m-2 btn btn-neutral-success p-2" *ngIf="hardSkill.level/2 > 3 && hardSkill.level/2 <= 4">4/5</div>
+            <div class="m-2 btn btn-secondary p-2" *ngIf="hardSkill.level/2 > 2 && hardSkill.level/2 <= 3">3/5</div>
+            <div class="m-2 btn btn-neutral-warning p-2" *ngIf="hardSkill.level/2 > 1 && hardSkill.level/2 <= 2">2/5</div>
+            <div class="m-2 btn btn-warning p-2" *ngIf="hardSkill.level/2 > 0 && hardSkill.level/2 <= 1">1/5</div>
+        </div>
     </div>
-</div>
+    

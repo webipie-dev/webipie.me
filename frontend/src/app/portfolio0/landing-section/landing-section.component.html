@@ -1,16 +1,16 @@
 <div class="cos-container" [style.background]="'linear-gradient(270deg, '+primaryColor+', '+secondaryColor+')'" [style.animation]="'AnimationName '+speed+'s ease infinite'"[style.background-size]="'200% 200%'">
     <div class="cos-content">
         <div>
-            <h1>
-                JOHN DOE
+            <h1 style="text-transform:uppercase !important">
+              {{name}}
             </h1>
-            <h3>
-                LOREM IPSUM LOREM IPSUM
+            <h3 style="text-transform:uppercase !important">
+                {{position}}
             </h3>
-            <div class="cos-download">
+            <a href="{{cv}}"><div class="cos-download">
                 <h4>DOWNLOAD CV</h4>
                 <fa-icon [icon]="download"></fa-icon>
-            </div>
+            </div></a>
         </div>
         <div class="cos-bottom">
             <h2>about me</h2>

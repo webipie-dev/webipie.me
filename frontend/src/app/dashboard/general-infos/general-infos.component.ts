@@ -1,5 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'ngx-dropzone-wrapper';
+import {Component, OnInit} from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { PortfolioModel } from 'src/app/_shared/models/portfolio.model';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
+import { UploadService } from 'src/app/_shared/services/upload.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-general-infos',
@@ -8,68 +12,82 @@ import { DropzoneConfigInterface, DropzoneComponent, DropzoneDirective } from 'n
 })
 export class GeneralInfosComponent implements OnInit {
 
+  portfolio : PortfolioModel = {} as PortfolioModel;
+  portfolioForm = this.formBuilder.group({
+    name: [''],
+    position: [''],
+    email: [''],
+    phone: [''],
+    github: [''],
+    linkedin: [''],
+    picture: [''],
+    cv: ['']
+  });
 
-   constructor( ) {
-  }
+
+  constructor(private portfolioService: PortfolioService,
+    private formBuilder: FormBuilder,
+    private uploadService: UploadService) {}
+
   ngOnInit(): void {
+    this.portfolio = JSON.parse(localStorage.getItem('portfolio')!);
   }
 
-  public type: string = 'component';
+  pictures: File[] = [];
 
-  public disabled: boolean = false;
-
-  public config: DropzoneConfigInterface = {
-    clickable: true,
-    maxFiles: 1,
-    autoReset: null,
-    errorReset: null,
-    cancelReset: null
-  };
-
-  @ViewChild(DropzoneComponent, { static: false }) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, { static: false }) directiveRef?: DropzoneDirective;
-
-  public toggleType(): void {
-    this.type = (this.type === 'component') ? 'directive' : 'component';
-
+  onSelectPicture(event: any) {
+    this.pictures = [];
+    this.pictures.push(...event.addedFiles);
+    console.log(this.pictures);
   }
 
-  public toggleDisabled(): void {
-    this.disabled = !this.disabled;
-
+  onRemovePicture(event: any) {
+    console.log(event);
+    this.pictures.splice(this.pictures.indexOf(event), 1);
   }
 
-  public toggleAutoReset(): void {
-    this.config.autoReset = this.config.autoReset ? null : 5000;
-    this.config.errorReset = this.config.errorReset ? null : 5000;
-    this.config.cancelReset = this.config.cancelReset ? null : 5000;
+  files: File[] = [];
+
+  onSelectCV(event: any) {
+    console.log(event);
+    this.files = [];
+    this.files.push(...event.addedFiles);
   }
 
-  public toggleMultiUpload(): void {
-    this.config.maxFiles = this.config.maxFiles ? 0 : 1;
+  onRemoveCV(event: any) {
+    console.log(event);
+    this.files.splice(this.pictures.indexOf(event), 1);
   }
 
-  public toggleClickAction(): void {
-    this.config.clickable = !this.config.clickable;
+  async onSubmit() { 
+    let formData = new FormData();
 
-  }
-
-  public resetDropzoneUploads(): void {
-    if (this.type === 'directive' && this.directiveRef) {
-      this.directiveRef.reset();
-    } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
-      this.componentRef.directiveRef.reset();
+    if(this.pictures[0]){
+      formData.append("file", this.pictures[0]);
+      const picture = await this.uploadService.imageUpload(formData);
+      if(picture.success) this.portfolioForm.controls['picture'].setValue(picture.url);
     }
+    
+    if(this.files[0]){
+      formData = new FormData();
+      formData.append("file", this.pictures[0]);
+      const cv = await this.uploadService.imageUpload(formData);
+      if(cv.success) this.portfolioForm.controls['cv'].setValue(cv.url);
+    }    
 
+    this.portfolioService.edit(this.portfolio.id,this.portfolioForm.value).subscribe((result) => {
 
+      localStorage.setItem('portfolio', JSON.stringify(result));
+
+      console.log(JSON.stringify(result));
+    }, (error) => {
+      Swal.fire({
+        title: 'Error!',
+        text: 'something went wrong with uploading data! Please retry again.',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
+    });
   }
 
-  public onUploadInit(): void {
-  }
-
-  public onUploadError(): void {
-  }
-
-  public onUploadSuccess(): void {
-  }
 }

@@ -34,17 +34,24 @@ export class ChooseTemplateComponent implements OnInit {
       this.inView = 2;
     }else if(window.innerWidth<1400){
       this.inView = 3;
+    }else{
+      this.inView = 4;
     }
-    if(this.target) this.carouselwidth = this.selected.length * this.target.nativeElement.offsetWidth;
     this.templateService.getMany().subscribe(
-      result => {
-        this.templates = result;
-        this.selected.length = result.length;
-        this.selected.fill(false);
-        console.log(this.selected);
-      }
+      result => this.modify(result)
     );
+    
+    
 
+  }
+  modify(result:any){
+    
+      this.templates = result;
+      this.selected.length = result.length;
+      this.selected.fill(false);
+      console.log(this.selected);
+      if(this.target) console.log(this.carouselwidth = this.selected.length * this.target.nativeElement.offsetWidth);
+    
   }
   rightArrow(el:HTMLElement){
     this.positionY += el.offsetWidth;
@@ -59,7 +66,7 @@ export class ChooseTemplateComponent implements OnInit {
     }
   }
   select(i:number,value:boolean){
-    
+
     for(let j = 0;j<this.selected.length;j++){
       this.selected[j] = false;
     }
@@ -73,7 +80,7 @@ export class ChooseTemplateComponent implements OnInit {
     }else{
       this.selectedTemplate = undefined;
     }
-    
+
 
   }
 
@@ -89,7 +96,7 @@ export class ChooseTemplateComponent implements OnInit {
       }else{
         this.portfolioService.addOne({templateId: this.selectedTemplate.id}).subscribe(
           result => {
-            localStorage.setItem('portfolioId', result['id']);
+            localStorage.setItem('portfolioId', result.elementAdded.id);
             this.router.navigate(['dashboard']);
           }
         );
@@ -102,6 +109,6 @@ export class ChooseTemplateComponent implements OnInit {
         confirmButtonText: 'Cool'
       })
     }
-    
+
   }
 }

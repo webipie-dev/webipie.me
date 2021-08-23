@@ -30,9 +30,11 @@ const getOneVolunteeringExperience = async (req, res, next) => {
 };
 
 const addVolunteeringExperience = async (req, res, next) => {
-  let { name, description, organisation, position, tags, skills, beginDate, endDate, city, portfolioId } = req.body
+  let { title, description, organisation, position, skills, imgs, beginDate, endDate, city, portfolioId } = req.body
+  if(beginDate) beginDate = new Date(beginDate);
+  if(endDate) endDate =  new Date(endDate);
 
-  const portfolio = await Portfolio.findById(portfolioId)
+  let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
     return;
@@ -43,11 +45,12 @@ const addVolunteeringExperience = async (req, res, next) => {
   }
 
   const volunteeringExperience = new VolunteeringExperience({
-    name, description, organisation, position, tags, skills, imgs,  beginDate, endDate, city, portfolio
+    title, description, organisation, position, skills, imgs,  beginDate, endDate, city,  "portfolio": portfolioId
   });
 
   await volunteeringExperience.save();
-  res.status(201).send(volunteeringExperience);
+  portfolio = await Portfolio.findOneAndUpdate({"_id":portfolioId}, { $push: { volunteeringExperiences: volunteeringExperience } }, {new: true})
+  res.status(201).send({volunteeringExperience, portfolio});
 
 };
 
@@ -55,7 +58,7 @@ const editOneVolunteeringExperience = async (req, res, next) => {
 
   // separating the id
   const { id } = req.params;
-  const volunteeringExperience = await VolunteeringExperience.findById(id)
+  let volunteeringExperience = await VolunteeringExperience.findById(id)
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
@@ -84,36 +87,60 @@ const editOneVolunteeringExperience = async (req, res, next) => {
         "update":{ $set: edits }
       }
     })
-    await bulkQueries.push({
-      updateOne: {
-        "filter": { _id: id},
-        "update": { $addToSet: {imgs: {$each: imgs} } }
-      }
-    })
-    await bulkQueries.push({
-    updateOne: {
-      "filter": { _id: id},
-      "update": { $pull : {imgs: {$in: deletedImages}}}
+    if(imgs){
+      await bulkQueries.push({
+        updateOne: {
+          "filter": { _id: id},
+          "update": { $addToSet: {imgs: {$each: imgs} } }
+        }
+      })
     }
-  })
+    if(deletedImages){
+      await bulkQueries.push({
+        updateOne: {
+          "filter": { _id: id},
+          "update": { $pull : {imgs: {$in: deletedImages}}}
+        }
+      })
+    }
+    
 
   const volunteeringExperienceEdited = await VolunteeringExperience.bulkWrite(bulkQueries, {ordered: false})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  res.status(200).send(volunteeringExperienceEdited);
+  volunteeringExperience = await VolunteeringExperience.findById(id);
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": volunteeringExperience.portfolio}, 
+    { $set: { "volunteeringExperiences.$[elem]" : volunteeringExperience } } , 
+    { arrayFilters: [ { "elem._id": volunteeringExperience._id } ] , new: true}
+  );
+
+  res.status(200).send({volunteeringExperienceEdited, portfolio});
 };
 
 
 const deleteManyVolunteeringExperiences = async (req, res, next) => {
   //get volunteering experiences ids
-  const { ids } = req.body;
+  const { ids, portfolioId } = req.body;
 
   const deletedVolunteeringExperiences = await VolunteeringExperience.deleteMany({_id: {$in: ids}})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+  
+  const portfolio = await Portfolio.findByIdAndUpdate(
+    {"_id": portfolioId}, 
+    {
+      $pull: { 
+        volunteeringExperiences: { 
+          _id: { $in: ids }
+        }
+      }
+    },  
+    {new: true}
+  );
 
   if (deletedVolunteeringExperiences) {
     if (deletedVolunteeringExperiences.deletedCount === 0) {
@@ -125,7 +152,7 @@ const deleteManyVolunteeringExperiences = async (req, res, next) => {
     }
   }
 
-  res.status(200).send(deletedVolunteeringExperiences);
+  res.status(200).send({deletedVolunteeringExperiences, portfolio});
 };
 
 const deleteAllVolunteeringExperiences = async (req, res, next) => {

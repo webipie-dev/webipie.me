@@ -21,7 +21,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     FooterComponent,
     PriceCardComponent,
     PriceSectionComponent,
-    HowitworksSectionComponent
+    HowitworksSectionComponent,
   ],
   imports: [
     CommonModule,

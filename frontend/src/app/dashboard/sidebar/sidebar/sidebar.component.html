@@ -1,14 +1,15 @@
-
-<div [class]="'app-sidebar app-sidebar-background app-sidebar--' + globals.sidebarBackgroundStyle + ' ' + globals.sidebarBackground"
-     [ngClass]="{
+<div
+  [class]="'app-sidebar app-sidebar-background app-sidebar--' + globals.sidebarBackgroundStyle + ' ' + globals.sidebarBackground"
+  [ngClass]="{
      'app-sidebar--lighter' : globals.sidebarLighterStyle,
      'app-sidebar--shadow' : globals.sidebarShadow
      }"
-     >
+>
   <app-sidebar-header></app-sidebar-header>
-    <div class="app-sidebar--content">
-      <app-sidebar-menu></app-sidebar-menu>
-    </div>
+  <div class="app-sidebar--content">
+    <app-sidebar-menu></app-sidebar-menu>
+  </div>
   <app-sidebar-footer *ngIf="globals.sidebarFooter"></app-sidebar-footer>
 </div>
-<div class="app-sidebar-overlay" (click)="toggleSidebarMobileOpen()" [ngClass]="{'is-active' : globals.toggleSidebarMobile}"></div>
+<div class="app-sidebar-overlay" (click)="toggleSidebarMobileOpen()"
+     [ngClass]="{'is-active' : globals.toggleSidebarMobile}"></div>

@@ -10,7 +10,7 @@
   <button (click)='toggleSidebarCollapse()' class='btn btn-sm collapse-sidebar-btn' placement='right'
           tooltip='Collapse sidebar'>
     <!-- <i class="far fa-dot-circle"></i> -->
-           <fa-icon [icon]="dotCircle" size="lg"></fa-icon>
+    <fa-icon [icon]="dotCircle" size="lg"></fa-icon>
   </button>
   <button (click)='toggleSidebarMobileOpen()' [ngClass]="{'is-active' : globals.toggleSidebarMobile}"
           class='navbar-toggler hamburger hamburger--elastic toggle-mobile-sidebar-btn' type='button'>
@@ -21,6 +21,6 @@
   <button (click)='toggleSidebarCollapse()' class='expand-sidebar-btn btn btn-sm' placement='right'
           tooltip='Expand sidebar' type='button'>
     <!-- <i class="fas fa-arrows-alt-h"></i> -->
-   <fa-icon [icon]="arrowsAltH"></fa-icon>
+    <fa-icon [icon]="arrowsAltH"></fa-icon>
   </button>
 </div>

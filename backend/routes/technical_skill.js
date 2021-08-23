@@ -14,7 +14,7 @@ router.get('', technicalSkillService.getAllTechnicalSkills)
 router.get('/:portfolioId', passportJWT, [validation.portfolioId], validateRequest, technicalSkillService.getTechnicalSkills)
 
 // add technical skills
-router.post('', passportJWT, [validation.portfolioId, validation.ids], validateRequest, technicalSkillService.addTechnicalSkills);
+router.post('', passportJWT, [validation.portfolioId], validateRequest, technicalSkillService.addTechnicalSkills);
 
 // delete technical skills
 router.delete('', validation.ids, passportJWT, technicalSkillService.deleteTechnicalSkills);

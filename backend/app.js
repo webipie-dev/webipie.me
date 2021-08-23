@@ -21,7 +21,7 @@ const softSkillsRoutes = require('./routes/soft_skill');
 const technicalSkillsRoutes = require('./routes/technical_skill');
 const educationRoutes = require('./routes/education');
 const contactRoutes = require('./routes/contact');
-
+const errorHandler = require('./middlewares/error-handler');
 
 // Extended: https://swagger.io/specification/#infoObject
 const swaggerOptions = {
@@ -63,6 +63,8 @@ app
   .use('/template', templateRoutes)
   .use('/education', educationRoutes)
   .use('/technicalskills', technicalSkillsRoutes)
-  .use('/contact', contactRoutes);
+  .use('/contact', contactRoutes)
+  .use(errorHandler)
+
 
 module.exports = app;

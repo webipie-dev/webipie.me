@@ -497,23 +497,23 @@ bs-daterangepicker-container {
 // Colors
 
 .theme-primary .bs-datepicker-head {
-  background-color: $primary;
+  background-color: #62b085;
 }
 
 .theme-primary .bs-datepicker-body table td span.selected,
 .theme-primary .bs-datepicker-body table td.selected span,
 .theme-primary .bs-datepicker-body table td span[class*="select-"]:after,
 .theme-primary .bs-datepicker-body table td[class*="select-"] span:after {
-  background-color: $primary;
+  background-color: #62b085;
 }
 
 .theme-primary .bs-datepicker-body table td.week span {
-  color: $primary;
+  color: #62b085;
 }
 
 .theme-primary .bs-datepicker-body table td.active-week span:hover {
   cursor: pointer;
-  background-color: $primary;
+  background-color: #62b085;
   color: $white;
   opacity: 0.5;
   transition: 0s;
