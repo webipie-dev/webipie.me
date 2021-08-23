@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -29,7 +29,7 @@
                       [(ngModel)]="workExperience.description"
             ></textarea>
           </div>
-          <div class="position-relative form-group"><label for="examplePassword">Position</label>
+          <div class="position-relative form-group"><label for="examplePassword">Job Type</label>
             <input class="form-control"
                    id="examplePassword"
                    name="password"
@@ -68,8 +68,8 @@
                        class="form-control" placeholder="Select date" type="text">
               </div>
             </div>
-            
-  
+
+
             <div class="form-group col-xl-6 col-md-12">
               <label>End Date</label>
               <div class="input-group input-group-lg mb-5">
@@ -83,7 +83,7 @@
 
             </div>
           </div>
-          
+
           <div class="form-group">
             <label for="image">Image</label>
             <ngx-dropzone [multiple]="false" (change)="onSelect($event)">

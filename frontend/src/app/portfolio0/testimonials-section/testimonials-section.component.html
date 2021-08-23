@@ -5,9 +5,9 @@
         <div class="cos-cont">
         <div class="testimonials-containers" [style.transform]="'translateX('+-position+'px)'">
             <div *ngFor="let element of inView; let i=index" [class]="inView[i]? 'cos-testimonial active':'cos-testimonial'" >
-                <app-testimonial></app-testimonial>
+                <app-testimonial [testimonial]="testimonials[i]"></app-testimonial>
             </div>
-            <div class="cos-testimonial" style="opacity:0" #target>
+            <div class="cos-testimonial" style="opacity:0;position: absolute;left:0px;" #target>
                 <app-testimonial></app-testimonial>
             </div>
         </div>
