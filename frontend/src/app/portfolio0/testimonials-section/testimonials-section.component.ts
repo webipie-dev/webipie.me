@@ -56,7 +56,7 @@ export class TestimonialsSectionComponent implements OnInit {
           this.makeActive(this.inView.length-this.elements-2);
         }
       }
-    },JSON.parse(localStorage.getItem('portfolio')!).template.testimonials.carouselSpeed * 1000)
+    },this.speed * 1000)
   }
 
   makeActive(i:number){
