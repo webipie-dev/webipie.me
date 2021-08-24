@@ -84,23 +84,14 @@
           </div>
           
           <div class="form-group">
-            <label>Images</label>
-            <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-                      *ngIf="type === 'component'"
-                      [config]="config" [disabled]="disabled"
-                      [message]="'Click or drag images here to upload'" class="dropzone-container"></dropzone>
-            <div (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-                 *ngIf="type === 'directive'" [disabled]="disabled" [dropzone]="config"
-                 class="dropzone dropzone-container">
-            </div>
-            <input
-              id="hiddenImageInput"
-              accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-              style="display: none"
-              multiple
-              name="imgs" type="file"
-              formControlName="photo"
-            />
+            <label for="image">Image</label>
+            <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
           </div>
           <div class="position-relative form-group"><label for="city">City</label>
             <input class="form-control"

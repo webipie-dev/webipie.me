@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderLoggedinComponent } from './header-loggedin.component';
+import { EducationSectionComponent } from './education-section.component';
 
-describe('HeaderLoggedinComponent', () => {
-  let component: HeaderLoggedinComponent;
-  let fixture: ComponentFixture<HeaderLoggedinComponent>;
+describe('EducationSectionComponent', () => {
+  let component: EducationSectionComponent;
+  let fixture: ComponentFixture<EducationSectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderLoggedinComponent ]
+      declarations: [ EducationSectionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderLoggedinComponent);
+    fixture = TestBed.createComponent(EducationSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

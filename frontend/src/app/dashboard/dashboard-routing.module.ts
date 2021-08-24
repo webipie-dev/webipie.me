@@ -19,12 +19,17 @@ import {EducationComponent} from "./education/education.component";
 import {AddEducationComponent} from "./education/add-education/add-education.component";
 import {DesignComponent} from "./design/design.component";
 import {AddVolunteerComponent} from "./experience/add-volunteer/add-volunteer.component";
+import {LogoutComponent} from "./logout/logout.component";
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
+      {
+        path: 'logout',
+        component: LogoutComponent
+      },
       {
         path: 'home',
         component: HomeComponent
@@ -98,12 +103,6 @@ const routes: Routes = [
         component: DesignComponent
       },
     ]
-  },
-  {
-    path: 'edit',
-    loadChildren: () => import('../portfolio-edit/portfolio-edit.module')
-      .then(m => m.PortfolioEditModule),
-    data: {preload: true}
   }
 ];
 

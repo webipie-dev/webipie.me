@@ -1,6 +1,6 @@
-<div class="cos-container">
-    <img src="assets/johndoe.jpg">
-    <h4>John Doe</h4>
-    <h5>Engineer</h5>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reprehenderit molestiae voluptatibus vitae nostrum unde corrupti distinctio, reiciendis voluptate excepturi repellat! Praesentium vitae obcaecati aliquid enim! Earum dolor id similique.</p>
+<div class="cos-container" *ngIf="testimonial">
+    <img [src]="testimonial.photo ? testimonial.photo: 'assets/johndoe.jpg'" [class]="square? 'square':''">
+    <h4 [style.textAlign]='textAlign'>{{testimonial.name}}</h4>
+    <h5 [style.textAlign]='textAlign'>{{testimonial.position}}</h5>
+    <p [style.textAlign]='textAlign'>{{testimonial.description}}</p>
 </div>

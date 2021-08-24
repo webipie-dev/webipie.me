@@ -3,6 +3,7 @@ import {GenericService} from "./generic.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PortfolioModel} from "../models/portfolio.model";
+import {TemplateModel} from "../models/template.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +22,16 @@ export class PortfolioService extends GenericService<PortfolioModel> {
   getPortfolioByUrl(): Promise<boolean> {
     return new Promise(resolve => {
       if (
-        window.location.hostname === 'webipie.com' ||
-        window.location.hostname === 'www.webipie.com' // ||
-       // window.location.hostname === encryptStorage.getItem('store')?.url
+        window.location.hostname === 'webipie.me' ||
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === 'www.webipie.me'
       ) {
         resolve(true);
       } else {
         // any to be changed by Portfolio
-        this.http.get<any>(this.getUrl() + this.suffix + '/url/' + window.location.hostname).subscribe( store => {
-          if (store){
-            // encryptStorage.setItem('store', store);
+        this.http.get<any>(this.getUrl() + this.suffix + '/url/' + window.location.hostname).subscribe( portfolio => {
+          if (portfolio){
+            localStorage.setItem("portfolio", JSON.stringify(portfolio));
           }
           resolve(true);
         });
@@ -39,13 +40,10 @@ export class PortfolioService extends GenericService<PortfolioModel> {
   }
 
   changeTemplate(id: string, body: any){
-    let httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')!
-    });
-    const httpOptions = {
-      headers: httpHeaders
-    };
-    return this.http.patch(this.getUrl() + this.suffix + '/change-template/' + id, body, httpOptions);
+    return this.http.patch(this.getUrl() + this.suffix + '/change-template/' + id, body, PortfolioService.addJWT());
+  }
+
+  editTemplate(id: string, body: { template: TemplateModel }): Observable<PortfolioModel> {
+    return this.http.patch(this.getUrl() + this.suffix + '/template/' + id, body, PortfolioService.addJWT()) as Observable<PortfolioModel>;
   }
 }
