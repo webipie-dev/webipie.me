@@ -1,3 +1,5 @@
+import { environment } from "src/environments/environment";
+
 export class UtilsUrl {
-  public static url ='http://localhost:8000';
+  public static url =`${environment.backendProtocol}://${environment.backendDomainName}:${environment.backendPort}`;
 }
