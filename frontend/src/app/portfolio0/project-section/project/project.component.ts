@@ -22,11 +22,13 @@ export class ProjectComponent implements OnInit,OnChanges {
   pic=0;
   close = faTimesCircle;
   template = 2;
+  font = 'Montserrat';
   ngOnInit(): void {
     console.log(this.tags)
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
-    
+    this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
+
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
     if(window.innerWidth<1100)this.imgWidth=window.innerWidth;
     setInterval(()=>{

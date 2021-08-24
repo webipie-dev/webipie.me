@@ -5,9 +5,9 @@
         <div class="cos-experiences">
             <div *ngFor="let work of workExperiences" class="cos-element">
                 <div class="cos-left">
-                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">{{work.title}}</h4>
-                    <h5 *ngIf="work.company" [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">{{work.company}}</h5>
-                    <h6 *ngIf="work.position" >{{work.position}}</h6>
+                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{work.title}}</h4>
+                    <h5 *ngIf="work.company" [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{work.company}}</h5>
+                    <h6 *ngIf="work.position" [style]="'font-family:'+font">{{work.position}}</h6>
                   <p [style]="'color:'+primaryColor">{{work.description}}</p>
                 </div>
                 <div class="cos-middle">

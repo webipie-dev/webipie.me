@@ -12,7 +12,7 @@ export class SkillComponent implements OnInit {
   @Input() hardSkill!: TechnicalSkillDeveloperModel;
   secondaryColor: any;
   primaryColor: any;
-
+  font='Montserrat';
   constructor() { }
   star = faStar;
   hardSkillsTemplate? = 1;
@@ -22,7 +22,8 @@ export class SkillComponent implements OnInit {
     this.levels = Array(5).fill(false);
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
-  
+    this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
+
     for(let i = 0;i<this.hardSkill.level/2;i++){
       this.levels[i] = true;
     }

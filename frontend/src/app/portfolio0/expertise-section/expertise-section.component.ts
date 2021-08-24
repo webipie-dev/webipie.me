@@ -16,9 +16,11 @@ export class ExpertiseSectionComponent implements OnInit {
   softSkillsTemplate?= 1;
   secondaryColor: any;
   primaryColor: any;
+  font='Montserrat';
   constructor() { }
 
   ngOnInit(): void {
+    this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
     this.softSkills = JSON.parse(localStorage.getItem('portfolio')!).softSkills;
     this.hardSkills = JSON.parse(localStorage.getItem('portfolio')!).technicalSkills;
     this.softSkillsTemplate = JSON.parse(localStorage.getItem('portfolio')!).template.softSkills;

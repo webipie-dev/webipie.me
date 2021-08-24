@@ -14,11 +14,13 @@ export class ExperienceSectionComponent implements OnInit {
   template?= 2;
   secondaryColor: any;
   primaryColor: any;
+  font="Montserrat";
   constructor() { }
 
   workExperiences?: [WorkExperienceModel]
 
   ngOnInit(): void {
+    this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
 
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];

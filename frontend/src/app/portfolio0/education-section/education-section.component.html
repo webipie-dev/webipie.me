@@ -5,9 +5,9 @@
         <div class="cos-experiences">
             <div *ngFor="let element of education" class="cos-element">
                 <div class="cos-left">
-                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">{{element.title}}</h4>
-                    <h5 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">{{element.level}}</h5>
-                    <h6 [style]="'color:'+primaryColor">{{element.city}}</h6>
+                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{element.title}}</h4>
+                    <h5 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{element.level}}</h5>
+                    <h6 [style]="'color:'+primaryColor+';font-family:'+font">{{element.city}}</h6>
                 </div>
                 <div class="cos-middle">
                     <div class="cos-line"></div>
@@ -17,7 +17,7 @@
                     <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
-                        <h2>{{element.beginDate | date}} - <span *ngIf="element.endDate">{{element.endDate | date}}</span><span *ngIf="!element.endDate">Present</span></h2>
+                        <h2 [style]="';font-family:'+font">{{element.beginDate | date}} - <span *ngIf="element.endDate">{{element.endDate | date}}</span><span *ngIf="!element.endDate">Present</span></h2>
                     </div>
                 </div>
             </div>

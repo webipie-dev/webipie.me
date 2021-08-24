@@ -14,6 +14,7 @@ export class AboutmeSectionComponent implements OnInit {
   square : boolean = false;
   primaryColor:string = "#e184fe";
   secondaryColor:string = "#e184fe";
+  font = 'Montserrat';
   constructor() { }
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class AboutmeSectionComponent implements OnInit {
     this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
     this.picture = JSON.parse(localStorage.getItem('portfolio')!).picture;
     this.description = JSON.parse(localStorage.getItem('portfolio')!).description;
+    this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
     if(JSON.parse(localStorage.getItem('portfolio')!).template.general.picture == 'square') this.square = true;
   }
 
