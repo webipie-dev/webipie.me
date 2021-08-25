@@ -2,6 +2,7 @@
     <div class="cos-content">
         <h3>WHAT I DID</h3>
         <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'">My Experience</h1>
+        <h3>Professional Experience</h3>
         <div class="cos-experiences">
             <div *ngFor="let work of workExperiences" class="cos-element">
                 <div class="cos-left">
@@ -19,6 +20,28 @@
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2>{{work.beginDate | date}} - <span *ngIf="work.endDate">{{work.endDate | date}}</span><span *ngIf="!work.endDate">Present</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>Volunteering Experience</h3>
+        <div class="cos-experiences">
+            <div *ngFor="let volunteering of volunteeringExperiences" class="cos-element">
+                <div class="cos-left">
+                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.title}}</h4>
+                    <h5 *ngIf="volunteering.organisation" [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.organisation}}</h5>
+                    <h6 *ngIf="volunteering.position" [style]="'font-family:'+font">{{volunteering.position}}</h6>
+                  <p [style]="'color:'+primaryColor">{{volunteering.description}}</p>
+                </div>
+                <div class="cos-middle">
+                    <div class="cos-line"></div>
+                    <fa-icon [icon]='check'></fa-icon>
+                </div>
+                <div class="cos-right">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
+                        <div class="cos-triangle" [style.borderRightColor]="primaryColor">
+                        </div>
+                        <h2><span *ngIf="volunteering.city">{{volunteering.city}}</span> - {{volunteering.beginDate | date}} - <span *ngIf="volunteering.endDate">{{volunteering.endDate | date}}</span><span *ngIf="!volunteering.endDate">Present</span></h2>
                     </div>
                 </div>
             </div>

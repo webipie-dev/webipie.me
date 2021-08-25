@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faCalendarCheck, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import { faAsterisk, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { VolunteeringExperienceModel } from 'src/app/_shared/models/volunteering-experience.model';
 import {WorkExperienceModel} from "../../_shared/models/work-experience.model";
 
 @Component({
@@ -17,7 +18,8 @@ export class ExperienceSectionComponent implements OnInit {
   font="Montserrat";
   constructor() { }
 
-  workExperiences?: [WorkExperienceModel]
+  workExperiences?: [WorkExperienceModel];
+  volunteeringExperiences?: [VolunteeringExperienceModel];
 
   ngOnInit(): void {
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
@@ -25,6 +27,7 @@ export class ExperienceSectionComponent implements OnInit {
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.workExperiences = JSON.parse(localStorage.getItem('portfolio')!).workExperiences;
+    this.volunteeringExperiences = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences;
     this.divider = JSON.parse(localStorage.getItem('portfolio')!).template.experience.dividerIcon;
     switch(this.divider){
       case 1: {
