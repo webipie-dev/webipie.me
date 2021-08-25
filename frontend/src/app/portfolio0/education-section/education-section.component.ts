@@ -37,5 +37,13 @@ export class EducationSectionComponent implements OnInit {
     }
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.education.dataContainer;
   }
-
+  show(target:HTMLElement){
+    if(target.getAttribute('class')==='cos-image hidden'){
+      target.setAttribute('class','cos-image');
+    }else{
+      target.setAttribute('class','cos-image hidden');
+    }
+    
+    
+  }
 }

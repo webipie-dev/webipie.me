@@ -42,5 +42,13 @@ export class ExperienceSectionComponent implements OnInit {
     }
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.experience.dataContainer;
   }
-
+  show(target:HTMLElement){
+    if(target.getAttribute('class')==='cos-image hidden'){
+      target.setAttribute('class','cos-image');
+    }else{
+      target.setAttribute('class','cos-image hidden');
+    }
+    
+    
+  }
 }

@@ -37,6 +37,14 @@ export class AchievementsSectionComponent implements OnInit {
     }
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.achievement.dataContainer;
   }
-  
+  show(target:HTMLElement){
+    if(target.getAttribute('class')==='cos-image hidden'){
+      target.setAttribute('class','cos-image');
+    }else{
+      target.setAttribute('class','cos-image hidden');
+    }
+    
+    
+  }
 
 }

@@ -16,10 +16,13 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="show(target)" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2>{{work.beginDate | date}} - <span *ngIf="work.endDate">{{work.endDate | date}}</span><span *ngIf="!work.endDate">Present</span></h2>
+                    </div>
+                    <div #target class="cos-image hidden">
+                        <img src="assets/back.jpeg">
                     </div>
                 </div>
             </div>
@@ -38,10 +41,13 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="show(target2)"[style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2><span *ngIf="volunteering.city">{{volunteering.city}}</span> - {{volunteering.beginDate | date}} - <span *ngIf="volunteering.endDate">{{volunteering.endDate | date}}</span><span *ngIf="!volunteering.endDate">Present</span></h2>
+                    </div>
+                    <div #target2 class="cos-image hidden">
+                        <img src="assets/back.jpeg">
                     </div>
                 </div>
             </div>
