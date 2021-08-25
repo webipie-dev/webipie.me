@@ -1,12 +1,18 @@
 <div [ngClass]="class" #target (click)="click(toggle)">
     <img src="assets/back.jpeg">
 </div>
-<div class="overlay" #toggle (click)="exit(toggle)">
+<div class="overlay" #toggle >
     <div class="cos-card {{template==2? 'bottom':''}}" #card (window:resize)="onResize(card)">
         <div class="button" (click)="exit(toggle)">
             <fa-icon [icon]="close" [style]="'color:'+primaryColor"></fa-icon>
         </div>
         <div class="images {{template==2? 'bordered':''}}">
+            <div class="next" (click)="goRight()">
+                <fa-icon [icon]="rightArrow" [style]="'color:'+primaryColor"></fa-icon>
+            </div>
+            <div class="prev">
+                <fa-icon [icon]="leftArrow" [style]="'color:'+primaryColor" (click)="goLeft()"></fa-icon>
+            </div>
             <div class="images-container" [style]="'transform:translateX(-'+pos+'px)'">
                 <div class="image">
                     <img src="assets/back.jpeg">
@@ -18,7 +24,10 @@
                     <img src="assets/back.jpeg">
                 </div>
                 <div class="image">
-                    <img src="assets/back.jpeg">
+                    <video autoplay loop>
+                        <source src="assets/video.mp4"/>
+                    </video>
+
                 </div>
             </div>
             
