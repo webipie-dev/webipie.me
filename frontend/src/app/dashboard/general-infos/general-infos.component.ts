@@ -21,7 +21,8 @@ export class GeneralInfosComponent implements OnInit {
     github: [''],
     linkedin: [''],
     picture: [''],
-    cv: ['']
+    cv: [''],
+    aboutme: ['']
   });
 
 
