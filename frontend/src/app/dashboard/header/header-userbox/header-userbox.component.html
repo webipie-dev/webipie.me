@@ -57,25 +57,12 @@
               Preview
             </a>
           </li>
+          <li class="nav-item">
+            <a (click)="logOut()" class="nav-link" [routerLink]="">
+              Logout
+            </a>
+          </li>
         </ul>
-      </li>
-
-      <li class="list-group-item rounded-bottom p-3 text-center">
-        <a [routerLink]="" class="btn btn-facebook" tooltip="Facebook">
-        <span class="btn-wrapper--icon">
-          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
-        </span>
-        </a>
-        <a [routerLink]="" class="btn btn-google mr-2 ml-2" tooltip="LinkedIn">
-        <span class="btn-wrapper--icon">
-          <fa-icon [icon]="['fab', 'linkedin-in']"></fa-icon>
-        </span>
-        </a>
-        <a [routerLink]="" class="btn btn-twitter" tooltip="Twitter">
-        <span class="btn-wrapper--icon">
-          <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
-        </span>
-        </a>
       </li>
     </ul>
   </div>
