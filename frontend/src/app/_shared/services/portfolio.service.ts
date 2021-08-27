@@ -24,7 +24,7 @@ export class PortfolioService extends GenericService<PortfolioModel> {
       if (
         window.location.hostname === 'webipie.me' ||
         window.location.hostname === 'localhost' ||
-        window.location.hostname === 'www.webipie.me'
+        window.location.hostname === 'www.webipie.me' || true
       ) {
         resolve(true);
       } else {
