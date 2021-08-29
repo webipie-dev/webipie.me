@@ -21,7 +21,7 @@ export class GeneralInfosComponent implements OnInit {
     github: [''],
     linkedin: [''],
     picture: [''],
-    cv: [''],
+    CV: [''],
     aboutmem: ['']
   });
 
@@ -73,7 +73,7 @@ export class GeneralInfosComponent implements OnInit {
       formData = new FormData();
       formData.append("file", this.pictures[0]);
       const cv = await this.uploadService.imageUpload(formData);
-      if(cv.success) this.portfolioForm.controls['cv'].setValue(cv.url);
+      if(cv.success) this.portfolioForm.controls['CV'].setValue(cv.url);
     }    
 
     this.portfolioService.edit(this.portfolio.id,this.portfolioForm.value).subscribe((result) => {
