@@ -90,6 +90,4 @@ export class TestimonialsSectionComponent implements OnInit {
     this.change(element, s);
     this.onElementChange(element, newValue)
   }
-
-
 }
