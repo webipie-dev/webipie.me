@@ -16,9 +16,11 @@ export class ExperienceSectionComponent implements OnInit {
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultDateContainer();
-    this.setDefaultDividerIcon();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultDateContainer();
+      this.setDefaultDividerIcon();
+    })
   }
 
   setDefaultDateContainer() {
@@ -32,7 +34,7 @@ export class ExperienceSectionComponent implements OnInit {
   onElementChange(element: string, newValue: string | number) {
     // @ts-ignore
     this.template.experience[element] = newValue;
-    console.log(this.template.experience)
+    this.designEditService.updateTemplate(this.template);
   }
 
   change(element: string, s:string){
@@ -93,6 +95,4 @@ export class ExperienceSectionComponent implements OnInit {
     this.change(element, s);
     this.onElementChange(element, newValue)
   }
-
-
 }

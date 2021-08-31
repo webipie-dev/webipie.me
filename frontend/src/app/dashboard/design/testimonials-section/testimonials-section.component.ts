@@ -17,10 +17,12 @@ export class TestimonialsSectionComponent implements OnInit {
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultPictureStyle();
-    this.setDefaultTextAlignment();
-    this.setDefaultCarouselSpeed();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultPictureStyle();
+      this.setDefaultTextAlignment();
+      this.setDefaultCarouselSpeed();
+    })
   }
 
   setDefaultPictureStyle() {
@@ -46,8 +48,7 @@ export class TestimonialsSectionComponent implements OnInit {
   onElementChange(element: string, newValue: string | number) {
     // @ts-ignore
     this.template.testimonials[element] = newValue;
-    console.log(this.template.testimonials)
-    console.log(this.designEditService.getInitialTemplate().testimonials)
+    this.designEditService.updateTemplate(this.template);
   }
 
   change(element: string, s:string){

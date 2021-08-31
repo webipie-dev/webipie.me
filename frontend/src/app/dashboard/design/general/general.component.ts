@@ -2,9 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Font, FontInterface} from 'ngx-font-picker';
 import {TemplateModel} from "../../../_shared/models/template.model";
 import {DesignEditService} from "../../../_shared/services/design-edit.service";
-import {ObjectShapeEnum} from "../../../_shared/enums/object-shape.enum";
-import {ButtonStyleEnum} from "../../../_shared/enums/button-style.enum";
-import {ButtonSizeEnum} from "../../../_shared/enums/button-size.enum";
 
 @Component({
   selector: 'app-general',
@@ -41,14 +38,17 @@ export class GeneralComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultColorPalettes();
-    this.setDefaultFonts();
-    this.setDefaultColorChosen();
-    this.setDefaultPictureStyle();
-    this.setDefaultButtonShape();
-    this.setDefaultButtonSize();
-    this.setDefaultButtonStyle();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultColorPalettes();
+      this.setDefaultFonts();
+      this.setDefaultColorChosen();
+      this.setDefaultPictureStyle();
+      this.setDefaultButtonShape();
+      this.setDefaultButtonSize();
+      this.setDefaultButtonStyle();
+      this.setDefaultCarouselSpeed();
+    })
   }
 
   setDefaultColorPalettes() {
@@ -119,7 +119,19 @@ export class GeneralComponent implements OnInit {
   onGeneralElementChange(element: string, newValue: any) {
     // @ts-ignore
     this.template.general[element] = newValue;
-    console.log(this.template);
+    this.designEditService.updateTemplate(this.template);
+  }
+
+  onElementChange(element: string, newValue: any) {
+    // @ts-ignore
+    this.template[element] = newValue;
+    this.designEditService.updateTemplate(this.template);
+  }
+
+  onButtonChange(element: string, newValue: string) {
+    // @ts-ignore
+    this.template.general.buttons[element] = newValue;
+    this.designEditService.updateTemplate(this.template);
   }
 
   changePicture(element: string, newValue: any, number: number) {
@@ -129,18 +141,6 @@ export class GeneralComponent implements OnInit {
       this.pictureStyle = [false, true]
     }
     this.onGeneralElementChange(element, newValue);
-  }
-
-  onElementChange(element: string, newValue: any) {
-    // @ts-ignore
-    this.template[element] = newValue;
-    console.log(this.template);
-  }
-
-  onButtonChange(element: string, newValue: string) {
-    // @ts-ignore
-    this.template.general.buttons[element] = newValue;
-    console.log(this.template);
   }
 
   changeButtonShape(element: string, newValue: string, number: number) {

@@ -16,9 +16,11 @@ export class EducationSectionComponent implements OnInit {
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultDateContainer();
-    this.setDefaultDividerIcon();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultDateContainer();
+      this.setDefaultDividerIcon();
+    })
   }
 
   setDefaultDateContainer() {
@@ -32,7 +34,7 @@ export class EducationSectionComponent implements OnInit {
   onElementChange(element: string, newValue: string | number) {
     // @ts-ignore
     this.template.education[element] = newValue;
-    console.log(this.template.education)
+    this.designEditService.updateTemplate(this.template);
   }
 
   change(element: string, s:string){
