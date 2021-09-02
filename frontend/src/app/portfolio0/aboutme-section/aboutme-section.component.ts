@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
@@ -18,6 +18,8 @@ export class AboutmeSectionComponent implements OnInit {
   font = 'Montserrat';
   gitHub = faGithub;
   linkedIn = faLinkedin;
+
+  @Output() aboutmeClick = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -32,4 +34,7 @@ export class AboutmeSectionComponent implements OnInit {
     if(JSON.parse(localStorage.getItem('portfolio')!).template.general.picture == 'square') this.square = true;
   }
 
+  clickAboutme(event:any){
+    this.aboutmeClick.emit(event);
+  }
 }
