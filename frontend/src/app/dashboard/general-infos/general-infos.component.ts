@@ -22,7 +22,7 @@ export class GeneralInfosComponent implements OnInit {
     linkedin: [''],
     picture: [''],
     CV: [''],
-    aboutmem: ['']
+    description: ['']
   });
 
 
@@ -60,27 +60,69 @@ export class GeneralInfosComponent implements OnInit {
     this.files.splice(this.pictures.indexOf(event), 1);
   }
 
+  cleanBody(body: any){
+    for (var propName in body) {
+      if (!body[propName]) {
+        delete body[propName];
+      }
+    }
+    return body
+  }
+
   async onSubmit() { 
     let formData = new FormData();
+    let errors: any[] = []
 
     if(this.pictures[0]){
       formData.append("file", this.pictures[0]);
-      const picture = await this.uploadService.imageUpload(formData);
-      if(picture.success) this.portfolioForm.controls['picture'].setValue(picture.url);
+      let picture;
+      try{
+        picture = await this.uploadService.imageUpload(formData);
+        if(picture.success)
+          this.portfolioForm.controls['picture'].setValue(picture.url);
+        else
+          errors.push('picture' + picture.errors.title);
+      }
+      catch(err){
+        errors.push('picture' + err.error.errors.title);
+      }
     }
     
     if(this.files[0]){
       formData = new FormData();
-      formData.append("file", this.pictures[0]);
-      const cv = await this.uploadService.imageUpload(formData);
-      if(cv.success) this.portfolioForm.controls['CV'].setValue(cv.url);
+      formData.append("file", this.files[0]);
+      let cv;
+      try{
+        cv = await this.uploadService.cvUpload(formData);
+        if(cv.success)
+          this.portfolioForm.controls['CV'].setValue(cv.url);
+        else
+          errors.push('cv' + cv.errors.title);
+      }
+      catch(err){
+        errors.push('cv' + err.error.errors.title);
+      }
     }    
-
+    let body = this.portfolioForm.value;
+    body = this.cleanBody(body);
     this.portfolioService.edit(this.portfolio.id,this.portfolioForm.value).subscribe((result) => {
 
       localStorage.setItem('portfolio', JSON.stringify(result));
 
-      console.log(JSON.stringify(result));
+      if(errors.length>0)
+        Swal.fire({
+          title: 'Infos updated but some uploads failed',
+          text: errors.join('\n'),
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        });
+      else
+      Swal.fire({
+        title: 'Operation successful',
+        text: 'Infos updated successfully',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
     }, (error) => {
       Swal.fire({
         title: 'Error!',
