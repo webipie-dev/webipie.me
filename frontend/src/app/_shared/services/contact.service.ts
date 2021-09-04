@@ -17,6 +17,7 @@ export class ContactService extends BaseService {
 
   public contact(body: any): Observable<any> {
     console.log(BaseService.addJWT())
+    console.log(body);
     return this.http.post(this.getUrl() + '/contact' + '/', body, BaseService.addJWT()) as Observable<any>;
   }
 }
