@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const {templateSchema} = require('./template');
+const {templateSchema, templateInstanceSchema} = require('./template');
 const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
 const {workExperienceSchema} = require('./work_experience');
@@ -18,11 +18,11 @@ const portfolioSchema = new Schema({
   position: {type: String, required: false},
   picture: {type: String, required: false},
   email: {type: String, required: false},
-  github: {type: String, required: false, unique: true},
-  linkedIn: {type: String, required: false, unique: true},
-  CV: {type: String, required: false, unique: true},
+  github: {type: String, required: false},
+  linkedIn: {type: String, required: false},
+  CV: {type: String, required: false},
   creationDate: {type: Date, default: Date.now()},
-  template: templateSchema,
+  template: templateInstanceSchema,
   projects: {type: [projectSchema]},
   education: {type: [educationSchema]},
   achievements: {type: [achievementSchema]},

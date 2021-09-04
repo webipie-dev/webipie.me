@@ -16,6 +16,7 @@ import { TestimonialComponent } from './testimonials-section/testimonial/testimo
 import { ContactSectionComponent } from './contact-section/contact-section.component';
 import { EducationSectionComponent } from './education-section/education-section.component';
 import { AchievementsSectionComponent } from './achievements-section/achievements-section.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -39,7 +40,8 @@ import { AchievementsSectionComponent } from './achievements-section/achievement
   imports: [
     CommonModule,
     Portfolio0RoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ]
 })
 export class Portfolio0Module { }
