@@ -137,13 +137,6 @@ const editPortfolio = async (req, res, next) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  if (portfolio){
-    if (portfolio.nModified === 0) {
-      next(ApiError.NotFound('No portfolios modified'));
-      return;
-    }
-  }
-
   const portfolioEdited = await Portfolio.findById(id);
 
   res.status(200).send(portfolioEdited)
