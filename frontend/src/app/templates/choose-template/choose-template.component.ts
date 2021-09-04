@@ -96,7 +96,7 @@ export class ChooseTemplateComponent implements OnInit {
       }else{
         this.portfolioService.addOne({templateId: this.selectedTemplate.id}).subscribe(
           result => {
-            localStorage.setItem('portfolioId', result.elementAdded.id);
+            localStorage.setItem('portfolioId', result.id);
             this.router.navigate(['dashboard']);
           }
         );
