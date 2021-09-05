@@ -3,6 +3,7 @@ import {WorkExperienceService} from "../../../_shared/services/work-experience.s
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {WorkExperienceModel} from "../../../_shared/models/work-experience.model";
+
 import { UploadService } from 'src/app/_shared/services/upload.service';
 import Swal from 'sweetalert2';
 
@@ -67,7 +68,7 @@ export class AddExperienceComponent implements OnInit {
     this.images.splice(this.images.indexOf(event), 1);
   }
 
- 
+
 
   async onSubmit() {
     let formData = new FormData();
@@ -87,7 +88,7 @@ export class AddExperienceComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Okay'
         });
       });
     } else {
@@ -99,7 +100,7 @@ export class AddExperienceComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Okay'
         });
       })
     }

@@ -10,6 +10,9 @@ const passportJWT = passport.authenticate('jwt', { session: false });
 //get all soft skills
 router.get('', softSkillService.getAllSoftSkills)
 
+// add one soft skill to database
+router.post('/one', passportJWT, softSkillService.addOneSoftSkill)
+
 //get all soft skills by portfolio ID
 router.get('/:portfolioId', passportJWT, [validation.portfolioId], validateRequest, softSkillService.getSoftSkills)
 

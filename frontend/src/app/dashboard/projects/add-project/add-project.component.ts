@@ -5,6 +5,7 @@ import {ProjectService} from "../../../_shared/services/project.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProjectModel} from "../../../_shared/models/project.model";
 import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-project',
@@ -111,11 +112,25 @@ export class AddProjectComponent implements OnInit {
       this.projectService.addOne(this.projectForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
-      });
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
+      })
     } else {
       this.projectService.edit(this.project.id, this.projectForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }

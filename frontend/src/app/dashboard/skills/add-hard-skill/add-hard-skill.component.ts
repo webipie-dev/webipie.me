@@ -3,6 +3,7 @@ import {TechnicalSkillService} from "../../../_shared/services/technical-skill.s
 import {ActivatedRoute, Router} from "@angular/router";
 import {TechnicalSkillModel} from "../../../_shared/models/technical-skill.model";
 import {TechnicalSkillDeveloperModel} from "../../../_shared/models/technical-skill-developer";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-hard-skill',
@@ -41,6 +42,7 @@ export class AddHardSkillComponent implements OnInit {
     this.technicalSkill = (JSON.parse(localStorage.getItem('portfolio')!).technicalSkills.filter((technicalSkill: TechnicalSkillDeveloperModel) => technicalSkill.id === technicalSkillId))[0];
   }
 
+  // handle errors
   onSubmit() {
     if (this.selectedSkill === '') {
       this.validForm = false;
@@ -49,11 +51,25 @@ export class AddHardSkillComponent implements OnInit {
       this.technicalSkillsService.addOne({skill: {id: this.selectedSkill, level: this.level}}).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       });
     } else {
       this.technicalSkillsService.edit(this.technicalSkill.id, {skill: {id: this.selectedSkill, level: this.level}}).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }

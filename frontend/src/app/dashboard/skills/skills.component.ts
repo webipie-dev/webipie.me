@@ -11,6 +11,7 @@ import {TechnicalSkillService} from "../../_shared/services/technical-skill.serv
 })
 export class SkillsComponent implements OnInit {
 
+  faUsers = 'faUsers'
   hardSkills?: [TechnicalSkillDeveloperModel];
   softSkills?: [SoftSkillModel];
   constructor(private softSkillService: SoftSkillService, private technicalSkillService: TechnicalSkillService) {
