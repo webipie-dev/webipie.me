@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { ContactService } from 'src/app/_shared/services/contact.service';
 
 @Component({
   selector: 'app-contact-section',
@@ -17,7 +19,14 @@ export class ContactSectionComponent implements OnInit {
   phoneNumber = "55 555 555";
   icon : string = "";
   card : string = "";
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private contactService: ContactService) { }
+
+  contactForm = this.formBuilder.group({
+    name: ['', ],
+    message: ['', ],
+    subject: ['', ],
+    email: ['', ],
+  });
 
   ngOnInit(): void {
     this.phoneNumber = JSON.parse(localStorage.getItem('portfolio')!).phoneNumber;
@@ -25,5 +34,8 @@ export class ContactSectionComponent implements OnInit {
     if(JSON.parse(localStorage.getItem('portfolio')!).template.contact.socialMediaIcon == 2) this.icon = 'square';
     if(JSON.parse(localStorage.getItem('portfolio')!).template.contact.contactCard == 1) this.card = 'fullysquare';
   }
-
+  onSubmit() {
+    this.contactService.contact({id: "60de311165912da279d3cb9d", ...this.contactForm.value}).subscribe((result) => {
+    });
+  }
 }

@@ -179,7 +179,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     EducationSectionComponent,
     ProjectsSectionComponent,
     AchievementsSectionComponent,
-    LogoutComponent
+    LogoutComponent,
   ],
   imports: [
     CommonModule,

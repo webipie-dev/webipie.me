@@ -1,18 +1,62 @@
 import { Injectable } from '@angular/core';
-import {GenericService} from "./generic.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {PortfolioModel} from "../models/portfolio.model";
 import {TemplateModel} from "../models/template.model";
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PortfolioService extends GenericService<PortfolioModel> {
+export class PortfolioService extends BaseService {
 
   constructor(protected http: HttpClient) {
     super(http);
     this.suffix = '/portfolio';
+  }
+
+  public getById(id: string): Observable<PortfolioModel> {
+    return this.http.get(this.getUrl() + this.suffix + '/' + id) as Observable<PortfolioModel>;
+  }
+
+  public getMany(query?: string): Observable<[PortfolioModel]> {
+    // query is an object of elements you want to filter the documents with
+    const httpOptions: {[key: string]: any} = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      params: query
+    };
+    return this.http.get(this.getUrl() + this.suffix, httpOptions) as Observable<[PortfolioModel]>;
+  }
+
+  public getManyByIds(arrayIds: string[]): Observable<[PortfolioModel]> {
+    return this.http.get(this.getUrl() + this.suffix + '/many') as Observable<[PortfolioModel]>;
+  }
+
+  public addOne(body: any): Observable<PortfolioModel> {
+    if(localStorage.getItem('portfolioId')) {
+      body.portfolioId = localStorage.getItem('portfolioId');
+    }
+    return this.http.post(this.getUrl() + this.suffix, body, BaseService.addJWT()) as Observable<PortfolioModel>;
+  }
+
+  public edit(id: string, body: any): Observable<PortfolioModel> {
+    if(localStorage.getItem('portfolioId')) {
+      body.portfolioId = localStorage.getItem('portfolioId');
+    }
+    return this.http.patch(this.getUrl() + this.suffix + '/' + id, body, BaseService.addJWT()) as Observable<PortfolioModel>;
+  }
+
+  public deleteMany(body: any): Observable<PortfolioModel> {
+    if(localStorage.getItem('portfolioId')) {
+      body.portfolioId = localStorage.getItem('portfolioId');
+    }
+    return this.http.request('delete', this.getUrl() + this.suffix, {body, headers: BaseService.addJWT().headers}) as unknown as Observable<PortfolioModel>;
+  }
+
+  public deleteAll(): Observable<PortfolioModel> {
+    return this.http.delete(this.getUrl() + this.suffix + '/delete') as Observable<PortfolioModel>;
   }
 
   getStoreUrls(): Observable<[string]> {
