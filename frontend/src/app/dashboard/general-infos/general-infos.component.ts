@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { PortfolioModel } from 'src/app/_shared/models/portfolio.model';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import { UploadService } from 'src/app/_shared/services/upload.service';
+import { NgxSpinnerService } from "ngx-spinner";
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,9 +19,9 @@ export class GeneralInfosComponent implements OnInit {
     name: [''],
     position: [''],
     email: [''],
-    phone: [''],
+    phoneNumber: [''],
     github: [''],
-    linkedin: [''],
+    linkedIn: [''],
     picture: [''],
     CV: [''],
     description: ['']
@@ -28,13 +30,15 @@ export class GeneralInfosComponent implements OnInit {
 
   constructor(private portfolioService: PortfolioService,
     private formBuilder: FormBuilder,
-    private uploadService: UploadService) {}
+    private uploadService: UploadService,
+    private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!);
   }
 
   pictures: File[] = [];
+  disabled: boolean = false;
 
   onSelectPicture(event: any) {
     this.pictures = [];
@@ -70,6 +74,8 @@ export class GeneralInfosComponent implements OnInit {
   }
 
   async onSubmit() { 
+    this.disabled = true
+    this.spinner.show();
     let formData = new FormData();
     let errors: any[] = []
 
@@ -123,6 +129,8 @@ export class GeneralInfosComponent implements OnInit {
         icon: 'success',
         confirmButtonText: 'Ok'
       });
+      this.disabled = false;
+      this.spinner.hide();
     }, (error) => {
       Swal.fire({
         title: 'Error!',

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DashboardComponent} from './dashboard.component';
 import {DashboardRoutingModule} from "./dashboard-routing.module";
@@ -123,6 +123,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxDropzoneModule,NgxDropzoneComponent } from 'ngx-dropzone';
 import { AchievementsSectionComponent } from './design/achievements-section/achievements-section.component';
 import { LogoutComponent } from './logout/logout.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
@@ -216,8 +218,10 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     AutosizeModule,
     ReactiveFormsModule,
     DashboardRoutingModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxSpinnerModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
