@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { ContactService } from 'src/app/_shared/services/contact.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-section',
@@ -22,10 +23,10 @@ export class ContactSectionComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private contactService: ContactService) { }
 
   contactForm = this.formBuilder.group({
-    name: ['', ],
-    message: ['', ],
-    subject: ['', ],
-    email: ['', ],
+    name: ['', Validators.required],
+    message: ['', Validators.required],
+    subject: ['', Validators.required],
+    email: ['', Validators.required],
   });
 
   ngOnInit(): void {
@@ -35,7 +36,23 @@ export class ContactSectionComponent implements OnInit {
     if(JSON.parse(localStorage.getItem('portfolio')!).template.contact.contactCard == 1) this.card = 'fullysquare';
   }
   onSubmit() {
-    this.contactService.contact({id: "60de311165912da279d3cb9d", ...this.contactForm.value}).subscribe((result) => {
+    let obj = {portfolioID: JSON.parse(localStorage.getItem('portfolio')!).id, ...this.contactForm.value}
+    console.log(obj)
+    this.contactService.contact(obj).subscribe((result) => {
+      
+        Swal.fire({
+          title: 'Email sent!',
+          text: result.result,
+          icon: 'success',
+          confirmButtonText: 'Thanks'
+        })
+    }, (error) =>{
+      Swal.fire({
+          title: 'Error !',
+          text: error.error.error,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
     });
   }
 }

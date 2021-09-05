@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="cos-btn-container">
-            <button type="submit" class="cos-btn" [class]='card'>Send Message</button>
+            <button type="submit" class="cos-btn" [class]='card' [disabled]="!contactForm.valid" [ngClass]="{'disabled' : !contactForm.valid}">Send Message</button>
             </div>
             </form>
         </div>

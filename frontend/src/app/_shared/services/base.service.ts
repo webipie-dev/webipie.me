@@ -13,12 +13,21 @@ export class BaseService {
   }
 
   protected static addJWT() {
-    let httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')!
-    });
-    return {
-      headers: httpHeaders
+    if (localStorage.getItem('token')!){
+      let httpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')!
+      });
+      return {
+        headers: httpHeaders
+      }
+    }
+    else{
+      return {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }
     }
   }
 }
