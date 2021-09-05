@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
 import { PortfolioModel } from 'src/app/_shared/models/portfolio.model';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import { UploadService } from 'src/app/_shared/services/upload.service';
@@ -23,14 +22,13 @@ export class GeneralInfosComponent implements OnInit {
     linkedin: [''],
     picture: [''],
     cv: [''],
-    aboutme: ['']
+    aboutmem: ['']
   });
 
 
   constructor(private portfolioService: PortfolioService,
     private formBuilder: FormBuilder,
-    private uploadService: UploadService,
-    private router: Router) {}
+    private uploadService: UploadService) {}
 
   ngOnInit(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!);
@@ -82,15 +80,7 @@ export class GeneralInfosComponent implements OnInit {
 
       localStorage.setItem('portfolio', JSON.stringify(result));
 
-      Swal.fire({
-        icon: 'success',
-        title: 'Success.',
-        text: 'Save completed!',
-      }).then(() => {
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(["dashboard/general-infos"]); // navigate to same route
-        }); 
-      })     
+      console.log(JSON.stringify(result));
     }, (error) => {
       Swal.fire({
         title: 'Error!',
