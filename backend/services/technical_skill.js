@@ -49,7 +49,7 @@ const addTechnicalSkills = async (req, res, next) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
     if(!portfolio) {
-        next(ApiError.NotFound('You seem to already have this skill, try adding another skill !'));
+        return next(ApiError.BadRequest('You seem to already have this skill, try adding another skill !'));
     }
     res.status(200).send(portfolio);
 };

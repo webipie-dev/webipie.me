@@ -4,6 +4,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VolunteeringExperienceModel} from "../../../_shared/models/volunteering-experience.model";
 import { UploadService } from 'src/app/_shared/services/upload.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-volunteer',
@@ -12,9 +13,9 @@ import { UploadService } from 'src/app/_shared/services/upload.service';
 })
 export class AddVolunteerComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: FormBuilder,
               private volunteeringExperienceService: VolunteeringExperienceService,
-              private router: Router, 
+              private router: Router,
               private route: ActivatedRoute,
               private uploadService: UploadService) {
   }
@@ -47,7 +48,7 @@ export class AddVolunteerComponent implements OnInit {
   public fillEditForm(volunteerId: string): void {
     this.volunteerExperience = (JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences.filter((volunteer: VolunteeringExperienceModel) => volunteer.id === volunteerId ))[0];
   }
-  
+
   images: File[] = [];
 
   onSelect(event: any) {
@@ -74,11 +75,25 @@ export class AddVolunteerComponent implements OnInit {
       this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       });
     } else {
       this.volunteeringExperienceService.edit(this.volunteerExperience.id, this.volunteeringExperienceForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }

@@ -3,6 +3,7 @@ import {WorkExperienceService} from "../../../_shared/services/work-experience.s
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {WorkExperienceModel} from "../../../_shared/models/work-experience.model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-experience',
@@ -65,18 +66,32 @@ export class AddExperienceComponent implements OnInit {
     this.images.splice(this.images.indexOf(event), 1);
   }
 
- 
+
 
   onSubmit() {
     if(!this.edit) {
       this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       });
     } else {
       this.workExperienceService.edit(this.workExperience.id, this.workExperienceForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }
