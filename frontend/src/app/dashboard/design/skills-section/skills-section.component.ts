@@ -16,9 +16,11 @@ export class SkillsSectionComponent implements OnInit {
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultHardSkills();
-    this.setDefaultSoftSkills();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultHardSkills();
+      this.setDefaultSoftSkills();
+    })
   }
 
   setDefaultSoftSkills() {
@@ -32,7 +34,7 @@ export class SkillsSectionComponent implements OnInit {
   onElementChange(element: string, newValue: string | number) {
     // @ts-ignore
     this.template[element] = newValue;
-    console.log(this.template)
+    this.designEditService.updateTemplate(this.template);
   }
 
   change(element: string, s:string){

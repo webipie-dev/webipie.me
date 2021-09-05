@@ -16,9 +16,11 @@ export class AchievementsSectionComponent implements OnInit {
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultDateContainer();
-    this.setDefaultDividerIcon();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultDateContainer();
+      this.setDefaultDividerIcon();
+    })
   }
 
   setDefaultDateContainer() {
@@ -32,7 +34,7 @@ export class AchievementsSectionComponent implements OnInit {
   onElementChange(element: string, newValue: string | number) {
     // @ts-ignore
     this.template.achievement[element] = newValue;
-    console.log(this.template.achievement)
+    this.designEditService.updateTemplate(this.template);
   }
 
   change(element: string, s:string){

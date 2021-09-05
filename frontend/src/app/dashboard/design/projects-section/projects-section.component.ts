@@ -15,9 +15,11 @@ export class ProjectsSectionComponent implements OnInit {
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultButtonStyle();
-    this.setDefaultPopupCard();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultButtonStyle();
+      this.setDefaultPopupCard();
+    })
   }
 
   setDefaultPopupCard() {
@@ -39,7 +41,7 @@ export class ProjectsSectionComponent implements OnInit {
   onElementChange(element: string, newValue: string | number) {
     // @ts-ignore
     this.template.project[element] = newValue;
-    console.log(this.template.project)
+    this.designEditService.updateTemplate(this.template);
   }
 
   change(element: string, s:string){

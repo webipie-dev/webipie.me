@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DesignEditService} from "../../../_shared/services/design-edit.service";
 import {TemplateModel} from "../../../_shared/models/template.model";
 
@@ -14,9 +14,11 @@ export class ContactSectionComponent implements OnInit {
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultFormAlignment();
-    this.setDefaultSocialMediaIcon();
+    this.designEditService.currentTemplate.subscribe(template =>  {
+      this.template = template;
+      this.setDefaultFormAlignment();
+      this.setDefaultSocialMediaIcon();
+    })
   }
 
   setDefaultSocialMediaIcon() {
@@ -34,7 +36,7 @@ export class ContactSectionComponent implements OnInit {
   onElementChange(element: string, newValue: string | number) {
     // @ts-ignore
     this.template.contact[element] = newValue;
-    console.log(this.template.contact)
+    this.designEditService.updateTemplate(this.template);
   }
 
   change(element: string, s:string){
@@ -78,9 +80,9 @@ export class ContactSectionComponent implements OnInit {
 
   select(element: string, newValue: string | number, i?: number){
     let s:string;
-    if(i==1){
+    if(i === 1){
       s="first";
-    }else if ( i===2 ){
+    }else if (i === 2){
       s="second";
     }else {
       s="third";

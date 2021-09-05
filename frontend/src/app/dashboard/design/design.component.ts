@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Font, FontInterface} from 'ngx-font-picker';
 import {DesignEditService} from "../../_shared/services/design-edit.service";
+import {TemplateModel} from "../../_shared/models/template.model";
 
 @Component({
   selector: 'app-design',
@@ -25,11 +26,13 @@ export class DesignComponent implements OnInit {
 
   public presetFonts = this._presetFonts;
 
+  @Output() templateEvent = new EventEmitter<TemplateModel>();
+
+
   constructor(public designEditService: DesignEditService) {
   }
 
   ngOnInit(): void {
-    console.log(this.designEditService.testChange())
   }
 
   public togglePresetFonts(): void {
