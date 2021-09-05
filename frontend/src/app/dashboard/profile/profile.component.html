@@ -100,7 +100,7 @@
     </div>
   </div>
   <div class="col-xl-6 col-lg-6">
-    <div class="row mt-5">
+   <!--  <div class="row mt-5">
       <div class="col-lg-12 col-md-6 col-xl-6">
         <div class="rounded card card-box bg-white mb-5">
           <div class="p-4">
@@ -155,12 +155,12 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="card card-box justify-content-center">
       <div class="card-header bg-light ">
         <div class="card-header--title">
-          <small>Network</small>
-          <b class="font-size-lg d-flex align-items-center">Your Social Media</b>
+          <small>Profile</small>
+          <b class="font-size-lg d-flex align-items-center">Change password</b>
         </div>
         <div class="card-header--actions">
           <a [routerLink]="" class="btn btn-link btn-link-primary p-0 font-size-xl text-primary" tooltip="View options">
@@ -170,62 +170,38 @@
       </div>
       <div class="col-xl-12 col-lg-6">
         <div class="px-5 pt-5">
-          <div class="row ">
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-facebook text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Facebook</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-github text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'github']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Github</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
-              </div>
+          <div class="col-12">
+            <div class="position-relative form-group"><label for="old_password">Old Password</label>
+              <input
+                class="form-control" 
+                id="old_password" 
+                name="old_password" 
+                placeholder="Old Password" 
+                type="password">
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-twitter text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Twitter</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-google text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'linkedin-in']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Linked In</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
-              </div>
+          <div class="col-12">
+            <div class="position-relative form-group"><label for="new_password">New Password</label>
+              <input
+                class="form-control" 
+                id="new_password" 
+                name="new_password" 
+                placeholder="New Password" 
+                type="password">
             </div>
           </div>
+          <div class="col-12">
+            <div class="position-relative form-group"><label for="password">Confirm Password</label>
+              <input
+                class="form-control" 
+                id="password" 
+                name="password" 
+                placeholder="Confirm Password" 
+                type="password">
+            </div>
+          </div>
+
+          <button class="mx-3 my-3 btn btn-slack">Save</button>
         </div>
       </div>
 
