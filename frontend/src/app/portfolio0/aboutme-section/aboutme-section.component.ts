@@ -24,7 +24,7 @@ export class AboutmeSectionComponent implements OnInit {
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.github = JSON.parse(localStorage.getItem('portfolio')!).github;
-    this.linkedin = JSON.parse(localStorage.getItem('portfolio')!).linkedin;
+    this.linkedin = JSON.parse(localStorage.getItem('portfolio')!).linkedIn;
     this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
     this.picture = JSON.parse(localStorage.getItem('portfolio')!).picture;
     this.description = JSON.parse(localStorage.getItem('portfolio')!).description;
