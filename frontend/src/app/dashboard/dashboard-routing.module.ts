@@ -15,7 +15,6 @@ import {TestimonialsComponent} from "./testimonials/testimonials.component";
 import {AddTestimonialComponent} from "./testimonials/add-testimonial/add-testimonial.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {HomeComponent} from "./home/home.component";
-import {Home1Component} from "./home1/home1.component";
 import {EducationComponent} from "./education/education.component";
 import {AddEducationComponent} from "./education/add-education/add-education.component";
 import {DesignComponent} from "./design/design.component";
