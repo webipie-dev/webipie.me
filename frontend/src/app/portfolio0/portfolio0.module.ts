@@ -25,6 +25,7 @@ import {
   faPuzzlePiece,
   faUsers
 } from "@fortawesome/free-solid-svg-icons";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -48,7 +49,8 @@ import {
   imports: [
     CommonModule,
     Portfolio0RoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ]
 })
 export class Portfolio0Module {

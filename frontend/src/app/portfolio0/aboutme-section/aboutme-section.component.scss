@@ -18,11 +18,28 @@ body{
     z-index:2;
     background-color: none;
 }
+.cos-btn{
+    padding:10px;
+    box-sizing: border-box;
+    margin-top:20px;
+    height:fit-content;
+    width: fit-content;
+    transition: all ease 0.5s;
+    fa-icon{
+        font-size: 3rem;
+        transform: translateY(-10px);
+    }
+}
+.cos-btn:hover{
+        transform: translateY(-15px);
+    
+}
 .cos-image{
     overflow: hidden;
     border-radius: 200px;
     width:100%;
     max-width: 400px;
+    max-height: 400Px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .square{

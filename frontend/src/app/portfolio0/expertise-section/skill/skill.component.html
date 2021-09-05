@@ -5,7 +5,7 @@
     <div class="cos-right">
 
         <div *ngIf="hardSkillsTemplate == 1" class="loading">
-            <div class="level">
+            <div class="level" [style.width]="hardSkill.level*10+'%'">
             </div>
         </div>
         <p *ngIf="hardSkillsTemplate == 1">{{hardSkill.level * 10}} %</p>

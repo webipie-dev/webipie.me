@@ -4,7 +4,8 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VolunteeringExperienceModel} from "../../../_shared/models/volunteering-experience.model";
 import { UploadService } from 'src/app/_shared/services/upload.service';
-import Swal from "sweetalert2";
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-volunteer',
@@ -75,10 +76,10 @@ export class AddVolunteerComponent implements OnInit {
       this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
-      }, error => {
+      }, (error) => {
         Swal.fire({
           title: 'Error!',
-          text: error.error.errors[0].message,
+          text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
           confirmButtonText: 'Okay'
         });
@@ -87,10 +88,10 @@ export class AddVolunteerComponent implements OnInit {
       this.volunteeringExperienceService.edit(this.volunteerExperience.id, this.volunteeringExperienceForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
-      }, error => {
+      }, (error) => {
         Swal.fire({
           title: 'Error!',
-          text: error.error.errors[0].message,
+          text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
           confirmButtonText: 'Okay'
         });

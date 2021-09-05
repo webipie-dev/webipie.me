@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-aboutme-section',
@@ -15,6 +16,8 @@ export class AboutmeSectionComponent implements OnInit {
   primaryColor:string = "#e184fe";
   secondaryColor:string = "#e184fe";
   font = 'Montserrat';
+  gitHub = faGithub;
+  linkedIn = faLinkedin;
   constructor() { }
 
   ngOnInit(): void {

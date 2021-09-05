@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { PortfolioModel } from 'src/app/_shared/models/portfolio.model';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import { UploadService } from 'src/app/_shared/services/upload.service';
+import { NgxSpinnerService } from "ngx-spinner";
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,24 +19,26 @@ export class GeneralInfosComponent implements OnInit {
     name: [''],
     position: [''],
     email: [''],
-    phone: [''],
+    phoneNumber: [''],
     github: [''],
-    linkedin: [''],
+    linkedIn: [''],
     picture: [''],
-    cv: [''],
-    aboutmem: ['']
+    CV: [''],
+    description: ['']
   });
 
 
   constructor(private portfolioService: PortfolioService,
     private formBuilder: FormBuilder,
-    private uploadService: UploadService) {}
+    private uploadService: UploadService,
+    private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!);
   }
 
   pictures: File[] = [];
+  disabled: boolean = false;
 
   onSelectPicture(event: any) {
     this.pictures = [];
@@ -60,27 +64,73 @@ export class GeneralInfosComponent implements OnInit {
     this.files.splice(this.pictures.indexOf(event), 1);
   }
 
+  cleanBody(body: any){
+    for (var propName in body) {
+      if (!body[propName]) {
+        delete body[propName];
+      }
+    }
+    return body
+  }
+
   async onSubmit() { 
+    this.disabled = true
+    this.spinner.show();
     let formData = new FormData();
+    let errors: any[] = []
 
     if(this.pictures[0]){
       formData.append("file", this.pictures[0]);
-      const picture = await this.uploadService.imageUpload(formData);
-      if(picture.success) this.portfolioForm.controls['picture'].setValue(picture.url);
+      let picture;
+      try{
+        picture = await this.uploadService.imageUpload(formData);
+        if(picture.success)
+          this.portfolioForm.controls['picture'].setValue(picture.url);
+        else
+          errors.push('picture' + picture.errors.title);
+      }
+      catch(err){
+        errors.push('picture' + err.error.errors.title);
+      }
     }
     
     if(this.files[0]){
       formData = new FormData();
-      formData.append("file", this.pictures[0]);
-      const cv = await this.uploadService.imageUpload(formData);
-      if(cv.success) this.portfolioForm.controls['cv'].setValue(cv.url);
+      formData.append("file", this.files[0]);
+      let cv;
+      try{
+        cv = await this.uploadService.cvUpload(formData);
+        if(cv.success)
+          this.portfolioForm.controls['CV'].setValue(cv.url);
+        else
+          errors.push('cv' + cv.errors.title);
+      }
+      catch(err){
+        errors.push('cv' + err.error.errors.title);
+      }
     }    
-
+    let body = this.portfolioForm.value;
+    body = this.cleanBody(body);
     this.portfolioService.edit(this.portfolio.id,this.portfolioForm.value).subscribe((result) => {
 
       localStorage.setItem('portfolio', JSON.stringify(result));
 
-      console.log(JSON.stringify(result));
+      if(errors.length>0)
+        Swal.fire({
+          title: 'Infos updated but some uploads failed',
+          text: errors.join('\n'),
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        });
+      else
+      Swal.fire({
+        title: 'Operation successful',
+        text: 'Infos updated successfully',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
+      this.disabled = false;
+      this.spinner.hide();
     }, (error) => {
       Swal.fire({
         title: 'Error!',

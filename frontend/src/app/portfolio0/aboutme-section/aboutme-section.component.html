@@ -10,8 +10,10 @@
             <h3>HELLO</h3>
             <h2 [style]="'color:'+primaryColor+';filter:brightness(70%)'">I'm a {{position}}</h2>
             <p [style]="'color:'+primaryColor+';font-family:'+font">{{description}}</p>
-            <a href="{{github}}">Github</a><br>
-            <a href="{{linkedin}}">Linkedin</a>
+            <div class="links">
+            <a class="cos-btn"  href="{{github}}"><fa-icon [icon]="gitHub"></fa-icon></a>
+            <a class="cos-btn"  href="{{linkedin}}"><fa-icon [icon]="linkedIn"></fa-icon></a>
+            </div>
         </div>
         <div class="cos-right">
             <div class="cos-image {{square? 'square':''}}">

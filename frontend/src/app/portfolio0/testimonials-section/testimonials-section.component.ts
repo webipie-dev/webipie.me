@@ -28,32 +28,41 @@ export class TestimonialsSectionComponent implements OnInit {
     this.backgroundSpeed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
     this.testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials ?? [];
     this.inView = new Array(this.testimonials?.length).fill(false) ?? [];
+    setTimeout(()=>{
+      if(window.innerWidth<1000){
+        this.position = 0;
+        this.elements = this.inView.length-1;
+        this.makeActive(this.inView.length-this.elements-1);
+      }else{
+        if(this.target){
+          this.position = - this.target.nativeElement.offsetWidth;
+        }
+        
+        this.elements = this.inView.length - 1;
+        this.makeActive(this.inView.length-this.elements-1);
+      }
+    },100)
     
-    if(window.innerWidth<1000){
-      this.elements = this.inView.length;
-      this.makeActive(this.inView.length-this.elements);
-    }else{
-      this.elements = this.inView.length-3;
-      this.makeActive(this.inView.length-this.elements-2);
-    }
     setInterval(()=>{
       if(this.elements && this.target){
         this.position += this.target.nativeElement.offsetWidth;
-        console.log(this.elements --);
+        this.elements --;
         if(window.innerWidth<1000){
-          this.makeActive(this.inView.length-this.elements);
+          this.makeActive(this.inView.length-this.elements-1);
         }else{
-          this.makeActive(this.inView.length-this.elements-2);
+          this.makeActive(this.inView.length-this.elements-1);
         }
 
       }else{
-        this.position = 0;
+        
         if(window.innerWidth<1000){
-          this.elements = this.inView.length;
-          this.makeActive(this.inView.length-this.elements);
+          this.position = 0;
+          this.elements = this.inView.length-1;
+          this.makeActive(this.inView.length-this.elements-1);
         }else{
-          this.elements = this.inView.length - 3;
-          this.makeActive(this.inView.length-this.elements-2);
+          this.position = - this.target!.nativeElement.offsetWidth;
+          this.elements = this.inView.length - 1;
+          this.makeActive(this.inView.length-this.elements-1);
         }
       }
     },this.speed * 1000)

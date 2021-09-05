@@ -11,23 +11,23 @@
         </div>
         <div class="cos-card {{card}}">
             <h2>Contact Form</h2>
-            <form>
+            <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
             <div class="cos-form">
                 <div class="cos-left">
                     <label>Your name</label>
-                    <input type="text" placeholder="Your Name" [class]='card'/>
+                    <input type="text" formControlName="name" placeholder="Your Name" [class]='card'/>
                     <label>Mail</label>
-                    <input type="email" placeholder="Your Email" [class]='card'/>
-                    <label>Phone</label>
-                    <input type="number" placeholder="Your Phone" [class]='card'/>
+                    <input type="email" formControlName="email" placeholder="Your Email" [class]='card'/>
+                    <label>Subject</label>
+                    <input type="text" formControlName="subject" placeholder="Subject" [class]='card'/>
                 </div>
                 <div class="cos-right">
                     <label>Message</label>
-                    <textarea placeholder="Your Message" [class]='card'></textarea>
+                    <textarea formControlName="message" placeholder="Your Message" [class]='card'></textarea>
                 </div>
             </div>
             <div class="cos-btn-container">
-            <button type="submit" class="cos-btn" [class]='card'>Send Message</button>
+            <button type="submit" class="cos-btn" [class]='card' [disabled]="!contactForm.valid" [ngClass]="{'disabled' : !contactForm.valid}">Send Message</button>
             </div>
             </form>
         </div>

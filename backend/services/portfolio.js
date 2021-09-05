@@ -124,13 +124,6 @@ const editPortfolio = async (req, res, next) => {
   const { id } = req.params;
   const edits = {};
 
-  if('name' in req.body){
-    const user = await User.findOne({name: req.body.name});
-    if(user){
-      return next(ApiError.BadRequest('Portfolio name is already in use'));
-    }
-  }
-
   // separating the updates
   for (const key in req.body) {
     if (key !== 'id') {
@@ -143,13 +136,6 @@ const editPortfolio = async (req, res, next) => {
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
-
-  if (portfolio){
-    if (portfolio.nModified === 0) {
-      next(ApiError.NotFound('No portfolios modified'));
-      return;
-    }
-  }
 
   const portfolioEdited = await Portfolio.findById(id);
 
