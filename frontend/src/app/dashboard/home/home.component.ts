@@ -24,13 +24,23 @@ export class HomeComponent implements OnInit {
   portfolio: any
   lastNDays: number = 15
   visits: any
-  nusers: number
-  nvisits: number
-  visitsPerDay: number
-  visitsPerCountry: CountryVisit[]
-  userVisits: UserVisit[]
+  nusers: number = 0
+  nvisits: number = 0
+  visitsPerDay: number = 0
+  visitsPerCountry: CountryVisit[] = []
+  userVisits: UserVisit[] = []
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit(): void {
+    window.addEventListener('storage', () => {
+      this.setAll()
+    });
+    this.setAll()
+
+  }
+
+  setAll(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!)
     let visitsInLastNDays = this.getVisits(this.portfolio.visitsPerDay, this.lastNDays)
     this.visits = [
@@ -49,11 +59,6 @@ export class HomeComponent implements OnInit {
     this.visitsPerDay = this.visitsPerDay / visitsInLastNDays.length
     this.visitsPerCountry = this.getVisitsPerCountry(this.portfolio.visits)
     this.userVisits = this.getUserVisits(this.portfolio.visits)
-    console.log(this.userVisits)
-
-  }
-
-  ngOnInit(): void {
   }
 
   getVisits(visitsPerDay: any, lastNDays: number) {
