@@ -22,7 +22,7 @@ export class GeneralInfosComponent implements OnInit {
     linkedin: [''],
     picture: [''],
     cv: [''],
-    aboutmem: ['']
+    aboutme: ['']
   });
 
 

@@ -15,13 +15,31 @@
     align-items: center;
     padding-bottom: 50px;
 }
-.cos-content h3{
-    margin-top:100px;
-    font-size: 1rem;
-    color:#7b7b7b;
-}
 .square{
     border-radius: 0px !important;
+}
+.cos-right .cos-bubble{
+    transition: transform 0.75s ease !important;
+}
+.cos-right .cos-bubble:hover{
+    cursor: pointer;
+    transform:translateY(-5px);
+}
+.cos-image{
+    margin-top:20px;
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    margin-left:10px;
+    margin-right:10px;
+    transition: all 0.75s ease;
+    height: 150px;
+    img{
+        width:60%;
+        object-fit: contain;
+        
+    }
 }
 .outline{
     border : 1px solid #202e37;
@@ -30,6 +48,11 @@
     .cos-triangle{
         visibility: hidden !important;
     }
+}
+.cos-content h3{
+    margin-top:100px;
+    font-size: 1rem;
+    color:#7b7b7b;
 }
 .cos-content h1{
     font-size:calc(40px + 3vw);
@@ -129,10 +152,16 @@
     .cos-left{
         text-align: left;
     }
+    .cos-image{
+        justify-content: flex-end;
+    }
     .cos-triangle{
         right:-20px !important;
         transform:scale(-1);
     }
+}
+.hidden{
+    height:0px !important;
 }
 .cos-element:nth-child(odd){
     .cos-triangle{
