@@ -1,5 +1,6 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import {ProjectModel} from "../../../_shared/models/project.model";
 
 @Component({
@@ -7,7 +8,7 @@ import {ProjectModel} from "../../../_shared/models/project.model";
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent implements OnInit,OnChanges {
+export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   secondaryColor: any;
   primaryColor: any;
   constructor() { }
@@ -23,6 +24,9 @@ export class ProjectComponent implements OnInit,OnChanges {
   close = faTimesCircle;
   template = 2;
   font = 'Montserrat';
+  speed= 4000;
+  rightArrow = faAngleRight;
+  leftArrow = faAngleLeft;
   ngOnInit(): void {
     console.log(this.tags)
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
@@ -30,16 +34,30 @@ export class ProjectComponent implements OnInit,OnChanges {
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
 
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
+    
+  }
+  ngAfterViewInit(){
     if(window.innerWidth<1100)this.imgWidth=window.innerWidth;
-    setInterval(()=>{
-      if(this.pic==this.img.length){
-        this.pic = 0;
-        this.pos = 0;
-      }else{
-        this.pos+= this.imgWidth;
-        this.pic++;
-      }
-    },4000)
+  }
+  goRight(){
+    if(this.pic==this.img.length){
+      this.pic = 0;
+      this.pos = 0;
+      
+    }else{
+      this.pos+= this.imgWidth;
+      this.pic++;
+    }
+  }
+  goLeft(){
+    if(this.pic==0){
+      this.pic = this.img.length;
+      this.pos = this.img.length*this.imgWidth;
+      
+    }else{
+      this.pos-= this.imgWidth;
+      this.pic--;
+    }
   }
   ngOnChanges(changes: any) {
     // to be changed when filtering

@@ -3,6 +3,8 @@ import {WorkExperienceService} from "../../../_shared/services/work-experience.s
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {WorkExperienceModel} from "../../../_shared/models/work-experience.model";
+import { UploadService } from 'src/app/_shared/services/upload.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-experience',
@@ -12,7 +14,7 @@ import {WorkExperienceModel} from "../../../_shared/models/work-experience.model
 export class AddExperienceComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private workExperienceService: WorkExperienceService,
-              private router: Router, private route: ActivatedRoute) {
+              private router: Router, private route: ActivatedRoute, private uploadService: UploadService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
@@ -67,16 +69,38 @@ export class AddExperienceComponent implements OnInit {
 
  
 
-  onSubmit() {
+  async onSubmit() {
+    let formData = new FormData();
+
+    if(this.images[0]){
+      formData.append("file", this.images[0]);
+      const image = await this.uploadService.imageUpload(formData);
+      if(image.success) this.workExperienceForm.controls['imgs'].setValue(image.url);
+    }
+
     if(!this.edit) {
       this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, (error) => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
       });
     } else {
       this.workExperienceService.edit(this.workExperience.id, this.workExperienceForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, (error) => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
       })
     }
   }
