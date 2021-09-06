@@ -226,6 +226,7 @@ import { NgxDropzoneModule,NgxDropzoneComponent } from 'ngx-dropzone';
 import { AchievementsSectionComponent } from './design/achievements-section/achievements-section.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { EllipsisModule } from 'ngx-ellipsis';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -322,6 +323,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     DashboardRoutingModule,
     NgSelectModule,
     NgxSpinnerModule,
+    EllipsisModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

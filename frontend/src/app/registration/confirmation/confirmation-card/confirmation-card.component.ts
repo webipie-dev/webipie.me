@@ -44,7 +44,12 @@ export class ConfirmationCardComponent implements OnInit {
     // fetch user from jwt
     this.authService.isVerified().subscribe(res => {
       if (res.verified) {
-        this.router.navigate(['/dashboard'])
+        if(localStorage.getItem('portfolio')){
+          this.router.navigate(['/dashboard'])
+        }else{
+          this.router.navigate(['/choose-template'])
+        }
+
       } else {
         Swal.fire({
           title: 'Error!',

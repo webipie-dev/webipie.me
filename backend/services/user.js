@@ -222,7 +222,7 @@ module.exports = {
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(newPassword, salt);
 
-        await User.update({"email": user.email}, {"password": passwordHash});
+        await User.updateOne({"email": user.email}, {"password": passwordHash});
         return res.status(200).json({success: "success"})
 
     },
