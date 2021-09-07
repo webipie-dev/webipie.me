@@ -14,9 +14,11 @@ export class HeaderComponent implements OnInit {
   rightArrow = faAngleRight;
   menuactive = false;
   scrolled = false;
+  logged = this.isLoggedIn();
+
   constructor(private router : Router, private authService: AuthService) { }
 
-  logged = this.isLoggedIn();
+
   ngOnInit(): void {
     if(this.router.url != '/'){
       this.scrolled=true;

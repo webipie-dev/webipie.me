@@ -1,39 +1,73 @@
 <div class="containerr">
-    <div [class]="scrolled? 'back scrolled':'back unscrolled'"></div>
-    <div class="contentt">
-        <div class="left">
-            <img [style.width]="scrolled? '80px':'100px'" src="assets/SVG/logo.svg">
-        </div>
-        <div [class]="scrolled? 'right blacked':'right'">
-            <div class="menuu" (click)="onMenuClick($event)">
-                <fa-icon [icon]="menuu" [style.color]="scrolled? 'black':'white'"></fa-icon>
-            </div>
-            <a href="#"><h3 class="active">home</h3><div class="line full"></div></a>
-            <a href="#"><h3>about us</h3><div class="line"></div></a>
-            <a href="#"><h3>pricing</h3><div class="line"></div></a>
-            <a href="#"><h3>contact us</h3><div class="line"></div></a>
-            <a [routerLink]="['/register/signup']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Sign up</button></a>
-            <a [routerLink]="['/register/signin']"><button class="btn m-1 btn-square btn-secondary" type="button" style="padding:15px;padding-right:25px;padding-left:25px;;border-radius:10px;color:black">Sign In</button></a>
-        </div>
+  <div [class]="scrolled? 'back scrolled':'back unscrolled'"></div>
+  <div class="contentt">
+    <div class="left">
+      <img [style.width]="scrolled? '80px':'100px'" src="assets/SVG/logo.svg">
+    </div>
+    <div [class]="scrolled? 'right blacked':'right'">
+      <div (click)="onMenuClick($event)" class="menuu">
+        <fa-icon [icon]="menuu" [style.color]="scrolled? 'black':'white'"></fa-icon>
+      </div>
+      <a href="#"><h3 class="active">home</h3>
+        <div class="line full"></div>
+      </a>
+      <a href="#"><h3>about us</h3>
+        <div class="line"></div>
+      </a>
+      <a href="#"><h3>pricing</h3>
+        <div class="line"></div>
+      </a>
+      <a href="#"><h3>contact us</h3>
+        <div class="line"></div>
+      </a>
+      <span *ngIf="logged">
+        <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
+        <a><img class="avatar" src="assets/johndoe.jpeg"> Welcome, Mr John Doe</a>
+      </span>
+      <span *ngIf="!logged">
+        <a [routerLink]="['/register/signup']" routerLinkActive="router-link-active">
+        <button class="btn m-1 btn-square btn-slack" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px"
+                type="button">Sign up
+        </button>
+      </a>
+      <a [routerLink]="['/register/signin']">
+        <button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;;border-radius:10px;color:black"
+                type="button">Sign In
+        </button>
+      </a>
+      </span>
+    </div>
 
+  </div>
+  <div [class]="!menuactive? 'slidemenu inactivee':'slidemenu activee'">
+    <fa-icon (click)="onMenuClick($event)" [icon]="leftarrow"></fa-icon>
+    <div class="account">
+      <a [routerLink]="['/register/signin']">
+        <button class="btn btn-sm btn-outline-dark">Sign In</button>
+      </a>
+      <a [routerLink]="['/register/signup']">
+        <button class="btn btn-sm btn-slack">Sign Up</button>
+      </a>
     </div>
-    <div [class]="!menuactive? 'slidemenu inactivee':'slidemenu activee'">
-        <fa-icon [icon]="leftarrow" (click)="onMenuClick($event)"></fa-icon>
-        <div class="account">
-            <a [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark">Sign In</button></a>
-            <a [routerLink]="['/register/signup']"><button class="btn btn-sm btn-slack">Sign Up</button></a>
-        </div>
-        <div class="element">
-            <a href="#"><h3>Home</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
-        </div>
-        <div class="element">
-            <a href="#"><h3>About Us</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
-        </div>
-        <div class="element">
-            <a href="#"><h3>Princing</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
-        </div>
-        <div class="element">
-            <a href="#"><h3>Contact Us</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
-        </div>
+    <div class="element">
+      <a href="#"><h3>Home</h3>
+        <fa-icon [icon]="rightArrow"></fa-icon>
+      </a>
     </div>
+    <div class="element">
+      <a href="#"><h3>About Us</h3>
+        <fa-icon [icon]="rightArrow"></fa-icon>
+      </a>
+    </div>
+    <div class="element">
+      <a href="#"><h3>Princing</h3>
+        <fa-icon [icon]="rightArrow"></fa-icon>
+      </a>
+    </div>
+    <div class="element">
+      <a href="#"><h3>Contact Us</h3>
+        <fa-icon [icon]="rightArrow"></fa-icon>
+      </a>
+    </div>
+  </div>
 </div>

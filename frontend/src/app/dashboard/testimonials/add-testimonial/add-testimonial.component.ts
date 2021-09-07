@@ -4,6 +4,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {TestimonialService} from "../../../_shared/services/testimonial.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TestimonialModel} from "../../../_shared/models/testimonial.model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-testimonial',
@@ -104,11 +105,25 @@ export class AddTestimonialComponent implements OnInit {
       this.testimonialService.addOne(this.testimonialForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       });
     } else {
       this.testimonialService.edit(this.testimonial.id, this.testimonialForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }

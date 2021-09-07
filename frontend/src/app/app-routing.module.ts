@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CustomPreloadingStrategyService} from "./_shared/services/custom-preloading-strategy.service";
 import {environment} from "../environments/environment";
-import {AuthGuardService as AuthGuard} from './_shared/services/auth-guard.service';
 import {LoginAuthGuardService as LoginAuthGuard} from "./_shared/services/login-auth-guard.service";
 
 const routes: Routes = [

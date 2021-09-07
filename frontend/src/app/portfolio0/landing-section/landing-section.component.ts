@@ -21,7 +21,7 @@ export class LandingSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = JSON.parse(localStorage.getItem('portfolio')!).name;
-    this.cv = JSON.parse(localStorage.getItem('portfolio')!).cv;
+    this.cv = JSON.parse(localStorage.getItem('portfolio')!).CV;
     this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];

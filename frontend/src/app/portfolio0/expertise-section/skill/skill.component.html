@@ -3,7 +3,7 @@
         <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{hardSkill.skill.name}}</h2>
     </div>
     <div class="cos-right">
-        
+
         <div *ngIf="hardSkillsTemplate == 1" class="loading">
             <div class="level" [style.width]="hardSkill.level*10+'%'">
             </div>
@@ -21,4 +21,4 @@
             <div class="m-2 btn btn-warning p-2" *ngIf="hardSkill.level/2 > 0 && hardSkill.level/2 <= 1">1/5</div>
         </div>
     </div>
-    
+</div>

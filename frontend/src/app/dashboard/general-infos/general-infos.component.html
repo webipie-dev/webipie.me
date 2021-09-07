@@ -30,13 +30,14 @@
     <div class="form-row">
       <div class="col-md-12 ">
         <div class="position-relative form-group"><label for="email">About you</label>
-        <textarea id="aboutme"
-        name="aboutme"
+        <textarea id="description"
+        name="description"
         placeholder="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat vitae impedit iste esse officiis, eaque dicta at eos. Dolor fugit itaque deserunt asperiores soluta, modi natus error velit. Aut, ad!"
         type="textarea"
-        formControlName="aboutme"
+        formControlName="description"
         autosize [minRows]="5" 
         [maxRows]="10" 
+        [(ngModel)]="portfolio.description"
         class="form-control"></textarea>
         </div>
       </div>
@@ -56,14 +57,14 @@
       </div>
 
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="phone">Phone</label>
+        <div class="position-relative form-group"><label for="phoneNumber">Phone</label>
           <input
             class="form-control" 
-            id="phone" 
-            name="phone" 
+            id="phoneNumber" 
+            name="phoneNumber" 
             placeholder="Phone Number" 
-            type="number"
-            formControlName="phone"
+            type="text"
+            formControlName="phoneNumber"
             [(ngModel)]="portfolio.phoneNumber">
           </div>
       </div>
@@ -86,11 +87,11 @@
         <div class="position-relative form-group"><label for="linkedin">LinkedIn</label>
           <input
             class="form-control" 
-            id="linkedin" 
-            name="linkedin" 
-            placeholder="LinkedIn" 
+            id="linkedIn" 
+            name="linkedIn" 
+            placeholder="linkedIn" 
             type="text"
-            formControlName="linkedin"
+            formControlName="linkedIn"
             [(ngModel)]="portfolio.linkedIn">
           </div>
       </div>
@@ -120,3 +121,4 @@
     <button class="mt-2 btn btn-slack">Save</button>
   </form>
 </app-wrapper-simple>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

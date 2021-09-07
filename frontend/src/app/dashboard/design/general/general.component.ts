@@ -2,9 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Font, FontInterface} from 'ngx-font-picker';
 import {TemplateModel} from "../../../_shared/models/template.model";
 import {DesignEditService} from "../../../_shared/services/design-edit.service";
-import {ObjectShapeEnum} from "../../../_shared/enums/object-shape.enum";
-import {ButtonStyleEnum} from "../../../_shared/enums/button-style.enum";
-import {ButtonSizeEnum} from "../../../_shared/enums/button-size.enum";
 
 @Component({
   selector: 'app-general',
@@ -20,6 +17,11 @@ export class GeneralComponent implements OnInit {
   colorChart: string[] = [];
   colorChartIndex: number = -1;
   template!: TemplateModel;
+  pictureStyle: boolean[] = [];
+  buttonShape: boolean[] = [];
+  buttonStyle: boolean[] = [];
+  buttonSize: boolean[] = [];
+
 
   public font: FontInterface = new Font({
     family: 'Roboto',
@@ -36,10 +38,17 @@ export class GeneralComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.template = this.designEditService.getCurrentTemplate();
-    this.setDefaultColorPalettes();
-    this.setDefaultFonts();
-    this.setDefaultColorChosen();
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultColorPalettes();
+      this.setDefaultFonts();
+      this.setDefaultColorChosen();
+      this.setDefaultPictureStyle();
+      this.setDefaultButtonShape();
+      this.setDefaultButtonSize();
+      this.setDefaultButtonStyle();
+      this.setDefaultCarouselSpeed();
+    })
   }
 
   setDefaultColorPalettes() {
@@ -64,6 +73,40 @@ export class GeneralComponent implements OnInit {
     this.speedValue = this.template.general.animationSpeed
   }
 
+  setDefaultPictureStyle() {
+    if(this.template.general.picture === 'rounded') {
+      this.pictureStyle = [true, false];
+    } else {
+      this.pictureStyle = [false, true];
+    }
+  }
+
+  setDefaultButtonShape() {
+    if(this.template.general.buttons.shape === 'square') {
+      this.buttonShape = [true, false];
+    } else {
+      this.buttonShape = [false, true];
+    }
+  }
+
+  setDefaultButtonSize() {
+    if(this.template.general.buttons.size === 'small') {
+      this.buttonSize = [true, false, false];
+    } else if (this.template.general.buttons.size === 'normal'){
+      this.buttonSize = [false, true, false];
+    } else {
+      this.buttonSize = [false, false, true];
+    }
+  }
+
+  setDefaultButtonStyle() {
+    if(this.template.general.buttons.style === 'solid') {
+      this.buttonStyle = [true, false];
+    } else {
+      this.buttonStyle = [false, true];
+    }
+  }
+
   public togglePresetFonts(): void {
     this.presetFonts = this.presetFonts.length ? [] : this.presetFonts;
   }
@@ -73,10 +116,59 @@ export class GeneralComponent implements OnInit {
     this.styleSelect = !this.styleSelect;
   }
 
+  onGeneralElementChange(element: string, newValue: any) {
+    // @ts-ignore
+    this.template.general[element] = newValue;
+    this.designEditService.updateTemplate(this.template);
+  }
+
   onElementChange(element: string, newValue: any) {
-    console.log(element, newValue)
     // @ts-ignore
     this.template[element] = newValue;
-    console.log(this.template);
+    this.designEditService.updateTemplate(this.template);
+  }
+
+  onButtonChange(element: string, newValue: string) {
+    // @ts-ignore
+    this.template.general.buttons[element] = newValue;
+    this.designEditService.updateTemplate(this.template);
+  }
+
+  changePicture(element: string, newValue: any, number: number) {
+    if (number === 1) {
+      this.pictureStyle = [true, false]
+    } else {
+      this.pictureStyle = [false, true]
+    }
+    this.onGeneralElementChange(element, newValue);
+  }
+
+  changeButtonShape(element: string, newValue: string, number: number) {
+    if(number === 1) {
+      this.buttonShape = [true, false];
+    } else {
+      this.buttonShape = [false, true];
+    }
+    this.onButtonChange(element, newValue);
+  }
+
+  changeButtonStyle(element: string, newValue: string, number: number) {
+    if(number === 1) {
+      this.buttonStyle = [true, false];
+    } else {
+      this.buttonStyle = [false, true];
+    }
+    this.onButtonChange(element, newValue);
+  }
+
+  changeButtonSize(element: string, newValue: string, number: number) {
+    if(number === 1) {
+      this.buttonSize = [true, false, false];
+    } else if(number === 2) {
+      this.buttonSize = [false, true, false];
+    } else {
+      this.buttonSize = [false, false, true];
+    }
+    this.onButtonChange(element, newValue);
   }
 }

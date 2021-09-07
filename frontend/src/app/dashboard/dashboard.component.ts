@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import Swal from 'sweetalert2';
 import {PortfolioService} from '../_shared/services/portfolio.service';
 import {ThemeOptions} from '../_shared/theme-options';
 
@@ -14,13 +15,22 @@ export class DashboardComponent implements OnInit {
     private portfolioService: PortfolioService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     const id = localStorage.getItem('portfolioId') || "";
-    this.portfolioService.getById(id).subscribe(
-      result => {
-        localStorage.setItem("portfolio", JSON.stringify(result));
-      }
-    );
+    try{
+      let portfolio = await this.portfolioService.getById(id).toPromise()
+      localStorage.setItem("portfolio", JSON.stringify(portfolio));
+    }
+    catch(err){
+      Swal.fire({
+        title: 'Error!',
+        text: 'something went wrong when loading dashboard, please try again',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+    }
+    
+
   }
 
 }

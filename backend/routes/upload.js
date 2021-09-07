@@ -55,10 +55,9 @@ const getMultiUpload = function(name, limit, fileFilter){
 const getUploadHandler = function(name, limit, fileFilter){
   const upload = getUpload(name, limit, fileFilter)
   return function (req, res) {
-
     upload(req, res, function (err) {
       if (err) {
-        return res.json({
+        return res.status(400).json({
           success: false,
           errors: {
             title: `File upload ${name} operation failed`,
@@ -76,7 +75,6 @@ const getUploadHandler = function(name, limit, fileFilter){
 const getMultiUploadHandler = function(name, limit, fileFilter){
   const upload = getMultiUpload(name, limit, fileFilter)
   return function (req, res) {
-
     upload(req, res, function (err) {
       if (err) {
         return res.json({

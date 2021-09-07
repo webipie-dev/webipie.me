@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SoftSkillModel} from "../../../_shared/models/soft-skill.model";
 import {SoftSkillService} from "../../../_shared/services/soft-skill.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-soft-skill',
@@ -45,11 +46,25 @@ export class AddSoftSkillComponent implements OnInit {
       this.softSkillService.addOne({id: this.selectedSkill}).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       });
     } else {
       this.softSkillService.edit(this.softSkill.id, {id: this.selectedSkill}).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }

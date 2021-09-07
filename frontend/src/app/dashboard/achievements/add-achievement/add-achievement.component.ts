@@ -4,6 +4,7 @@ import {AchievementService} from "../../../_shared/services/achievement.service"
 import {ActivatedRoute, Router} from "@angular/router";
 import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 import {AchievementModel} from "../../../_shared/models/achievement.model";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-achievement',
@@ -53,16 +54,31 @@ export class AddAchievementComponent implements OnInit {
     this.images.splice(this.images.indexOf(event), 1);
   }
 
+  // handle errors
   onSubmit() {
     if(!this.edit) {
       this.achievementService.addOne(this.achievementForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       });
     } else {
       this.achievementService.edit(this.achievement.id, this.achievementForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }
