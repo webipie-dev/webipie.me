@@ -5,8 +5,9 @@
     max-width: 300px;
     height:220px;
     margin:10px;
+    flex-shrink: 100000;
     overflow: hidden;
-    transition: transform 0.5s ease,flex-grow 1000ms linear,width 1s ease,opacity 0.75s ease,flex 1000ms ease,margin 1s ease;
+    transition: transform 0.5s ease,flex-grow 500ms linear,width 1s ease,opacity 0.5s ease,flex 500ms ease,margin 0.5s ease;
 }
 .cos-container:hover{
     transform: scale(1.02);
@@ -19,11 +20,10 @@
     opacity: 0;
     margin-left:0px;
     margin-right:0px;
-    width:0px !important;
+    flex-grow:1;
+    width:1px !important;
 }
 .invisible{
-    top:0px;
-    display:hidden;
     opacity:0;
     
 }

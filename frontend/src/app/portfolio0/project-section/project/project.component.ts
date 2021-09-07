@@ -67,7 +67,9 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
           this.class="cos-container inactive invisible";
         },400)
     }else{
-      this.class="cos-container";
+      setTimeout(()=>{
+        this.class="cos-container";
+      },950)
     }
   }
   onResize(el: HTMLElement){
