@@ -6,6 +6,7 @@ import {VolunteeringExperienceModel} from "../../../_shared/models/volunteering-
 import { UploadService } from 'src/app/_shared/services/upload.service';
 
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-volunteer',
@@ -18,7 +19,8 @@ export class AddVolunteerComponent implements OnInit {
               private volunteeringExperienceService: VolunteeringExperienceService,
               private router: Router,
               private route: ActivatedRoute,
-              private uploadService: UploadService) {
+              private uploadService: UploadService,
+              private spinner: NgxSpinnerService) {
   }
 
   // check if we are editing a testimonial or adding a new one
@@ -65,17 +67,37 @@ export class AddVolunteerComponent implements OnInit {
 
   async onSubmit() {
     let formData = new FormData();
+    let errors: any[] = [];
 
     if(this.images[0]){
+      let image
       formData.append("file", this.images[0]);
-      const image = await this.uploadService.imageUpload(formData);
-      if(image.success) this.volunteeringExperienceForm.controls['img'].setValue(image.url);
+      try{
+        image = await this.uploadService.imageUpload(formData);
+        if(image.success) 
+          this.volunteeringExperienceForm.controls['img'].setValue(image.url);
+        else
+          errors.push('image' + image.errors.title);
+      }
+      catch(err){
+        errors.push('image' + image.errors.title);
+      }
+
     }
 
     if(!this.edit) {
       this.volunteeringExperienceService.addOne(this.volunteeringExperienceForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        this.spinner.hide();
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
         Swal.fire({
           title: 'Error!',
@@ -87,7 +109,16 @@ export class AddVolunteerComponent implements OnInit {
     } else {
       this.volunteeringExperienceService.edit(this.volunteerExperience.id, this.volunteeringExperienceForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        this.spinner.hide()
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
         Swal.fire({
           title: 'Error!',

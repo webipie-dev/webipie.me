@@ -132,6 +132,7 @@ export class GeneralInfosComponent implements OnInit {
       this.disabled = false;
       this.spinner.hide();
     }, (error) => {
+      this.spinner.hide();
       Swal.fire({
         title: 'Error!',
         text: 'something went wrong with uploading data! Please retry again.',

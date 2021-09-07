@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {EducationService} from "../../../_shared/services/education.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import Swal from "sweetalert2";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-education',
@@ -12,7 +13,7 @@ import Swal from "sweetalert2";
 export class AddEducationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private educationService: EducationService,
-              private router: Router, private route: ActivatedRoute) {
+              private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
   }
 
 
@@ -28,10 +29,13 @@ export class AddEducationComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinner.show();
     this.educationService.addOne(this.educationForm.value).subscribe((result) => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+      this.spinner.hide();
       this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r))
     }, error => {
+      this.spinner.hide();
       Swal.fire({
         title: 'Error!',
         text: error.error.errors[0].message,

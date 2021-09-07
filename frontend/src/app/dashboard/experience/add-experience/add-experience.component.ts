@@ -6,6 +6,7 @@ import {WorkExperienceModel} from "../../../_shared/models/work-experience.model
 
 import { UploadService } from 'src/app/_shared/services/upload.service';
 import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-experience',
@@ -15,7 +16,7 @@ import Swal from 'sweetalert2';
 export class AddExperienceComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private workExperienceService: WorkExperienceService,
-              private router: Router, private route: ActivatedRoute, private uploadService: UploadService) {
+              private router: Router, private route: ActivatedRoute, private uploadService: UploadService, private spinner: NgxSpinnerService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
@@ -71,18 +72,39 @@ export class AddExperienceComponent implements OnInit {
 
 
   async onSubmit() {
+    this.spinner.show();
     let formData = new FormData();
+    let errors: any[] = []
 
     if(this.images[0]){
+      let image
       formData.append("file", this.images[0]);
-      const image = await this.uploadService.imageUpload(formData);
-      if(image.success) this.workExperienceForm.controls['imgs'].setValue(image.url);
+      try{
+        image = await this.uploadService.imageUpload(formData);
+        if(image.success) 
+          this.workExperienceForm.controls['imgs'].setValue(image.url);
+        else
+          errors.push('image' + image.errors.title);
+      }
+      catch(err){
+        errors.push('image' + image.errors.title);
+      }
+
     }
 
     if(!this.edit) {
       this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+        this.spinner.hide();
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
         Swal.fire({
           title: 'Error!',
@@ -94,7 +116,16 @@ export class AddExperienceComponent implements OnInit {
     } else {
       this.workExperienceService.edit(this.workExperience.id, this.workExperienceForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        this.spinner.hide()
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
         Swal.fire({
           title: 'Error!',
