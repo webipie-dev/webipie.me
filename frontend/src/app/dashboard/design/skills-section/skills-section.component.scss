@@ -57,6 +57,10 @@
 .selected {
   border: 2px solid #72d4af;
 }
+.selectedShadow{
+  transition: transform 0.75s ease;
+  transform:scale(1.1);
+}
 
 .cos-element p {
   margin-top: 10px;

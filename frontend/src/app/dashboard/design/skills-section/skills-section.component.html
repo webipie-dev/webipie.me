@@ -69,10 +69,10 @@
   <div class="card-header m-2"></div>
   <div class="heading-3 text-center m-3">Hard Skills</div>
   <div class="row align-items-center col-xl-12 col-md-12 justify-content-center">
-    <div class="m-2 col-xl-4 col-md-12 justify-content-center" [class]='harSkills[0]? "selected":""'
+    <div class="m-2 col-xl-4 col-md-12 justify-content-center" 
          (click)="select('hardSkills', 1, 1)">
       <div class="row justify-content-center stars align-items-center">
-        <div class="loading">
+        <div class="loading" [class]='harSkills[0]? "selected":""'>
           <div class="level">
           </div>
         </div>
@@ -85,9 +85,9 @@
                [checked]="harSkills[0]"
         ></div>
     </div>
-    <div class="m-2 col-xl-3 col-md-12" [class]='harSkills[1]? "selected":""'
+    <div class="mt-3 col-xl-3 col-md-12" 
          (click)="select('hardSkills', 2, 2)">
-      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center">
+      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center" style="transition:transform 0.75s ease" [class]='harSkills[1]? "selectedShadow":""'>
         <fa-icon [icon]="['fas','star']"></fa-icon>
         <fa-icon [icon]="['fas','star']"></fa-icon>
         <fa-icon [icon]="['fas','star']"></fa-icon>
@@ -102,9 +102,9 @@
                [checked]="harSkills[1]"
         ></div>
     </div>
-    <div class="m-2 col-xl-4 col-md-12" [class]='harSkills[2]? "selected":""'
+    <div class="mt-3 col-xl-4 col-md-12"  
          (click)="select('hardSkills', 3, 3)">
-      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center">
+      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center" style="transition:transform 0.75s ease" [class]='harSkills[2]? "selectedShadow":""'>
         <div class="m-2 btn btn-success p-2">5/5</div>
         <div class="m-2 btn btn-neutral-success p-2">4/5</div>
         <div class="m-2 btn btn-neutral-warning p-2">2/5</div>

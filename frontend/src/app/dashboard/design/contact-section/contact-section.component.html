@@ -3,15 +3,15 @@
   <div class="row">
     <div class="col-xl-12 col-md-12">
       <div class="row m-4 flex-layout justify-content-center text-center">
-        <div [style.border]="socialMediaIcon[0]? '2px solid #72d4af !important':''" (click)="select('socialMediaIcon', 1,1)" class="col-xl-4 col-md-4 mt-4">
+        <div  (click)="select('socialMediaIcon', 1,1)" class="col-xl-4 col-md-4 mt-4">
           <div class="cos-socials-container col-xl-12 row justify-content-center m-2">
-            <div class="cos-social">
+            <div class="cos-social" [style.border]="socialMediaIcon[0]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','google']"></fa-icon>
             </div>
-            <div class="cos-social">
+            <div class="cos-social"[style.border]="socialMediaIcon[0]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','facebook-f']"></fa-icon>
             </div>
-            <div class="cos-social">
+            <div class="cos-social"[style.border]="socialMediaIcon[0]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','twitter']"></fa-icon>
             </div>
           </div>
@@ -24,15 +24,15 @@
             >
           </div>
         </div>
-        <div [style.border]="socialMediaIcon[1]? '2px solid #72d4af !important':''" (click)="select('socialMediaIcon', 2,2)" class="col-xl-4 col-md-4 mt-4">
+        <div  (click)="select('socialMediaIcon', 2,2)" class="col-xl-4 col-md-4 mt-4">
           <div class="cos-socials-container col-xl-12 row justify-content-center m-2">
-            <div class="cos-social square">
+            <div class="cos-social square"[style.border]="socialMediaIcon[1]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','google']"></fa-icon>
             </div>
-            <div class="cos-social square">
+            <div class="cos-social square"[style.border]="socialMediaIcon[1]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','facebook-f']"></fa-icon>
             </div>
-            <div class="cos-social square">
+            <div class="cos-social square"[style.border]="socialMediaIcon[1]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','twitter']"></fa-icon>
             </div>
           </div>
@@ -44,15 +44,15 @@
             >
           </div>
         </div>
-        <div [style.border]="socialMediaIcon[2]? '2px solid #72d4af !important':''" (click)="select('socialMediaIcon', 3,3)" class="col-xl-4 col-md-4 mt-4">
+        <div  (click)="select('socialMediaIcon', 3,3)" class="col-xl-4 col-md-4 mt-4">
           <div class="cos-socials-container col-xl-12 row justify-content-center m-2">
-            <div class="cos-social mid-square">
+            <div class="cos-social mid-square"[style.border]="socialMediaIcon[2]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','google']"></fa-icon>
             </div>
-            <div class="cos-social mid-square">
+            <div class="cos-social mid-square"[style.border]="socialMediaIcon[2]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','facebook-f']"></fa-icon>
             </div>
-            <div class="cos-social mid-square">
+            <div class="cos-social mid-square"[style.border]="socialMediaIcon[2]? '2px solid #72d4af !important':''">
               <fa-icon [icon]="['fab','twitter']"></fa-icon>
             </div>
           </div>

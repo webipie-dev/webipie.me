@@ -40,7 +40,7 @@ export class ContactSectionComponent implements OnInit {
   }
 
   change(element: string, s:string){
-    if(element === 'contactCard') {
+    if(element == 'contactCard') {
       switch (s){
         case 'first':{
           this.contactCard[0]=true;
