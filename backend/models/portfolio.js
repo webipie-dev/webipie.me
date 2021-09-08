@@ -39,6 +39,7 @@ const portfolioSchema = new Schema({
   achievementsDisabled: {type: boolean, required: false, default: false},
   educationDisabled: {type: boolean, required: false, default: false},
   technicalSkillsDisabled: {type: boolean, required: false, default: false},
+  softSkillsDisabled: {type: boolean, required: false, default: false},
   visits: {
     type: Map,
     of: {ip: String, date: Date, country: String, count: Number}

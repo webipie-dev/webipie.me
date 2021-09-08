@@ -1,4 +1,4 @@
-<div class="cos-container" [hidden]="hardSkillsDisabled&&softSkillsDisabled">
+<div class="cos-container" [hidden]="technicalSkillsDisabled&&softSkillsDisabled">
     <div class="cos-content">
         <h3>MY SKILLS</h3>
         <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'">My Expertise</h1>
@@ -18,7 +18,7 @@
                 <p [style]="softSkillsTemplate==1? 'text-align:left':'text-align:center'+';font-family:'+font" [style.color]="primaryColor">{{softSkill.description}}</p>
             </div>
         </div>
-        <div class="cos-skill-container" [hidden]="hardSkillsDisabled">
+        <div class="cos-skill-container" [hidden]="technicalSkillsDisabled">
             <app-skill *ngFor="let hardSkill of hardSkills" [hardSkill]="hardSkill"></app-skill>
         </div>
     </div>
