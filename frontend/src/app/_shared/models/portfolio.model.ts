@@ -7,6 +7,7 @@ import {VolunteeringExperienceModel} from "./volunteering-experience.model";
 import {TestimonialModel} from "./testimonial.model";
 import {WorkExperienceModel} from "./work-experience.model";
 import {TechnicalSkillModel} from "./technical-skill.model";
+import { EducationModel } from "./education.model";
 
 export interface PortfolioModel extends GenericModel {
   url: string,
@@ -23,6 +24,7 @@ export interface PortfolioModel extends GenericModel {
   template: TemplateModel,
   projects?: [ProjectModel],
   achievements?: [AchievementModel],
+  education?: [EducationModel],
   softSkills?: [SoftSkillModel],
   technicalSkills?: [{
     skill: TechnicalSkillModel,

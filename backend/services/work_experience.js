@@ -1,6 +1,7 @@
 const {WorkExperience} = require('../models/work_experience');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
+const {compare_date} = require("../_helpers/verif_date");
 
 
 const getWorkExperiences = async (req, res, next) => {
@@ -31,10 +32,6 @@ const getOneWorkExperience = async (req, res, next) => {
 
 const addWorkExperience = async (req, res, next) => {
   let { title, description, company, position, skills, img, beginDate, endDate, city, portfolioId } = req.body;
-  if(beginDate) beginDate = new Date(beginDate);
-  if (endDate) endDate =  new Date(endDate);
-  console.log(beginDate);
-  console.log(endDate);
 
   let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
@@ -42,7 +39,7 @@ const addWorkExperience = async (req, res, next) => {
     return;
   }
 
-  if(beginDate >= endDate && endDate){
+  if(! compare_date(req.body.beginDate, req.body.endDate)){
     return next(ApiError.BadRequest('End date should be bigger than begin date.'));
   }
 

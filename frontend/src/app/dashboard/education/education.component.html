@@ -20,8 +20,7 @@
 
       <tr *ngFor="let education of educationList">
         <td>
-          <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{ education.title }}</a><span
-            class="text-black-50 d-block">Senior Consultant</span></div>
+          <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{ education.title }}</a></div>
         </td>
         <td class="text-center">
           <span class="font-weight-bold">{{ education.beginDate | date }}</span>
@@ -30,7 +29,7 @@
           <span class="font-weight-bold">{{ education.endDate | date }}</span>
         </td>
         <td class="text-right">
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
+          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editEducation(education.id)">
                         <span class="btn-wrapper--icon">
                             <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
                         </span>

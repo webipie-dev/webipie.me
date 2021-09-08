@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {EducationModel} from "../../_shared/models/education.model";
 import {EducationService} from "../../_shared/services/education.service";
 
@@ -9,7 +10,7 @@ import {EducationService} from "../../_shared/services/education.service";
 })
 export class EducationComponent implements OnInit {
 
-  constructor(private educationService: EducationService) {
+  constructor(private educationService: EducationService, private router: Router, private route: ActivatedRoute) {
   }
 
   educationList?: [EducationModel];
@@ -17,6 +18,11 @@ export class EducationComponent implements OnInit {
   ngOnInit(): void {
     this.educationList = JSON.parse(localStorage.getItem('portfolio')!).education;
   }
+
+  editEducation(id: string) {
+    this.router.navigate(['addeducation'], { relativeTo: this.route, queryParams: { educationId: id } });
+  }
+
 
   removeEducation(id: string) {
     this.educationService.deleteMany({ids: [id]}).subscribe(result => {

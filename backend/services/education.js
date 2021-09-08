@@ -1,6 +1,7 @@
 const {Education} = require('../models/education');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
+const {compare_date} = require("../_helpers/verif_date");
 
 
 const getEducation = async (req, res, next) => {
@@ -18,8 +19,6 @@ const getEducation = async (req, res, next) => {
 
 const addEducation = async (req, res, next) => {
   let { title, level, beginDate, endDate, city, portfolioId } = req.body
-  if(beginDate) beginDate = new Date(beginDate);
-  if (endDate) endDate =  new Date(endDate);
 
   let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
@@ -27,7 +26,7 @@ const addEducation = async (req, res, next) => {
     return;
   }
 
-  if(beginDate >= endDate){
+  if(! compare_date(req.body.beginDate, req.body.endDate)){
     return next(ApiError.BadRequest('End date should be bigger than begin date.'));
   }
 
@@ -53,6 +52,9 @@ const editOneEducation = async (req, res, next) => {
   if (!education) {
     next(ApiError.NotFound('Education Not Found'));
     return;
+  }
+  if(! compare_date(req.body.beginDate, req.body.endDate)){
+    return next(ApiError.BadRequest('End date should be bigger than begin date.'));
   }
 
   const edits = {};

@@ -29,7 +29,8 @@ export class AddExperienceComponent implements OnInit {
   // check if we are editing a testimonial or adding a new one
   edit = false;
   workExperience: WorkExperienceModel = {} as WorkExperienceModel;
-
+  beginDate : any;
+  endDate: any;
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -54,6 +55,8 @@ export class AddExperienceComponent implements OnInit {
 
   public fillEditForm(workId: string): void {
     this.workExperience = (JSON.parse(localStorage.getItem('portfolio')!).workExperiences.filter((workExperience: WorkExperienceModel) => workExperience.id === workId ))[0];
+    this.beginDate = new Date(this.workExperience.beginDate!);
+    this.endDate = new Date(this.workExperience.endDate!);
   }
 
   images: File[] = [];
@@ -74,7 +77,8 @@ export class AddExperienceComponent implements OnInit {
   async onSubmit() {
     this.spinner.show();
     let formData = new FormData();
-    let errors: any[] = []
+    let errors: any[] = [];
+    console.log(errors);
 
     if(this.images[0]){
       let image
@@ -87,7 +91,7 @@ export class AddExperienceComponent implements OnInit {
           errors.push('image' + image.errors.title);
       }
       catch(err){
-        errors.push('image' + image.errors.title);
+        errors.push('image' + err.error.errors.title);
       }
 
     }
@@ -106,6 +110,7 @@ export class AddExperienceComponent implements OnInit {
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
@@ -127,6 +132,7 @@ export class AddExperienceComponent implements OnInit {
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',

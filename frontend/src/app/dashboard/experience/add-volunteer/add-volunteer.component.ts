@@ -26,6 +26,8 @@ export class AddVolunteerComponent implements OnInit {
   // check if we are editing a testimonial or adding a new one
   edit = false;
   volunteerExperience: VolunteeringExperienceModel = {} as VolunteeringExperienceModel;
+  beginDate : any;
+  endDate: any;
 
   volunteeringExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -50,6 +52,8 @@ export class AddVolunteerComponent implements OnInit {
 
   public fillEditForm(volunteerId: string): void {
     this.volunteerExperience = (JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences.filter((volunteer: VolunteeringExperienceModel) => volunteer.id === volunteerId ))[0];
+    this.beginDate = new Date(this.volunteerExperience.beginDate!);
+    this.endDate = new Date(this.volunteerExperience.endDate!);
   }
 
   images: File[] = [];
@@ -80,7 +84,7 @@ export class AddVolunteerComponent implements OnInit {
           errors.push('image' + image.errors.title);
       }
       catch(err){
-        errors.push('image' + image.errors.title);
+        errors.push('image' + err.error.errors.title);
       }
 
     }
@@ -99,6 +103,7 @@ export class AddVolunteerComponent implements OnInit {
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
@@ -120,6 +125,7 @@ export class AddVolunteerComponent implements OnInit {
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, (error) => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
