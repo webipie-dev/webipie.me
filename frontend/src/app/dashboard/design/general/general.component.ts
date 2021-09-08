@@ -53,6 +53,9 @@ export class GeneralComponent implements OnInit {
 
   setDefaultColorPalettes() {
     this.colorPalettes = this.template.colorChartOptions
+    // Remove this when colorChartOptions is updated 
+    // this.colorPalettes = [['#655560','#a4969b'],['#702632','#bf465b'],['#0077b6','#00b4d8'],['#79ebfe','#e184fe'],['#3d405b','#81b29a'],['#6d597a','#e56b6f'],['#abc4ff','#ccdbfd'],['#344e41','#a3b18a'],['#006d77','#83c5be']];
+    // /Remove this 
   }
 
   setDefaultColorChosen() {
@@ -66,6 +69,7 @@ export class GeneralComponent implements OnInit {
 
   setDefaultFonts() {
     this.presetFonts = this.template.fontOptions
+    //this.presetFonts = ["Montserrat","Roboto","Open Sans","Lato","Work Sans","Bebas Neue","Oswald","Courier New","Verdana","Arial"];
     this.font.family = this.template.font
   }
 
