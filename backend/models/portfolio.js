@@ -34,6 +34,11 @@ const portfolioSchema = new Schema({
   softSkills: {type: [softSkillSchema]},
   workExperiences: {type: [workExperienceSchema]},
   volunteeringExperiences: {type: [volunteeringExperienceSchema]},
+  projectsDisabled: {type: boolean, required: false, default: false},
+  testimonialsDisabled: {type: boolean, required: false, default: false},
+  achievementsDisabled: {type: boolean, required: false, default: false},
+  educationDisabled: {type: boolean, required: false, default: false},
+  technicalSkillsDisabled: {type: boolean, required: false, default: false},
   visits: {
     type: Map,
     of: {ip: String, date: Date, country: String, count: Number}
