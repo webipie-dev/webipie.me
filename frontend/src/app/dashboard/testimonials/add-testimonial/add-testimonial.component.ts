@@ -5,6 +5,7 @@ import {TestimonialService} from "../../../_shared/services/testimonial.service"
 import {ActivatedRoute, Router} from "@angular/router";
 import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 import Swal from "sweetalert2";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-testimonial',
@@ -14,7 +15,7 @@ import Swal from "sweetalert2";
 export class AddTestimonialComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private testimonialService: TestimonialService,
-              private router: Router, private route: ActivatedRoute) {
+              private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
   }
 
   public type: string = 'component';
@@ -101,11 +102,14 @@ export class AddTestimonialComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinner.show();
     if(!this.edit) {
       this.testimonialService.addOne(this.testimonialForm.value).subscribe((result) => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+        this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message,
@@ -115,9 +119,11 @@ export class AddTestimonialComponent implements OnInit {
       });
     } else {
       this.testimonialService.edit(this.testimonial.id, this.testimonialForm.value).subscribe(result => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+        this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message,

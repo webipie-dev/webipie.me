@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProjectModel} from "../../../_shared/models/project.model";
 import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 import Swal from "sweetalert2";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-project',
@@ -15,7 +16,7 @@ import Swal from "sweetalert2";
 export class AddProjectComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private projectService: ProjectService,
-              private router: Router, private route: ActivatedRoute) {
+              private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
@@ -108,11 +109,14 @@ export class AddProjectComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinner.show();
     if(!this.edit) {
       this.projectService.addOne(this.projectForm.value).subscribe((result) => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+        this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message,
@@ -122,9 +126,11 @@ export class AddProjectComponent implements OnInit {
       })
     } else {
       this.projectService.edit(this.project.id, this.projectForm.value).subscribe(result => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+        this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message,

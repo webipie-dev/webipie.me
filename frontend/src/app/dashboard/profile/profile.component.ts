@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { PortfolioModel } from 'src/app/_shared/models/portfolio.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/_shared/services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-profile',
@@ -23,7 +24,8 @@ export class ProfileComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -31,9 +33,14 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit(){
+    this.spinner.show();
     this.authService.changePassword({newPassword: this.new_password, oldPassword: this.old_password}).subscribe(
       result =>{
+        this.spinner.hide();
         console.log(result);
+      },
+      error => {
+        this.spinner.hide();
       }
     )    
 
