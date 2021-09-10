@@ -21,6 +21,11 @@
                    formControlName="title"
                    [(ngModel)]="achievement.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="achievementForm.controls.title.errors?.required" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -30,6 +35,14 @@
                       [(ngModel)]="achievement.description"
             >
             </textarea>
+            <!-- Error Handling -->
+            <div *ngIf="achievementForm.controls.description.errors?.required" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="achievementForm.controls.description.errors?.maxlength" class="alert isa_error">
+              Description shouldn't surpass 300 characters.
+            </div>
+            <!-- /Error handling -->
           </div>
 
           <div class="form-group">
@@ -61,6 +74,11 @@
                      formControlName="date"
                      [(ngModel)]="achievement.date"
               >
+              <!-- Error Handling -->
+              <div *ngIf="achievementForm.controls.date.errors?.required" class="alert isa_error">
+                Date is required.
+              </div>
+              <!-- /Error handling -->
             </div>
           </div>
           <div class="divider my-4"></div>
