@@ -10,9 +10,9 @@
             type="text"
             formControlName="name"
             [(ngModel)]="portfolio.name"
-            [class]="f.name.errors?.required? 'form-control invalid':'form-control valid'">
+            [class]="!f.name.touched? 'form-control':f.name.errors?.required? 'form-control invalid':'form-control valid'">
             <!-- Error Handling -->
-            <div *ngIf="f.name.errors?.required" class="alert isa_error">
+            <div *ngIf="f.name.errors?.required && f.name.touched" class="alert isa_error">
               Name is required.
             </div>
             <!-- /Error Handling -->
@@ -29,9 +29,9 @@
             type="text"
             formControlName="position"
             [(ngModel)]="portfolio.position"
-            [class]="f.position.errors?.required? 'form-control invalid':'form-control valid'">
+            [class]="!f.position.touched? 'form-control':f.position.errors?.required? 'form-control invalid':'form-control valid'">
             <!-- Error Handling -->
-            <div *ngIf="f.position.errors?.required" class="alert isa_error">
+            <div *ngIf="f.position.errors?.required && f.position.touched" class="alert isa_error">
               Position is required.
             </div>
             <!-- /Error Handling -->
@@ -49,7 +49,7 @@
         autosize [minRows]="5" 
         [maxRows]="10" 
         [(ngModel)]="portfolio.description"
-        [class]="(f.description.errors?.minlength || f.description.errors?.required || f.description.errors?.maxlength)? 'form-control invalid':'form-control valid'"></textarea>
+        [class]="!f.description.touched? 'form-control':(f.description.errors?.required || f.description.errors?.maxlength || f.description.errors?.minlength)? 'form-control invalid':'form-control valid'"></textarea>
             <!-- Error Handling -->
             <div *ngIf="f.description.errors?.required" class="alert isa_error">
               Description is required.
@@ -74,9 +74,9 @@
             type="email"
             formControlName="email"
             [(ngModel)]="portfolio.email"
-            [class]="(f.email.errors?.required || f.email.errors?.email)? 'form-control invalid':'form-control valid'">
+            [class]="!f.email.touched? 'form-control':(f.email.errors?.required || f.email.errors?.email)? 'form-control invalid':'form-control valid'">
             <!-- Error Handling -->
-            <div *ngIf="f.email.errors?.required" class="alert isa_error">
+            <div *ngIf="f.email.errors?.required && f.email.touched" class="alert isa_error">
               Email is required.
             </div>
             <div *ngIf="f.email.errors?.email" class="alert isa_error">
@@ -89,7 +89,7 @@
       <div class="col-md-6">
         <div class="position-relative form-group"><label for="phoneNumber">Phone</label>
           <input
-          [class]="(f.phoneNumber.errors?.required)? 'form-control invalid':'form-control valid'"
+            [class]="!f.phoneNumber.touched? 'form-control':f.phoneNumber.errors?.required? 'form-control invalid':'form-control valid'"
             id="phoneNumber" 
             name="phoneNumber" 
             placeholder="Phone Number" 
@@ -97,7 +97,7 @@
             formControlName="phoneNumber"
             [(ngModel)]="portfolio.phoneNumber">
             <!-- Error Handling -->
-            <div *ngIf="f.phoneNumber.errors?.required " class="alert isa_error">
+            <div *ngIf="f.phoneNumber.errors?.required && f.phoneNumber.touched" class="alert isa_error">
               Phone Number is required.
             </div>
             <!-- /Error handling -->
