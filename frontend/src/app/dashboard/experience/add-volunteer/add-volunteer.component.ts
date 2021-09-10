@@ -23,6 +23,7 @@ export class AddVolunteerComponent implements OnInit {
 
   // check if we are editing a testimonial or adding a new one
   edit = false;
+  check = false;
   volunteerExperience: VolunteeringExperienceModel = {} as VolunteeringExperienceModel;
 
   volunteeringExperienceForm = this.formBuilder.group({
@@ -37,6 +38,13 @@ export class AddVolunteerComponent implements OnInit {
     city: ['']
   });
 
+  checked(){
+    if(this.check){
+      this.check = false;
+    }else{
+      this.check = true;
+    }
+  }
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       if(params['volunteerId']) {
