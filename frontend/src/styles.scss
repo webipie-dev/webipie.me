@@ -90,10 +90,10 @@ input[type=number] {
   background-color: #FFD2D2;
 }
 .invalid{
-  border-color: #D8000C;
+  border-color: #D8000C !important;
   color: #D8000C;
 }
 .valid{
-  border-color: #4F8A10;
+  border-color: #4F8A10 !important;
   color: #4F8A10;
 }

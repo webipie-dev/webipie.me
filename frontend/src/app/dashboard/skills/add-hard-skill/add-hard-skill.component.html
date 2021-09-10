@@ -19,8 +19,14 @@
                        bindValue="id"
                        [items]="skills"
                        name="title"
+
             >
             </ng-select>
+            <!-- Error Handling -->
+            <div *ngIf="!selectedSkill" class="alert isa_error">
+              This field is required
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group">
             <label>Select Skill level</label>
@@ -33,7 +39,7 @@
               name="level"
             ></nouislider>
           </div>
-          <button (click)="onSubmit()" class="mt-2 btn btn-slack">
+          <button (click)="onSubmit()" class="mt-2 btn btn-slack" [disabled]="!selectedSkill || !level">
             <span *ngIf="!edit">Add</span>
             <span *ngIf="edit">Edit</span>
             Hard Skill
