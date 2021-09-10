@@ -22,7 +22,7 @@
                    [(ngModel)]="project.name"
             >
             <!-- Error Handling -->
-            <div *ngIf="projectForm.controls.name.errors?.required" class="alert isa_error">
+            <div *ngIf="projectForm.controls.name.errors?.required && projectForm.controls.name.touched" class="alert isa_error">
               Title is required.
             </div>
             <!-- /Error handling -->
@@ -35,7 +35,7 @@
                       [(ngModel)]="project.description"
             ></textarea>
             <!-- Error Handling -->
-            <div *ngIf="projectForm.controls.description.errors?.required" class="alert isa_error">
+            <div *ngIf="projectForm.controls.description.errors?.required && projectForm.controls.description.touched" class="alert isa_error">
               Description is required.
             </div>
             <div *ngIf="projectForm.controls.description.errors?.maxlength" class="alert isa_error">
@@ -92,7 +92,7 @@
                    [(ngModel)]="project.github"
             >
             <!-- Error Handling -->
-            <div *ngIf="projectForm.controls.github.errors?.required" class="alert isa_error">
+            <div *ngIf="projectForm.controls.github.errors?.required && projectForm.controls.github.touched " class="alert isa_error">
               Github is required
             </div>
             <!-- /Error handling -->

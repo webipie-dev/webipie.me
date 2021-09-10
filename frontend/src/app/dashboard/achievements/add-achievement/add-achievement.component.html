@@ -22,7 +22,7 @@
                    [(ngModel)]="achievement.title"
             >
             <!-- Error Handling -->
-            <div *ngIf="achievementForm.controls.title.errors?.required" class="alert isa_error">
+            <div *ngIf="achievementForm.controls.title.errors?.required && achievementForm.controls.title.touched" class="alert isa_error">
               Title is required.
             </div>
             <!-- /Error handling -->
@@ -36,10 +36,10 @@
             >
             </textarea>
             <!-- Error Handling -->
-            <div *ngIf="achievementForm.controls.description.errors?.required" class="alert isa_error">
+            <div *ngIf="achievementForm.controls.description.errors?.required && achievementForm.controls.description.touched" class="alert isa_error">
               Description is required.
             </div>
-            <div *ngIf="achievementForm.controls.description.errors?.maxlength" class="alert isa_error">
+            <div *ngIf="achievementForm.controls.description.errors?.maxlength && achievementForm.controls.description.touched" class="alert isa_error">
               Description shouldn't surpass 300 characters.
             </div>
             <!-- /Error handling -->
@@ -75,7 +75,7 @@
                      [(ngModel)]="achievement.date"
               >
               <!-- Error Handling -->
-              <div *ngIf="achievementForm.controls.date.errors?.required" class="alert isa_error">
+              <div *ngIf="achievementForm.controls.date.errors?.required && achievementForm.controls.date.touched" class="alert isa_error">
                 Date is required.
               </div>
               <!-- /Error handling -->

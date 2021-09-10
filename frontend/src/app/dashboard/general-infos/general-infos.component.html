@@ -108,7 +108,7 @@
     <div class="form-row">
       <div class="col-md-6">
         <div class="position-relative form-group"><label for="github">Github</label>
-          <input class="form-control"
+          <input [class]="!f.github.touched? 'form-control':'form-control valid'"
             id="github"
             name="github"
             placeholder="Github"
@@ -120,8 +120,7 @@
 
       <div class="col-md-6">
         <div class="position-relative form-group"><label for="linkedin">LinkedIn</label>
-          <input
-            class="form-control" 
+          <input [class]="!f.linkedIn.touched? 'form-control':'form-control valid'"
             id="linkedIn" 
             name="linkedIn" 
             placeholder="linkedIn" 

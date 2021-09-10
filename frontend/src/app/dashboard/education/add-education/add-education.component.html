@@ -16,7 +16,7 @@
                    type="text"
             >
             <!-- Error Handling -->
-            <div *ngIf="educationForm.controls.title.errors?.required" class="alert isa_error">
+            <div *ngIf="educationForm.controls.title.errors?.required && educationForm.controls.title.touched" class="alert isa_error">
               Title is required.
             </div>
             <!-- /Error handling -->
@@ -30,7 +30,7 @@
                    type="text"
             >
             <!-- Error Handling -->
-            <div *ngIf="educationForm.controls.level.errors?.required" class="alert isa_error">
+            <div *ngIf="educationForm.controls.level.errors?.required && educationForm.controls.level.touched" class="alert isa_error">
               Level is required.
             </div>
             <!-- /Error handling -->
@@ -51,7 +51,7 @@
                        formControlName="beginDate"
                 >
                 <!-- Error Handling -->
-                <div *ngIf="educationForm.controls.beginDate.errors?.required" class="alert isa_error">
+                <div *ngIf="educationForm.controls.beginDate.errors?.required && educationForm.controls.beginDate.touched" class="alert isa_error">
                   Star Date is required.
                 </div>
                 <!-- /Error handling -->

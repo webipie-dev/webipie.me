@@ -22,7 +22,7 @@
                    [(ngModel)]="testimonial.name"
             >
             <!-- Error Handling -->
-            <div *ngIf="testimonialForm.controls.name.errors?.required" class="alert isa_error">
+            <div *ngIf="testimonialForm.controls.name.errors?.required && testimonialForm.controls.name.touched" class="alert isa_error">
               First & Last Name is required.
             </div>
             <!-- /Error handling -->
@@ -37,7 +37,7 @@
                    [(ngModel)]="testimonial.position"
             >
             <!-- Error Handling -->
-            <div *ngIf="testimonialForm.controls.position.errors?.required" class="alert isa_error">
+            <div *ngIf="testimonialForm.controls.position.errors?.required && testimonialForm.controls.position.touched" class="alert isa_error">
               Position is required.
             </div>
             <!-- /Error handling -->
@@ -51,10 +51,10 @@
             >
                       </textarea>
                       <!-- Error Handling -->
-                      <div *ngIf="testimonialForm.controls.description.errors?.required" class="alert isa_error">
+                      <div *ngIf="testimonialForm.controls.description.errors?.required && testimonialForm.controls.description.touched" class="alert isa_error">
                         Description is required.
                       </div>
-                      <div *ngIf="testimonialForm.controls.description.errors?.maxlength" class="alert isa_error">
+                      <div *ngIf="testimonialForm.controls.description.errors?.maxlength && testimonialForm.controls.description.touched" class="alert isa_error">
                         Description should be shorter than 300 characters.
                       </div>
                       <!-- /Error handling -->
