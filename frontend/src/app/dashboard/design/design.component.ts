@@ -2,6 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Font, FontInterface} from 'ngx-font-picker';
 import {DesignEditService} from "../../_shared/services/design-edit.service";
 import {TemplateModel} from "../../_shared/models/template.model";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-design',
@@ -46,5 +47,11 @@ export class DesignComponent implements OnInit {
 
   public submitChanges(): void {
     this.designEditService.submitValues();
+    Swal.fire({
+      title: 'Operation successful',
+      text: 'Design updated successfully',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
   }
 }
