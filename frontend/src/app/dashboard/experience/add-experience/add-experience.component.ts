@@ -38,7 +38,7 @@ export class AddExperienceComponent implements OnInit {
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', Validators.required],
+    description: ['', [Validators.required, Validators.maxLength(300)]],
     position: [''],
     company: [''],
     imgs: [''],

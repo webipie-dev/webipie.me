@@ -20,6 +20,11 @@
                    formControlName="title"
                    [(ngModel)]="volunteerExperience.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.title.errors?.required" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -29,6 +34,14 @@
                       [(ngModel)]="volunteerExperience.description"
             >
             </textarea>
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.description.errors?.required" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="volunteeringExperienceForm.controls.description.errors?.maxlength" class="alert isa_error">
+              Description should be shorter than 300 characters
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Position</label>
             <input class="form-control"
@@ -47,6 +60,11 @@
                    formControlName="organisation"
                    [(ngModel)]="volunteerExperience.organisation"
             >
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.organisation.errors?.required" class="alert isa_error">
+              This field is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="form-group">
 
@@ -64,7 +82,12 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                       class="form-control" placeholder="Select date" type="text" formControlName="beginDate">
+                       <!-- Error Handling -->
+                      <div *ngIf="volunteeringExperienceForm.controls.beginDate.errors?.required" class="alert isa_error">
+                        Start Date is required.
+                      </div>
+                      <!-- /Error handling -->
               </div>
             </div>
             

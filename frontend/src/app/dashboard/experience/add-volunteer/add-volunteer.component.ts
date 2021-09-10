@@ -28,7 +28,7 @@ export class AddVolunteerComponent implements OnInit {
 
   volunteeringExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', Validators.required],
+    description: ['', [Validators.required,Validators.maxLength(300)]],
     organisation: ['', Validators.required],
     position: [''],
     img: [''],
