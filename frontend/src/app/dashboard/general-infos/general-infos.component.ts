@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import {Component, OnChanges, OnInit} from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { PortfolioModel } from 'src/app/_shared/models/portfolio.model';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import { UploadService } from 'src/app/_shared/services/upload.service';
@@ -16,15 +16,15 @@ export class GeneralInfosComponent implements OnInit {
 
   portfolio : PortfolioModel = {} as PortfolioModel;
   portfolioForm = this.formBuilder.group({
-    name: [''],
-    position: [''],
-    email: [''],
-    phoneNumber: [''],
+    name: ['',Validators.required],
+    position: ['',Validators.required],
+    email: ['',[Validators.required,Validators.email]],
+    phoneNumber: ['',Validators.required],
     github: [''],
     linkedIn: [''],
     picture: [''],
     CV: [''],
-    description: ['']
+    description: ['',[Validators.minLength(20),Validators.required,Validators.maxLength(300)]]
   });
 
 
@@ -32,11 +32,15 @@ export class GeneralInfosComponent implements OnInit {
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
     private spinner: NgxSpinnerService) {}
-
+    
   ngOnInit(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!);
   }
-
+  // ease access to form fields :
+    get f() {
+      return this.portfolioForm.controls
+    }
+  // ---------------------------
   pictures: File[] = [];
   disabled: boolean = false;
 
@@ -74,7 +78,7 @@ export class GeneralInfosComponent implements OnInit {
   }
 
   async onSubmit() { 
-    this.disabled = true
+    this.disabled = true;
     this.spinner.show();
     let formData = new FormData();
     let errors: any[] = []

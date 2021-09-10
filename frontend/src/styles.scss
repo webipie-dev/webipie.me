@@ -62,3 +62,38 @@ input[type=number] {
 .wrap-reverse{
   flex-wrap: wrap-reverse;
 }
+.alert{
+  width:100%;
+  font-size:1rem;
+  padding:10px;
+  border:none;
+  border-radius: 0px !important;
+  box-sizing: border-box;
+  position: relative;
+  top:10px;
+  left:0px;
+}
+.isa_info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+.isa_success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+.isa_warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.isa_error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+.invalid{
+  border-color: #D8000C;
+  color: #D8000C;
+}
+.valid{
+  border-color: #4F8A10;
+  color: #4F8A10;
+}
