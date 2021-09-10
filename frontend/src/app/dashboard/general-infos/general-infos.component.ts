@@ -26,7 +26,7 @@ export class GeneralInfosComponent implements OnInit {
     CV: [''],
     description: ['',[Validators.minLength(20),Validators.required,Validators.maxLength(300)]]
   });
-
+  submitted = false;
 
   constructor(private portfolioService: PortfolioService,
     private formBuilder: FormBuilder,
@@ -77,7 +77,8 @@ export class GeneralInfosComponent implements OnInit {
     return body
   }
 
-  async onSubmit() { 
+  async onSubmit() {
+    this.submitted = true;
     this.disabled = true;
     this.spinner.show();
     let formData = new FormData();
