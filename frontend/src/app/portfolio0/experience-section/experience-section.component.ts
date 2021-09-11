@@ -16,6 +16,9 @@ export class ExperienceSectionComponent implements OnInit {
   secondaryColor: any;
   primaryColor: any;
   font="Montserrat";
+
+  workExperiencesDisabled?: boolean;
+  volunteeringExperiencesDisabled?: boolean;
   constructor() { }
 
   workExperiences?: [WorkExperienceModel];
@@ -27,7 +30,11 @@ export class ExperienceSectionComponent implements OnInit {
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.workExperiences = JSON.parse(localStorage.getItem('portfolio')!).workExperiences;
+    this.workExperiencesDisabled = JSON.parse(localStorage.getItem('portfolio')!).workExperiencesDisabled;
+    
     this.volunteeringExperiences = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences;
+    this.volunteeringExperiencesDisabled = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiencesDisabled;
+    
     this.divider = JSON.parse(localStorage.getItem('portfolio')!).template.experience.dividerIcon;
     switch(this.divider){
       case 1: {
