@@ -40,6 +40,8 @@ const portfolioSchema = new Schema({
   educationDisabled: {type: Boolean, required: false, default: false},
   technicalSkillsDisabled: {type: Boolean, required: false, default: false},
   softSkillsDisabled: {type: Boolean, required: false, default: false},
+  workExperiencesDisabled: {type: Boolean, required: false, default: false},
+  volunteeringExperiencesDisabled: {type: Boolean, required: false, default: false},
   visits: {
     type: Map,
     of: {ip: String, date: Date, country: String, count: Number}
