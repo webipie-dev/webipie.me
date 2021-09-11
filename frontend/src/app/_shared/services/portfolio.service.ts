@@ -90,4 +90,13 @@ export class PortfolioService extends BaseService {
   editTemplate(id: string, body: { template: TemplateModel }): Observable<PortfolioModel> {
     return this.http.patch(this.getUrl() + this.suffix + '/template/' + id, body, PortfolioService.addJWT()) as Observable<PortfolioModel>;
   }
+
+  toggleSection(id: string, section: string, disabled: boolean): Observable<PortfolioModel> {
+    let sectionAttribute = `${section}Disabled`
+    let body: any = {}
+    body[sectionAttribute] = disabled
+
+    console.log(body)
+    return this.edit(id, body)
+  }
 }
