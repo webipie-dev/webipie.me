@@ -16,8 +16,6 @@ export class ToggleSection {
         this.sectionAttribute = `${this.section}Disabled`
         this.portfolio = JSON.parse(localStorage.getItem('portfolio')!)
         this.toggleOff = this.portfolio[this.sectionAttribute];
-        console.log(this.section)
-        console.log(this.sectionAttribute + " " + this.toggleOff)
     }
     async onToggleChange(event: any): Promise<void>{
         try{
