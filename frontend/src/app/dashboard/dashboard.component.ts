@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import {PortfolioService} from '../_shared/services/portfolio.service';
 import {ThemeOptions} from '../_shared/theme-options';
@@ -12,6 +13,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public globals: ThemeOptions,
+    private router: Router,
     private portfolioService: PortfolioService) {
   }
 
@@ -19,6 +21,9 @@ export class DashboardComponent implements OnInit {
     const id = localStorage.getItem('portfolioId') || "";
     try{
       let portfolio = await this.portfolioService.getById(id).toPromise()
+      if (!portfolio.template){
+        this.router.navigate(['templates/choose-template']);
+      }
       localStorage.setItem("portfolio", JSON.stringify(portfolio));
     }
     catch(err){
