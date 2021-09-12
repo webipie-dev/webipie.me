@@ -104,7 +104,7 @@ export class AddProjectComponent implements OnInit {
       formData.append("file", this.videos[0]);
       let video;
       try{
-        video = await this.uploadService.cvUpload(formData);
+        video = await this.uploadService.videoUpload(formData);
         if(video.success)
           this.projectForm.controls['video'].setValue(video.url);
         else
