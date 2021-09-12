@@ -1,12 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from 'ngx-dropzone-wrapper';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ProjectService} from "../../../_shared/services/project.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProjectModel} from "../../../_shared/models/project.model";
-import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 import Swal from "sweetalert2";
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UploadService } from 'src/app/_shared/services/upload.service';
 
 @Component({
   selector: 'app-add-project',
@@ -15,7 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class AddProjectComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private projectService: ProjectService,
+  constructor(private formBuilder: FormBuilder, private projectService: ProjectService, private uploadService: UploadService,
               private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
@@ -26,29 +25,16 @@ export class AddProjectComponent implements OnInit {
   bsRangeValue!: Date[];
   maxDate = new Date();
 
-  public type: string = 'component';
-
-  public disabled: boolean = false;
-
-  public config: DropzoneConfigInterface = {
-    clickable: true,
-    maxFiles: 1,
-    autoReset: null,
-    errorReset: null,
-    cancelReset: null
-  };
   // check if we are editing a testimonial or adding a new one
   edit = false;
   project: ProjectModel = {} as ProjectModel;
 
-  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
-
   projectForm = this.formBuilder.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
-    github: ['', Validators.required],
+    github: [''],
     imgs: [''],
+    video: [''],
     link: [''],
     skills: [''],
   })
@@ -66,55 +52,82 @@ export class AddProjectComponent implements OnInit {
     this.project = (JSON.parse(localStorage.getItem('portfolio')!).projects.filter((project: ProjectModel) => project.id === projectId))[0];
   }
 
-  public toggleType(): void {
-    this.type = (this.type === 'component') ? 'directive' : 'component';
+  images: File[] = [];
 
+  onSelectImage(event: any) {
+    this.images.push(...event.addedFiles);
+    console.log(this.images);
   }
 
-  public toggleDisabled(): void {
-    this.disabled = !this.disabled;
-
+  onRemoveImage(event: any) {
+    console.log(event);
+    this.images.splice(this.images.indexOf(event), 1);
   }
 
-  public toggleAutoReset(): void {
-    this.config.autoReset = this.config.autoReset ? null : 5000;
-    this.config.errorReset = this.config.errorReset ? null : 5000;
-    this.config.cancelReset = this.config.cancelReset ? null : 5000;
+  videos: File[] = [];
+
+  onSelectVideo(event: any) {
+    this.videos = []
+    this.videos.push(...event.addedFiles);
   }
 
-  public toggleMultiUpload(): void {
-    this.config.maxFiles = this.config.maxFiles ? 0 : 1;
+  onRemoveVideo(event: any) {
+    this.videos.splice(this.images.indexOf(event), 1);
   }
 
-  public toggleClickAction(): void {
-    this.config.clickable = !this.config.clickable;
 
-  }
+  
 
-  public resetDropzoneUploads(): void {
-    if (this.type === 'directive' && this.directiveRef) {
-      this.directiveRef.reset();
-    } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
-      this.componentRef.directiveRef.reset();
-    }
-  }
-
-  public onUploadInit(): void {
-  }
-
-  public onUploadError(): void {
-  }
-
-  public onUploadSuccess(): void {
-  }
-
-  onSubmit() {
+  async onSubmit() {
     this.spinner.show();
+    let formData = new FormData();
+    let errors: any[] = []
+
+    if(this.images[0]){
+      this.images.forEach(value => formData.append('file', value));
+      let images;
+      try{
+        images = await this.uploadService.imageMultipleUpload(formData);
+        console.log(images);
+        if(images.success)
+          this.projectForm.controls['imgs'].setValue(images.urls);
+        else
+          errors.push('image' + images.errors.title);
+      }
+      catch(err){
+        errors.push('image' + err.error.errors.title);
+      }
+    }
+    
+    if(this.videos[0]){
+      formData = new FormData();
+      formData.append("file", this.videos[0]);
+      let video;
+      try{
+        video = await this.uploadService.cvUpload(formData);
+        if(video.success)
+          this.projectForm.controls['video'].setValue(video.url);
+        else
+          errors.push('video' + video.errors.title);
+      }
+      catch(err){
+        errors.push('video' + err.error.errors.title);
+      }
+    }    
+
     if(!this.edit) {
       this.projectService.addOne(this.projectForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
         this.spinner.hide();
         Swal.fire({
@@ -128,7 +141,15 @@ export class AddProjectComponent implements OnInit {
       this.projectService.edit(this.project.id, this.projectForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
         this.spinner.hide();
         Swal.fire({
