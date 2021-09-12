@@ -71,6 +71,7 @@ input[type=number] {
   box-sizing: border-box;
   position: relative;
   top:10px;
+  animation: show 0.5s ease-out;
   left:0px;
 }
 .isa_info {
@@ -96,4 +97,13 @@ input[type=number] {
 .valid{
   border-color: #4F8A10 !important;
   color: #4F8A10;
+}
+@keyframes show {
+  0%{
+    opacity:0;
+    transform: translateY(-10px);
+  }100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
