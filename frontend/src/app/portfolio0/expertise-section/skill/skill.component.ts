@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faAddressBook, faStar } from '@fortawesome/free-solid-svg-icons';
 import {TechnicalSkillDeveloperModel} from "../../../_shared/models/technical-skill-developer";
 
 @Component({
@@ -12,7 +12,9 @@ export class SkillComponent implements OnInit {
   @Input() hardSkill!: TechnicalSkillDeveloperModel;
   secondaryColor: any;
   primaryColor: any;
+  icon = false;
   font='Montserrat';
+  skill = faAddressBook;
   constructor() { }
   star = faStar;
   hardSkillsTemplate? = 1;

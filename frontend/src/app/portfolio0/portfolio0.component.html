@@ -1,5 +1,5 @@
 <app-header (aboutmeClick)="scroll(aboutme)" (contactClick)="scroll(contact)" (expertiseClick)="scroll(expertise)" (portfolioClick)="scroll(portfolio)" (achievementsClick)="scroll(achievements)" (experienceClick)="scroll(experience)" (educationClick)="scroll(education)" (testimonialsClick)="scroll(testimonials)"></app-header>
-<app-landing-section></app-landing-section>
+<app-landing-section (aboutmeClick)="scroll(aboutme)"></app-landing-section>
 <div #aboutme>
 <app-aboutme-section></app-aboutme-section>
 </div>

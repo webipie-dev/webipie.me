@@ -19,12 +19,18 @@ export class AddExperienceComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
-
+  check = false;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   bsRangeValue!: Date[];
   maxDate = new Date();
-
+  checked(){
+    if(this.check){
+      this.check = false;
+    }else{
+      this.check = true;
+    }
+  }
   // check if we are editing a testimonial or adding a new one
   edit = false;
   workExperience: WorkExperienceModel = {} as WorkExperienceModel;
@@ -32,7 +38,7 @@ export class AddExperienceComponent implements OnInit {
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', Validators.required],
+    description: ['', [Validators.required, Validators.maxLength(300)]],
     position: [''],
     company: [''],
     imgs: [''],

@@ -15,6 +15,11 @@
                    placeholder="Title"
                    type="text"
             >
+            <!-- Error Handling -->
+            <div *ngIf="educationForm.controls.title.errors?.required && educationForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Level</label>
             <input class="form-control"
@@ -24,6 +29,11 @@
                    placeholder="Level"
                    type="text"
             >
+            <!-- Error Handling -->
+            <div *ngIf="educationForm.controls.level.errors?.required && educationForm.controls.level.touched" class="alert isa_error">
+              Level is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="row">
             <div class="form-group col-xl-6 col-md-12">
@@ -40,6 +50,11 @@
                        type="text"
                        formControlName="beginDate"
                 >
+                <!-- Error Handling -->
+                <div *ngIf="educationForm.controls.beginDate.errors?.required && educationForm.controls.beginDate.touched" class="alert isa_error">
+                  Star Date is required.
+                </div>
+                <!-- /Error handling -->
               </div>
             </div>
 
@@ -63,7 +78,7 @@
             </div>
           </div>
 
-          <div class="position-relative form-group"><label for="city">City</label>
+          <div class="form-group"><label for="city">City</label>
             <input class="form-control"
                    formControlName="city"
                    id="city"

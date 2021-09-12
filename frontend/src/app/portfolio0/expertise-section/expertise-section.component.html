@@ -7,7 +7,7 @@
                 <div class="img" *ngIf="softSkillsTemplate == 3">
                     <img src="assets/grey-back.jpeg">
                 </div>
-                <div class="cos-title" *ngIf="softSkillsTemplate == 1">
+                <div class="cos-title iconed" *ngIf="softSkillsTemplate == 1">
                     <fa-icon [icon]="['fas', softSkill.icon]" class="m-2" [style.backgroundColor]="secondaryColor" [style.color]="primaryColor"></fa-icon>
                     <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{softSkill.title}}</h2>
                 </div>

@@ -20,6 +20,11 @@
                    formControlName="title"
                    [(ngModel)]="workExperience.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="workExperienceForm.controls.title.errors?.required && workExperienceForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -28,6 +33,14 @@
                       formControlName="description"
                       [(ngModel)]="workExperience.description"
             ></textarea>
+            <!-- Error Handling -->
+            <div *ngIf="workExperienceForm.controls.description.errors?.required && workExperienceForm.controls.description.touched" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="workExperienceForm.controls.description.errors?.maxlength && workExperienceForm.controls.description.touched" class="alert isa_error">
+              Description is too long , must be shorter than 300 characters
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Job Type</label>
             <input class="form-control"
@@ -53,7 +66,7 @@
 
             <label>Still on the job ?</label>
             <div class="m-2">
-              <ui-switch defaultBgColor="#cadecf" [checked]="false"></ui-switch>
+              <ui-switch defaultBgColor="#cadecf" [checked]="false" (change)="checked()"></ui-switch>
             </div>
           </div>
           <div class="row">
@@ -66,6 +79,11 @@
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
                        class="form-control" placeholder="Select date" type="text" formControlName="beginDate">
+                       <!-- Error Handling -->
+                      <div *ngIf="workExperienceForm.controls.beginDate.errors?.required && workExperienceForm.controls.beginDate.touched" class="alert isa_error">
+                        Start Date is required.
+                      </div>
+                      <!-- /Error handling -->
               </div>
             </div>
 
@@ -78,7 +96,7 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                       class="form-control" placeholder="Select date" type="text" [disabled]="check">
               </div>
 
             </div>
