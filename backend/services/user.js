@@ -12,6 +12,8 @@ const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
 const axios = require('axios');
 const {OAuth2Client} = require('google-auth-library');
 
+const { hostname, httpProtocol, port, clientPort, clientHostname } = require('../configuration/index');
+
 
 signToken = user => {
     return JWT.sign({
@@ -68,7 +70,7 @@ module.exports = {
         // send mail of verification 
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
-            `Hello ${name},\n\nPlease verify your account by clicking the link: \n localhost:8000/user/confirmation/${token}\n\nThank You!\n`
+            `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${hostname}:${port}/user/confirmation/${token}\n\nThank You!\n`
         )
         // TODO: handle email failure correctly, this always returns undefined:
         if (emailError)
@@ -121,7 +123,7 @@ module.exports = {
             // send mail of verification 
             var emailError = sendEmail(
                 EMAIL.USER, user.email, 'Account Verification',
-                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n localhost:8000/user/confirmation/${token}\n\nThank You!\n`
+                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${hostname}:${port}/user/confirmation/${token}\n\nThank You!\n`
             );
             // TODO: handle email failure correctly, this always returns undefined:
             if (emailError)
@@ -138,7 +140,7 @@ module.exports = {
             .post("https://www.linkedin.com/oauth/v2/accessToken", querystring.stringify({
                 grant_type: "authorization_code",
                 code: token,
-                redirect_uri: 'http://localhost:4200/register/linkedin-verif',
+                redirect_uri: `${httpProtocol}://${clientHostname}:${clientPort}/register/linkedin-verif`,
                 client_id: LINKEDIN_CLIENT_ID,
                 client_secret: LINKEDIN_CLIENT_SECRET
             }));
@@ -244,7 +246,7 @@ module.exports = {
         const oAuth2Client = new OAuth2Client(
             '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com',
             'jl6kALTXXLHndRViUlCXqQbL',
-            "http://localhost:4200"
+            `${httpProtocol}://${clientHostname}:${clientPort}`
         );
             
 

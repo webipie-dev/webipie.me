@@ -28,6 +28,7 @@ export class AddHardSkillComponent implements OnInit {
 
   ngOnInit(): void {
     // check whether it is edit or add
+    console.log(this.selectedSkill);
     this.route.queryParams.subscribe(params => {
       if(params['technicalSkillId']) {
         this.edit = true;

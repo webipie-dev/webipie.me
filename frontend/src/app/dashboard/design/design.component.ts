@@ -3,6 +3,7 @@ import {Font, FontInterface} from 'ngx-font-picker';
 import {DesignEditService} from "../../_shared/services/design-edit.service";
 import {TemplateModel} from "../../_shared/models/template.model";
 import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-design',
@@ -49,5 +50,11 @@ export class DesignComponent implements OnInit {
     this.spinner.show();
     this.designEditService.submitValues();
     this.spinner.hide();
+    Swal.fire({
+      title: 'Operation successful',
+      text: 'Design updated successfully',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
   }
 }

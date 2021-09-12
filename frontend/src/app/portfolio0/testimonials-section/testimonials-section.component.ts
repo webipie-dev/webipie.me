@@ -19,6 +19,7 @@ export class TestimonialsSectionComponent implements OnInit {
   elements = 4;
   inView: Boolean[] = [];
   testimonials!: [TestimonialModel];
+  disabled?: boolean;
   @ViewChild('target') target?: ElementRef<HTMLElement>;
 
   ngOnInit(): void {
@@ -27,6 +28,7 @@ export class TestimonialsSectionComponent implements OnInit {
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.backgroundSpeed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
     this.testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials ?? [];
+    this.disabled = JSON.parse(localStorage.getItem('portfolio')!).testimonialsDisabled;
     this.inView = new Array(this.testimonials?.length).fill(false) ?? [];
     setTimeout(()=>{
       if(window.innerWidth<1000){

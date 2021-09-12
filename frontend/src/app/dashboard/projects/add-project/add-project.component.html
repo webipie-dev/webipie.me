@@ -21,6 +21,11 @@
                    formControlName="name"
                    [(ngModel)]="project.name"
             >
+            <!-- Error Handling -->
+            <div *ngIf="projectForm.controls.name.errors?.required && projectForm.controls.name.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -29,6 +34,14 @@
                       formControlName="description"
                       [(ngModel)]="project.description"
             ></textarea>
+            <!-- Error Handling -->
+            <div *ngIf="projectForm.controls.description.errors?.required && projectForm.controls.description.touched" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="projectForm.controls.description.errors?.maxlength" class="alert isa_error">
+              Description is longer than 300 characters.
+            </div>
+            <!-- /Error handling -->
           </div>
 
           
@@ -86,6 +99,11 @@
                    formControlName="github"
                    [(ngModel)]="project.github"
             >
+            <!-- Error Handling -->
+            <div *ngIf="projectForm.controls.github.errors?.required && projectForm.controls.github.touched " class="alert isa_error">
+              Github is required
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="divider my-4"></div>
           <button class="mt-1 btn btn-slack" [disabled]="!projectForm.valid">

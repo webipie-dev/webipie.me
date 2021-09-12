@@ -2,16 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {TestimonialModel} from "../../_shared/models/testimonial.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TestimonialService} from "../../_shared/services/testimonial.service";
+import { ToggleSection } from '../toggle-section/toggle-section';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 
 @Component({
   selector: 'app-testimonials',
   templateUrl: './testimonials.component.html',
   styleUrls: ['./testimonials.component.scss']
 })
-export class TestimonialsComponent implements OnInit {
+export class TestimonialsComponent extends ToggleSection implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private testimonialService: TestimonialService) {
+              private testimonialService: TestimonialService, protected portfolioService: PortfolioService) {
+    super(portfolioService, 'testimonials');
   }
 
   testimonials?: [TestimonialModel];

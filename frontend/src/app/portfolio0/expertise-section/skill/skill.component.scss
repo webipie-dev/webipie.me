@@ -16,6 +16,28 @@
 }
 .cos-left{
     max-width:300px;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    h2{
+      margin-left:20px;
+      margin-right:20px;
+    }
+    
+}
+@media screen and (max-width:500px) {
+  .cos-left{
+    justify-content: center;
+  }
+  .cos-right{
+    p{
+      padding-left:5px;
+      text-align: center;
+      font-size:1.1rem !important;
+    }
+  }
 }
 .cos-right{
     max-width:700px;

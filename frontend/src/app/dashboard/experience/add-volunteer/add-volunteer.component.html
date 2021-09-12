@@ -20,6 +20,11 @@
                    formControlName="title"
                    [(ngModel)]="volunteerExperience.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.title.errors?.required && volunteeringExperienceForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -29,6 +34,14 @@
                       [(ngModel)]="volunteerExperience.description"
             >
             </textarea>
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.description.errors?.required && volunteeringExperienceForm.controls.description.touched" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="volunteeringExperienceForm.controls.description.errors?.maxlength && volunteeringExperienceForm.controls.description.touched" class="alert isa_error">
+              Description should be shorter than 300 characters
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Position</label>
             <input class="form-control"
@@ -47,12 +60,17 @@
                    formControlName="organisation"
                    [(ngModel)]="volunteerExperience.organisation"
             >
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.organisation.errors?.required && volunteeringExperienceForm.controls.organisation.touched" class="alert isa_error">
+              This field is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="form-group">
 
-            <label>Still on the job ?</label>
+            <label>Still on the association ?</label>
             <div class="m-2">
-              <ui-switch [checked]="false"></ui-switch>
+              <ui-switch defaultBgColor="#cadecf" [checked]="false" (change)="checked()"></ui-switch>
             </div>
           </div>
           <div class="row">
@@ -65,6 +83,11 @@
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
                        class="form-control" placeholder="Select date" type="text" formControlName="beginDate" [(ngModel)]="beginDate">
+                       <!-- Error Handling -->
+                      <div *ngIf="volunteeringExperienceForm.controls.beginDate.errors?.required && volunteeringExperienceForm.controls.beginDate.touched" class="alert isa_error">
+                        Start Date is required.
+                      </div>
+                      <!-- /Error handling -->
               </div>
             </div>
             
@@ -77,7 +100,7 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text" formControlName="endDate" [(ngModel)]="endDate">
+                       class="form-control" placeholder="Select date" type="text" [disabled]="check" formControlName="endDate" [(ngModel)]="endDate">
               </div>
 
             </div>

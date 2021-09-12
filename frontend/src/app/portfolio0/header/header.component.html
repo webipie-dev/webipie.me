@@ -13,6 +13,19 @@
             <a (click)="clickAchievements($event)">ACHIEVEMENTS</a>
             <a (click)="clickTestimonials($event)">TESTIMONIALS</a>
             <a (click)="clickContact($event)">CONTACT ME</a>
+            
         </div>
+        <fa-icon [icon]="menu" style="font-size:1.6rem" class="menu" (click)="onClick(target)"></fa-icon>
+        
+    </div>
+    <div class="cosmenu hidden" #target>
+        <a (click)="clickAboutme($event)"><h3>ABOUT ME</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickExpertise($event)"><h3>EXPERTISE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickExperience($event)"><h3>EXPERIENCE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickEducation($event)"><h3>EDUCATION</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickPortfolio($event)"><h3>PORTFOLIO</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickAchievements($event)"><h3>ACHIEVEMENTS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickTestimonials($event)"><h3>TESTIMONIALS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickContact($event)"><h3>CONTACT ME</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
     </div>
 </div>

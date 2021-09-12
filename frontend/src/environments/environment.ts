@@ -12,7 +12,8 @@ export const environment = {
   backendPort: 8000,
   backendProtocol: 'http',
   websiteDomainName: 'webipie.me',
-  PORT: ':4200'
+  PORT: ':4200',
+  protocol: 'http'
 };
 
 /*

@@ -4,7 +4,7 @@ on:
       - devops
       - master
       - dev
-      - ip-tracking
+      - deployment-fixes
 
 name: Project Deployment
 

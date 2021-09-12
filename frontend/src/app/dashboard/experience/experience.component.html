@@ -1,7 +1,10 @@
 <div class="card card-box mb-5">
-  <div class="card-header-alt p-4">
-    <h6 class="font-weight-bold font-size-lg mb-1 text-black">Professional Experience</h6>
-    <p class="text-black-50 mb-0">Report What your professional career was like</p>
+  <div class="card-header-alt p-4 d-flex align-items-center justify-space-between">
+    <div>
+      <h6 class="font-weight-bold font-size-lg mb-1 text-black">Professional Experience</h6>
+      <p class="text-black-50 mb-0">Report What your professional career was like</p>
+    </div>
+    <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!firstToggleOff" (change)="onToggleChange($event, 1)"></ui-switch>
 
   </div>
 
@@ -59,10 +62,14 @@
   </div>
 </div>
 <div class="card card-box mb-5">
-  <div class="card-header-alt p-4">
-    <h6 class="font-weight-bold font-size-lg mb-1 text-black">Volunteering Experience</h6>
-    <p class="text-black-50 mb-0">Report What your volunteering work was like</p>
+  <div class="card-header-alt p-4 d-flex align-items-center justify-space-between">
+    <div>
+      <h6 class="font-weight-bold font-size-lg mb-1 text-black">Volunteering Experience</h6>
+      <p class="text-black-50 mb-0">Report What your volunteering work was like</p>
+    </div>
+    <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!secondToggleOff" (change)="onToggleChange($event, 2)"></ui-switch>
 
+    
   </div>
 
   <div class="divider"></div>

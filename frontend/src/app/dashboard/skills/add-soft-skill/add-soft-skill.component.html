@@ -21,12 +21,17 @@
                        bindValue="id"
                        [items]="skills"
             ></ng-select>
+            <!-- Error Handling -->
+            <div *ngIf="!selectedSkill" class="alert isa_error">
+              This field is required
+            </div>
+            <!-- /Error handling -->
           </div>
 <!--          <div class="position-relative form-group">-->
 <!--            <label for="exampleText">Description</label>-->
 <!--            <textarea class="form-control" id="exampleText" name="text" placeholder="Description"></textarea>-->
 <!--          </div>-->
-          <button (click)="onSubmit()" class="mt-3 btn btn-slack">
+          <button (click)="onSubmit()" class="mt-3 btn btn-slack" [disabled]="!selectedSkill">
             <span *ngIf="!edit">Add</span>
             <span *ngIf="edit">Edit</span>
             Skill

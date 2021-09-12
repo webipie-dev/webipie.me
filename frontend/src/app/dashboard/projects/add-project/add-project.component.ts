@@ -31,7 +31,7 @@ export class AddProjectComponent implements OnInit {
 
   projectForm = this.formBuilder.group({
     name: ['', Validators.required],
-    description: ['', Validators.required],
+    description: ['', [Validators.required,Validators.maxLength]],
     github: [''],
     imgs: [''],
     video: [''],

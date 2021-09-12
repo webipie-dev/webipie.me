@@ -26,7 +26,7 @@ export class AddTestimonialComponent implements OnInit {
   testimonialForm = this.formBuilder.group({
     name: ['', Validators.required],
     position: ['', Validators.required],
-    description: ['', Validators.required],
+    description: ['', [Validators.required,Validators.maxLength(300)]],
     photo: ['']
   });
 

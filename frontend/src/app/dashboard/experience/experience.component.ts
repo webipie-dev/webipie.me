@@ -6,16 +6,20 @@ import {SoftSkillService} from "../../_shared/services/soft-skill.service";
 import {TechnicalSkillService} from "../../_shared/services/technical-skill.service";
 import {VolunteeringExperienceService} from "../../_shared/services/volunteering-experience.service";
 import {WorkExperienceService} from "../../_shared/services/work-experience.service";
+import { DoubleToggleSection } from '../double-toggle-section/double-toggle-section';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss']
 })
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent extends DoubleToggleSection implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private volunteeringExperienceService: VolunteeringExperienceService, private workExperienceService: WorkExperienceService) {
+              private volunteeringExperienceService: VolunteeringExperienceService,
+              private workExperienceService: WorkExperienceService, protected portfolioService: PortfolioService) {
+                super(portfolioService, 'workExperiences', 'volunteeringExperiences')
   }
 
   workExperiences?: [WorkExperienceModel];

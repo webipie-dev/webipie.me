@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-xl-6">
       <div class="card card-box mb-5">
-        <div class="card-header pr-2">
+        <div class="card-header pr-2 p-4 d-flex align-items-center justify-space-between">
           <div class="card-header--title font-size-lg text-dark">
             Hard Skills
           </div>
+          <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!firstToggleOff" (change)="onToggleChange($event, 1)"></ui-switch>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -62,10 +63,11 @@
     </div>
     <div class="col-xl-6">
       <div class="card card-box mb-5">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center justify-space-between">
           <div class="card-header--title font-size-lg text-dark">
             Soft Skills
           </div>
+          <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!secondToggleOff" (change)="onToggleChange($event, 2)"></ui-switch>
         </div>
         <div class="card-body">
           <div class="table-responsive">
