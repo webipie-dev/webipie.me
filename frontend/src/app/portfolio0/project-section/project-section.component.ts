@@ -15,11 +15,13 @@ export class ProjectSectionComponent implements OnInit {
   primaryColor: any;
   constructor(private renderer: Renderer2) { }
   projects?: [ProjectModel];
+  disabled?: boolean;
   ngOnInit(): void {
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     
     this.projects = this.getProjects();
+    this.disabled = JSON.parse(localStorage.getItem('portfolio')!).projectsDisabled;
     this.button = JSON.parse(localStorage.getItem('portfolio')!).template.project.button;
     this.tags = this.getTags(this.projects)
   }

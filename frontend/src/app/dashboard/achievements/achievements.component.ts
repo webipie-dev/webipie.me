@@ -2,16 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {AchievementModel} from "../../_shared/models/achievement.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AchievementService} from "../../_shared/services/achievement.service";
+import { ToggleSection } from '../toggle-section/toggle-section';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 
 @Component({
   selector: 'app-achievements',
   templateUrl: './achievements.component.html',
   styleUrls: ['./achievements.component.scss']
 })
-export class AchievementsComponent implements OnInit {
+export class AchievementsComponent extends ToggleSection implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private achievementService: AchievementService) {
+              private achievementService: AchievementService, protected portfolioService: PortfolioService) {
+    super(portfolioService, 'achievements');
   }
 
   achievements?: [AchievementModel];

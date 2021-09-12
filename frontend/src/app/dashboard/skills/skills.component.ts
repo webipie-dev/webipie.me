@@ -3,18 +3,22 @@ import {TechnicalSkillDeveloperModel} from "../../_shared/models/technical-skill
 import {SoftSkillModel} from "../../_shared/models/soft-skill.model";
 import {SoftSkillService} from "../../_shared/services/soft-skill.service";
 import {TechnicalSkillService} from "../../_shared/services/technical-skill.service";
+import { DoubleToggleSection } from '../double-toggle-section/double-toggle-section';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent extends DoubleToggleSection implements OnInit {
 
   faUsers = 'faUsers'
   hardSkills?: [TechnicalSkillDeveloperModel];
   softSkills?: [SoftSkillModel];
-  constructor(private softSkillService: SoftSkillService, private technicalSkillService: TechnicalSkillService) {
+  constructor(private softSkillService: SoftSkillService, private technicalSkillService: TechnicalSkillService,
+    protected portfolioService: PortfolioService) {
+      super(portfolioService, 'technicalSkills', 'softSkills')
   }
 
   ngOnInit(): void {

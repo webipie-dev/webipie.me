@@ -15,6 +15,7 @@ export class AchievementsSectionComponent implements OnInit {
   secondaryColor: any;
   primaryColor: any;
   font="Montserrat";
+  disabled?: boolean;
   constructor() { }
 
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class AchievementsSectionComponent implements OnInit {
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
 
     this.achievements = JSON.parse(localStorage.getItem('portfolio')!).achievements;
+    this.disabled = JSON.parse(localStorage.getItem('portfolio')!).achievementsDisabled;
     this.divider = JSON.parse(localStorage.getItem('portfolio')!).template.achievement.dividerIcon;
     switch(this.divider){
       case 1: {
