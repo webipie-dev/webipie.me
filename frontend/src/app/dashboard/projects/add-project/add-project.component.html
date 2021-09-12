@@ -43,25 +43,33 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group">
-            <label>Images</label>
-            <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-                      *ngIf="type === 'component'"
-                      [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'"
-                      class="dropzone-container"></dropzone>
+
+          
+          <div class="form-group">
+            <label for="image">Images</label>
+            <div class="my-2 mx-2">
+              <img *ngFor="let image of project.imgs" [src]="image" class="mx-1" style="width:40px; height: 40px">
+            </div>
+            <ngx-dropzone  (change)="onSelectImage($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemoveImage(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
           </div>
 
-          <div (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-               *ngIf="type === 'directive'" [disabled]="disabled" [dropzone]="config"
-               class="dropzone dropzone-container"></div>
-          <input
-            id="hiddenImageInput"
-            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-            style="display: none"
-            multiple
-            name="imgs" type="file"
-            formControlName="photo"
-          />
+          <div class="form-group">
+            <label for="video">Video</label>
+            <ngx-dropzone  (change)="onSelectVideo($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of videos" [file]="f" [removable]="true" (removed)="onRemoveVideo(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
+          </div>
+
           <div class="position-relative form-group"><label for="exampleEmail">Skills</label>
             <input class="form-control"
                    id="exampleEmail"
@@ -117,3 +125,5 @@
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+

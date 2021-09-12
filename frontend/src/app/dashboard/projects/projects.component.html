@@ -26,7 +26,7 @@
           <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{ project.name }}</span></div>
         </td>
         <td class="text-center">
-          <span class="font-weight-regular">{{ project.description }}</span>
+          <span class="font-weight-regular">{{ ( project.description.length>30)? ( project.description  | slice:0:30)+' ...':( project.description ) }}</span>
         </td>
         <td class="text-center">
           <span class="font-weight-regular">{{ project.github }}</span>

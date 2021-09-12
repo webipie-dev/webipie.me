@@ -27,6 +27,7 @@ export class ExperienceComponent extends DoubleToggleSection implements OnInit {
 
   ngOnInit(): void {
     this.workExperiences = JSON.parse(localStorage.getItem('portfolio')!).workExperiences;
+    console.log(this.workExperiences);
     this.volunteeringExperiences = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences;
   }
 

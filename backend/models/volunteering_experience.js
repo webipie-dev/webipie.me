@@ -6,7 +6,7 @@ const volunteeringExperienceSchema = Schema({
     description: {type: String, required: false},
     position: {type: String, required: false},
     organisation: {type: String, required: true},
-    imgs: {type: [String], required: false},
+    img: {type: String, required: false},
     skills: {type: [String], required: false},
     beginDate: {type: Date, required: true},
     endDate: {type: Date, required: false},

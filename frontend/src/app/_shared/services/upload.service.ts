@@ -23,4 +23,8 @@ export class UploadService{
   videoUpload(body: any): Promise<any>{
     return this.http.post(this.url + this.suffix + '/video', body).toPromise();
   }
+
+  imageMultipleUpload(body: any): Promise<any>{
+    return this.http.post(this.url + this.suffix + '/multi/image', body).toPromise();
+  }
 }

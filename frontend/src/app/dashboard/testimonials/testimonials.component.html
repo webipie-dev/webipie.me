@@ -21,7 +21,7 @@
           <td>
             <div class="d-flex align-items-center">
               <div class="avatar-icon-wrapper avatar-icon-sm mr-3">
-                <div class="avatar-icon"><img alt="..." src="assets/johndoe.jpeg"/></div>
+                <div class="avatar-icon"><img alt="..." [src]="testimonial.photo"/></div>
               </div>
               <div>
                 {{testimonial.name}}
@@ -30,7 +30,7 @@
             </div>
           </td>
           <td>
-            {{testimonial.description}}
+            {{ ( testimonial.description.length>30)? ( testimonial.description  | slice:0:30)+' ...':( testimonial.description ) }}
           </td>
           <td class="text-center">
             <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editTestimonial(testimonial.id)">

@@ -78,7 +78,7 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text" formControlName="beginDate">
+                       class="form-control" placeholder="Select date" type="text" formControlName="beginDate" [(ngModel)]="beginDate">
                        <!-- Error Handling -->
                       <div *ngIf="workExperienceForm.controls.beginDate.errors?.required && workExperienceForm.controls.beginDate.touched" class="alert isa_error">
                         Start Date is required.
@@ -96,7 +96,7 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text" [disabled]="check">
+                       class="form-control" placeholder="Select date" type="text" formControlName="endDate" [(ngModel)]="endDate"  [disabled]="check">
               </div>
 
             </div>
@@ -152,3 +152,5 @@
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+

@@ -29,7 +29,7 @@
           <span class="font-weight-bold">{{achievement.date | date }}</span>
         </td>
         <td class="text-left">
-          <span class="font-weight-regular">{{achievement.description}}</span>
+          <span class="font-weight-regular">{{ ( achievement.description!.length>30)? ( achievement.description  | slice:0:30)+' ...':( achievement.description ) }}</span>
         </td>
         <td class="text-right">
           <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editAchievement(achievement.id)">

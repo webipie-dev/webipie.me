@@ -69,4 +69,15 @@ export class AuthService extends GenericService<any>{
     return this.http.get(this.getUrl() + this.suffix + '/verified', httpOptions) as unknown as Observable<{verified: boolean}>;
   }
 
+  public changePassword(body: any): Observable<any> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.post(this.getUrl() + this.suffix + '/changepwd', body, httpOptions) as Observable<any>;
+  }
+
 }

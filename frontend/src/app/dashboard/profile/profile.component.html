@@ -5,94 +5,105 @@
         <div class="avatar-icon-wrapper d-100">
           <span class="badge badge-circle badge-success">Online</span>
           <div class="avatar-icon d-100">
-            <img alt="..." src="assets/johndoe.jpeg"/>
+            <img alt="..." [src]="this.portfolio.picture"/>
           </div>
         </div>
-        <a [routerLink]="" class="btn btn-sm btn-slack shadow-none">
-          Follow
-        </a>
       </div>
       <div class="font-weight-bold font-size-lg d-flex align-items-center mt-2 mb-0">
-        <span>John Doe</span>
+        <span>{{this.portfolio.name}}</span>
       </div>
-      <p class="mb-4 font-size-md text-white-50">@johndoe</p>
+      <p class="mb-4 font-size-md text-white-50">{{this.portfolio.position || " "}}</p>
       <a [routerLink]="" class="btn btn-sm btn-outline-light shadow-none mr-2">
-        Send message
+        Contact support
       </a>
       <a [routerLink]="" class="btn btn-sm btn-success shadow-none" tooltip="Add to favourites">
         <fa-icon [icon]="['fas', 'star']"></fa-icon>
       </a>
-      <p class="text-white-50 mb-0 py-4">
-        Short profile bio description here. Pleasure of the moment, so blinded by desire, that they cannot foresee... <a
-        [routerLink]="" class="text-white">Read more</a>
-      </p>
 
-      <div class="pt-3 pb-4">
-        <div class="row no-gutters text-center">
-          <div class="col">
-            <b class="d-block font-weight-bold font-size-lg">456</b>
-            <small class="text-uppercase text-white-50">friends</small>
-          </div>
-          <div class="col">
-            <b class="d-block font-weight-bold font-size-lg">1.3k</b>
-            <small class="text-uppercase text-white-50">updates</small>
-          </div>
-          <div class="col">
-            <b class="d-block font-weight-bold font-size-lg">34</b>
-            <small class="text-uppercase text-white-50">followers</small>
-          </div>
-        </div>
+      <div *ngIf="showEllipsis; else noEllipsis" class="text-white-50 mb-0 py-4">
+        <div
+          ellipsis="... Show more!"
+          [ellipsis-content]="this.portfolio.description || '...'"
+          (ellipsis-click-more)="showEllipsis = false"
+          style="height: 50px;"></div>
       </div>
+      <ng-template #noEllipsis>
+        <div class="text-white-50 mb-0 py-4">
+          {{this.portfolio.description || '...'}}
+          <button (click)="showEllipsis = true" class="btn" style="color: #3aaf85">Show less</button>
+        </div>
+      </ng-template>
+
       <div class="font-weight-bold font-size-lg d-flex align-items-center mb-3">
-        <span>Job titles</span>
+        <span>Information</span>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">Software developer</a>
+                                <a [routerLink]="" class="text-white">Work Experiences</a>
                             </span>
           <span class="badge badge-dark">
-                                22
+                                {{this.portfolio.workExperiences!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">QA Engineer</a>
+                                <a [routerLink]="" class="text-white">Projects</a>
                             </span>
           <span class="badge badge-dark">
-                                23
+                                {{this.portfolio.projects!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">UX Specialist</a>
+                                <a [routerLink]="" class="text-white">Volunteering Experiences</a>
                             </span>
           <span class="badge badge-dark">
-                                76
+                                {{this.portfolio.volunteeringExperiences!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">Frontend Architect</a>
+                                <a [routerLink]="" class="text-white">Technical Skills</a>
                             </span>
           <span class="badge badge-dark">
-                                15
+                            {{this.portfolio.technicalSkills!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">DevOps Manager</a>
+                                <a [routerLink]="" class="text-white">Soft Skills</a>
                             </span>
           <span class="badge badge-dark">
-                                5
+                            {{this.portfolio.softSkills!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="" class="text-white">Achivements</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{this.portfolio.achievements!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="" class="text-white">Testimonials</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{this.portfolio.testimonials!.length || 0}}
                             </span>
         </div>
       </div>
@@ -169,42 +180,52 @@
         </div>
       </div>
       <div class="col-xl-12 col-lg-6">
-        <div class="px-5 pt-5">
-          <div class="col-12">
-            <div class="position-relative form-group"><label for="old_password">Old Password</label>
-              <input
-                class="form-control" 
-                id="old_password" 
-                name="old_password" 
-                placeholder="Old Password" 
-                type="password">
+        <form [formGroup]="newPasswordForm" (ngSubmit)="onSubmit()">
+          <div class="px-5 pt-5">
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="old_password">Old Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control" 
+                  id="old_password" 
+                  name="old_password" 
+                  placeholder="Old Password" 
+                  type="password"
+                  formControlName="old_password"
+                  [(ngModel)]="old_password">
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="position-relative form-group"><label for="new_password">New Password</label>
-              <input
-                class="form-control" 
-                id="new_password" 
-                name="new_password" 
-                placeholder="New Password" 
-                type="password">
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="new_password">New Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control" 
+                  id="new_password" 
+                  name="new_password" 
+                  placeholder="New Password" 
+                  type="password"
+                  formControlName="new_password"
+                  [(ngModel)]="new_password">
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="position-relative form-group"><label for="password">Confirm Password</label>
-              <input
-                class="form-control" 
-                id="password" 
-                name="password" 
-                placeholder="Confirm Password" 
-                type="password">
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="password">Confirm Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control" 
+                  id="password" 
+                  name="password" 
+                  placeholder="Confirm Password" 
+                  type="password"
+                  formControlName="password"
+                  [(ngModel)]="password">
+              </div>
             </div>
-          </div>
 
-          <button class="mx-3 my-3 btn btn-slack">Save</button>
-        </div>
+            <button [disabled]="!newPasswordForm.valid || this.new_password != this.password" class="mx-3 my-3 btn btn-slack">Save</button>
+          </div>
+        </form>
       </div>
 
     </div>
   </div>
 </div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
