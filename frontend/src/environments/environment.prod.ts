@@ -8,5 +8,6 @@ export const environment = {
   backendPort: 8000,
   backendProtocol: 'https',
   websiteDomainName: 'webipie.me',
-  PORT: ''
+  PORT: '',
+  protocol: 'https'
 };
