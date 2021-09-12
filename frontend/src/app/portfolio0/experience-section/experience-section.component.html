@@ -1,9 +1,10 @@
-<div class="cos-container">
+<div class="cos-container" [hidden]="workExperiencesDisabled&&volunteeringExperiencesDisabled">
     <div class="cos-content">
         <h3>WHAT I DID</h3>
         <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'">My Experience</h1>
-        <h3>Professional Experience</h3>
-        <div class="cos-experiences">
+        
+        <div class="cos-experiences" [hidden]="workExperiencesDisabled">
+            <h3>Professional Experience</h3>
             <div *ngFor="let work of workExperiences" class="cos-element">
                 <div class="cos-left">
                     <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{work.title}}</h4>
@@ -27,8 +28,9 @@
                 </div>
             </div>
         </div>
-        <h3>Volunteering Experience</h3>
-        <div class="cos-experiences">
+        
+        <div class="cos-experiences" [hidden]="volunteeringExperiencesDisabled">
+            <h3>Volunteering Experience</h3>
             <div *ngFor="let volunteering of volunteeringExperiences" class="cos-element">
                 <div class="cos-left">
                     <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.title}}</h4>

@@ -30,5 +30,11 @@ export interface PortfolioModel extends GenericModel {
   }],
   workExperiences?: [WorkExperienceModel],
   volunteeringExperiences?: [VolunteeringExperienceModel],
-  testimonials?: [TestimonialModel]
+  testimonials?: [TestimonialModel],
+  projectsDisabled?: boolean,
+  testimonialsDisabled: {type: boolean, required: false, default: false},
+  achievementsDisabled: {type: boolean, required: false, default: false},
+  educationDisabled?: boolean,
+  technicalSkillsDisabled: {type: boolean, required: false, default: false},
+  softSkillsDisabled?: boolean
 }
