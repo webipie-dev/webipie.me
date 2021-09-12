@@ -24,7 +24,7 @@ export class GeneralInfosComponent implements OnInit {
     linkedIn: [''],
     picture: [''],
     CV: [''],
-    description: ['',[Validators.minLength(20),Validators.required,Validators.maxLength(300)]]
+    description: ['',[Validators.minLength(10),Validators.required,Validators.maxLength(300)]]
   });
   submitted = false;
 
