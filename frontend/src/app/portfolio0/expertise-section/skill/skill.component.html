@@ -1,5 +1,8 @@
 <div class="cos-container">
-    <div class="cos-left">
+    <div class="cos-left" style="display: flex;flex-wrap: wrap;align-items: center;text-align: left;">
+        <!-- CHange this for icon later and change condition-->
+        <fa-icon *ngIf="icon" [icon]="skill" [style]="'color:'+primaryColor+';font-size:3rem !important'"></fa-icon>
+        <!--  -->
         <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{hardSkill.skill.name}}</h2>
     </div>
     <div class="cos-right">
@@ -8,7 +11,7 @@
             <div class="level" [style.width]="hardSkill.level*10+'%'">
             </div>
         </div>
-        <p *ngIf="hardSkillsTemplate == 1">{{hardSkill.level * 10}} %</p>
+        <p *ngIf="hardSkillsTemplate == 1">{{hardSkill.level * 10}}%</p>
         <div class="stars" *ngIf="hardSkillsTemplate == 2">
             <fa-icon *ngFor="let level of levels" [icon]="star" [style]="level? '':'color:lightgrey'"></fa-icon>
             <p>{{hardSkill.level/2 | number:'1.0-0'}}/5</p>
