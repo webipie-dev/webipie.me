@@ -14,13 +14,10 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="show(target)" [style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2 [style]="';font-family:'+font">{{element.beginDate | date}} - <span *ngIf="element.endDate">{{element.endDate | date}}</span><span *ngIf="!element.endDate">Present</span></h2>
-                    </div>
-                    <div #target class="cos-image hidden">
-                        <img src="assets/back.jpeg">
                     </div>
                 </div>
             </div>
