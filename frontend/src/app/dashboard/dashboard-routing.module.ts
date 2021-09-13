@@ -20,6 +20,7 @@ import {AddEducationComponent} from "./education/add-education/add-education.com
 import {DesignComponent} from "./design/design.component";
 import {AddVolunteerComponent} from "./experience/add-volunteer/add-volunteer.component";
 import {LogoutComponent} from "./logout/logout.component";
+import { ContactSupportComponent } from "./contact-support/contact-support.component";
 
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
       {
         path: 'design',
         component: DesignComponent
+      },
+      {
+        path: 'support-request',
+        component: ContactSupportComponent
       },
     ]
   }
