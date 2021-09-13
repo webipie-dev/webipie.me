@@ -20,8 +20,8 @@
     <div [class]="!menuactive? 'slidemenu inactivee':'slidemenu activee'">
         <fa-icon [icon]="leftarrow" (click)="onMenuClick($event)"></fa-icon>
         <div class="account">
-            <a [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark m-2">Sign In</button></a>
-            <a [routerLink]="['/register/signup']"><button class="btn btn-sm btn-slack m-2">Sign Up</button></a>
+            <a (click)="onMenuClick($event)" [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark m-2" >Sign In</button></a>
+            <a  (click)="onMenuClick($event)" [routerLink]="['/register/signup']"><button class="btn btn-sm btn-slack m-2">Sign Up</button></a>
         </div>
         <div class="element">
             <a href="#"><h3>Home</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
