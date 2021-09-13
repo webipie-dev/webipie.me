@@ -78,6 +78,16 @@ export class SidebarMenuService {
       "link": "/dashboard/design"
     },
     {
+      "title": "Help",
+      "type": "header"
+    },
+    {
+      "title": "Contact Support",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-help1\"></i>",
+      "link": "/dashboard/support-request"
+    },
+    {
       "title": "Settings",
       "type": "header"
     },
@@ -86,12 +96,6 @@ export class SidebarMenuService {
       "type": "simple",
       "icon": "<i class=\"pe-7s-user\"></i>",
       "link": "/dashboard/profile"
-    },
-    {
-      "title": "Contact Support",
-      "type": "simple",
-      "icon": "<i class=\"pe-7s-help1\"></i>",
-      "link": "/dashboard/support-request"
     },
     {
       "title": "Log Out",
