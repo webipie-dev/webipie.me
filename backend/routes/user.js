@@ -24,13 +24,14 @@ router.route('/confirmation/:token')
 router.route('/confirmation/resend/:token')
     .get(userService.resend);
 
-
-
-router.route('/oauth/google').post(userService.loginWithGoogle);
-
+router.route('/oauth/google')
+    .post(userService.loginWithGoogle);
 
 router.route('/verified')
-    .get(passportJWT, userService.userVerified)
+    .get(passportJWT, userService.userVerified);
+
+router.route('/username')
+    .get(passportJWT, userService.getUsername);
 
 router.route('/oauth/linkedin')
     .post(userService.linkedinOAuth);

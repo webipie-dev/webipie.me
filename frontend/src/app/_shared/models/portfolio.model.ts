@@ -14,7 +14,7 @@ export interface PortfolioModel extends GenericModel {
   description?: string,
   name: string,
   phoneNumber?: number,
-  picture?: number,
+  picture?: string,
   position?: number,
   email?: number,
   github?: string,

@@ -80,4 +80,26 @@ export class AuthService extends GenericService<any>{
     return this.http.post(this.getUrl() + this.suffix + '/changepwd', body, httpOptions) as Observable<any>;
   }
 
+  public getUserName(): Observable<{name: string}> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.getUrl() + this.suffix + '/username', httpOptions) as Observable<{name: string}>;
+  }
+
+  public getPicture(): Observable<{picture: string}> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.getUrl() + this.suffix + '/picture', httpOptions) as Observable<{picture: string}>;
+  }
+
 }
