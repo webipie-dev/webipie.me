@@ -6,12 +6,12 @@
         </div>
         <div class="cos-right">
             <a (click)="clickAboutme($event)">ABOUT ME</a>
-            <a (click)="clickExpertise($event)">EXPERTISE</a>
-            <a (click)="clickExperience($event)">EXPERIENCE</a>
-            <a (click)="clickEducation($event)">EDUCATION</a>
-            <a (click)="clickPortfolio($event)">PORTFOLIO</a>
-            <a (click)="clickAchievements($event)">ACHIEVEMENTS</a>
-            <a (click)="clickTestimonials($event)">TESTIMONIALS</a>
+            <a (click)="clickExpertise($event)" *ngIf="!softSkillsDisabled && !hardSkillsDisabled">EXPERTISE</a>
+            <a (click)="clickExperience($event)" *ngIf="!volunteeringExperiencesDisabled && !workExperiencesDisabled">EXPERIENCE</a>
+            <a (click)="clickEducation($event)" *ngIf="!educationDisabled">EDUCATION</a>
+            <a (click)="clickPortfolio($event)" *ngIf="!projectsDisabled">PORTFOLIO</a>
+            <a (click)="clickAchievements($event)" *ngIf="!achievementsDisabled">ACHIEVEMENTS</a>
+            <a (click)="clickTestimonials($event)" *ngIf="!testimonialsDisabled">TESTIMONIALS</a>
             <a (click)="clickContact($event)">CONTACT ME</a>
             
         </div>
@@ -20,12 +20,12 @@
     </div>
     <div class="cosmenu hidden" #target>
         <a (click)="clickAboutme($event)"><h3>ABOUT ME</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
-        <a (click)="clickExpertise($event)"><h3>EXPERTISE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
-        <a (click)="clickExperience($event)"><h3>EXPERIENCE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
-        <a (click)="clickEducation($event)"><h3>EDUCATION</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
-        <a (click)="clickPortfolio($event)"><h3>PORTFOLIO</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
-        <a (click)="clickAchievements($event)"><h3>ACHIEVEMENTS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
-        <a (click)="clickTestimonials($event)"><h3>TESTIMONIALS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickExpertise($event)"*ngIf="!softSkillsDisabled && !hardSkillsDisabled"><h3>EXPERTISE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickExperience($event)"*ngIf="!volunteeringExperiencesDisabled && !workExperiencesDisabled"><h3>EXPERIENCE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickEducation($event)"*ngIf="!educationDisabled"><h3>EDUCATION</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickPortfolio($event)"*ngIf="!projectsDisabled"><h3>PORTFOLIO</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickAchievements($event)"*ngIf="!achievementsDisabled"><h3>ACHIEVEMENTS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickTestimonials($event)"*ngIf="!testimonialsDisabled"><h3>TESTIMONIALS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
         <a (click)="clickContact($event)"><h3>CONTACT ME</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
     </div>
 </div>
