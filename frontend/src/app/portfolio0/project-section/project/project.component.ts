@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faLink } from '@fortawesome/free-solid-svg-icons';
 import {ProjectModel} from "../../../_shared/models/project.model";
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-project-element',
@@ -9,12 +10,14 @@ import {ProjectModel} from "../../../_shared/models/project.model";
   styleUrls: ['./project.component.scss']
 })
 export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
+  gitHub = faGithub;
+  link = faLink;
   secondaryColor: any;
   primaryColor: any;
   constructor() { }
   @Input() globalTag = "All";
   @Input() tags? = ["none"];
-  @Input() project?: ProjectModel;
+  @Input() project!: ProjectModel;
   pos = 0;
   imgWidth=1100;
   class = "cos-container";
@@ -27,33 +30,35 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   speed= 4000;
   rightArrow = faAngleRight;
   leftArrow = faAngleLeft;
+
   ngOnInit(): void {
-    console.log(this.tags)
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
 
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
-    
+
   }
   ngAfterViewInit(){
     if(window.innerWidth<1100)this.imgWidth=window.innerWidth;
   }
   goRight(){
-    if(this.pic==this.img.length){
+    if(this.project.imgs)
+    if(this.pic === this.project.imgs.length - 1){
       this.pic = 0;
       this.pos = 0;
-      
+
     }else{
       this.pos+= this.imgWidth;
       this.pic++;
     }
   }
   goLeft(){
+    if(this.project.imgs)
     if(this.pic==0){
-      this.pic = this.img.length;
-      this.pos = this.img.length*this.imgWidth;
-      
+      this.pic = this.project.imgs.length;
+      this.pos = (this.project.imgs.length - 1)*this.imgWidth;
+
     }else{
       this.pos-= this.imgWidth;
       this.pic--;

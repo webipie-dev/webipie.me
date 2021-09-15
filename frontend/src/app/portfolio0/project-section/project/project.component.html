@@ -6,36 +6,31 @@
         <div class="button" style="z-index:9999" (click)="exit(toggle)">
             <fa-icon [icon]="close" [style]="'color:'+primaryColor"></fa-icon>
         </div>
-        <div class="images {{template==2? 'bordered':''}}">
-            <div class="next" style="z-index:999" (click)="goRight()">
-                <fa-icon [icon]="rightArrow" [style]="'color:'+primaryColor"></fa-icon>
+      <div *ngIf="project.imgs">
+        <div class="images {{template==2? 'bordered':''}}"  *ngIf="project.imgs.length > 0">
+          <div class="next" style="z-index:999" (click)="goRight()">
+            <fa-icon [icon]="rightArrow" [style]="'color:'+primaryColor"></fa-icon>
+          </div>
+          <div class="prev" style="z-index:999">
+            <fa-icon [icon]="leftArrow" [style]="'color:'+primaryColor" (click)="goLeft()"></fa-icon>
+          </div>
+          <div class="images-container" [style]="'transform:translateX(-'+pos+'px)'">
+            <div class="image" *ngFor="let image of project.imgs">
+              <img [src]="image">
+              <!--                  <video playsinline autoPlay muted loop>-->
+              <!--                    <source [src]="image"/>-->
+              <!--                  </video>-->
             </div>
-            <div class="prev" style="z-index:999">
-                <fa-icon [icon]="leftArrow" [style]="'color:'+primaryColor" (click)="goLeft()"></fa-icon>
-            </div>
-            <div class="images-container" [style]="'transform:translateX(-'+pos+'px)'">
-                <div class="image">
-                    <img src="assets/back.jpeg">
-                </div>
-                <div class="image">
-                    <img src="assets/back.jpeg">
-                </div>
-                <div class="image">
-                    <img src="assets/back.jpeg">
-                </div>
-                <div class="image">
-                    <video playsinline autoPlay muted loop>
-                        <source src="assets/video.mp4"/>
-                    </video>
+          </div>
 
-                </div>
-            </div>
-            
         </div>
+      </div>
         <div class="cos-content">
-            <h1 [style]="'color:'+primaryColor+'!important;filter:brightness(80%)'+';font-family:'+font">Title</h1>
-            <p [style]="'color:'+primaryColor+';font-family:'+font">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ratione deserunt similique consequatur animi facere repellendus eius excepturi obcaecati, quasi provident officia quaerat quis rerum libero dolor temporibus nobis asperiores!</p>
+            <h1 [style]="'color:'+primaryColor+'!important;filter:brightness(80%)'+';font-family:'+font">{{project.name}}</h1>
+          <a *ngIf="project.github " class="cos-btn"  href="https://{{project.github}}" target="_blank"><fa-icon [icon]="gitHub"></fa-icon></a>
+          <a *ngIf="project.link" class="cos-btn"  href="{{project.link}}" target="_blank"><fa-icon [icon]="link"></fa-icon></a>
+            <p [style]="'color:'+primaryColor+';font-family:'+font">{{project.description}}</p>
         </div>
-        
+
     </div>
 </div>
