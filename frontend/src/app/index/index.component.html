@@ -1,2 +1,85 @@
 <app-header></app-header>
-<app-frontpage></app-frontpage>
+<div class="containerbackground"></div>
+<div class="containerr">
+    <div class="subtop">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam facilis enim quidem nulla magni perspiciatis reiciendis accusantium expedita, aut cum dignissimos maxime nobis eum laudantium itaque hic aliquam. Molestiae, possimus?
+    </div>
+    <div class="big-title">
+        <h1>YOUR WEBSITE IS A FEW CLICKS AWAY</h1>
+    </div>
+    <div class="sub">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam facilis enim quidem nulla magni perspiciatis reiciendis accusantium expedita, aut cum dignissimos maxime nobis eum laudantium itaque hic aliquam. Molestiae, possimus?
+    </div>
+    <div class="mouse-container">
+        <div class="circle">
+            <div>
+                <div>
+                    <fa-icon [icon]="mouse"></fa-icon>
+                </div>
+                
+                <p>Keep Scrolling</p>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<div class="aboutus">
+    <div [class]="'left '+class" inViewport
+    [inViewportOptions]="{ threshold: [0] }"
+    (inViewportAction)="onIntersection()">
+        <h1>ABOUT US</h1><br>
+        <p>Webipie started as a dream shared between three software engineering students.<br>
+            <br>
+            It all began when we noticed the huge gap between e-commerce locally and internationally.<br>
+            <br>
+            Digging deeper in this matter, we noticed that business owners in TUNISIA rely solely on Facebook & Instagram pages facing many organizational problems, and having no regard to the durability and scalability of their businesses, especially in an already crowded market.
+            <br>
+            <br>
+            Our Tunisian commerce businesses deserve to be present online through their own websites: We are willing to make that easy, affordable and true !<br>
+            Webipie does all the heavy lifting for you. Sign up for, choose a template, customize it and start selling. We keep it simple so that you can start selling in no time.
+        </p><br>
+            <h3>See the video to learn more about how to get your free website</h3>
+    </div>
+    <div [class]="'right '+class" inViewport
+    [inViewportOptions]="{ threshold: [0] }"
+    (inViewportAction)="onIntersection()">
+        <img src="assets/SVG/logo.svg">
+    </div>
+</div>
+<div class="how">
+    <div class="background" style="background-image: url('assets/wallpaper.jpg');">
+
+    </div>
+    <div class="howcontainer">
+        <h1>WHAT YOU WILL FIND HERE</h1>
+        <h3>OUR PERKS AND MERITS</h3>
+        <div class="card-container">
+            <div class="cardd">
+                <h2>Be professional</h2>
+                <p>Our professional templates allow you to stand out in a crowded market, gain your customer’s trust and be better than just good enough</p>
+            </div>
+            <div class="cardd">
+                <h2>Manage everything</h2>
+                <p>Customize your store, add product, manage orders and track sales statistics all in one simple easy to use dashboard. Any task is just 3 clicks away</p>
+               
+            </div>
+            <div class="cardd">
+                <h2>Sell anywhere</h2>
+                <p>Maximize your reach and increase your customer base. Explore new opportunities to generate revenues.</p>
+            
+            </div>
+        </div>
+    </div>
+</div>
+<div class="knowmore">
+    <h1>THRILLED TO KNOW MORE ?</h1>
+    <button class="btn btn-lg btn-outline-secondary m-4" style="font-size:2rem">Get Started</button>
+</div>
+<div class="price-section">
+    <app-price-section></app-price-section>
+</div>
+<div class="howitworks">
+    <app-howitworks-section></app-howitworks-section>
+</div>
+<app-footer></app-footer>

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faAngleRight, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from "../../_shared/services/auth.service";
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   menuactive = false;
   scrolled = false;
   logged = this.isLoggedIn();
-
+  @Output() clickEmitter = new EventEmitter<any>();
   constructor(private router : Router, private authService: AuthService) { }
 
 
@@ -42,5 +42,8 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn() {
     return this.authService.isLoggedIn()
+  }
+  click(target:any){
+      this.clickEmitter.emit(target);
   }
 }
