@@ -13,6 +13,7 @@ export interface PortfolioModel extends GenericModel {
   url: string,
   description?: string,
   name: string,
+  userName: string,
   phoneNumber?: number,
   picture?: number,
   position?: number,

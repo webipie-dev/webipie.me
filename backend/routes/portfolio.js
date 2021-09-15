@@ -17,9 +17,12 @@ router.get('/url/:url', portfolioService.getPortfolioByUrl);
 
 router.get('/all/urls', portfolioService.getPortfolioUrls);
 
+router.get('/all/names', portfolioService.getPortfolioNames);
+
 // addPortfolio
 router.post('', passportJWT, [
     portfolioValidator.templateId,
+    portfolioValidator.name
 ], validateRequest, portfolioService.addPortfolio);
 
 // edit portfolio

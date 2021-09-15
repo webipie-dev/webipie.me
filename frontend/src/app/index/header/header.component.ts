@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   menuactive = false;
   scrolled = false;
   logged = this.isLoggedIn();
+  portfolio: any;
 
   constructor(private router : Router, private authService: AuthService) { }
 
@@ -23,6 +24,8 @@ export class HeaderComponent implements OnInit {
     if(this.router.url != '/'){
       this.scrolled=true;
     }
+
+    this.portfolio = localStorage.getItem('portfolio')
   }
   onMenuClick(event:any){
     if(!this.menuactive){

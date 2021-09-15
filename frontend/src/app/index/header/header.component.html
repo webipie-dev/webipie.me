@@ -13,7 +13,7 @@
             <a href="#"><h3>pricing</h3><div class="line"></div></a>
             <a href="#"><h3>contact us</h3><div class="line"></div></a>
           <div *ngIf="logged">
-            <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
+            <a [routerLink]="portfolio===null ?['/templates/choose-template']:['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
             <a><img class="avatar" src="assets/johndoe.jpeg"> Welcome, Mr John Doe</a>
           </div>
           <div *ngIf="!logged">
@@ -27,7 +27,7 @@
         <fa-icon [icon]="leftarrow" (click)="onMenuClick($event)"></fa-icon>
         <div class="account">
             <div *ngIf="logged">
-                <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
+                <a [routerLink]="portfolio===null ?['/templates/choose-template']:['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
             </div>
             <div *ngIf="!logged">
             <a [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark">Sign In</button></a>

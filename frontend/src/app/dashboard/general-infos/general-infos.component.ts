@@ -16,7 +16,7 @@ export class GeneralInfosComponent implements OnInit {
 
   portfolio : PortfolioModel = {} as PortfolioModel;
   portfolioForm = this.formBuilder.group({
-    name: ['',Validators.required],
+    userName: ['',Validators.required],
     position: ['',Validators.required],
     email: ['',[Validators.required,Validators.email]],
     phoneNumber: ['',Validators.required],

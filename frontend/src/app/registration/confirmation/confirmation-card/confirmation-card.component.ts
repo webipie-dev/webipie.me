@@ -47,7 +47,7 @@ export class ConfirmationCardComponent implements OnInit {
         if(localStorage.getItem('portfolio')){
           this.router.navigate(['/dashboard'])
         }else{
-          this.router.navigate(['/choose-template'])
+          this.router.navigate(['/templates/choose-template'])
         }
 
       } else {

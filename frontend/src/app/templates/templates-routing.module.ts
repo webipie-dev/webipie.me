@@ -1,16 +1,22 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
-import { TemplatesModule } from "./templates.module";
 import { TemplatesComponent } from "./templates.component";
 import { ChooseTemplateComponent } from "./choose-template/choose-template.component";
+import { ChooseNameComponent } from "./choose-name/choose-name.component";
 
 const routes: Routes = [{
   path: '',
   component: TemplatesComponent,
-  children:[{
+  children:[
+    {
       path:'choose-template',
-      component:ChooseTemplateComponent,
-  }]
+      component:ChooseTemplateComponent
+    },
+    {
+      path:'choose-name',
+      component:ChooseNameComponent
+    }
+  ]
 }];
 
 @NgModule({
