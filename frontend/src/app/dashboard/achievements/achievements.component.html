@@ -2,7 +2,7 @@
   <div class="card-header-alt p-4 d-flex align-items-center justify-space-between">
     <div>
       <h6 class="font-weight-bold font-size-lg mb-1 text-black">Achievements</h6>
-      <p class="text-black-50 mb-0">Tell us more about your success and achievements</p>  
+      <p class="text-black-50 mb-0">Tell us more about your success and achievements</p>
     </div>
     <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!toggleOff" (change)="onToggleChange($event)"></ui-switch>
 
@@ -57,3 +57,4 @@
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

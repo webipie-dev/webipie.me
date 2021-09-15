@@ -1,5 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from 'ngx-dropzone-wrapper';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {TestimonialService} from "../../../_shared/services/testimonial.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -66,7 +65,7 @@ export class AddTestimonialComponent implements OnInit {
       formData.append("file", this.images[0]);
       try{
         image = await this.uploadService.imageUpload(formData);
-        if(image.success) 
+        if(image.success)
           this.testimonialForm.controls['photo'].setValue(image.url);
         else
           errors.push('image' + image.errors.title);

@@ -62,19 +62,19 @@
           <div class="form-group">
             <label for="video">Video</label>
             <ngx-dropzone  (change)="onSelectVideo($event)">
-              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-label>Click or drag video here to upload!</ngx-dropzone-label>
               <ngx-dropzone-preview *ngFor="let f of videos" [file]="f" [removable]="true" (removed)="onRemoveVideo(f)">
                 <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
               </ngx-dropzone-preview>
             </ngx-dropzone>
-            <small class="form-text mb-3">Only jpeg or png images.</small>
+            <small class="form-text mb-3">Only mp4 videos.</small>
           </div>
 
           <div class="position-relative form-group"><label for="exampleEmail">Skills</label>
             <input class="form-control"
                    id="exampleEmail"
                    name="name"
-                   placeholder="Title"
+                   placeholder="Skills"
                    type="text"
                    formControlName="skills"
                    [(ngModel)]="project.skills"

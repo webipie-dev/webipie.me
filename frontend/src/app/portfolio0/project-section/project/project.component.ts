@@ -30,12 +30,13 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   speed= 4000;
   rightArrow = faAngleRight;
   leftArrow = faAngleLeft;
+  button = 1;
 
   ngOnInit(): void {
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
-
+    this.button = JSON.parse(localStorage.getItem('portfolio')!).template.project.button;
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
 
   }

@@ -5,12 +5,11 @@ const projectSchema = Schema({
         name: {type: String, required: true},
         description: {type: String, required: true},
         imgs: {type: [String], required: false},
-        videos: {type: [String], required: false},
+        video: {type: String, required: false},
         skills: {type: [String], required: false},
         link: {type: String, required: false},
         github: {type: String, required: false},
         portfolio: {type: Schema.Types.ObjectID, ref: "Portfolio"}
-
     },
     {
         toJSON: {

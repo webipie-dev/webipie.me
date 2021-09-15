@@ -1,6 +1,6 @@
 <div class="cos-triangle-container">
 <div class="cos-triangle">
-    
+
 </div>
 </div>
 <div class="cos-container">
@@ -11,8 +11,8 @@
             <h2 [style]="'color:'+primaryColor+';filter:brightness(70%)'">I'm a {{position}}</h2>
             <p [style]="'color:'+primaryColor+';font-family:'+font">{{description}}</p>
             <div class="links">
-            <a *ngIf="github" class="cos-btn"  href="{{github}}" target="_blank"><fa-icon [icon]="gitHub"></fa-icon></a>
-            <a *ngIf="linkedin" class="cos-btn"  href="{{linkedin}}" target="_blank"><fa-icon [icon]="linkedIn"></fa-icon></a>
+            <a *ngIf="github" class="cos-btn"  href="{{github | url}}" target="_blank"><fa-icon [icon]="gitHub"></fa-icon></a>
+            <a *ngIf="linkedin" class="cos-btn"  href="{{linkedin | url}}" target="_blank"><fa-icon [icon]="linkedIn"></fa-icon></a>
             </div>
         </div>
         <div class="cos-right">
