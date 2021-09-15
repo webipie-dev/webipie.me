@@ -88,12 +88,6 @@ export class SidebarMenuService {
       "link": "/dashboard/profile"
     },
     {
-      "title": "Preferences",
-      "type": "simple",
-      "icon": "<i class=\"pe-7s-settings\"></i>",
-      "link": "/update-preferences"
-    },
-    {
       "title": "Log Out",
       "type": "simple",
       "icon": "<i class=\"pe-7s-next-2\"></i>",
