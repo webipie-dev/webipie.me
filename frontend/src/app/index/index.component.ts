@@ -13,9 +13,8 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  scroll(target:any){
-    let el = document.getElementById(target);
-    el!.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  scroll(el:HTMLElement){
+    el.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
   onIntersection(){
     this.class = 'active';

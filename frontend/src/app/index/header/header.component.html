@@ -8,10 +8,10 @@
             <div class="menuu" (click)="onMenuClick($event)">
                 <fa-icon [icon]="menuu" [style.color]="scrolled? 'black':'white'"></fa-icon>
             </div>
-            <a href="#" (click)="click('index')"><h3 class="active">home</h3><div class="line full"></div></a>
-            <a href="#" (click)="click('aboutus')"><h3>about us</h3><div class="line"></div></a>
-            <a href="#" (click)="click('pricing')"><h3>pricing</h3><div class="line"></div></a>
-            <a href="#" (click)="click('contactus')"><h3>contact us</h3><div class="line"></div></a>
+            <a (click)="click('index',$event)"><h3 class="active">home</h3><div class="line full"></div></a>
+            <a (click)="click('aboutus',$event)"><h3>about us</h3><div class="line"></div></a>
+            <a (click)="click('pricing',$event)"><h3>pricing</h3><div class="line"></div></a>
+            <a (click)="click('contactus',$event)"><h3>contact us</h3><div class="line"></div></a>
           <div *ngIf="logged">
             <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
             <a [routerLink]="['/dashboard/logout']"><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>

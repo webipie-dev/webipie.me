@@ -1,6 +1,6 @@
-<app-header></app-header>
+<app-header (aboutusEmitter)="scroll(aboutus)" (indexEmitter)="scroll(index)" (pricingEmitter)="scroll(pricing)" (contactusEmitter)="scroll(contactus)"></app-header>
 <div class="containerbackground"></div>
-<div class="containerr">
+<div class="containerr" #index>
     <div class="subtop">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam facilis enim quidem nulla magni perspiciatis reiciendis accusantium expedita, aut cum dignissimos maxime nobis eum laudantium itaque hic aliquam. Molestiae, possimus?
     </div>
@@ -24,7 +24,7 @@
         
     </div>
 </div>
-<div class="aboutus">
+<div class="aboutus" #aboutus>
     <div [class]="'left '+class" inViewport
     [inViewportOptions]="{ threshold: [0] }"
     (inViewportAction)="onIntersection()">
@@ -76,10 +76,12 @@
     <h1>THRILLED TO KNOW MORE ?</h1>
     <button class="btn btn-lg btn-outline-secondary m-4" style="font-size:2rem">Get Started</button>
 </div>
-<div class="price-section">
+<div class="price-section" #pricing>
     <app-price-section></app-price-section>
 </div>
 <div class="howitworks">
     <app-howitworks-section></app-howitworks-section>
 </div>
+<div #contactus>
 <app-footer></app-footer>
+</div>

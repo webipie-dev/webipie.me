@@ -15,7 +15,10 @@ export class HeaderComponent implements OnInit {
   menuactive = false;
   scrolled = false;
   logged = this.isLoggedIn();
-  @Output() clickEmitter = new EventEmitter<any>();
+  @Output() aboutusEmitter = new EventEmitter<any>();
+  @Output() indexEmitter = new EventEmitter<any>();
+  @Output() contactusEmitter = new EventEmitter<any>();
+  @Output() pricingEmitter = new EventEmitter<any>();
   constructor(private router : Router, private authService: AuthService) { }
 
 
@@ -43,7 +46,10 @@ export class HeaderComponent implements OnInit {
   isLoggedIn() {
     return this.authService.isLoggedIn()
   }
-  click(target:any){
-      this.clickEmitter.emit(target);
+  click(target:any,event:any){
+    if(target === "aboutus") this.aboutusEmitter.emit(event);
+    if(target === "index") this.indexEmitter.emit(event);
+    if(target === "pricing") this.pricingEmitter.emit(event);
+    if(target === "contactus") this.contactusEmitter.emit(event);
   }
 }
