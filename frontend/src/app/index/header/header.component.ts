@@ -55,8 +55,12 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername() {
-    this.authService.getUserName().subscribe(result => {
-      this.username = result.name;
-    })
+    if(JSON.parse(localStorage.getItem('portfolio')!).username) {
+      this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
+    } else {
+      this.authService.getUserName().subscribe(result => {
+        this.username = result.name;
+      });
+    }
   }
 }

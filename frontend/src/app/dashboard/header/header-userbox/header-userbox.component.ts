@@ -33,9 +33,7 @@ export class HeaderUserboxComponent {
   }
 
   getUsername() {
-    this.authService.getUserName().subscribe(result => {
-      this.username = result.name;
-    })
+    this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
   }
 
   openSite() {
