@@ -6,6 +6,7 @@ import {environment} from "../../../../environments/environment";
 import Swal from 'sweetalert2';
 import { SocialAuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from 'angularx-social-login';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-card-signin',
@@ -23,7 +24,8 @@ export class CardSigninComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private authSocial: SocialAuthService) { }
+    private authSocial: SocialAuthService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     //Delaying the card animation for a bit
@@ -42,9 +44,10 @@ export class CardSigninComponent implements OnInit {
   }
 
   signIn() {
+    this.spinner.show();
     this.authService.signIn({ email: this.email, password: this.password}).subscribe(result => {
       localStorage.setItem('token', result['token']);
-
+      this.spinner.hide();
       if(result['verified']){
         if (result['portfolioId']){
           localStorage.setItem('portfolioId',result['portfolioId']);
@@ -56,7 +59,7 @@ export class CardSigninComponent implements OnInit {
       }else{
         this.router.navigate(['confirmation']);
       }
-      
+
     }, error => {
       console.log(error);
       Swal.fire({
