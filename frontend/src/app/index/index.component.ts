@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { faMouse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,7 +10,7 @@ import { faMouse } from '@fortawesome/free-solid-svg-icons';
 export class IndexComponent implements OnInit {
   mouse = faMouse;
   class = '';
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,5 +19,14 @@ export class IndexComponent implements OnInit {
   }
   onIntersection(){
     this.class = 'active';
+  }
+  getStarted() {
+    /**
+     * if logged in and has portfolio, redirect to dashboard
+     * if logged in and no portfolio, redirect to choose template
+     * if not logged in, redirect to signup
+     */
+    const navigateTo = localStorage.getItem('token') ? (localStorage.getItem('portfolio') ? '/dashboard' : '/templates/choose-template') : '/register/signup'
+    this.router.navigate([navigateTo]);
   }
 }
