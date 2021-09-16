@@ -1,5 +1,5 @@
 <div [ngClass]="class" #target (click)="click(toggle)">
-    <img src="assets/back.jpeg">
+    <img src="{{displayImg}}">
 </div>
 <div class="overlay" #toggle >
     <div class="cos-card {{template==2? 'bottom':''}}" #card (window:resize)="onResize(card)">

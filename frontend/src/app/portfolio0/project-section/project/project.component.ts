@@ -18,6 +18,7 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   @Input() globalTag = "All";
   @Input() tags? = ["none"];
   @Input() project!: ProjectModel;
+  displayImg = 'src/assets/default-project-img.jpg'
   pos = 0;
   imgWidth=1100;
   class = "cos-container";
@@ -38,6 +39,9 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
     this.button = JSON.parse(localStorage.getItem('portfolio')!).template.project.button;
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
+    if(this.project.imgs){
+      this.displayImg = this.project.imgs[0];
+    }
 
   }
   ngAfterViewInit(){
