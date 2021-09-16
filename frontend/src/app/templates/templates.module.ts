@@ -15,7 +15,6 @@ import {FormsModule} from "@angular/forms";
     CardTemplatesComponent,
     HeaderComponent,
     ChooseTemplateComponent
-
   ],
   imports: [
     CommonModule,

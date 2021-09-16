@@ -55,12 +55,10 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername() {
-    if(JSON.parse(localStorage.getItem('portfolio')!).username) {
-      this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
-    } else {
       this.authService.getUserName().subscribe(result => {
         this.username = result.name;
       });
-    }
   }
+
+  getUserPicture() {}
 }
