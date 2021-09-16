@@ -293,5 +293,18 @@ module.exports = {
     getUsername: async (req, res, next) => {
         const token = req.user;
         return res.status(200).json({name: token.name});
+    },
+
+    markGuideTourDone: async (req, res, next) => {
+        const token = req.user;
+        const user = await User.findById(token._id);
+        user.firstVisit = false;
+        await user.save();
+        return res.status(200).json({operation: 'success'});
+    },
+
+    verifyFirstVisit: async (req, res, next) => {
+        const token = req.user;
+        return res.status(200).json({firstVisit: token.firstVisit});
     }
 }

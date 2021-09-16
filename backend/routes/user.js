@@ -33,6 +33,12 @@ router.route('/verified')
 router.route('/username')
     .get(passportJWT, userService.getUsername);
 
+router.route('/firstvisit')
+    .get(passportJWT, userService.verifyFirstVisit)
+
+router.route('/guidetour')
+    .get(passportJWT, userService.markGuideTourDone);
+
 router.route('/oauth/linkedin')
     .post(userService.linkedinOAuth);
 
