@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
         confirmButtonText: 'Ok'
       });
     }
-    
+
 
   }
 

@@ -288,9 +288,9 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     LogoutComponent,
   ],
   imports: [
-    JoyrideModule,
     CommonModule,
     FormsModule,
+    JoyrideModule.forRoot(),
     DropzoneModule,
     PerfectScrollbarModule,
     NgxDropzoneModule,
