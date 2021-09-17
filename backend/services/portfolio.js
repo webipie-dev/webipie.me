@@ -87,7 +87,7 @@ const getPortfolioByUrl = async (req,res) => {
 
 const addPortfolio = async (req, res, next) => {
   // TODO: email verification error doesn't return a readable error
-  const name = req.user.name;
+  const name = req.body.name;
   const foundPortfolio = await Portfolio.findOne({name});
   if(foundPortfolio){
     return next(ApiError.BadRequest('Portfolio name is already in use'));

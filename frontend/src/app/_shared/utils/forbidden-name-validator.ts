@@ -4,7 +4,6 @@ export function nameValidator(): ValidatorFn{
     const nameRegexp: RegExp = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
     return (control: AbstractControl): ValidationErrors | null => {
       const forbidden = nameRegexp.test(control.value);
-      console.log(forbidden)
       return forbidden ? {forbiddenName: {value: control.value}} : null ;
     };
   }

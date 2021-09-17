@@ -42,6 +42,7 @@ export class ChooseNameComponent implements OnInit {
 
   submit(){
     const templateId = this.route.snapshot.queryParamMap.get('templateId');
+    console.log(templateId);
     this.portfolioService.addOne({templateId, name: this.portfolioName}).subscribe(
       result => {
         localStorage.setItem('portfolioId', result['id']);
