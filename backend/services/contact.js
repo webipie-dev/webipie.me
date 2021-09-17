@@ -46,8 +46,33 @@ const contactSupport = async (req, res, next) => {
   res.status(200).json({result: "Email sent"})
 }
 
+const contactRequestDomain = async (req, res, next) => {
+  let { portfolioID, domain, email, name } = req.body
+
+  let user = null;
+  try{
+    user = await User.findOne({portfolioID});
+  }
+  catch(err){
+    res.status(404).json({error: "Wrong user information"});
+    return
+  }
+  if (!user){
+    res.status(404).json({error: "User not found"});
+    return
+  }
+  let content = `${name} wants to create a custom domain name and link it to his portfolio with ID: ${portfolioID}\ndomain: ${domain}\nemail: ${email}\n`
+  let emailError = sendEmail(EMAIL.USER, EMAIL.SUPPORT, 'Domain name request', content)
+  
+  // TODO: handle email failure correctly, this always returns undefined:
+  if (emailError)
+    return res.status(500).send({error:'Technical Issue!, Please try again later.'});
+  res.status(200).json({result: "Email sent"})
+}
+
 
 module.exports = {
   contactUser,
-  contactSupport
+  contactSupport,
+  contactRequestDomain
 };
