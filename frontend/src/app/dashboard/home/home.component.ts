@@ -33,11 +33,21 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    window.addEventListener('storage', () => {
-      this.setAll()
-    });
-    this.setAll()
+    
+    
+    setTimeout(this.check, 0);
+    
 
+  }
+  check = () =>{
+    console.log(localStorage.getItem("portfolio") != undefined)
+    if (localStorage.getItem("portfolio") != undefined) {
+      console.log("filling data ....")
+      this.setAll()
+      
+    } else {
+        setTimeout(this.check, 0);
+    }
   }
 
   setAll(): void {
