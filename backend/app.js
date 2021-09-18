@@ -65,6 +65,10 @@ app
   .use('/technicalskills', technicalSkillsRoutes)
   .use('/contact', contactRoutes)
   .use(errorHandler)
+  .use(function (err, req, res, next) {
+    res.status(500);
+    res.send("Oops, something went wrong.")
+});
 
 
 module.exports = app;
