@@ -1,0 +1,4 @@
+ACCESS_KEY =  "AKIAZNH4SLOQGVT7RRUH"
+SECRET_KEY = "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"
+AWS_REGION = "eu-central-1"
+S3_BUCKET = "webipie.me-images"
