@@ -15,6 +15,11 @@ export class ConfirmationCardComponent implements OnInit {
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    const token = this.route.snapshot.queryParamMap.get('token');
+    if(token){
+      this.authService.sendConfirmation(token).subscribe();
+    }
+
     this.route.queryParams
       .subscribe(params => {
           this.email = params.email;

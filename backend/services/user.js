@@ -70,7 +70,7 @@ module.exports = {
         // send mail of verification 
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
-            `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${hostname}:${port}/user/confirmation/${token}\n\nThank You!\n`
+            `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}:${clientPort}/register/confirmation?token=${token}\n\nThank You!\n`
         )
         // TODO: handle email failure correctly, this always returns undefined:
         if (emailError)
@@ -123,7 +123,7 @@ module.exports = {
             // send mail of verification 
             var emailError = sendEmail(
                 EMAIL.USER, user.email, 'Account Verification',
-                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${hostname}:${port}/user/confirmation/${token}\n\nThank You!\n`
+                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}:${clientPort}/register/confirmation?token=${token}\n\nThank You!\n`
             );
             // TODO: handle email failure correctly, this always returns undefined:
             if (emailError)
