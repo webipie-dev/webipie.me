@@ -1,0 +1,117 @@
+
+    <div class="card card-box col-xl-12">
+        <div class="card-header">
+            <div class="card-header--title font-weight-bold">
+                Disable/Enable Sections
+            </div>
+            
+            <div class="card-header--actions">
+                
+                <div class="btn-group btn-group-sm" dropdown placement="bottom right">
+                    <div *dropdownMenu class="dropdown-menu dropdown-menu-xl dropdown-menu-right">
+                        <ul class="nav nav-neutral-success nav-pills flex-column px-3">
+                            <li class="nav-item">
+                                <a [routerLink]="" class="nav-link">
+                                    <span>Last day</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a [routerLink]="" class="nav-link active">
+                                    <span>Last month</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a [routerLink]="" class="nav-link">
+                                    <span>Last year</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="divider mt-3"></div>
+                        <div class="pt-3 pb-2 text-center">
+                            <button class="btn btn-sm btn-outline-first" type="button">
+                                Custom period
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <perfect-scrollbar [autoPropagation]="true" class="scroll-area-sm mb-2">
+            <div class="table-responsive">
+                <table class="table table-hover text-nowrap table-borderless mb-0">
+                    <tbody>
+                    <tr>
+                        <td class="text-center">
+                            Hard Skills Section
+                        </td>
+                        <td>
+                            <div class="m-2">
+                                <ui-switch [checked]="!togglesOff[0]" (change)="onToggleChange($event, 1)" class="toggle-switch-success" ></ui-switch>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            Soft Skills Section
+                        </td>
+                        <td>
+                            <div class="m-2">
+                                <ui-switch [checked]="!togglesOff[1]" (change)="onToggleChange($event, 2)" class="toggle-switch-success" ></ui-switch>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            Education Section
+                        </td>
+                        <td>
+                            <div class="m-2">
+                                <ui-switch [checked]="!togglesOff[2]" (change)="onToggleChange($event, 3)" class="toggle-switch-success" ></ui-switch>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            Work Section
+                        </td>
+                        <td>
+                            <div class="m-2">
+                                <ui-switch [checked]="!togglesOff[3]" (change)="onToggleChange($event, 4)" class="toggle-switch-success" ></ui-switch>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            Volunteering Section
+                        </td>
+                        <td>
+                            <div class="m-2">
+                                <ui-switch [checked]="!togglesOff[4]" (change)="onToggleChange($event, 5)" class="toggle-switch-success" ></ui-switch>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            Achievements Section
+                        </td>
+                        <td>
+                            <div class="m-2">
+                                <ui-switch [checked]="!togglesOff[5]" (change)="onToggleChange($event, 6)" class="toggle-switch-success" ></ui-switch>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            Testimonials Section
+                        </td>
+                        <td>
+                            <div class="m-2">
+                                <ui-switch [checked]="!togglesOff[6]" (change)="onToggleChange($event, 7)" class="toggle-switch-success" ></ui-switch>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </perfect-scrollbar>
+    </div>

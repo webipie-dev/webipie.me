@@ -8,12 +8,13 @@
             <div class="menuu" (click)="onMenuClick($event)">
                 <fa-icon [icon]="menuu" [style.color]="scrolled? 'black':'white'"></fa-icon>
             </div>
-            <a href="#"><h3 class="active">home</h3><div class="line full"></div></a>
-            <a href="#"><h3>about us</h3><div class="line"></div></a>
-            <a href="#"><h3>pricing</h3><div class="line"></div></a>
-            <a href="#"><h3>contact us</h3><div class="line"></div></a>
+            <a (click)="click('index',$event)"><h3 class="active">home</h3><div class="line full"></div></a>
+            <a (click)="click('aboutus',$event)"><h3>about us</h3><div class="line"></div></a>
+            <a (click)="click('pricing',$event)"><h3>pricing</h3><div class="line"></div></a>
+            <a (click)="click('contactus',$event)"><h3>contact us</h3><div class="line"></div></a>
           <div *ngIf="logged">
             <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
+            <a [routerLink]="['/dashboard/logout']"><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>
             <a><img class="avatar" src="{{picture}}"> Welcome, {{username}}</a>
           </div>
           <div *ngIf="!logged">
@@ -28,10 +29,11 @@
         <div class="account">
             <div *ngIf="logged">
                 <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
+                <a [routerLink]="['/dashboard/logout']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>
             </div>
             <div *ngIf="!logged">
-            <a [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark">Sign In</button></a>
-            <a [routerLink]="['/register/signup']"><button class="btn btn-sm btn-slack">Sign Up</button></a>
+            <a [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark m-2" >Sign In</button></a>
+            <a [routerLink]="['/register/signup']"><button class="btn btn-sm btn-slack m-2">Sign Up</button></a>
             </div>
         </div>
         <div class="element">

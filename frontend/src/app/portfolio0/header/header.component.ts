@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   rightArrow = faAngleRight;
   name : string = "John Doe";
   color : string = "#202e37";
+  softSkillsDisabled? : boolean;
   @Output() aboutmeClick = new EventEmitter<any>();
   @Output() expertiseClick = new EventEmitter<any>();
   @Output() experienceClick = new EventEmitter<any>();
@@ -21,10 +22,26 @@ export class HeaderComponent implements OnInit {
   @Output() portfolioClick = new EventEmitter<any>();
   @Output() contactClick = new EventEmitter<any>();
   @ViewChild('target') target?: ElementRef;
+  hardSkillsDisabled?: boolean;
+  educationDisabled?: boolean;
+  achievementsDisabled?: boolean;
+  projectsDisabled?: boolean;
+  volunteeringExperiencesDisabled?: boolean;
+  workExperiencesDisabled?: boolean;
+  testimonialsDisabled?: boolean;
   constructor() { } 
   ngOnInit(): void {
     this.name = JSON.parse(localStorage.getItem('portfolio')!).name;
     this.color = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
+    this.softSkillsDisabled = JSON.parse(localStorage.getItem('portfolio')!).softSkillsDisabled;
+    this.hardSkillsDisabled = JSON.parse(localStorage.getItem('portfolio')!).hardSkillsDisabled;
+    this.educationDisabled = JSON.parse(localStorage.getItem('portfolio')!).educationDisabled;
+    this.achievementsDisabled = JSON.parse(localStorage.getItem('portfolio')!).achievementsDisabled;
+    this.projectsDisabled = JSON.parse(localStorage.getItem('portfolio')!).projectsDisabled;
+    this.volunteeringExperiencesDisabled = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiencesDisabled;
+    this.workExperiencesDisabled = JSON.parse(localStorage.getItem('portfolio')!).workExperiencesDisabled;
+    this.testimonialsDisabled = JSON.parse(localStorage.getItem('portfolio')!).testimonialsDisabled;
+    
   }
   clickContact(event:any){
     this.contactClick.emit(event);

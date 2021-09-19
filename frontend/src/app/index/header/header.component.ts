@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faAngleRight, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from "../../_shared/services/auth.service";
@@ -15,6 +15,10 @@ export class HeaderComponent implements OnInit {
   menuactive = false;
   scrolled = false;
   logged = this.isLoggedIn();
+  @Output() aboutusEmitter = new EventEmitter<any>();
+  @Output() indexEmitter = new EventEmitter<any>();
+  @Output() contactusEmitter = new EventEmitter<any>();
+  @Output() pricingEmitter = new EventEmitter<any>();
   username?: string;
   picture: string = 'assets/SVG/avatar.svg';
 
@@ -53,12 +57,16 @@ export class HeaderComponent implements OnInit {
   isLoggedIn() {
     return this.authService.isLoggedIn()
   }
+  click(target:any,event:any){
+    if(target === "aboutus") this.aboutusEmitter.emit(event);
+    if(target === "index") this.indexEmitter.emit(event);
+    if(target === "pricing") this.pricingEmitter.emit(event);
+    if(target === "contactus") this.contactusEmitter.emit(event);
+  }
 
   getUsername() {
       this.authService.getUserName().subscribe(result => {
         this.username = result.name;
       });
   }
-
-  getUserPicture() {}
 }
