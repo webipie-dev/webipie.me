@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit {
       this.scrolled=true;
     }
   }
+  hide(){
+    this.menuactive = false;
+  }
   onMenuClick(event:any){
     if(!this.menuactive){
       this.menuactive = true;

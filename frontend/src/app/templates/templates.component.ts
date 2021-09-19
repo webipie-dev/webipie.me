@@ -14,6 +14,7 @@ export class TemplatesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('hello')
   }
   rightArrow(el:HTMLElement){
     this.positionY += el.offsetWidth;

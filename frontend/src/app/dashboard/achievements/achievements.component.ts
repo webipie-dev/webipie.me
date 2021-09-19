@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AchievementService} from "../../_shared/services/achievement.service";
 import { ToggleSection } from '../toggle-section/toggle-section';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-achievements',
@@ -13,7 +14,8 @@ import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 export class AchievementsComponent extends ToggleSection implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private achievementService: AchievementService, protected portfolioService: PortfolioService) {
+              private achievementService: AchievementService, protected portfolioService: PortfolioService,
+              private spinner: NgxSpinnerService) {
     super(portfolioService, 'achievements');
   }
 
@@ -28,8 +30,10 @@ export class AchievementsComponent extends ToggleSection implements OnInit {
   }
 
   removeAchievement(id: string) {
+    this.spinner.show();
     this.achievementService.deleteMany({ids: [id]}).subscribe(result => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+      this.spinner.hide();
       this.ngOnInit();
     })
   }

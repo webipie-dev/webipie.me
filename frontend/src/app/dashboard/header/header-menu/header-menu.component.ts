@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from "../../../../environments/environment";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
+import {JoyrideService} from "ngx-joyride";
 
 @Component({
   selector: 'app-header-menu',
@@ -11,7 +12,7 @@ export class HeaderMenuComponent implements OnInit {
   url?: string
 
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private joyride: JoyrideService) {
   }
 
   ngOnInit() {
@@ -24,6 +25,13 @@ export class HeaderMenuComponent implements OnInit {
         confirmButtonText: 'Ok'
       });
     }
+  }
+
+  tour() {
+    this.joyride.startTour({
+      steps: ['tourStep1'],
+      themeColor: '#070919'
+    })
   }
 
   openSite() {

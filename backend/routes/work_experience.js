@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const workExperienceService = require('../services/work_experience');
+const handleErrors = require("./error-handling");
 
 const passport = require('passport');
 const validateRequest = require("../middlewares/validate-request");
@@ -14,7 +15,7 @@ router.get('all/portfolioId', [validation.portfolioId], validateRequest, workExp
 // getWorkexperiencebyId
 router.get('/:id', [
   validation.id
-], validateRequest, workExperienceService.getOneWorkExperience)
+], validateRequest, handleErrors(workExperienceService.getOneWorkExperience))
 
 // addWorkexperience
 router.post('', passportJWT, [validation.portfolioId,
@@ -23,15 +24,15 @@ router.post('', passportJWT, [validation.portfolioId,
 ], validateRequest, workExperienceService.addWorkExperience);
 
 // deleteManyWorkExperiences
-router.delete('', validation.ids, passportJWT, workExperienceService.deleteManyWorkExperiences);
+router.delete('', validation.ids, passportJWT, handleErrors(workExperienceService.deleteManyWorkExperiences));
 
 //deleteAllWorkExperiences
-router.delete('/delete', passportJWT, workExperienceService.deleteAllWorkExperiences);
+router.delete('/delete', passportJWT, handleErrors(workExperienceService.deleteAllWorkExperiences));
 
 
 router.patch('/:id', passportJWT, [
   validation.id
-], validateRequest , workExperienceService.editOneWorkExperience);
+], validateRequest , handleErrors(workExperienceService.editOneWorkExperience));
 
 
 module.exports = router;

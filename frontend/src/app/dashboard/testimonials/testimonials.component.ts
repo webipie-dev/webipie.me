@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TestimonialService} from "../../_shared/services/testimonial.service";
 import { ToggleSection } from '../toggle-section/toggle-section';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-testimonials',
@@ -13,7 +14,8 @@ import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 export class TestimonialsComponent extends ToggleSection implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private testimonialService: TestimonialService, protected portfolioService: PortfolioService) {
+              private testimonialService: TestimonialService, protected portfolioService: PortfolioService,
+              private spinner: NgxSpinnerService) {
     super(portfolioService, 'testimonials');
   }
 
@@ -28,8 +30,10 @@ export class TestimonialsComponent extends ToggleSection implements OnInit {
   }
 
   removeTestimonial(id: string) {
+    this.spinner.show();
     this.testimonialService.deleteMany({ids: [id]}).subscribe(result => {
       localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      this.spinner.hide();
       this.ngOnInit();
     })
   }

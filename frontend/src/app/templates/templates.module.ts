@@ -17,7 +17,6 @@ import { ChooseNameComponent } from './choose-name/choose-name.component';
     HeaderComponent,
     ChooseTemplateComponent,
     ChooseNameComponent
-
   ],
   imports: [
     CommonModule,

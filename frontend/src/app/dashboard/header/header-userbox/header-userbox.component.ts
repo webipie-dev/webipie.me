@@ -10,12 +10,17 @@ import {AuthService} from "../../../_shared/services/auth.service";
 })
 export class HeaderUserboxComponent {
   url?: string
+  username!: string;
+  position?: string;
+  picture!: string;
 
   constructor(private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
     this.url = JSON.parse(localStorage.getItem('portfolio')!).url;
+    this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
+    this.picture = JSON.parse(localStorage.getItem('portfolio')!).picture ?? 'assets/SVG/avatar.svg';
     if(!this.url){
       Swal.fire({
         title: 'Error!',
@@ -24,6 +29,11 @@ export class HeaderUserboxComponent {
         confirmButtonText: 'Ok'
       });
     }
+    this.getUsername();
+  }
+
+  getUsername() {
+    this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
   }
 
   openSite() {
