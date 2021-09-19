@@ -26,8 +26,7 @@ export class AuthService extends GenericService<any>{
     return this.http.post(this.getUrl() + this.suffix + '/signin', credentials) as Observable<any>;
   }
 
-  public sendConfirmation(): Observable<any> {
-    const token = localStorage.get('token')
+  public sendConfirmation(token: any): Observable<any> {
     return this.http.get(this.getUrl() + this.suffix + '/confirmation/' + token) as Observable<any>;
   }
 
