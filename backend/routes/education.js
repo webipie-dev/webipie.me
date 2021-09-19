@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const educationService = require('../services/education');
+const handleErrors = require("./error-handling");
 
 const passport = require('passport');
 const validateRequest = require("../middlewares/validate-request");
@@ -17,7 +18,7 @@ router.post('', passportJWT, [validation.portfolioId], validateRequest, educatio
 router.patch('/:id', passportJWT, validateRequest, educationService.editOneEducation);
 
 // delete education
-router.delete('', validation.ids, passportJWT, educationService.deleteEducation);
+router.delete('', validation.ids, passportJWT, handleErrors(educationService.deleteEducation));
 
 
 module.exports = router;

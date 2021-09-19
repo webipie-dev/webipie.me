@@ -6,7 +6,7 @@ import {TextAlignEnum} from "../enums/text-align.enum";
 
 export interface TemplateModel extends GenericModel {
   name: string,
-  colorChart: [string],
+  colorChart: string[],
   colorChartOptions: [[string]],
   font: string,
   fontOptions: [string],

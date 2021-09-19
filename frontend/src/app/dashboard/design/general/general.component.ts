@@ -10,6 +10,8 @@ import {DesignEditService} from "../../../_shared/services/design-edit.service";
 })
 export class GeneralComponent implements OnInit {
   color1 = '#50aeaa';
+  customColor1: string = '#f4772e';
+  customColor2: string = '#1bc943';
   speedValue: number = 0;
   toggle = true;
   colorPalettes: string[][] = [];
@@ -65,6 +67,11 @@ export class GeneralComponent implements OnInit {
         this.colorChartIndex = index
       }
     })
+    if (this.colorChartIndex===-1){
+      this.colorChartIndex = this.colorPalettes.length;
+      this.customColor1 = this.template.colorChart[0];
+      this.customColor2 = this.template.colorChart[1];
+    }
   }
 
   setDefaultFonts() {
@@ -130,6 +137,12 @@ export class GeneralComponent implements OnInit {
     // @ts-ignore
     this.template[element] = newValue;
     this.designEditService.updateTemplate(this.template);
+  }
+
+  selectCustomColors() {
+    // @ts-ignore
+    this.template.colorChart = [this.customColor1, this.customColor2];
+    this.colorChartIndex = this.colorPalettes.length;
   }
 
   onButtonChange(element: string, newValue: string) {

@@ -78,6 +78,7 @@ export class AddVolunteerComponent implements OnInit {
   }
 
   async onSubmit() {
+    this.spinner.show();
     let formData = new FormData();
     let errors: any[] = [];
 

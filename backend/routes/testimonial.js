@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const testimonialService = require('../services/testimonial');
+const handleErrors = require("./error-handling");
 
 const passport = require('passport');
 const validateRequest = require("../middlewares/validate-request");
@@ -13,23 +14,23 @@ router.get('all/portfolioId', [validation.portfolioId], validateRequest, testimo
 // gettestimonialbyId
 router.get('/:id', [
   validation.id
-], validateRequest, testimonialService.getOneTestimonial)
+], validateRequest, handleErrors(testimonialService.getOneTestimonial))
 
 // addTestimonial
 router.post('', passportJWT, [validation.portfolioId,
    validation.description,
-], validateRequest, testimonialService.addTestimonial);
+], validateRequest, handleErrors(testimonialService.addTestimonial));
 
 // deleteManyTestimonials
-router.delete('', validation.ids, passportJWT, testimonialService.deleteManyTestimonials);
+router.delete('', validation.ids, passportJWT, handleErrors(testimonialService.deleteManyTestimonials));
 
 //deleteAllTestimonials
-router.delete('/delete', passportJWT, testimonialService.deleteAllTestimonials);
+router.delete('/delete', passportJWT, handleErrors(testimonialService.deleteAllTestimonials));
 
 
 router.patch('/:id', passportJWT, [
   validation.id
-], validateRequest , testimonialService.editOneTestimonial);
+], validateRequest , handleErrors(testimonialService.editOneTestimonial));
 
 
 module.exports = router;

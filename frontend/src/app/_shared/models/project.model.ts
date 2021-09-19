@@ -4,7 +4,8 @@ export interface ProjectModel extends GenericModel {
   name: string,
   description: string,
   imgs?: [string],
-  skills?: [string],
+  video?: string,
+  skills?: string[],
   link?: string,
   github?: string,
   portfolio: string
