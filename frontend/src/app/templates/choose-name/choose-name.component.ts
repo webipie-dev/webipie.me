@@ -46,7 +46,7 @@ export class ChooseNameComponent implements OnInit {
     this.portfolioService.addOne({templateId, name: this.portfolioName}).subscribe(
       result => {
         localStorage.setItem('portfolioId', result['id']);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['/dashboard', 'home']);
       }
     );
   }

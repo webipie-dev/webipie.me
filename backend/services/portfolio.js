@@ -115,11 +115,12 @@ const addPortfolio = async (req, res, next) => {
     const user = await User.updateOne({_id: req.user.id}, {portfolioID: portfolio.id}, {new: true});
   }
 
-
-  await portfolio.save()
-    //.catch((err) => {
-      //return res.status(400).json({errors: [{ message: err.message }]});
-    //});
+  try{
+    await portfolio.save()
+  }
+  catch(err){
+    return res.status(400).json({errors: [{ message: err.message }]});
+  }
 
   createDomain(portfolioSubdomain)
 

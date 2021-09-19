@@ -12,7 +12,7 @@ const userSchema = new Schema({
     required: true,
     default: []
   },
-  firstVisit: { type: String, default: true},
+  firstVisit: { type: Boolean, default: true},
   email: { type: String, required: true },
   name: { type: String, required: true },
   verified: { type: Boolean, default: false },

@@ -66,10 +66,13 @@ module.exports = {
         await newUser.save();
         const token = signToken(newUser);
 
+        let portString = `:${clientPort}`;
+        if(`${clientPort}` === '430')
+            portString = '';
         // send mail of verification 
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
-            `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}:${clientPort}/register/confirmation?token=${token}\n\nThank You!\n`
+            `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n`
         )
         // TODO: handle email failure correctly, this always returns undefined:
         if (emailError)
@@ -119,10 +122,13 @@ module.exports = {
             return res.status(200).send('This account has been already verified. Please log in.');
 
         } else {
+            let portString = `:${clientPort}`;
+            if(`${clientPort}` === '430')
+                portString = '';
             // send mail of verification 
             var emailError = sendEmail(
                 EMAIL.USER, user.email, 'Account Verification',
-                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}:${clientPort}/register/confirmation?token=${token}\n\nThank You!\n`
+                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n`
             );
             // TODO: handle email failure correctly, this always returns undefined:
             if (emailError)
@@ -305,6 +311,7 @@ module.exports = {
 
     verifyFirstVisit: async (req, res, next) => {
         const token = req.user;
+        console.log(token)
         return res.status(200).json({firstVisit: token.firstVisit});
     }
 }

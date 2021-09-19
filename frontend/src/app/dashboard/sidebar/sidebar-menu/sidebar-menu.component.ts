@@ -38,6 +38,7 @@ export class SidebarMenuComponent implements OnInit {
       this.toggle(theActiveMenu);
     }
     this.authService.verifyFirstVisit().subscribe(result => {
+      console.log(result);
       if (result.firstVisit === true) {
         this.tour();
       }

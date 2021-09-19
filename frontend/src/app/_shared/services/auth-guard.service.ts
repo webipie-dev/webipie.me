@@ -20,7 +20,7 @@ export class AuthGuardService implements CanActivate {
     if (
       !this.auth.isLoggedIn()
       
-      || tokenPayload.role !== expectedRole
+      //|| tokenPayload.role !== expectedRole
     ) {
 
       this.router.navigate(['/register/signin']);
