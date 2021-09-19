@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pymongo
 import boto3
-from botocore.exceptions import NoCredentialsError
+from urllib.request import urlopen
 import config
 
 
@@ -14,17 +14,22 @@ def read_skills():
 
 
 def connect_db():
-    conn_str = "mongodb+srv://webipie:webipiepass@webipieme.ydbo1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-    client = pymongo.MongoClient(conn_str, serverSelectionTimeoutMS=5000)
+    client = pymongo.MongoClient(config.CONN_STR, serverSelectionTimeoutMS=5000)
 
     return client['myFirstDatabase']
 
 
-def insert_skill(db, skill_name, skill_icon):
+def insert_skill(db, skill_name, skill_icon= None):
     skills = db.technicalskills
     skill = skills.insert_one({"name": skill_name , "icon": skill_icon})
-
     return skill
+
+def find_skill(db, skill):
+    skills = db.technicalskills
+    if skills.find_one({"name": skill}):
+        return True
+    else:
+        return False
 
 
 def search_logo(keyword):
@@ -63,45 +68,35 @@ def search_logo(keyword):
         
 
 
-def upload_to_aws(url, bucket, s3_file):
-    r = requests.get("http:" + url, stream=True)
+def upload_to_aws(url, s3_file):
+    response = urlopen('https:' + url)
 
     s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
                       aws_secret_access_key=config.SECRET_KEY)
-
     try:
-        s3.upload_fileobj(r.raw, bucket, "skills/" + s3_file)
+        s3.upload_fileobj(response, config.S3_BUCKET, "skills/" + s3_file + "png")
         print("Upload Successful")
         return True
-    except FileNotFoundError:
-        print("The file was not found")
-        return False
-    except NoCredentialsError:
-        print("Credentials not available")
-        return False
+    except  Exception as e:
+        print(e)
 
 
 
-""" skills = read_skills()
-
-logos = []
-for skill in skills:
-    logo = search_logo(skill)
-    print(logo)
-    logos.append(logo)
-
-print(len(skills))
-print(len(logos))
-for logo in logos: 
-    if logo != None:
-        res = logo
-        break """
-
-res = "//upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/220px-AngularJS_logo.svg.png"
-uploaded = upload_to_aws(res, config.S3_BUCKET, 'logo.svg')
-print(uploaded)
 
 
-""" page = wptools.page('Angular', lang="fr")
-result = page.get()
-print(page.data) """
+
+if __name__ == "main":
+    skills = read_skills()
+    db = connect_db()
+    for skill in skills:
+        if(not find_skill(db, skill)):
+            logo = search_logo(skill)
+            if(logo != None):
+                upload_to_aws(logo, skill)
+                icon = "https://s3-{0}.amazonaws.com/{1}/{2}".format(
+                                config.AWS_REGION,
+                                config.S3_BUCKET,
+                                "skills/" + skill + "png")
+                insert_skill(db, skill, icon)
+            else:
+                insert_skill(db, skill)
