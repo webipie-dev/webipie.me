@@ -11,7 +11,7 @@ import { PortfolioService } from './_shared/services/portfolio.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     CommonModule,

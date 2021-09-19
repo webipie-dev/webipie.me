@@ -15,6 +15,15 @@ const getPortfolioUrls = async (req,res) => {
   res.status(200).send(urls);
 };
 
+const getPortfolioNames = async (req,res) => {
+  const names =await Portfolio.find({}).select({ "name": 1, "_id": 0})
+    .catch((err) => {
+    res.status(400).json({errors: [{ message: err.message }]});
+    });
+
+  res.status(200).send(names);
+};
+
 const getOnePortfolio = async (req, res) => {
   //get portfolio id
   const { id } = req.params;
@@ -78,7 +87,7 @@ const getPortfolioByUrl = async (req,res) => {
 
 const addPortfolio = async (req, res, next) => {
   // TODO: email verification error doesn't return a readable error
-  const name = req.user.name + (""+Math.random()).substring(2,7);
+  const name = req.body.name;
   const foundPortfolio = await Portfolio.findOne({name});
   if(foundPortfolio){
     return next(ApiError.BadRequest('Portfolio name is already in use'));
@@ -186,6 +195,7 @@ const changeTemplate = async (req, res, next) => {
 module.exports = {
   getOnePortfolio,
   getPortfolioByUrl,
+  getPortfolioNames,
   getPortfolioUrls,
   addPortfolio,
   editPortfolio,

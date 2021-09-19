@@ -9,7 +9,19 @@ let portfolioValidation = {
    is a minimum of 2 characters long
    is under 30 characters long
    */
-  name: util.promisify(
+  userName: util.promisify(
+    check('userName')
+      .not().isEmpty().withMessage('Name not provided')
+      .isLength({ min: 5 ,max :30}).withMessage('name is too short or too long')
+  ),
+
+  /**
+   Must pass the following rules:
+   is not an empty string
+   is a minimum of 2 characters long
+   is under 30 characters long
+   */
+   name: util.promisify(
     check('name')
       .not().isEmpty().withMessage('Name not provided')
       .isLength({ min: 5 ,max :30}).withMessage('name is too short or too long')

@@ -13,6 +13,7 @@ const {technicalSkillSchema} =  require('./technical_skill');
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},
   name: {type: String, required: true, unique: true},
+  userName: {type: String},
   description: {type: String, required: false},
   phoneNumber: {type: String, required: false},
   position: {type: String, required: false},

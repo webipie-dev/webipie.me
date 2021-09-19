@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   menuactive = false;
   scrolled = false;
   logged = this.isLoggedIn();
+  portfolio: any;
   @Output() aboutusEmitter = new EventEmitter<any>();
   @Output() indexEmitter = new EventEmitter<any>();
   @Output() contactusEmitter = new EventEmitter<any>();
@@ -29,6 +30,8 @@ export class HeaderComponent implements OnInit {
     if(this.router.url != '/'){
       this.scrolled=true;
     }
+
+    this.portfolio = localStorage.getItem('portfolio')
     if(this.isLoggedIn()) {
       this.getUsername();
     }

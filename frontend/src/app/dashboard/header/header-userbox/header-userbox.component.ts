@@ -46,7 +46,9 @@ export class HeaderUserboxComponent {
   changeTemplate() {
     this.router.navigate(['/templates/choose-template']);
   }
-  logOut(){
 
+  logOut(){
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

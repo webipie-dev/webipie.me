@@ -59,8 +59,12 @@ export class PortfolioService extends BaseService {
     return this.http.delete(this.getUrl() + this.suffix + '/delete') as Observable<PortfolioModel>;
   }
 
-  getStoreUrls(): Observable<[string]> {
+  getPortfolioUrls(): Observable<[string]> {
     return this.http.get(this.getUrl() + this.suffix + '/all/urls') as unknown as Observable<any>;
+  }
+
+  getPortfolioNames(): Observable<[string]> {
+    return this.http.get(this.getUrl() + this.suffix + '/all/names') as unknown as Observable<any>;
   }
 
   getPortfolioByUrl(): Promise<boolean> {
