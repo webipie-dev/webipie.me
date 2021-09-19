@@ -9,6 +9,50 @@
     overflow: hidden;
     transition: transform 0.5s ease,flex-grow 500ms linear,width 1s ease,opacity 0.5s ease,flex 500ms ease,margin 0.5s ease;
 }
+.cos-btn-icon{
+  padding:10px;
+  box-sizing: border-box;
+  margin-top:20px;
+  height:fit-content;
+  width: fit-content;
+  transition: all ease 0.5s;
+  fa-icon{
+    font-size: 3rem;
+    transform: translateY(-10px);
+  }
+}
+
+.cos-btn{
+  padding:5px;
+  padding-right:20px;
+  padding-left:20px;
+  border:2px solid #202e37;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  margin-bottom:10px;
+}
+.cos-btn:hover , .active{
+  color:white !important;
+  background-color: #202e37 !important;
+}
+.cos-btn p{
+  padding:0px;
+  margin:0px;
+}
+.cos-nav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 600px;
+}
+
+.cos-btn-icon:hover{
+  transform: translateY(-15px);
+
+}
+
 .cos-container:hover{
     transform: scale(1.02);
 
@@ -25,7 +69,7 @@
 }
 .invisible{
     opacity:0;
-    
+
 }
 .overlay{
     position: fixed;
@@ -100,7 +144,7 @@
         .next{
             right:0px;
         }
-        
+
         .images-container{
             position: relative;
             display: flex;
@@ -118,13 +162,13 @@
                     width:100%;
                     object-fit:fill;
                     object-position: center;
-                    
+
                 }
-            }  
+            }
         }
-          
+
     }
-    
+
 }
 .bordered{
     border-bottom-left-radius: 1000px !important;

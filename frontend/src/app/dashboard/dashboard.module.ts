@@ -226,6 +226,7 @@ import { NgxDropzoneModule,NgxDropzoneComponent } from 'ngx-dropzone';
 import { AchievementsSectionComponent } from './design/achievements-section/achievements-section.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { JoyrideModule } from 'ngx-joyride';
 import { EllipsisModule } from 'ngx-ellipsis';
 import { ContactSupportComponent } from './contact-support/contact-support.component';
 import { DomainRequestComponent } from './domain-request/domain-request.component';
@@ -293,6 +294,7 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   imports: [
     CommonModule,
     FormsModule,
+    JoyrideModule.forRoot(),
     DropzoneModule,
     PerfectScrollbarModule,
     NgxDropzoneModule,

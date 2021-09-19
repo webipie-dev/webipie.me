@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-card-templates',
@@ -6,11 +7,16 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./card-templates.component.scss']
 })
 export class CardTemplatesComponent implements OnInit {
-  @Input() selected=false;
+
   constructor() { }
+
+  url!: string;
+  @Input() selected=false;
   @Output() selectEmitter = new EventEmitter<boolean>();
   ngOnInit(): void {
+    this.url = environment.protocol + '://johndoe43817.webipie.me' + environment.PORT;
   }
+
   select(){
     if(this.selected){
       this.selectEmitter.emit(false);

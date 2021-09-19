@@ -5,14 +5,14 @@
         <div class="avatar-icon-wrapper d-100">
           <span class="badge badge-circle badge-success">Online</span>
           <div class="avatar-icon d-100">
-            <img alt="..." [src]="this.portfolio.picture"/>
+            <img alt="..." [src]="portfolio.picture"/>
           </div>
         </div>
       </div>
       <div class="font-weight-bold font-size-lg d-flex align-items-center mt-2 mb-0">
-        <span>{{this.portfolio.name}}</span>
+        <span>{{username}}</span>
       </div>
-      <p class="mb-4 font-size-md text-white-50">{{this.portfolio.position || " "}}</p>
+      <p class="mb-4 font-size-md text-white-50">{{portfolio.position || " "}}</p>
       <a [routerLink]="['/dashboard/support-request']" class="btn btn-sm btn-outline-light shadow-none mr-2">
         Contact support
       </a>
@@ -23,13 +23,13 @@
       <div *ngIf="showEllipsis; else noEllipsis" class="text-white-50 mb-0 py-4">
         <div
           ellipsis="... Show more!"
-          [ellipsis-content]="this.portfolio.description || '...'"
+          [ellipsis-content]="portfolio.description || '...'"
           (ellipsis-click-more)="showEllipsis = false"
           style="height: 50px;"></div>
       </div>
       <ng-template #noEllipsis>
         <div class="text-white-50 mb-0 py-4">
-          {{this.portfolio.description || '...'}}
+          {{portfolio.description || '...'}}
           <button (click)="showEllipsis = true" class="btn" style="color: #3aaf85">Show less</button>
         </div>
       </ng-template>
@@ -43,7 +43,7 @@
                                 <a [routerLink]="" class="text-white">Work Experiences</a>
                             </span>
           <span class="badge badge-dark">
-                                {{this.portfolio.workExperiences!.length || 0}}
+                                {{portfolio.workExperiences!.length || 0}}
                             </span>
         </div>
       </div>
@@ -53,7 +53,7 @@
                                 <a [routerLink]="" class="text-white">Projects</a>
                             </span>
           <span class="badge badge-dark">
-                                {{this.portfolio.projects!.length || 0}}
+                                {{portfolio.projects!.length || 0}}
                             </span>
         </div>
       </div>
@@ -63,7 +63,7 @@
                                 <a [routerLink]="" class="text-white">Volunteering Experiences</a>
                             </span>
           <span class="badge badge-dark">
-                                {{this.portfolio.volunteeringExperiences!.length || 0}}
+                                {{portfolio.volunteeringExperiences!.length || 0}}
                             </span>
         </div>
       </div>
@@ -73,7 +73,7 @@
                                 <a [routerLink]="" class="text-white">Technical Skills</a>
                             </span>
           <span class="badge badge-dark">
-                            {{this.portfolio.technicalSkills!.length || 0}}
+                            {{portfolio.technicalSkills!.length || 0}}
                             </span>
         </div>
       </div>
@@ -83,7 +83,7 @@
                                 <a [routerLink]="" class="text-white">Soft Skills</a>
                             </span>
           <span class="badge badge-dark">
-                            {{this.portfolio.softSkills!.length || 0}}
+                            {{portfolio.softSkills!.length || 0}}
                             </span>
         </div>
       </div>
@@ -93,7 +93,7 @@
                                 <a [routerLink]="" class="text-white">Achivements</a>
                             </span>
           <span class="badge badge-dark">
-                            {{this.portfolio.achievements!.length || 0}}
+                            {{portfolio.achievements!.length || 0}}
                             </span>
         </div>
       </div>
@@ -103,7 +103,7 @@
                                 <a [routerLink]="" class="text-white">Testimonials</a>
                             </span>
           <span class="badge badge-dark">
-                            {{this.portfolio.testimonials!.length || 0}}
+                            {{portfolio.testimonials!.length || 0}}
                             </span>
         </div>
       </div>
@@ -185,10 +185,10 @@
             <div class="col-12">
               <div class="position-relative form-group"><label for="old_password">Old Password <span style="color: red">*</span></label>
                 <input
-                  class="form-control" 
-                  id="old_password" 
-                  name="old_password" 
-                  placeholder="Old Password" 
+                  class="form-control"
+                  id="old_password"
+                  name="old_password"
+                  placeholder="Old Password"
                   type="password"
                   formControlName="old_password"
                   [(ngModel)]="old_password">
@@ -197,10 +197,10 @@
             <div class="col-12">
               <div class="position-relative form-group"><label for="new_password">New Password <span style="color: red">*</span></label>
                 <input
-                  class="form-control" 
-                  id="new_password" 
-                  name="new_password" 
-                  placeholder="New Password" 
+                  class="form-control"
+                  id="new_password"
+                  name="new_password"
+                  placeholder="New Password"
                   type="password"
                   formControlName="new_password"
                   [(ngModel)]="new_password">
@@ -209,17 +209,17 @@
             <div class="col-12">
               <div class="position-relative form-group"><label for="password">Confirm Password <span style="color: red">*</span></label>
                 <input
-                  class="form-control" 
-                  id="password" 
-                  name="password" 
-                  placeholder="Confirm Password" 
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Confirm Password"
                   type="password"
                   formControlName="password"
                   [(ngModel)]="password">
               </div>
             </div>
 
-            <button [disabled]="!newPasswordForm.valid || this.new_password != this.password" class="mx-3 my-3 btn btn-slack">Save</button>
+            <button [disabled]="!newPasswordForm.valid || new_password != password" class="mx-3 my-3 btn btn-slack">Save</button>
           </div>
         </form>
       </div>

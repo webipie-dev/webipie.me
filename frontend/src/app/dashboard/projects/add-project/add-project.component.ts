@@ -35,11 +35,11 @@ export class AddProjectComponent implements OnInit {
   projectForm = this.formBuilder.group({
     name: ['', Validators.required],
     description: ['', [Validators.required,Validators.maxLength]],
-    github: [''],
-    imgs: [''],
-    video: [''],
-    link: [''],
-    skills: [''],
+    github: [],
+    imgs: [],
+    video: [],
+    link: [],
+    skills: [],
   })
   skills: TechnicalSkillModel[] = [];
   selectedSkills = [];
@@ -93,7 +93,7 @@ export class AddProjectComponent implements OnInit {
   }
 
 
-  
+
 
   async onSubmit() {
     this.spinner.show();
@@ -115,7 +115,7 @@ export class AddProjectComponent implements OnInit {
         errors.push('image' + err.error.errors.title);
       }
     }
-    
+
     if(this.videos[0]){
       formData = new FormData();
       formData.append("file", this.videos[0]);
@@ -130,7 +130,7 @@ export class AddProjectComponent implements OnInit {
       catch(err){
         errors.push('video' + err.error.errors.title);
       }
-    }    
+    }
 
     this.processForm()
     if(!this.edit) {
