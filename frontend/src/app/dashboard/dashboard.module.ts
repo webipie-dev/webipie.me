@@ -227,6 +227,8 @@ import { AchievementsSectionComponent } from './design/achievements-section/achi
 import { LogoutComponent } from './logout/logout.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { EllipsisModule } from 'ngx-ellipsis';
+import { ContactSupportComponent } from './contact-support/contact-support.component';
+import { DomainRequestComponent } from './domain-request/domain-request.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -285,6 +287,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ProjectsSectionComponent,
     AchievementsSectionComponent,
     LogoutComponent,
+    ContactSupportComponent,
+    DomainRequestComponent,
   ],
   imports: [
     CommonModule,

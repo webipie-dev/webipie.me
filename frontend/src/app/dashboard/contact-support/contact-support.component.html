@@ -1,0 +1,34 @@
+<div class="cos-container">
+    <div class="cos-content">
+        
+        <h1>Contact Support!</h1>
+        <h3>Contact us if you're facing an issue</h3>
+        <div class="cos-contact">
+            <fa-icon [icon]="phone"></fa-icon>
+            <h4>+21699739801</h4>
+            <fa-icon [icon]="mail"></fa-icon>
+            <h4>alaeddine.abdessalem@gmail.com</h4>
+        </div>
+        <div class="cos-card {{card}}">
+            <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+            <div class="cos-form">
+                <div class="cos-left">
+                    <label>Your name</label>
+                    <input type="text" formControlName="name" placeholder="Your Name" [class]='card'/>
+                    <label>Mail</label>
+                    <input type="email" formControlName="email" placeholder="Your Email" [class]='card'/>
+                    <label>Problem Description</label>
+                    <input type="text" formControlName="subject" placeholder="Subject" [class]='card'/>
+                </div>
+                <div class="cos-right">
+                    <label>Message</label>
+                    <textarea formControlName="message" placeholder="Your Message" [class]='card'></textarea>
+                </div>
+            </div>
+            <div class="cos-btn-container">
+            <button type="submit" class="cos-btn" [class]='card' [disabled]="!contactForm.valid" [ngClass]="{'disabled' : !contactForm.valid}">Send Message</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

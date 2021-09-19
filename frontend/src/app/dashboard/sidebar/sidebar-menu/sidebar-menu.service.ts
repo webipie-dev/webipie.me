@@ -78,6 +78,28 @@ export class SidebarMenuService {
       "link": "/dashboard/design"
     },
     {
+      "title": "Help",
+      "type": "header"
+    },
+    {
+      "title": "Contact Support",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-headphones\"></i>",
+      "link": "/dashboard/support-request"
+    },
+    {
+      "title": "Request Domain Name",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-note2\"></i>",
+      "link": "/dashboard/domain-request"
+    },
+    {
+      "title": "FAQ",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-help1\"></i>",
+      "link": "/dashboard/faq"
+    },
+    {
       "title": "Settings",
       "type": "header"
     },
