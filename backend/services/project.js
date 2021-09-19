@@ -30,8 +30,7 @@ const getOneProject = async (req, res, next) => {
 };
 
 const addProject = async (req, res, next) => {
-  let { name, description, skills, imgs, link, github, portfolioId } = req.body
-
+  let { portfolioId } = req.body
   let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
     next(ApiError.NotFound('Portfolio Not Found'));
@@ -39,8 +38,11 @@ const addProject = async (req, res, next) => {
   }
 
   const project = new Project({
-    name, description, skills, imgs, link, github, "portfolio": portfolioId
+    ...req.body,
+    "portfolio": portfolioId
   });
+
+
 
   await project.save();
   portfolio = await Portfolio.findOneAndUpdate({"_id":portfolioId}, { $push: { projects: project } }, {new: true})

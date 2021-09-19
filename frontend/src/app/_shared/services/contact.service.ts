@@ -17,7 +17,18 @@ export class ContactService extends BaseService {
 
   public contact(body: any): Observable<any> {
     console.log(BaseService.addJWT())
+    return this.http.post(this.getUrl() + '/contact/', body, BaseService.addJWT()) as Observable<any>;
+  }
+
+  public contactSupport(body: any): Observable<any> {
+    console.log(BaseService.addJWT())
     console.log(body);
-    return this.http.post(this.getUrl() + '/contact' + '/', body, BaseService.addJWT()) as Observable<any>;
+    return this.http.post(this.getUrl() + '/contact/support/' , body, BaseService.addJWT()) as Observable<any>;
+  }
+
+  public contactRequestDomain(body: any): Observable<any> {
+    console.log(BaseService.addJWT())
+    console.log(body);
+    return this.http.post(this.getUrl() + '/contact/domain-request/' , body, BaseService.addJWT()) as Observable<any>;
   }
 }

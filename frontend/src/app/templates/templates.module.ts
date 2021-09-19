@@ -6,7 +6,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { TemplatesRoutingModule } from './templates-routing.module';
 import { ChooseTemplateComponent } from './choose-template/choose-template.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ChooseNameComponent } from './choose-name/choose-name.component';
 
 
 @NgModule({
@@ -14,12 +15,13 @@ import {FormsModule} from "@angular/forms";
     TemplatesComponent,
     CardTemplatesComponent,
     HeaderComponent,
-    ChooseTemplateComponent
-
+    ChooseTemplateComponent,
+    ChooseNameComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     TemplatesRoutingModule,
     FontAwesomeModule,
   ]

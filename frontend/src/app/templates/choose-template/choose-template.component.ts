@@ -90,16 +90,11 @@ export class ChooseTemplateComponent implements OnInit {
       if(localStorage.getItem('portfolioId')){
         this.portfolioService.changeTemplate(portfolioId, {template: this.selectedTemplate}).subscribe(
           result => {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['dashboard', 'home']);
           }
         );
       }else{
-        this.portfolioService.addOne({templateId: this.selectedTemplate.id}).subscribe(
-          result => {
-            localStorage.setItem('portfolioId', result.id);
-            this.router.navigate(['dashboard']);
-          }
-        );
+        this.router.navigate(['templates/choose-name'], { queryParams: { templateId: this.selectedTemplate.id }});
       }
     }else{
       Swal.fire({

@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['templates/choose-template']);
       }
       localStorage.setItem("portfolio", JSON.stringify(portfolio));
+      console.log("Terminate loading .....")
     }
     catch(err){
       Swal.fire({
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
         confirmButtonText: 'Ok'
       });
     }
-    
+
 
   }
 

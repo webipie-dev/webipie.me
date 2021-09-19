@@ -21,7 +21,9 @@ export class ProfileComponent implements OnInit {
   old_password: any;
   new_password: any;
   password: any;
-  
+  username!: string;
+  picture?: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -30,6 +32,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!);
+    this.picture = this.portfolio.picture ?? 'assets/SVG/avatar.svg';
+    this.getUsername();
+  }
+
+  getUsername() {
+    this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
   }
 
   onSubmit(){
@@ -42,7 +50,7 @@ export class ProfileComponent implements OnInit {
       error => {
         this.spinner.hide();
       }
-    )    
+    )
 
   }
 }

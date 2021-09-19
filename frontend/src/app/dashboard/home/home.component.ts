@@ -46,6 +46,16 @@ export class HomeComponent implements OnInit {
         setTimeout(this.check, 0);
     }
   }
+  check = () =>{
+    console.log(localStorage.getItem("portfolio") != undefined)
+    if (localStorage.getItem("portfolio") != undefined) {
+      console.log("filling data ....")
+      this.setAll()
+      
+    } else {
+        setTimeout(this.check, 0);
+    }
+  }
 
   setAll(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!)

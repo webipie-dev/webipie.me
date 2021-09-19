@@ -21,16 +21,19 @@ p{
 }
 .card-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
+    app-price-card{
+        flex-shrink: 0;
+    }
     align-items: center;
     width:100%;
     margin:auto;
-    overflow: hidden;
+    overflow: auto;
     
 }
-@media screen and (max-width:1300px) {
+@media screen and (max-width:920px) {
     .card-container{
-        flex-direction: column;
+        justify-content: flex-start;
     }
 }

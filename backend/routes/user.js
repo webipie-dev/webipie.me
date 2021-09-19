@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 const fetch = require('node-fetch')
 // const {JWT_SECRET} = require('../configuration');
 const { validateuser , user } = require('../models/user');
+const handleErrors = require("./error-handling");
 const passportJWT = passport.authenticate('jwt', { session: false });
 const passportSignIn = passport.authenticate('local', { session: false });
 const validateRequest = require("../middlewares/validate-request");
@@ -16,7 +17,7 @@ router.route('/signup')
     .post(userService.signUp);
 
 router.route('/signin')
-    .post(passportSignIn, userService.signIn);
+    .post(passportSignIn, handleErrors(userService.signIn));
 
 router.route('/confirmation/:token')
     .get(userService.confirmEmail);
@@ -24,16 +25,23 @@ router.route('/confirmation/:token')
 router.route('/confirmation/resend/:token')
     .get(userService.resend);
 
-
-
-router.route('/oauth/google').post(userService.loginWithGoogle);
-
+router.route('/oauth/google')
+    .post(userService.loginWithGoogle);
 
 router.route('/verified')
-    .get(passportJWT, userService.userVerified)
+    .get(passportJWT, userService.userVerified);
+
+router.route('/username')
+    .get(passportJWT, userService.getUsername);
+
+router.route('/firstvisit')
+    .get(passportJWT, userService.verifyFirstVisit)
+
+router.route('/guidetour')
+    .get(passportJWT, userService.markGuideTourDone);
 
 router.route('/oauth/linkedin')
-    .post(userService.linkedinOAuth);
+    .post(handleErrors(userService.linkedinOAuth));
 
 // router.route('/oauth/facebook')
 //     .post(passport.authenticate('facebookToken', { session: false }), storeOwnerService.facebookOAuth);

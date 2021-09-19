@@ -15,10 +15,14 @@ export class HeaderComponent implements OnInit {
   menuactive = false;
   scrolled = true;
   logged = this.isLoggedIn();
+  username?: string;
+  picture?: string = 'assets/SVG/avatar.svg';
 
   constructor(private router : Router, private authService: AuthService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUsername();
+  }
 
   isLoggedIn() {
     return this.authService.isLoggedIn()
@@ -30,5 +34,11 @@ export class HeaderComponent implements OnInit {
     }else{
       this.menuactive = false;
     }
+  }
+
+  getUsername() {
+    this.authService.getUserName().subscribe(result => {
+      this.username = result.name;
+    });
   }
 }

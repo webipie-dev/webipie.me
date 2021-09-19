@@ -3,6 +3,7 @@ module.exports = {
 
     EMAIL: {
         USER: 'confirmation@webipie.com',
+        SUPPORT: 'alaeddine.abdessalem@gmail.com',
         PASSWORD: 'webipie4win',
     },
   awsEndPoint: 'https://webipie-images.s3.eu-west-3.amazonaws.com/',

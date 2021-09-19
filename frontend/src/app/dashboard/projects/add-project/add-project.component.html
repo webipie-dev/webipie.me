@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -44,7 +44,7 @@
             <!-- /Error handling -->
           </div>
 
-          
+
           <div class="form-group">
             <label for="image">Images</label>
             <div class="my-2 mx-2">
@@ -62,23 +62,18 @@
           <div class="form-group">
             <label for="video">Video</label>
             <ngx-dropzone  (change)="onSelectVideo($event)">
-              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-label>Click or drag video here to upload!</ngx-dropzone-label>
               <ngx-dropzone-preview *ngFor="let f of videos" [file]="f" [removable]="true" (removed)="onRemoveVideo(f)">
                 <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
               </ngx-dropzone-preview>
             </ngx-dropzone>
-            <small class="form-text mb-3">Only jpeg or png images.</small>
+            <small class="form-text mb-3">Only mp4 videos.</small>
           </div>
+          <div class="position-relative form-group"><label for="skills">Skills</label>
 
-          <div class="position-relative form-group"><label for="exampleEmail">Skills</label>
-            <input class="form-control"
-                   id="exampleEmail"
-                   name="name"
-                   placeholder="Title"
-                   type="text"
-                   formControlName="skills"
-                   [(ngModel)]="project.skills"
-            >
+            <ng-select id="skills" [(ngModel)]="project.skills" [multiple]="true" [addTag]="true" formControlName="skills">
+              <ng-option *ngFor="let skill of skills" [value]="skill.name">{{skill.name}}</ng-option>
+            </ng-select>
           </div>
           <div class="position-relative form-group"><label for="exampleEmail">Link</label>
             <input class="form-control"
@@ -120,7 +115,13 @@
         <div class="info-container">
             <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
             <h1>Tips & Information</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+            <p>Make sure to fill all available fields to stands out.
+              Also, don't forget to add as many pictures as possible and verify their quality.</p>
+            <p>
+              <strong>NB*:</strong> In the skills field, add a few general skills,
+              (backend, machine learning, fullstack, ...).
+              Adding a lot of skills would ruin the portfolio design.
+            </p>
         </div>
     </div>
   </div>

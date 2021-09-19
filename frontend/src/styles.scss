@@ -98,6 +98,13 @@ input[type=number] {
   border-color: #4F8A10 !important;
   color: #4F8A10;
 }
+joyride-step{
+  z-index: 10000;
+  position: relative;
+}
+.backdrop-container{
+  z-index:10000 !important;
+}
 @keyframes show {
   0%{
     opacity:0;
@@ -105,5 +112,29 @@ input[type=number] {
   }100%{
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  
+
+  &::-webkit-scrollbar {
+      width: 10px;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+      background: white;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+      background: rgb(12, 159, 12);
+  }
+  
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+      background: rgb(72, 166, 72);
   }
 }

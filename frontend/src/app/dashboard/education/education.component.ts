@@ -4,6 +4,7 @@ import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import {EducationModel} from "../../_shared/models/education.model";
 import {EducationService} from "../../_shared/services/education.service";
 import { ToggleSection } from '../toggle-section/toggle-section';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-education',
@@ -12,7 +13,8 @@ import { ToggleSection } from '../toggle-section/toggle-section';
 })
 export class EducationComponent extends ToggleSection implements OnInit {
   constructor(private educationService: EducationService, private router: Router,
-              private route: ActivatedRoute, protected portfolioService: PortfolioService) {
+              private route: ActivatedRoute, protected portfolioService: PortfolioService,
+              private spinner: NgxSpinnerService) {
     super(portfolioService, 'education');
   }
 
@@ -28,8 +30,10 @@ export class EducationComponent extends ToggleSection implements OnInit {
 
 
   removeEducation(id: string) {
+    this.spinner.show();
     this.educationService.deleteMany({ids: [id]}).subscribe(result => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+      this.spinner.hide();
       this.ngOnInit();
     })
   }

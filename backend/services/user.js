@@ -4,9 +4,8 @@ const {JWT_SECRET, EMAIL} = require('../configuration/index');
 const bcrypt = require('bcrypt');
 const ApiError = require("../errors/api-error");
 const {sendEmail} = require('./email');
+const Portfolio = require('../models/portfolio');
 const querystring = require('querystring');
-const validateRequest = require("../middlewares/validate-request");
-const validation = require("../middlewares/validation/validator");
 const LINKEDIN_CLIENT_ID = "77oj8s50xw1yt7";
 const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
 const axios = require('axios');
@@ -238,8 +237,6 @@ module.exports = {
         res.status(200).json({ token, storeId: req.user.storeID });
     },
 
-
-
     loginWithGoogle: async (req, res, next) => {
 
         const {access_token} = req.body
@@ -292,4 +289,22 @@ module.exports = {
             return res.status(200).json({verified: false});
         }
     },
+
+    getUsername: async (req, res, next) => {
+        const token = req.user;
+        return res.status(200).json({name: token.name});
+    },
+
+    markGuideTourDone: async (req, res, next) => {
+        const token = req.user;
+        const user = await User.findById(token._id);
+        user.firstVisit = false;
+        await user.save();
+        return res.status(200).json({operation: 'success'});
+    },
+
+    verifyFirstVisit: async (req, res, next) => {
+        const token = req.user;
+        return res.status(200).json({firstVisit: token.firstVisit});
+    }
 }

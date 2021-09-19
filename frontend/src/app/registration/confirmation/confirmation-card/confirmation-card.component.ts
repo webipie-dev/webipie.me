@@ -45,11 +45,10 @@ export class ConfirmationCardComponent implements OnInit {
     this.authService.isVerified().subscribe(res => {
       if (res.verified) {
         if(localStorage.getItem('portfolio')){
-          this.router.navigate(['/dashboard'])
+          this.router.navigate(['/dashboard', 'home'])
         }else{
-          this.router.navigate(['/choose-template'])
+          this.router.navigate(['/templates/choose-template'])
         }
-
       } else {
         Swal.fire({
           title: 'Error!',

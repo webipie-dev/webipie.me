@@ -22,7 +22,7 @@
       </a>
       <span *ngIf="logged">
         <a [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
-        <a><img class="avatar" src="assets/johndoe.jpeg"> Welcome, Mr John Doe</a>
+        <a *ngIf="username">Welcome, {{username}}</a>
       </span>
       <span *ngIf="!logged">
         <a [routerLink]="['/register/signup']" routerLinkActive="router-link-active">

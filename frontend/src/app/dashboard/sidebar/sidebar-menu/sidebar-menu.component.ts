@@ -3,6 +3,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Router} from '@angular/router';
 import {SidebarMenuService} from './sidebar-menu.service';
 import {ThemeOptions} from 'src/app/_shared/theme-options';
+import {JoyrideService} from "ngx-joyride";
+import {AuthService} from "../../../_shared/services/auth.service";
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -21,7 +23,9 @@ export class SidebarMenuComponent implements OnInit {
   constructor(
     public globals: ThemeOptions,
     private sidebarMenuService: SidebarMenuService,
-    private router: Router
+    private router: Router,
+    private joyride: JoyrideService,
+    private authService: AuthService
   ) {
     this.menus = [...sidebarMenuService.getMenuList()];
   }
@@ -33,9 +37,25 @@ export class SidebarMenuComponent implements OnInit {
     if (theActiveMenu) {
       this.toggle(theActiveMenu);
     }
-
+    this.authService.verifyFirstVisit().subscribe(result => {
+      if (result.firstVisit === true) {
+        this.tour();
+      }
+    })
     this.innerWidth = window.innerWidth;
   }
+
+
+  tour() {
+    this.joyride.startTour({
+      steps: ['tourStep1', 'tourStep2', 'tourStep3', 'tourStep4', 'tourStep5', 'tourStep6', 'tourStep7'],
+      themeColor: '#070919'
+    })
+    this.authService.guideTourDone().subscribe(result => {
+      console.log(result)
+    })
+  }
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {

@@ -6,13 +6,13 @@
           <input
             id="name" 
             name="name" 
-            placeholder="First Name" 
+            placeholder="Full Name" 
             type="text"
-            formControlName="name"
-            [(ngModel)]="portfolio.name"
-            [class]="!f.name.touched? 'form-control':f.name.errors?.required? 'form-control invalid':'form-control valid'">
+            formControlName="userName"
+            [(ngModel)]="portfolio.userName"
+            [class]="!f.userName.touched? 'form-control':f.userName.errors?.required? 'form-control invalid':'form-control valid'">
             <!-- Error Handling -->
-            <div *ngIf="f.name.errors?.required && f.name.touched" class="alert isa_error">
+            <div *ngIf="f.userName.errors?.required && f.userName.touched" class="alert isa_error">
               Name is required.
             </div>
             <!-- /Error Handling -->
