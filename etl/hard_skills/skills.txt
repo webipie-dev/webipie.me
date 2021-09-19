@@ -1,0 +1,298 @@
+3ds Max
+ABAP
+Ada
+Adaptability
+Adobe After Effects
+Adobe Audition
+Adobe bridge
+Adobe dreamweaver
+Adobe flash
+Adobe illustrator
+Adobe InDesign
+Adobe Lightroom
+Adobe Premiere Pro
+Aerospace engineering
+Agile method
+Aircraft engine technology
+Ajax
+Algorithms
+Alice
+Altova
+Analytical thinking
+Android
+Android studio
+Angular
+Angular JS
+Apex
+Building application
+Design application
+Artificial intelligence
+AS / 400
+ASP
+Assembly
+Atom
+Auto-CAD
+Automotive engineering
+Awk
+AWS (cloud computing)
+Baan
+Bash
+Blogging
+Bootstrap
+Business intelligence
+VS
+VS#
+C ++
+Cake PHP
+Civil engineering
+Customer service
+cloud computing
+Cloud computing management
+Coaching
+COBOL
+CodeIgniter
+Communautary development
+Computer Aided Design
+Construction engineering (civil engineering)
+Construction project management
+advice
+Content Management Systems
+Content marketing or brand marketing
+Content strategy
+Corel Draw
+CSS
+CVS
+D
+Dart
+Data analysis
+Data analytics
+Database administration
+Database design
+Data base management
+Data base
+Data science
+Data Management
+Data mining
+Data science
+Business intelligence database
+DB / 2
+Delphi
+Delphi / Object Pascal
+Design of airliners
+Detail oriented
+Digital Marketing
+Django
+DNS
+Dropbox
+Drupal
+Eclipse
+Ecology
+EDI Files
+Elasticsearch
+Mechanical Engineering
+Ergonomics
+Erlang
+ERP
+ETL
+Excel Scripting
+Express
+Extreme programming (agile method)
+F #
+Facilitation
+Film
+Final Cut Pro
+Financial management
+Fire safety engineering
+First aid
+Fluid mechanics
+Fortran
+Foundation
+FoxPro
+Full stack developer
+Programming video games
+GIT
+GIT
+Go
+Google drive
+Graphics and Design
+Groovy
+Groupware
+GTK
+Hadoop
+Being able to handle the pressure
+Haskell
+Heroku
+Hiring
+Integration of human resources
+Html
+HTML 5
+Hydrology
+Hydromechanical
+Image editing
+iMovie
+Information security
+Internet use
+ios
+IP / MPLS
+IPX
+J #
+Java
+Java EE
+Javascript
+Joomla
+jQuery
+Jscript
+JSON
+Kanban
+Keynote
+LabVIEW
+Ladder Logic
+LAN (local area network)
+Laravel
+Less
+Linux
+Lisp
+Logo
+Lotus Notes / Domino
+Lua
+MacOS
+MAC software
+Manufacturing industry
+Science of materials
+MATLAB
+MDL
+Mechanical engineering
+Mechanical process engineering
+Mechanical
+Microsoft Access
+Microsoft Dynamics
+Microsoft Excel
+Microsoft powerpoint
+Microsoft SQL Server
+Microsoft Word
+Microwave transmission
+Mobile development
+MongoDB
+MS DOS
+MS Exchange
+MySQL
+Negotiation
+.NET
+Netbeans
+Network design
+Management and transmission network data
+Network security
+Node.js
+NoSQL
+Novell Groupwise
+Novell netware
+NPM
+Objective C
+Object Oriented Programming
+OpenEdge ABL
+Operating system
+Operational research
+OPS7
+Optical fiber
+Oracle
+Oracle Database
+Pascal
+PeopleSoft
+Perl
+Photoshop
+PHP
+PL / SQL
+PostgreSQL
+PowerBI
+Powerbuilder
+Process Engineering
+Programming
+Prolog
+Protype
+Python
+Q
+QlikSense
+QlikView
+Qt
+R
+React JS
+Renewable energies
+Research
+Rotor technology
+Router configuration
+RPG (OS / 400)
+Ruby
+Ruby on Rails
+Rust
+Sale
+Salesforce
+SAP
+SAS
+SASS
+Scala
+Scheme
+Scratch
+SCRUM
+Search engine optimization
+SGA
+Sharepoint
+Siebel
+Slack
+Social media management
+Software Design
+Software development frameworks
+Software engineering
+Ground Mecanic
+Solid construction
+Sony Vegas
+SPSS
+SQL
+SQLite
+SQL server
+Squarespace
+Stata
+Static
+Steel construction
+Strategic planning
+Strategy
+Struts
+Gorgeous
+Swift
+Sybase
+Symfony
+Board
+TCP / IP
+Building material technology
+Thermodynamics
+Transact-SQL
+User interfaces (UI)
+UMTS / GSM network management
+UNIX
+Unix shell scripting
+User test
+User experiences (UX)
+VBScript
+Vim
+Visual Basic
+Visual C ++
+(Visual) FoxPro
+Visual studio
+Voice over IP (voice transport over IP network)
+WAN (wide area network)
+WPA protocol (network)
+Water and waste management
+WDM
+Web content
+WiFi configuration
+Windows
+PC software
+Wix
+Timber construction
+Wordpress
+Writing
+Xamarin
+Xcode
+XML
+Yii
+Zend
+Zoho
