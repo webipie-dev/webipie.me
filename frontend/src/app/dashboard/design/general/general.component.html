@@ -26,6 +26,33 @@
       </div>
     </div>
   </div>
+
+<div class="heading-3 text-center m-3">Custom Colors</div>
+<div (click)="selectCustomColors()" class="row align-items-center">
+  <div class="col-xl-1 col-md-1">
+    <div class="form-check m-2 text-center">
+      <input [checked]="colorChartIndex === colorPalettes.length"
+              class="form-check-input"
+              name="colorPalette"
+              type="radio">
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-md-6">
+    <div class="m-3">
+      <div class="heading-2 text-center m-2">Primary Color</div>
+      <input [(colorPicker)]="customColor1" [style.background]="customColor1"
+                      class="form-control border-0"/>
+    </div>
+  </div>
+  <div class="col-xl-5 col-md-5">
+    <div class="m-3">
+      <div class="heading-32 text-center m-2">Secondary Color</div>
+      <input [(colorPicker)]="customColor2" [style.background]="customColor2"
+                      class="form-control border-0"/>
+    </div>
+  </div>
+</div>
   <div class="card-header"></div>
   <div class="heading-3 text-center m-3">Text & Font</div>
   <div class="row">

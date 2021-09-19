@@ -69,16 +69,11 @@
             </ngx-dropzone>
             <small class="form-text mb-3">Only mp4 videos.</small>
           </div>
+          <div class="position-relative form-group"><label for="skills">Skills</label>
 
-          <div class="position-relative form-group"><label for="exampleEmail">Skills</label>
-            <input class="form-control"
-                   id="exampleEmail"
-                   name="name"
-                   placeholder="Skills"
-                   type="text"
-                   formControlName="skills"
-                   [(ngModel)]="project.skills"
-            >
+            <ng-select id="skills" [(ngModel)]="project.skills" [multiple]="true" [addTag]="true" formControlName="skills">
+              <ng-option *ngFor="let skill of skills" [value]="skill.name">{{skill.name}}</ng-option>
+            </ng-select>
           </div>
           <div class="position-relative form-group"><label for="exampleEmail">Link</label>
             <input class="form-control"

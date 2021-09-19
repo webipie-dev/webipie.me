@@ -10,42 +10,44 @@
 
   <div class="divider"></div>
   <div class="card-body pt-2 px-4 pb-4">
-    <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
-      <thead>
-      <tr>
-        <th>Achievements</th>
-        <th class="text-center">Date</th>
-        <th class="text-left" style="width:50%">Description</th>
-        <th class="text-right">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
+    <div class="table-container">
+      <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
+        <thead>
+        <tr>
+          <th>Achievements</th>
+          <th class="text-center">Date</th>
+          <th class="text-left" style="width:50%">Description</th>
+          <th class="text-right">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
 
-      <tr *ngFor="let achievement of achievements">
-        <td>
-          <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{achievement.title}} </span></div>
-        </td>
-        <td class="text-center">
-          <span class="font-weight-bold">{{achievement.date | date }}</span>
-        </td>
-        <td class="text-left">
-          <span class="font-weight-regular">{{ ( achievement.description!.length>30)? ( achievement.description  | slice:0:30)+' ...':( achievement.description ) }}</span>
-        </td>
-        <td class="text-right">
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editAchievement(achievement.id)">
-            <span class="btn-wrapper--icon">
-              <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
-            </span>
-          </button>
-          <button (click)="removeAchievement(achievement.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
-            <span class="btn-wrapper--icon">
-              <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
-            </span>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        <tr *ngFor="let achievement of achievements">
+          <td>
+            <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{achievement.title}} </span></div>
+          </td>
+          <td class="text-center">
+            <span class="font-weight-bold">{{achievement.date | date }}</span>
+          </td>
+          <td class="text-left">
+            <span class="font-weight-regular">{{ ( achievement.description!.length>30)? ( achievement.description  | slice:0:30)+' ...':( achievement.description ) }}</span>
+          </td>
+          <td class="text-right">
+            <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editAchievement(achievement.id)">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button (click)="removeAchievement(achievement.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="card-footer d-flex justify-content-center">
       <div>
         <a routerLink='addachievement'>

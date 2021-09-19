@@ -82,6 +82,28 @@ export class SidebarMenuService {
       "text": 'This is the part where you customize your portfolio, you can change colors, fonts and so much more'
     },
     {
+      "title": "Help",
+      "type": "header"
+    },
+    {
+      "title": "Contact Support",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-headphones\"></i>",
+      "link": "/dashboard/support-request"
+    },
+    {
+      "title": "Request Domain Name",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-note2\"></i>",
+      "link": "/dashboard/domain-request"
+    },
+    {
+      "title": "FAQ",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-help1\"></i>",
+      "link": "/dashboard/faq"
+    },
+    {
       "title": "Settings",
       "type": "header",
       "text": "general settings for your profile"

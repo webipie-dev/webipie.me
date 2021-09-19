@@ -6,6 +6,8 @@ import {ProjectModel} from "../../../_shared/models/project.model";
 import Swal from "sweetalert2";
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UploadService } from 'src/app/_shared/services/upload.service';
+import { TechnicalSkillModel } from 'src/app/_shared/models/technical-skill.model';
+import { TechnicalSkillService } from 'src/app/_shared/services/technical-skill.service';
 
 @Component({
   selector: 'app-add-project',
@@ -15,7 +17,8 @@ import { UploadService } from 'src/app/_shared/services/upload.service';
 export class AddProjectComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private projectService: ProjectService, private uploadService: UploadService,
-              private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
+              private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService,
+              private technicalSkillsService: TechnicalSkillService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
@@ -38,6 +41,8 @@ export class AddProjectComponent implements OnInit {
     link: [],
     skills: [],
   })
+  skills: TechnicalSkillModel[] = [];
+  selectedSkills = [];
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -45,6 +50,9 @@ export class AddProjectComponent implements OnInit {
         this.edit = true;
         this.fillEditForm(params['projectId']);
       }
+    });
+    this.technicalSkillsService.getMany().subscribe(result => {
+      this.skills = result;
     });
   }
 
@@ -73,6 +81,15 @@ export class AddProjectComponent implements OnInit {
 
   onRemoveVideo(event: any) {
     this.videos.splice(this.images.indexOf(event), 1);
+  }
+
+  processForm(){
+    this.projectForm.value.skills = this.projectForm.value.skills.map((skill: any) =>{
+      if (skill.label)
+        return skill.label;
+      else
+        return skill;
+    })
   }
 
 
@@ -115,7 +132,9 @@ export class AddProjectComponent implements OnInit {
       }
     }
 
+    this.processForm()
     if(!this.edit) {
+      console.log(this.projectForm.value)
       this.projectService.addOne(this.projectForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
