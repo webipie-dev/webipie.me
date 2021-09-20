@@ -1,13 +1,18 @@
 .cos-container{
     cursor: pointer;
     position: relative;
-    width:100%;
-    max-width: 300px;
+    // width:100%;
+    width: 300px;
     height:220px;
     margin:10px;
     flex-shrink: 100000;
     overflow: hidden;
     transition: transform 0.5s ease,flex-grow 500ms linear,width 1s ease,opacity 0.5s ease,flex 500ms ease,margin 0.5s ease;
+    img{
+        position: absolute; 
+        top: 0 ; left:0 ; width: 100% ; height: 100%;
+        object-fit: cover;
+    }
 }
 .cos-btn-icon{
   padding:10px;
@@ -46,6 +51,7 @@
   justify-content: space-evenly;
   width: 100%;
   max-width: 600px;
+  margin: 0 auto;
 }
 
 .cos-btn-icon:hover{
@@ -148,21 +154,29 @@
         .images-container{
             position: relative;
             display: flex;
-            width:fit-content;
-            height:100%;
+            width: 100%;
+            height: 60vh ;
             flex-wrap: nowrap;
             flex-direction: row;
             transition: transform 0.75s ease-in-out;
+            &>*{
+                flex-shrink: 0;
+            }
+            
             .image{
-                width:100vw;
+                width:100%;
                 max-width: 1100px;
                 height:100%;
                 overflow: hidden;
+                position: relative; 
                 img,video{
-                    width:100%;
-                    object-fit:fill;
+                    position: absolute; 
+                    top:0 ; left: 0 ; right: 0 ; bottom : 0 ; 
+                    width: 100%; 
+                    height: 100%;
+                    object-fit:cover;
                     object-position: center;
-
+                    
                 }
             }
         }

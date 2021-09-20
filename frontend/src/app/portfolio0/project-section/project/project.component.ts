@@ -33,7 +33,10 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   leftArrow = faAngleLeft;
   button = 1;
 
+  minus : number = 0 ; 
+
   ngOnInit(): void {
+    console.log(this.project);
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
@@ -42,14 +45,16 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
     if(this.project.imgs){
       this.displayImg = this.project.imgs[0];
     }
-
+    this.minus = this.project.video ? 0 : 1 ; 
   }
   ngAfterViewInit(){
     if(window.innerWidth<1100)this.imgWidth=window.innerWidth;
   }
   goRight(){
+
+    
     if(this.project.imgs)
-    if(this.pic === this.project.imgs.length - 1){
+    if(this.pic === this.project.imgs.length - this.minus ){
       this.pic = 0;
       this.pos = 0;
 
@@ -62,7 +67,7 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
     if(this.project.imgs)
     if(this.pic==0){
       this.pic = this.project.imgs.length;
-      this.pos = (this.project.imgs.length - 1)*this.imgWidth;
+      this.pos = (this.project.imgs.length - this.minus )*this.imgWidth;
 
     }else{
       this.pos-= this.imgWidth;

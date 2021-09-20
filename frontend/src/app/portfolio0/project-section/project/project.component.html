@@ -18,12 +18,13 @@
             <div class="image" *ngFor="let image of project.imgs">
               <img [src]="image">
             </div>
+            <div *ngIf="project.video" class="image">
+              <video  playsinline controls muted loop>
+                <source [src]="project.video"/>
+              </video>
+            </div>
           </div>
-          <div class="images-container">
-            <video playsinline controls muted loop>
-              <source [src]="project.video"/>
-            </video>
-          </div>
+
         </div>
       </div>
         <div class="cos-content">
