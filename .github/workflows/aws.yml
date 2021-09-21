@@ -68,6 +68,7 @@ jobs:
       run: |
         cd terraform/infrastructure
         terraform init
+        terraform workspace select prod
         # mkdir ../../backend/configuration
         terraform apply -target null_resource.index -auto-approve -lock-timeout=120s
         terraform apply -target null_resource.task_definition -auto-approve -lock-timeout=120s
