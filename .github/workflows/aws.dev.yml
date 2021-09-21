@@ -1,13 +1,13 @@
 on:
   push:
     branches:
-      - master
+      - dev
 
-name: Project Deployment Prod
+name: Project Deployment Dev
 
 jobs:
   deploy:
-    name: Deploy Prod
+    name: Deploy Dev
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +43,7 @@ jobs:
       run: |
         cd terraform/infrastructure
         terraform init
-        terraform workspace select prod
+        terraform workspace select default
         terraform apply -target=null_resource.set_config_to_github -auto-approve -lock-timeout=120s
         source set_config_to_github.bash
 
@@ -52,7 +52,7 @@ jobs:
       if: startsWith(github.event.head_commit.message, 'SKIP_BACKEND') != true
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: webipiemeecr_prod
+        ECR_REPOSITORY: webipiemeecr_dev
         APP_PORT: ${{ secrets.APP_PORT }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -63,7 +63,7 @@ jobs:
         TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL }}
         TF_VAR_mailgun_api_key: ${{secrets.MAILGUN_API_KEY}}
         TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
-        REGION: ${{ secrets.AWS_REGION }}
+        REGION: ${{ secrets.AWS_REGION_DEV }}
       run: |
         cd terraform/infrastructure
         terraform init
@@ -83,7 +83,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: backend/task-definition.json
-        container-name: webipieme
+        container-name: devwebipieme
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
@@ -91,8 +91,8 @@ jobs:
       if: startsWith(github.event.head_commit.message, 'SKIP_BACKEND') != true
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: webipieme
-        cluster: webipieme
+        service: devwebipieme
+        cluster: devwebipieme
         wait-for-service-stability: true
 
     - name: Build and deploy front-end
@@ -106,6 +106,6 @@ jobs:
         echo "installing dependencies"
         npm install
         echo "building project"
-        npm run build
-        aws s3 cp dist/frontend "s3://webipie.me" --recursive --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+        npm run build:dev
+        aws s3 cp dist/frontend "s3://devwebipie.me" --recursive --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
         aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
