@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - dev
-      - dev-environment
 
 name: Project Deployment Dev
 
@@ -69,7 +68,8 @@ jobs:
         cd terraform/infrastructure
         terraform init
         # mkdir ../../backend/configuration
-        # terraform apply -target null_resource.index -auto-approve -lock-timeout=120s
+        terraform apply -target null_resource.index -auto-approve -lock-timeout=120s
+        terraform apply -target null_resource.task_definition -auto-approve -lock-timeout=120s
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.

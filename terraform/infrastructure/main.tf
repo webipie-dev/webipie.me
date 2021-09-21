@@ -150,11 +150,11 @@ data "template_file" "task_definition" {
   }
 }
 
-# resource "null_resource" "task_definition" {
-#   triggers = {
-#     always_run = "${timestamp()}"
-#   }
-#   provisioner "local-exec" {
-#     command = "echo '${data.template_file.task_definition.rendered}' > ../../server/task-definition.json"
-#   }
-# }
+resource "null_resource" "task_definition" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  provisioner "local-exec" {
+    command = "echo '${data.template_file.task_definition.rendered}' > ../../backend/task-definition.json"
+  }
+}
