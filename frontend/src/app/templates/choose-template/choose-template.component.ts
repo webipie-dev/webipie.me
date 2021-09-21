@@ -116,7 +116,8 @@ export class ChooseTemplateComponent implements OnInit {
         title: 'Error!',
         text: 'You must select a template to choose.',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Cool',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       })
     }
 

@@ -61,7 +61,8 @@ export class AddHardSkillComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message,
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       });
     } else {
@@ -75,7 +76,8 @@ export class AddHardSkillComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message,
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }
