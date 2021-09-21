@@ -9,6 +9,7 @@ module.exports = {
   accessKeyId: '"${aws_access_key}"',
   secretAccessKey: '"${aws_secret_key}"',
   awsRegion: '"${aws_region}"',
+  awsS3Bucket: '"${aws_uploads_s3_bucket}"',
   webipiePhoneNumber: '+18555501648',
   twilioAccountSid: '"${twilio_account_sid}"',
   twilioAuthToken: '"${twilio_auth_token}"',
