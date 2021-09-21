@@ -18,34 +18,34 @@ env = {
     }
 
     network = {
-      route53_zone = "webipie.me"
+      route53_zone = "devwebipie.me"
     }
 
     task = {
-      ecs_task_execution_role_name = "webipiemeEcsTaskExecutionRole"
-      registry_name                = "webipiemeecr"
+      ecs_task_execution_role_name = "devWebipiemeEcsTaskExecutionRole"
+      registry_name                = "devWebipiemeecr"
       app_image                    = "latest"
       cpu                  = "256"
       memory               = "256"
     }
 
     certificate_route53 = {
-      certificate_domain = "api.webipie.me"
+      certificate_domain = "api.devwebipie.me"
     }
 
     website = {
-      bucket_name = "webipie.me"
-      domain_name = "webipie.me"
+      bucket_name = "devwebipie.me"
+      domain_name = "devwebipie.me"
     }
 
     app_port       = 8000
-    aws_region     = "eu-central-1"
-    project_name   = "webipieme"
+    aws_region     = "eu-west-3"
+    project_name   = "devwebipieme"
     stage = "dev"
 
   }
 
-  master = {
+  prod = {
 
     ecs = {
       app_count                            = 1
