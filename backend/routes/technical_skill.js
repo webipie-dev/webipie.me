@@ -20,4 +20,6 @@ router.post('', passportJWT, [validation.portfolioId], validateRequest, technica
 // delete technical skills
 router.delete('', validation.ids, passportJWT, handleErrors(technicalSkillService.deleteTechnicalSkills));
 
+router.patch('/:portfolioId', passportJWT, technicalSkillService.editOneTechnicalSkill)
+
 module.exports = router;

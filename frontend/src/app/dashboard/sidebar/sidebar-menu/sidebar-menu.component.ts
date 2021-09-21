@@ -48,8 +48,14 @@ export class SidebarMenuComponent implements OnInit {
 
 
   tour() {
+    let numberOfSteps = 9;
+    let steps = [];
+    for(let i = 0; i < numberOfSteps; i++) {
+      const k = i+1;
+      steps[i] = 'tourStep' + k
+    }
     this.joyride.startTour({
-      steps: ['tourStep1', 'tourStep2', 'tourStep3', 'tourStep4', 'tourStep5', 'tourStep6', 'tourStep7'],
+      steps,
       themeColor: '#070919'
     })
     this.authService.guideTourDone().subscribe(result => {

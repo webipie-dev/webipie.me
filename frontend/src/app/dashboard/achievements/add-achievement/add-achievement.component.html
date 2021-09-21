@@ -12,7 +12,7 @@
           Achievement
         </h5>
         <form [formGroup]="achievementForm" (ngSubmit)="onSubmit()">
-          <div class="position-relative form-group"><label for="exampleEmail">Title</label>
+          <div class="position-relative form-group"><label class="required" for="exampleEmail">Title</label>
             <input class="form-control"
                    id="exampleEmail"
                    name="name"
@@ -27,7 +27,7 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="exampleText">Description</label>
+          <div class="position-relative form-group"><label class="required" for="exampleText">Description</label>
             <textarea class="form-control"
                       id="exampleText"
                       name="text"
@@ -57,7 +57,7 @@
           </div>
 
           <div class="form-group">
-            <label>Date</label>
+            <label class="required">Date</label>
             <div class="input-group input-group-lg mb-5">
               <div class="input-group-prepend">
                 <span class="input-group-text">

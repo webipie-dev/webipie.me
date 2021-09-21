@@ -7,7 +7,7 @@
     <div class="card card-box mb-5">
       <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add education</h5>
         <form (ngSubmit)="onSubmit()" [formGroup]="educationForm">
-          <div class="position-relative form-group"><label for="exampleEmail">Title</label>
+          <div class="position-relative form-group"><label class="required" for="exampleEmail">Institute</label>
             <input class="form-control"
                    formControlName="title"
                    id="exampleEmail"
@@ -22,7 +22,7 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="examplePassword">Level</label>
+          <div class="position-relative form-group"><label class="required" for="examplePassword">Level</label>
             <input class="form-control"
                    formControlName="level"
                    id="examplePassword"
@@ -39,7 +39,7 @@
           </div>
           <div class="row">
             <div class="form-group col-xl-6 col-md-12">
-              <label>Start Date</label>
+              <label class="required">Start Date</label>
               <div class="input-group input-group-lg mb-5">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"

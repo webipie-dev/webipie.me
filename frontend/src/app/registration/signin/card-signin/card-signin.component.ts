@@ -61,7 +61,7 @@ export class CardSigninComponent implements OnInit {
       }
 
     }, error => {
-      console.log(error);
+      this.spinner.hide();
       Swal.fire({
         title: 'Error!',
         text: 'email or/and password are incorrect!',

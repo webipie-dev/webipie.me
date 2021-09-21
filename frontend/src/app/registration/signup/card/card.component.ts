@@ -43,7 +43,7 @@ export class CardComponent implements OnInit {
         queryParams: {email: this.email}
       }).then(r => console.log(r))
     }, error => {
-      console.log(error);
+      this.spinner.hide();
       Swal.fire({
         title: 'Error!',
         text: 'email or/and password are incorrect!',

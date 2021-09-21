@@ -12,7 +12,7 @@
           Volunteering Experience
         </h5>
         <form [formGroup]="volunteeringExperienceForm" (ngSubmit)="onSubmit()">
-          <div class="position-relative form-group"><label for="title">Title</label>
+          <div class="position-relative form-group"><label class="required" for="title">Title</label>
             <input class="form-control"
                    id="title"
                    name="name"
@@ -26,7 +26,7 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="exampleText">Description</label>
+          <div class="position-relative form-group"><label class="required" for="exampleText">Description</label>
             <textarea class="form-control"
                       id="exampleText"
                       name="text"
@@ -52,7 +52,7 @@
                    [(ngModel)]="volunteerExperience.position"
             >
           </div>
-          <div class="position-relative form-group"><label for="organisation">Organisation</label>
+          <div class="position-relative form-group"><label class="required" for="organisation">Organisation</label>
             <input class="form-control"
                    id="organisation"
                    name="password"
@@ -68,14 +68,14 @@
           </div>
           <div class="form-group">
 
-            <label>Still on the association ?</label>
+            <label>Still in the association ?</label>
             <div class="m-2">
-              <ui-switch defaultBgColor="#cadecf" [checked]="false" (change)="checked()"></ui-switch>
+              <ui-switch defaultBgColor="#cadecf" [checked]="edit && !volunteerExperience.endDate" (change)="checked()"></ui-switch>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-xl-6 col-md-12">
-              <label>Start Date</label>
+              <label class="required">Start Date</label>
               <div class="input-group input-group-lg mb-5">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
