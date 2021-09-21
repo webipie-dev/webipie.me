@@ -6,12 +6,12 @@ const router = express.Router();
 const multerS3 = require("multer-s3");
 
 
-const { accessKeyId, secretAccessKey, awsS3Bucket } = require('../configuration/index');
+const { accessKeyId, secretAccessKey, awsS3Bucket, awsRegion } = require('../configuration/index');
 
 AWS.config.update({
     accessKeyId: accessKeyId,
     secretAccessKey: secretAccessKey,
-    region: 'eu-central-1',
+    region: awsRegion,
 });
 
 var s3 = new AWS.S3({

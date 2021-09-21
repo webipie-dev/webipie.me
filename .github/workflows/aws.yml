@@ -66,6 +66,7 @@ jobs:
         TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
         REGION: ${{ secrets.AWS_REGION }}
       run: |
+        echo $ECR_REGISTRY
         cd terraform/infrastructure
         terraform init
         terraform workspace select prod
