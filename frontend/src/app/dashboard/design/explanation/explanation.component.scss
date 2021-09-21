@@ -1,0 +1,32 @@
+.parent { 
+    position: relative; 
+    z-index: 100;
+    fa-icon{
+        font-size: 20px;
+        color: #404c59;
+        cursor: pointer;
+    }
+    
+    .text{
+        max-width: 500px; 
+        min-width: 300px;
+        background: #404c59 ;
+        border : 2px solid #283038;
+        border-radius: 10px;
+        position:absolute;
+        padding:10px;
+        box-sizing: border-box;
+        font-weight: 300;
+        color:white;
+        left: calc( 100% + 10px ) ;
+        top: 0 ;
+        transform : translateY(-40%);
+        clip-path : circle(0% at 0 0 );
+        transition: clip-path 600ms ease; 
+        text-transform: none;
+    }
+
+    .question:hover+.text {
+        clip-path: circle(150% at 0 0)  ;
+    }
+}
