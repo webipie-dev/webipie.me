@@ -87,6 +87,7 @@ data "template_file" "index" {
   template = file("./templates/backend/index.js.tpl")
 
   vars = {
+    aws_uploads_s3_bucket = local.vars.aws_uploads_s3_bucket
     aws_access_key = var.aws_access_key
     aws_secret_key = var.aws_secret_key
     aws_region = local.vars.aws_region
@@ -135,7 +136,6 @@ data "template_file" "task_definition" {
   template = file("./templates/task-definition/task-definition.json.tpl")
 
   vars = {
-    aws_uploads_s3_bucket = local.vars.aws_uploads_s3_bucket
     aws_region     = local.vars.aws_region
     app_port       = local.vars.app_port
     repository_url = module.task.repository_url
