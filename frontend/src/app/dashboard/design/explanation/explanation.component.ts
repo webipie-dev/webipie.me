@@ -9,8 +9,8 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 export class ExplanationComponent implements OnInit {
 
   @Input() text : string =""; 
-  shown : boolean = false ;
   question = faQuestionCircle;
+  
   constructor() { }
 
   ngOnInit(): void {
