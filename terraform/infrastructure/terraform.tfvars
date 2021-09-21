@@ -22,8 +22,8 @@ env = {
     }
 
     task = {
-      ecs_task_execution_role_name = "devWebipiemeEcsTaskExecutionRole"
-      registry_name                = "devWebipiemeecr"
+      ecs_task_execution_role_name = "webipiemeEcsTaskExecutionRole"
+      registry_name                = "webipiemeecr"
       app_image                    = "latest"
       cpu                  = "256"
       memory               = "256"
@@ -39,7 +39,7 @@ env = {
     }
 
     app_port       = 8000
-    aws_region     = "eu-west-3"
+    aws_region     = "eu-west-1"
     project_name   = "devwebipieme"
     stage = "dev"
 
