@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - dev
-      - dev-environment
 
 name: Project Deployment Dev
 
