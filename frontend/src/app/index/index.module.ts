@@ -10,6 +10,7 @@ import { PriceSectionComponent } from './price-section/price-section.component';
 import { InViewportModule } from 'ng-in-viewport';
 import { HowitworksSectionComponent } from './howitworks-section/howitworks-section.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { VideoSectionComponent } from './video-section/video-section.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     PriceCardComponent,
     PriceSectionComponent,
     HowitworksSectionComponent,
+    VideoSectionComponent,
   ],
   imports: [
     CommonModule,

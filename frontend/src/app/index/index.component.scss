@@ -107,7 +107,7 @@ flex-direction: column;
 .circle div svg {
     width:25px;
 }
-.circle div p{
+.cimovrcle div p{
     font-size:18px;
     margin-top: 10px;
 }
@@ -171,6 +171,10 @@ flex-direction: column;
         opacity:0.4;
     }
 }
+.video-section{
+    position: relative;
+    z-index:100;
+}
 .background{
     position: absolute;
     top:0px;
@@ -184,7 +188,7 @@ flex-direction: column;
     width:100%;
 }
 .how{
-    margin-top: 400px;
+    margin-top: 300px;
     position: relative;
     width:100vw;
 }
