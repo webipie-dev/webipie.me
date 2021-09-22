@@ -62,7 +62,7 @@ export class AddExperienceComponent implements OnInit {
   public fillEditForm(workId: string): void {
     this.workExperience = (JSON.parse(localStorage.getItem('portfolio')!).workExperiences.filter((workExperience: WorkExperienceModel) => workExperience.id === workId ))[0];
     this.beginDate = new Date(this.workExperience.beginDate!);
-    this.endDate = this.workExperience.endDate ? new Date(this.workExperience.endDate): null;
+    this.endDate = this.workExperience.endDate ? new Date(this.workExperience.endDate): undefined;
   }
 
   images: File[] = [];
