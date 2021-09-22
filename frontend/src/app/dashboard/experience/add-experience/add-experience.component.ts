@@ -43,7 +43,7 @@ export class AddExperienceComponent implements OnInit {
     description: ['', [Validators.required, Validators.maxLength(300)]],
     position: [''],
     company: [''],
-    imgs: [''],
+    img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
     endDate: [''],
@@ -92,7 +92,7 @@ export class AddExperienceComponent implements OnInit {
       try{
         image = await this.uploadService.imageUpload(formData);
         if(image.success)
-          this.workExperienceForm.controls['imgs'].setValue(image.url);
+          this.workExperienceForm.controls['img'].setValue(image.url);
         else
           errors.push('image' + image.errors.title);
       }

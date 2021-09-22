@@ -22,8 +22,8 @@
                         </div>
                         <h2>{{work.beginDate | date}} - <span *ngIf="work.endDate">{{work.endDate | date}}</span><span *ngIf="!work.endDate">Present</span></h2>
                     </div>
-                    <div *ngIf="work.imgs" class="cos-image hidden">
-                        <img src="{{work.imgs[0]}}">
+                    <div *ngIf="work.img" class="cos-image">
+                        <img src="{{work.img}}">
                     </div>
                 </div>
             </div>
@@ -48,8 +48,8 @@
                         </div>
                         <h2><span *ngIf="volunteering.city">{{volunteering.city}}</span> - {{volunteering.beginDate | date}} - <span *ngIf="volunteering.endDate">{{volunteering.endDate | date}}</span><span *ngIf="!volunteering.endDate">Present</span></h2>
                     </div>
-                    <div *ngIf="volunteering.imgs" class="cos-image hidden">
-                        <img src="{{volunteering.imgs[0]}}">
+                    <div *ngIf="volunteering.img" class="cos-image">
+                        <img src="{{volunteering.img}}">
                     </div>
                 </div>
             </div>
