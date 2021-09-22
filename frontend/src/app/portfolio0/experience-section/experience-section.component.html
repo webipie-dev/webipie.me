@@ -1,10 +1,10 @@
 <div class="cos-container" [hidden]="workExperiencesDisabled&&volunteeringExperiencesDisabled">
     <div class="cos-content">
         <h3>WHAT I DID</h3>
-        <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'">My Experience</h1>   
-        <h3 class="sub" [hidden]="workExperiencesDisabled">Professional Experience</h3> 
+        <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'">My Experience</h1>
+        <h3 class="sub" [hidden]="workExperiencesDisabled">Professional Experience</h3>
         <div class="cos-experiences" [hidden]="workExperiencesDisabled">
-            
+
             <div *ngFor="let work of workExperiences" class="cos-element">
                 <div class="cos-left">
                     <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{work.title}}</h4>
@@ -17,20 +17,20 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="show(target)" [style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2>{{work.beginDate | date}} - <span *ngIf="work.endDate">{{work.endDate | date}}</span><span *ngIf="!work.endDate">Present</span></h2>
                     </div>
-                    <div #target class="cos-image hidden">
-                        <img src="assets/back.jpeg">
+                    <div *ngIf="work.imgs" class="cos-image hidden">
+                        <img src="{{work.imgs[0]}}">
                     </div>
                 </div>
             </div>
         </div>
         <h3 class="sub" [hidden]="volunteeringExperiencesDisabled">Volunteering Experience</h3>
         <div class="cos-experiences" >
-            
+
             <div *ngFor="let volunteering of volunteeringExperiences" class="cos-element">
                 <div class="cos-left">
                     <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.title}}</h4>
@@ -43,13 +43,13 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="show(target2)"[style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2><span *ngIf="volunteering.city">{{volunteering.city}}</span> - {{volunteering.beginDate | date}} - <span *ngIf="volunteering.endDate">{{volunteering.endDate | date}}</span><span *ngIf="!volunteering.endDate">Present</span></h2>
                     </div>
-                    <div #target2 class="cos-image hidden">
-                        <img src="assets/back.jpeg">
+                    <div *ngIf="volunteering.imgs" class="cos-image hidden">
+                        <img src="{{volunteering.imgs[0]}}">
                     </div>
                 </div>
             </div>
