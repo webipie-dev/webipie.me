@@ -28,8 +28,10 @@ export class AddExperienceComponent implements OnInit {
   checked(){
     if(this.check){
       this.check = false;
+      this.workExperienceForm.controls['endDate'].enable();
     }else{
       this.check = true;
+      this.workExperienceForm.controls['endDate'].disable();
     }
   }
   // check if we are editing a testimonial or adding a new one
@@ -57,6 +59,7 @@ export class AddExperienceComponent implements OnInit {
         this.fillEditForm(params['workId']);
       }
     });
+    
   }
 
   public fillEditForm(workId: string): void {
