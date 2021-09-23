@@ -2,6 +2,7 @@ const app = require("./app");
 const debug = require("debug")("node-angular");
 const http = require("http");
 const mongoose = require('mongoose');
+const {mongoURL} = require('./configuration');
 
 const normalizePort = val => {
   var port = parseInt(val, 10);
@@ -39,7 +40,7 @@ const onError = error => {
 };
 
 // change the db
-mongoose.connect('mongodb+srv://webipie:webipiepass@webipieme.ydbo1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
