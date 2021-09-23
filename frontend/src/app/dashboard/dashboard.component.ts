@@ -37,10 +37,11 @@ export class DashboardComponent implements OnInit {
         text: 'something went wrong when loading dashboard, please try again',
         icon: 'error',
         confirmButtonText: 'Ok'
-      });
+      }).then((result) => {
+        this.router.navigate(['/']);
+      })
+
     }
-
-
   }
 
 }
