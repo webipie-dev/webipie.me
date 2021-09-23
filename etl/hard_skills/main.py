@@ -74,7 +74,7 @@ def upload_to_aws(url, s3_file):
     s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
                       aws_secret_access_key=config.SECRET_KEY)
     try:
-        s3.upload_fileobj(response, config.S3_BUCKET, "skills/" + s3_file + "png")
+        s3.upload_fileobj(response, config.S3_BUCKET, "skills/" + s3_file + ".png")
         print("Upload Successful")
         return True
     except  Exception as e:
@@ -85,18 +85,18 @@ def upload_to_aws(url, s3_file):
 
 
 
-if __name__ == "main":
-    skills = read_skills()
-    db = connect_db()
-    for skill in skills:
-        if(not find_skill(db, skill)):
-            logo = search_logo(skill)
-            if(logo != None):
-                upload_to_aws(logo, skill)
-                icon = "https://s3-{0}.amazonaws.com/{1}/{2}".format(
-                                config.AWS_REGION,
-                                config.S3_BUCKET,
-                                "skills/" + skill + "png")
-                insert_skill(db, skill, icon)
-            else:
-                insert_skill(db, skill)
+
+skills = read_skills()
+db = connect_db()
+for skill in skills:
+    if(not find_skill(db, skill)):
+        logo = search_logo(skill)
+        if(logo != None):
+            upload_to_aws(logo, skill)
+            icon = "https://s3-{0}.amazonaws.com/{1}/{2}".format(
+                            config.AWS_REGION,
+                            config.S3_BUCKET,
+                            "skills/" + skill + ".png")
+            insert_skill(db, skill, icon)
+        else:
+            insert_skill(db, skill)

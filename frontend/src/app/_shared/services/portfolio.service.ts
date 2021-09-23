@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Observable} from "rxjs";
 import {PortfolioModel} from "../models/portfolio.model";
 import {TemplateModel} from "../models/template.model";
 import { BaseService } from './base.service';

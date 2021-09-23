@@ -1,5 +1,7 @@
 import {formatDate} from '@angular/common';
 import {Component, OnInit} from '@angular/core';
+import { LocalStorageService } from 'src/app/_shared/services/local-storage.service';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 
 type CountryVisit = {
   country: string;
@@ -29,11 +31,15 @@ export class HomeComponent implements OnInit {
   visitsPerDay: number = 0
   visitsPerCountry: CountryVisit[] = []
   userVisits: UserVisit[] = []
+  loading = true
 
-  constructor() {}
+  constructor(
+    private portfolioService: PortfolioService,
+    private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {  
-    setTimeout(this.check, 0); 
+    //setTimeout(this.check, 0); 
+    this.setAll();
   }
 
   check = () =>{
@@ -48,24 +54,30 @@ export class HomeComponent implements OnInit {
   }
 
   setAll(): void {
-    this.portfolio = JSON.parse(localStorage.getItem('portfolio')!)
-    let visitsInLastNDays = this.getVisits(this.portfolio.visitsPerDay, this.lastNDays)
-    this.visits = [
-      {
-        name: 'visits',
-        data: visitsInLastNDays
-      }
-    ]
+    this.localStorageService.getItem("portfolio").subscribe(
+      result =>{
+        this.loading = false;
+        this.portfolio = JSON.parse(result);
+        let visitsInLastNDays = this.getVisits(this.portfolio.visitsPerDay, this.lastNDays)
+        this.visits = [
+          {
+            name: 'visits',
+            data: visitsInLastNDays
+          }
+        ]
 
-    this.nvisits = this.getNVisits(this.portfolio.visits)
-    this.nusers = this.getNUsers(this.portfolio.visits)
-    this.visitsPerDay = 0
-    for (let i = 0; i < visitsInLastNDays.length; i++) {
-      this.visitsPerDay += visitsInLastNDays[i]
-    }
-    this.visitsPerDay = this.visitsPerDay / visitsInLastNDays.length
-    this.visitsPerCountry = this.getVisitsPerCountry(this.portfolio.visits)
-    this.userVisits = this.getUserVisits(this.portfolio.visits)
+        this.nvisits = this.getNVisits(this.portfolio.visits)
+        this.nusers = this.getNUsers(this.portfolio.visits)
+        this.visitsPerDay = 0
+        for (let i = 0; i < visitsInLastNDays.length; i++) {
+          this.visitsPerDay += visitsInLastNDays[i]
+        }
+        this.visitsPerDay = this.visitsPerDay / visitsInLastNDays.length
+        this.visitsPerCountry = this.getVisitsPerCountry(this.portfolio.visits)
+        this.userVisits = this.getUserVisits(this.portfolio.visits)
+      }
+    )
+    
   }
 
   getVisits(visitsPerDay: any, lastNDays: number) {

@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
 import {JoyrideService} from "ngx-joyride";
+import { LocalStorageService } from 'src/app/_shared/services/local-storage.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -12,19 +13,24 @@ export class HeaderMenuComponent implements OnInit {
   url?: string
 
 
-  constructor(private router: Router, private joyride: JoyrideService) {
+  constructor(private router: Router, private joyride: JoyrideService, private localStorageService: LocalStorageService) {
   }
 
   ngOnInit() {
-    this.url = JSON.parse(localStorage.getItem('portfolio')!).url;
-    if(!this.url){
-      Swal.fire({
-        title: 'Error!',
-        text: 'something went wrong, please refresh',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });
-    }
+    this.localStorageService.getItem("portfolio").subscribe(
+      result => {
+        let portfolio = JSON.parse(result);
+        this.url = portfolio.url;
+        if(!this.url){
+          Swal.fire({
+            title: 'Error!',
+            text: 'something went wrong, please refresh',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+        }
+      }
+    )  
   }
 
   tour() {

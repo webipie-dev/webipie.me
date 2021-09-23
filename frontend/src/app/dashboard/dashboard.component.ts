@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LocalStorageService } from '../_shared/services/local-storage.service';
 import {PortfolioService} from '../_shared/services/portfolio.service';
 import {ThemeOptions} from '../_shared/theme-options';
 
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     public globals: ThemeOptions,
     private router: Router,
-    private portfolioService: PortfolioService) {
+    private portfolioService: PortfolioService,
+    private localStorageService: LocalStorageService) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -24,7 +26,9 @@ export class DashboardComponent implements OnInit {
       if (!portfolio.template){
         this.router.navigate(['templates/choose-template']);
       }
-      localStorage.setItem("portfolio", JSON.stringify(portfolio));
+      //localStorage.setItem("portfolio", JSON.stringify(portfolio));
+      this.localStorageService.setItem("portfolio", JSON.stringify(portfolio));
+      console.log(localStorage.getItem("portfolio"));
       console.log("Terminate loading .....")
     }
     catch(err){
