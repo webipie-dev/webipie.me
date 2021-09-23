@@ -1,6 +1,7 @@
 .parent { 
     position: relative; 
-    z-index: 100;
+    z-index: 1000;
+    top:2px; left: 2px;
     fa-icon{
         font-size: 20px;
         color: #404c59;
@@ -18,9 +19,9 @@
         box-sizing: border-box;
         font-weight: 300;
         color:white;
-        left: calc( 100% + 10px ) ;
-        top: 0 ;
-        transform : translateY(-40%);
+        top: calc( 100% + 10px ) ;
+        left: 0 ;
+        transform : translateX(-45%);
         clip-path : circle(0% at 0 0 );
         transition: clip-path 600ms ease; 
         text-transform: none;
