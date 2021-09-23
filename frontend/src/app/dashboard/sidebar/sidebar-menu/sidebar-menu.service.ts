@@ -123,7 +123,6 @@ export class SidebarMenuService {
       "title": "Log Out",
       "type": "simple",
       "icon": "<i class=\"pe-7s-next-2\"></i>",
-      "link": "/dashboard/logout",
       "text": "simply log out"
     }
   ];
