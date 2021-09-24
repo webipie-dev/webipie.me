@@ -34,7 +34,8 @@ export class ChooseNameComponent implements OnInit {
           title: 'Error!',
           text: 'Connat get portfolio names! Please refresh page.',
           icon: 'error',
-          confirmButtonText: 'Cool'   
+          confirmButtonText: 'Cool',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'   
         });
       }
     )

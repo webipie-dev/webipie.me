@@ -11,7 +11,7 @@ export const environment = {
   backendDomainName: 'localhost',
   backendPort: 8000,
   backendProtocol: 'http',
-  websiteDomainName: 'webipie.me',
+  websiteDomainName: 'localhost',
   PORT: ':4200',
   protocol: 'http'
 };

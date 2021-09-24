@@ -3,6 +3,7 @@ const {Template} = require('../models/template');
 const ApiError = require("../errors/api-error");
 const { User } = require('../models/user');
 const { createDomain } = require('../services/domain');
+const {clientHostname} = require('../configuration');
 const geoip = require('geoip-lite');
 const date = require('date-and-time')
 
@@ -106,7 +107,7 @@ const addPortfolio = async (req, res, next) => {
   const portfolioSubdomain = name.toLowerCase().replace(/\s/g, '').replace(/'/, '');
   const portfolio = new Portfolio({
     name,
-    url: portfolioSubdomain + '.webipie.me',
+    url: portfolioSubdomain + `.${clientHostname}`,
     template: getTemplate
   });
 

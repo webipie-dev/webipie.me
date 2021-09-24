@@ -6,16 +6,16 @@ const router = express.Router();
 const multerS3 = require("multer-s3");
 
 
-const { accessKeyId, secretAccessKey, awsS3Bucket } = require('../configuration/index');
+const { accessKeyId, secretAccessKey, awsS3Bucket, awsRegion } = require('../configuration/index');
 
 AWS.config.update({
     accessKeyId: accessKeyId,
     secretAccessKey: secretAccessKey,
-    region: 'eu-central-1',
+    region: awsRegion,
 });
 
 var s3 = new AWS.S3({
-  Bucket: "webipie.me-uploads"
+  Bucket: awsS3Bucket
 });
 
 const getFileFilter = function(mimetypes){
@@ -35,7 +35,7 @@ const getMulter = function(name, limit, fileFilter){
     storage: multerS3({
       acl: "public-read",
       s3,
-      bucket: 'webipie.me-uploads',
+      bucket: awsS3Bucket,
       key: function (req, file, cb) {
         cb(null, `${name}/${uuidv4()}/${file.originalname}`);
       },

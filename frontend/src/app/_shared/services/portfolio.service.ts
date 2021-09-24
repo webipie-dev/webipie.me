@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Observable} from "rxjs";
 import {PortfolioModel} from "../models/portfolio.model";
 import {TemplateModel} from "../models/template.model";
 import { BaseService } from './base.service';
+import { environment } from './../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -70,9 +71,8 @@ export class PortfolioService extends BaseService {
   getPortfolioByUrl(): Promise<boolean> {
     return new Promise(resolve => {
       if (
-        window.location.hostname === 'webipie.me' ||
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === 'www.webipie.me'
+        window.location.hostname === environment.websiteDomainName ||
+        window.location.hostname === `www.${environment.websiteDomainName}`
       ) {
         resolve(true);
       } else {
