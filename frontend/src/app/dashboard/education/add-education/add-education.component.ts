@@ -43,7 +43,7 @@ export class AddEducationComponent implements OnInit {
   public fillEditForm(educationId: string): void {
     this.education = (JSON.parse(localStorage.getItem('portfolio')!).education.filter((education: EducationModel) => education.id === educationId ))[0];
     this.beginDate = new Date(this.education.beginDate!);
-    this.endDate = new Date(this.education.endDate!);
+    this.endDate = this.education.endDate ? new Date(this.education.endDate): undefined;
   }
 
   onSubmit() {
@@ -78,6 +78,6 @@ export class AddEducationComponent implements OnInit {
         });
       })
     }
-    
+
   }
 }

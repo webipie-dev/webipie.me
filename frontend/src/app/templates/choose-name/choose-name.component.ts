@@ -48,6 +48,14 @@ export class ChooseNameComponent implements OnInit {
       result => {
         localStorage.setItem('portfolioId', result['id']);
         this.router.navigate(['/dashboard', 'home']);
+      }, 
+      error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message || "Something went wrong! Please try again.",
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       }
     );
   }

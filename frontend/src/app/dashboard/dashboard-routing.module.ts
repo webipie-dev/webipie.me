@@ -22,11 +22,12 @@ import {AddVolunteerComponent} from "./experience/add-volunteer/add-volunteer.co
 import {LogoutComponent} from "./logout/logout.component";
 import { ContactSupportComponent } from "./contact-support/contact-support.component";
 import { DomainRequestComponent } from "./domain-request/domain-request.component";
+import {FaqComponent} from "./faq/faq.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: DashboardComponent, 
     children: [
       {
         path: 'logout',
@@ -51,6 +52,10 @@ const routes: Routes = [
       {
         path: 'skills/addhardskill',
         component: AddHardSkillComponent
+      },
+      {
+        path: 'faq',
+        component: FaqComponent
       },
       {
         path: 'education',

@@ -13,13 +13,13 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="show(target)" [style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2 [style]="'font-family:'+font">{{achievement.date | date}}</h2>
                     </div>
-                    <div #target class="cos-image hidden">
-                        <img src="assets/back.jpeg">
+                    <div *ngIf="achievement.image" class="cos-image">
+                        <img src="{{achievement.image}}">
                     </div>
                 </div>
             </div>

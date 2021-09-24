@@ -72,7 +72,127 @@ module.exports = {
         // send mail of verification 
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
-            `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n`
+            `<style>
+            * {
+            padding: 0px;
+            margin: 0px;
+            font-family: 'Montserrat',sans-serif; }
+          
+          .cos-header-container {
+            width: 100vw;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            height: 100px; }
+            .cos-header-container .cos-header {
+              height: inherit;
+              width: 80%;
+              max-width: 800px;
+              margin: auto;
+              display: flex;
+              justify-content: space-around;
+              padding: 15px;
+              box-sizing: border-box;
+              align-items: center; }
+              .cos-header-container .cos-header .cos-left {
+                width: 40%;
+                max-width: 200px; }
+                .cos-header-container .cos-header .cos-left img {
+                  height: 100%;
+                  max-height: 70px; }
+              .cos-header-container .cos-header .cos-right {
+                width: fit-content;
+                max-width: 400px; }
+                .cos-header-container .cos-header .cos-right a {
+                  text-decoration: none;
+                  color: #109622;
+                  transition: color 0.5s ease; }
+                .cos-header-container .cos-header .cos-right a:hover {
+                  color: darkgrey; }
+              @media (max-width: 400px) {
+                .cos-header-container .cos-header .right {
+                  display: none; } }
+          
+          .cos-body {
+            width: 100vw;
+            margin: auto;
+            text-align: center;
+            padding: 100px;
+            box-sizing: border-box;
+            background-color: white; }
+            .cos-body img {
+              width: 95%;
+              max-width: 500px; }
+            .cos-body h1, .cos-body p, .cos-body button {
+              margin-top: 20px;
+              padding: 10px;
+              box-sizing: content-box; }
+            .cos-body button {
+              color: #fff;
+              background-color: #1bc943;
+              border-color: #1bc943;
+              cursor: pointer;
+              border: none;
+              box-shadow: 0px 0px 5px #1bc94462; }
+          
+          .cos-card {
+            position: relative;
+            height: 100vh; }
+          
+          .cos-footer {
+            border-top: 1px solid lightgrey;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            padding: 10px;
+            box-sizing: content-box;
+            width: 100vw; }
+            .cos-footer .icons {
+              max-height: 100px;
+              display: flex;
+              width: 100%;
+              max-width: 500px;
+              margin: auto;
+              justify-content: center;
+              align-items: center; }
+              .cos-footer .icons fa-icon {
+                font-size: 40px;
+                transition: color 0.5s ease;
+                color: lightgrey;
+                cursor: pointer;
+                margin: auto; }
+              .cos-footer .icons fa-icon:hover {
+                color: #3aaf85; }
+          
+          /*# sourceMappingURL=prograss-bar.css.map */
+          
+            </style>
+            <div class="cos-card">
+            <div class="cos-header-container">
+                <div class="cos-header">
+                    <div class="cos-left">
+                        <img src="https://webipie.me/assets/SVG/logo.svg" alt="logo">
+                    </div>
+                    <div class="cos-right">
+                        <a href="#">Go back to the website</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cos-body">
+                <!-- <img src="https://webipie.me/assets/SVG/email.svg"> -->
+                <img src="assets/email.svg">
+                <h1>Welcome to Webipie.me</h1>
+                <p>We Created a personal account for you. Please confirm your e-mail adress</p>
+                <a href="#"><button>Confirm Email</button></a>
+            </div>
+            <div class="cos-footer">
+                <div class="icons">
+                    <fa-icon [icon]="facebook"></fa-icon>
+                    <fa-icon [icon]="twitter"></fa-icon>
+                    <fa-icon [icon]="linkedin"></fa-icon>
+                </div>
+            </div>
+        </div>`
+            // `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n`
         )
         // TODO: handle email failure correctly, this always returns undefined:
         if (emailError)

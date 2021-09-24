@@ -117,24 +117,28 @@ joyride-step{
 
 .table-container {
   overflow-x: auto;
-  
+
 
   &::-webkit-scrollbar {
       width: 10px;
   }
-  
+
   /* Track */
   &::-webkit-scrollbar-track {
       background: white;
   }
-  
+
   /* Handle */
   &::-webkit-scrollbar-thumb {
       background: rgb(12, 159, 12);
   }
-  
+
   /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
       background: rgb(72, 166, 72);
   }
+}
+.required:after {
+  content:" *";
+  color: red;
 }

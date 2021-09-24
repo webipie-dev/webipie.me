@@ -5,7 +5,7 @@ export interface VolunteeringExperienceModel extends GenericModel {
   description: string,
   position?: string,
   organisation: string,
-  imgs?: [string],
+  img?: string,
   skills?: [string],
   beginDate: string,
   endDate: string,
