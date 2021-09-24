@@ -48,7 +48,8 @@ export class CardComponent implements OnInit {
         title: 'Error!',
         text: 'email or/and password are incorrect!',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Cool',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       });
     })
   }

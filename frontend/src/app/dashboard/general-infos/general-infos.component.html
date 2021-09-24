@@ -3,6 +3,7 @@
     <div class="form-row">
       <div class="col-md-6">
         <div class="position-relative form-group"><label for="name">Portfolio Name</label>
+          <app-explanation text="the full name will appear on the portfolio"></app-explanation>
           <input
             id="name" 
             name="name" 
@@ -21,6 +22,7 @@
 
       <div class="col-md-6">
         <div class="position-relative form-group"><label for="position">Current Position</label>
+          <app-explanation text="What is your job"></app-explanation>
           <input
             class="form-control" 
             id="position" 
@@ -40,7 +42,9 @@
     </div>
     <div class="form-row">
       <div class="col-md-12 ">
-        <div class="position-relative form-group"><label for="email">About you</label>
+        <div class="position-relative form-group"><label for="email">About you
+          <app-explanation text="A short paragraph to describe your motivation"></app-explanation>
+        </label>
         <textarea id="description"
         name="description"
         placeholder="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat vitae impedit iste esse officiis, eaque dicta at eos. Dolor fugit itaque deserunt asperiores soluta, modi natus error velit. Aut, ad!"

@@ -107,7 +107,8 @@ export class AddVolunteerComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -117,7 +118,8 @@ export class AddVolunteerComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       });
     } else {
@@ -129,7 +131,8 @@ export class AddVolunteerComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -139,7 +142,8 @@ export class AddVolunteerComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }

@@ -20,6 +20,8 @@ export class ChooseTemplateComponent implements OnInit {
   selected = new Array();
   inView = 4;
   templates = new Array();
+  disabledNext : boolean = true ; 
+
   selectedTemplate: TemplateModel | undefined;
   @ViewChild('target',{static:true}) target ?: ElementRef<HTMLElement>;
   constructor(private templateService: TemplateService,
@@ -41,9 +43,19 @@ export class ChooseTemplateComponent implements OnInit {
       result => this.modify(result)
     );
     
+    this.setDisabledNext()
     
 
   }
+
+  setDisabledNext() : void { 
+     if(this.selected.filter(selectedEl=>selectedEl).length===0)
+        this.disabledNext = true ;
+      else{
+        this.disabledNext= false;
+      } 
+  }
+
   modify(result:any){
     
       this.templates = result;
@@ -67,6 +79,8 @@ export class ChooseTemplateComponent implements OnInit {
   }
   select(i:number,value:boolean){
 
+    
+
     for(let j = 0;j<this.selected.length;j++){
       this.selected[j] = false;
     }
@@ -81,6 +95,7 @@ export class ChooseTemplateComponent implements OnInit {
       this.selectedTemplate = undefined;
     }
 
+    this.setDisabledNext()
 
   }
 
@@ -101,7 +116,8 @@ export class ChooseTemplateComponent implements OnInit {
         title: 'Error!',
         text: 'You must select a template to choose.',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Cool',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       })
     }
 
