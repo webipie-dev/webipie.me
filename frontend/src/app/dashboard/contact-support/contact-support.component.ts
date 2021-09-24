@@ -27,6 +27,9 @@ export class ContactSupportComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  
+
   onSubmit() {
     let obj = this.contactForm.value
     console.log(obj)
@@ -43,7 +46,8 @@ export class ContactSupportComponent implements OnInit {
           title: 'Error !',
           text: error.error.error,
           icon: 'error',
-          confirmButtonText: 'Ok'
+          confirmButtonText: 'Ok',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         })
     });
   }

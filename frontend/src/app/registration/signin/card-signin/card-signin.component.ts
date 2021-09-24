@@ -51,13 +51,13 @@ export class CardSigninComponent implements OnInit {
       if(result['verified']){
         if (result['portfolioId']){
           localStorage.setItem('portfolioId',result['portfolioId']);
-          this.router.navigate(['/dashboard', 'home']);
+          this.router.navigate(['/dashboard/home']);
         }
         else{
           this.router.navigate(['templates/choose-template']);
         }
       }else{
-        this.router.navigate(['confirmation']);
+        this.router.navigate(['/register/confirmation']);
       }
 
     }, error => {
@@ -66,7 +66,8 @@ export class CardSigninComponent implements OnInit {
         title: 'Error!',
         text: 'email or/and password are incorrect!',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Cool',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       });
     })
   }
@@ -93,7 +94,8 @@ export class CardSigninComponent implements OnInit {
             title: 'Error!',
             text: 'Something wrong with google email',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Cool',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           })
         }
       );

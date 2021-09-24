@@ -73,7 +73,8 @@ export class AddEducationComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || "Something went wrong! Please try again.",
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }

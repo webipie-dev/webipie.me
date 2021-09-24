@@ -39,7 +39,8 @@ export class ToggleSection {
               title: 'Error!',
               text: `something went wrong when toggling section ${this.section}, please refresh and try again`,
               icon: 'error',
-              confirmButtonText: 'Ok'
+              confirmButtonText: 'Ok',
+              footer: '<a href="/dashboard/support-request">Contact Support</a>'
             });
           }
     }

@@ -18,9 +18,6 @@
                         </div>
                         <h2 [style]="'font-family:'+font">{{achievement.date | date}}</h2>
                     </div>
-                  <div *ngIf="achievement.image">
-                    there is an image
-                  </div>
                     <div *ngIf="achievement.image" class="cos-image">
                         <img src="{{achievement.image}}">
                     </div>

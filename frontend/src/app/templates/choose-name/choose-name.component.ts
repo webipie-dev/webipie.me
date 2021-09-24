@@ -34,7 +34,8 @@ export class ChooseNameComponent implements OnInit {
           title: 'Error!',
           text: 'Connat get portfolio names! Please refresh page.',
           icon: 'error',
-          confirmButtonText: 'Cool'   
+          confirmButtonText: 'Cool',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'   
         });
       }
     )
@@ -47,6 +48,14 @@ export class ChooseNameComponent implements OnInit {
       result => {
         localStorage.setItem('portfolioId', result['id']);
         this.router.navigate(['/dashboard', 'home']);
+      }, 
+      error => {
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message || "Something went wrong! Please try again.",
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       }
     );
   }

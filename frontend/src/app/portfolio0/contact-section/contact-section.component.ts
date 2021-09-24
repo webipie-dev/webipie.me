@@ -51,7 +51,8 @@ export class ContactSectionComponent implements OnInit {
           title: 'Error !',
           text: error.error.error,
           icon: 'error',
-          confirmButtonText: 'Ok'
+          confirmButtonText: 'Ok',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         })
     });
   }

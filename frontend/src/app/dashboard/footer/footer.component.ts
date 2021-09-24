@@ -8,10 +8,15 @@ import Swal from "sweetalert2";
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
+  shown : boolean = false;
   constructor(public globals: ThemeOptions) {
   }
-
+  
   ngOnInit(): void {
   }
+
+  show(){
+    this.shown = !this.shown;
+  }
+
 }

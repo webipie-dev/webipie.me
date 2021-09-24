@@ -1,4 +1,5 @@
 import { PortfolioModel } from "src/app/_shared/models/portfolio.model";
+import { LocalStorageService } from "src/app/_shared/services/local-storage.service";
 import { PortfolioService } from "src/app/_shared/services/portfolio.service";
 import Swal from "sweetalert2";
 
@@ -7,23 +8,30 @@ export class MultipleToggleSection {
     sections?:string[];
     sectionsAttribute:string[] = ["","","","","","","",""];
     portfolio: any;
-    constructor(protected portfolioService: PortfolioService, sections: string[]){
-        this.sections = sections;
-        this.portfolio = JSON.parse(localStorage.getItem('portfolio')!)
-        window.addEventListener('storage', () => {
-            if(this.sectionsAttribute && this.togglesOff){
+    constructor(protected portfolioService: PortfolioService, sections: string[], protected localStorageService: LocalStorageService){
+        /* this.sections = sections;
+        this.portfolio = JSON.parse(localStorage.getItem('portfolio')!) */
+        this.localStorageService.getItem("portfolio").subscribe(
+            result =>{
+                this.sections = sections;
+                this.portfolio = JSON.parse(result);
+                window.addEventListener('storage', () => {
+                    if(this.sectionsAttribute && this.togglesOff){
+                        for(let i = 0;i<sections.length;i++){
+                            this.togglesOff[i] = this.portfolio[this.sectionsAttribute[i]];
+                          }
+                    }
+                });
                 for(let i = 0;i<sections.length;i++){
+                    this.sectionsAttribute[i] = `${this.sections[i]}Disabled`;
+                }
+                for(let i = 0;i<sections.length;i++){
+                    
                     this.togglesOff[i] = this.portfolio[this.sectionsAttribute[i]];
-                  }
+                }
             }
-        });
-            for(let i = 0;i<sections.length;i++){
-                this.sectionsAttribute[i] = `${this.sections[i]}Disabled`;
-              }
-            for(let i = 0;i<sections.length;i++){
-                
-                this.togglesOff[i] = this.portfolio[this.sectionsAttribute[i]];
-              }
+        )
+        
         
         
     }
@@ -55,7 +63,8 @@ export class MultipleToggleSection {
                 title: 'Error!',
                 text: `something went wrong when toggling section ${section}, please refresh and try again`,
                 icon: 'error',
-                confirmButtonText: 'Ok'
+                confirmButtonText: 'Ok',
+                footer: '<a href="/dashboard/support-request">Contact Support</a>'
                 });
             }
         

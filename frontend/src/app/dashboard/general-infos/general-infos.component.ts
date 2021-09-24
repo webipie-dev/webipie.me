@@ -125,14 +125,15 @@ export class GeneralInfosComponent implements OnInit {
           title: 'Infos updated but some uploads failed',
           text: errors.join('\n'),
           icon: 'warning',
-          confirmButtonText: 'Ok'
+          confirmButtonText: 'Ok',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       else
       Swal.fire({
         title: 'Operation successful',
         text: 'Infos updated successfully',
         icon: 'success',
-        confirmButtonText: 'Ok'
+        confirmButtonText: 'Ok',
       });
       this.disabled = false;
       this.spinner.hide();
@@ -142,7 +143,8 @@ export class GeneralInfosComponent implements OnInit {
         title: 'Error!',
         text: 'something went wrong with uploading data! Please retry again.',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Cool',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       });
     });
   }
