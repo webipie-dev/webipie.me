@@ -2,11 +2,12 @@
   <form #form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="name">Portfolio Name</label>
+        <div class="position-relative form-group"><label class="required" for="name">Portfolio Name</label>
+          <app-explanation text="the full name will appear on the portfolio"></app-explanation>
           <input
-            id="name" 
-            name="name" 
-            placeholder="Full Name" 
+            id="name"
+            name="name"
+            placeholder="Full Name"
             type="text"
             formControlName="userName"
             [(ngModel)]="portfolio.userName"
@@ -20,12 +21,13 @@
       </div>
 
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="position">Current Position</label>
+        <div class="position-relative form-group"><label class="required" for="position">Current Position</label>
+          <app-explanation text="What is your job"></app-explanation>
           <input
-            class="form-control" 
-            id="position" 
-            name="position" 
-            placeholder="Ex : Developer" 
+            class="form-control"
+            id="position"
+            name="position"
+            placeholder="Ex : Developer"
             type="text"
             formControlName="position"
             [(ngModel)]="portfolio.position"
@@ -40,14 +42,16 @@
     </div>
     <div class="form-row">
       <div class="col-md-12 ">
-        <div class="position-relative form-group"><label for="email">About you</label>
+        <div class="position-relative form-group"><label for="email">About you
+          <app-explanation text="A short paragraph to describe your motivation"></app-explanation>
+        </label>
         <textarea id="description"
         name="description"
         placeholder="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat vitae impedit iste esse officiis, eaque dicta at eos. Dolor fugit itaque deserunt asperiores soluta, modi natus error velit. Aut, ad!"
         type="textarea"
         formControlName="description"
-        autosize [minRows]="5" 
-        [maxRows]="10" 
+        autosize [minRows]="5"
+        [maxRows]="10"
         [(ngModel)]="portfolio.description"
         [class]="!f.description.touched? 'form-control':(f.description.errors?.required || f.description.errors?.maxlength || f.description.errors?.minlength)? 'form-control invalid':'form-control valid'"></textarea>
             <!-- Error Handling -->
@@ -66,7 +70,7 @@
     </div>
     <div class="form-row">
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="email">Email</label>
+        <div class="position-relative form-group"><label class="required" for="email">Email</label>
           <input
             id="email"
             name="email"
@@ -87,12 +91,12 @@
       </div>
 
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="phoneNumber">Phone</label>
+        <div class="position-relative form-group"><label class="required" for="phoneNumber">Phone</label>
           <input
             [class]="!f.phoneNumber.touched? 'form-control':f.phoneNumber.errors?.required? 'form-control invalid':'form-control valid'"
-            id="phoneNumber" 
-            name="phoneNumber" 
-            placeholder="Phone Number" 
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="Phone Number"
             type="text"
             formControlName="phoneNumber"
             [(ngModel)]="portfolio.phoneNumber">
@@ -121,9 +125,9 @@
       <div class="col-md-6">
         <div class="position-relative form-group"><label for="linkedin">LinkedIn</label>
           <input [class]="!f.linkedIn.touched? 'form-control':'form-control valid'"
-            id="linkedIn" 
-            name="linkedIn" 
-            placeholder="linkedIn" 
+            id="linkedIn"
+            name="linkedIn"
+            placeholder="linkedIn"
             type="text"
             formControlName="linkedIn"
             [(ngModel)]="portfolio.linkedIn">
@@ -150,7 +154,7 @@
     <small class="form-text mb-2">Only pdf files.</small>
 
 
-    
+
 
     <button class="mt-2 btn btn-slack" [disabled]="!portfolioForm.valid">Save</button>
   </form>

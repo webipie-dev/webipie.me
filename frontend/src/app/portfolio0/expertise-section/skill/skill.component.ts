@@ -12,7 +12,7 @@ export class SkillComponent implements OnInit {
   @Input() hardSkill!: TechnicalSkillDeveloperModel;
   secondaryColor: any;
   primaryColor: any;
-  icon = false;
+  icon = true;
   font='Montserrat';
   skill = faAddressBook;
   constructor() { }

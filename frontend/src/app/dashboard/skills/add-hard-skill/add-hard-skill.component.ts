@@ -28,20 +28,24 @@ export class AddHardSkillComponent implements OnInit {
 
   ngOnInit(): void {
     // check whether it is edit or add
-    console.log(this.selectedSkill);
     this.route.queryParams.subscribe(params => {
-      if(params['technicalSkillId']) {
+      if(params['hardSkillId']) {
         this.edit = true;
-        this.fillEditForm(params['technicalSkillId']);
+        this.fillEditForm(params['hardSkillId']);
       }
     });
     this.technicalSkillsService.getMany().subscribe(result => {
       this.skills = result;
+      if(this.edit) {
+        // selected skill should take the id of the hard skill
+        this.selectedSkill = this.skills.filter((value: TechnicalSkillModel) => value.id === this.technicalSkill.skill.id)[0].id;
+      }
     });
   }
 
   public fillEditForm(technicalSkillId: string): void {
-    this.technicalSkill = (JSON.parse(localStorage.getItem('portfolio')!).technicalSkills.filter((technicalSkill: TechnicalSkillDeveloperModel) => technicalSkill.id === technicalSkillId))[0];
+    this.technicalSkill = (JSON.parse(localStorage.getItem('portfolio')!).technicalSkills.filter((technicalSkill: TechnicalSkillDeveloperModel) => technicalSkill._id === technicalSkillId))[0];
+    this.level = this.technicalSkill.level;
   }
 
   // handle errors
@@ -61,12 +65,13 @@ export class AddHardSkillComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message,
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       });
     } else {
-      this.technicalSkillsService.edit(this.technicalSkill.id, {skill: {id: this.selectedSkill, level: this.level}}).subscribe(result => {
-        localStorage.setItem('portfolio', JSON.stringify(result));
+      this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill, level: this.level}).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
@@ -75,7 +80,8 @@ export class AddHardSkillComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message,
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }

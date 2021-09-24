@@ -6,6 +6,7 @@ import {TechnicalSkillService} from "../../_shared/services/technical-skill.serv
 import { DoubleToggleSection } from '../double-toggle-section/double-toggle-section';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import {NgxSpinnerService} from "ngx-spinner";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-skills',
@@ -18,7 +19,8 @@ export class SkillsComponent extends DoubleToggleSection implements OnInit {
   hardSkills?: [TechnicalSkillDeveloperModel];
   softSkills?: [SoftSkillModel];
   constructor(private softSkillService: SoftSkillService, private technicalSkillService: TechnicalSkillService,
-    protected portfolioService: PortfolioService, private spinner: NgxSpinnerService) {
+              protected portfolioService: PortfolioService, private spinner: NgxSpinnerService, private router: Router,
+              private route: ActivatedRoute) {
       super(portfolioService, 'technicalSkills', 'softSkills')
   }
 
@@ -46,5 +48,7 @@ export class SkillsComponent extends DoubleToggleSection implements OnInit {
   }
 
 
-
+  editHardSkill(id: string) {
+    this.router.navigate(['addhardskill'], { relativeTo: this.route, queryParams: { hardSkillId: id } });
+  }
 }

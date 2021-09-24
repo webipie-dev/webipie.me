@@ -54,7 +54,6 @@ const addTechnicalSkills = async (req, res, next) => {
     res.status(200).send(portfolio);
 };
 
-
 const deleteTechnicalSkills = async (req, res, next) => {
   //get technical skills ids
   const { ids,portfolioId } = req.body;
@@ -83,11 +82,48 @@ const deleteTechnicalSkills = async (req, res, next) => {
 
   res.status(200).send(portfolio);
 };
-  
+
+const editOneTechnicalSkill = async (req, res, next) => {
+    // separating the id
+    const {portfolioID} = req.user;
+    const {id, level} = req.body;
+
+    const portfolio = await Portfolio.findById(portfolioID)
+        .catch((err) => {
+            res.status(400).json({errors: [{ message: err.message }]});
+        });
+
+    if (!portfolio) {
+        next(ApiError.NotFound('Portfolio Not Found'));
+        return;
+    }
+
+    const technicalSkill = await TechnicalSkill.findById(id)
+        .catch((err) => {
+            res.status(400).json({errors: [{ message: err.message }]});
+        });
+    if(!technicalSkill) {
+        next(ApiError.NotFound('Hard Skill Not Found'));
+        return;
+    }
+    const updatedPortfolio = await Portfolio.findOneAndUpdate({_id: portfolioID, technicalSkills: {$elemMatch: {skill: technicalSkill}}},
+        {'$set': {
+            'technicalSkills.$.level': level,
+        }}, {'new': true, 'safe': true, 'upsert': true}).catch(err => {
+        console.log(err)
+    });
+    if(!updatedPortfolio) {
+        next(ApiError.BadRequest('Update Failed, Try Again !'));
+        return;
+    }
+
+    res.status(200).send({technicalSkill, portfolio: updatedPortfolio});
+};
 
 module.exports = {
     getAllTechnicalSkills,
     getTechnicalSkills,
     addTechnicalSkills,
-    deleteTechnicalSkills
+    deleteTechnicalSkills,
+    editOneTechnicalSkill
 };

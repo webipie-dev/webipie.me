@@ -45,8 +45,10 @@ export class AddVolunteerComponent implements OnInit {
   checked(){
     if(this.check){
       this.check = false;
+      this.volunteeringExperienceForm.controls['endDate'].enable();
     }else{
       this.check = true;
+      this.volunteeringExperienceForm.controls['endDate'].disable();
     }
   }
   ngOnInit(): void {
@@ -61,7 +63,7 @@ export class AddVolunteerComponent implements OnInit {
   public fillEditForm(volunteerId: string): void {
     this.volunteerExperience = (JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences.filter((volunteer: VolunteeringExperienceModel) => volunteer.id === volunteerId ))[0];
     this.beginDate = new Date(this.volunteerExperience.beginDate!);
-    this.endDate = new Date(this.volunteerExperience.endDate!);
+    this.endDate = this.volunteerExperience ? new Date(this.volunteerExperience.endDate): undefined;
   }
 
   images: File[] = [];
@@ -87,7 +89,7 @@ export class AddVolunteerComponent implements OnInit {
       formData.append("file", this.images[0]);
       try{
         image = await this.uploadService.imageUpload(formData);
-        if(image.success) 
+        if(image.success)
           this.volunteeringExperienceForm.controls['img'].setValue(image.url);
         else
           errors.push('image' + image.errors.title);
@@ -107,7 +109,8 @@ export class AddVolunteerComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -117,7 +120,8 @@ export class AddVolunteerComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       });
     } else {
@@ -129,7 +133,8 @@ export class AddVolunteerComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -139,7 +144,8 @@ export class AddVolunteerComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }

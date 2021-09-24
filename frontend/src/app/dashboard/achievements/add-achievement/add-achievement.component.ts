@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AchievementModel} from "../../../_shared/models/achievement.model";
 import Swal from "sweetalert2";
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UploadService } from 'src/app/_shared/services/upload.service';
 
 @Component({
   selector: 'app-add-achievement',
@@ -13,7 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class AddAchievementComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private achievementService: AchievementService,
+  constructor(private formBuilder: FormBuilder, private achievementService: AchievementService, private uploadService: UploadService,
               private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
   }
 
@@ -55,13 +56,39 @@ export class AddAchievementComponent implements OnInit {
   }
 
   // handle errors
-  onSubmit() {
+  async onSubmit() {
     this.spinner.show();
+    let formData = new FormData();
+    let errors: any[] = [];
+
+    if(this.images[0]){
+      let image
+      formData.append("file", this.images[0]);
+      try{
+        image = await this.uploadService.imageUpload(formData);
+        if(image.success)
+          this.achievementForm.controls['image'].setValue(image.url);
+        else
+          errors.push('image' + image.errors.title);
+      }
+      catch(err){
+        errors.push('image' + err.error.errors.title);
+      }
+    }
+
     if(!this.edit) {
       this.achievementService.addOne(this.achievementForm.value).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
         this.spinner.hide();
         Swal.fire({
@@ -75,14 +102,23 @@ export class AddAchievementComponent implements OnInit {
       this.achievementService.edit(this.achievement.id, this.achievementForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
         this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message || "Something went wrong! Please try again.",
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }

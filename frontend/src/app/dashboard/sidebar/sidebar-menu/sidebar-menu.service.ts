@@ -83,25 +83,29 @@ export class SidebarMenuService {
     },
     {
       "title": "Help",
-      "type": "header"
+      "type": "header",
+      "text": "The help section"
     },
     {
       "title": "Contact Support",
       "type": "simple",
       "icon": "<i class=\"pe-7s-headphones\"></i>",
-      "link": "/dashboard/support-request"
+      "link": "/dashboard/support-request",
+      "text": "If you have any questions or feedback, don't hesitate to contact us, we reply within a day"
     },
     {
       "title": "Request Domain Name",
       "type": "simple",
       "icon": "<i class=\"pe-7s-note2\"></i>",
-      "link": "/dashboard/domain-request"
+      "link": "/dashboard/domain-request",
+      "text": "If you want to customize your domain name, fill out this form and we'll get back to you with further details"
     },
     {
       "title": "FAQ",
       "type": "simple",
       "icon": "<i class=\"pe-7s-help1\"></i>",
-      "link": "/dashboard/faq"
+      "link": "/dashboard/faq",
+      "text": "Check out our frequently asked questions"
     },
     {
       "title": "Settings",
@@ -119,7 +123,6 @@ export class SidebarMenuService {
       "title": "Log Out",
       "type": "simple",
       "icon": "<i class=\"pe-7s-next-2\"></i>",
-      "link": "/dashboard/logout",
       "text": "simply log out"
     }
   ];

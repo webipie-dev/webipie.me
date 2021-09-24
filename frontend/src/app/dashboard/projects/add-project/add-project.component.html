@@ -12,7 +12,7 @@
           Project
         </h5>
         <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-          <div class="position-relative form-group"><label for="exampleEmail">Title</label>
+          <div class="position-relative form-group"><label class="required" for="exampleEmail">Title</label>
             <input class="form-control"
                    id="Title"
                    name="name"
@@ -27,7 +27,7 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="exampleText">Description</label>
+          <div class="position-relative form-group"><label class="required" for="exampleText">Description</label>
             <textarea class="form-control"
                       id="exampleText"
                       name="text"
@@ -126,5 +126,5 @@
     </div>
   </div>
 </div>
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving..., Image and video upload might take a moment, just be patient. </p></ngx-spinner>
 

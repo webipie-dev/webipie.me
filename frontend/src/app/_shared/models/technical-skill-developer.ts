@@ -4,7 +4,8 @@ export interface TechnicalSkillDeveloperModel extends GenericModel {
   _id: string,
   skill: {
     name: string,
-    id: string
+    id: string,
+    icon: string
   },
   level: number
 }

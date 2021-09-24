@@ -60,13 +60,14 @@ jobs:
         TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         TF_VAR_twilio_account_sid: ${{ secrets.TWILIO_ACCOUNT_SID }}
         TF_VAR_twilio_auth_token: ${{ secrets.TWILIO_AUTH_TOKEN }}
-        TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL }}
+        TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL_DEV }}
         TF_VAR_mailgun_api_key: ${{secrets.MAILGUN_API_KEY}}
         TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
         REGION: ${{ secrets.AWS_REGION_DEV }}
       run: |
         cd terraform/infrastructure
         terraform init
+        terraform workspace select default
         # mkdir ../../backend/configuration
         terraform apply -target null_resource.index -auto-approve -lock-timeout=120s
         terraform apply -target null_resource.task_definition -auto-approve -lock-timeout=120s

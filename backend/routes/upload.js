@@ -11,7 +11,6 @@ const { accessKeyId, secretAccessKey, awsS3Bucket, awsRegion } = require('../con
 AWS.config.update({
     accessKeyId: accessKeyId,
     secretAccessKey: secretAccessKey,
-    region: awsRegion,
 });
 
 var s3 = new AWS.S3({

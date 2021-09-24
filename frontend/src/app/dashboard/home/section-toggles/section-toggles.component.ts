@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/_shared/services/local-storage.service';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import { MultipleToggleSection } from '../../multiple-toggle-section.ts/multiple-toggle-section';
 
@@ -9,8 +10,8 @@ import { MultipleToggleSection } from '../../multiple-toggle-section.ts/multiple
 })
 export class SectionTogglesComponent extends MultipleToggleSection implements OnInit {
   @Input() section:string = "any";
-  constructor(protected portfolioService: PortfolioService){
-    super(portfolioService,["technicalSkills","softSkills","education","workExperiences","volunteeringExperiences","achievements","testimonials"]);
+  constructor(protected portfolioService: PortfolioService, protected localStorageService: LocalStorageService){
+    super(portfolioService,["technicalSkills","softSkills","education","workExperiences","volunteeringExperiences","achievements","testimonials"], localStorageService);
 }
   ngOnInit(): void {
   }

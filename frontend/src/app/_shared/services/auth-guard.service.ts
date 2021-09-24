@@ -23,6 +23,7 @@ export class AuthGuardService implements CanActivate {
       //|| tokenPayload.role !== expectedRole
     ) {
 
+      console.log("hereeeeeeee");
       this.router.navigate(['/register/signin']);
       return false;
     }

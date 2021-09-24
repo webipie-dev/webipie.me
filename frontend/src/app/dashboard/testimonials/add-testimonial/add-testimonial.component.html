@@ -12,7 +12,7 @@
           Testimonial
         </h5>
         <form [formGroup]="testimonialForm" (ngSubmit)="onSubmit()">
-          <div class="position-relative form-group"><label for="exampleEmail">First & Last Name</label>
+          <div class="position-relative form-group"><label for="exampleEmail" class="required">First & Last Name</label>
             <input class="form-control"
                    id="exampleEmail"
                    name="name"
@@ -27,7 +27,7 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="examplePassword">Position</label>
+          <div class="position-relative form-group"><label class="required" for="examplePassword">Position</label>
             <input class="form-control"
                    id="examplePassword"
                    name="postion"
@@ -42,7 +42,7 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="exampleText">Description</label>
+          <div class="position-relative form-group"><label class="required" for="exampleText">Description</label>
             <textarea class="form-control"
                       id="exampleText"
                       name="text"
@@ -92,4 +92,4 @@
     </div>
   </div>
 </div>
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving..., Image upload might take a moment, just be patient. </p></ngx-spinner>

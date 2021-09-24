@@ -232,6 +232,9 @@ import { SectionTogglesComponent } from './home/section-toggles/section-toggles.
 import { ProgressBarComponent } from './home/progress-bar/progress-bar.component';
 import { ContactSupportComponent } from './contact-support/contact-support.component';
 import { DomainRequestComponent } from './domain-request/domain-request.component';
+import { FaqComponent } from './faq/faq.component';
+import { ExplanationComponent } from './design/explanation/explanation.component';
+
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = { /* Change this to your upload POST address: url: 'https://httpbin.org/post', maxFilesize: 50, acceptedFiles: 'image/*'*/ };
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -294,6 +297,8 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     ProgressBarComponent,
     ContactSupportComponent,
     DomainRequestComponent,
+    FaqComponent,
+    ExplanationComponent
   ],
   imports: [
     CommonModule,
