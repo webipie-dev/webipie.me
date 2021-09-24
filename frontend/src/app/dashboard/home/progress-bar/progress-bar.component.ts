@@ -15,7 +15,6 @@ export class ProgressBarComponent implements OnInit {
   facebook = faFacebook;
   twitter = faTwitter;
   linkedin = faLinkedin;
-  constructor() { }
 
 
   ngOnInit(): void {

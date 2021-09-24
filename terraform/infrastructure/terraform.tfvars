@@ -41,7 +41,7 @@ env = {
     app_port       = 8000
     aws_region     = "eu-west-1"
     project_name   = "devwebipieme"
-    aws_uploads_s3_bucket = "devwebipie.me-uploads"
+    aws_uploads_s3_bucket = "dev-webipie.me-uploads"
     stage = "dev"
 
   }
