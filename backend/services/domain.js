@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-const { accessKeyId, secretAccessKey, awsRegion, hostedZone, cloudfrontDomainName } = require('../configuration');
+const { accessKeyId, secretAccessKey, awsRegion, hostedZone, cloudfrontDomainName, clientHostname } = require('../configuration');
 
 AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});
 
@@ -15,7 +15,7 @@ const createDomain = function (subdomain){
             {
               "Action": "CREATE",
               "ResourceRecordSet": {
-                "Name": `${subdomain}.webipie.me`,
+                "Name": `${subdomain}.${clientHostname}`,
                 "Type": "CNAME",
                 "TTL": 86400,
                 "ResourceRecords": [

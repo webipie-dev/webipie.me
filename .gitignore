@@ -1,6 +1,7 @@
 backend/node_modules
 frontend/node_modules
 backend/configuration/index.js
+backend/task-definition.json
 
 # IDEs and editors
 /.idea

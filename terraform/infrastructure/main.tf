@@ -87,6 +87,7 @@ data "template_file" "index" {
   template = file("./templates/backend/index.js.tpl")
 
   vars = {
+    aws_uploads_s3_bucket = local.vars.aws_uploads_s3_bucket
     aws_access_key = var.aws_access_key
     aws_secret_key = var.aws_secret_key
     aws_region = local.vars.aws_region
@@ -150,11 +151,11 @@ data "template_file" "task_definition" {
   }
 }
 
-# resource "null_resource" "task_definition" {
-#   triggers = {
-#     always_run = "${timestamp()}"
-#   }
-#   provisioner "local-exec" {
-#     command = "echo '${data.template_file.task_definition.rendered}' > ../../server/task-definition.json"
-#   }
-# }
+resource "null_resource" "task_definition" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  provisioner "local-exec" {
+    command = "echo '${data.template_file.task_definition.rendered}' > ../../backend/task-definition.json"
+  }
+}
