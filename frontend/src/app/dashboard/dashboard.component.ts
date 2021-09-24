@@ -41,7 +41,6 @@ export class DashboardComponent implements OnInit {
       }).then((result) => {
         this.router.navigate(['/']);
       })
-
     }
   }
 }
