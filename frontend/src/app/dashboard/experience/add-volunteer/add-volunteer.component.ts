@@ -45,8 +45,10 @@ export class AddVolunteerComponent implements OnInit {
   checked(){
     if(this.check){
       this.check = false;
+      this.volunteeringExperienceForm.controls['endDate'].enable();
     }else{
       this.check = true;
+      this.volunteeringExperienceForm.controls['endDate'].disable();
     }
   }
   ngOnInit(): void {

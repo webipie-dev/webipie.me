@@ -65,6 +65,7 @@ export class HeaderComponent implements OnInit {
     if(target === "index") this.indexEmitter.emit(event);
     if(target === "pricing") this.pricingEmitter.emit(event);
     if(target === "contactus") this.contactusEmitter.emit(event);
+    this.menuactive = false; 
   }
 
   getUsername() {
