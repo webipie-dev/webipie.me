@@ -91,6 +91,7 @@ export class SidebarMenuComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.toggleSidebarMobileOpen();
     this.router.navigate(['/']);
   }
 }

@@ -20,7 +20,7 @@
           </span>
         </a>
 
-        <a *ngIf="menu.title === 'Log Out'" (click)="logout(); toggleSidebarMobileOpen()"
+        <a *ngIf="menu.title === 'Log Out'" (click)="logout()"
            routerLinkActive="active">
           <span>
             <span class="sidebar-icon-wrapper" [innerHTML]="menu.icon"></span>
