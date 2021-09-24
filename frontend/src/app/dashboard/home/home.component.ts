@@ -37,21 +37,11 @@ export class HomeComponent implements OnInit {
     private portfolioService: PortfolioService,
     private localStorageService: LocalStorageService) {}
 
+
   ngOnInit(): void {  
-    //setTimeout(this.check, 0); 
     this.setAll();
   }
 
-  check = () =>{
-    console.log(localStorage.getItem("portfolio") != undefined)
-    if (localStorage.getItem("portfolio") != undefined) {
-      console.log("filling data ....")
-      this.setAll()
-      
-    } else {
-        setTimeout(this.check, 0);
-    }
-  }
 
   setAll(): void {
     this.localStorageService.getItem("portfolio").subscribe(

@@ -27,6 +27,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ReactiveFormsModule } from '@angular/forms';
 import {UrlPipe} from "../_shared/pipes/urlPipe";
+import { CopyrightsComponent } from './copyrights/copyrights.component';
 
 
 
@@ -46,7 +47,8 @@ import {UrlPipe} from "../_shared/pipes/urlPipe";
     ContactSectionComponent,
     EducationSectionComponent,
     AchievementsSectionComponent,
-    UrlPipe
+    UrlPipe,
+    CopyrightsComponent
   ],
   imports: [
     CommonModule,

@@ -12,7 +12,7 @@ resource "aws_ecs_cluster" "this" {
 }
 
 resource "aws_iam_role" "this" {
-    name = "ecs_host_role_webipie_me"
+    name = "ecs_host_role_webipie_me_${var.stage}"
     assume_role_policy = file("policies/ecs-role.json")
 }
 

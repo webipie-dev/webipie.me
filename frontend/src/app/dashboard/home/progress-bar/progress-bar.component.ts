@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/_shared/services/local-storage.service';
+import { faFacebook, faFacebookF, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'app-progress-bar',
@@ -9,6 +11,12 @@ import { LocalStorageService } from 'src/app/_shared/services/local-storage.serv
 export class ProgressBarComponent implements OnInit {
   completionValue : number = 0;
   constructor(private localStorageService: LocalStorageService) { }
+
+  facebook = faFacebook;
+  twitter = faTwitter;
+  linkedin = faLinkedin;
+  constructor() { }
+
 
   ngOnInit(): void {
     this.localStorageService.getItem("portfolio").subscribe(

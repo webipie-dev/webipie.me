@@ -2,7 +2,7 @@
     <div [class]="scrolled? 'back scrolled':'back unscrolled'"></div>
     <div class="contentt">
         <div class="left">
-            <img [style.width]="scrolled? '80px':'100px'" src="assets/SVG/logo.svg">
+            <img [style.width]="scrolled? '80px':'100px'" src="assets/SVG/logo.svg" routerLink='/'>
         </div>
         <div [class]="scrolled? 'right blacked':'right'">
             <div class="menuu" (click)="onMenuClick($event)">
@@ -37,16 +37,16 @@
             </div>
         </div>
         <div class="element">
-            <a href="#"><h3>Home</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
+            <a (click)="click('index',$event)"><h3>Home</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
         </div>
         <div class="element">
-            <a href="#"><h3>About Us</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
+            <a (click)="click('aboutus',$event)"><h3>About Us</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
         </div>
         <div class="element">
-            <a href="#"><h3>Princing</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
+            <a (click)="click('pricing',$event)"><h3>Princing</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
         </div>
         <div class="element">
-            <a href="#"><h3>Contact Us</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
+            <a (click)="click('contactus',$event)"><h3>Contact Us</h3> <fa-icon [icon]="rightArrow"></fa-icon></a>
         </div>
     </div>
 </div>

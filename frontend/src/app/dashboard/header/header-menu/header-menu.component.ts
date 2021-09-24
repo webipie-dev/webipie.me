@@ -26,7 +26,8 @@ export class HeaderMenuComponent implements OnInit {
             title: 'Error!',
             text: 'something went wrong, please refresh',
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         }
       }

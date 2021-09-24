@@ -28,8 +28,10 @@ export class AddExperienceComponent implements OnInit {
   checked(){
     if(this.check){
       this.check = false;
+      this.workExperienceForm.controls['endDate'].enable();
     }else{
       this.check = true;
+      this.workExperienceForm.controls['endDate'].disable();
     }
   }
   // check if we are editing a testimonial or adding a new one
@@ -57,6 +59,7 @@ export class AddExperienceComponent implements OnInit {
         this.fillEditForm(params['workId']);
       }
     });
+    
   }
 
   public fillEditForm(workId: string): void {
@@ -111,7 +114,8 @@ export class AddExperienceComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -121,7 +125,8 @@ export class AddExperienceComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       });
     } else {
@@ -133,7 +138,8 @@ export class AddExperienceComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -143,7 +149,8 @@ export class AddExperienceComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }
