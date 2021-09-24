@@ -1,5 +1,5 @@
 <div class="cos-container">
-    
+
     <div class="cos">
         <h1>Choose a template</h1>
         <div class="bt arrow-right" (click)="rightArrow(target)">
@@ -8,17 +8,15 @@
         <div class="bt arrow-left" (click)="leftArrow(target)">
             <fa-icon [icon]="arrowleft"></fa-icon>
         </div>
-    
+
         <div class="cos-content">
             <div class="fade"></div>
-            
-            
             <div class="cos-carousel" [style.width]="carouselwidth+'px'" [style.transform]="'translateX(-'+positionY+'px)'">
-                
+
             <div  *ngFor="let card of selected; let i = index" >
                 <app-card-templates (selectEmitter)="select(i,$event)" [selected]="selected[i]"></app-card-templates>
             </div>
-            <div #target><app-card-templates #element style="position: absolute;top:0;left:0px;opacity:0;z-index:-1;"></app-card-templates></div>
+            <div #target style="position: absolute;top:0;left:0px;opacity:0;z-index:-1"><app-card-templates ></app-card-templates></div>
             </div>
         </div>
         <button class="btn btn-lg btn-slack" type="button" (click)="submit()">Next</button>

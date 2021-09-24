@@ -4,6 +4,9 @@
     min-height: 100vh;
     color:white;
 }
+.square{
+    border-radius: 10px !important;
+}
 .cos-content{
     margin:auto;
     width:80%;
@@ -122,7 +125,16 @@
     transition: background-color 0.5s ease, color 0.5s ease;
     cursor: pointer;
 }
+.fullysquare {
+    border-radius: 0px !important;
+}
 .cos-socials-container .cos-social:hover{
     background-color: white;
     color:#202e37;
+}
+.disabled
+{
+    background-color: #DDD;
+    color: #999;
+    border-color: #999;
 }

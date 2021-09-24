@@ -6,16 +6,22 @@ import {SoftSkillService} from "../../_shared/services/soft-skill.service";
 import {TechnicalSkillService} from "../../_shared/services/technical-skill.service";
 import {VolunteeringExperienceService} from "../../_shared/services/volunteering-experience.service";
 import {WorkExperienceService} from "../../_shared/services/work-experience.service";
+import { DoubleToggleSection } from '../double-toggle-section/double-toggle-section';
+import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss']
 })
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent extends DoubleToggleSection implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private volunteeringExperienceService: VolunteeringExperienceService, private workExperienceService: WorkExperienceService) {
+              private volunteeringExperienceService: VolunteeringExperienceService,
+              private workExperienceService: WorkExperienceService, protected portfolioService: PortfolioService,
+              private spinner: NgxSpinnerService) {
+                super(portfolioService, 'workExperiences', 'volunteeringExperiences')
   }
 
   workExperiences?: [WorkExperienceModel];
@@ -23,6 +29,7 @@ export class ExperienceComponent implements OnInit {
 
   ngOnInit(): void {
     this.workExperiences = JSON.parse(localStorage.getItem('portfolio')!).workExperiences;
+    console.log(this.workExperiences);
     this.volunteeringExperiences = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences;
   }
 
@@ -35,15 +42,19 @@ export class ExperienceComponent implements OnInit {
   }
 
   removeVolunteer(id: string) {
+    this.spinner.show();
     this.volunteeringExperienceService.deleteMany({ids: [id]}).subscribe(result => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+      this.spinner.hide();
       this.ngOnInit();
     })
   }
 
   removeWork(id: string) {
+    this.spinner.show();
     this.workExperienceService.deleteMany({ids: [id]}).subscribe(result => {
-      localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
+      localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+      this.spinner.hide();
       this.ngOnInit();
     })
   }

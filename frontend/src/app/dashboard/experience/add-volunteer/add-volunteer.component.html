@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -20,6 +20,11 @@
                    formControlName="title"
                    [(ngModel)]="volunteerExperience.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.title.errors?.required && volunteeringExperienceForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -29,6 +34,14 @@
                       [(ngModel)]="volunteerExperience.description"
             >
             </textarea>
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.description.errors?.required && volunteeringExperienceForm.controls.description.touched" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="volunteeringExperienceForm.controls.description.errors?.maxlength && volunteeringExperienceForm.controls.description.touched" class="alert isa_error">
+              Description should be shorter than 300 characters
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Position</label>
             <input class="form-control"
@@ -47,12 +60,17 @@
                    formControlName="organisation"
                    [(ngModel)]="volunteerExperience.organisation"
             >
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.organisation.errors?.required && volunteeringExperienceForm.controls.organisation.touched" class="alert isa_error">
+              This field is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="form-group">
 
-            <label>Still on the job ?</label>
+            <label>Still on the association ?</label>
             <div class="m-2">
-              <ui-switch [checked]="false"></ui-switch>
+              <ui-switch defaultBgColor="#cadecf" [checked]="false" (change)="checked()"></ui-switch>
             </div>
           </div>
           <div class="row">
@@ -64,11 +82,16 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                       class="form-control" placeholder="Select date" type="text" formControlName="beginDate" [(ngModel)]="beginDate">
+                       <!-- Error Handling -->
+                      <div *ngIf="volunteeringExperienceForm.controls.beginDate.errors?.required && volunteeringExperienceForm.controls.beginDate.touched" class="alert isa_error">
+                        Start Date is required.
+                      </div>
+                      <!-- /Error handling -->
               </div>
             </div>
-            
-  
+
+
             <div class="form-group col-xl-6 col-md-12">
               <label>End Date</label>
               <div class="input-group input-group-lg mb-5">
@@ -77,30 +100,21 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                       class="form-control" placeholder="Select date" type="text" [disabled]="check" formControlName="endDate" [(ngModel)]="endDate">
               </div>
 
             </div>
           </div>
-          
+
           <div class="form-group">
-            <label>Images</label>
-            <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-                      *ngIf="type === 'component'"
-                      [config]="config" [disabled]="disabled"
-                      [message]="'Click or drag images here to upload'" class="dropzone-container"></dropzone>
-            <div (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-                 *ngIf="type === 'directive'" [disabled]="disabled" [dropzone]="config"
-                 class="dropzone dropzone-container">
-            </div>
-            <input
-              id="hiddenImageInput"
-              accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-              style="display: none"
-              multiple
-              name="imgs" type="file"
-              formControlName="photo"
-            />
+            <label for="image">Image</label>
+            <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
           </div>
           <div class="position-relative form-group"><label for="city">City</label>
             <input class="form-control"
@@ -135,8 +149,11 @@
         <div class="info-container">
             <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
             <h1>Tips & Information</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+          <p>Adding Elaborate Volunteering Experiences in your portfolio would help you stand out in the crowd.
+            <br>
+            Don't be greedy with yourself, <strong>all experiences matter</strong> so don't spare to mention any.</p>
         </div>
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

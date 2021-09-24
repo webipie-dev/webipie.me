@@ -33,7 +33,8 @@
               "src/assets/css/base.scss",
               "node_modules/flag-icon-css/css/flag-icon.min.css",
               "node_modules/pe7-icon/dist/scss/pe-icon-7-stroke.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/ngx-ui-switch/ui-switch.component.css"
             ],
             "scripts": []
           },
@@ -60,6 +61,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,

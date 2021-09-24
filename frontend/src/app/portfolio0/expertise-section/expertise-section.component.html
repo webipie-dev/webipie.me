@@ -1,17 +1,24 @@
-<div class="cos-container">
+<div class="cos-container" [hidden]="technicalSkillsDisabled&&softSkillsDisabled">
     <div class="cos-content">
         <h3>MY SKILLS</h3>
-        <h1>My Expertise</h1>
-        <div class="cos-text-container">
-            <div *ngFor="let softSkill of softSkills" class="cos-element">
-                <div class="cos-title">
-                    <fa-icon [icon]="watch"></fa-icon>
-                    <h2>{{softSkill.title}}</h2>
+        <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'">My Expertise</h1>
+        <div class="cos-text-container" [hidden]="softSkillsDisabled">
+            <div *ngFor="let softSkill of softSkills" class="" [class]="softSkillsTemplate==3? 'cos-element shadow':'cos-element'">
+                <div class="img" *ngIf="softSkillsTemplate == 3">
+                    <img src="assets/grey-back.jpeg">
                 </div>
-                <p>{{softSkill.description}}</p>
+                <div class="cos-title iconed" *ngIf="softSkillsTemplate == 1">
+                    <fa-icon [icon]="['fas', softSkill.icon]" class="m-2" [style.backgroundColor]="secondaryColor" [style.color]="primaryColor"></fa-icon>
+                    <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{softSkill.title}}</h2>
+                </div>
+                <div class="cos-title" style="text-align: center;margin:auto;" [style]="softSkillsTemplate==3? 'margin-top:100px !important':''" *ngIf="softSkillsTemplate == 2 || softSkillsTemplate == 3">
+                    <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{softSkill.title}}</h2>
+                </div>
+
+                <p [style]="softSkillsTemplate==1? 'text-align:left':'text-align:center'+';font-family:'+font" [style.color]="primaryColor">{{softSkill.description}}</p>
             </div>
         </div>
-        <div class="cos-skill-container">
+        <div class="cos-skill-container" [hidden]="technicalSkillsDisabled">
             <app-skill *ngFor="let hardSkill of hardSkills" [hardSkill]="hardSkill"></app-skill>
         </div>
     </div>

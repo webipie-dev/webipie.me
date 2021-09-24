@@ -44,6 +44,7 @@ variable "env" {
       aws_region     = string
       project_name   = string
       stage = string
+      aws_uploads_s3_bucket = string
 
     })
   )

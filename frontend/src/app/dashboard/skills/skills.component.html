@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col-xl-6">
       <div class="card card-box mb-5">
-        <div class="card-header pr-2">
-          <div class="card-header--title">
+        <div class="card-header pr-2 p-4 d-flex align-items-center justify-space-between">
+          <div class="card-header--title font-size-lg text-dark">
             Hard Skills
           </div>
+          <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!firstToggleOff" (change)="onToggleChange($event, 1)"></ui-switch>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -62,43 +63,47 @@
     </div>
     <div class="col-xl-6">
       <div class="card card-box mb-5">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center justify-space-between">
           <div class="card-header--title font-size-lg text-dark">
             Soft Skills
           </div>
+          <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!secondToggleOff" (change)="onToggleChange($event, 2)"></ui-switch>
         </div>
-        <div class="table-responsive">
-          <table class="table table-hover text-nowrap mb-0">
-            <thead>
-            <tr>
-              <th class="text-left" style="width: 180px;">Skill</th>
-              <th class="text-center">Description</th>
-              <th class="text-center">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let softSkill of softSkills">
-              <td class="font-weight-bold">
-                {{softSkill.title}}
-              </td>
-              <td class="text-center">
-                {{softSkill.description}}
-              </td>
-              <td class="text-center">
-                <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify">
-                  <span class="btn-wrapper--icon">
-                    <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
-                  </span>
-                </button>
-                <button (click)="removeSoftSkill(softSkill.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover text-nowrap mb-0 table-borderless">
+              <thead>
+              <tr>
+                <th class="text-left" style="width: 180px;">Skill</th>
+                <!--              <th class="text-center">Description</th>-->
+                <th class="text-center">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let softSkill of softSkills">
+                <td class="font-weight-bold">
+                  <fa-icon [icon]="['fas', softSkill.icon]"></fa-icon>
+                  {{softSkill.title}}
+                </td>
+                <!--              <td class="text-center">-->
+                <!--                {{softSkill.description}}-->
+                <!--              </td>-->
+                <td class="text-center">
+                  <!--                <button class="btn p-0 btn-animated-icon btn-animated-icon&#45;&#45;dark d-30" tooltip="modify">-->
+                  <!--                  <span class="btn-wrapper&#45;&#45;icon">-->
+                  <!--                    <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>-->
+                  <!--                  </span>-->
+                  <!--                </button>-->
+                  <button (click)="removeSoftSkill(softSkill.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
                   <span class="btn-wrapper--icon">
                     <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
                   </span>
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="card-footer d-flex justify-content-between">
           <div>
@@ -113,3 +118,4 @@
     </div>
   </div>
 </app-wrapper-seamless>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

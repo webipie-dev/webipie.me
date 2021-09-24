@@ -1,98 +1,109 @@
 <div class="row">
-  <div class="col-xl-5 col-lg-6">
+  <div class="col-xl-5 col-lg-6 mb-3">
     <div class="bg-vicious-stance p-3 rounded text-white h-100">
       <div class="d-flex align-items-start justify-content-between">
         <div class="avatar-icon-wrapper d-100">
           <span class="badge badge-circle badge-success">Online</span>
           <div class="avatar-icon d-100">
-            <img alt="..." src="assets/johndoe.jpeg"/>
+            <img alt="..." [src]="portfolio.picture"/>
           </div>
         </div>
-        <a [routerLink]="" class="btn btn-sm btn-slack shadow-none">
-          Follow
-        </a>
       </div>
       <div class="font-weight-bold font-size-lg d-flex align-items-center mt-2 mb-0">
-        <span>John Doe</span>
+        <span>{{username}}</span>
       </div>
-      <p class="mb-4 font-size-md text-white-50">@johndoe</p>
-      <a [routerLink]="" class="btn btn-sm btn-outline-light shadow-none mr-2">
-        Send message
+      <p class="mb-4 font-size-md text-white-50">{{portfolio.position || " "}}</p>
+      <a [routerLink]="['/dashboard/support-request']" class="btn btn-sm btn-outline-light shadow-none mr-2">
+        Contact support
       </a>
-      <a [routerLink]="" class="btn btn-sm btn-success shadow-none" tooltip="Add to favourites">
+      <!--<a [routerLink]="" class="btn btn-sm btn-success shadow-none" tooltip="Add to favourites">
         <fa-icon [icon]="['fas', 'star']"></fa-icon>
-      </a>
-      <p class="text-white-50 mb-0 py-4">
-        Short profile bio description here. Pleasure of the moment, so blinded by desire, that they cannot foresee... <a
-        [routerLink]="" class="text-white">Read more</a>
-      </p>
+      </a>-->
 
-      <div class="pt-3 pb-4">
-        <div class="row no-gutters text-center">
-          <div class="col">
-            <b class="d-block font-weight-bold font-size-lg">456</b>
-            <small class="text-uppercase text-white-50">friends</small>
-          </div>
-          <div class="col">
-            <b class="d-block font-weight-bold font-size-lg">1.3k</b>
-            <small class="text-uppercase text-white-50">updates</small>
-          </div>
-          <div class="col">
-            <b class="d-block font-weight-bold font-size-lg">34</b>
-            <small class="text-uppercase text-white-50">followers</small>
-          </div>
-        </div>
+      <div *ngIf="showEllipsis; else noEllipsis" class="text-white-50 mb-0 py-4">
+        <div
+          ellipsis="... Show more!"
+          [ellipsis-content]="portfolio.description || '...'"
+          (ellipsis-click-more)="showEllipsis = false"
+          style="height: 50px;"></div>
       </div>
+      <ng-template #noEllipsis>
+        <div class="text-white-50 mb-0 py-4">
+          {{portfolio.description || '...'}}
+          <button (click)="showEllipsis = true" class="btn" style="color: #3aaf85">Show less</button>
+        </div>
+      </ng-template>
+
       <div class="font-weight-bold font-size-lg d-flex align-items-center mb-3">
-        <span>Job titles</span>
+        <span>Information</span>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">Software developer</a>
+                                <a [routerLink]="" class="text-white">Work Experiences</a>
                             </span>
           <span class="badge badge-dark">
-                                22
+                                {{portfolio.workExperiences!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">QA Engineer</a>
+                                <a [routerLink]="" class="text-white">Projects</a>
                             </span>
           <span class="badge badge-dark">
-                                23
+                                {{portfolio.projects!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">UX Specialist</a>
+                                <a [routerLink]="" class="text-white">Volunteering Experiences</a>
                             </span>
           <span class="badge badge-dark">
-                                76
+                                {{portfolio.volunteeringExperiences!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">Frontend Architect</a>
+                                <a [routerLink]="" class="text-white">Technical Skills</a>
                             </span>
           <span class="badge badge-dark">
-                                15
+                            {{portfolio.technicalSkills!.length || 0}}
                             </span>
         </div>
       </div>
       <div class="py-2">
         <div class="d-flex justify-content-between">
                             <span class="d-block">
-                                <a [routerLink]="" class="text-white">DevOps Manager</a>
+                                <a [routerLink]="" class="text-white">Soft Skills</a>
                             </span>
           <span class="badge badge-dark">
-                                5
+                            {{portfolio.softSkills!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="" class="text-white">Achivements</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{portfolio.achievements!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="" class="text-white">Testimonials</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{portfolio.testimonials!.length || 0}}
                             </span>
         </div>
       </div>
@@ -100,7 +111,7 @@
     </div>
   </div>
   <div class="col-xl-6 col-lg-6">
-    <div class="row mt-5">
+   <!--  <div class="row mt-5">
       <div class="col-lg-12 col-md-6 col-xl-6">
         <div class="rounded card card-box bg-white mb-5">
           <div class="p-4">
@@ -155,80 +166,66 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="card card-box justify-content-center">
       <div class="card-header bg-light ">
         <div class="card-header--title">
-          <small>Network</small>
-          <b class="font-size-lg d-flex align-items-center">Your Social Media</b>
+          <small>Profile</small>
+          <b class="font-size-lg d-flex align-items-center">Change password</b>
         </div>
         <div class="card-header--actions">
-          <a [routerLink]="" class="btn btn-link btn-link-primary p-0 font-size-xl text-primary" tooltip="View options">
+          <!-- <a [routerLink]="" class="btn btn-link btn-link-primary p-0 font-size-xl text-primary" tooltip="View options">
             <fa-icon [icon]="['fas', 'ellipsis-h']"></fa-icon>
-          </a>
+          </a>-->
         </div>
       </div>
-      <div class="col-xl-12 col-lg-6">
-        <div class="px-5 pt-5">
-          <div class="row ">
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-facebook text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Facebook</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
+      <div class="col-xl-12 col-lg-12">
+        <form [formGroup]="newPasswordForm" (ngSubmit)="onSubmit()">
+          <div class="px-5 pt-5 no-padding-mobile">
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="old_password">Old Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control"
+                  id="old_password"
+                  name="old_password"
+                  placeholder="Old Password"
+                  type="password"
+                  formControlName="old_password"
+                  [(ngModel)]="old_password">
               </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-github text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'github']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Github</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="new_password">New Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control"
+                  id="new_password"
+                  name="new_password"
+                  placeholder="New Password"
+                  type="password"
+                  formControlName="new_password"
+                  [(ngModel)]="new_password">
               </div>
             </div>
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="password">Confirm Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Confirm Password"
+                  type="password"
+                  formControlName="password"
+                  [(ngModel)]="password">
+              </div>
+            </div>
+
+            <button [disabled]="!newPasswordForm.valid || new_password != password" class="mx-3 my-3 btn btn-slack">Save</button>
           </div>
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-twitter text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Twitter</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-xl-6">
-              <div class="feature-box justify-content-center d-flex align-items-start text-black mb-5">
-                <div>
-                  <div class="bg-brand-google text-center text-white font-size-xl d-50 rounded-circle">
-                    <fa-icon [icon]="['fab', 'linkedin-in']"></fa-icon>
-                  </div>
-                </div>
-                <div class="pl-3">
-                  <h3 class="font-size-lg font-weight-bold">Linked In</h3>
-                  <button class="btn btn-sm btn-outline-dark" type="button">View profile</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
 
     </div>
   </div>
 </div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

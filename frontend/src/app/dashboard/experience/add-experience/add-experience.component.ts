@@ -1,10 +1,12 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DropzoneComponent, DropzoneConfigInterface, DropzoneDirective} from "ngx-dropzone-wrapper";
+import {Component, OnInit} from '@angular/core';
 import {WorkExperienceService} from "../../../_shared/services/work-experience.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {TestimonialModel} from "../../../_shared/models/testimonial.model";
 import {WorkExperienceModel} from "../../../_shared/models/work-experience.model";
+
+import { UploadService } from 'src/app/_shared/services/upload.service';
+import Swal from 'sweetalert2';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-experience',
@@ -14,39 +16,31 @@ import {WorkExperienceModel} from "../../../_shared/models/work-experience.model
 export class AddExperienceComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private workExperienceService: WorkExperienceService,
-              private router: Router, private route: ActivatedRoute) {
+              private router: Router, private route: ActivatedRoute, private uploadService: UploadService, private spinner: NgxSpinnerService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
-
+  check = false;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
   bsRangeValue!: Date[];
   maxDate = new Date();
-
-  public type: string = 'component';
-
-  public disabled: boolean = false;
-
-  public config: DropzoneConfigInterface = {
-    clickable: true,
-    maxFiles: 1,
-    autoReset: null,
-    errorReset: null,
-    cancelReset: null
-  };
-
+  checked(){
+    if(this.check){
+      this.check = false;
+    }else{
+      this.check = true;
+    }
+  }
   // check if we are editing a testimonial or adding a new one
   edit = false;
   workExperience: WorkExperienceModel = {} as WorkExperienceModel;
-
-
-  @ViewChild(DropzoneComponent, {static: false}) componentRef?: DropzoneComponent;
-  @ViewChild(DropzoneDirective, {static: false}) directiveRef?: DropzoneDirective;
+  beginDate : any;
+  endDate: any;
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', Validators.required],
+    description: ['', [Validators.required, Validators.maxLength(300)]],
     position: [''],
     company: [''],
     imgs: [''],
@@ -67,63 +61,90 @@ export class AddExperienceComponent implements OnInit {
 
   public fillEditForm(workId: string): void {
     this.workExperience = (JSON.parse(localStorage.getItem('portfolio')!).workExperiences.filter((workExperience: WorkExperienceModel) => workExperience.id === workId ))[0];
+    this.beginDate = new Date(this.workExperience.beginDate!);
+    this.endDate = new Date(this.workExperience.endDate!);
   }
 
-  public toggleType(): void {
-    this.type = (this.type === 'component') ? 'directive' : 'component';
+  images: File[] = [];
 
+  onSelect(event: any) {
+    this.images = [];
+    this.images.push(...event.addedFiles);
+    console.log(this.images);
   }
 
-  public toggleDisabled(): void {
-    this.disabled = !this.disabled;
-
+  onRemove(event: any) {
+    console.log(event);
+    this.images.splice(this.images.indexOf(event), 1);
   }
 
-  public toggleAutoReset(): void {
-    this.config.autoReset = this.config.autoReset ? null : 5000;
-    this.config.errorReset = this.config.errorReset ? null : 5000;
-    this.config.cancelReset = this.config.cancelReset ? null : 5000;
-  }
 
-  public toggleMultiUpload(): void {
-    this.config.maxFiles = this.config.maxFiles ? 0 : 1;
-  }
 
-  public toggleClickAction(): void {
-    this.config.clickable = !this.config.clickable;
+  async onSubmit() {
+    this.spinner.show();
+    let formData = new FormData();
+    let errors: any[] = [];
+    console.log(errors);
 
-  }
+    if(this.images[0]){
+      let image
+      formData.append("file", this.images[0]);
+      try{
+        image = await this.uploadService.imageUpload(formData);
+        if(image.success) 
+          this.workExperienceForm.controls['imgs'].setValue(image.url);
+        else
+          errors.push('image' + image.errors.title);
+      }
+      catch(err){
+        errors.push('image' + err.error.errors.title);
+      }
 
-  public resetDropzoneUploads(): void {
-    if (this.type === 'directive' && this.directiveRef) {
-      this.directiveRef.reset();
-    } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
-      this.componentRef.directiveRef.reset();
     }
 
-
-  }
-
-  public onUploadInit(): void {
-    document.getElementById('hiddenImageInput')?.click();
-  }
-
-  public onUploadError(): void {
-  }
-
-  public onUploadSuccess(): void {
-  }
-
-  onSubmit() {
     if(!this.edit) {
       this.workExperienceService.addOne(this.workExperienceForm.value).subscribe((result) => {
-        localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+        this.spinner.hide();
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, (error) => {
+        this.spinner.hide();
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       });
     } else {
       this.workExperienceService.edit(this.workExperience.id, this.workExperienceForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio))
-        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+        this.spinner.hide()
+        if(errors.length>0)
+          Swal.fire({
+            title: 'Infos updated but some uploads failed',
+            text: errors.join('\n'),
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+          });
+        else
+          this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, (error) => {
+        this.spinner.hide();
+        Swal.fire({
+          title: 'Error!',
+          text: error.error.errors[0].message || 'something went wrong with uploading data! Please retry again.',
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        });
       })
     }
   }

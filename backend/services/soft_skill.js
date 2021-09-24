@@ -60,6 +60,16 @@ const addSoftSkills = async (req, res, next) => {
     res.status(200).send(portfolio);
 };
 
+const addOneSoftSkill = async (req, res, next) => {
+    const { icon, title } = req.body;
+    const softSkill = new SoftSkill({
+        icon,
+        title
+    });
+    await softSkill.save();
+    res.status(200).send(softSkill);
+}
+
 const deleteSoftSkills = async (req, res, next) => {
   //get soft skills ids
   const { ids, portfolioId } = req.body;
@@ -87,11 +97,11 @@ const deleteSoftSkills = async (req, res, next) => {
 
   res.status(200).send(portfolio);
 };
-  
 
 module.exports = {
     getAllSoftSkills,
     getSoftSkills,
     addSoftSkills,
-    deleteSoftSkills
+    deleteSoftSkills,
+    addOneSoftSkill
 };

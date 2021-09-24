@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="row col-xl-6 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -21,6 +21,11 @@
                    type="text"
                    [(ngModel)]="testimonial.name"
             >
+            <!-- Error Handling -->
+            <div *ngIf="testimonialForm.controls.name.errors?.required && testimonialForm.controls.name.touched" class="alert isa_error">
+              First & Last Name is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Position</label>
             <input class="form-control"
@@ -31,6 +36,11 @@
                    formControlName="position"
                    [(ngModel)]="testimonial.position"
             >
+            <!-- Error Handling -->
+            <div *ngIf="testimonialForm.controls.position.errors?.required && testimonialForm.controls.position.touched" class="alert isa_error">
+              Position is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -40,24 +50,27 @@
                       [(ngModel)]="testimonial.description"
             >
                       </textarea>
+                      <!-- Error Handling -->
+                      <div *ngIf="testimonialForm.controls.description.errors?.required && testimonialForm.controls.description.touched" class="alert isa_error">
+                        Description is required.
+                      </div>
+                      <div *ngIf="testimonialForm.controls.description.errors?.maxlength && testimonialForm.controls.description.touched" class="alert isa_error">
+                        Description should be shorter than 300 characters.
+                      </div>
+                      <!-- /Error handling -->
           </div>
 
-          <label>Picture</label>
-          <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
-                    [message]="'Click or drag images here to upload'" (click)="onUploadInit()" (error)="onUploadError()"
-                    (success)="onUploadSuccess()" formControlName="photo"></dropzone>
-          <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config"
-               [disabled]="disabled" (init)="onUploadInit()" (error)="onUploadError()"
-               (success)="onUploadSuccess()"></div>
-          <input
-            (change)="onImagePicked($event)"
-            id="hiddenImageInput"
-            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-            style="display: none"
-            multiple
-            name="imgs" type="file"
-            formControlName="photo"
-          />
+          <div class="form-group">
+            <label for="image">Image</label>
+            <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
+          </div>
+
           <div class="divider my-4"></div>
           <button class="mt-1 btn btn-slack" [disabled]="!testimonialForm.valid">
             <span *ngIf="!edit">Add</span>
@@ -73,8 +86,10 @@
       <div class="info-container">
         <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
         <h1>Tips & Information</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+        <p>Testimonials increase trust in your skills and proficiency</p>
+        <p>When it comes to testimonials, <strong>the more the merrier.</strong> Nevertheless, you should be honest and authentic.</p>
       </div>
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {DesignEditService} from "../../_shared/services/design-edit.service";
 import {TestimonialModel} from "../../_shared/models/testimonial.model";
 
 @Component({
@@ -13,42 +14,60 @@ export class TestimonialsSectionComponent implements OnInit {
   primaryColor="#79ebfe";
   secondaryColor="#e184fe";
   speed = 2;
+  backgroundSpeed = 2;
   position = 0;
   elements = 4;
   inView: Boolean[] = [];
   testimonials!: [TestimonialModel];
+  disabled?: boolean;
   @ViewChild('target') target?: ElementRef<HTMLElement>;
 
   ngOnInit(): void {
+    this.speed = JSON.parse(localStorage.getItem('portfolio')!).template.testimonials.carouselSpeed
+    this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
+    this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
+    this.backgroundSpeed = JSON.parse(localStorage.getItem('portfolio')!).template.general.animationSpeed;
     this.testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials ?? [];
+    this.disabled = JSON.parse(localStorage.getItem('portfolio')!).testimonialsDisabled;
     this.inView = new Array(this.testimonials?.length).fill(false) ?? [];
-    if(window.innerWidth<1000){
-      this.elements = this.inView.length;
-      this.makeActive(this.inView.length-this.elements);
-    }else{
-      this.makeActive(this.inView.length-this.elements-2);
-    }
+    setTimeout(()=>{
+      if(window.innerWidth<1000){
+        this.position = 0;
+        this.elements = this.inView.length-1;
+        this.makeActive(this.inView.length-this.elements-1);
+      }else{
+        if(this.target){
+          this.position = - this.target.nativeElement.offsetWidth;
+        }
+        
+        this.elements = this.inView.length - 1;
+        this.makeActive(this.inView.length-this.elements-1);
+      }
+    },100)
+    
     setInterval(()=>{
       if(this.elements && this.target){
         this.position += this.target.nativeElement.offsetWidth;
         this.elements --;
         if(window.innerWidth<1000){
-          this.makeActive(this.inView.length-this.elements);
+          this.makeActive(this.inView.length-this.elements-1);
         }else{
-          this.makeActive(this.inView.length-this.elements-2);
+          this.makeActive(this.inView.length-this.elements-1);
         }
 
       }else{
-        this.elements = 4;
-        this.position = 0;
+        
         if(window.innerWidth<1000){
-          this.elements = this.inView.length;
-          this.makeActive(this.inView.length-this.elements);
+          this.position = 0;
+          this.elements = this.inView.length-1;
+          this.makeActive(this.inView.length-this.elements-1);
         }else{
-          this.makeActive(this.inView.length-this.elements-2);
+          this.position = - this.target!.nativeElement.offsetWidth;
+          this.elements = this.inView.length - 1;
+          this.makeActive(this.inView.length-this.elements-1);
         }
       }
-    },4000)
+    },this.speed * 1000)
   }
 
   makeActive(i:number){

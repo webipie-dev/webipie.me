@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {DesignEditService} from "../../../_shared/services/design-edit.service";
+import {TemplateModel} from "../../../_shared/models/template.model";
 
 @Component({
   selector: 'app-testimonials-section',
@@ -7,37 +9,86 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TestimonialsSectionComponent implements OnInit {
 
-  textAlignment = [false,true];
-  someValue = 5;
-  constructor() { }
-  onItemChange(softSkill:any){
-    this.change(softSkill.target.value);
+  textAlignment: boolean[] = [];
+  pictureStyle: boolean[] = [];
+  speedValue = 5;
+  template!: TemplateModel;
+
+  constructor(private designEditService: DesignEditService) { }
+
+  ngOnInit(): void {
+    this.designEditService.currentTemplate.subscribe(template => {
+      this.template = template;
+      this.setDefaultPictureStyle();
+      this.setDefaultTextAlignment();
+      this.setDefaultCarouselSpeed();
+    })
   }
-  change(s:string){
-    switch (s){
-      case 'first':{
-        this.textAlignment[0]=true;
-        this.textAlignment[1]=false;
-        break;
+
+  setDefaultPictureStyle() {
+    if(this.template.testimonials.picture === 'rounded') {
+      this.pictureStyle = [true, false];
+    } else {
+      this.pictureStyle = [false, true];
+    }
+  }
+
+  setDefaultCarouselSpeed() {
+    this.speedValue = this.template.testimonials.carouselSpeed;
+  }
+
+  setDefaultTextAlignment() {
+    if(this.template.testimonials.textAlign === 'right') {
+      this.textAlignment = [true, false];
+    } else {
+      this.textAlignment = [false, true];
+    }
+  }
+
+  onElementChange(element: string, newValue: string | number) {
+    // @ts-ignore
+    this.template.testimonials[element] = newValue;
+    this.designEditService.updateTemplate(this.template);
+  }
+
+  change(element: string, s:string){
+    if(element === 'textAlign') {
+      switch (s){
+        case 'first':{
+          this.textAlignment[0]=true;
+          this.textAlignment[1]=false;
+          break;
+        }
+        case 'second':{
+          this.textAlignment[1]=true;
+          this.textAlignment[0]=false;
+          break;
+        }
       }
-      case 'second':{
-        this.textAlignment[1]=true;
-        this.textAlignment[0]=false;
-        break;
+    } else {
+      switch (s){
+        case 'first':{
+          this.pictureStyle[0]=true;
+          this.pictureStyle[1]=false;
+          break;
+        }
+        case 'second':{
+          this.pictureStyle[1]=true;
+          this.pictureStyle[0]=false;
+          break;
+        }
       }
     }
   }
-  select(i:number){
+
+  select(element: string, newValue: string | number, i?: number){
     let s:string;
     if(i==1){
       s="first";
     }else{
       s="second";
     }
-    this.change(s);
+    this.change(element, s);
+    this.onElementChange(element, newValue)
   }
-
-  ngOnInit(): void {
-  }
-
 }

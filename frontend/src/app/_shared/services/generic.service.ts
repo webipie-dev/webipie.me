@@ -4,8 +4,13 @@ import {GenericModel} from '../models/generic.model';
 import {UtilsUrl} from '../utils/utils-url';
 import Swal from 'sweetalert2';
 import {PortfolioModel} from "../models/portfolio.model";
+import { BaseService } from './base.service';
 
-export class GenericService<T extends GenericModel> {
+export class GenericService<T extends GenericModel> extends BaseService {
+  constructor(protected http: HttpClient) {
+    super(http);
+  }
+
 
   deleteModal = Swal.mixin({
     customClass: {
@@ -15,14 +20,8 @@ export class GenericService<T extends GenericModel> {
     buttonsStyling: false
   });
 
-  constructor(protected http: HttpClient) {
-  }
 
   protected suffix = '';
-
-  protected getUrl(): string {
-    return UtilsUrl.url;
-  }
 
   public getById(id: string): Observable<T> {
     return this.http.get(this.getUrl() + this.suffix + '/' + id) as Observable<T>;
@@ -66,15 +65,5 @@ export class GenericService<T extends GenericModel> {
 
   public deleteAll(): Observable<T> {
     return this.http.delete(this.getUrl() + this.suffix + '/delete') as Observable<T>;
-  }
-
-  private static addJWT() {
-    let httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')!
-    });
-    return {
-      headers: httpHeaders
-    }
   }
 }

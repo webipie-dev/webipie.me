@@ -8,7 +8,7 @@
     margin:auto;
     width:80%;
     min-height: 100vh;
-    max-width: 1200px;
+    max-width: 1300px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -29,20 +29,65 @@
     max-width: 400px;
     width:100%;
     text-align: left;
+    overflow: hidden;
+    box-sizing: content-box;
+    position: relative;
+    border-radius: 10px;
+    padding:10px;
+    margin:10px;
+    .img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        overflow: hidden;
+        height: 80px;
+    
+        img {
+          width: 100%;
+          object-position: center;
+          object-fit: cover;
+          height: 100%;
+        }
+      }
+}
+.iconed{
+    justify-content: left !important;
+    h2{
+        margin-left:20px;
+    }
+}
+@media screen and (max-width:400px) {
+    .iconed{
+        justify-content: center !important;
+        h2{
+            margin:0px;
+        }
+    }
+}
+.shadow{
+    box-shadow:0 0 7px lightgrey !important;
+    transition: transform 0.75s ease-out;
+    cursor: pointer;
+}
+.shadow:hover{
+    transform: translateY(-10px) rotateZ(-2deg);
 }
 .cos-element p{
+    position: relative;
     margin-top:10px;
     padding:10px;
 }
 .cos-title{
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    
-    width:80%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width:100%;
 }
 .cos-title h2{
-    font-size:2rem;
+    font-size:calc(20px + 0.6vw);
     font-weight:600;
 }
 .cos-text-container{
@@ -65,4 +110,5 @@ fa-icon{
 }
 .cos-skill-container{
     width:100%;
+    margin-top: 50px;
 }

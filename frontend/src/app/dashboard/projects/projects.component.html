@@ -1,60 +1,65 @@
 <div class="card card-box mb-5">
-  <div class="card-header-alt p-4">
-    <h6 class="font-weight-bold font-size-lg mb-1 text-black">Projects</h6>
-    <p class="text-black-50 mb-0">Report What your professional projects were like</p>
-
+  <div class="card-header-alt p-4 d-flex align-items-center justify-space-between">
+    <div>
+      <h6 class="font-weight-bold font-size-lg mb-1 text-black">Projects</h6>
+      <p class="text-black-50 mb-0">Report What your professional projects were like</p>
+    </div>
+    <ui-switch defaultBgColor="#cadecf" defaultBgColor="#cadecf" class="toggle-switch-success" placement="auto" tooltip="When this button is off, this section will not show up on your portfolio" [checked]="!toggleOff" (change)="onToggleChange($event)"></ui-switch>
   </div>
 
   <div class="divider"></div>
   <div class="card-body pt-2 px-4 pb-4">
-    <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th class="text-center">Description</th>
-        <th class="text-center">Github</th>
-        <th class="text-center">Link</th>
-        <th class="text-right">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
+    <div class="table-container">
+      <table class="table table-alternate text-nowrap table-hover mb-0 table-borderless">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Github</th>
+          <th class="text-center">Link</th>
+          <th class="text-right">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
 
-      <tr *ngFor="let project of projects">
-        <td>
-          <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{ project.name }}</span></div>
-        </td>
-        <td class="text-center">
-          <span class="font-weight-regular">{{ project.description }}</span>
-        </td>
-        <td class="text-center">
-          <span class="font-weight-regular">{{ project.github }}</span>
-        </td>
-        <td class="text-center">
-          <span class="font-weight-regular">{{ project.link }}</span>
-        </td>
-        <td class="text-right">
-          <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editProject(project.id)">
-            <span class="btn-wrapper--icon">
-              <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
-            </span>
-          </button>
-          <button (click)="removeProject(project.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
-            <span class="btn-wrapper--icon">
-              <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
-            </span>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <div class="card-footer d-flex justify-content-center">
-      <div>
-        <a routerLink='addproject'>
+        <tr *ngFor="let project of projects">
+          <td>
+            <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{ project.name }}</span></div>
+          </td>
+          <td class="text-center">
+            <span class="font-weight-regular">{{ ( project.description.length>30)? ( project.description  | slice:0:30)+' ...':( project.description ) }}</span>
+          </td>
+          <td class="text-center">
+            <span class="font-weight-regular">{{ project.github }}</span>
+          </td>
+          <td class="text-center">
+            <span class="font-weight-regular">{{ project.link }}</span>
+          </td>
+          <td class="text-right">
+            <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editProject(project.id)">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button (click)="removeProject(project.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="card-footer d-flex justify-content-center">
+        <div>
+          <a routerLink='addproject'>
           <button class="btn btn-sm btn-slack" type="button">
             Add new Project
           </button>
         </a>
       </div>
     </div>
-  </div>    
+  </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

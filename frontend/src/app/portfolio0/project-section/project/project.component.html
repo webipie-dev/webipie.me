@@ -1,4 +1,43 @@
-<div [ngClass]="class" #target>
-    <img src="assets/back.jpeg">
+<div [ngClass]="class" #target (click)="click(toggle)">
+    <img  src="{{displayImg}}">
 </div>
+<div class="overlay" #toggle >
+    <div class="cos-card {{template==2? 'bottom':''}}" #card (window:resize)="onResize(card)">
+        <div class="button" style="z-index:9999" (click)="exit(toggle)">
+            <fa-icon [icon]="close" [style]="'color:'+primaryColor"></fa-icon>
+        </div>
+      <div *ngIf="project.imgs || project.video">
+        <div class="images {{template==2? 'bordered':''}}">
+          <div class="next" style="z-index:999" (click)="goRight()">
+            <fa-icon [icon]="rightArrow" [style]="'color:'+primaryColor"></fa-icon>
+          </div>
+          <div class="prev" style="z-index:999">
+            <fa-icon [icon]="leftArrow" [style]="'color:'+primaryColor" (click)="goLeft()"></fa-icon>
+          </div>
+          <div class="images-container" [style]="'transform:translateX(-'+pos+'px)'">
+            <div class="image" *ngFor="let image of project.imgs">
+              <img [src]="image">
+            </div>
+            <div *ngIf="project.video" class="image">
+              <video  playsinline controls muted loop>
+                <source [src]="project.video"/>
+              </video>
+            </div>
+          </div>
 
+        </div>
+      </div>
+        <div class="cos-content">
+            <h1 [style]="'color:'+primaryColor+'!important;filter:brightness(80%)'+';font-family:'+font">{{project.name}}</h1>
+          <div class="links">
+            <a *ngIf="project.github " class="cos-btn-icon"  href="{{project.github | url}}" target="_blank"><fa-icon [icon]="gitHub"></fa-icon></a>
+            <a *ngIf="project.link" class="cos-btn-icon"  href="{{project.link | url}}" target="_blank"><fa-icon [icon]="link"></fa-icon></a>
+          </div>
+            <p [style]="'color:'+primaryColor+';font-family:'+font">{{project.description}}</p>
+          <div class="cos-nav {{button == 2? 'square':''}}">
+            <div  *ngFor="let tag of project.skills;" [ngClass]="globalTag==tag? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag==tag? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'"><p>{{tag}}</p></div>
+          </div>
+        </div>
+
+    </div>
+</div>

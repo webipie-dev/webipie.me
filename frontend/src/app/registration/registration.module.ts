@@ -15,7 +15,7 @@ import { LinkedinVerifComponent } from './linkedin-verif/linkedin-verif.componen
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import { GoogleLoginProvider } from 'angularx-social-login';
     RegistrationRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgxSpinnerModule
   ],
   providers: [
     {

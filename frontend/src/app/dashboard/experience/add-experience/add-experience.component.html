@@ -20,6 +20,11 @@
                    formControlName="title"
                    [(ngModel)]="workExperience.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="workExperienceForm.controls.title.errors?.required && workExperienceForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -28,6 +33,14 @@
                       formControlName="description"
                       [(ngModel)]="workExperience.description"
             ></textarea>
+            <!-- Error Handling -->
+            <div *ngIf="workExperienceForm.controls.description.errors?.required && workExperienceForm.controls.description.touched" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="workExperienceForm.controls.description.errors?.maxlength && workExperienceForm.controls.description.touched" class="alert isa_error">
+              Description is too long , must be shorter than 300 characters
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Job Type</label>
             <input class="form-control"
@@ -53,7 +66,7 @@
 
             <label>Still on the job ?</label>
             <div class="m-2">
-              <ui-switch [checked]="false"></ui-switch>
+              <ui-switch defaultBgColor="#cadecf" [checked]="false" (change)="checked()"></ui-switch>
             </div>
           </div>
           <div class="row">
@@ -65,7 +78,12 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                       class="form-control" placeholder="Select date" type="text" formControlName="beginDate" [(ngModel)]="beginDate">
+                       <!-- Error Handling -->
+                      <div *ngIf="workExperienceForm.controls.beginDate.errors?.required && workExperienceForm.controls.beginDate.touched" class="alert isa_error">
+                        Start Date is required.
+                      </div>
+                      <!-- /Error handling -->
               </div>
             </div>
 
@@ -78,30 +96,23 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text">
+                       class="form-control" placeholder="Select date" type="text" formControlName="endDate" [(ngModel)]="endDate"  [disabled]="check">
               </div>
 
             </div>
           </div>
 
           <div class="form-group">
-            <label>Images</label>
-            <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-                      *ngIf="type === 'component'"
-                      [config]="config" [disabled]="disabled"
-                      [message]="'Click or drag images here to upload'" class="dropzone-container"></dropzone>
-            <div (error)="onUploadError()" (init)="onUploadInit()" (success)="onUploadSuccess()"
-                 *ngIf="type === 'directive'" [disabled]="disabled" [dropzone]="config"
-                 class="dropzone dropzone-container"></div>
+            <label for="image">Image</label>
+            <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
           </div>
-          <input
-            id="hiddenImageInput"
-            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-            style="display: none"
-            multiple
-            name="imgs" type="file"
-            formControlName="imgs"
-          />
+
           <div class="position-relative form-group"><label for="city">City</label>
             <input class="form-control"
                    id="city"
@@ -136,8 +147,15 @@
         <div class="info-container">
             <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
             <h1>Tips & Information</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+          <p>Adding well described professional experience in your portfolio would help you stand out in the crowd
+            and reflect your professional skills.
+            <br>
+            <br>
+            When it comes to professional experiences, <strong>the more the merrier</strong> don't forget any.
+          </p>
         </div>
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+

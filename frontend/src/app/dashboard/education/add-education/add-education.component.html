@@ -14,7 +14,13 @@
                    name="name"
                    placeholder="Title"
                    type="text"
+                   [(ngModel)]="education.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="educationForm.controls.title.errors?.required && educationForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Level</label>
             <input class="form-control"
@@ -23,7 +29,13 @@
                    name="level"
                    placeholder="Level"
                    type="text"
+                   [(ngModel)]="education.level"
             >
+            <!-- Error Handling -->
+            <div *ngIf="educationForm.controls.level.errors?.required && educationForm.controls.level.touched" class="alert isa_error">
+              Level is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="row">
             <div class="form-group col-xl-6 col-md-12">
@@ -39,7 +51,13 @@
                        placeholder="Select date"
                        type="text"
                        formControlName="beginDate"
+                       [(ngModel)]="beginDate"
                 >
+                <!-- Error Handling -->
+                <div *ngIf="educationForm.controls.beginDate.errors?.required && educationForm.controls.beginDate.touched" class="alert isa_error">
+                  Star Date is required.
+                </div>
+                <!-- /Error handling -->
               </div>
             </div>
 
@@ -54,25 +72,31 @@
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }"
                        bsDatepicker
                        class="form-control"
-                       placeholder="Select date" 
+                       placeholder="Select date"
                        type="text"
                        formControlName="endDate"
+                       [(ngModel)]="endDate"
                 >
               </div>
 
             </div>
           </div>
 
-          <div class="position-relative form-group"><label for="city">City</label>
+          <div class="form-group"><label for="city">City</label>
             <input class="form-control"
                    formControlName="city"
                    id="city"
                    name="password"
                    placeholder="City"
                    type="text"
+                   [(ngModel)]="education.city"
             >
           </div>
-          <button [disabled]="!educationForm.valid" class="mt-1 btn btn-slack">Add Education</button>
+          <button [disabled]="!educationForm.valid" class="mt-1 btn btn-slack">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Education
+          </button>
         </form>
       </div>
     </div>
@@ -82,8 +106,18 @@
       <div class="info-container">
         <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
         <h1>Tips & Information</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+        <p>
+          <strong>Renowned Schools</strong> in your portfolio reflect what a serious person you.
+          <br>
+          <br>
+          However, <strong>they are not the only important thing</strong> so don't rely solely on them.
+          <br>
+          <br>
+          We advise you to add <strong>no more than 2 educational places</strong>, preferably, include the most relevant.
+        </p>
+
       </div>
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

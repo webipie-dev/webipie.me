@@ -26,8 +26,7 @@ export class AuthService extends GenericService<any>{
     return this.http.post(this.getUrl() + this.suffix + '/signin', credentials) as Observable<any>;
   }
 
-  public sendConfirmation(): Observable<any> {
-    const token = localStorage.get('token')
+  public sendConfirmation(token: any): Observable<any> {
     return this.http.get(this.getUrl() + this.suffix + '/confirmation/' + token) as Observable<any>;
   }
 
@@ -37,6 +36,7 @@ export class AuthService extends GenericService<any>{
   }
 
   public isLoggedIn(): boolean {
+    console.log('token' + localStorage.getItem('token'))
     return localStorage.getItem('token') !== null;
   }
 
@@ -67,6 +67,61 @@ export class AuthService extends GenericService<any>{
       headers: httpHeaders
     };
     return this.http.get(this.getUrl() + this.suffix + '/verified', httpOptions) as unknown as Observable<{verified: boolean}>;
+  }
+
+  public changePassword(body: any): Observable<any> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.post(this.getUrl() + this.suffix + '/changepwd', body, httpOptions) as Observable<any>;
+  }
+
+  public guideTourDone(): Observable<{operation: string}> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.getUrl() + this.suffix + '/guidetour', httpOptions) as Observable<{operation: string}>;
+  }
+
+  public verifyFirstVisit(): Observable<{ firstVisit: boolean }> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.getUrl() + this.suffix + '/firstvisit', httpOptions) as Observable<{firstVisit: boolean}>;
+  }
+
+  public getUserName(): Observable<{name: string}> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.getUrl() + this.suffix + '/username', httpOptions) as Observable<{name: string}>;
+  }
+
+  public getPicture(): Observable<{picture: string}> {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')!
+    });
+    const httpOptions = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.getUrl() + this.suffix + '/picture', httpOptions) as Observable<{picture: string}>;
   }
 
 }

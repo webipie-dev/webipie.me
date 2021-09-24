@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -21,6 +21,11 @@
                    formControlName="title"
                    [(ngModel)]="achievement.title"
             >
+            <!-- Error Handling -->
+            <div *ngIf="achievementForm.controls.title.errors?.required && achievementForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -30,23 +35,26 @@
                       [(ngModel)]="achievement.description"
             >
             </textarea>
+            <!-- Error Handling -->
+            <div *ngIf="achievementForm.controls.description.errors?.required && achievementForm.controls.description.touched" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="achievementForm.controls.description.errors?.maxlength && achievementForm.controls.description.touched" class="alert isa_error">
+              Description shouldn't surpass 300 characters.
+            </div>
+            <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label>Picture</label>
-            <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
-                      [message]="'Click or drag images here to upload'" (click)="onUploadInit()"
-                      (error)="onUploadError()" (success)="onUploadSuccess()" formControlName="image"></dropzone>
-            <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config"
-                 [disabled]="disabled" (click)="onUploadInit()" (error)="onUploadError()"
-                 (success)="onUploadSuccess()"></div>
+
+          <div class="form-group">
+            <label for="image">Image</label>
+            <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
           </div>
-          <input
-            id="hiddenImageInput"
-            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-            style="display: none"
-            multiple
-            name="imgs" type="file"
-            formControlName="photo"
-          />
 
           <div class="form-group">
             <label>Date</label>
@@ -66,6 +74,11 @@
                      formControlName="date"
                      [(ngModel)]="achievement.date"
               >
+              <!-- Error Handling -->
+              <div *ngIf="achievementForm.controls.date.errors?.required && achievementForm.controls.date.touched" class="alert isa_error">
+                Date is required.
+              </div>
+              <!-- /Error handling -->
             </div>
           </div>
           <div class="divider my-4"></div>
@@ -83,8 +96,11 @@
         <div class="info-container">
             <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
             <h1>Tips & Information</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+            <p>Adding Elaborate Achievements in your portfolio would help you stand out in the crowd.
+              <br>
+              Don't be greedy with yourself, <strong>all achievements matter</strong> so don't spare to mention any.</p>
         </div>
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

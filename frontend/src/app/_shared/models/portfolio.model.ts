@@ -7,13 +7,15 @@ import {VolunteeringExperienceModel} from "./volunteering-experience.model";
 import {TestimonialModel} from "./testimonial.model";
 import {WorkExperienceModel} from "./work-experience.model";
 import {TechnicalSkillModel} from "./technical-skill.model";
+import { EducationModel } from "./education.model";
 
 export interface PortfolioModel extends GenericModel {
   url: string,
   description?: string,
   name: string,
+  userName: string,
   phoneNumber?: number,
-  picture?: number,
+  picture?: string,
   position?: number,
   email?: number,
   github?: string,
@@ -23,6 +25,7 @@ export interface PortfolioModel extends GenericModel {
   template: TemplateModel,
   projects?: [ProjectModel],
   achievements?: [AchievementModel],
+  education?: [EducationModel],
   softSkills?: [SoftSkillModel],
   technicalSkills?: [{
     skill: TechnicalSkillModel,
@@ -30,5 +33,11 @@ export interface PortfolioModel extends GenericModel {
   }],
   workExperiences?: [WorkExperienceModel],
   volunteeringExperiences?: [VolunteeringExperienceModel],
-  testimonials?: [TestimonialModel]
+  testimonials?: [TestimonialModel],
+  projectsDisabled?: boolean,
+  testimonialsDisabled: {type: boolean, required: false, default: false},
+  achievementsDisabled: {type: boolean, required: false, default: false},
+  educationDisabled?: boolean,
+  technicalSkillsDisabled: {type: boolean, required: false, default: false},
+  softSkillsDisabled?: boolean
 }

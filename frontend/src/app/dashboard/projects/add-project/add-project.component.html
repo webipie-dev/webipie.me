@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="row col-xl-7 col-md-12">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -21,6 +21,11 @@
                    formControlName="name"
                    [(ngModel)]="project.name"
             >
+            <!-- Error Handling -->
+            <div *ngIf="projectForm.controls.name.errors?.required && projectForm.controls.name.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="exampleText">Description</label>
             <textarea class="form-control"
@@ -29,35 +34,46 @@
                       formControlName="description"
                       [(ngModel)]="project.description"
             ></textarea>
-          </div>
-          <div class="position-relative form-group">
-            <label>Images</label>
-            <dropzone (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-                      *ngIf="type === 'component'"
-                      [config]="config" [disabled]="disabled" [message]="'Click or drag images here to upload'"
-                      class="dropzone-container"></dropzone>
+            <!-- Error Handling -->
+            <div *ngIf="projectForm.controls.description.errors?.required && projectForm.controls.description.touched" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="projectForm.controls.description.errors?.maxlength" class="alert isa_error">
+              Description is longer than 300 characters.
+            </div>
+            <!-- /Error handling -->
           </div>
 
-          <div (error)="onUploadError()" (click)="onUploadInit()" (success)="onUploadSuccess()"
-               *ngIf="type === 'directive'" [disabled]="disabled" [dropzone]="config"
-               class="dropzone dropzone-container"></div>
-          <input
-            id="hiddenImageInput"
-            accept="image/jpg,image/jpeg,image/png,image/tiff,image/tif,image/bmp"
-            style="display: none"
-            multiple
-            name="imgs" type="file"
-            formControlName="photo"
-          />
-          <div class="position-relative form-group"><label for="exampleEmail">Skills</label>
-            <input class="form-control"
-                   id="exampleEmail"
-                   name="name"
-                   placeholder="Title"
-                   type="text"
-                   formControlName="skills"
-                   [(ngModel)]="project.skills"
-            >
+
+          <div class="form-group">
+            <label for="image">Images</label>
+            <div class="my-2 mx-2">
+              <img *ngFor="let image of project.imgs" [src]="image" class="mx-1" style="width:40px; height: 40px">
+            </div>
+            <ngx-dropzone  (change)="onSelectImage($event)">
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemoveImage(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only jpeg or png images.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="video">Video</label>
+            <ngx-dropzone  (change)="onSelectVideo($event)">
+              <ngx-dropzone-label>Click or drag video here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-preview *ngFor="let f of videos" [file]="f" [removable]="true" (removed)="onRemoveVideo(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-preview>
+            </ngx-dropzone>
+            <small class="form-text mb-3">Only mp4 videos.</small>
+          </div>
+          <div class="position-relative form-group"><label for="skills">Skills</label>
+
+            <ng-select id="skills" [(ngModel)]="project.skills" [multiple]="true" [addTag]="true" formControlName="skills">
+              <ng-option *ngFor="let skill of skills" [value]="skill.name">{{skill.name}}</ng-option>
+            </ng-select>
           </div>
           <div class="position-relative form-group"><label for="exampleEmail">Link</label>
             <input class="form-control"
@@ -78,6 +94,11 @@
                    formControlName="github"
                    [(ngModel)]="project.github"
             >
+            <!-- Error Handling -->
+            <div *ngIf="projectForm.controls.github.errors?.required && projectForm.controls.github.touched " class="alert isa_error">
+              Github is required
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="divider my-4"></div>
           <button class="mt-1 btn btn-slack" [disabled]="!projectForm.valid">
@@ -94,8 +115,16 @@
         <div class="info-container">
             <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
             <h1>Tips & Information</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+            <p>Make sure to fill all available fields to stands out.
+              Also, don't forget to add as many pictures as possible and verify their quality.</p>
+            <p>
+              <strong>NB*:</strong> In the skills field, add a few general skills,
+              (backend, machine learning, fullstack, ...).
+              Adding a lot of skills would ruin the portfolio design.
+            </p>
         </div>
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+

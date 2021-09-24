@@ -2,15 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const softSkillSchema = Schema({
-  title: {type: String, required: true},
-  description: {type: String, required: false},
-},
+        title: {type: String, required: true},
+        description: {type: String, required: false},
+        icon: {type: String, required: true}
+    },
     {
         toJSON: {
-        transform(doc, ret) {
-            ret.id = ret._id;
-            delete ret._id;
-            delete ret.__v;
+            transform(doc, ret) {
+                ret.id = ret._id;
+                delete ret._id;
+                delete ret.__v;
             }
         }
     }

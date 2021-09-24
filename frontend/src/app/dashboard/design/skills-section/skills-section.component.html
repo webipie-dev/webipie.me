@@ -5,7 +5,7 @@
     <div class="col-xl-12 col-md-12">
       <div class="row m-4 justify-content-center text-center">
         <div [class]='softSkills[0]? "cos-element m-2 col-xl-4 col-md-12 selected":"cos-element m-2 col-xl-4 col-md-12"'
-             (click)="select(1)">
+             (click)="select('softSkills', 1, 1)">
           <div class="cos-title">
             <fa-icon [icon]="['fas','stopwatch']"></fa-icon>
             <h2>Fast & Agile</h2>
@@ -13,31 +13,35 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod voluptas officiis. Tenetur ut voluptas
             quae possimus ipsum veritatis similique doloribus, quasi eos illum, accusantium sequi veniam. Quisquam,
             animi rerum!</p>
-          <div class="form-check text-center m-2"><input class="form-check-input" value="first"
-                                                         name="skill"
-                                                         type="radio" [checked]="softSkills[0]"
-                                                         (change)="onItemChange($event)"></div>
+          <div class="form-check text-center m-2">
+            <input class="form-check-input"
+                   value="first"
+                   name="skill"
+                   type="radio"
+                   [checked]="softSkills[0]"
+          ></div>
         </div>
-
-
         <div
           [class]='softSkills[1]? "cos-element m-2 col-xl-4 col-md-12 text-center selected":"cos-element m-2 col-xl-4 col-md-12 text-center"'
-          (click)="select(2)">
+          (click)="select('softSkills', 2, 2)">
           <div class="text-center">
             <h2>Fast & Agile</h2>
           </div>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod voluptas officiis. Tenetur ut voluptas
             quae possimus ipsum veritatis similique doloribus, quasi eos illum, accusantium sequi veniam. Quisquam,
             animi rerum!</p>
-          <div class="form-check text-center m-2"><input class="form-check-input" value="second"
-                                                         name="skill"
-                                                         type="radio" [checked]="softSkills[1]"
-                                                         (change)="onItemChange($event)"></div>
+          <div class="form-check text-center m-2">
+            <input class="form-check-input"
+                   value="second"
+                   name="skill"
+                   type="radio"
+                   [checked]="softSkills[1]"
+          ></div>
         </div>
 
         <div
           [class]='softSkills[2]? "cos-element m-2 col-xl-4 col-md-12 text-center selected":"cos-element m-2 col-xl-4 col-md-12 text-center"'
-          (click)="select(3)">
+          (click)="select('softSkills', 3, 3)">
           <div class="img">
             <img src="assets/grey-back.jpeg">
           </div>
@@ -48,10 +52,13 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quod voluptas officiis. Tenetur ut voluptas
             quae possimus ipsum veritatis similique doloribus, quasi eos illum, accusantium sequi veniam. Quisquam,
             animi rerum!</p>
-          <div class="form-check text-center m-2"><input class="form-check-input" value="third"
-                                                         name="skill"
-                                                         type="radio" [checked]="softSkills[2]"
-                                                         (change)="onItemChange($event)"></div>
+          <div class="form-check text-center m-2">
+            <input class="form-check-input"
+                   value="third"
+                   name="skill"
+                   type="radio"
+                   [checked]="softSkills[2]"
+            ></div>
         </div>
       </div>
     </div>
@@ -62,22 +69,25 @@
   <div class="card-header m-2"></div>
   <div class="heading-3 text-center m-3">Hard Skills</div>
   <div class="row align-items-center col-xl-12 col-md-12 justify-content-center">
-    <div class="m-2 col-xl-4 col-md-12 justify-content-center">
+    <div class="m-2 col-xl-4 col-md-12 justify-content-center" 
+         (click)="select('hardSkills', 1, 1)">
       <div class="row justify-content-center stars align-items-center">
-        <div class="loading">
+        <div class="loading" [class]='harSkills[0]? "selected":""'>
           <div class="level">
-
           </div>
-
         </div>
         <p>60%</p>
       </div>
-      <div class="form-check text-center m-2"><input class="form-check-input"
-                                                     name="skillrating"
-                                                     type="radio" checked></div>
+      <div class="form-check text-center m-2">
+        <input class="form-check-input"
+               name="skillrating"
+               type="radio"
+               [checked]="harSkills[0]"
+        ></div>
     </div>
-    <div class="m-2 col-xl-3 col-md-12">
-      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center">
+    <div class="mt-3 col-xl-3 col-md-12" 
+         (click)="select('hardSkills', 2, 2)">
+      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center" style="transition:transform 0.75s ease" [class]='harSkills[1]? "selectedShadow":""'>
         <fa-icon [icon]="['fas','star']"></fa-icon>
         <fa-icon [icon]="['fas','star']"></fa-icon>
         <fa-icon [icon]="['fas','star']"></fa-icon>
@@ -85,20 +95,27 @@
         <fa-icon [icon]="['fas','star']" style="color:lightgrey"></fa-icon>
         <p>4/5</p>
       </div>
-      <div class="form-check text-center"><input class="form-check-input"
-                                                 name="skillrating"
-                                                 type="radio" checked></div>
+      <div class="form-check text-center">
+        <input class="form-check-input"
+               name="skillrating"
+               type="radio"
+               [checked]="harSkills[1]"
+        ></div>
     </div>
-    <div class="m-2 col-xl-4 col-md-12">
-      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center">
+    <div class="mt-3 col-xl-4 col-md-12"  
+         (click)="select('hardSkills', 3, 3)">
+      <div class="stars m-2 row col-xl-12 col-md-12 justify-content-center align-items-center" style="transition:transform 0.75s ease" [class]='harSkills[2]? "selectedShadow":""'>
         <div class="m-2 btn btn-success p-2">5/5</div>
         <div class="m-2 btn btn-neutral-success p-2">4/5</div>
         <div class="m-2 btn btn-neutral-warning p-2">2/5</div>
         <div class="m-2 btn btn-warning p-2">1/5</div>
       </div>
-      <div class="form-check text-center"><input class="form-check-input"
-                                                 name="skillrating"
-                                                 type="radio" checked></div>
+      <div class="form-check text-center">
+        <input class="form-check-input"
+               name="skillrating"
+               type="radio"
+               [checked]="harSkills[2]"
+        ></div>
     </div>
   </div>
 </div>

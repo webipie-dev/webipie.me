@@ -62,3 +62,79 @@ input[type=number] {
 .wrap-reverse{
   flex-wrap: wrap-reverse;
 }
+.alert{
+  width:100%;
+  font-size:1rem;
+  padding:10px;
+  border:none;
+  border-radius: 0px !important;
+  box-sizing: border-box;
+  position: relative;
+  top:10px;
+  animation: show 0.5s ease-out;
+  left:0px;
+}
+.isa_info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+.isa_success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+.isa_warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.isa_error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+.invalid{
+  border-color: #D8000C !important;
+  color: #D8000C;
+}
+.valid{
+  border-color: #4F8A10 !important;
+  color: #4F8A10;
+}
+joyride-step{
+  z-index: 10000;
+  position: relative;
+}
+.backdrop-container{
+  z-index:10000 !important;
+}
+@keyframes show {
+  0%{
+    opacity:0;
+    transform: translateY(-10px);
+  }100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  
+
+  &::-webkit-scrollbar {
+      width: 10px;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+      background: white;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+      background: rgb(12, 159, 12);
+  }
+  
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+      background: rgb(72, 166, 72);
+  }
+}

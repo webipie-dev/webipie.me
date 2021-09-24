@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const {templateSchema} = require('./template');
+const {templateSchema, templateInstanceSchema} = require('./template');
 const { achievementSchema } = require('./achievement');
 const { testimonialSchema } = require('./testimonial');
 const {workExperienceSchema} = require('./work_experience');
@@ -13,16 +13,17 @@ const {technicalSkillSchema} =  require('./technical_skill');
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},
   name: {type: String, required: true, unique: true},
+  userName: {type: String},
   description: {type: String, required: false},
   phoneNumber: {type: String, required: false},
   position: {type: String, required: false},
   picture: {type: String, required: false},
   email: {type: String, required: false},
-  github: {type: String, required: false, unique: true},
-  linkedIn: {type: String, required: false, unique: true},
-  CV: {type: String, required: false, unique: true},
+  github: {type: String, required: false},
+  linkedIn: {type: String, required: false},
+  CV: {type: String, required: false},
   creationDate: {type: Date, default: Date.now()},
-  template: templateSchema,
+  template: templateInstanceSchema,
   projects: {type: [projectSchema]},
   education: {type: [educationSchema]},
   achievements: {type: [achievementSchema]},
@@ -34,6 +35,14 @@ const portfolioSchema = new Schema({
   softSkills: {type: [softSkillSchema]},
   workExperiences: {type: [workExperienceSchema]},
   volunteeringExperiences: {type: [volunteeringExperienceSchema]},
+  projectsDisabled: {type: Boolean, default: false},
+  testimonialsDisabled: {type: Boolean, default: false},
+  achievementsDisabled: {type: Boolean, default: false},
+  educationDisabled: {type: Boolean, default: false},
+  technicalSkillsDisabled: {type: Boolean, default: false},
+  softSkillsDisabled: {type: Boolean, default: false},
+  workExperiencesDisabled: {type: Boolean, default: false},
+  volunteeringExperiencesDisabled: {type: Boolean, default: false},
   visits: {
     type: Map,
     of: {ip: String, date: Date, country: String, count: Number}

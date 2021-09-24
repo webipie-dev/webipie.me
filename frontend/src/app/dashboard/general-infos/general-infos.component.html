@@ -1,63 +1,158 @@
 <app-wrapper-simple sectionHeading="General Infos">
-  <form>
+  <form #form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
-      <div class="col-md-3">
-        <div class="position-relative form-group"><label for="exampleEmail11">First Name</label><input
-          class="form-control" id="exampleEmail11" name="email" placeholder="First Name" type="text"></div>
-      </div>
-      <div class="col-md-3">
-        <div class="position-relative form-group"><label for="examplePassword11">Last Name</label><input
-          class="form-control" id="examplePassword11" name="password" placeholder="Last name" type="text"></div>
-      </div>
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="examplePassword11">Current Position</label><input
-          class="form-control" id="examplePassword11" name="password" placeholder="Ex : Developer" type="text"></div>
+        <div class="position-relative form-group"><label for="name">Portfolio Name</label>
+          <input
+            id="name" 
+            name="name" 
+            placeholder="Full Name" 
+            type="text"
+            formControlName="userName"
+            [(ngModel)]="portfolio.userName"
+            [class]="!f.userName.touched? 'form-control':f.userName.errors?.required? 'form-control invalid':'form-control valid'">
+            <!-- Error Handling -->
+            <div *ngIf="f.userName.errors?.required && f.userName.touched" class="alert isa_error">
+              Name is required.
+            </div>
+            <!-- /Error Handling -->
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="position">Current Position</label>
+          <input
+            class="form-control" 
+            id="position" 
+            name="position" 
+            placeholder="Ex : Developer" 
+            type="text"
+            formControlName="position"
+            [(ngModel)]="portfolio.position"
+            [class]="!f.position.touched? 'form-control':f.position.errors?.required? 'form-control invalid':'form-control valid'">
+            <!-- Error Handling -->
+            <div *ngIf="f.position.errors?.required && f.position.touched" class="alert isa_error">
+              Position is required.
+            </div>
+            <!-- /Error Handling -->
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-12 ">
+        <div class="position-relative form-group"><label for="email">About you</label>
+        <textarea id="description"
+        name="description"
+        placeholder="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat vitae impedit iste esse officiis, eaque dicta at eos. Dolor fugit itaque deserunt asperiores soluta, modi natus error velit. Aut, ad!"
+        type="textarea"
+        formControlName="description"
+        autosize [minRows]="5" 
+        [maxRows]="10" 
+        [(ngModel)]="portfolio.description"
+        [class]="!f.description.touched? 'form-control':(f.description.errors?.required || f.description.errors?.maxlength || f.description.errors?.minlength)? 'form-control invalid':'form-control valid'"></textarea>
+            <!-- Error Handling -->
+            <div *ngIf="f.description.errors?.required" class="alert isa_error">
+              Description is required.
+            </div>
+            <div *ngIf="f.description.errors?.minlength" class="alert isa_error">
+              Description Should be longer than 10 characters.
+            </div>
+            <div *ngIf="f.description.errors?.maxlength" class="alert isa_error">
+              Description Should be shorter than 300 characters.
+            </div>
+            <!-- /Error handling -->
+        </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="exampleEmail11">Email</label><input class="form-control"
-                                                                                                  id="exampleEmail11"
-                                                                                                  name="email"
-                                                                                                  placeholder="Email"
-                                                                                                  type="email"></div>
+        <div class="position-relative form-group"><label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            placeholder="Email"
+            type="email"
+            formControlName="email"
+            [(ngModel)]="portfolio.email"
+            [class]="!f.email.touched? 'form-control':(f.email.errors?.required || f.email.errors?.email)? 'form-control invalid':'form-control valid'">
+            <!-- Error Handling -->
+            <div *ngIf="f.email.errors?.required && f.email.touched" class="alert isa_error">
+              Email is required.
+            </div>
+            <div *ngIf="f.email.errors?.email" class="alert isa_error">
+              Sould be a valid email
+            </div>
+            <!-- /Error handling -->
+          </div>
       </div>
+
       <div class="col-md-6">
-        <div class="position-relative form-group"><label for="examplePassword11">Phone</label><input
-          class="form-control" id="examplePassword11" name="password" placeholder="Phone Number" type="number"></div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-6">
-        <div class="position-relative form-group"><label for="exampleEmail11">Github</label><input class="form-control"
-                                                                                                   id="exampleEmail11"
-                                                                                                   name="email"
-                                                                                                   placeholder="Github"
-                                                                                                   type="text"></div>
-      </div>
-      <div class="col-md-6">
-        <div class="position-relative form-group"><label for="examplePassword11">LinkedIn</label><input
-          class="form-control" id="examplePassword11" name="password" placeholder="LinkedIn" type="text"></div>
+        <div class="position-relative form-group"><label for="phoneNumber">Phone</label>
+          <input
+            [class]="!f.phoneNumber.touched? 'form-control':f.phoneNumber.errors?.required? 'form-control invalid':'form-control valid'"
+            id="phoneNumber" 
+            name="phoneNumber" 
+            placeholder="Phone Number" 
+            type="text"
+            formControlName="phoneNumber"
+            [(ngModel)]="portfolio.phoneNumber">
+            <!-- Error Handling -->
+            <div *ngIf="f.phoneNumber.errors?.required && f.phoneNumber.touched" class="alert isa_error">
+              Phone Number is required.
+            </div>
+            <!-- /Error handling -->
+          </div>
       </div>
     </div>
 
-    <label for="exampleAddress2">Picture</label>
-    <ngx-dropzone [multiple]="false" [disabled]="files.length > 0" (change)="onSelect($event)">
+    <div class="form-row">
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="github">Github</label>
+          <input [class]="!f.github.touched? 'form-control':'form-control valid'"
+            id="github"
+            name="github"
+            placeholder="Github"
+            type="text"
+            formControlName="github"
+            [(ngModel)]="portfolio.github">
+          </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="position-relative form-group"><label for="linkedin">LinkedIn</label>
+          <input [class]="!f.linkedIn.touched? 'form-control':'form-control valid'"
+            id="linkedIn" 
+            name="linkedIn" 
+            placeholder="linkedIn" 
+            type="text"
+            formControlName="linkedIn"
+            [(ngModel)]="portfolio.linkedIn">
+          </div>
+      </div>
+    </div>
+
+    <label for="picture">Picture</label>
+    <ngx-dropzone [multiple]="false" (change)="onSelectPicture($event)">
       <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
-      <ngx-dropzone-preview *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+      <ngx-dropzone-preview *ngFor="let f of pictures" [file]="f" [removable]="true" (removed)="onRemovePicture(f)">
         <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
       </ngx-dropzone-preview>
     </ngx-dropzone>
+    <small class="form-text mb-3">Only jpeg or png images.</small>
 
-    <label for="exampleAddress2">CV</label>
-    <dropzone *ngIf="type === 'component'" class="dropzone-container" [config]="config" [disabled]="disabled"
-              [message]="'Click or drag files here to upload'" (init)="onUploadInit()" (error)="onUploadError()"
-              (success)="onUploadSuccess()"></dropzone>
-    <div *ngIf="type === 'directive'" class="dropzone dropzone-container" [dropzone]="config" [disabled]="disabled"
-         (init)="onUploadInit()" (error)="onUploadError()" (success)="onUploadSuccess()"></div>
+    <label for="cv">CV</label>
+    <ngx-dropzone [multiple]="false" (change)="onSelectCV($event)">
+      <ngx-dropzone-label>Click or drag files here to upload!</ngx-dropzone-label>
+      <ngx-dropzone-preview *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemoveCV(f)">
+        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+    <small class="form-text mb-2">Only pdf files.</small>
+
 
     
 
-    <button class="mt-2 btn btn-slack">Save</button>
+    <button class="mt-2 btn btn-slack" [disabled]="!portfolioForm.valid">Save</button>
   </form>
 </app-wrapper-simple>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

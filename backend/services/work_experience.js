@@ -1,6 +1,7 @@
 const {WorkExperience} = require('../models/work_experience');
 const Portfolio = require('../models/portfolio');
 const ApiError = require("../errors/api-error");
+const {compare_date} = require("../_helpers/verif_date");
 
 
 const getWorkExperiences = async (req, res, next) => {
@@ -30,9 +31,7 @@ const getOneWorkExperience = async (req, res, next) => {
 };
 
 const addWorkExperience = async (req, res, next) => {
-  let { title, description, company, position, skills, imgs, beginDate, endDate, city, portfolioId } = req.body;
-  if(beginDate) beginDate = new Date(beginDate);
-  if (endDate) endDate =  new Date(endDate);
+  let { title, description, company, position, skills, img, beginDate, endDate, city, portfolioId } = req.body;
 
   let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
@@ -40,12 +39,12 @@ const addWorkExperience = async (req, res, next) => {
     return;
   }
 
-  if(beginDate >= endDate){
+  if(! compare_date(req.body.beginDate, req.body.endDate)){
     return next(ApiError.BadRequest('End date should be bigger than begin date.'));
   }
 
   const workExperience = new WorkExperience({
-    title, description, company, position, skills, imgs, beginDate, endDate, city, "portfolio": portfolioId
+    title, description, company, position, skills, img, beginDate, endDate, city, "portfolio": portfolioId
   });
 
   await workExperience.save();
@@ -68,15 +67,11 @@ const editOneWorkExperience = async (req, res, next) => {
     return;
   }
 
-  const { imgs , deletedImages } = req.body;
-
 
   //separating the updates
   const edits = {};
   for(let key in req.body) {
-      if(key !== 'imgs' && key !== 'deletedImages'){
-        edits[key] = req.body[key];
-      }
+      edits[key] = req.body[key];
   }
 
 
@@ -87,23 +82,6 @@ const editOneWorkExperience = async (req, res, next) => {
         "update":{ $set: edits }
       }
     });
-    if(imgs){
-      await bulkQueries.push({
-        updateOne: {
-          "filter": { _id: id},
-          "update": { $addToSet: {imgs: {$each: imgs} } }
-        }
-      })
-    }
-    if(deletedImages){
-      await bulkQueries.push({
-        updateOne: {
-          "filter": { _id: id},
-          "update": { $pull : {imgs: {$in: deletedImages}}}
-        }
-      })
-    } 
-
 
   const workExperienceEdited = await WorkExperience.bulkWrite(bulkQueries, {ordered: false})
     .catch((err) => {

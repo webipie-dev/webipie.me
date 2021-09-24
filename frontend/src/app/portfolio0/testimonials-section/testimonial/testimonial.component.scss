@@ -1,6 +1,6 @@
 .cos-container{
-    width: 80%;
-    max-width: 300px;
+    width: 90vw;
+    max-width: 280px;
 
 }
 .cos-container img{
@@ -16,4 +16,8 @@
 .cos-container p{
     margin-top:20px;
     text-align: left;
+    word-wrap: break-word;
+}
+.square{
+    border-radius: 15px !important;
 }

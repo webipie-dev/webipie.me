@@ -1,13 +1,10 @@
-<div class="cos-container">
+<div class="cos-container" [hidden]="disabled">
     <div class="cos-content">
-        <h3>MY WORKS</h3>
-        <h1>My Portfolio</h1>
-        <div class="cos-nav">
-            <div [ngClass]="globalTag=='All'? 'cos-btn active':'cos-btn'" (click)='changeTag("All")'><p>All</p></div>
-            <div [ngClass]="globalTag=='Design'? 'cos-btn active':'cos-btn'"(click)='changeTag("Design")'><p>Design</p></div>
-            <div [ngClass]="globalTag=='Photoshop'? 'cos-btn active':'cos-btn'" (click)='changeTag("Photoshop")'><p>Photoshop</p></div>
-            <div [ngClass]="globalTag=='Illustrator'? 'cos-btn active':'cos-btn'" (click)='changeTag("Illustrator")'><p>Illustrator</p></div>
-            <div [ngClass]="globalTag=='Indesign'? 'cos-btn active':'cos-btn'" (click)='changeTag("Indesign")'><p>Indesign</p></div>
+        <h3>Projects</h3>
+        <h1 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">My Portfolio</h1>
+        <div class="cos-nav {{button == 2? 'square':''}}">
+            <div [ngClass]="globalTag=='All'? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag=='All'? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag("All")'><p>All</p></div>
+            <div  *ngFor="let tag of tags;" [ngClass]="globalTag==tag? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag==tag? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag(tag)'><p>{{tag}}</p></div>
         </div>
         <div class="cos-project-container">
             <app-project-element *ngFor="let project of projects; let i=index" [project]="project" [globalTag]="globalTag" [tags]="project.skills"></app-project-element>

@@ -6,7 +6,7 @@ const workExperienceSchema = Schema({
     description: {type: String, required: true},
     position: {type: String, required: false},
     company: {type: String, required: false},
-    imgs: {type: [String], required: false},
+    img: {type: String, required: false},
     skills: {type: [String], required: false},
     beginDate: {type: Date, required: true},
     endDate: {type: Date, required: false},

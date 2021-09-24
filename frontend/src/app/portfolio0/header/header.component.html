@@ -1,16 +1,31 @@
 <div class="cos-container">
     <div [class]="scrolled? 'cos-scroll cos-show':'cos-scroll'"></div>
-    <div class="cos-menu" [style.color]="scrolled? '#202e37 !important':'white'">
+    <div class="cos-menu" [style.color]="scrolled? color+' !important':'white'" [style.filter]="scrolled? 'brightness(90%)!important':''">
         <div class="cos-left">
-            <h1>JOHN DOE</h1>
+            <h1 style="text-transform: uppercase;text-align: center;">{{name}}</h1>
         </div>
         <div class="cos-right">
-            <a>HOME</a>
             <a (click)="clickAboutme($event)">ABOUT ME</a>
-            <a (click)="clickExpertise($event)">EXPERTISE</a>
-            <a (click)="clickExperience($event)">EXPERIENCE</a>
-            <a (click)="clickTestimonials($event)">TESTIMONIALS</a>
+            <a (click)="clickExpertise($event)" *ngIf="!softSkillsDisabled || !hardSkillsDisabled">EXPERTISE</a>
+            <a (click)="clickExperience($event)" *ngIf="!volunteeringExperiencesDisabled || !workExperiencesDisabled">EXPERIENCE</a>
+            <a (click)="clickEducation($event)" *ngIf="!educationDisabled">EDUCATION</a>
+            <a (click)="clickPortfolio($event)" *ngIf="!projectsDisabled">PORTFOLIO</a>
+            <a (click)="clickAchievements($event)" *ngIf="!achievementsDisabled">ACHIEVEMENTS</a>
+            <a (click)="clickTestimonials($event)" *ngIf="!testimonialsDisabled">TESTIMONIALS</a>
             <a (click)="clickContact($event)">CONTACT ME</a>
+            
         </div>
+        <fa-icon [icon]="menu" style="font-size:1.6rem" class="menu" (click)="onClick(target)"></fa-icon>
+        
+    </div>
+    <div class="cosmenu hidden" #target>
+        <a (click)="clickAboutme($event)"><h3>ABOUT ME</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickExpertise($event)"*ngIf="!softSkillsDisabled || !hardSkillsDisabled"><h3>EXPERTISE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickExperience($event)"*ngIf="!volunteeringExperiencesDisabled || !workExperiencesDisabled"><h3>EXPERIENCE</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickEducation($event)"*ngIf="!educationDisabled"><h3>EDUCATION</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickPortfolio($event)"*ngIf="!projectsDisabled"><h3>PORTFOLIO</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickAchievements($event)"*ngIf="!achievementsDisabled"><h3>ACHIEVEMENTS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickTestimonials($event)"*ngIf="!testimonialsDisabled"><h3>TESTIMONIALS</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
+        <a (click)="clickContact($event)"><h3>CONTACT ME</h3><fa-icon [icon]="rightArrow"></fa-icon></a>
     </div>
 </div>

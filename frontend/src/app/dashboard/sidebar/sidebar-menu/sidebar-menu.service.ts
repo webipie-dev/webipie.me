@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 
 interface MenuItem {
   title: string;
@@ -7,6 +7,7 @@ interface MenuItem {
     class: string;
     text: string;
   };
+  text?: string;
   link?: string;
   active?: boolean;
   icon?: string;
@@ -27,11 +28,13 @@ export class SidebarMenuService {
       "title": "Home",
       "type": "simple",
       "icon": "<i class=\"pe-7s-safe\"> </i>",
-      "link": "/dashboard/home"
+      "link": "/dashboard/home",
+      "text": 'This is the home page of your dashboard where you can keep track of the number of visitors and their location.'
     },
     {
       "title": "Portfolio",
       "type": "dropdown",
+      "text": 'This is the part where you fulfill your portfolio with all your experiences and achievements, click on it and all the different sections will appear',
       "icon": "<i class=\"pe-7s-note2\"></i>",
       "submenus": [
         {
@@ -75,29 +78,49 @@ export class SidebarMenuService {
       "title": "Design",
       "type": "simple",
       "icon": "<i class=\"pe-7s-magic-wand\"> </i>",
-      "link": "/dashboard/design"
+      "link": "/dashboard/design",
+      "text": 'This is the part where you customize your portfolio, you can change colors, fonts and so much more'
+    },
+    {
+      "title": "Help",
+      "type": "header"
+    },
+    {
+      "title": "Contact Support",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-headphones\"></i>",
+      "link": "/dashboard/support-request"
+    },
+    {
+      "title": "Request Domain Name",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-note2\"></i>",
+      "link": "/dashboard/domain-request"
+    },
+    {
+      "title": "FAQ",
+      "type": "simple",
+      "icon": "<i class=\"pe-7s-help1\"></i>",
+      "link": "/dashboard/faq"
     },
     {
       "title": "Settings",
-      "type": "header"
+      "type": "header",
+      "text": "general settings for your profile"
     },
     {
       "title": "Profile",
       "type": "simple",
       "icon": "<i class=\"pe-7s-user\"></i>",
-      "link": "/dashboard/profile"
-    },
-    {
-      "title": "Preferences",
-      "type": "simple",
-      "icon": "<i class=\"pe-7s-settings\"></i>",
-      "link": "/update-preferences"
+      "link": "/dashboard/profile",
+      "text": "check your portfolio"
     },
     {
       "title": "Log Out",
       "type": "simple",
       "icon": "<i class=\"pe-7s-next-2\"></i>",
-      "link": "/dashboard/logout"
+      "link": "/dashboard/logout",
+      "text": "simply log out"
     }
   ];
 

@@ -1,0 +1,5 @@
+wptools==0.4.17
+pymongo[srv]==3.12.0
+boto3==1.18.43
+requests
+bs4

@@ -18,8 +18,14 @@ export class Portfolio0Component implements OnInit {
       this.favIcon.type ="image/gif/png"
     }
   }
+
+  changeTitle(){
+    document.title = JSON.parse(localStorage.getItem('portfolio')!).name;
+  }
+
   ngOnInit(): void {
     this.changeIcon()
+    this.changeTitle()
   }
 
   scroll(el : HTMLElement){

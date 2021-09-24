@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import { environment } from '../../../../environments/environment';
 import {AuthService} from "../../../_shared/services/auth.service";
 import Swal from "sweetalert2";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-card',
@@ -18,7 +19,8 @@ export class CardComponent implements OnInit {
   name = '';
   password = '';
   confirmPassword = '';
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     //Delaying the card animation for a bit
@@ -32,8 +34,10 @@ export class CardComponent implements OnInit {
   }
 
   signUp(): void{
+    this.spinner.show();
     this.authService.signUp({ name: this.name, email: this.email, password: this.password}).subscribe(res => {
       localStorage.setItem('token', res.token);
+      this.spinner.hide();
       this.router.navigate(['../confirmation'], {
         relativeTo: this.route,
         queryParams: {email: this.email}

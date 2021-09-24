@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Font, FontInterface} from 'ngx-font-picker';
+import {DesignEditService} from "../../_shared/services/design-edit.service";
+import {TemplateModel} from "../../_shared/models/template.model";
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-design',
@@ -24,11 +28,13 @@ export class DesignComponent implements OnInit {
 
   public presetFonts = this._presetFonts;
 
-  constructor() {
+  @Output() templateEvent = new EventEmitter<TemplateModel>();
+
+
+  constructor(public designEditService: DesignEditService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
-
   }
 
   public togglePresetFonts(): void {
@@ -38,5 +44,17 @@ export class DesignComponent implements OnInit {
   public toggleExtraOptions(): void {
     this.sizeSelect = !this.sizeSelect;
     this.styleSelect = !this.styleSelect;
+  }
+
+  public submitChanges(): void {
+    this.spinner.show();
+    this.designEditService.submitValues();
+    this.spinner.hide();
+    Swal.fire({
+      title: 'Operation successful',
+      text: 'Design updated successfully',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    });
   }
 }

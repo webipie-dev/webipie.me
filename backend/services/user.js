@@ -4,13 +4,14 @@ const {JWT_SECRET, EMAIL} = require('../configuration/index');
 const bcrypt = require('bcrypt');
 const ApiError = require("../errors/api-error");
 const {sendEmail} = require('./email');
+const Portfolio = require('../models/portfolio');
 const querystring = require('querystring');
-const validateRequest = require("../middlewares/validate-request");
-const validation = require("../middlewares/validation/validator");
 const LINKEDIN_CLIENT_ID = "77oj8s50xw1yt7";
 const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
 const axios = require('axios');
 const {OAuth2Client} = require('google-auth-library');
+
+const { hostname, httpProtocol, port, clientPort, clientHostname } = require('../configuration/index');
 
 
 signToken = user => {
@@ -65,10 +66,13 @@ module.exports = {
         await newUser.save();
         const token = signToken(newUser);
 
+        let portString = `:${clientPort}`;
+        if(`${clientPort}` === '430')
+            portString = '';
         // send mail of verification 
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
-            `Hello ${name},\n\nPlease verify your account by clicking the link: \n localhost:8000/user/confirmation/${token}\n\nThank You!\n`
+            `Hello ${name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n`
         )
         // TODO: handle email failure correctly, this always returns undefined:
         if (emailError)
@@ -118,10 +122,13 @@ module.exports = {
             return res.status(200).send('This account has been already verified. Please log in.');
 
         } else {
+            let portString = `:${clientPort}`;
+            if(`${clientPort}` === '430')
+                portString = '';
             // send mail of verification 
             var emailError = sendEmail(
                 EMAIL.USER, user.email, 'Account Verification',
-                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n localhost:8000/user/confirmation/${token}\n\nThank You!\n`
+                `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n`
             );
             // TODO: handle email failure correctly, this always returns undefined:
             if (emailError)
@@ -138,7 +145,7 @@ module.exports = {
             .post("https://www.linkedin.com/oauth/v2/accessToken", querystring.stringify({
                 grant_type: "authorization_code",
                 code: token,
-                redirect_uri: 'http://localhost:4200/register/linkedin-verif',
+                redirect_uri: `${httpProtocol}://${clientHostname}:${clientPort}/register/linkedin-verif`,
                 client_id: LINKEDIN_CLIENT_ID,
                 client_secret: LINKEDIN_CLIENT_SECRET
             }));
@@ -222,7 +229,7 @@ module.exports = {
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(newPassword, salt);
 
-        await User.update({"email": user.email}, {"password": passwordHash});
+        await User.updateOne({"email": user.email}, {"password": passwordHash});
         return res.status(200).json({success: "success"})
 
     },
@@ -236,15 +243,13 @@ module.exports = {
         res.status(200).json({ token, storeId: req.user.storeID });
     },
 
-
-
     loginWithGoogle: async (req, res, next) => {
 
         const {access_token} = req.body
         const oAuth2Client = new OAuth2Client(
             '49124487691-99k5mbpk8cf52e52i6c0ifc5cp672r6k.apps.googleusercontent.com',
             'jl6kALTXXLHndRViUlCXqQbL',
-            "http://localhost:4200"
+            `${httpProtocol}://${clientHostname}:${clientPort}`
         );
             
 
@@ -290,4 +295,23 @@ module.exports = {
             return res.status(200).json({verified: false});
         }
     },
+
+    getUsername: async (req, res, next) => {
+        const token = req.user;
+        return res.status(200).json({name: token.name});
+    },
+
+    markGuideTourDone: async (req, res, next) => {
+        const token = req.user;
+        const user = await User.findById(token._id);
+        user.firstVisit = false;
+        await user.save();
+        return res.status(200).json({operation: 'success'});
+    },
+
+    verifyFirstVisit: async (req, res, next) => {
+        const token = req.user;
+        console.log(token)
+        return res.status(200).json({firstVisit: token.firstVisit});
+    }
 }

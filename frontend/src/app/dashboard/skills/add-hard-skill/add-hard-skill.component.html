@@ -2,7 +2,7 @@
   <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
 </div>
 <div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
-  
+
   <div class="row col-xl-7 col-md-12 ">
     <div class="card card-box col-xl-12 col-md-12 mb-5">
       <div class="card-body">
@@ -19,8 +19,14 @@
                        bindValue="id"
                        [items]="skills"
                        name="title"
+
             >
             </ng-select>
+            <!-- Error Handling -->
+            <div *ngIf="!selectedSkill" class="alert isa_error">
+              This field is required
+            </div>
+            <!-- /Error handling -->
           </div>
           <div class="position-relative form-group">
             <label>Select Skill level</label>
@@ -33,7 +39,7 @@
               name="level"
             ></nouislider>
           </div>
-          <button (click)="onSubmit()" class="mt-2 btn btn-slack">
+          <button (click)="onSubmit()" class="mt-2 btn btn-slack" [disabled]="!selectedSkill || !level">
             <span *ngIf="!edit">Add</span>
             <span *ngIf="edit">Edit</span>
             Hard Skill
@@ -47,8 +53,11 @@
       <div class="info-container">
         <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
         <h1>Tips & Information</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi error a omnis illo temporibus dolorum eos, obcaecati deleniti id reprehenderit rerum aut culpa, quo ullam praesentium tenetur ea fuga ducimus?</p>
+        <p>When hiring new employees, employers pay considerable attention to candidates' hard talents.
+          Although there are exceptions, most candidates who lack the requisite hard skills will struggle to acquire the position.</p>
       </div>
     </div>
   </div>
 </div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+

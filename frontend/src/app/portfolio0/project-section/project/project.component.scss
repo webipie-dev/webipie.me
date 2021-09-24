@@ -1,13 +1,64 @@
 .cos-container{
     cursor: pointer;
     position: relative;
-    width:100%;
-    max-width: 300px;
+    // width:100%;
+    width: 300px;
     height:220px;
     margin:10px;
+    flex-shrink: 100000;
     overflow: hidden;
-    transition: transform 0.5s ease,flex-grow 1000ms linear,width 1s ease,opacity 0.75s ease,flex 1000ms ease,margin 1s ease;
+    transition: transform 0.5s ease,flex-grow 500ms linear,width 1s ease,opacity 0.5s ease,flex 500ms ease,margin 0.5s ease;
+    img{
+        position: absolute; 
+        top: 0 ; left:0 ; width: 100% ; height: 100%;
+        object-fit: cover;
+    }
 }
+.cos-btn-icon{
+  padding:10px;
+  box-sizing: border-box;
+  margin-top:20px;
+  height:fit-content;
+  width: fit-content;
+  transition: all ease 0.5s;
+  fa-icon{
+    font-size: 3rem;
+    transform: translateY(-10px);
+  }
+}
+
+.cos-btn{
+  padding:5px;
+  padding-right:20px;
+  padding-left:20px;
+  border:2px solid #202e37;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  margin-bottom:10px;
+}
+.cos-btn:hover , .active{
+  color:white !important;
+  background-color: #202e37 !important;
+}
+.cos-btn p{
+  padding:0px;
+  margin:0px;
+}
+.cos-nav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cos-btn-icon:hover{
+  transform: translateY(-15px);
+
+}
+
 .cos-container:hover{
     transform: scale(1.02);
 
@@ -19,11 +70,132 @@
     opacity: 0;
     margin-left:0px;
     margin-right:0px;
-    width:0px !important;
+    flex-grow:1;
+    width:1px !important;
 }
 .invisible{
-    top:0px;
-    display:hidden;
     opacity:0;
-    
+
 }
+.overlay{
+    position: fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    min-height:100vh;
+    background-color: rgba(0, 0, 0, 0.22);
+    opacity: 0;
+    transition:opacity 0.5s ease;
+    z-index:1000;
+    visibility: hidden;
+    display: flex;
+    transition: visibility 0.5s ease;
+    justify-content: center;
+    align-items: center;
+    .cos-card{
+        position: relative;
+        background-color: white;
+        width:100%;
+        max-width: 1100px;
+        height:0px;
+        transition: height 1s ease-out;
+        overflow: hidden;
+        border-radius: 5px;
+        .button{
+            position: absolute;
+            left:20px;
+            top:10px;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index:2000;
+            transition: transform 1s ease,text-shadow 0.5s ease,color 0.5s ease;
+        }
+        .button:hover{
+            transform: translateY(-5px);
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            color:darkgrey;
+        }
+        .cos-content{
+            padding:10px;
+            box-sizing: content-box;
+            margin-top: 1vw;
+        }
+    }
+    @media screen and (max-width:1000px) {
+        .images{
+            overflow-x:scroll !important;
+        }
+        .next,.prev{
+            visibility: hidden;
+        }
+    }
+    .images{
+        overflow: hidden;
+        position: relative;
+        width:100%;
+        height:fit-content;
+        max-height:70vh;
+        .next,.prev{
+            height:100%;
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            font-size: 2rem;
+            position: absolute;
+            z-index: 100000;
+            padding:10px;
+            box-sizing: content-box;
+            cursor: pointer;
+        }
+        .next{
+            right:0px;
+        }
+
+        .images-container{
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 60vh ;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            transition: transform 0.75s ease-in-out;
+            &>*{
+                flex-shrink: 0;
+            }
+            
+            .image{
+                width:100%;
+                max-width: 1100px;
+                height:100%;
+                overflow: hidden;
+                position: relative; 
+                img,video{
+                    position: absolute; 
+                    top:0 ; left: 0 ; right: 0 ; bottom : 0 ; 
+                    width: 100%; 
+                    height: 100%;
+                    object-fit:cover;
+                    object-position: center;
+                    
+                }
+            }
+        }
+
+    }
+
+}
+.bordered{
+    border-bottom-left-radius: 1000px !important;
+    border-bottom-right-radius: 1000px !important;
+}
+.bottom{
+    border-bottom: 6px solid #202e37 !important;
+}
+.show{
+    visibility: visible;
+    opacity: 1;
+    .cos-card{
+        height:900px;
+    }
+}
+

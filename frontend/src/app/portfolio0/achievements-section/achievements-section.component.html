@@ -1,23 +1,25 @@
-<div class="cos-container">
+<div class="cos-container" [hidden]="disabled">
     <div class="cos-content">
         <h3>WHAT I ACHIEVED</h3>
-        <h1>My Achievements</h1>
+        <h1 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'">My Achievements</h1>
         <div class="cos-experiences">
             <div *ngFor="let achievement of achievements" class="cos-element">
                 <div class="cos-left">
-                    <h4>{{achievement.title}}</h4>
-                    <p>{{achievement.description}}</p>
+                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{achievement.title}}</h4>
+                    <p [style]="'color:'+primaryColor+';font-family:'+font">{{achievement.description}}</p>
                 </div>
                 <div class="cos-middle">
                     <div class="cos-line"></div>
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble">
-                        <div class="cos-triangle">
-
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="show(target)" [style.backgroundColor]="primaryColor">
+                        <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
-                        <h2>{{achievement.date | date}}</h2>
+                        <h2 [style]="'font-family:'+font">{{achievement.date | date}}</h2>
+                    </div>
+                    <div #target class="cos-image hidden">
+                        <img src="assets/back.jpeg">
                     </div>
                 </div>
             </div>

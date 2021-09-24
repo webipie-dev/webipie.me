@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PortfolioEditComponent } from './portfolio-edit.component';
+import { ContactSupportComponent } from './contact-support.component';
 
-describe('PortfolioEditComponent', () => {
-  let component: PortfolioEditComponent;
-  let fixture: ComponentFixture<PortfolioEditComponent>;
+describe('ContactSupportComponent', () => {
+  let component: ContactSupportComponent;
+  let fixture: ComponentFixture<ContactSupportComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PortfolioEditComponent ]
+      declarations: [ ContactSupportComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PortfolioEditComponent);
+    fixture = TestBed.createComponent(ContactSupportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

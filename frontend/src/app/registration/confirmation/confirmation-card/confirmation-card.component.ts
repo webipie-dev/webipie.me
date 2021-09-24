@@ -15,6 +15,11 @@ export class ConfirmationCardComponent implements OnInit {
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    const token = this.route.snapshot.queryParamMap.get('token');
+    if(token){
+      this.authService.sendConfirmation(token).subscribe();
+    }
+
     this.route.queryParams
       .subscribe(params => {
           this.email = params.email;
@@ -44,7 +49,11 @@ export class ConfirmationCardComponent implements OnInit {
     // fetch user from jwt
     this.authService.isVerified().subscribe(res => {
       if (res.verified) {
-        this.router.navigate(['/dashboard'])
+        if(localStorage.getItem('portfolio')){
+          this.router.navigate(['/dashboard', 'home'])
+        }else{
+          this.router.navigate(['/templates/choose-template'])
+        }
       } else {
         Swal.fire({
           title: 'Error!',
