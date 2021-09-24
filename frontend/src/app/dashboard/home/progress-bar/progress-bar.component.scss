@@ -1,0 +1,106 @@
+$primary-color:#3aaf85;
+*{
+    padding:0px;
+    margin:0px;
+    font-family: 'Montserrat',sans-serif;
+}
+.cos-header-container{
+    width:100vw;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    height:100px;
+    .cos-header{
+        height:inherit;
+        width: 80%;
+        max-width: 800px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        padding:15px;
+        box-sizing: border-box;
+        align-items: center;
+        .cos-left{
+            width:40%;
+            max-width: 200px;
+            img{
+                height:100%;
+                max-height: 70px;
+            }
+        }
+        .cos-right{
+            width:fit-content;
+            max-width: 400px;
+            a{
+                text-decoration: none;
+                color: rgb(16, 150, 34);
+                transition: color 0.5s ease;
+            }
+            a:hover{
+                color: darkgrey;
+            }
+        }
+        @media(max-width:400px)  {
+            .right{
+                display: none;
+            }
+        }
+    }
+}
+.cos-body{
+    width:100vw;
+    margin:auto;
+    text-align: center;
+    padding:100px;
+
+    box-sizing: border-box;
+    background-color: white;
+    img{
+        width:95%;
+        max-width: 500px;
+    }
+    h1,p,button{
+        margin-top:20px;
+        padding:10px;
+        box-sizing: content-box;
+    }
+    button{
+        color: #fff;
+        background-color: #1bc943;
+        border-color: #1bc943;
+        cursor: pointer;
+        border:none;
+        box-shadow: 0px 0px 5px #1bc94462;
+    }
+}
+.cos-card{
+    position: relative;
+    height:100vh;
+}
+.cos-footer{
+    border-top: 1px solid lightgrey;
+    position: absolute;
+    bottom: 0px;
+    left:0px;
+    padding:10px;
+    box-sizing: content-box;
+    width: 100vw;
+    .icons{
+        max-height: 100px;
+        display: flex;
+        width: 100%;
+        max-width: 500px;
+        margin:auto;
+        justify-content: center;
+        align-items: center;
+        fa-icon{
+            font-size:40px;
+            transition: color 0.5s ease;
+            color:lightgrey;
+            cursor: pointer;
+            margin:auto;
+        }
+        fa-icon:hover{
+            color:$primary-color;
+        }
+    }
+}
