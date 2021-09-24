@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
 import {AuthService} from "../../../_shared/services/auth.service";
+import { LocalStorageService } from 'src/app/_shared/services/local-storage.service';
 
 @Component({
   selector: 'app-header-userbox',
@@ -14,22 +15,28 @@ export class HeaderUserboxComponent {
   position?: string;
   picture!: string;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) {
   }
 
   ngOnInit() {
-    this.url = JSON.parse(localStorage.getItem('portfolio')!).url;
-    this.position = JSON.parse(localStorage.getItem('portfolio')!).position;
-    this.picture = JSON.parse(localStorage.getItem('portfolio')!).picture ?? 'assets/SVG/avatar.svg';
-    if(!this.url){
-      Swal.fire({
-        title: 'Error!',
-        text: 'something went wrong, please refresh',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });
-    }
-    this.getUsername();
+    this.localStorageService.getItem("portfolio").subscribe(
+      result => {
+        let portfolio = JSON.parse(result);
+        this.url = portfolio.url;
+        this.position = portfolio.position;
+        this.picture = portfolio.picture ?? 'assets/SVG/avatar.svg';
+        if(!this.url){
+          Swal.fire({
+            title: 'Error!',
+            text: 'something went wrong, please refresh',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+        }
+        this.username = portfolio.username;
+      }
+    )
+    
   }
 
   getUsername() {

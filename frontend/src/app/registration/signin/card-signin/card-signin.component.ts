@@ -51,7 +51,8 @@ export class CardSigninComponent implements OnInit {
       if(result['verified']){
         if (result['portfolioId']){
           localStorage.setItem('portfolioId',result['portfolioId']);
-          this.router.navigate(['/dashboard', 'home']);
+          console.log("here1");
+          this.router.navigate(['dashboard/home']).then( () => console.log("here2"));
         }
         else{
           this.router.navigate(['templates/choose-template']);

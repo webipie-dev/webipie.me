@@ -26,7 +26,7 @@ import { DomainRequestComponent } from "./domain-request/domain-request.componen
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
+    component: DashboardComponent, 
     children: [
       {
         path: 'logout',

@@ -36,7 +36,6 @@ export class AuthService extends GenericService<any>{
   }
 
   public isLoggedIn(): boolean {
-    console.log('token' + localStorage.getItem('token'))
     return localStorage.getItem('token') !== null;
   }
 
