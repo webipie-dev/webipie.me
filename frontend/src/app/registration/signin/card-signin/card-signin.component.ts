@@ -51,18 +51,17 @@ export class CardSigninComponent implements OnInit {
       if(result['verified']){
         if (result['portfolioId']){
           localStorage.setItem('portfolioId',result['portfolioId']);
-          console.log("here1");
-          this.router.navigate(['dashboard/home']).then( () => console.log("here2"));
+          this.router.navigate(['/dashboard/home']);
         }
         else{
           this.router.navigate(['templates/choose-template']);
         }
       }else{
-        this.router.navigate(['confirmation']);
+        this.router.navigate(['/register/confirmation']);
       }
 
     }, error => {
-      console.log(error);
+      this.spinner.hide();
       Swal.fire({
         title: 'Error!',
         text: 'email or/and password are incorrect!',

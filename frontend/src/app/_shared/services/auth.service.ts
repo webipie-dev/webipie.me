@@ -31,8 +31,8 @@ export class AuthService extends GenericService<any>{
   }
 
   public resendConfirmation(): Observable<any> {
-    const token = localStorage.get('token')
-    return this.http.get(this.getUrl() + this.suffix + '/resend/confirmation/' + token) as Observable<any>;
+    const token = localStorage.getItem('token')
+    return this.http.get(this.getUrl() + this.suffix + '/confirmation/resend/' + token) as Observable<any>;
   }
 
   public isLoggedIn(): boolean {
