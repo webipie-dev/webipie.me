@@ -18,8 +18,8 @@
                         </div>
                         <h2 [style]="'font-family:'+font">{{achievement.date | date}}</h2>
                     </div>
-                    <div #target class="cos-image">
-                        <img src="assets/back.jpeg">
+                    <div *ngIf="achievement.image" class="cos-image">
+                        <img src="{{achievement.image}}">
                     </div>
                 </div>
             </div>

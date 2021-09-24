@@ -12,7 +12,7 @@
           Professional Experience
         </h5>
         <form [formGroup]="workExperienceForm" (ngSubmit)="onSubmit()">
-          <div class="position-relative form-group"><label for="title">Title</label>
+          <div class="position-relative form-group"><label class="required" for="title">Title</label>
             <input class="form-control"
                    id="title"
                    name="name"
@@ -26,7 +26,7 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="exampleText">Description</label>
+          <div class="position-relative form-group"><label class="required" for="exampleText">Description</label>
             <textarea class="form-control"
                       id="exampleText"
                       name="text"
@@ -66,12 +66,12 @@
 
             <label>Still on the job ?</label>
             <div class="m-2">
-              <ui-switch defaultBgColor="#cadecf" [checked]="false" (change)="checked()"></ui-switch>
+              <ui-switch defaultBgColor="#cadecf" [checked]="edit && !workExperience.endDate" (change)="checked()"></ui-switch>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-xl-6 col-md-12">
-              <label>Start Date</label>
+              <label class="required">Start Date</label>
               <div class="input-group input-group-lg mb-5">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
@@ -96,7 +96,7 @@
                                                           class="mx-auto"></fa-icon></span>
                 </div>
                 <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }" bsDatepicker
-                       class="form-control" placeholder="Select date" type="text" formControlName="endDate" [(ngModel)]="endDate"  [disabled]="true">
+                       class="form-control" placeholder="Select date" type="text" formControlName="endDate" [(ngModel)]="endDate" [disabled]="check">
               </div>
 
             </div>
@@ -127,7 +127,7 @@
             <input class="form-control"
                    id="skills"
                    name="password"
-                   placeholder="Position"
+                   placeholder="Skills Acquired"
                    type="text"
                    formControlName="skills"
                    [(ngModel)]="workExperience.skills"
@@ -157,5 +157,5 @@
     </div>
   </div>
 </div>
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving..., Image upload might take a moment, just be patient. </p></ngx-spinner>
 

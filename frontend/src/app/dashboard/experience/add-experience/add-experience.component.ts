@@ -45,7 +45,7 @@ export class AddExperienceComponent implements OnInit {
     description: ['', [Validators.required, Validators.maxLength(300)]],
     position: [''],
     company: [''],
-    imgs: [''],
+    img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
     endDate: [''],
@@ -65,7 +65,7 @@ export class AddExperienceComponent implements OnInit {
   public fillEditForm(workId: string): void {
     this.workExperience = (JSON.parse(localStorage.getItem('portfolio')!).workExperiences.filter((workExperience: WorkExperienceModel) => workExperience.id === workId ))[0];
     this.beginDate = new Date(this.workExperience.beginDate!);
-    this.endDate = new Date(this.workExperience.endDate!);
+    this.endDate = this.workExperience.endDate ? new Date(this.workExperience.endDate): undefined;
   }
 
   images: File[] = [];
@@ -94,8 +94,8 @@ export class AddExperienceComponent implements OnInit {
       formData.append("file", this.images[0]);
       try{
         image = await this.uploadService.imageUpload(formData);
-        if(image.success) 
-          this.workExperienceForm.controls['imgs'].setValue(image.url);
+        if(image.success)
+          this.workExperienceForm.controls['img'].setValue(image.url);
         else
           errors.push('image' + image.errors.title);
       }

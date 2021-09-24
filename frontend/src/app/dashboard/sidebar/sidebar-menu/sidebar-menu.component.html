@@ -19,7 +19,17 @@
             </span>
           </span>
         </a>
-        <a *ngIf="menu.type === 'simple'" routerLink="{{menu.link}}" (click)="toggle(menu); toggleSidebarMobileOpen()"
+
+        <a *ngIf="menu.title === 'Log Out'" (click)="logout()"
+           routerLinkActive="active">
+          <span>
+            <span class="sidebar-icon-wrapper" [innerHTML]="menu.icon"></span>
+            <span>{{menu.title}}</span>
+            <span *ngIf="menu.badge" class="badge badge-pill" [ngClass]="menu.badge.class">{{menu.badge.text}}</span>
+          </span>
+        </a>
+
+        <a *ngIf="menu.type === 'simple' && menu.title !== 'Log Out'" routerLink="{{menu.link}}" (click)="toggle(menu); toggleSidebarMobileOpen()"
            routerLinkActive="active">
           <span>
             <span class="sidebar-icon-wrapper" [innerHTML]="menu.icon"></span>

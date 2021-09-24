@@ -13,13 +13,12 @@
         </h5>
         <form>
           <div class="position-relative form-group">
-            <label>Title</label>
+            <label class="required">Title</label>
             <ng-select [(ngModel)]="selectedSkill"
                        bindLabel="name"
                        bindValue="id"
                        [items]="skills"
                        name="title"
-
             >
             </ng-select>
             <!-- Error Handling -->
@@ -29,7 +28,7 @@
             <!-- /Error handling -->
           </div>
           <div class="position-relative form-group">
-            <label>Select Skill level</label>
+            <label class="required">Select Skill level</label>
             <nouislider
               [min]="0"
               [max]="10"

@@ -1,0 +1,12 @@
+<accordion [closeOthers]="true" [isAnimated]="true" class="accordion mb-5">
+  <accordion-group *ngFor="let faq of faqs" class="card card-box">
+    <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+            type="button">
+      <span>{{faq.question}}</span>
+      <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+    </button>
+    <ul>
+      <li class="answer">{{faq.answer}}</li>
+    </ul>
+  </accordion-group>
+</accordion>

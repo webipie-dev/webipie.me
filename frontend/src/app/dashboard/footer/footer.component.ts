@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ThemeOptions} from 'src/app/_shared/theme-options';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-footer',
@@ -13,7 +14,9 @@ export class FooterComponent implements OnInit {
   
   ngOnInit(): void {
   }
+
   show(){
     this.shown = !this.shown;
   }
+
 }

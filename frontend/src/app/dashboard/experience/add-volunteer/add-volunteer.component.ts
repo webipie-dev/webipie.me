@@ -63,7 +63,7 @@ export class AddVolunteerComponent implements OnInit {
   public fillEditForm(volunteerId: string): void {
     this.volunteerExperience = (JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences.filter((volunteer: VolunteeringExperienceModel) => volunteer.id === volunteerId ))[0];
     this.beginDate = new Date(this.volunteerExperience.beginDate!);
-    this.endDate = new Date(this.volunteerExperience.endDate!);
+    this.endDate = this.volunteerExperience ? new Date(this.volunteerExperience.endDate): undefined;
   }
 
   images: File[] = [];
@@ -89,7 +89,7 @@ export class AddVolunteerComponent implements OnInit {
       formData.append("file", this.images[0]);
       try{
         image = await this.uploadService.imageUpload(formData);
-        if(image.success) 
+        if(image.success)
           this.volunteeringExperienceForm.controls['img'].setValue(image.url);
         else
           errors.push('image' + image.errors.title);
