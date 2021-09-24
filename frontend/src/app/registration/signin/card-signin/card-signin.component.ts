@@ -66,7 +66,8 @@ export class CardSigninComponent implements OnInit {
         title: 'Error!',
         text: 'email or/and password are incorrect!',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Cool',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       });
     })
   }
@@ -93,7 +94,8 @@ export class CardSigninComponent implements OnInit {
             title: 'Error!',
             text: 'Something wrong with google email',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Cool',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           })
         }
       );

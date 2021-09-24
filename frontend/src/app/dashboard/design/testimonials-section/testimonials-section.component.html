@@ -1,5 +1,8 @@
 <div class="p-2 m-2">
-            <div class="heading-3 text-center m-3">Pictures</div>
+            <div class="heading-3 text-center m-3">
+                Pictures
+                <app-explanation text="Pick the shape of the testimonials pictures"></app-explanation>
+            </div>
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="row m-4 flex-layout justify-content-center text-center">
@@ -23,7 +26,10 @@
                 </div>
             </div>
             <div class="card-header m-2"></div>
-            <div class="heading-3 text-center m-3">Text Alignment</div>
+            <div class="heading-3 text-center m-3">
+                Text Alignment
+                <app-explanation text="Choose the text alignment(left, right or in the center) "></app-explanation>
+            </div>
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="row m-4 justify-content-center text-center">
@@ -53,7 +59,10 @@
             </div>
         </div>
         <div class="card-header m-2"></div>
-        <div class="heading-3 text-center m-3 mt-5">Carousel Speed (Seconds)</div>
+        <div class="heading-3 text-center m-3 mt-5">
+            Carousel Speed (Seconds)
+            <app-explanation text="Modify the movement speed of the carousel"></app-explanation>
+        </div>
         <div class="row justify-content-center m-2 p-4">
             <nouislider class="col-xl-6 col-md-12 "  [min]="0" [max]="10" [step]="1" (change)="select('carouselSpeed', speedValue)" [(ngModel)]="speedValue" [tooltips]="[ true ]" ></nouislider>
         </div>

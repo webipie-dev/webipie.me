@@ -143,7 +143,8 @@ export class AddProjectComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -153,7 +154,8 @@ export class AddProjectComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message,
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     } else {
@@ -165,7 +167,8 @@ export class AddProjectComponent implements OnInit {
             title: 'Infos updated but some uploads failed',
             text: errors.join('\n'),
             icon: 'warning',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            footer: '<a href="/dashboard/support-request">Contact Support</a>'
           });
         else
           this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -175,7 +178,8 @@ export class AddProjectComponent implements OnInit {
           title: 'Error!',
           text: error.error.errors[0].message,
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
     }

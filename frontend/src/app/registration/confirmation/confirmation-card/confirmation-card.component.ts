@@ -40,7 +40,8 @@ export class ConfirmationCardComponent implements OnInit {
           title: 'Error!',
           text: 'email or/and password are incorrect!',
           icon: 'error',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Cool',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       })
   }
@@ -59,7 +60,8 @@ export class ConfirmationCardComponent implements OnInit {
           title: 'Error!',
           text: 'Email not Verified, check your email box or click on RESEND EMAIL!',
           icon: 'error',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Cool',
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       }
     }, error => {
@@ -67,7 +69,8 @@ export class ConfirmationCardComponent implements OnInit {
         title: 'Error!',
         text: 'Email not Verified, check your email box or click on RESEND EMAIL!',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Cool',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       });
     })
   }
