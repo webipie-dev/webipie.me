@@ -1,0 +1,25 @@
+.video-container{
+    padding:0px;
+    margin:0px;
+    .overlay{
+        width: 100vw;
+        height:100%;
+        position: absolute;
+        top:0px;
+        left:0px;
+        background-color: #57984c;
+        z-index:20;
+        opacity:0.2;
+        padding:0px;
+        margin: 0px;
+    }
+    video{
+        z-index:10;
+        padding:0px;
+        margin:0px;
+        position: relative;
+        width:100vw;
+        height:fit-content;
+    }
+    
+}

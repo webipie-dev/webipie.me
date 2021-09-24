@@ -32,11 +32,9 @@ export class DashboardComponent implements OnInit {
         title: 'Error!',
         text: 'something went wrong when loading dashboard, please try again',
         icon: 'error',
-        confirmButtonText: 'Ok'
+        confirmButtonText: 'Ok',
+        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       });
     }
-
-
   }
-
 }

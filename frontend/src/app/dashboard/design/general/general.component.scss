@@ -18,3 +18,13 @@
 img {
   width: 150px;
 }
+
+.animation-test {
+  background-color: transparent;
+  padding: 50px; 
+  transition : background-color 500ms ease;
+  &:hover{
+    background-color: greenyellow
+  }
+  
+}

@@ -73,8 +73,11 @@ def upload_to_aws(url, s3_file):
 
     s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
                       aws_secret_access_key=config.SECRET_KEY)
+    key = "skills/" + s3_file + "png"
     try:
-        s3.upload_fileobj(response, config.S3_BUCKET, "skills/" + s3_file + "png")
+        s3.upload_fileobj(response, config.S3_BUCKET, key,
+                          ExtraArgs={'ACL': 'public-read'})
+
         print("Upload Successful")
         return True
     except  Exception as e:
@@ -85,7 +88,7 @@ def upload_to_aws(url, s3_file):
 
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     skills = read_skills()
     db = connect_db()
     for skill in skills:

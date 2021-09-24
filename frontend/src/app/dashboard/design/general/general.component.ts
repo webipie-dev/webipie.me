@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit,ViewChild} from '@angular/core';
+import { faSlideshare } from '@fortawesome/free-brands-svg-icons';
 import {Font, FontInterface} from 'ngx-font-picker';
 import {TemplateModel} from "../../../_shared/models/template.model";
 import {DesignEditService} from "../../../_shared/services/design-edit.service";
@@ -23,6 +24,7 @@ export class GeneralComponent implements OnInit {
   buttonShape: boolean[] = [];
   buttonStyle: boolean[] = [];
   buttonSize: boolean[] = [];
+  @ViewChild('animationTest') animationTestEl : ElementRef | undefined; 
 
 
   public font: FontInterface = new Font({
@@ -51,6 +53,17 @@ export class GeneralComponent implements OnInit {
       this.setDefaultButtonStyle();
       this.setDefaultCarouselSpeed();
     })
+  }
+
+
+  setExampleSpeed() : void {
+    const el = this.animationTestEl?.nativeElement ; 
+    if(el){
+      el.style.transitionDuration =`${this.speedValue*1000}ms`
+    }
+  }
+  ngAfterViewInit(): void{
+    this.setExampleSpeed()
   }
 
   setDefaultColorPalettes() {
@@ -131,6 +144,7 @@ export class GeneralComponent implements OnInit {
     // @ts-ignore
     this.template.general[element] = newValue;
     this.designEditService.updateTemplate(this.template);
+    this.setExampleSpeed();
   }
 
   onElementChange(element: string, newValue: any) {

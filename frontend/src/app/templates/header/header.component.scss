@@ -1,6 +1,7 @@
 a{
   text-decoration: none;
   color:inherit;
+  cursor: pointer;
 }
 *{
   margin:0px;
@@ -16,11 +17,11 @@ a{
 }
 
 .avatar{
-  width:50px;
-  height:50px;
-  border-radius: 30px;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.329);
-  margin-right:10px;
+width:50px;
+height:50px;
+border-radius: 30px;
+box-shadow: 0 0 5px rgba(255, 255, 255, 0.329);
+margin-right:10px;
 }
 
 .contentt{
@@ -51,7 +52,7 @@ a{
 }
 h3{
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: calc(12px + 0.3vw);
 }
 .left{
   margin-right:40px;
@@ -114,12 +115,12 @@ img{
   display: none;
   font-size:1.6rem;
 }
-@media screen and (max-width:1200px){
+@media screen and (max-width:1500px){
   .menuu{
-    display:block;
+      display:block;
   }
   .right a{
-    display: none;
+      display: none;
   }
 }
 
@@ -136,7 +137,7 @@ img{
   transform: translateX(100vw) !important;
   transition: transform 0.75s ease-out;
   fa-icon{
-    color:rgb(49, 49, 49);
+      color:rgb(49, 49, 49);
   }
 }
 .account{
@@ -148,9 +149,9 @@ img{
   align-items: center;
   padding:20px;
   button{
-    padding:10px;
-    box-sizing: border-box;
-    border-radius: 10px;
+      padding:10px;
+      box-sizing: border-box;
+      border-radius: 10px;
   }
 }
 .activee{
@@ -178,12 +179,12 @@ img{
   box-sizing: content-box;
   color:rgb(82, 82, 82);
   h3{
-    font-size: 1rem;
-    color:black;
-    margin-right:20px;
+      font-size: 1rem;
+      color:black;
+      margin-right:20px;
   }
   fa-icon{
-    color:rgb(49, 49, 49);
+      color:rgb(49, 49, 49);
   }
 }
 .element *{
@@ -228,4 +229,13 @@ img{
 }
 .blackedcircle{
   background-color:rgb(29, 29, 29);;
+}
+.greencircle{
+  position: absolute;
+  top:-10px;
+  left:5px;
+  width:10px;
+  height:10px;
+  border-radius: 30px;
+  background-color: rgb(79, 235, 74);
 }

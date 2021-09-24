@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faFacebook, faFacebookF, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-progress-bar',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressBarComponent implements OnInit {
   completionValue : number = 0;
+  facebook = faFacebook;
+  twitter = faTwitter;
+  linkedin = faLinkedin;
   constructor() { }
 
   ngOnInit(): void {
