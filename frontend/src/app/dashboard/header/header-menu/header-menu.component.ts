@@ -21,17 +21,19 @@ export class HeaderMenuComponent implements OnInit {
   ngOnInit() {
     this.localStorageService.getItem("portfolio").subscribe(
       result => {
-        this.loading = false;
-        let portfolio = JSON.parse(result);
-        this.url = portfolio.url;
-        if(!this.url){
-          Swal.fire({
-            title: 'Error!',
-            text: 'something went wrong, please refresh',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-            footer: '<a href="/dashboard/support-request">Contact Support</a>'
-          });
+        if(result) {
+          this.loading = false;
+          let portfolio = JSON.parse(result);
+          this.url = portfolio.url;
+          if(!this.url){
+            Swal.fire({
+              title: 'Error!',
+              text: 'something went wrong, please refresh',
+              icon: 'error',
+              confirmButtonText: 'Ok',
+              footer: '<a href="/dashboard/support-request">Contact Support</a>'
+            });
+          }
         }
       }
     )
