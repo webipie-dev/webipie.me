@@ -64,7 +64,7 @@
         <app-contact-section></app-contact-section>
     </accordion-group>
 </accordion>
-<app-wrapper-seamless class="row flew-layout justify-content-center fixed-on-page {{designEditService.testChange()?'':'shown'}}">
+<app-wrapper-seamless class="row flew-layout justify-content-center fixed-on-page designing-save {{designEditService.testChange()?'':'shown'}}">
   <button class="btn m-2 btn-square btn-slack " (click)="submitChanges()" type="button" [disabled]="designEditService.testChange()">Save</button>
 </app-wrapper-seamless>
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

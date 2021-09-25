@@ -19,6 +19,7 @@ import {AuthService} from "../../../_shared/services/auth.service";
 })
 export class SidebarMenuComponent implements OnInit {
   menus: any;
+  steps: string[] = [];
 
   constructor(
     public globals: ThemeOptions,
@@ -38,7 +39,6 @@ export class SidebarMenuComponent implements OnInit {
       this.toggle(theActiveMenu);
     }
     this.authService.verifyFirstVisit().subscribe(result => {
-      console.log(result);
       if (result.firstVisit === true) {
         this.tour();
       }
@@ -46,16 +46,10 @@ export class SidebarMenuComponent implements OnInit {
     this.innerWidth = window.innerWidth;
   }
 
-
   tour() {
-    let numberOfSteps = 9;
-    let steps = [];
-    for(let i = 0; i < numberOfSteps; i++) {
-      const k = i+1;
-      steps[i] = 'tourStep' + k
-    }
+
     this.joyride.startTour({
-      steps,
+      steps: ['Portfolio', 'Design', 'Request Domain Name'],
       themeColor: '#070919'
     })
     this.authService.guideTourDone().subscribe(result => {
