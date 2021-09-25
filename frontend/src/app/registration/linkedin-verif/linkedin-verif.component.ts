@@ -16,11 +16,18 @@ export class LinkedinVerifComponent implements OnInit {
     this.linkedInToken = this.route.snapshot.queryParams["code"];
     this.authService.signInWithLinkedIn(this.linkedInToken).subscribe(res => {
       localStorage.setItem('token', res.jwtToken);
-      this.router.navigate(['/dashboard']);
+      console.log(res)
+      if(res.portfolioId) {
+        localStorage.setItem('portfolioId', res.portfolioId)
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.router.navigate(['/templates/choose-template']);
+      }
+      //
     }, error => {
       console.log(error)
+      //add swal
     });
-    console.log(this.linkedInToken)
   }
 
 }
