@@ -12,7 +12,7 @@ import {AuthService} from "../../../_shared/services/auth.service";
 })
 export class HeaderMenuComponent implements OnInit {
   url?: string
-
+  loading = true;
 
   constructor(private router: Router,
               private localStorageService: LocalStorageService) {
@@ -21,6 +21,7 @@ export class HeaderMenuComponent implements OnInit {
   ngOnInit() {
     this.localStorageService.getItem("portfolio").subscribe(
       result => {
+        this.loading = false;
         let portfolio = JSON.parse(result);
         this.url = portfolio.url;
         if(!this.url){

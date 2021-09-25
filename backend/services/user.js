@@ -70,7 +70,8 @@ module.exports = {
         // send mail of verification
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
-            `<style>
+            `
+            <style>
             * {
             padding: 0px;
             margin: 0px;
@@ -160,8 +161,6 @@ module.exports = {
                 margin: auto; }
               .cos-footer .icons fa-icon:hover {
                 color: #3aaf85; }
-          
-          /*# sourceMappingURL=prograss-bar.css.map */
           
             </style>
             <div class="cos-card">
