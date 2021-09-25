@@ -1,11 +1,16 @@
 <div class="cos-container">
-    <div class="cos-left" style="display: flex;flex-wrap: wrap;align-items: center;text-align: left;">
+    <div class="cos-left" style="display: flex;flex-wrap: nowrap;align-items: center;text-align: left;">
         <!-- CHange this for icon later and change condition-->
         <!-- <fa-icon *ngIf="icon" [icon]="skill" [style]="'color:'+primaryColor+';font-size:3rem !important'"></fa-icon> -->
-        <img *ngIf="icon && hardSkill.skill.icon" [src]="hardSkill.skill.icon" alt="icon here" style="max-height: 50px; max-width: 50px;">
+        <div class="image-container">
+            <img *ngIf="icon && hardSkill.skill.icon" [src]="hardSkill.skill.icon" alt="icon here" style="max-height: 50px; max-width: 150px;">
+        </div>
         <!--  -->
-        <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{hardSkill.skill.name}}</h2>
+        <div class="cos-middle">
+            <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font ">{{hardSkill.skill.name}}</h2>
+        </div>
     </div>
+    
     <div class="cos-right">
 
         <div *ngIf="hardSkillsTemplate == 1" class="loading">
