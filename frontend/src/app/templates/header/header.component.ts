@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit {
     if(target === "index") this.indexEmitter.emit(event);
     if(target === "pricing") this.pricingEmitter.emit(event);
     if(target === "contactus") this.contactusEmitter.emit(event);
-    this.menuactive = false; 
+    this.menuactive = false;
 
   }
 
@@ -73,5 +73,11 @@ export class HeaderComponent implements OnInit {
       this.authService.getUserName().subscribe(result => {
         this.username = result.name;
       });
+  }
+
+  logOut(){
+    this.authService.logout();
+    this.logged = this.isLoggedIn();
+    this.router.navigate(['/']);
   }
 }

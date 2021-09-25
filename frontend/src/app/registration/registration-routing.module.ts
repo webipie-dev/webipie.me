@@ -4,6 +4,7 @@ import { SigninComponent } from "./signin/signin.component";
 import { SignupComponent } from "./signup/signup.component";
 import { RegistrationComponent } from "./registration.component";
 import {ConfirmationComponent} from "./confirmation/confirmation.component";
+import {LoginAuthGuardService as LoginAuthGuard} from "../_shared/services/login-auth-guard.service";
 import {LinkedinVerifComponent} from "./linkedin-verif/linkedin-verif.component";
 
 const routes: Routes = [{
@@ -13,10 +14,12 @@ const routes: Routes = [{
     {
       path: 'signup',
       component: SignupComponent,
+      canActivate: [LoginAuthGuard],
     },
     {
       path: 'signin',
-      component: SigninComponent
+      component: SigninComponent,
+      canActivate: [LoginAuthGuard],
     },
     {
       path: 'confirmation',

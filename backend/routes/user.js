@@ -13,6 +13,9 @@ const passportJWT = passport.authenticate('jwt', { session: false });
 const passportSignIn = passport.authenticate('local', { session: false });
 const validateRequest = require("../middlewares/validate-request");
 const validation = require("../middlewares/validation/validator");
+const authOnly = require("../middlewares/auth-only");
+
+
 router.route('/signup')
     .post(userService.signUp);
 
@@ -29,10 +32,10 @@ router.route('/oauth/google')
     .post(userService.loginWithGoogle);
 
 router.route('/verified')
-    .get(passportJWT, userService.userVerified);
+    .get(authOnly, userService.userVerified);
 
 router.route('/username')
-    .get(passportJWT, userService.getUsername);
+    .get(authOnly, userService.getUsername);
 
 router.route('/firstvisit')
     .get(passportJWT, userService.verifyFirstVisit)

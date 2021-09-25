@@ -29,9 +29,9 @@ export class HeaderComponent implements OnInit {
   volunteeringExperiencesDisabled?: boolean;
   workExperiencesDisabled?: boolean;
   testimonialsDisabled?: boolean;
-  constructor() { } 
+  constructor() { }
   ngOnInit(): void {
-    this.name = JSON.parse(localStorage.getItem('portfolio')!).name;
+    this.name = JSON.parse(localStorage.getItem('portfolio')!).userName;
     this.color = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.softSkillsDisabled = JSON.parse(localStorage.getItem('portfolio')!).softSkillsDisabled;
     this.hardSkillsDisabled = JSON.parse(localStorage.getItem('portfolio')!).hardSkillsDisabled;
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     this.volunteeringExperiencesDisabled = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiencesDisabled;
     this.workExperiencesDisabled = JSON.parse(localStorage.getItem('portfolio')!).workExperiencesDisabled;
     this.testimonialsDisabled = JSON.parse(localStorage.getItem('portfolio')!).testimonialsDisabled;
-    
+
   }
   clickContact(event:any){
     this.contactClick.emit(event);
@@ -90,9 +90,9 @@ export class HeaderComponent implements OnInit {
       el.setAttribute('class','cosmenu hidden');
       el.setAttribute('style','')
     }
-    
-  } 
-  @HostListener('window:scroll', ['$event']) 
+
+  }
+  @HostListener('window:scroll', ['$event'])
     doSomething(event:any) {
       if(window.pageYOffset > 100){
         this.scrolled=true;

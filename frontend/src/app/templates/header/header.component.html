@@ -15,7 +15,7 @@
           <a [routerLink]="['/']"><h3>contact us</h3><div class="line"></div></a>
         <div *ngIf="logged">
           <a [routerLink]="portfolio===null ?['/templates/choose-template']:['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
-          <a [routerLink]="['/dashboard/logout']"><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>
+          <a (click)="logOut()"><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>
           <a><img class="avatar" src="{{picture}}"> Welcome, {{username}}</a>
         </div>
         <div *ngIf="!logged">
@@ -30,7 +30,7 @@
       <div class="account">
           <div *ngIf="logged">
               <a [routerLink]="portfolio===null ?['/templates/choose-template']:['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
-              <a [routerLink]="['/dashboard/logout']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>
+              <a (click)="logOut()" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>
           </div>
           <div *ngIf="!logged">
           <a [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark m-2" >Sign In</button></a>
