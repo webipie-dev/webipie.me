@@ -28,8 +28,6 @@ export class DashboardComponent implements OnInit {
       }
       //localStorage.setItem("portfolio", JSON.stringify(portfolio));
       this.localStorageService.setItem("portfolio", JSON.stringify(portfolio));
-      console.log(localStorage.getItem("portfolio"));
-      console.log("Terminate loading .....")
     }
     catch(err){
       Swal.fire({

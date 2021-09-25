@@ -14,6 +14,7 @@ export class HeaderUserboxComponent {
   username!: string;
   position?: string;
   picture!: string;
+  loading = true;
 
   constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) {
   }
@@ -21,6 +22,7 @@ export class HeaderUserboxComponent {
   ngOnInit() {
     this.localStorageService.getItem("portfolio").subscribe(
       result => {
+        this.loading = false;
         let portfolio = JSON.parse(result);
         this.url = portfolio.url;
         this.position = portfolio.position;
@@ -33,14 +35,14 @@ export class HeaderUserboxComponent {
             confirmButtonText: 'Ok'
           });
         }
-        this.username = portfolio.username;
+        this.username = portfolio.userName;
       }
     )
-    
+
   }
 
   getUsername() {
-    this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
+    this.username = JSON.parse(localStorage.getItem('portfolio')!).userName;
   }
 
   openSite() {
