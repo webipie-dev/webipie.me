@@ -1,64 +1,66 @@
-<div class="user-box position-relative ml-2" dropdown>
-  <a dropdownToggle
-     [routerLink]=""
-     class="p-0 d-flex align-items-center"
-  >
-    <div class="d-block p-0 avatar-icon-wrapper">
-      <span class="badge badge-circle badge-success p-top-a">Online</span>
-      <div class="avatar-icon rounded">
-        <img src="{{picture}}" alt="..."/>
+<div *ngIf="!loading">
+  <div class="user-box position-relative ml-2" dropdown>
+    <a dropdownToggle
+      [routerLink]=""
+      class="p-0 d-flex align-items-center"
+    >
+      <div class="d-block p-0 avatar-icon-wrapper">
+        <span class="badge badge-circle badge-success p-top-a">Online</span>
+        <div class="avatar-icon rounded">
+          <img src="{{picture}}" alt="..."/>
+        </div>
       </div>
-    </div>
-    <div class="d-none d-xl-block pl-2">
-      <div class="text-black-50 font-weight-bold">
-        {{username}}
+      <div class="d-none d-xl-block pl-2">
+        <div class="text-black-50 font-weight-bold">
+          {{username}}
+        </div>
+        <span class="text-black-50">
+          {{position}}
+        </span>
       </div>
-      <span class="text-black-50">
-        {{position}}
-      </span>
-    </div>
-    <span class="pl-1 pl-xl-3"
-    ><fa-icon [icon]="['fas', 'angle-down']" class="opacity-5"></fa-icon
-    ></span>
-  </a>
-  <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0">
-    <ul class="list-group list-group-flush text-left bg-transparent">
-      <li class="list-group-item rounded-top">
-        <ul class="nav nav-neutral-primary nav-pills flex-column">
-          <li
-            class="nav-header d-flex text-dark pt-1 pb-2 font-weight-bold align-items-center"
-          >
-            <div>
-              Profile options
-            </div>
-            <div class="ml-auto font-size-xs">
-              <a [routerLink]="" tooltip="Change settings">
-                <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
+      <span class="pl-1 pl-xl-3"
+      ><fa-icon [icon]="['fas', 'angle-down']" class="opacity-5"></fa-icon
+      ></span>
+    </a>
+    <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0">
+      <ul class="list-group list-group-flush text-left bg-transparent">
+        <li class="list-group-item rounded-top">
+          <ul class="nav nav-neutral-primary nav-pills flex-column">
+            <li
+              class="nav-header d-flex text-dark pt-1 pb-2 font-weight-bold align-items-center"
+            >
+              <div>
+                Profile options
+              </div>
+              <div class="ml-auto font-size-xs">
+                <a [routerLink]="" tooltip="Change settings">
+                  <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/dashboard/profile']">
+                Profile settings
               </a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/dashboard/profile']">
-              Profile settings
-            </a>
-          </li>
-          <li class="nav-item">
-            <a (click)="changeTemplate()" class="nav-link" [routerLink]="">
-              Change Template
-            </a>
-          </li>
-          <li class="nav-item">
-            <a (click)="openSite()" class="nav-link" [routerLink]="">
-              View Website
-            </a>
-          </li>
-          <li class="nav-item">
-            <a (click)="logOut()" class="nav-link" [routerLink]="">
-              Logout
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+            </li>
+            <li class="nav-item">
+              <a (click)="changeTemplate()" class="nav-link" [routerLink]="">
+                Change Template
+              </a>
+            </li>
+            <li class="nav-item">
+              <a (click)="openSite()" class="nav-link" [routerLink]="">
+                View Website
+              </a>
+            </li>
+            <li class="nav-item">
+              <a (click)="logOut()" class="nav-link" [routerLink]="">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
