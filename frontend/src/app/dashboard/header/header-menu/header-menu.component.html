@@ -1,12 +1,14 @@
-<div class="app-header-menu d-flex justify-content-between">
-	<style>
-		@media screen and (max-width : 600px) {
-			.hideifsmall{
-				display: none;
+<div *ngIf="!loading">
+	<div class="app-header-menu d-flex justify-content-between">
+		<style>
+			@media screen and (max-width : 600px) {
+				.hideifsmall{
+					display: none;
+				}
 			}
-		}
-	</style>
-	<button joyrideStep="tourStep1" title="Header Tour" text="This button allows you to preview your portfolio anytime" (click)="openSite()" class="btn m-2 btn-neutral-success hideifsmall" type="button">View Website</button>
-<!--	<button (click)="changeTemplate()" class="btn m-2 btn-neutral-dark hideifsmall" type="button">Change Template</button>-->
-	<div class="divider mx-4"></div>
-</div>
+		</style>
+		<button joyrideStep="tourStep1" title="Header Tour" text="This button allows you to preview your portfolio anytime" (click)="openSite()" class="btn m-2 btn-neutral-success hideifsmall" type="button">View Website</button>
+	<!--	<button (click)="changeTemplate()" class="btn m-2 btn-neutral-dark hideifsmall" type="button">Change Template</button>-->
+		<div class="divider mx-4"></div>
+	</div>
+</div>	

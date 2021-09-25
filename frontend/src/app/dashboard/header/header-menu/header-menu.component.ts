@@ -11,7 +11,7 @@ import { LocalStorageService } from 'src/app/_shared/services/local-storage.serv
 })
 export class HeaderMenuComponent implements OnInit {
   url?: string
-
+  loading = true;
 
   constructor(private router: Router, private joyride: JoyrideService, private localStorageService: LocalStorageService) {
   }
@@ -19,6 +19,7 @@ export class HeaderMenuComponent implements OnInit {
   ngOnInit() {
     this.localStorageService.getItem("portfolio").subscribe(
       result => {
+        this.loading = false;
         let portfolio = JSON.parse(result);
         this.url = portfolio.url;
         if(!this.url){
