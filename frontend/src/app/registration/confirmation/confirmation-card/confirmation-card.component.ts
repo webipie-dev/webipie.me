@@ -75,7 +75,7 @@ export class ConfirmationCardComponent implements OnInit {
     // fetch user from jwt
     this.authService.isVerified().subscribe(res => {
       if (res.verified) {
-        if(localStorage.getItem('portfolio')){
+        if(localStorage.getItem('portfolioId')){
           this.router.navigate(['/dashboard', 'home'])
         }else{
           this.router.navigate(['/templates/choose-template'])
@@ -85,7 +85,7 @@ export class ConfirmationCardComponent implements OnInit {
           title: 'Error!',
           text: 'Email not Verified, check your email box or click on RESEND EMAIL!',
           icon: 'error',
-          confirmButtonText: 'Cool'        
+          confirmButtonText: 'Cool'
         });
       }
     }, error => {
