@@ -41,7 +41,7 @@ export class CardComponent implements OnInit {
       this.router.navigate(['../confirmation'], {
         relativeTo: this.route,
         queryParams: {email: this.email}
-      }).then(r => console.log(r))
+      })
     }, error => {
       this.spinner.hide();
       console.log(error);

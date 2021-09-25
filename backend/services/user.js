@@ -6,12 +6,10 @@ const ApiError = require("../errors/api-error");
 const {sendEmail} = require('./email');
 const Portfolio = require('../models/portfolio');
 const querystring = require('querystring');
-const LINKEDIN_CLIENT_ID = "77oj8s50xw1yt7";
-const LINKEDIN_CLIENT_SECRET = "W8tanXzQrWJpjH6y";
 const axios = require('axios');
 const {OAuth2Client} = require('google-auth-library');
 
-const { hostname, httpProtocol, port, clientPort, clientHostname } = require('../configuration/index');
+const { hostname, httpProtocol, port, clientPort, clientHostname, LINKEDIN_CLIENT_SECRET, LINKEDIN_CLIENT_ID} = require('../configuration/index');
 
 
 signToken = user => {
@@ -28,10 +26,10 @@ module.exports = {
     signUp: async (req, res, next) => {
         const {error} = validateuser(req.body);
         if (error) return next(ApiError.BadRequest(error.details[0].message));
-      
-        const {name, email, password} = req.body;
-        let findUser = await User.findOne({email});
 
+        let {name, email, password} = req.body;
+        email = email.toLowerCase();
+        let findUser = await User.findOne({email});
         // if user already exists
         if (findUser) {
             // if signed up locally
@@ -69,7 +67,7 @@ module.exports = {
         let portString = `:${clientPort}`;
         if(`${clientPort}` === '430')
             portString = '';
-        // send mail of verification 
+        // send mail of verification
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
             `   
@@ -154,7 +152,7 @@ module.exports = {
             let portString = `:${clientPort}`;
             if(`${clientPort}` === '430')
                 portString = '';
-            // send mail of verification 
+            // send mail of verification
             var emailError = sendEmail(
                 EMAIL.USER, user.email, 'Account Verification',
                 `Hello ${user.name},\n\nPlease verify your account by clicking the link: \n ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n`
@@ -162,6 +160,7 @@ module.exports = {
             // TODO: handle email failure correctly, this always returns undefined:
             if (emailError)
                 return res.status(500).json({msg: 'Technical Issue!, Please click on resend for verify your Email.'});
+            res.status(200).json({success: "true"});
         }
     },
 
@@ -183,7 +182,7 @@ module.exports = {
         // get the user's email address
         const emailRequest = await axios
             .get('https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))&oauth2_access_token=' + accessToken);
-        const email = emailRequest.data.elements[0]['handle~'].emailAddress;
+        const email = emailRequest.data.elements[0]['handle~'].emailAddress.toLowerCase();
 
         //check if the user already exists or not
         let user = await User.findOne({email});
@@ -193,6 +192,31 @@ module.exports = {
             // if not with linkedin, we update the user's information
             if (user.methods.indexOf('linkedin') === -1) {
                 // get user profile with the access token
+                try {
+                    const profile = await axios
+                        .get('https://api.linkedin.com/v2/me',
+                            {
+                                headers: {
+                                    'Authorization': `Bearer ${accessToken}`,
+                                    'cache-control': 'no-cache',
+                                    'X-Restli-Protocol-Version': '2.0.0'
+                                }
+                            });
+                    user.methods.push('linkedin');
+                    user.profilePicture = profile.data.profilePicture;
+                    user.linkedinId = profile.data.id;
+                    await user.save();
+                }catch (e) {
+                    return next(ApiError.BadRequest('There has been a mistake with Linkedin Authentication.'));
+                }
+
+            }
+        }
+
+        // if it doesn't exist, we create a new user
+        else {
+            // get user profile with the access token
+            try {
                 const profile = await axios
                     .get('https://api.linkedin.com/v2/me',
                         {
@@ -202,35 +226,18 @@ module.exports = {
                                 'X-Restli-Protocol-Version': '2.0.0'
                             }
                         });
-                user.methods.push('linkedin');
-                user.profilePicture = profile.profilePicture;
-                user.linkedinId = profile.id;
+                user = new User({
+                    methods: ['linkedin'],
+                    email,
+                    profilePicture: profile.data.profilePicture.displayImage,
+                    linkedinId: profile.id,
+                    name: profile.data.localizedFirstName + ' ' + profile.data.localizedLastName,
+                    verified: true
+                });
                 await user.save();
+            }catch(err) {
+                return next(ApiError.BadRequest('There has been a mistake with Linkedin Authentication.'));
             }
-        }
-
-        // if it doesn't exist, we create a new user
-        else {
-            // get user profile with the access token
-            const profile = await axios
-                .get('https://api.linkedin.com/v2/me',
-                    {
-                        headers: {
-                            'Authorization': `Bearer ${accessToken}`,
-                            'cache-control': 'no-cache',
-                            'X-Restli-Protocol-Version': '2.0.0'
-                        }
-                    });
-
-            user = new User({
-                methods: ['linkedin'],
-                email,
-                profilePicture: profile.profilePicture,
-                linkedinId: profile.id,
-                name: profile.localizedFirstName + ' ' + profile.localizedLastName,
-                verified: true
-            });
-            await user.save();
         }
 
         // we return a jwt
@@ -280,7 +287,7 @@ module.exports = {
             'jl6kALTXXLHndRViUlCXqQbL',
             `${httpProtocol}://${clientHostname}:${clientPort}`
         );
-            
+
 
         const ticket = await oAuth2Client.verifyIdToken({
             idToken: access_token,
