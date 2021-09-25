@@ -32,7 +32,7 @@ router.route('/oauth/google')
     .post(userService.loginWithGoogle);
 
 router.route('/verified')
-    .get(userService.userVerified);
+    .get(authOnly, userService.userVerified);
 
 router.route('/username')
     .get(authOnly, userService.getUsername);
