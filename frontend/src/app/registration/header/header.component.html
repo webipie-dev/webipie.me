@@ -12,9 +12,14 @@
             <a href="#"><h3>about us</h3><div class="line"></div></a>
             <a href="#"><h3>pricing</h3><div class="line"></div></a>
             <a href="#"><h3>contact us</h3><div class="line"></div></a>
-            <a [routerLink]="['/register/signup']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Sign up</button></a>
-            <a [routerLink]="['/register/signin']"><button class="btn m-1 btn-square btn-secondary" type="button" style="padding:15px;padding-right:25px;padding-left:25px;;border-radius:10px;color:black">Sign In</button></a>
-        </div>
+
+          <div *ngIf="logged">
+            <a [routerLink]="portfolio===null ?['/templates/choose-template']:['/dashboard/home']" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-slack" type="button" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Dashboard</button></a>
+            <a (click)="logOut()" routerLinkActive="router-link-active" ><button class="btn m-1 btn-square btn-secondary" style="padding:15px;padding-right:25px;padding-left:25px;border-radius:10px">Logout</button></a>
+          </div>
+          <div *ngIf="!logged">
+            <a [routerLink]="['/register/signin']"><button class="btn btn-sm btn-outline-dark m-2" >Sign In</button></a>
+            <a [routerLink]="['/register/signup']"><button class="btn btn-sm btn-slack m-2">Sign Up</button></a>        </div>
 
     </div>
     <div [class]="!menuactive? 'slidemenu inactivee':'slidemenu activee'">
