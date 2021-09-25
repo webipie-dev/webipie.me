@@ -35,14 +35,14 @@ export class HeaderUserboxComponent {
             confirmButtonText: 'Ok'
           });
         }
-        this.username = portfolio.username;
+        this.username = portfolio.userName;
       }
     )
-    
+
   }
 
   getUsername() {
-    this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
+    this.username = JSON.parse(localStorage.getItem('portfolio')!).userName;
   }
 
   openSite() {

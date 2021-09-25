@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getUsername() {
-    this.username = JSON.parse(localStorage.getItem('portfolio')!).username;
+    this.username = JSON.parse(localStorage.getItem('portfolio')!).userName;
   }
 
   onSubmit(){

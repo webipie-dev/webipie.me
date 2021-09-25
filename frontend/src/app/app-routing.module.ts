@@ -12,11 +12,6 @@ const routes: Routes = [
       .then(m => m.IndexModule),
   },
   {
-    path: 'portfolio0',
-    loadChildren: () => import('./portfolio0/portfolio0.module')
-      .then(m => m.Portfolio0Module),
-  },
-  {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module')
       .then(m => m.DashboardModule),
