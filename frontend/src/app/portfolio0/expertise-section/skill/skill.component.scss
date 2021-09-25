@@ -1,11 +1,28 @@
 .cos-container{
     display: flex;
     width:100%;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     align-items: center;
     margin-top:20px;
 }
+.cos-middle{
+  h2{
+    font-size:1.4rem
+  }
+}
+@media(max-width: 950px){
+  .cos-container{
+    flex-direction: column;
+    align-items: center;
+  }
+  .cos-middle{
+    h2{
+      font-size:5vw;
+    }
+  }
+}
+
 .cos-left,.cos-right{
     
     width:90%;
@@ -14,8 +31,11 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.image-container {
+  width: 150px;
+}
 .cos-left{
-    max-width:300px;
     text-align: left;
     display: flex;
     flex-wrap: wrap;

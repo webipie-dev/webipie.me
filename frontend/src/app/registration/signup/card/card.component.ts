@@ -43,12 +43,12 @@ export class CardComponent implements OnInit {
       })
     }, error => {
       this.spinner.hide();
+      console.log(error);
       Swal.fire({
         title: 'Error!',
-        text: 'email or/and password are incorrect!',
+        text: error.error.errors.map((err:any)=>err.message).join("\n") || 'email or/and password are incorrect!',
         icon: 'error',
-        confirmButtonText: 'Cool',
-        footer: '<a href="/dashboard/support-request">Contact Support</a>'
+        confirmButtonText: 'Cool'
       });
     })
   }

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {CustomPreloadingStrategyService} from "./_shared/services/custom-preloading-strategy.service";
 import {environment} from "../environments/environment";
+import {LoginAuthGuardService as LoginAuthGuard} from "./_shared/services/login-auth-guard.service";
+import { AuthGuardService } from './_shared/services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -10,15 +12,10 @@ const routes: Routes = [
       .then(m => m.IndexModule),
   },
   {
-    path: 'portfolio0',
-    loadChildren: () => import('./portfolio0/portfolio0.module')
-      .then(m => m.Portfolio0Module),
-  },
-  {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module')
       .then(m => m.DashboardModule),
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuardService],
     data: {preload: true, expectedRole: 'user'}
   },
   {

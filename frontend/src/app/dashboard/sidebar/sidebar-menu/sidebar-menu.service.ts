@@ -22,7 +22,8 @@ export class SidebarMenuService {
   menus: MenuItem[] = [
     {
       "title": "Application",
-      "type": "header"
+      "type": "header",
+      "text": "some text"
     },
     {
       "title": "Home",
