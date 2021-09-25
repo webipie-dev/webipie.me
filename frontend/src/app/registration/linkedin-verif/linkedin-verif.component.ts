@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../_shared/services/auth.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-linkedin-verif',
@@ -16,11 +17,23 @@ export class LinkedinVerifComponent implements OnInit {
     this.linkedInToken = this.route.snapshot.queryParams["code"];
     this.authService.signInWithLinkedIn(this.linkedInToken).subscribe(res => {
       localStorage.setItem('token', res.jwtToken);
-      this.router.navigate(['/dashboard']);
+      console.log(res)
+      if(res.portfolioId) {
+        localStorage.setItem('portfolioId', res.portfolioId)
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.router.navigate(['/templates/choose-template']);
+      }
+      //
     }, error => {
-      console.log(error)
+      Swal.fire({
+        title: 'Error!',
+        text: error.error.errors[0].message,
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
+      //add swal
     });
-    console.log(this.linkedInToken)
   }
 
 }
