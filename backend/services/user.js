@@ -72,116 +72,26 @@ module.exports = {
         // send mail of verification 
         let emailError = sendEmail(
             EMAIL.USER, email, 'Account Verification',
-            `
-            <style>
-            * {
-            padding: 0px;
-            margin: 0px;
-            font-family: 'Montserrat',sans-serif; }
-          
-          .cos-header-container {
-            width: 100vw;
-            background-color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            height: 100px; }
-            .cos-header-container .cos-header {
-              height: inherit;
-              width: 80%;
-              max-width: 800px;
-              margin: auto;
-              display: flex;
-              justify-content: space-around;
-              padding: 15px;
-              box-sizing: border-box;
-              align-items: center; }
-              .cos-header-container .cos-header .cos-left {
-                width: 40%;
-                max-width: 200px; }
-                .cos-header-container .cos-header .cos-left img {
-                  height: 100%;
-                  max-height: 70px; }
-              .cos-header-container .cos-header .cos-right {
-                width: fit-content;
-                max-width: 400px; }
-                .cos-header-container .cos-header .cos-right a {
-                  text-decoration: none;
-                  color: #109622;
-                  transition: color 0.5s ease; }
-                .cos-header-container .cos-header .cos-right a:hover {
-                  color: darkgrey; }
-              @media (max-width: 400px) {
-                .cos-header-container .cos-header .right {
-                  display: none; } }
-          
-          .cos-body {
-            width: 100vw;
-            margin: auto;
-            text-align: center;
-            padding: 100px;
-            box-sizing: border-box;
-            background-color: white; }
-            .cos-body img {
-              width: 95%;
-              max-width: 500px; }
-            .cos-body h1, .cos-body p, .cos-body button {
-              margin-top: 20px;
-              padding: 10px;
-              box-sizing: content-box; }
-            .cos-body button {
-              color: #fff;
-              background-color: #1bc943;
-              border-color: #1bc943;
-              cursor: pointer;
-              border: none;
-              box-shadow: 0px 0px 5px #1bc94462; }
-          
-          .cos-card {
-            position: relative;
-            height: 100vh; }
-          
-          .cos-footer {
-            border-top: 1px solid lightgrey;
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
-            padding: 10px;
-            box-sizing: content-box;
-            width: 100vw; }
-            .cos-footer .icons {
-              max-height: 100px;
-              display: flex;
-              width: 100%;
-              max-width: 500px;
-              margin: auto;
-              justify-content: center;
-              align-items: center; }
-              .cos-footer .icons fa-icon {
-                font-size: 40px;
-                transition: color 0.5s ease;
-                color: lightgrey;
-                cursor: pointer;
-                margin: auto; }
-              .cos-footer .icons fa-icon:hover {
-                color: #3aaf85; }
-          
-            </style>
-            <div class="cos-card">
-            <div class="cos-header-container">
-                <div class="cos-header">
+            `   
+        <div class="cos-card" style="background-color: #1b3721; color: white ; padding: 50px 0;">
+            <div class="cos-header-container" >
+                <div class="cos-header" style="display: flex; width: 80%; margin:0 auto; align-items:center; ">
                     <div class="cos-left">
-                        <img src="https://webipie.me/assets/SVG/logo.svg" alt="logo">
+                        <img src="https://webipie.me/assets/SVG/logo.png" alt="logo" style="width:150px">
                     </div>
-                    <div class="cos-right">
-                        <a href="#">Go back to the website</a>
+                    <div class="cos-right" style="margin : 40px 0 0 80px">
+                        <a href="#" style="font-size: 2vw; color: white;text-decoration:none">Go back to the website</a>
                     </div>
                 </div>
             </div>
-            <div class="cos-body">
+            <div class="cos-body" style="text-align:center">
                 <!-- <img src="https://webipie.me/assets/SVG/email.svg"> -->
-                <img src="assets/email.svg">
-                <h1>Welcome to Webipie.me</h1>
-                <p>We Created a personal account for you. Please confirm your e-mail adress</p>
-                <a href="#"><button>Confirm Email</button></a>
+                <img src="https://webipie.me/assets/email.png" style="width:18vw; height:18vw; object-fit:cover ;background-color: white; border-radius:50%">
+                <h1 style="width:90%">Hello ${name}, Welcome to Webipie.me</h1>
+                <p style="font-size:20px; width:90%">We Created a personal account for you. Please confirm your e-mail adress</p>
+                <a href="${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}" style="text-decoration: none; color: white; background-color: #3aaf85; padding:15px 25px; margin-bottom:50px">Confirm Email</a>
+                <hr style="margin-top:25px">
+                <p style="font-size:18px; width:90%;margin:auto">In case the button doesn't work please visit this link ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n</p>
             </div>
             <div class="cos-footer">
                 <div class="icons">
