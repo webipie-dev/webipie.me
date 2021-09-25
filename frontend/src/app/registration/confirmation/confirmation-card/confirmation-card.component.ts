@@ -17,7 +17,19 @@ export class ConfirmationCardComponent implements OnInit {
   ngOnInit(): void {
     const token = this.route.snapshot.queryParamMap.get('token');
     if(token){
-      this.authService.sendConfirmation(token).subscribe();
+      this.authService.sendConfirmation(token).subscribe((res) => {
+        if(this.authService.isLoggedIn())
+          this.router.navigate(['/dashboard', 'home']);
+        else
+          this.router.navigate(['/register', 'signin']).then(() =>{
+            Swal.fire({
+              title: 'Email confirmed',
+              text: 'Please sign in',
+              icon: 'success',
+              confirmButtonText: 'Thanks'
+            });
+          });
+      });
     }
 
     this.route.queryParams
@@ -33,7 +45,20 @@ export class ConfirmationCardComponent implements OnInit {
 
   resendEmail() {
     this.authService.resendConfirmation().subscribe(res => {
-      console.log(res);
+      if(res.success)
+        Swal.fire({
+          title: 'Email confirmation sent',
+          text: 'Please check your email',
+          icon: 'success',
+          confirmButtonText: 'Thanks'
+        });
+      else
+        Swal.fire({
+          title: 'Error!',
+          text: 'please try again or contact us',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
     }, error => {
         console.log(error);
         Swal.fire({
@@ -60,8 +85,7 @@ export class ConfirmationCardComponent implements OnInit {
           title: 'Error!',
           text: 'Email not Verified, check your email box or click on RESEND EMAIL!',
           icon: 'error',
-          confirmButtonText: 'Cool',
-          footer: '<a href="/dashboard/support-request">Contact Support</a>'
+          confirmButtonText: 'Cool'        
         });
       }
     }, error => {
@@ -70,7 +94,6 @@ export class ConfirmationCardComponent implements OnInit {
         text: 'Email not Verified, check your email box or click on RESEND EMAIL!',
         icon: 'error',
         confirmButtonText: 'Cool',
-        footer: '<a href="/dashboard/support-request">Contact Support</a>'
       });
     })
   }

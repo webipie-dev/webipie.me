@@ -36,12 +36,11 @@ export class CardComponent implements OnInit {
   signUp(): void{
     this.spinner.show();
     this.authService.signUp({ name: this.name, email: this.email, password: this.password}).subscribe(res => {
-      localStorage.setItem('token', res.token);
       this.spinner.hide();
       this.router.navigate(['../confirmation'], {
         relativeTo: this.route,
         queryParams: {email: this.email}
-      }).then(r => console.log(r))
+      })
     }, error => {
       this.spinner.hide();
       Swal.fire({

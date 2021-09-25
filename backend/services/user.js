@@ -253,6 +253,7 @@ module.exports = {
             // TODO: handle email failure correctly, this always returns undefined:
             if (emailError)
                 return res.status(500).json({msg: 'Technical Issue!, Please click on resend for verify your Email.'});
+            res.status(200).json({success: "true"});
         }
     },
 
