@@ -2,8 +2,11 @@
   <app-sidebar-userbox *ngIf="globals.sidebarUserbox"></app-sidebar-userbox>
   <div class="sidebar-navigation">
     <ul>
-      <li *ngFor="let menu of menus; let i=index" joyrideStep="tourStep{{i}}" title="Sidenav Tour" text="{{menu.text}}"
-          [ngClass]="{'active': menu.active, 'sidebar-dropdown':menu.type === 'dropdown' , 'sidebar-header':menu.type === 'header'}">
+      <li
+        *ngFor="let menu of menus; let i=index"
+        [ngClass]="{'active': menu.active, 'sidebar-dropdown':menu.type === 'dropdown' , 'sidebar-header':menu.type === 'header'}"
+        joyrideStep="{{menu.title}}" title="{{menu.title}}" text="{{menu.text}}"
+      >
         <span *ngIf="menu.type === 'header'">{{menu.title}}</span>
         <a *ngIf="menu.type === 'dropdown'" [routerLink]="" (click)='toggle(menu)'>
           <span>
@@ -19,7 +22,6 @@
             </span>
           </span>
         </a>
-
         <a *ngIf="menu.title === 'Log Out'" (click)="logout()"
            routerLinkActive="active">
           <span>
@@ -28,7 +30,6 @@
             <span *ngIf="menu.badge" class="badge badge-pill" [ngClass]="menu.badge.class">{{menu.badge.text}}</span>
           </span>
         </a>
-
         <a *ngIf="menu.type === 'simple' && menu.title !== 'Log Out'" routerLink="{{menu.link}}" (click)="toggle(menu); toggleSidebarMobileOpen()"
            routerLinkActive="active">
           <span>
