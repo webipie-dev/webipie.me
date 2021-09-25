@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../_shared/services/auth.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-linkedin-verif',
@@ -25,7 +26,12 @@ export class LinkedinVerifComponent implements OnInit {
       }
       //
     }, error => {
-      console.log(error)
+      Swal.fire({
+        title: 'Error!',
+        text: error.error.errors[0],
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
       //add swal
     });
   }
