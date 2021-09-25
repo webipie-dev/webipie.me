@@ -179,7 +179,9 @@ module.exports = {
                 <img src="assets/email.svg">
                 <h1>Welcome to Webipie.me</h1>
                 <p>We Created a personal account for you. Please confirm your e-mail adress</p>
-                <a href="#"><button>Confirm Email</button></a>
+                <a href="${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n"><button>Confirm Email</button></a>
+                if the button doesn't work, use this link:
+                <a href="${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}">${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}</a>
             </div>
             <div class="cos-footer">
                 <div class="icons">
