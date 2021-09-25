@@ -28,7 +28,7 @@ export class LinkedinVerifComponent implements OnInit {
     }, error => {
       Swal.fire({
         title: 'Error!',
-        text: error.error.errors[0],
+        text: error.error.errors[0].message,
         icon: 'error',
         confirmButtonText: 'Cool'
       });
