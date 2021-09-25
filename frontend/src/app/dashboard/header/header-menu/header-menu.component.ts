@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
 import {JoyrideService} from "ngx-joyride";
 import { LocalStorageService } from 'src/app/_shared/services/local-storage.service';
+import {AuthService} from "../../../_shared/services/auth.service";
 
 @Component({
   selector: 'app-header-menu',
@@ -13,7 +14,8 @@ export class HeaderMenuComponent implements OnInit {
   url?: string
 
 
-  constructor(private router: Router, private joyride: JoyrideService, private localStorageService: LocalStorageService) {
+  constructor(private router: Router,
+              private localStorageService: LocalStorageService) {
   }
 
   ngOnInit() {
@@ -31,14 +33,7 @@ export class HeaderMenuComponent implements OnInit {
           });
         }
       }
-    )  
-  }
-
-  tour() {
-    this.joyride.startTour({
-      steps: ['tourStep1'],
-      themeColor: '#070919'
-    })
+    )
   }
 
   openSite() {
