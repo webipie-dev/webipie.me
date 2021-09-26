@@ -9,6 +9,7 @@ import {AuthService} from "../../../_shared/services/auth.service";
 @Component({
   selector: 'app-sidebar-menu',
   templateUrl: './sidebar-menu.component.html',
+  styleUrls: ['./sidebar-menu.component.css'],
   animations: [
     trigger('slide', [
       state('up', style({height: 0, opacity: '0'})),

@@ -33,7 +33,7 @@ export class SidebarMenuService {
       "text": 'This is the home page of your dashboard where you can keep track of the number of visitors and their location.'
     },
     {
-      "title": "Portfolio",
+      "title": "Portfolio Sections",
       "type": "dropdown",
       "text": 'This is the part where you fulfill your portfolio with all your experiences and achievements, click on it and all the different sections will appear',
       "icon": "<i class=\"pe-7s-note2\"></i>",
@@ -76,7 +76,7 @@ export class SidebarMenuService {
       ]
     },
     {
-      "title": "Design",
+      "title": "Portfolio Design",
       "type": "simple",
       "icon": "<i class=\"pe-7s-magic-wand\"> </i>",
       "link": "/dashboard/design",

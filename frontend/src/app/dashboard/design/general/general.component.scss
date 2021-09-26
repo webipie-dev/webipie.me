@@ -28,3 +28,19 @@ img {
   }
   
 }
+.buttons .row.buttons-container{
+  column-gap: 10px;
+  flex-wrap: nowrap;
+}
+
+@media screen and (max-width:560px) {
+  .buttons .row.buttons-container{
+    column-gap: 0px;
+    flex-wrap: wrap;
+    margin-bottom:30px;
+  }
+}
+
+.font-picker{
+  z-index:1002;
+}

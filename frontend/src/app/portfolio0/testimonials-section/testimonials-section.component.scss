@@ -49,8 +49,8 @@
 .cos-cont{
     margin-top:50px;
     overflow: hidden;
-    width:900px;
-    padding:5px;
+    max-width:840px;
+    width:100%;
 }
 .testimonials-containers{
     width:fit-content;
@@ -58,22 +58,25 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    gap:15px;
     transition: transform 0.75s ease;
 }
 .cos-testimonial{
+    text-align: center;
     width:90%;
-    max-width: 300px;
+    max-width: 280px;
     min-height:500px;
-    margin:auto;
     margin-bottom:0px;
     opacity: 0.4;
-    transform: scale(0.98);
-    padding:10px;
+    transform: scale(1);
     transition: transform 0.5s ease,opacity 1s ease;
 }
 .active{
     opacity:1;
     transform: scale(1);
+}
+app-testimonial{
+    margin:auto;
 }
 @media screen and (max-width:1000px) {
     .cos-cont{
