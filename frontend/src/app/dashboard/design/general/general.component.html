@@ -88,12 +88,12 @@
     Buttons
     <app-explanation text="Choose button shape"></app-explanation>
   </div>
-  <div class="row">
+  <div class="row buttons">
     <div class="row col-xl-12 col-md-12 justify-content-center">
       <div class="row col-xl-12 col-md-12 justify-content-center">
         <div class="col-xl-4 col-md-12">
           <div class="heading-2 text-center col-xl-12 m-2">Buttons Shape</div>
-          <div class="row flex-layout justify-content-center col-xl-12 col-md-12 m-2">
+          <div class="row flex-layout justify-content-center buttons-container">
             <div
               class="col-xl-4 col-md-4 justify-content-center text-center mt-4"
               (click)="changeButtonShape('shape', 'square', 1)"
@@ -135,7 +135,7 @@
 
         <div class="col-xl-4 col-md-12">
           <div class="heading-2 text-center m-2 col-xl-12">Buttons Style</div>
-          <div class="row justify-content-center col-xl-12 m-2">
+          <div class="row justify-content-center buttons-container">
             <div
               class="col-xl-6 col-md-6 justify-content-center text-center mt-4"
               (click)="changeButtonStyle('style', 'solid', 1)"
@@ -177,7 +177,7 @@
         </div>
         <div class="col-xl-4 col-md-12">
           <div class="heading-2 text-center col-xl-12 m-2">Buttons Size</div>
-          <div class="row justify-content-center align-items-center col-xl-12 col-md-12 m-2">
+          <div class="row justify-content-center align-items-center buttons-container">
             <div
               class="col-xl-3 col-md-4 justify-content-center text-center mt-4"
               (click)="changeButtonSize('size', 'small', 1)"

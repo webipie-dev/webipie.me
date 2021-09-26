@@ -17,3 +17,9 @@ img{
   max-width: 600px;
 
 }
+
+@media screen and (max-width:1480px) {
+  .left{
+      display: none;
+  }
+}
