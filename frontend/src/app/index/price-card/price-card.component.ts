@@ -15,11 +15,11 @@ export class PriceCardComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.class =="cardd primary"){
-      this.title='PREMIUM PACK';
-      this.cost='$150';
+      this.title='Free Pack';
+      this.cost='Free';
     } else {
-      this.title='STANDARD PACK';
-      this.cost='$100';
+      this.title='Free Pack';
+      this.cost='Free';
     }
   }
 
