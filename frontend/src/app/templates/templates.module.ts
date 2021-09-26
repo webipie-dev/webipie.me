@@ -8,6 +8,7 @@ import { TemplatesRoutingModule } from './templates-routing.module';
 import { ChooseTemplateComponent } from './choose-template/choose-template.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ChooseNameComponent } from './choose-name/choose-name.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ChooseNameComponent } from './choose-name/choose-name.component';
     ReactiveFormsModule,
     TemplatesRoutingModule,
     FontAwesomeModule,
+    NgxSpinnerModule
   ]
 })
 export class TemplatesModule { }

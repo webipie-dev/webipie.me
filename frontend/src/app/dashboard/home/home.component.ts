@@ -31,14 +31,14 @@ export class HomeComponent implements OnInit {
   visitsPerDay: number = 0
   visitsPerCountry: CountryVisit[] = []
   userVisits: UserVisit[] = []
-  loading = true
+  loading = true;
 
   constructor(
     private portfolioService: PortfolioService,
     private localStorageService: LocalStorageService) {}
 
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
     this.setAll();
   }
 
@@ -46,28 +46,30 @@ export class HomeComponent implements OnInit {
   setAll(): void {
     this.localStorageService.getItem("portfolio").subscribe(
       result =>{
-        this.loading = false;
-        this.portfolio = JSON.parse(result);
-        let visitsInLastNDays = this.getVisits(this.portfolio.visitsPerDay, this.lastNDays)
-        this.visits = [
-          {
-            name: 'visits',
-            data: visitsInLastNDays
-          }
-        ]
+        if(result) {
+          this.loading = false;
+          this.portfolio = JSON.parse(result);
+          let visitsInLastNDays = this.getVisits(this.portfolio.visitsPerDay, this.lastNDays)
+          this.visits = [
+            {
+              name: 'visits',
+              data: visitsInLastNDays
+            }
+          ]
 
-        this.nvisits = this.getNVisits(this.portfolio.visits)
-        this.nusers = this.getNUsers(this.portfolio.visits)
-        this.visitsPerDay = 0
-        for (let i = 0; i < visitsInLastNDays.length; i++) {
-          this.visitsPerDay += visitsInLastNDays[i]
+          this.nvisits = this.getNVisits(this.portfolio.visits)
+          this.nusers = this.getNUsers(this.portfolio.visits)
+          this.visitsPerDay = 0
+          for (let i = 0; i < visitsInLastNDays.length; i++) {
+            this.visitsPerDay += visitsInLastNDays[i]
+          }
+          this.visitsPerDay = this.visitsPerDay / visitsInLastNDays.length
+          this.visitsPerCountry = this.getVisitsPerCountry(this.portfolio.visits)
+          this.userVisits = this.getUserVisits(this.portfolio.visits)
         }
-        this.visitsPerDay = this.visitsPerDay / visitsInLastNDays.length
-        this.visitsPerCountry = this.getVisitsPerCountry(this.portfolio.visits)
-        this.userVisits = this.getUserVisits(this.portfolio.visits)
       }
     )
-    
+
   }
 
   getVisits(visitsPerDay: any, lastNDays: number) {

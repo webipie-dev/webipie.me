@@ -22,20 +22,22 @@ export class HeaderUserboxComponent {
   ngOnInit() {
     this.localStorageService.getItem("portfolio").subscribe(
       result => {
-        this.loading = false;
-        let portfolio = JSON.parse(result);
-        this.url = portfolio.url;
-        this.position = portfolio.position;
-        this.picture = portfolio.picture ?? 'assets/SVG/avatar.svg';
-        if(!this.url){
-          Swal.fire({
-            title: 'Error!',
-            text: 'something went wrong, please refresh',
-            icon: 'error',
-            confirmButtonText: 'Ok'
-          });
+        if(result) {
+          this.loading = false;
+          let portfolio = JSON.parse(result);
+          this.url = portfolio.url;
+          this.position = portfolio.position;
+          this.picture = portfolio.picture ?? 'assets/SVG/avatar.svg';
+          if(!this.url){
+            Swal.fire({
+              title: 'Error!',
+              text: 'something went wrong, please refresh',
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          }
+          this.username = portfolio.userName;
         }
-        this.username = portfolio.userName;
       }
     )
 
