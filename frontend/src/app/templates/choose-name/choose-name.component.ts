@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import { nameValidator } from 'src/app/_shared/utils/forbidden-name-validator';
-import Swal from "sweetalert2";
+import Swal from "sweetalert2";import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-choose-name',
@@ -22,7 +22,8 @@ export class ChooseNameComponent implements OnInit {
     private portfolioService: PortfolioService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.portfolioService.getPortfolioNames().subscribe(
@@ -42,14 +43,16 @@ export class ChooseNameComponent implements OnInit {
   }
 
   submit(){
+    this.spinner.show();
     const templateId = this.route.snapshot.queryParamMap.get('templateId');
-    console.log(templateId);
     this.portfolioService.addOne({templateId, name: this.portfolioName}).subscribe(
       result => {
+        this.spinner.hide();
         localStorage.setItem('portfolioId', result['id']);
         this.router.navigate(['/dashboard', 'home']);
       }, 
       error => {
+        this.spinner.hide();
         Swal.fire({
           title: 'Error!',
           text: error.error.errors[0].message || "Something went wrong! Please try again.",

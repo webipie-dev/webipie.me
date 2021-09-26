@@ -14,7 +14,7 @@ export class CardTemplatesComponent implements OnInit {
   @Input() selected=false;
   @Output() selectEmitter = new EventEmitter<boolean>();
   ngOnInit(): void {
-    this.url = environment.protocol + '://johndoe43817.webipie.me' + environment.PORT;
+    this.url = environment.protocol + '://johndoe.webipie.me' + environment.PORT;
   }
 
   select(){
