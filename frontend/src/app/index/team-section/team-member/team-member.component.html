@@ -2,13 +2,12 @@
     <div class="image-container" (mouseover)="hover($event,true)" (mouseout)="hover($event,false)">
         <div [class]="overlay? 'overlay shown':'overlay'">
             <div class="icons">
-            <a href="{{githublink}}"><fa-icon [icon]="github"></fa-icon></a>
-            <a href="{{linkedinlink}}"><fa-icon [icon]="linkedin"></fa-icon></a>
+            <a href="{{member.githublink}}"><fa-icon [icon]="github"></fa-icon></a>
+            <a href="{{member.linkedinlink}}"><fa-icon [icon]="linkedin"></fa-icon></a>
             </div>
         </div>
-        <img src="{{picture}}">
+        <img src="{{member.picture}}">
     </div>
-    <h1>{{name}}</h1>
-    <h5>{{position}}</h5>
-    <p>{{description}}</p>
+    <h1>{{member.name}}</h1>
+    <h5>{{member.position}}</h5>
 </div>
