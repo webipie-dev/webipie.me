@@ -19,7 +19,7 @@ export class ConfirmationCardComponent implements OnInit {
     if(token){
       this.authService.sendConfirmation(token).subscribe((res) => {
         if(this.authService.isLoggedIn())
-          this.router.navigate(['/dashboard', 'home']);
+          this.router.navigate(['/templates', 'choose-template']);
         else
           this.router.navigate(['/register', 'signin']).then(() =>{
             Swal.fire({
