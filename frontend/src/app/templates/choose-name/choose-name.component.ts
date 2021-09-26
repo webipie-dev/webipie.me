@@ -15,7 +15,7 @@ export class ChooseNameComponent implements OnInit {
   portfolioName: string = '';
   names: string[] = [];
   nameForm = this.formBuilder.group({
-    name: ['',[Validators.required, Validators.min(5), nameValidator()]],
+    name: ['',[Validators.required, Validators.min(3), nameValidator()]],
   });
 
   constructor(
@@ -33,7 +33,7 @@ export class ChooseNameComponent implements OnInit {
       error =>{
         Swal.fire({
           title: 'Error!',
-          text: 'Connat get portfolio names! Please refresh page.',
+          text: 'cannot get portfolio names! Please refresh page.',
           icon: 'error',
           confirmButtonText: 'Cool',
           footer: '<a href="/dashboard/support-request">Contact Support</a>'   
