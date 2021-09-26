@@ -18,7 +18,7 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   @Input() globalTag = "All";
   @Input() tags? = ["none"];
   @Input() project!: ProjectModel;
-  displayImg = 'src/assets/default-project-img.jpg'
+  displayImg = 'assets/default-project-img.jpg'
   pos = 0;
   imgWidth=1100;
   class = "cos-container";
@@ -33,7 +33,7 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   leftArrow = faAngleLeft;
   button = 1;
 
-  minus : number = 0 ; 
+  minus : number = 0 ;
 
   ngOnInit(): void {
     console.log(this.project);
@@ -45,14 +45,14 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
     if(this.project.imgs){
       this.displayImg = this.project.imgs[0];
     }
-    this.minus = this.project.video ? 0 : 1 ; 
+    this.minus = this.project.video ? 0 : 1 ;
   }
   ngAfterViewInit(){
     if(window.innerWidth<1100)this.imgWidth=window.innerWidth;
   }
   goRight(){
 
-    
+
     if(this.project.imgs)
     if(this.pic === this.project.imgs.length - this.minus ){
       this.pic = 0;
