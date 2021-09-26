@@ -19,6 +19,7 @@ a{
 .avatar{
   width:50px;
   height:50px;
+  object-fit: cover;
   border-radius: 30px;
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.329);
   margin-right:10px;
@@ -115,7 +116,13 @@ img{
     display: none;
     font-size:1.6rem;
 }
-@media screen and (max-width:1100px){
+
+@media screen and(max-width:1500px) {
+    .right a {
+        margin-left:20px;
+    }
+}
+@media screen and (max-width:1150px){
     .menuu{
         display:block;
     }
