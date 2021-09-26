@@ -15,11 +15,15 @@
   .cos-container{
     flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
   }
   .cos-middle{
     h2{
       font-size:5vw;
     }
+  }
+  .cos-left{
+    margin-bottom: 10px;
   }
 }
 
@@ -123,3 +127,4 @@
     box-shadow: 0 0 10px #f2b63f;
     border-radius: 30px;
 }
+

@@ -23,6 +23,7 @@
                    name="icons"
                    type="radio"
                    [checked]="socialMediaIcon[0]"
+                   disabled
             >
           </div>
         </div>
@@ -43,6 +44,7 @@
                    name="icons"
                    type="radio"
                    [checked]="socialMediaIcon[1]"
+                   disabled
             >
           </div>
         </div>
@@ -63,6 +65,7 @@
                    name="icons"
                    type="radio"
                    [checked]="socialMediaIcon[2]"
+                   disabled
             >
           </div>
         </div>
@@ -82,25 +85,25 @@
           <div class="cos-form">
             <div class="cos-left">
               <label style="text-align: left;">Your name</label>
-              <input placeholder="Your Name" style="border-radius: 0px;" type="text"/>
+              <input placeholder="Your Name" style="border-radius: 0px;" type="text" disabled/>
               <label style="text-align: left;">Mail</label>
-              <input placeholder="Your Email" style="border-radius: 0px;" type="email"/>
+              <input placeholder="Your Email" style="border-radius: 0px;" type="email" disabled/>
               <label style="text-align: left;">Phone</label>
-              <input placeholder="Your Phone" style="border-radius: 0px;" type="number"/>
+              <input placeholder="Your Phone" style="border-radius: 0px;" type="number" disabled/>
             </div>
             <div class="cos-right">
               <label style="text-align: left;">Message</label>
-              <textarea placeholder="Your Message" style="border-radius: 0px;"></textarea>
+              <textarea placeholder="Your Message" style="border-radius: 0px;" disabled></textarea>
             </div>
           </div>
           <div class="cos-btn-container" style="margin-bottom:20px;">
-            <button class="cos-btn" style="border-radius: 0px;" type="submit">Send Message</button>
+            <button class="cos-btn" style="border-radius: 0px;" type="submit" disabled>Send Message</button>
           </div>
           <div class="form-check text-center m-2">
             <input [checked]="contactCard[0]"
                    class="form-check-input"
                    name="contact"
-                   type="radio" value="second">
+                   type="radio" value="second" disabled>
           </div>
         </div>
         <div (click)="select('contactCard', 2, 2)"
@@ -110,24 +113,24 @@
           <div class="cos-form">
             <div class="cos-left">
               <label style="text-align: left;">Your name</label>
-              <input placeholder="Your Name" type="text"/>
+              <input placeholder="Your Name" type="text" disabled/>
               <label style="text-align: left;">Mail</label>
-              <input placeholder="Your Email" type="email"/>
+              <input placeholder="Your Email" type="email" disabled/>
               <label style="text-align: left;">Phone</label>
-              <input placeholder="Your Phone" type="number"/>
+              <input placeholder="Your Phone" type="number" disabled/>
             </div>
             <div class="cos-right">
               <label>Message</label>
-              <textarea placeholder="Your Message"></textarea>
+              <textarea placeholder="Your Message" disabled></textarea>
             </div>
           </div>
           <div class="cos-btn-container" style="margin-bottom:20px;">
-            <button class="cos-btn" type="submit">Send Message</button>
+            <button class="cos-btn" type="submit" disabled>Send Message</button>
           </div>
           <div class="form-check text-center m-2">
             <input [checked]="contactCard[1]" class="form-check-input"
                    name="contact"
-                   type="radio" value="second"></div>
+                   type="radio" value="second" disabled></div>
         </div>
       </div>
     </div>

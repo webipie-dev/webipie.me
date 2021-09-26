@@ -15,7 +15,7 @@ export class TestimonialsSectionComponent implements OnInit {
   secondaryColor="#e184fe";
   speed = 2;
   backgroundSpeed = 2;
-  position = 0;
+  position = -5;
   elements = 4;
   inView: Boolean[] = [];
   testimonials!: [TestimonialModel];
@@ -32,12 +32,12 @@ export class TestimonialsSectionComponent implements OnInit {
     this.inView = new Array(this.testimonials?.length).fill(false) ?? [];
     setTimeout(()=>{
       if(window.innerWidth<1000){
-        this.position = 0;
+        this.position = -5;
         this.elements = this.inView.length-1;
         this.makeActive(this.inView.length-this.elements-1);
       }else{
         if(this.target){
-          this.position = - this.target.nativeElement.offsetWidth;
+          this.position = - this.target.nativeElement.offsetWidth - 15;
         }
         
         this.elements = this.inView.length - 1;
@@ -47,7 +47,7 @@ export class TestimonialsSectionComponent implements OnInit {
     
     setInterval(()=>{
       if(this.elements && this.target){
-        this.position += this.target.nativeElement.offsetWidth;
+        this.position += this.target.nativeElement.offsetWidth + 15;
         this.elements --;
         if(window.innerWidth<1000){
           this.makeActive(this.inView.length-this.elements-1);
@@ -58,11 +58,11 @@ export class TestimonialsSectionComponent implements OnInit {
       }else{
         
         if(window.innerWidth<1000){
-          this.position = 0;
+          this.position = -5;
           this.elements = this.inView.length-1;
           this.makeActive(this.inView.length-this.elements-1);
         }else{
-          this.position = - this.target!.nativeElement.offsetWidth;
+          this.position = - this.target!.nativeElement.offsetWidth - 15;
           this.elements = this.inView.length - 1;
           this.makeActive(this.inView.length-this.elements-1);
         }

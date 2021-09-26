@@ -1,0 +1,20 @@
+.guided-tour{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    align-self: center;
+    padding: 5px 20px;
+    font-size: 1.5rem ;
+    margin-top: 40px;
+    transition: background-color 300ms ease, color 300ms ease;
+}
+
+.guided-tour:hover{
+    background-color: white;
+    color: black ; 
+}
+
+.guided-tour:focus{
+    outline:none;
+}

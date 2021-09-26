@@ -2,7 +2,7 @@
     <div class="cos-content">
         <h3>WHAT THEY THINK</h3>
         <h1>My Testimonials</h1>
-        <div class="cos-cont">
+        <div class="cos-cont" [style.maxWidth]="(840 + 15 * elements)+'px'">
         <div class="testimonials-containers" [style.transform]="'translateX('+-position+'px)'">
             <div *ngFor="let element of inView; let i=index" [class]="inView[i]? 'cos-testimonial active':'cos-testimonial'" >
                 <app-testimonial [testimonial]="testimonials[i]"></app-testimonial>
