@@ -52,7 +52,7 @@ export class TeamSectionComponent implements OnInit {
     },
     {
       name: 'Yassine Gabsi',
-      picture: 'assets/ala.jpg',
+      picture: 'assets/yassine.jpg',
       position: 'Frontend Developer',
       githublink: 'https://github.com/YassineGabsi',
       linkedinlink: 'https://www.linkedin.com/in/yassine-gabsi/'
