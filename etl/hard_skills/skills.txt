@@ -1,298 +1,854 @@
+.NET
+360-degree video
+3D Animation
+3D Design
+3D Model Maker
+3D Modelling
+3D Printing
+3D Rendering
 3ds Max
-ABAP
-Ada
-Adaptability
-Adobe After Effects
-Adobe Audition
-Adobe bridge
-Adobe dreamweaver
-Adobe flash
-Adobe illustrator
+4D
+Academic Writing
+Accounting
+ActionScript
+Active Directory
+Ad Planning
+Adobe Air
+Adobe Captivate
+Adobe Dreamweaver
+Adobe Fireworks
+Adobe Flash
 Adobe InDesign
 Adobe Lightroom
+Adobe LiveCycle Designer
 Adobe Premiere Pro
-Aerospace engineering
-Agile method
-Aircraft engine technology
-Ajax
-Algorithms
-Alice
-Altova
-Analytical thinking
+Advertisement Design
+Advertising
+Aeronautical Engineering
+Aerospace Engineering
+Affiliate Marketing
+After Effects
+Agile Development
+Agronomy
+AJAX javascript
+Algorithm
+Amazon Fire
+Amazon Kindle
+Amazon Web Services
+AMQP
+Analytics
 Android
-Android studio
-Angular
-Angular JS
-Apex
-Building application
-Design application
-Artificial intelligence
-AS / 400
+Android Honeycomb
+Android Wear SDK
+Angular.js
+Animation
+Antenna Services
+Anything Goes
+Apache
+Apache Ant
+Apache Solr
+App Designer
+App Developer
+Appcelerator Titanium
+Apple Compressor
+Apple iBooks Author
+Apple Logic Pro
+Apple Motion
+Apple Safari
+Apple Watch
+Applescript
+Appliance Installation
+Appliance Repair
+Arduino
+Argus Monitoring Software
+Article Rewriting
+Article Submission
+Articles
+Artificial Intelligence
+AS400
+Asbestos Removal
 ASP
+ASP.NET
+Asphalt
 Assembly
-Atom
-Auto-CAD
-Automotive engineering
-Awk
-AWS (cloud computing)
-Baan
-Bash
-Blogging
+Asterisk PBX
+Astrophysics
+Attic Access Ladders
+Attorney
+Audio Production
+Audio Services
+Audit
+Augmented Reality
+AutoCAD
+Autodesk Inventor
+Autodesk Revit
+AutoHotkey
+Automotive
+Autotask
+Awnings
+Axure
+Azure
+backbone.js
+Balsamiq
+Banner Design
+Big Data
+BigCommerce
+Binary Analysis
+Biology
+Biotechnology
+Bitcoin
+Biztalk
+Blackberry
+Blog Design
+Blog Install
+Bluetooth Low Energy (BLE)
+BMC Remedy
+Book Artist
+Book Writing
+Bookkeeping
+Boonex Dolphin
 Bootstrap
-Business intelligence
-VS
-VS#
-C ++
-Cake PHP
-Civil engineering
-Customer service
-cloud computing
-Cloud computing management
-Coaching
+Bower
+BPO
+Brackets
+Branding
+Bricklaying
+Broadcast Engineering
+Brochure Design
+BSD
+Building
+Building Architecture
+Building Certifiers
+Building Consultants
+Building Designer
+Building Surveyors
+Bulk Marketing
+Business Analysis
+Business Cards
+Business Catalyst
+Business Coaching
+Business Intelligence
+Business Plans
+Business Writing
+Buyer Sourcing
+C Programming
+C# Programming
+C++ Programming
+CAD/CAM
+CakePHP
+Call Control XML
+Capture NX2
+Caricature
+Carpentry
+Carpet Repair
+Carports
+Cartography
+CasperJS
+Cassandra
+Catalan
+CATIA
+CGI
+Chef Configuration Management
+Chemical Engineering
+Chordiant
+Chrome OS
+Cinema 4D
+Circuit Design
+Cisco
+Civil Engineering
+Classifieds Posting
+Clean Technology
+Cleaning Carpet
+Cleaning Domestic
+Cleaning Upholstery
+Climate Sciences
+CLIPS
+Cloud Computing
+CMS
 COBOL
-CodeIgniter
-Communautary development
-Computer Aided Design
-Construction engineering (civil engineering)
-Construction project management
-advice
-Content Management Systems
-Content marketing or brand marketing
-Content strategy
-Corel Draw
+Cocoa
+Codeigniter
+Coding
+Commercials
+Computer Graphics
+Computer Help
+Computer Security
+Concept Art
+Concept Design
+Concreting
+Construction Monitoring
+Content Writing
+Contracts
+Conversion Rate Optimisation
+Cooking
+Copy Typing
+Copywriting
+Corporate Identity
+Courses
+Covers
+CRE Loaded
+Creative Design
+Creative Writing
+CRM
+Cryptography
+Crystal Reports
+CS-Cart
 CSS
-CVS
-D
+CubeCart
+CUDA
+Customer Service
+Customer Support
+Damp Proofing
 Dart
-Data analysis
-Data analytics
-Database administration
-Database design
-Data base management
-Data base
-Data science
-Data Management
-Data mining
-Data science
-Business intelligence database
-DB / 2
+Data Entry
+Data Mining
+Data Processing
+Data Science
+Data Warehousing
+Database Administration
+Database Development
+Database Programming
+DataLife Engine
+Dating
+DDS
+Debian
+Debugging
+Decking
+Decoration
+Delivery
 Delphi
-Delphi / Object Pascal
-Design of airliners
-Detail oriented
-Digital Marketing
+Demolition
+Design
+Desktop Support
+Digital Design
+Disposals
 Django
 DNS
-Dropbox
+DOS
+DotNetNuke
+Drafting
+Drains
+Drones
 Drupal
-Eclipse
-Ecology
-EDI Files
+Dthreejs
+Dynamics
+eBay
+eBooks
+eCommerce
+Editing
+Education / Tutoring
+edX
 Elasticsearch
-Mechanical Engineering
-Ergonomics
+eLearning
+eLearning Designer
+Electrical Engineering
+Electricians
+Electronic Forms
+Electronics
+Email Developer
+Email Handling
+Email Marketing
+Embedded Software
+Ember.js
+Employment Law
+Energy
+Engineering
+Engineering Drawing
+ePub
+Equipment Hire
 Erlang
 ERP
-ETL
-Excel Scripting
-Express
-Extreme programming (agile method)
-F #
-Facilitation
-Film
+Estonian
+Etsy
+Event Planning
+Event Staffing
+Excavation
+Excel
+Express JS
+Expression Engine
+Extensions / Additions
+Face Recognition
+Facebook Marketing
+Fashion Design
+Fashion Modeling
+FastAPI
+Fiction
+FileMaker
+Filmmaking
 Final Cut Pro
-Financial management
-Fire safety engineering
-First aid
-Fluid mechanics
+Finance
+Financial Analysis
+Financial Markets
+Financial Planning
+Financial Research
+Finite Element Analysis
+Firefox
+Flash 3D
+Flashmob
+Flask
+Flex
+Floor Coatings
+Flooring
+Flow Charts
+Flyer Design
+Flyscreens
 Fortran
-Foundation
-FoxPro
-Full stack developer
-Programming video games
-GIT
-GIT
-Go
-Google drive
-Graphics and Design
-Groovy
-Groupware
-GTK
+Forum Posting
+Forum Software
+FPGA
+Frames
+Freelance
+FreelancerAPI
+FreeSwitch
+Fundraising
+Furniture Assembly
+Furniture Design
+Game Consoles
+Game Design
+Game Development
+Gamification
+GarageBand
+Gardening
+Genealogy
+General Labor
+General Office
+Genetic Engineering
+Geolocation
+Geology
+Geospatial
+Geotechnical Engineering
+Ghostwriting
+GIMP
+Git
+Glass
+Golang
+Google Adsense
+Google Adwords
+Google Analytics
+Google App Engine
+Google Cardboard
+Google Chrome
+Google Cloud Storage
+Google Earth
+Google Maps API
+Google Plus
+Google SketchUp
+Google Web Toolkit
+Google Webmaster Tools
+Google Website Optimizer
+GoPro
+GPGPU
+GPS
+Grails
+Grant Writing
+Graphic Design
+Grease Monkey
+Growth Hacking
+Grunt
 Hadoop
-Being able to handle the pressure
 Haskell
+HBase
+Helpdesk
 Heroku
-Hiring
-Integration of human resources
-Html
-HTML 5
-Hydrology
-Hydromechanical
-Image editing
+Hive
+Home Automation
+Home Design
+Home Organization
+HomeKit
+HP Openview
+HTML
+HTML5
+Human Resources
+Human Sciences
+iBeacon
+IBM BPM
+IBM Tivoli
+IBM Websphere Transformation Tool
+Icon Design
+IIS
+IKEA Installation
+Illustration
+Illustrator
+Imaging
 iMovie
-Information security
-Internet use
-ios
-IP / MPLS
-IPX
-J #
+Industrial Design
+Industrial Engineering
+Infographics
+Inspections
+Instagram
+Installation
+Instrumentation
+Insurance
+Interior Design
+Interiors
+Internet Marketing
+Internet Research
+Internet Security
+Interpreter
+Interspire
+Intuit QuickBooks
+Inventory Management
+Investment Research
+Invitation Design
+Ionic Framework
+iPad
+iPhone
+ISO9001
+Italian
+ITIL
+J2EE
+J2ME
+Jabber
 Java
-Java EE
+JavaFX
 Javascript
+JD Edwards CNC
+JDF
 Joomla
+Journalist
 jQuery
-Jscript
 JSON
-Kanban
-Keynote
+JSP
+Kannada
+Kinect
+Knockout.js
+Label Design
 LabVIEW
-Ladder Logic
-LAN (local area network)
+Landing Pages
+Landscape Design
+Landscaping
+Landscaping / Gardening
 Laravel
-Less
+LaTeX
+Lawn Mowing
+Leads
+Leap Motion SDK
+Legal
+Legal Research
+Legal Writing
+LESS
+Sass
+SCSS
+Linear Programming
+Link Building
+Linkedin
+Linnworks Order Management
+LINQ
 Linux
 Lisp
-Logo
-Lotus Notes / Domino
+LiveCode
+Locksmith
+Logo Design
+Lotus Notes
 Lua
-MacOS
-MAC software
-Manufacturing industry
-Science of materials
-MATLAB
-MDL
-Mechanical engineering
-Mechanical process engineering
-Mechanical
+Mac OS
+Machine Learning
+Magento
+Magic Leap
+Mailchimp
+Mailwizz
+Make Up
+Makerbot
+Malay
+Malayalam
+Maltese
+Management
+Manufacturing
+Manufacturing Design
+Map Reduce
+MariaDB
+Market Research
+Marketing
+Marketplace Service
+Materials Engineering
+Mathematics
+Matlab and Mathematica
+Maya
+Mechanical Engineering
+Mechatronics
+Medical
+Medical Writing
+Metatrader
+MeteorJS
+Metro
+Microbiology
+Microcontroller
+Microsoft
 Microsoft Access
-Microsoft Dynamics
-Microsoft Excel
-Microsoft powerpoint
+Microsoft Exchange
+Microsoft Expression
+Microsoft Hololens
+Microsoft Office
+Microsoft Outlook
 Microsoft SQL Server
-Microsoft Word
-Microwave transmission
-Mobile development
-MongoDB
-MS DOS
-MS Exchange
+Microsoft Visio
+Microstation
+Millwork
+Mining Engineering
+Minitlab
+MLM
+MMORPG
+Mobile App Testing
+Mobile Phone
+MODx
+MonetDB
+Moodle
+Mortgage Brokering
+Motion Graphics
+Moving
+MQTT
+Mural Painting
+Music
+MVC
+MYOB
+MySpace
 MySQL
-Negotiation
-.NET
-Netbeans
-Network design
-Management and transmission network data
-Network security
-Node.js
-NoSQL
-Novell Groupwise
-Novell netware
-NPM
+Nanotechnology
+Natural Language
+Network Administration
+Newsletters
+Nginx
+Ning
+Nintex Forms
+Nintex Workflow
+node.js
+Nokia
+NoSQL Couch
+Mongo
+Nutrition
+OAuth
 Objective C
-Object Oriented Programming
-OpenEdge ABL
-Operating system
-Operational research
-OPS7
-Optical fiber
+OCR
+Oculus Mobile SDK
+Odoo
+Online Writing
+Open Cart
+Open Journal Systems
+OpenBravo
+OpenCL
+OpenGL
+OpenSceneGraph
+OpenSSL
+OpenStack
+OpenVMS
 Oracle
-Oracle Database
-Pascal
+Order Processing
+Organizational Change Management
+OSCommerce
+Package Design
+Packing
+Shipping
+Painting
+Palm
+Papiamento
+Parallax Scrolling
+Parallel Processing
+Parallels Automation
+Parallels Desktop
+Patents
+Pattern Making
+Pattern Matching
+PayPal API
+Payroll
+Paytrace
+PCB Layout
+PDF
+PEGA PRPC
+PencilBlue CMS
+Pentaho
 PeopleSoft
+Periscope
 Perl
+Personal Development
+Pest Control
+Pet Sitting
+Petroleum Engineering
+Phone Support
+PhoneGap
+Photo Editing
+Photography
 Photoshop
+Photoshop Coding
+Photoshop Design
 PHP
-PL / SQL
+Physics
+PICK Multivalue DB
+Pickup
+Pinterest
+Piping
+PLC
+SCADA
+Plesk
+Plugin
+Plumbing
+Poetry
+Post-Production
+Poster Design
 PostgreSQL
-PowerBI
-Powerbuilder
-Process Engineering
+Powerpoint
+Powershell
+Pre-production
+Presentations
+Press Releases
+Prestashop
+Prezi
+Print
+Procurement
+Product Descriptions
+Product Design
+Product Management
+Product Sourcing
 Programming
 Prolog
-Protype
+Proofreading
+Property Development
+Property Law
+Property Management
+Proposal/Bid Writing
+Protoshare
+PSD to HTML
+PSD2CMS
+Psychology
+Public Relations
+Publishing
+Punjabi
+Puppet
 Python
-Q
-QlikSense
+Pytorch
 QlikView
-Qt
+Qualtrics Survey Platform
+Quantum
+QuarkXPress
+QuickBase
 R
-React JS
-Renewable energies
+RapidWeaver
+Raspberry Pi
+Ray-tracing
+React.js
+Real Estate
+REALbasic
+Recruitment
+Red Hat
+Redis
+Redshift
+Regular Expressions
+Remote Sensing
+Removalist
+Renewable Energy Design
+Report Writing
 Research
-Rotor technology
-Router configuration
-RPG (OS / 400)
+RESTful
+Resumes
+Robotics
+Rocket Engine
+Roofing
+RTOS
 Ruby
 Ruby on Rails
-Rust
-Sale
-Salesforce
+RWD
+Sales
+Salesforce App Development
+Salesforce.com
+Samsung
+Samsung Accessory SDK
 SAP
 SAS
-SASS
 Scala
 Scheme
-Scratch
-SCRUM
-Search engine optimization
-SGA
+Scientific Research
+Screenwriting
+Script Install
+Scrum
+Scrum Development
+Sculpturing
+Search Engine Marketing
+Sencha
+YahooUI
+SEO
 Sharepoint
+Shell Script
+Shopify
+Shopify Templates
+Shopping
+Shopping Carts
+Short Stories
 Siebel
-Slack
-Social media management
-Software Design
-Software development frameworks
-Software engineering
-Ground Mecanic
-Solid construction
-Sony Vegas
-SPSS
+Sign Design
+Silverlight
+Simplified Chinese (China)
+Slogans
+Smarty PHP
+Snapchat
+Social Engine
+Social Media Marketing
+Social Networking
+Socket IO
+Software Architecture
+Software Development
+Software Testing
+Solaris
+Solidworks
+Sound Design
+Spark
+Speech Writing
+Sphinx
+Splunk
+Sports
+SPSS Statistics
 SQL
 SQLite
-SQL server
 Squarespace
-Stata
-Static
-Steel construction
-Strategic planning
-Strategy
-Struts
-Gorgeous
+Squid Cache
+Startups
+Stationery Design
+Statistical Analysis
+Statistics
+Steam API
+Sticker Design
+Storage Area Networks
+Storyboard
+Stripe
+Structural Engineering
+Subversion
+SugarCRM
+Supplier Sourcing
+Surfboard Design
 Swift
-Sybase
-Symfony
-Board
-TCP / IP
-Building material technology
-Thermodynamics
-Transact-SQL
-User interfaces (UI)
-UMTS / GSM network management
+Symbian
+Symfony PHP
+System Admin
+Tableau
+Tally Definition Language
+Tamil
+TaoBao API
+Tax
+Tax Law
+Technical Support
+Technical Writing
+Tekla Structures
+Telecommunications Engineering
+Telemarketing
+Templates
+Tensorflow
+Test Automation
+Testing
+QA
+TestStand
+Textile Engineering
+Tibco Spotfire
+Tiling
+Time Management
+Titanium
+Tizen SDK for Wearables
+Training
+Transcription
+Translation
+Travel Writing
+Troubleshooting
+Tumblr
+Typescript
+TYPO3
+Typography
+Ubuntu
+Umbraco
+UML Design
+Unit4 Business World
+Unity 3D
 UNIX
-Unix shell scripting
-User test
-User experiences (UX)
-VBScript
-Vim
+Urdu
+Usability Testing
+User Experience Design
+User Interface / IA
+User Interface Design
+Valuation / Appraisal
+Varnish Cache
+VB.NET
+vBulletin
+Vectorization
+Veeam
+Vehicle Signage
+Verilog
+VHDL
+VertexFX
+Video Broadcasting
+Video Editing
+Video Production
+Video Services
+Video Upload
+Videography
+Viral Marketing
+Virtual Assistant
+Virtual Worlds
+Virtuemart
+Virtuozzo
+Visa / Immigration
+Visual Arts
 Visual Basic
-Visual C ++
-(Visual) FoxPro
-Visual studio
-Voice over IP (voice transport over IP network)
-WAN (wide area network)
-WPA protocol (network)
-Water and waste management
-WDM
-Web content
-WiFi configuration
-Windows
-PC software
+Visual Basic for Apps
+Visual Foxpro
+Visual Merchandising
+Visualization
+VMware
+Voice Artist
+Voice Talent
+VoiceXML
+VoIP
+Volusion
+VPS
+vTiger
+Vuforia
+WatchKit
+Web Hosting
+Web Scraping
+Web Search
+Web Security
+Web Services
+webMethods
+WebOS
+Website Design
+Website Management
+Website Testing
+Weebly
+Welsh
+WHMCS
+WIKI
+Wikipedia
+Windows 8
+Windows API
+Windows CE
+Windows Desktop
+Windows Mobile
+Windows Phone
+Windows Server
+Wireframes
+Wireless
 Wix
-Timber construction
-Wordpress
-Writing
+Wolfram
+WooCommerce
+Word
+Word Processing
+WordPress
+Workshops
+WPF
+Wufoo
+x86/x64 Assembler
 Xamarin
-Xcode
+Xero
 XML
+XMPP
+Xojo
+Xoops
+XPages
+XQuery
+XSLT
+Yahoo! Store Design
+Yard Work / Removal
+Yarn
+Yiddish
 Yii
+YouTube
+Zbrush
+Zen Cart
 Zend
+Zendesk
 Zoho
