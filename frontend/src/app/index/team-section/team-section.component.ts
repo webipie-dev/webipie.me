@@ -30,13 +30,6 @@ export class TeamSectionComponent implements OnInit {
       linkedinlink: 'https://www.linkedin.com/in/alaeddine-abdessalem-549b65169/'
     },
     {
-      name: 'Chedy Hammami',
-      picture: 'assets/shadi.jpg',
-      position: 'Co-founder & Full Stack Developer',
-      githublink: 'https://github.com/bishkou',
-      linkedinlink: 'https://www.linkedin.com/in/chedyhm/'
-    },
-    {
       name: 'Med Amine Hamdouni',
       picture: 'https://media-exp1.licdn.com/dms/image/C4D03AQEmmk2DS-OP7g/profile-displayphoto-shrink_800_800/0/1617576000611?e=1637798400&v=beta&t=GeYyCd8DT1a6lLZpvocy5ZJFXc0qMtJB9SmRRAEFxsw',
       position: 'Frontend Developer',
@@ -51,9 +44,16 @@ export class TeamSectionComponent implements OnInit {
       linkedinlink: 'https://www.linkedin.com/in/dalideco/'
     },
     {
+      name: 'Chedy Hammami',
+      picture: 'assets/shadi.jpg',
+      position: 'Honorable Mentions',
+      githublink: 'https://github.com/bishkou',
+      linkedinlink: 'https://www.linkedin.com/in/chedyhm/'
+    },
+    {
       name: 'Yassine Gabsi',
       picture: 'assets/yassine.jpg',
-      position: 'Frontend Developer',
+      position: 'Honorable Mentions',
       githublink: 'https://github.com/YassineGabsi',
       linkedinlink: 'https://www.linkedin.com/in/yassine-gabsi/'
     },

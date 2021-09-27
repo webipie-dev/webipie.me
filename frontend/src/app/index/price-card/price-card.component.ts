@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthService} from "../../_shared/services/auth.service";
 
 @Component({
   selector: 'app-price-card',
@@ -9,7 +11,7 @@ export class PriceCardComponent implements OnInit {
   @Input() class : String = '';
   title:String='';
   cost:String='';
-  constructor() {
+  constructor(private router: Router, private authService: AuthService) {
 
   }
 
@@ -23,4 +25,11 @@ export class PriceCardComponent implements OnInit {
     }
   }
 
+  clicked() {
+    if(this.authService.isLoggedIn()) {
+      this.router.navigate(['/dashboard/home'])
+    } else {
+      this.router.navigate(['/register/signup'])
+    }
+  }
 }
