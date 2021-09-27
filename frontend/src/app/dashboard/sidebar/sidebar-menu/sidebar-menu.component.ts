@@ -50,7 +50,7 @@ export class SidebarMenuComponent implements OnInit {
   tour() {
 
     this.joyride.startTour({
-      steps: ['Portfolio', 'Design', 'Request Domain Name'],
+      steps: ['Portfolio Sections', 'Portfolio Design', 'Request Domain Name'],
       themeColor: '#070919'
     })
     this.authService.guideTourDone().subscribe(result => {
