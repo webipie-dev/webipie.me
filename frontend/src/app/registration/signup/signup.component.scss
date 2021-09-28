@@ -7,7 +7,7 @@
     padding-top:calc(5vh + 100px);
     align-items: center;
     flex-wrap: wrap;
-    
+    min-height:100vh;
 }
 img{
     max-width: 700px;
@@ -23,5 +23,4 @@ img{
     max-width: 500px;
     margin: auto;
     box-sizing: border-box;
-    padding-bottom: 50px;
 }
