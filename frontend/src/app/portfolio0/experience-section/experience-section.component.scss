@@ -3,6 +3,7 @@
     width: 100vw;
     min-height: 100vh;
     color:#202e37;
+    position: relative;
 }
 .cos-content{
     margin:auto;
@@ -24,6 +25,12 @@
 .cos-right .cos-bubble:hover{
     cursor: pointer;
     transform:translateY(-5px);
+}
+.cos-bubble > .background{
+    position: absolute; 
+    top:0; left: 0 ; 
+    width:100%;height:100%;
+    border-radius: inherit;
 }
 .cos-image{
     margin-top:20px;
@@ -194,4 +201,74 @@ fa-icon{
         min-height: fit-content !important;
         margin-bottom:30px;
     }
+}
+
+.exp-image{
+    position: fixed; 
+    z-index: 2000;
+    top: 0 ; left: 100%; 
+    width: 100%; height: 100vh ; 
+    margin:0; padding: 0 ;
+    transition: left 0ms;
+    
+    .transparent-behind{
+        position: absolute; 
+        background-color: rgba(0, 0, 0, 0.432);
+        top:0; left: 0 ; width: 100%; height: 100vh ;
+        z-index: -1; 
+        opacity: 0;
+        transition: opacity 500ms ease;    
+    }
+    
+    &> img {
+        position: absolute;
+        max-width: 100% ;
+        max-height: 100vh ;
+        width: 100%;
+        top: 50% ; left: 50% ;
+        clip-path: inset(100% 0 0 0);
+        transform: translate(-50%, -50%) ;
+        transition: clip-path 800ms ease 100ms,
+            transform 800ms ease 100ms;
+    }
+    &> button {
+        position: absolute;
+        top:40px; right: 40px; 
+        width: 40px; height: 40px;
+        border: none;
+        border-radius:50%;
+        font-size: 1.2rem ;
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    &.shown{
+        left: 0; 
+        .transparent-behind{
+            opacity: 1; 
+        }
+        &>img{
+            clip-path: inset(0 0 0 0) ;
+            transform: translate(-50%, -50%);
+        }
+    }
+    
+}
+.see-image-hover{
+    position: absolute; 
+    z-index: 0 ;
+    top: 20%; left:0 ;
+    width: 100%;
+    padding: 10px 0 0 0 ;
+    color:white;
+    text-align: center;
+    background-color: white;
+    border-radius: 0 0 30px 30px;  
+    transition: top 700ms ease;
+}
+
+.cos-bubble:hover .see-image-hover{
+    top:74%;
 }

@@ -41,6 +41,14 @@ img {
   }
 }
 
+@media  screen and (max-width:770px) {
+  hr{
+    width:100%;
+    border: 1px solid #e5e5e5;
+    background-color: #e5e5e5;
+  }
+}
+
 .font-picker{
   z-index:1002;
 }
