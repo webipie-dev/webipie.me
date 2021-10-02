@@ -55,11 +55,12 @@ h1{
     margin-top:30px;
     text-align: left;
     display: block;
-    width:80%;
+    
     max-width: 200px;
     margin-right:auto;
     margin-left:auto;
     text-align: left;
+    
 }
 a{
     text-decoration: none;
@@ -75,4 +76,22 @@ h2{
 }
 a p{
     margin-bottom:2px;
+}
+
+@media  (max-width: 600px) {
+    .content {
+        flex-direction: column !important;
+        flex-flow: nowrap;
+        align-items: center;
+        .element{
+            margin: 15px 0;
+            text-align: center;
+        }
+    }
+    h1{
+        letter-spacing: 5px;
+    }
+    .icons{
+        margin: auto;
+    }
 }

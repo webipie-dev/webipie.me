@@ -85,8 +85,8 @@ module.exports = {
             <div class="cos-body" style="text-align:center">
                 <!-- <img src="https://webipie.me/assets/SVG/email.svg"> -->
                 <img src="https://webipie.me/assets/email.png" style="width:18vw; height:18vw; object-fit:cover ;background-color: white; border-radius:50%">
-                <h1 style="width:90%">Hello ${name}, Welcome to Webipie.me</h1>
-                <p style="font-size:20px; width:90%">We Created a personal account for you. Please confirm your e-mail adress</p>
+                <h1 style="width:90%; margin: auto;color: white;">Hello ${name}, Welcome to Webipie.me</h1>
+                <p style="font-size:20px; width:90%; margin:auto;color:white;">We Created a personal account for you. Please confirm your e-mail adress</p>
                 <a href="${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}" style="text-decoration: none; color: white; background-color: #3aaf85; padding:15px 25px; margin-bottom:50px">Confirm Email</a>
                 <hr style="margin-top:25px">
                 <p style="font-size:18px; width:90%;margin:auto">In case the button doesn't work please visit this link ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n</p>
@@ -170,8 +170,8 @@ module.exports = {
             <div class="cos-body" style="text-align:center">
                 <!-- <img src="https://webipie.me/assets/SVG/email.svg"> -->
                 <img src="https://webipie.me/assets/email.png" style="width:18vw; height:18vw; object-fit:cover ;background-color: white; border-radius:50%">
-                <h1 style="width:90%">Hello, Welcome to Webipie.me</h1>
-                <p style="font-size:20px; width:90%">We Created a personal account for you. Please confirm your e-mail adress</p>
+                <h1 style="width:90%;margin: auto;color: white;">Hello, Welcome to Webipie.me</h1>
+                <p style="font-size:20px; width:90%;margin: auto;color: white;">We Created a personal account for you. Please confirm your e-mail adress</p>
                 <a href="${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}" style="text-decoration: none; color: white; background-color: #3aaf85; padding:15px 25px; margin-bottom:50px">Confirm Email</a>
                 <hr style="margin-top:25px">
                 <p style="font-size:18px; width:90%;margin:auto">In case the button doesn't work please visit this link ${httpProtocol}://${clientHostname}${portString}/register/confirmation?token=${token}\n\nThank You!\n</p>
