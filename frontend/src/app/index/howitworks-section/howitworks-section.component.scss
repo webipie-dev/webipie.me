@@ -27,6 +27,7 @@ h1{
     max-width: 500px;
     margin:auto;
 }
+
 .cont{
     display: flex;
     flex-wrap: wrap;
@@ -46,7 +47,7 @@ h1{
     margin:auto;
 }
 img{
-    width:70%;
+    width:100%;
 }
 .inline{
     display: inline-block !important;
@@ -61,5 +62,8 @@ img{
 @media screen and (max-width:600px) {
     .circle{
         display: none !important;
+    }
+    .left{
+        text-align: center;
     }
 }

@@ -12,7 +12,7 @@ import {TechnicalSkillDeveloperModel} from "../../_shared/models/technical-skill
 export class ExpertiseSectionComponent implements OnInit {
   watch = faStopwatch;
   softSkills?: [SoftSkillModel];
-  hardSkills?: [TechnicalSkillDeveloperModel];
+  hardSkills?: [TechnicalSkillDeveloperModel] | [any];
   softSkillsTemplate?= 1;
   secondaryColor: any;
   primaryColor: any;

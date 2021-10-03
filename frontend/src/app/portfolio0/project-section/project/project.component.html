@@ -6,15 +6,15 @@
         <div class="button" style="z-index:9999" (click)="exit(toggle)">
             <fa-icon [icon]="close" [style]="'color:'+primaryColor"></fa-icon>
         </div>
-      <div *ngIf="project.imgs || project.video">
+      <div *ngIf="project.imgs || project.video" style="position: relative">
+        <div class="next" style="z-index:999" (click)="goRight()">
+          <fa-icon [icon]="rightArrow" [style]="'color:'+primaryColor"></fa-icon>
+        </div>
+        <div class="prev" style="z-index:999">
+          <fa-icon [icon]="leftArrow" [style]="'color:'+primaryColor" (click)="goLeft()"></fa-icon>
+        </div>
         <div class="images {{template==2? 'bordered':''}}">
-          <div class="next" style="z-index:999" (click)="goRight()">
-            <fa-icon [icon]="rightArrow" [style]="'color:'+primaryColor"></fa-icon>
-          </div>
-          <div class="prev" style="z-index:999">
-            <fa-icon [icon]="leftArrow" [style]="'color:'+primaryColor" (click)="goLeft()"></fa-icon>
-          </div>
-          <div class="images-container" [style]="'transform:translateX(-'+pos+'px)'">
+          <div class="images-container  " [style]="'transform:translateX(-'+pos+'px)'">
             <div class="image" *ngFor="let image of project.imgs">
               <img [src]="image">
             </div>

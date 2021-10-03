@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   @Output() contactusEmitter = new EventEmitter<any>();
   @Output() pricingEmitter = new EventEmitter<any>();
   username?: string;
+  shortUsername?:string ;
   picture: string = 'assets/SVG/avatar.svg';
 
   constructor(private router : Router, private authService: AuthService) { }
@@ -71,7 +72,12 @@ export class HeaderComponent implements OnInit {
   getUsername() {
       this.authService.getUserName().subscribe(result => {
         this.username = result.name;
+        this.setShortUserName(result.name);
       });
+  }
+
+  setShortUserName(name:String){
+    this.shortUsername = `${name.split(' ')[0].substr(0,10)}${(name.split(' ')[0].length>10)?'...':''}`;
   }
 
   logOut(){
