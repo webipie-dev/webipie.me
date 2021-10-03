@@ -20,3 +20,18 @@
         color: #62b085;
     }
 }
+
+.level-checkbox{
+    width: 18px ; height:18px; margin-right: 10px; position: relative; top:4px;
+}
+
+@media (max-width: 600px){
+    .containing{
+        padding: 0 ;
+        margin: 0 ;
+        &>div{
+            padding:0; 
+            margin: 0;
+        }
+    }
+}

@@ -30,7 +30,7 @@
                   </div>
                 </td>
                 <td>
-                  <progressbar [value]="hardSkill.level * 10" class="progress-bar-rounded" type="info">{{hardSkill.level * 10}}%</progressbar>
+                  <progressbar [value]="hardSkill.level * 10" class="progress-bar-rounded" type="info">{{hardSkill.level?hardSkill.level * 10:'unset'}}%</progressbar>
 
                 </td>
                 <td class="text-center">

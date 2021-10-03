@@ -6,6 +6,7 @@
             <div [ngClass]="globalTag=='All'? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag=='All'? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag("All")'><p>All</p></div>
             <div  *ngFor="let tag of tags;" [ngClass]="globalTag==tag? 'cos-btn active':'cos-btn'" [style.borderColor]="primaryColor+'!important'" [style]="globalTag==tag? 'color:white;background-color:'+primaryColor:'color:'+primaryColor+';background-color:transparent'" (mouseenter)="hover($event)"(mouseleave)="unhover($event)" (click)='changeTag(tag)'><p>{{tag}}</p></div>
         </div>
+        <h3 style="margin: 0">{{globalTag}} projects</h3>
         <div class="cos-project-container">
             <app-project-element *ngFor="let project of projects; let i=index" [project]="project" [globalTag]="globalTag" [tags]="project.skills"></app-project-element>
         </div>

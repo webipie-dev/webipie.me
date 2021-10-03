@@ -3,9 +3,9 @@
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
     border-radius: 10px;
-    max-width: 500px;
-    padding:20px;
-    width:100%;
+    padding:20px 40px;
+    width:500px;
+    max-width: 90vw;
     box-sizing: border-box;
     text-align: center;
 }
@@ -36,10 +36,17 @@ p{
 .element{
     margin-top:30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 .element p{
-    margin-right:50px;
+    margin-right:0;
+    text-align: left;
+    flex-shrink: 1;
+    padding-right: 30px;
+    &.link{
+        flex-shrink: 0;
+        padding-right: 0 ;
+    }
 }
 .btn{
     text-align: center;
