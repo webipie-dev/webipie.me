@@ -17,12 +17,15 @@ export class ExperienceSectionComponent implements OnInit {
   primaryColor: any;
   font="Montserrat";
 
+  shownVolImages: boolean[] = [];
+  shownWorkImages: boolean[] = [];
+
   workExperiencesDisabled?: boolean;
   volunteeringExperiencesDisabled?: boolean;
   constructor() { }
 
-  workExperiences?: [WorkExperienceModel];
-  volunteeringExperiences?: [VolunteeringExperienceModel];
+  workExperiences?: WorkExperienceModel[];
+  volunteeringExperiences?: VolunteeringExperienceModel[];
 
   ngOnInit(): void {
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
@@ -48,6 +51,9 @@ export class ExperienceSectionComponent implements OnInit {
       }
     }
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.experience.dataContainer;
+
+    this.volunteeringExperiences?.forEach(()=> {this.shownVolImages.push(false)})
+    this.workExperiences?.forEach(()=>this.shownWorkImages.push(false))
   }
   show(target:HTMLElement){
     if(target.getAttribute('class')==='cos-image hidden'){

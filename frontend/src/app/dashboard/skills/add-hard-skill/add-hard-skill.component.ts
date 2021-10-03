@@ -20,6 +20,8 @@ export class AddHardSkillComponent implements OnInit {
   edit = false;
   validForm = true;
   technicalSkill: TechnicalSkillDeveloperModel = {} as TechnicalSkillDeveloperModel;
+  
+  selectLevel : boolean = true ;
   level = 5;
   selectedSkill: any;
   skills: TechnicalSkillModel[] = [];
@@ -56,7 +58,7 @@ export class AddHardSkillComponent implements OnInit {
       this.validForm = false;
     }
     if(!this.edit) {
-      this.technicalSkillsService.addOne({skill: {id: this.selectedSkill, level: this.level}}).subscribe((result) => {
+      this.technicalSkillsService.addOne({skill: {id: this.selectedSkill, level: this.selectLevel? this.level: undefined}}).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -71,7 +73,7 @@ export class AddHardSkillComponent implements OnInit {
         });
       });
     } else {
-      this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill, level: this.level}).subscribe(result => {
+      this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill, level: this.selectLevel?this.level: undefined}).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));

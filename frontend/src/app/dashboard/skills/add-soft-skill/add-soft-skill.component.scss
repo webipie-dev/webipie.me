@@ -20,3 +20,13 @@
         color: #62b085;
     }
 }
+@media (max-width: 600px){
+    .containing{
+        padding: 0 ;
+        margin: 0 ;
+        &>div{
+            padding:0; 
+            margin: 0;
+        }
+    }
+}

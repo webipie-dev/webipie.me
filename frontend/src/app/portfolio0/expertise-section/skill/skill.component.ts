@@ -9,7 +9,7 @@ import {TechnicalSkillDeveloperModel} from "../../../_shared/models/technical-sk
 })
 export class SkillComponent implements OnInit {
 
-  @Input() hardSkill!: TechnicalSkillDeveloperModel;
+  @Input() hardSkill!: TechnicalSkillDeveloperModel | any ;
   secondaryColor: any;
   primaryColor: any;
   icon = true;
@@ -29,6 +29,8 @@ export class SkillComponent implements OnInit {
     for(let i = 0;i<this.hardSkill.level/2;i++){
       this.levels[i] = true;
     }
+
+    
   }
 
 }
