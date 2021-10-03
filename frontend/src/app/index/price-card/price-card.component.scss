@@ -3,9 +3,8 @@
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.226);
     border-radius: 10px;
-    max-width: 500px;
     padding:20px 40px;
-    width:100%;
+    width:500px;
     max-width: 90vw;
     box-sizing: border-box;
     text-align: center;
@@ -43,7 +42,7 @@ p{
     margin-right:0;
     text-align: left;
     flex-shrink: 1;
-    padding-right: 10px;
+    padding-right: 30px;
     &.link{
         flex-shrink: 0;
         padding-right: 0 ;

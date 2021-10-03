@@ -5,7 +5,7 @@
         <h3 class="sub" [hidden]="workExperiencesDisabled">Professional Experience</h3>
         <div class="cos-experiences" [hidden]="workExperiencesDisabled">
 
-            <div *ngFor="let work of workExperiences" class="cos-element">
+            <div *ngFor="let work of workExperiences; let i=index" class="cos-element">
                 <div class="cos-left">
                     <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{work.title}}</h4>
                     <h5 *ngIf="work.company" [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{work.company}}</h5>
@@ -17,13 +17,19 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="shownWorkImages[i]= true" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2>{{work.beginDate | date}} - <span *ngIf="work.endDate">{{work.endDate | date}}</span><span *ngIf="!work.endDate">Present</span></h2>
+                        <div *ngIf="work.img" class="see-image-hover" [style.backgroundColor]="secondaryColor" >
+                            See image
+                        </div>
+                        <div class="background" [style.backgroundColor]="primaryColor"></div>
                     </div>
-                    <div *ngIf="work.img" class="cos-image">
+                    <div *ngIf="work.img" class="cos-image exp-image {{shownWorkImages[i]?'shown':''}}">
                         <img src="{{work.img}}">
+                        <div class="transparent-behind" (click)="shownWorkImages[i]=false"></div>
+                        <button (click)="shownWorkImages[i]=false" >x</button>
                     </div>
                 </div>
             </div>
@@ -31,7 +37,7 @@
         <h3 class="sub" [hidden]="volunteeringExperiencesDisabled">Volunteering Experience</h3>
         <div class="cos-experiences" >
 
-            <div *ngFor="let volunteering of volunteeringExperiences" class="cos-element">
+            <div *ngFor="let volunteering of volunteeringExperiences ; let i=index" class="cos-element">
                 <div class="cos-left">
                     <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.title}}</h4>
                     <h5 *ngIf="volunteering.organisation" [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.organisation}}</h5>
@@ -43,13 +49,19 @@
                     <fa-icon [icon]='check'></fa-icon>
                 </div>
                 <div class="cos-right">
-                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" [style.backgroundColor]="primaryColor">
+                    <div class="cos-bubble  {{template == 1? 'square':''}} {{template == 3? 'outline':''}}" (click)="shownVolImages[i]= true" [style.backgroundColor]="primaryColor">
                         <div class="cos-triangle" [style.borderRightColor]="primaryColor">
                         </div>
                         <h2><span *ngIf="volunteering.city">{{volunteering.city}}</span> - {{volunteering.beginDate | date}} - <span *ngIf="volunteering.endDate">{{volunteering.endDate | date}}</span><span *ngIf="!volunteering.endDate">Present</span></h2>
+                        <div *ngIf="volunteering.img" class="see-image-hover" [style.backgroundColor]="secondaryColor" >
+                            See image
+                        </div>
+                        <div class="background" [style.backgroundColor]="primaryColor"></div>
                     </div>
-                    <div *ngIf="volunteering.img" class="cos-image">
+                    <div *ngIf="volunteering.img" class="cos-image exp-image {{shownVolImages[i]?'shown':''}}">
                         <img src="{{volunteering.img}}">
+                        <div class="transparent-behind" (click)="shownVolImages[i]=false"></div>
+                        <button (click)="shownVolImages[i]=false" >x</button>
                     </div>
                 </div>
             </div>

@@ -124,14 +124,17 @@
             >
           </div>
           <div class="position-relative form-group"><label for="skills">Skills</label>
-            <input class="form-control"
+            <!-- <input class="form-control"
                    id="skills"
                    name="password"
                    placeholder="Skills Acquired"
                    type="text"
                    formControlName="skills"
                    [(ngModel)]="workExperience.skills"
-            >
+            > -->
+            <ng-select id="skills" [(ngModel)]="workExperience.skills" [multiple]="true" [addTag]="true" formControlName="skills">
+              <ng-option *ngFor="let skill of skills" [value]="skill.name">{{skill.name}}</ng-option>
+            </ng-select>
           </div>
           <div class="divider my-4"></div>
           <button class="mt-1 btn btn-slack" [disabled]="!workExperienceForm.valid">
