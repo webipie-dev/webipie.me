@@ -124,6 +124,7 @@ const addPortfolio = async (req, res, next) => {
   }
 
   createDomain(portfolioSubdomain)
+  createDomain("www." + portfolioSubdomain)
 
   console.log(portfolio);
   res.status(201).json(portfolio);

@@ -134,7 +134,7 @@ Buyer Sourcing
 C Programming
 C# Programming
 C++ Programming
-CAD/CAM
+CAD
 CakePHP
 Call Control XML
 Capture NX2
@@ -236,7 +236,7 @@ eBay
 eBooks
 eCommerce
 Editing
-Education / Tutoring
+Education
 edX
 Elasticsearch
 eLearning
@@ -266,7 +266,7 @@ Excavation
 Excel
 Express JS
 Expression Engine
-Extensions / Additions
+Extensions
 Face Recognition
 Facebook Marketing
 Fashion Design
@@ -417,7 +417,8 @@ LabVIEW
 Landing Pages
 Landscape Design
 Landscaping
-Landscaping / Gardening
+Landscaping
+Gardening
 Laravel
 LaTeX
 Lawn Mowing
@@ -604,7 +605,8 @@ Proofreading
 Property Development
 Property Law
 Property Management
-Proposal/Bid Writing
+Proposal
+Bid Writing
 Protoshare
 PSD to HTML
 PSD2CMS
@@ -758,9 +760,11 @@ UNIX
 Urdu
 Usability Testing
 User Experience Design
-User Interface / IA
+User Interface
+IA
 User Interface Design
-Valuation / Appraisal
+Valuation
+Appraisal
 Varnish Cache
 VB.NET
 vBulletin
@@ -781,7 +785,8 @@ Virtual Assistant
 Virtual Worlds
 Virtuemart
 Virtuozzo
-Visa / Immigration
+Visa
+Immigration
 Visual Arts
 Visual Basic
 Visual Basic for Apps
@@ -831,7 +836,8 @@ WordPress
 Workshops
 WPF
 Wufoo
-x86/x64 Assembler
+x86
+x64 Assembler
 Xamarin
 Xero
 XML
@@ -842,7 +848,8 @@ XPages
 XQuery
 XSLT
 Yahoo! Store Design
-Yard Work / Removal
+Yard Work
+Removal
 Yarn
 Yiddish
 Yii
