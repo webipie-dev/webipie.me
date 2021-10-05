@@ -48,6 +48,7 @@ export class AddExperienceComponent implements OnInit {
     description: ['', [Validators.required, Validators.maxLength(300)]],
     position: [''],
     company: [''],
+    link: [''],
     img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
