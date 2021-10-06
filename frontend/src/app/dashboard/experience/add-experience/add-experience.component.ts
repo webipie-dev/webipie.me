@@ -20,6 +20,7 @@ export class AddExperienceComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
+  jobType?:string;
   check = false;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -81,6 +82,10 @@ export class AddExperienceComponent implements OnInit {
     this.images.splice(this.images.indexOf(event), 1);
   }
 
+  selectJobType(type : string){
+    this.jobType = type;
+    this.workExperienceForm.controls['position'].setValue(type);
+  }
 
 
   async onSubmit() {

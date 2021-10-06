@@ -42,26 +42,30 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="examplePassword">Job Type</label>
-            <input class="form-control"
-                   id="examplePassword"
-                   name="password"
-                   placeholder="Position"
-                   type="text"
-                   formControlName="position"
-                   [(ngModel)]="workExperience.position"
-            >
+          <div class="row">
+            <div class="position-relative form-group col-xl-6"><label for="company">Company</label>
+              <input class="form-control"
+                     id="company"
+                     name="name"
+                     placeholder="Company"
+                     type="text"
+                     formControlName="company"
+                     [(ngModel)]="workExperience.company"
+              >
+            </div>
+            <div class="btn-group m-2 col-xl-5" dropdown>
+              <button dropdownToggle type="button" class="btn btn-neutral-primary btn-sm dropdown-toggle">
+                {{jobType == null? 'Job Type':jobType}}
+                <span class="caret"></span>
+              </button>
+              <ul *dropdownMenu class="dropdown-menu col-xl-11" role="menu">
+                <li role="menuitem"><a class="dropdown-item" (click)="selectJobType('Internship')">Internship</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="selectJobType('Part Time Job')">Part time job</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="selectJobType('Full Time Job')">Full time job</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="position-relative form-group"><label for="company">Company</label>
-            <input class="form-control"
-                   id="company"
-                   name="name"
-                   placeholder="Company"
-                   type="text"
-                   formControlName="company"
-                   [(ngModel)]="workExperience.company"
-            >
-          </div>
+          
           <div class="form-group">
 
             <label>Still on the job ?</label>
