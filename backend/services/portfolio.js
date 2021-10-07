@@ -28,7 +28,7 @@ const getPortfolioNames = async (req,res) => {
 const getOnePortfolio = async (req, res) => {
   //get portfolio id
   const { id } = req.params;
-  const portfolio = await Portfolio.findById(id)
+  const portfolio = await Portfolio.findById(id).populate('softSkills')
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
@@ -39,7 +39,7 @@ const getOnePortfolio = async (req, res) => {
 const getPortfolioByUrl = async (req,res) => {
   const { url } = req.params;
   const noLog = req.query.noLog;
-  const portfolio = await Portfolio.findOne({url})
+  const portfolio = await Portfolio.findOne({url}).populate('softSkills')
     .catch((err) => {
       res.status(400).json({errors: err.message});
     });
@@ -149,7 +149,7 @@ const editPortfolio = async (req, res, next) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
 
-  const portfolioEdited = await Portfolio.findById(id);
+  const portfolioEdited = await Portfolio.findById(id).populate('softSkills');
 
   res.status(200).send(portfolioEdited)
 
@@ -158,7 +158,7 @@ const editPortfolio = async (req, res, next) => {
 const editPortfolioDesign = async (req, res, next) => {
   const {id} = req.params;
   const {template} = req.body;
-  const portfolio = await Portfolio.findById(id);
+  const portfolio = await Portfolio.findById(id).populate('softSkills');
   if(!portfolio) {
     return next(ApiError.NotFound('Portfolio not Found'));
   }
@@ -191,7 +191,7 @@ const changeTemplate = async (req, res, next) => {
       return;
     }
   }
-  const portfolioEdited = await Portfolio.findById(id)
+  const portfolioEdited = await Portfolio.findById(id).populate('softSkills')
   res.status(200).send(portfolioEdited)
 };
 

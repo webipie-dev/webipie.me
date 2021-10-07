@@ -29,10 +29,12 @@ const portfolioSchema = new Schema({
   achievements: {type: [achievementSchema]},
   testimonials: {type: [testimonialSchema]},
   technicalSkills: [{
-    skill: {type: technicalSkillSchema},
+    //skill: {type: technicalSkillSchema}, // TODO: Change to ref ID
+    skill: {type: Schema.Types.ObjectId, ref: 'TechnicalSkill'},
     level:{type: Number, required: false, min: 0, max: 10}
   }],
-  softSkills: {type: [softSkillSchema]},
+  //softSkills: {type: [softSkillSchema]}, // TODO: Change to ref ID
+  softSkills: [{type: Schema.Types.ObjectId, ref: 'SoftSkill'}],
   workExperiences: {type: [workExperienceSchema]},
   volunteeringExperiences: {type: [volunteeringExperienceSchema]},
   projectsDisabled: {type: Boolean, default: false},
@@ -52,14 +54,15 @@ const portfolioSchema = new Schema({
     of: Number
   }
 },
-  {
-    toJSON: {
-      transform(doc, ret) {
-        ret.id = ret._id;
-        delete ret._id;
-        delete ret.__v;
-      }
-    }
-  });
+{
+  toJSON: {
+    transform(doc, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.__v;
+    }, 
+    depopulate: true
+  }
+});
 
 module.exports = mongoose.model('Portfolio', portfolioSchema);
