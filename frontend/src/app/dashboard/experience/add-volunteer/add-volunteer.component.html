@@ -12,20 +12,36 @@
           Volunteering Experience
         </h5>
         <form [formGroup]="volunteeringExperienceForm" (ngSubmit)="onSubmit()">
-          <div class="position-relative form-group"><label class="required" for="title">Title</label>
+          <div class="position-relative form-group"><label class="required" for="organisation">Organisation</label>
             <input class="form-control"
-                   id="title"
-                   name="name"
+                   id="organisation"
+                   name="password"
                    type="text"
-                   formControlName="title"
-                   [(ngModel)]="volunteerExperience.title"
+                   formControlName="organisation"
+                   [(ngModel)]="volunteerExperience.organisation"
             >
             <!-- Error Handling -->
-            <div *ngIf="volunteeringExperienceForm.controls.title.errors?.required && volunteeringExperienceForm.controls.title.touched" class="alert isa_error">
-              Title is required.
+            <div *ngIf="volunteeringExperienceForm.controls.organisation.errors?.required && volunteeringExperienceForm.controls.organisation.touched" class="alert isa_error">
+              This field is required.
             </div>
             <!-- /Error handling -->
           </div>
+
+          <div class="position-relative form-group"><label class="required" for="examplePassword">Position</label>
+            <input class="form-control"
+                   id="examplePassword"
+                   name="password"
+                   type="text"
+                   formControlName="position"
+                   [(ngModel)]="volunteerExperience.position"
+            >
+            <!-- Error Handling -->
+            <div *ngIf="volunteeringExperienceForm.controls.position.errors?.required && volunteeringExperienceForm.controls.position.touched" class="alert isa_error">
+              This field is required.
+            </div>
+            <!-- /Error handling -->
+          </div>
+
           <div class="position-relative form-group"><label class="required" for="exampleText">Description</label>
             <textarea class="form-control"
                       id="exampleText"
@@ -43,32 +59,9 @@
             </div>
             <!-- /Error handling -->
           </div>
-          <div class="position-relative form-group"><label for="examplePassword">Position</label>
-            <input class="form-control"
-                   id="examplePassword"
-                   name="password"
-                   type="text"
-                   formControlName="position"
-                   [(ngModel)]="volunteerExperience.position"
-            >
-          </div>
-          <div class="position-relative form-group"><label class="required" for="organisation">Organisation</label>
-            <input class="form-control"
-                   id="organisation"
-                   name="password"
-                   type="text"
-                   formControlName="organisation"
-                   [(ngModel)]="volunteerExperience.organisation"
-            >
-            <!-- Error Handling -->
-            <div *ngIf="volunteeringExperienceForm.controls.organisation.errors?.required && volunteeringExperienceForm.controls.organisation.touched" class="alert isa_error">
-              This field is required.
-            </div>
-            <!-- /Error handling -->
-          </div>
           <div class="form-group">
 
-            <label>Still in the association ?</label>
+            <label>Are you still a member in the association ?</label>
             <div class="m-2">
               <ui-switch defaultBgColor="#cadecf" [checked]="edit && !volunteerExperience.endDate" (change)="checked()"></ui-switch>
             </div>
