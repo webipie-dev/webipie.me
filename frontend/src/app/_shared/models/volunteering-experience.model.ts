@@ -1,9 +1,8 @@
 import {GenericModel} from "./generic.model";
 
 export interface VolunteeringExperienceModel extends GenericModel {
-  title: string,
   description: string,
-  position?: string,
+  position: string,
   organisation: string,
   img?: string,
   skills?: [string],

@@ -39,9 +39,9 @@
 
             <div *ngFor="let volunteering of volunteeringExperiences ; let i=index" class="cos-element">
                 <div class="cos-left">
-                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.title}}</h4>
+                    <h4 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.position}}</h4>
                     <h5 *ngIf="volunteering.organisation" [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{volunteering.organisation}}</h5>
-                    <h6 *ngIf="volunteering.position" [style]="'font-family:'+font">{{volunteering.position}}</h6>
+<!--                    <h6 *ngIf="volunteering.position" [style]="'font-family:'+font">{{}}</h6>-->
                   <p [style]="'color:'+primaryColor">{{volunteering.description}}</p>
                 </div>
                 <div class="cos-middle">
