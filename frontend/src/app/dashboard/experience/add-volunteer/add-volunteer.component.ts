@@ -35,7 +35,7 @@ export class AddVolunteerComponent implements OnInit {
 
   volunteeringExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', [Validators.required,Validators.maxLength(300)]],
+    description: ['', Validators.required],
     organisation: ['', Validators.required],
     position: [''],
     img: [''],
@@ -44,7 +44,7 @@ export class AddVolunteerComponent implements OnInit {
     endDate: [''],
     city: ['']
   });
-  skills : TechnicalSkillModel[] =[]; 
+  skills : TechnicalSkillModel[] =[];
 
 
 

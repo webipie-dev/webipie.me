@@ -38,9 +38,6 @@
             <div *ngIf="projectForm.controls.description.errors?.required && projectForm.controls.description.touched" class="alert isa_error">
               Description is required.
             </div>
-            <div *ngIf="projectForm.controls.description.errors?.maxlength" class="alert isa_error">
-              Description is longer than 300 characters.
-            </div>
             <!-- /Error handling -->
           </div>
 

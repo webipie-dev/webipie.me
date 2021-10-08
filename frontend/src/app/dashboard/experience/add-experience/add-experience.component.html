@@ -37,9 +37,6 @@
             <div *ngIf="workExperienceForm.controls.description.errors?.required && workExperienceForm.controls.description.touched" class="alert isa_error">
               Description is required.
             </div>
-            <div *ngIf="workExperienceForm.controls.description.errors?.maxlength && workExperienceForm.controls.description.touched" class="alert isa_error">
-              Description is too long , must be shorter than 300 characters
-            </div>
             <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Job Type</label>
