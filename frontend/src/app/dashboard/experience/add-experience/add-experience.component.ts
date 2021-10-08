@@ -23,6 +23,7 @@ export class AddExperienceComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
+  jobType?:string;
   check = false;
   bsInlineValue = new Date();
   bsInlineRangeValue: Date[];
@@ -45,16 +46,17 @@ export class AddExperienceComponent implements OnInit {
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', [Validators.required, Validators.maxLength(300)]],
+    description: ['', Validators.required],
     position: [''],
     company: [''],
+    link: [''],
     img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
     endDate: [''],
     city: ['']
   });
-  
+
   skills: TechnicalSkillModel[] = [];
 
   ngOnInit(): void {
@@ -67,7 +69,7 @@ export class AddExperienceComponent implements OnInit {
     this.technicalSkillsService.getMany().subscribe(result => {
       this.skills = result;
     });
-    
+
   }
 
   public fillEditForm(workId: string): void {
@@ -89,6 +91,10 @@ export class AddExperienceComponent implements OnInit {
     this.images.splice(this.images.indexOf(event), 1);
   }
 
+  selectJobType(type : string){
+    this.jobType = type;
+    this.workExperienceForm.controls['position'].setValue(type);
+  }
 
 
   async onSubmit() {

@@ -24,7 +24,7 @@ export class GeneralInfosComponent implements OnInit {
     linkedIn: [''],
     picture: [''],
     CV: [''],
-    description: ['',[Validators.minLength(10),Validators.required,Validators.maxLength(300)]]
+    description: ['',[Validators.minLength(10),Validators.maxLength(300)]]
   });
   submitted = false;
 
@@ -32,7 +32,7 @@ export class GeneralInfosComponent implements OnInit {
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
     private spinner: NgxSpinnerService) {}
-    
+
   ngOnInit(): void {
     this.portfolio = JSON.parse(localStorage.getItem('portfolio')!);
   }
@@ -98,7 +98,7 @@ export class GeneralInfosComponent implements OnInit {
         errors.push('picture' + err.error.errors.title);
       }
     }
-    
+
     if(this.files[0]){
       formData = new FormData();
       formData.append("file", this.files[0]);
@@ -113,7 +113,7 @@ export class GeneralInfosComponent implements OnInit {
       catch(err){
         errors.push('cv' + err.error.errors.title);
       }
-    }    
+    }
     let body = this.portfolioForm.value;
     body = this.cleanBody(body);
     this.portfolioService.edit(this.portfolio.id,this.portfolioForm.value).subscribe((result) => {

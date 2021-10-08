@@ -81,7 +81,7 @@ flex-direction: column;
     0%{
         -webkit-transform: translate(0px,0px);
         transform:translate(0px,0px) rotateY(0deg);
-        
+
     }100%{
         -webkit-transform: translate(0px,-50px);
         transform:translate(40px,-50px);
@@ -91,7 +91,7 @@ flex-direction: column;
     0%{
         -webkit-transform: translate(0px,0px);
         transform:translate(0px,0px) rotateY(0deg);
-        
+
     }100%{
         -webkit-transform: translate(0px,-50px);
         transform:translate(0px,-13px);
@@ -102,7 +102,7 @@ flex-direction: column;
     color:white;
     font-size:32px;
     text-align: center;
-    
+
 }
 .circle div svg {
     width:25px;
@@ -163,7 +163,7 @@ flex-direction: column;
     .big-title h1{
         font-size: 1.4rem;
     }
-    
+
 }
 @media screen and (max-width:450px){
     .sub,.subtop{
@@ -240,12 +240,12 @@ flex-direction: column;
     font-weight: 600;
 }
 .cardd p{
-    
+
     color:black;
 }
 .team-section{
     position: relative;
-    margin-top:50px;
+    margin-top:300px;
     margin-bottom:50px;
 }
 .knowmore{

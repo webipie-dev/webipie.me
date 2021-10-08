@@ -20,7 +20,7 @@ export class AddAchievementComponent implements OnInit {
 
   achievementForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', [Validators.required,Validators.maxLength(300)]],
+    description: ['', Validators.required],
     date: ['', Validators.required],
     image: ['']
   });
