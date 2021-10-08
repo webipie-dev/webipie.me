@@ -65,7 +65,7 @@
             <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
               <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
               <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
-                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                <ngx-dropzone-label>{{ f.name | slice:0:13 }} ({{ f.type }})</ngx-dropzone-label>
               </ngx-dropzone-preview>
             </ngx-dropzone>
             <small class="form-text mb-3">Only jpeg or png images.</small>

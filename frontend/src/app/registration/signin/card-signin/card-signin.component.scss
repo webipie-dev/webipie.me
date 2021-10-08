@@ -67,7 +67,7 @@ input:focus{
     color:#e45047;
 }
 .pass{
-    
+
     width:48%;
     min-width: 200px;
     display: inline-block !important;
@@ -104,7 +104,10 @@ button:hover{
     width:80%;
     margin:auto;
     margin-top: 10px;
+
 }
+
+
 fa-icon{
     font-size:3rem;
     margin:auto;
@@ -112,5 +115,6 @@ fa-icon{
     transition: color 0.5s ease;
 }
 fa-icon:hover{
+    cursor: not-allowed;
     color:darkgreen;
 }

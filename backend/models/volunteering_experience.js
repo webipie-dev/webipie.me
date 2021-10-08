@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const volunteeringExperienceSchema = Schema({
-    title: {type: String, required: true},
     description: {type: String, required: false},
-    position: {type: String, required: false},
+    position: {type: String, required: true},
     organisation: {type: String, required: true},
     img: {type: String, required: false},
     skills: {type: [String], required: false},

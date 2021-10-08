@@ -26,28 +26,6 @@
 
   </div>
 </div>
-<div class="aboutus" #aboutus>
-  <div (inViewportAction)="onIntersection()" [class]="'left '+class"
-       [inViewportOptions]="{ threshold: [0] }"
-       inViewport>
-    <h1>ABOUT US</h1><br>
-    <p>Webipie started as a dream shared between four software engineering students.<br>
-      <br>
-      It all began when we noticed the huge importance of having a website portfolio for landing a job in today's market.
-      However, to build your own portfolio from scratch would <strong>require effort and days of hard work.</strong><br>
-      <br>
-      So we gathered around the four of us and decided to spend a couple of months creating a portfolio website builder
-      that'll <strong>grant you a portfolio in minutes.</strong>
-
-    </p><br>
-    <h3>See the video to learn more about how to get your free website</h3>
-  </div>
-  <div (inViewportAction)="onIntersection()" [class]="'right '+class"
-       [inViewportOptions]="{ threshold: [0] }"
-       inViewport>
-    <img src="assets/SVG/logo.svg" routerLink='/'>
-  </div>
-</div>
 <div class="video-section how">
   <app-video-section></app-video-section>
 </div>
@@ -55,7 +33,7 @@
   <app-team-section></app-team-section>
 </div>
 <div class="how" style="margin-top:0px;">
-  
+
   <div class="background" style="background-image: url('assets/wallpaper.jpg');">
 
   </div>
@@ -91,6 +69,32 @@
 <div class="howitworks">
   <app-howitworks-section></app-howitworks-section>
 </div>
+<div class="aboutus" #aboutus>
+  <div (inViewportAction)="onIntersection()" [class]="'left '+class"
+       [inViewportOptions]="{ threshold: [0] }"
+       inViewport>
+    <h1>ABOUT US</h1><br>
+    <p>Webipie started as a dream shared between four software engineering students.<br>
+      <br>
+      It all began when we noticed the huge importance of having a website portfolio for landing a job in today's market.
+      However, to build your own portfolio from scratch would <strong>require effort and days of hard work.</strong><br>
+      <br>
+      So we gathered around the four of us and decided to spend a couple of months creating a portfolio website builder
+      that'll <strong>grant you a portfolio in minutes.</strong>
+
+    </p><br>
+    <h3>See the video to learn more about how to get your free website</h3>
+  </div>
+  <div (inViewportAction)="onIntersection()" [class]="'right '+class"
+       [inViewportOptions]="{ threshold: [0] }"
+       inViewport>
+    <img src="assets/SVG/logo.svg" routerLink='/'>
+  </div>
+</div>
+<div class="team-section">
+  <app-team-section></app-team-section>
+</div>
+
 <div #contactus>
 <app-footer></app-footer>
 </div>
