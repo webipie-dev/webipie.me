@@ -1,4 +1,4 @@
-const { mailgunAPIKey, mailgunDomainName, mailgunHost } = require('../configuration/index');
+const { mailgunAPIKey, mailgunDomainName, mailgunHost ,EMAIL } = require('../configuration/index');
 
 var api_key = mailgunAPIKey;
 var domain = mailgunDomainName;
