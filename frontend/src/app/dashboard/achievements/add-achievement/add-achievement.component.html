@@ -39,9 +39,6 @@
             <div *ngIf="achievementForm.controls.description.errors?.required && achievementForm.controls.description.touched" class="alert isa_error">
               Description is required.
             </div>
-            <div *ngIf="achievementForm.controls.description.errors?.maxlength && achievementForm.controls.description.touched" class="alert isa_error">
-              Description shouldn't surpass 300 characters.
-            </div>
             <!-- /Error handling -->
           </div>
 
