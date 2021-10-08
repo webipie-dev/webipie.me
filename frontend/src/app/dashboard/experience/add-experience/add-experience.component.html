@@ -37,9 +37,6 @@
             <div *ngIf="workExperienceForm.controls.description.errors?.required && workExperienceForm.controls.description.touched" class="alert isa_error">
               Description is required.
             </div>
-            <div *ngIf="workExperienceForm.controls.description.errors?.maxlength && workExperienceForm.controls.description.touched" class="alert isa_error">
-              Description is too long , must be shorter than 300 characters
-            </div>
             <!-- /Error handling -->
           </div>
           <div class="position-relative form-group"><label for="examplePassword">Job Type</label>
@@ -60,6 +57,16 @@
                    type="text"
                    formControlName="company"
                    [(ngModel)]="workExperience.company"
+            >
+          </div>
+          <div class="position-relative form-group"><label for="clink">Link</label>
+            <input class="form-control"
+                   id="link"
+                   name="name"
+                   placeholder="Link"
+                   type="text"
+                   formControlName="link"
+                   [(ngModel)]="workExperience.link"
             >
           </div>
           <div class="form-group">
@@ -107,7 +114,7 @@
             <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
               <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
               <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
-                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                <ngx-dropzone-label>{{ f.name | slice:0:13 }} ({{ f.type }})</ngx-dropzone-label>
               </ngx-dropzone-preview>
             </ngx-dropzone>
             <small class="form-text mb-3">Only jpeg or png images.</small>

@@ -45,16 +45,17 @@ export class AddExperienceComponent implements OnInit {
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', [Validators.required, Validators.maxLength(300)]],
+    description: ['', Validators.required],
     position: [''],
     company: [''],
+    link: [''],
     img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
     endDate: [''],
     city: ['']
   });
-  
+
   skills: TechnicalSkillModel[] = [];
 
   ngOnInit(): void {
@@ -67,7 +68,7 @@ export class AddExperienceComponent implements OnInit {
     this.technicalSkillsService.getMany().subscribe(result => {
       this.skills = result;
     });
-    
+
   }
 
   public fillEditForm(workId: string): void {
