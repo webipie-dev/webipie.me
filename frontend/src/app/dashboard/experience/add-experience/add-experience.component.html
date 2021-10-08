@@ -37,9 +37,6 @@
             <div *ngIf="workExperienceForm.controls.description.errors?.required && workExperienceForm.controls.description.touched" class="alert isa_error">
               Description is required.
             </div>
-            <div *ngIf="workExperienceForm.controls.description.errors?.maxlength && workExperienceForm.controls.description.touched" class="alert isa_error">
-              Description is too long , must be shorter than 300 characters
-            </div>
             <!-- /Error handling -->
           </div>
           <div class="row">
@@ -65,7 +62,16 @@
               </ul>
             </div>
           </div>
-          
+          <div class="position-relative form-group"><label for="clink">Link</label>
+            <input class="form-control"
+                   id="link"
+                   name="name"
+                   placeholder="Link"
+                   type="text"
+                   formControlName="link"
+                   [(ngModel)]="workExperience.link"
+            >
+          </div>
           <div class="form-group">
 
             <label>Still on the job ?</label>
@@ -111,7 +117,7 @@
             <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
               <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
               <ngx-dropzone-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
-                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                <ngx-dropzone-label>{{ f.name | slice:0:13 }} ({{ f.type }})</ngx-dropzone-label>
               </ngx-dropzone-preview>
             </ngx-dropzone>
             <small class="form-text mb-3">Only jpeg or png images.</small>
@@ -128,14 +134,17 @@
             >
           </div>
           <div class="position-relative form-group"><label for="skills">Skills</label>
-            <input class="form-control"
+            <!-- <input class="form-control"
                    id="skills"
                    name="password"
                    placeholder="Skills Acquired"
                    type="text"
                    formControlName="skills"
                    [(ngModel)]="workExperience.skills"
-            >
+            > -->
+            <ng-select id="skills" [(ngModel)]="workExperience.skills" [multiple]="true" [addTag]="true" formControlName="skills">
+              <ng-option *ngFor="let skill of skills" [value]="skill.name">{{skill.name}}</ng-option>
+            </ng-select>
           </div>
           <div class="divider my-4"></div>
           <button class="mt-1 btn btn-slack" [disabled]="!workExperienceForm.valid">

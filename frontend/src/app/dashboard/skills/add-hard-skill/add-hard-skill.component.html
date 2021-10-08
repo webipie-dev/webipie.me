@@ -29,8 +29,15 @@
             <!-- /Error handling -->
           </div>
           <div class="position-relative form-group">
+            <input 
+              type="checkbox" 
+              name="" 
+              id="" 
+              class="level-checkbox"
+              [(ngModel)]="selectLevel"
+            >
             <label class="required">Select Skill level</label>
-            <nouislider
+            <nouislider *ngIf="selectLevel"
               [min]="0"
               [max]="10"
               [step]="1"

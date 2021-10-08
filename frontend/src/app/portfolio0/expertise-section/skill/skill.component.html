@@ -11,7 +11,7 @@
         </div>
     </div>
     
-    <div class="cos-right">
+    <div class="cos-right" *ngIf="hardSkill.level!== undefined">
 
         <div *ngIf="hardSkillsTemplate == 1" class="loading">
             <div class="level" [style.width]="hardSkill.level*10+'%'">

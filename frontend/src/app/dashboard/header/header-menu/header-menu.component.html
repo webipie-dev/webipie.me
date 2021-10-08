@@ -6,8 +6,26 @@
 					display: none;
 				}
 			}
+			.visit-button{
+				border: 2px solid #1bc943;
+				font-weight: 500;
+				background-color: white;
+				font-size:1.1rem;
+				border-radius: 5px;
+			}
+			.visit-button:hover{
+				transform: none;
+				background-color: #1bc943;
+				color: white;
+			}
+			.visit-button:focus{
+				color : #1bc943;
+			}
+			.visit-button:focus:hover{
+				color: white;
+			}
 		</style>
-		<button (click)="openSite()" class="btn m-2 btn-neutral-success hideifsmall" type="button">View Website</button>
+		<button (click)="openSite()" class="btn m-2 btn-neutral-success hideifsmall visit-button" type="button">View Website</button>
 	<!--	<button (click)="changeTemplate()" class="btn m-2 btn-neutral-dark hideifsmall" type="button">Change Template</button>-->
 		<div class="divider mx-4"></div>
 	</div>

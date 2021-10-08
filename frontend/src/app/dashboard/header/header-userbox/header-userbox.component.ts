@@ -25,6 +25,7 @@ export class HeaderUserboxComponent {
         if(result) {
           this.loading = false;
           let portfolio = JSON.parse(result);
+          console.log(portfolio)
           this.url = portfolio.url;
           this.position = portfolio.position;
           this.picture = portfolio.picture ?? 'assets/SVG/avatar.svg';
@@ -53,6 +54,7 @@ export class HeaderUserboxComponent {
       window.open(url, '_blank');
     }
   }
+
 
   changeTemplate() {
     this.router.navigate(['/templates/choose-template']);

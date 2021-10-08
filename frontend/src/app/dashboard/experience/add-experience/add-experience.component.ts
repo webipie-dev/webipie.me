@@ -7,6 +7,8 @@ import {WorkExperienceModel} from "../../../_shared/models/work-experience.model
 import { UploadService } from 'src/app/_shared/services/upload.service';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { TechnicalSkillModel } from 'src/app/_shared/models/technical-skill.model';
+import { TechnicalSkillService } from 'src/app/_shared/services/technical-skill.service';
 
 @Component({
   selector: 'app-add-experience',
@@ -16,7 +18,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AddExperienceComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private workExperienceService: WorkExperienceService,
-              private router: Router, private route: ActivatedRoute, private uploadService: UploadService, private spinner: NgxSpinnerService) {
+              private router: Router, private route: ActivatedRoute, private uploadService: UploadService, private spinner: NgxSpinnerService,
+              private technicalSkillsService: TechnicalSkillService) {
     this.maxDate.setDate(this.maxDate.getDate() + 7);
     this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
   }
@@ -43,15 +46,18 @@ export class AddExperienceComponent implements OnInit {
 
   workExperienceForm = this.formBuilder.group({
     title: ['', Validators.required],
-    description: ['', [Validators.required, Validators.maxLength(300)]],
+    description: ['', Validators.required],
     position: [''],
     company: [''],
+    link: [''],
     img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
     endDate: [''],
     city: ['']
   });
+
+  skills: TechnicalSkillModel[] = [];
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -60,7 +66,10 @@ export class AddExperienceComponent implements OnInit {
         this.fillEditForm(params['workId']);
       }
     });
-    
+    this.technicalSkillsService.getMany().subscribe(result => {
+      this.skills = result;
+    });
+
   }
 
   public fillEditForm(workId: string): void {

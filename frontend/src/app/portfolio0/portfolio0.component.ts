@@ -9,7 +9,7 @@ import { PortfolioService } from '../_shared/services/portfolio.service';
 export class Portfolio0Component implements OnInit {
   favIcon: HTMLLinkElement | null = document.querySelector('#app-icon');
 
-  constructor(private portfolioService: PortfolioService) { 
+  constructor(private portfolioService: PortfolioService) {
   }
 
   changeIcon() {

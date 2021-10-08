@@ -7,6 +7,8 @@ import { UploadService } from 'src/app/_shared/services/upload.service';
 
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { TechnicalSkillService } from 'src/app/_shared/services/technical-skill.service';
+import { TechnicalSkillModel } from 'src/app/_shared/models/technical-skill.model';
 
 @Component({
   selector: 'app-add-volunteer',
@@ -20,7 +22,8 @@ export class AddVolunteerComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private uploadService: UploadService,
-              private spinner: NgxSpinnerService) {
+              private spinner: NgxSpinnerService,
+              private technicalSkillsService: TechnicalSkillService) {
   }
 
   // check if we are editing a testimonial or adding a new one
@@ -31,16 +34,18 @@ export class AddVolunteerComponent implements OnInit {
   endDate: any;
 
   volunteeringExperienceForm = this.formBuilder.group({
-    title: ['', Validators.required],
-    description: ['', [Validators.required,Validators.maxLength(300)]],
+    description: ['', Validators.required],
     organisation: ['', Validators.required],
-    position: [''],
+    position: ['', Validators.required],
     img: [''],
     skills: [''],
     beginDate: ['', Validators.required],
     endDate: [''],
     city: ['']
   });
+  skills : TechnicalSkillModel[] =[];
+
+
 
   checked(){
     if(this.check){
@@ -58,6 +63,9 @@ export class AddVolunteerComponent implements OnInit {
         this.fillEditForm(params['volunteerId']);
       }
     });
+    this.technicalSkillsService.getMany().subscribe(result=>{
+      this.skills= result;
+    })
   }
 
   public fillEditForm(volunteerId: string): void {

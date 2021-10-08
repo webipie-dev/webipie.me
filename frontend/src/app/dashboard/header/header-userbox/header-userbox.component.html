@@ -12,7 +12,7 @@
       </div>
       <div class="d-none d-xl-block pl-2">
         <div class="text-black-50 font-weight-bold">
-          {{username}}
+          {{(username.length>10)?username.substr(0,10)+'...':username.substr(0,10)}}
         </div>
         <span class="text-black-50">
           {{position}}

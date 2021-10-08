@@ -31,7 +31,7 @@ const getOneVolunteeringExperience = async (req, res, next) => {
 };
 
 const addVolunteeringExperience = async (req, res, next) => {
-  let { title, description, organisation, position, skills, img, beginDate, endDate, city, portfolioId } = req.body
+  let { description, organisation, position, skills, img, beginDate, endDate, city, portfolioId } = req.body
 
   let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
@@ -44,7 +44,7 @@ const addVolunteeringExperience = async (req, res, next) => {
   }
 
   const volunteeringExperience = new VolunteeringExperience({
-    title, description, organisation, position, skills, img,  beginDate, endDate, city,  "portfolio": portfolioId
+    description, organisation, position, skills, img,  beginDate, endDate, city,  "portfolio": portfolioId
   });
 
   await volunteeringExperience.save();
@@ -75,7 +75,7 @@ const editOneVolunteeringExperience = async (req, res, next) => {
   const edits = {};
   for(let key in req.body) {
     edits[key] = req.body[key];
-    
+
   }
 
 
@@ -86,7 +86,7 @@ const editOneVolunteeringExperience = async (req, res, next) => {
         "update":{ $set: edits }
       }
     })
-    
+
 
   const volunteeringExperienceEdited = await VolunteeringExperience.bulkWrite(bulkQueries, {ordered: false})
     .catch((err) => {
@@ -95,8 +95,8 @@ const editOneVolunteeringExperience = async (req, res, next) => {
 
   volunteeringExperience = await VolunteeringExperience.findById(id);
   const portfolio = await Portfolio.findByIdAndUpdate(
-    {"_id": volunteeringExperience.portfolio}, 
-    { $set: { "volunteeringExperiences.$[elem]" : volunteeringExperience } } , 
+    {"_id": volunteeringExperience.portfolio},
+    { $set: { "volunteeringExperiences.$[elem]" : volunteeringExperience } } ,
     { arrayFilters: [ { "elem._id": volunteeringExperience._id } ] , new: true}
   );
 
@@ -112,16 +112,16 @@ const deleteManyVolunteeringExperiences = async (req, res, next) => {
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
-  
+
   const portfolio = await Portfolio.findByIdAndUpdate(
-    {"_id": portfolioId}, 
+    {"_id": portfolioId},
     {
-      $pull: { 
-        volunteeringExperiences: { 
+      $pull: {
+        volunteeringExperiences: {
           _id: { $in: ids }
         }
       }
-    },  
+    },
     {new: true}
   );
 
