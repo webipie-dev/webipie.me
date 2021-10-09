@@ -31,7 +31,7 @@ const getOneWorkExperience = async (req, res, next) => {
 };
 
 const addWorkExperience = async (req, res, next) => {
-  let { title, description, company, position, skills, img, beginDate, endDate, city, portfolioId } = req.body;
+  let { title, description, company, position, link, skills, img, beginDate, endDate, city, portfolioId } = req.body;
 
   let portfolio = await Portfolio.findById(portfolioId)
   if (!portfolio) {
@@ -44,7 +44,7 @@ const addWorkExperience = async (req, res, next) => {
   }
 
   const workExperience = new WorkExperience({
-    title, description, company, position, skills, img, beginDate, endDate, city, "portfolio": portfolioId
+    title, description, company, position, link, skills, img, beginDate, endDate, city, "portfolio": portfolioId
   });
 
   await workExperience.save();

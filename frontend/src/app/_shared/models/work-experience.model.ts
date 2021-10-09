@@ -6,6 +6,7 @@ export interface WorkExperienceModel extends GenericModel {
   description: string,
   position?: string,
   company?: string,
+  link?: string,
   img?: string,
   skills?: [TechnicalSkillModel],
   beginDate: string,

@@ -62,14 +62,17 @@ def search_logo(keyword):
 
 
 def upload_to_aws(url, s3_file):
-    response = urlopen(url)
-
-    s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
-                      aws_secret_access_key=config.SECRET_KEY)
-    key = "skills/" + s3_file + ".svg"
+    
     try:
+        response = urlopen(url)
+
+        s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
+                        aws_secret_access_key=config.SECRET_KEY)
+        key = "skills/" + s3_file + ".svg"
+
+        
         s3.upload_fileobj(response, config.S3_BUCKET, key,
-                          ExtraArgs={'ACL': 'public-read'})
+                          ExtraArgs={'ACL': 'public-read', 'ContentType': 'image/svg+xml'})
         print("Upload Successful")
         return True
     except  Exception as e:

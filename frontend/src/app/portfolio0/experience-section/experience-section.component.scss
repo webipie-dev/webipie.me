@@ -272,3 +272,15 @@ fa-icon{
 .cos-bubble:hover .see-image-hover{
     top:74%;
 }
+.hover-image{
+    transition: transform 300ms ease;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.19);
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.19);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.19);
+    object-fit: cover !important;
+    &:hover{
+        transform : translateY(-2px);
+    }
+}

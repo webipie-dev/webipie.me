@@ -11,18 +11,24 @@ export class ContactSectionComponent implements OnInit {
   contactCard: boolean[] = [];
   socialMediaIcon: boolean[] = [false, false, false];
   template!: TemplateModel;
+  setDefault = true;
   constructor(private designEditService: DesignEditService) { }
 
   ngOnInit(): void {
     this.designEditService.currentTemplate.subscribe(template =>  {
       this.template = template;
-      this.setDefaultFormAlignment();
-      this.setDefaultSocialMediaIcon();
+      if (this.setDefault) {
+        this.setDefaultFormAlignment();
+        this.setDefaultSocialMediaIcon();
+        this.setDefault = false;
+      }
+
     })
   }
 
   setDefaultSocialMediaIcon() {
     this.socialMediaIcon[this.template.contact.contactCard - 1] = true;
+    console.log(this.socialMediaIcon)
   }
 
   setDefaultFormAlignment() {
@@ -55,8 +61,11 @@ export class ContactSectionComponent implements OnInit {
       }
     }
     else {
+      console.log('ggfgf')
       switch (s){
         case 'first':{
+          console.log('first')
+
           this.socialMediaIcon[0]=true;
           this.socialMediaIcon[1]=false;
           this.socialMediaIcon[2]=false;
@@ -69,9 +78,11 @@ export class ContactSectionComponent implements OnInit {
           break;
         }
         case 'third': {
+          console.log('thris')
           this.socialMediaIcon[0]=false;
           this.socialMediaIcon[1]=false;
           this.socialMediaIcon[2]=true;
+          console.log(this.socialMediaIcon)
           break;
         }
       }

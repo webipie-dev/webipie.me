@@ -71,7 +71,7 @@ input{
     color:#e45047;
 }
 .pass{
-    
+
     width:48%;
     min-width: 200px;
     display: inline-block !important;
@@ -116,5 +116,6 @@ fa-icon{
     transition: color 0.5s ease;
 }
 fa-icon:hover{
-    color:darkgreen;
+  cursor: not-allowed;
+  color:darkgreen;
 }
