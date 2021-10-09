@@ -1,5 +1,5 @@
-ACCESS_KEY =  "AKIAZNH4SLOQGVT7RRUH"
-SECRET_KEY = "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"
+ACCESS_KEY =  "AKIAZNH4SLOQEF4KRGP4"
+SECRET_KEY = "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"
 AWS_REGION = "eu-central-1"
 S3_BUCKET = "webipie.me-uploads"
 CONN_STR = "mongodb+srv://webipie:webipiepass@webipieme.ydbo1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
