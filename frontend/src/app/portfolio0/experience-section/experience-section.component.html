@@ -26,6 +26,12 @@
                         </div>
                         <div class="background" [style.backgroundColor]="primaryColor"></div>
                     </div>
+                    <div *ngIf="work.img" class="cos-image " (click)="shownWorkImages[i]=true">
+                            <img src="{{work.img}}" class="hover-image" >
+                    </div>
+                    <!-- <div style="text-align: left;">
+                        <img *ngIf="work.img" src="{{work.img}}" style="width: 200px; margin : 20px 0 ; ">
+                    </div> -->
                     <div *ngIf="work.img" class="cos-image exp-image {{shownWorkImages[i]?'shown':''}}">
                         <img src="{{work.img}}">
                         <div class="transparent-behind" (click)="shownWorkImages[i]=false"></div>
@@ -57,6 +63,9 @@
                             See image
                         </div>
                         <div class="background" [style.backgroundColor]="primaryColor"></div>
+                    </div>
+                    <div *ngIf="volunteering.img" class="cos-image " (click)="shownVolImages[i]=true">
+                        <img src="{{volunteering.img}}" class="hover-image" >
                     </div>
                     <div *ngIf="volunteering.img" class="cos-image exp-image {{shownVolImages[i]?'shown':''}}">
                         <img src="{{volunteering.img}}">
