@@ -36,7 +36,7 @@ export class ChooseNameComponent implements OnInit {
           text: 'cannot get portfolio names! Please refresh page.',
           icon: 'error',
           confirmButtonText: 'Cool',
-          footer: '<a href="/dashboard/support-request">Contact Support</a>'   
+          footer: '<a href="/dashboard/support-request">Contact Support</a>'
         });
       }
     )
@@ -47,10 +47,10 @@ export class ChooseNameComponent implements OnInit {
     const templateId = this.route.snapshot.queryParamMap.get('templateId');
     this.portfolioService.addOne({templateId, name: this.portfolioName}).subscribe(
       result => {
-        this.spinner.hide();
         localStorage.setItem('portfolioId', result['id']);
+        this.spinner.hide();
         this.router.navigate(['/dashboard', 'home']);
-      }, 
+      },
       error => {
         this.spinner.hide();
         Swal.fire({
