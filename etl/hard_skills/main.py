@@ -12,8 +12,6 @@ import config
 s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
                   aws_secret_access_key=config.SECRET_KEY)
 
-s3_resource = boto3.resource('s3')
-
 
 def read_skills():
     with open("skills.txt", "r") as f:
@@ -70,13 +68,6 @@ def search_logo(keyword, top_k: int = 5) -> List[Tuple[str, str]]:
         return [(name, logo) for name, logo in zip(names[:top_k], logos[:top_k])]
     except:
         return None
-
-
-def set_obj_metadata(bucket, key):
-    s3_object = s3_resource.Object(bucket, key)
-    s3_object.metadata.update({'Content-Type': 'image/svg+xml'})
-    s3_object.copy_from(CopySource={'Bucket': bucket, 'Key': key}, Metadata=s3_object.metadata,
-                        MetadataDirective='REPLACE')
 
 
 def upload_to_aws(url, s3_file) -> Optional[str]:
