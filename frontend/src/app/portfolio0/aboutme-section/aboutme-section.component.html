@@ -7,7 +7,7 @@
     <div class="cos-content">
         <div class="cos-left">
             <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'"><div class="cos-firstletter" [style]="'color:'+secondaryColor+';filter:brightness(130%)'">A</div>bout me</h1>
-            <h2 [style]="'color:'+primaryColor+';filter:brightness(70%)'">I'm a {{position}}</h2>
+            <h2 *ngIf="position" [style]="'color:'+primaryColor+';filter:brightness(70%)'">I'm {{preposition}} {{position}}</h2>
             <p [style]="'color:'+primaryColor+';font-family:'+font">{{description}}</p>
             <div class="links">
             <a *ngIf="github" class="cos-btn"  href="{{github | url}}" target="_blank"><fa-icon [icon]="gitHub"></fa-icon></a>
