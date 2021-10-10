@@ -8,6 +8,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 })
 export class AboutmeSectionComponent implements OnInit {
   github ="";
+  preposition = "a";
   linkedin = "";
   picture = "assets/johndoe.jpg";
   description = "description";
@@ -30,6 +31,12 @@ export class AboutmeSectionComponent implements OnInit {
     this.description = JSON.parse(localStorage.getItem('portfolio')!).description;
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
     if(JSON.parse(localStorage.getItem('portfolio')!).template.general.picture == 'square') this.square = true;
+    if(this.position) {
+      this.preposition = this.startsWithVowel(this.position) ? 'an' : 'a';
+    }
   }
 
+  startsWithVowel(word: string) {
+    return word.startsWith('a') || word.startsWith('e') || word.startsWith('i') || word.startsWith('o') || word.startsWith('u')
+  }
 }
