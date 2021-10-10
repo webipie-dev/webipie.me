@@ -1,9 +1,18 @@
+import urllib
+from operator import itemgetter
+from typing import List, Tuple, Optional
+
 import requests
 from bs4 import BeautifulSoup
 import pymongo
 import boto3
 from urllib.request import urlopen
 import config
+
+s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
+                  aws_secret_access_key=config.SECRET_KEY)
+
+s3_resource = boto3.resource('s3')
 
 
 def read_skills():
@@ -18,10 +27,11 @@ def connect_db():
     return client['myFirstDatabase']
 
 
-def insert_skill(db, skill_name, skill_icon= None):
+def insert_skill(db, skill_name, skill_icon=None):
     skills = db.technicalskills
-    skill = skills.insert_one({"name": skill_name , "icon": skill_icon})
+    skill = skills.insert_one({"name": skill_name, "icon": skill_icon})
     return skill
+
 
 def find_skill(db, skill):
     skills = db.technicalskills
@@ -31,7 +41,7 @@ def find_skill(db, skill):
         return False
 
 
-def search_logo(keyword):
+def search_logo(keyword, top_k: int = 5) -> List[Tuple[str, str]]:
     try:
         url = "https://worldvectorlogo.com/fr/chercher/" + keyword
 
@@ -48,50 +58,60 @@ def search_logo(keyword):
             'sec-ch-ua': "\"Google Chrome\";v=\"93\", \" Not;A Brand\";v=\"99\", \"Chromium\";v=\"93\"",
             'sec-ch-ua-mobile': "?0",
             'sec-ch-ua-platform': "\"Linux\""
-            }
+        }
 
         response = requests.request("GET", url, headers=headers)
 
-        #print(response.text)
+        # print(response.text)
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        return soup.select(".logo__img")[0]['src']
+        logos = list(map(itemgetter('src'), soup.select(".logo__img")))
+        names = list(map(lambda element: element.text, soup.select(".logo__name")))
+        return [(name, logo) for name, logo in zip(names[:top_k], logos[:top_k])]
     except:
         return None
-        
 
 
-def upload_to_aws(url, s3_file):
+def set_obj_metadata(bucket, key):
+    s3_object = s3_resource.Object(bucket, key)
+    s3_object.metadata.update({'Content-Type': 'image/svg+xml'})
+    s3_object.copy_from(CopySource={'Bucket': bucket, 'Key': key}, Metadata=s3_object.metadata,
+                        MetadataDirective='REPLACE')
+
+
+def upload_to_aws(url, s3_file) -> Optional[str]:
     response = urlopen(url)
 
-    s3 = boto3.client('s3', aws_access_key_id=config.ACCESS_KEY,
-                      aws_secret_access_key=config.SECRET_KEY)
     key = "skills/" + s3_file + ".svg"
     try:
-        s3.upload_fileobj(response, config.S3_BUCKET, key,
-                          ExtraArgs={'ACL': 'public-read'})
+        s3.put_object(
+            ACL='public-read', Bucket=config.S3_BUCKET,
+            Body=response.read(), Key=key,
+            Metadata={'Content-Type': 'image/svg+xml'}
+        )
         print("Upload Successful")
-        return True
-    except  Exception as e:
+        icon = "https://s3-{0}.amazonaws.com/{1}/{2}".format(
+            config.AWS_REGION,
+            config.S3_BUCKET,
+            "skills/" + urllib.parse.quote(s3_file) + ".svg")
+        return icon
+    except Exception as e:
         print(e)
-
-
-
-
 
 
 if __name__ == "__main__":
     skills = read_skills()
     db = connect_db()
-    for skill in skills:
-        if(not find_skill(db, skill)):
-            logo = search_logo(skill)
-            if(logo != None):
-                upload_to_aws(logo, skill)
-                icon = "https://s3-{0}.amazonaws.com/{1}/{2}".format(
-                                config.AWS_REGION,
-                                config.S3_BUCKET,
-                                "skills/" + skill + ".svg")
-                insert_skill(db, skill, icon)
+
+    for i, skill in enumerate(skills):
+        print(f"progress: {i+1}/{len(skills)}")
+        if not find_skill(db, skill):
+            names_logos = search_logo(skill)
+            if names_logos:
+                for name, logo in names_logos:
+                    if find_skill(db, name):
+                        continue
+                    icon = upload_to_aws(logo, name)
+                    insert_skill(db, name, icon)
             else:
-                insert_skill(db, skill)
+                insert_skill(db, name)
