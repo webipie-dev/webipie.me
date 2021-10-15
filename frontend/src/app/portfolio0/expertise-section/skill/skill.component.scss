@@ -28,7 +28,7 @@
 }
 
 .cos-left,.cos-right{
-    
+
     width:90%;
     display: flex;
     align-items: center;
@@ -42,14 +42,13 @@
 .cos-left{
     text-align: left;
     display: flex;
-    flex-wrap: wrap;
     justify-content: left;
     align-items: center;
     h2{
       margin-left:20px;
       margin-right:20px;
     }
-    
+
 }
 @media screen and (max-width:500px) {
   .cos-left{
@@ -79,7 +78,7 @@
         margin: none;
       }
     }
-  
+
     .form-check {
       position: absolute;
       bottom: 40px;
@@ -88,7 +87,7 @@
       justify-content: center;
       width: 100%;
     }
-  
+
     p {
         font-size: calc(1.5vw + 20px) !important;
       padding: 0px;
