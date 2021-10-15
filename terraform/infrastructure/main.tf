@@ -101,6 +101,7 @@ data "template_file" "index" {
     website_domain_name = local.vars.website.domain_name
     mailgun_api_key = var.mailgun_api_key
     mailgun_domain_name = var.mailgun_domain_name
+    linkedin_client_secret = var.linkedin_client_secret
   }
 }
 
