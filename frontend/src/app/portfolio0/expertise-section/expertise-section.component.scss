@@ -4,6 +4,11 @@
     min-height: 100vh;
     color:#202e37;
 }
+
+.hard-skill-container {
+  flex: 2;
+}
+
 .cos-content{
     margin:auto;
     width:80%;
@@ -42,7 +47,7 @@
         width: 100%;
         overflow: hidden;
         height: 80px;
-    
+
         img {
           width: 100%;
           object-position: center;
