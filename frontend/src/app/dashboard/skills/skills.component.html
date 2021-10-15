@@ -30,8 +30,12 @@
                   </div>
                 </td>
                 <td>
-                  <progressbar [value]="hardSkill.level * 10" class="progress-bar-rounded" type="info">{{hardSkill.level?hardSkill.level * 10:'unset'}}%</progressbar>
-
+                  <progressbar *ngIf="hardSkill.level" [value]="hardSkill.level * 10" class="progress-bar-rounded" type="info">{{hardSkill.level?hardSkill.level * 10:'unset'}}%</progressbar>
+                  <div *ngIf="!hardSkill.level" class="d-flex align-items-center">
+                      <span class="text-black" title="...">
+                        Not Specified
+                      </span>
+                  </div>
                 </td>
                 <td class="text-center">
                   <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editHardSkill(hardSkill._id)">

@@ -32,7 +32,7 @@ export class AboutmeSectionComponent implements OnInit {
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
     if(JSON.parse(localStorage.getItem('portfolio')!).template.general.picture == 'square') this.square = true;
     if(this.position) {
-      this.preposition = this.startsWithVowel(this.position) ? 'an' : 'a';
+      this.preposition = this.startsWithVowel(this.position.toLowerCase()) ? 'an' : 'a';
     }
   }
 
