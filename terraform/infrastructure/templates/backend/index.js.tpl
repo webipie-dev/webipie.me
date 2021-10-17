@@ -26,7 +26,6 @@ module.exports = {
   mailgunAPIKey: '${mailgun_api_key}',
   mailgunDomainName: '${mailgun_domain_name}',
   mailgunHost: 'api.eu.mailgun.net'
-  LINKEDIN_CLIENT_ID: '77oj8s50xw1yt7',
-  LINKEDIN_CLIENT_SECRET: '${linkedin_client_secret}'
+
 }
 

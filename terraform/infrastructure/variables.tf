@@ -93,9 +93,3 @@ variable "mailgun_domain_name" {
   type        = string
   description = "mailgun Domain Name"
 }
-
-variable "linkedin_client_secret" {
-  type        = string
-  description = "linkedin client secret"
-}
-
