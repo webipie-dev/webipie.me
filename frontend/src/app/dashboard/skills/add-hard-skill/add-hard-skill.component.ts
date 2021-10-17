@@ -20,10 +20,10 @@ export class AddHardSkillComponent implements OnInit {
   edit = false;
   validForm = true;
   technicalSkill: TechnicalSkillDeveloperModel = {} as TechnicalSkillDeveloperModel;
-
+  
   selectLevel : boolean = true ;
   level = 5;
-  selectedSkill: any = null;
+  selectedSkill: any;
   skills: TechnicalSkillModel[] = [];
 
 
@@ -42,7 +42,7 @@ export class AddHardSkillComponent implements OnInit {
         // selected skill should take the id of the hard skill
         this.selectedSkill = this.skills.filter((value: TechnicalSkillModel) => value.id === this.technicalSkill.skill.id)[0].id;
       }
-
+      
     });
   }
 
@@ -88,9 +88,5 @@ export class AddHardSkillComponent implements OnInit {
         });
       })
     }
-  }
-
-  setCleared() {
-    this.validForm = false;
   }
 }

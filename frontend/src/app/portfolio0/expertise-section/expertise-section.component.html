@@ -18,8 +18,8 @@
                 <p [style]="softSkillsTemplate==1? 'text-align:left':'text-align:center'+';font-family:'+font" [style.color]="primaryColor">{{softSkill.description}}</p>
             </div>
         </div>
-        <div [class.d-flex]="!hasHardSkillsLevel" [class.flex-wrap]="!hasHardSkillsLevel" class="cos-skill-container" [hidden]="technicalSkillsDisabled">
-            <app-skill [class.hard-skill-container]="!hardSkill.level" *ngFor="let hardSkill of hardSkills" [hardSkill]="hardSkill"></app-skill>
+        <div class="cos-skill-container" [hidden]="technicalSkillsDisabled">
+            <app-skill *ngFor="let hardSkill of hardSkills" [hardSkill]="hardSkill"></app-skill>
         </div>
     </div>
 </div>
