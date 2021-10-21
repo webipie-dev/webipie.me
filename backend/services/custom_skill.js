@@ -54,14 +54,14 @@ const addCustomSkills = async (req, res, next) => {
     res.status(200).send(portfolio);
 };
 
-const deleteTechnicalSkills = async (req, res, next) => {
-  //get technical skills ids
-  const { ids,portfolioId } = req.body;
+const deleteCustomSkills = async (req, res, next) => {
+  //get custom hard skills ids
+  const { ids, portfolioId } = req.body;
 
   const portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId},
     {
       $pull: { 
-        technicalSkills: { 
+        customSkills: { 
           _id: { $in: ids }
         }
       } 
@@ -69,16 +69,6 @@ const deleteTechnicalSkills = async (req, res, next) => {
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
-
-  /* if (deletedTechnicalSkills) {
-    if (deletedTechnicalSkills.deletedCount === 0) {
-      next(ApiError.NotFound('No technical skills found to delete'));
-      return;
-    }else if (deletedTechnicalSkills.deletedCount < ids.length) {
-      next(ApiError.NotFound(`${ids.length} TechnicalSkills to be deleted but ${deletedTechnicalSkills.deletedCount} are found and deleted`));
-      return;
-    }
-  } */
 
   res.status(200).send(portfolio);
 };
@@ -122,5 +112,6 @@ const editOneCustomSkill = async (req, res, next) => {
 
 module.exports = {
     addCustomSkills,
-    editOneCustomSkill
+    editOneCustomSkill,
+    deleteCustomSkills
 };
