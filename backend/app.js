@@ -19,6 +19,7 @@ const fileUploadRoutes = require('./routes/upload');
 const templateRoutes = require('./routes/template');
 const softSkillsRoutes = require('./routes/soft_skill');
 const technicalSkillsRoutes = require('./routes/technical_skill');
+const customSkillsRoutes = require('./routes/custom_skill');
 const educationRoutes = require('./routes/education');
 const contactRoutes = require('./routes/contact');
 const errorHandler = require('./middlewares/error-handler');
@@ -63,6 +64,7 @@ app
   .use('/template', templateRoutes)
   .use('/education', educationRoutes)
   .use('/technicalskills', technicalSkillsRoutes)
+  .use('/customskills', customSkillsRoutes)
   .use('/contact', contactRoutes)
   .use(errorHandler)
   .use(function (err, req, res, next) {
