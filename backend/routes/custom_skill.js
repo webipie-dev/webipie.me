@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const customSkillService = require('../services/custom_skill');
+const handleErrors = require("./error-handling");
 
 const passport = require('passport');
 const validateRequest = require("../middlewares/validate-request");
