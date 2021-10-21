@@ -25,7 +25,7 @@ const getTechnicalSkills = async (req, res, next) => {
 }; */
 
 const addCustomSkills = async (req, res, next) => {
-    const { customSkill, portfolioId } = req.body;
+    const { skill, portfolioId } = req.body;
   
     let portfolio = await Portfolio.findById(portfolioId); 
     if (!portfolio) {
@@ -33,14 +33,13 @@ const addCustomSkills = async (req, res, next) => {
       return;
     }
 
-    /* const customSkill = await CustomSkill.findById(skill.id);
-    if (!customSkill) {
-        next(ApiError.NotFound('Should add technical skills.'));
-        return;
-    } */
+    const customSkill = new CustomSkill({
+        name: skill.name
+    });
+    await customSkill.save();
 
-    const result = {skill: customSkill}
-    portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId, 'customSkills.skill.name': {$ne: customSkill.name}}, {
+    const result = {skill: customSkill, level: skill.level}
+    portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId, 'customSkills.skill.name': {$ne: skill.name}}, {
       $push: {
         customSkills: result
       }
@@ -48,6 +47,7 @@ const addCustomSkills = async (req, res, next) => {
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
+
     if(!portfolio) {
         return next(ApiError.BadRequest('You seem to already have this skill, try adding another skill !'));
     }
@@ -83,7 +83,7 @@ const deleteTechnicalSkills = async (req, res, next) => {
   res.status(200).send(portfolio);
 };
 
-const editOneTechnicalSkill = async (req, res, next) => {
+const editOneCustomSkill = async (req, res, next) => {
     // separating the id
     const {portfolioID} = req.user;
     const {id, level} = req.body;
@@ -98,17 +98,17 @@ const editOneTechnicalSkill = async (req, res, next) => {
         return;
     }
 
-    const technicalSkill = await TechnicalSkill.findById(id)
+    const customSkill = await CustomSkill.findById(id)
         .catch((err) => {
             res.status(400).json({errors: [{ message: err.message }]});
         });
-    if(!technicalSkill) {
+    if(!customSkill) {
         next(ApiError.NotFound('Hard Skill Not Found'));
         return;
     }
-    const updatedPortfolio = await Portfolio.findOneAndUpdate({_id: portfolioID, technicalSkills: {$elemMatch: {skill: technicalSkill}}},
+    const updatedPortfolio = await Portfolio.findOneAndUpdate({_id: portfolioID, customSkills: {$elemMatch: {skill: customSkill}}},
         {'$set': {
-            'technicalSkills.$.level': level,
+            'cutomSkills.$.level': level,
         }}, {'new': true, 'safe': true, 'upsert': true}).catch(err => {
         console.log(err)
     });
@@ -121,5 +121,6 @@ const editOneTechnicalSkill = async (req, res, next) => {
 };
 
 module.exports = {
-    addCustomSkills
+    addCustomSkills,
+    editOneCustomSkill
 };

@@ -8,8 +8,11 @@ const validation = require("../middlewares/validation/validator");
 const passportJWT = passport.authenticate('jwt', { session: false });
 
 
-// add technical skills
+// add custom hard skill
 router.post('', passportJWT, [validation.portfolioId], validateRequest, customSkillService.addCustomSkills);
+
+// edit custom hard skill
+router.patch('/:portfolioId', passportJWT, customSkillService.editOneCustomSkill)
 
 
 module.exports = router;

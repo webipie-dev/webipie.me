@@ -33,7 +33,10 @@ const portfolioSchema = new Schema({
     skill: {type: technicalSkillSchema},
     level:{type: Number, required: false, min: 0, max: 10}
   }],
-  customSkills: {type: [customSkillSchema]},
+  customSkills: [{
+    skill: {type: customSkillSchema},
+    level:{type: Number, required: false, min: 0, max: 10}
+  }],
   softSkills: {type: [softSkillSchema]},
   workExperiences: {type: [workExperienceSchema]},
   volunteeringExperiences: {type: [volunteeringExperienceSchema]},
