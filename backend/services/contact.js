@@ -1,5 +1,6 @@
 const {User} = require('../models/user');
 const {sendEmail} = require('../services/email')
+const {sendSlackMessage} = require('../services/slack')
 const {EMAIL} = require('../configuration')
 
 const contact = function(name, email, receiverEmail, message, subject) {
@@ -39,6 +40,7 @@ const contactUser = async (req, res, next) => {
 const contactSupport = async (req, res, next) => {
   let { email, name, message, subject } = req.body
   let emailError = contact(name, email, EMAIL.SUPPORT, message, subject)
+  sendSlackMessage(`Support request: name: ${name}\nemail: ${email}\nsubject: ${subject}\n message: ${message}`)
   
   // TODO: handle email failure correctly, this always returns undefined:
   if (emailError)
@@ -63,6 +65,7 @@ const contactRequestDomain = async (req, res, next) => {
   }
   let content = `${name} wants to create a custom domain name and link it to his portfolio with ID: ${portfolioID}\ndomain: ${domain}\nemail: ${email}\n`
   let emailError = sendEmail(EMAIL.USER, EMAIL.SUPPORT, 'Domain name request', content)
+  sendSlackMessage(`Domain Name Request: ${content}`)
   
   // TODO: handle email failure correctly, this always returns undefined:
   if (emailError)

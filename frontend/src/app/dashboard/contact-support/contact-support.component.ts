@@ -22,19 +22,23 @@ export class ContactSupportComponent implements OnInit {
     name: ['', Validators.required],
     message: ['', Validators.required],
     subject: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required,Validators.email]],
   });
 
   ngOnInit(): void {
   }
 
-  
+  // ease access to form fields :
+  get f() {
+    return this.contactForm.controls
+  }
+  // ---------------------------
 
   onSubmit() {
     let obj = this.contactForm.value
     console.log(obj)
     this.contactService.contactSupport(obj).subscribe((result) => {
-      
+
         Swal.fire({
           title: 'Support contacted! We\'ll reach out to you soon!',
           text: result.result,
