@@ -5,6 +5,7 @@ import {TechnicalSkillModel} from "../../../_shared/models/technical-skill.model
 import {TechnicalSkillDeveloperModel} from "../../../_shared/models/technical-skill-developer";
 import Swal from "sweetalert2";
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CustomSkillService } from 'src/app/_shared/services/custom-skill.service';
 
 @Component({
   selector: 'app-add-hard-skill',
@@ -14,7 +15,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AddHardSkillComponent implements OnInit {
 
   constructor(private technicalSkillsService: TechnicalSkillService, private router: Router,
-              private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
+              private route: ActivatedRoute, private spinner: NgxSpinnerService,
+              private customSkillService: CustomSkillService) { }
 
   // check if we are editing a testimonial or adding a new one
   edit = false;
@@ -41,7 +43,7 @@ export class AddHardSkillComponent implements OnInit {
       console.log(this.skills)
       if(this.edit) {
         // selected skill should take the id of the hard skill
-        this.selectedSkill = this.skills.filter((value: TechnicalSkillModel) => value.id === this.technicalSkill.skill.id)[0].id;
+        this.selectedSkill = this.skills.filter((value: TechnicalSkillModel) => value.id === this.technicalSkill.skill.id)[0].name;
         console.log(this.selectedSkill)
       }
 
@@ -59,18 +61,28 @@ export class AddHardSkillComponent implements OnInit {
     if (this.selectedSkill === '') {
       this.validForm = false;
     }
-    if(this.selectedSkill.id){
+
+    this.addWithId();
+    /* if(this.selectedSkill.id){
       this.addWithId();
     }else{
-      console.log("no id");
-    }
+      this.addCustommSkill();
+    } */
     
   }
 
   addWithId(){
     if(!this.edit) {
       console.log(this.selectedSkill)
-      this.technicalSkillsService.addOne({skill: {id: this.selectedSkill.id, level: this.selectLevel? this.level: undefined}}).subscribe((result) => {
+      this.technicalSkillsService.addOne(
+        {
+          skill: 
+            {
+              id: this.selectedSkill.id, level: this.selectLevel? this.level: undefined, name: this.selectedSkill.name
+            }
+            
+        })
+        .subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -85,6 +97,28 @@ export class AddHardSkillComponent implements OnInit {
       }, error => {
         this.onFailure(error)
       })
+    }
+  }
+
+  addCustommSkill(){
+    if(!this.edit) {
+      console.log(this.selectedSkill)
+      this.customSkillService.addOne({skill: {name: this.selectedSkill.name, level: this.selectLevel? this.level: undefined}}).subscribe((result) => {
+        localStorage.setItem('portfolio', JSON.stringify(result));
+        this.spinner.hide();
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        this.onFailure(error)
+      });
+    } else {
+      /* this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill.id, level: this.selectLevel?this.level: undefined}).subscribe(result => {
+        localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
+        this.spinner.hide();
+        this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
+      }, error => {
+        this.onFailure(error)
+      }) */
+      console.log("edit")
     }
   }
 

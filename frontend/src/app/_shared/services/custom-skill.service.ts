@@ -10,6 +10,6 @@ export class CustomSkillService extends GenericService<CustomSkillModel>{
 
   constructor(protected http: HttpClient) {
     super(http);
-    this.suffix = '/technicalskills';
+    this.suffix = '/customskills';
   }}
 

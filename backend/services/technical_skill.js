@@ -33,11 +33,25 @@ const addTechnicalSkills = async (req, res, next) => {
       return;
     }
 
-    const technicalSkill = await TechnicalSkill.findById(skill.id);
-    if (!technicalSkill) {
-        next(ApiError.NotFound('Should add technical skills.'));
-        return;
+    console.log(skill);
+    if(!skill.id && !skill.name){
+      next(ApiError.BadRequest("fech taaml"));
+      return;
     }
+
+    let technicalSkill
+    if(skill.id){
+      technicalSkill = await TechnicalSkill.findById(skill.id);
+      if (!technicalSkill) {
+          next(ApiError.NotFound('Should add technical skills.'));
+          return;
+      }
+    }else if (skill.name){
+      // TODO: add skill to technical skill
+      technicalSkill =  new TechnicalSkill({name: skill.name})
+    }
+
+    
 
     const result = {skill: technicalSkill, level: skill.level}
     portfolio = await Portfolio.findOneAndUpdate({_id: portfolioId, 'technicalSkills.skill._id': {$ne: technicalSkill._id}}, {
