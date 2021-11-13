@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - split-workflows
+      - dev
     paths:
       - 'frontend/**'
       - 'terraform/**'
