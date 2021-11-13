@@ -26,7 +26,7 @@ export class ContactSectionComponent implements OnInit {
     name: ['', Validators.required],
     message: ['', Validators.required],
     subject: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required,Validators.email]],
   });
 
   ngOnInit(): void {
@@ -35,11 +35,19 @@ export class ContactSectionComponent implements OnInit {
     if(JSON.parse(localStorage.getItem('portfolio')!).template.contact.socialMediaIcon == 2) this.icon = 'square';
     if(JSON.parse(localStorage.getItem('portfolio')!).template.contact.contactCard == 1) this.card = 'fullysquare';
   }
+
+  // ease access to form fields :
+  get f() {
+    return this.contactForm.controls
+  }
+  // ---------------------------
+
+
   onSubmit() {
     let obj = {portfolioID: JSON.parse(localStorage.getItem('portfolio')!).id, ...this.contactForm.value}
     console.log(obj)
     this.contactService.contact(obj).subscribe((result) => {
-      
+
         Swal.fire({
           title: 'Email sent!',
           text: result.result,

@@ -83,7 +83,7 @@
               Email is required.
             </div>
             <div *ngIf="f.email.errors?.email" class="alert isa_error">
-              Sould be a valid email
+              Should be a valid email
             </div>
             <!-- /Error handling -->
           </div>
@@ -137,18 +137,18 @@
     <label for="picture">Picture</label>
     <ngx-dropzone [multiple]="false" (change)="onSelectPicture($event)">
       <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
-      <ngx-dropzone-preview *ngFor="let f of pictures" [file]="f" [removable]="true" (removed)="onRemovePicture(f)">
-        <ngx-dropzone-label>{{ f.name | slice:0:13}} ({{ f.type }})</ngx-dropzone-label>
-      </ngx-dropzone-preview>
+      <ngx-dropzone-image-preview *ngFor="let f of pictures" [file]="f" [removable]="true" (removed)="onRemovePicture(f)">
+
+      </ngx-dropzone-image-preview>
     </ngx-dropzone>
     <small class="form-text mb-3">Only jpeg or png images.</small>
 
     <label for="cv">CV</label>
     <ngx-dropzone [multiple]="false" (change)="onSelectCV($event)">
       <ngx-dropzone-label>Click or drag files here to upload!</ngx-dropzone-label>
-      <ngx-dropzone-preview *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemoveCV(f)">
-        <ngx-dropzone-label>{{ f.name | slice:0:13 }} ({{ f.type }})</ngx-dropzone-label>
-      </ngx-dropzone-preview>
+      <ngx-dropzone-image-preview *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemoveCV(f)">
+
+      </ngx-dropzone-image-preview>
     </ngx-dropzone>
     <small class="form-text mb-2">Only pdf files.</small>
 

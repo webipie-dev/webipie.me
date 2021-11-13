@@ -21,16 +21,23 @@ export class DomainRequestComponent implements OnInit {
 
   contactForm = this.formBuilder.group({
     name: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required,Validators.email]],
     domain: ['', Validators.required],
   });
 
   ngOnInit(): void {
   }
+
+  // ease access to form fields :
+  get f() {
+    return this.contactForm.controls
+  }
+  // ---------------------------
+
   onSubmit() {
     let obj = {portfolioID: JSON.parse(localStorage.getItem('portfolio')!).id, ...this.contactForm.value}
     this.contactService.contactRequestDomain(obj).subscribe((result) => {
-      
+
         Swal.fire({
           title: 'Request submitted! We\'ll reach out to you soon!',
           text: result.result,

@@ -42,6 +42,7 @@ export class AddHardSkillComponent implements OnInit {
       if(this.edit) {
         // selected skill should take the id of the hard skill
         this.selectedSkill = this.skills.filter((value: TechnicalSkillModel) => value.id === this.technicalSkill.skill.id)[0].id;
+        console.log(this.selectedSkill)
       }
 
     });
