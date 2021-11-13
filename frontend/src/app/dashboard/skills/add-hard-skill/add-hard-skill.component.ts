@@ -59,9 +59,18 @@ export class AddHardSkillComponent implements OnInit {
     if (this.selectedSkill === '') {
       this.validForm = false;
     }
+    if(this.selectedSkill.id){
+      this.addWithId();
+    }else{
+      console.log("no id");
+    }
+    
+  }
+
+  addWithId(){
     if(!this.edit) {
       console.log(this.selectedSkill)
-      this.technicalSkillsService.addOne({skill: {id: this.selectedSkill, level: this.selectLevel? this.level: undefined}}).subscribe((result) => {
+      this.technicalSkillsService.addOne({skill: {id: this.selectedSkill.id, level: this.selectLevel? this.level: undefined}}).subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -69,7 +78,7 @@ export class AddHardSkillComponent implements OnInit {
         this.onFailure(error)
       });
     } else {
-      this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill, level: this.selectLevel?this.level: undefined}).subscribe(result => {
+      this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill.id, level: this.selectLevel?this.level: undefined}).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
@@ -92,5 +101,9 @@ export class AddHardSkillComponent implements OnInit {
 
   setCleared() {
     this.validForm = false;
+  }
+
+  listen(){
+    console.log(this.selectedSkill);
   }
 }

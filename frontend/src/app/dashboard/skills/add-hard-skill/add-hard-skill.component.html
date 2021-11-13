@@ -17,11 +17,11 @@
             <ng-select [(ngModel)]="selectedSkill"
                        (clear)="setCleared()"
                        bindLabel="name"
-                       bindValue="id"
                        [items]="skills"
                        name="title"
                        [addTag] ="true"
                        loadingText="Loading..."
+                       (change)="listen()"
             >
             </ng-select>
 <!--            <ng-select [(ngModel)]="selectedSkill" bindLabel="name" bindValue="id">-->
