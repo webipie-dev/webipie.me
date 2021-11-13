@@ -9,7 +9,6 @@ const {projectSchema} = require('./project');
 const {educationSchema} = require('./education');
 const {softSkillSchema} = require('./soft_skill');
 const {technicalSkillSchema} =  require('./technical_skill');
-const {customSkillSchema} = require('./custom_skill');
 
 const portfolioSchema = new Schema({
   url: {type: String, required: true, unique: true},
@@ -31,10 +30,6 @@ const portfolioSchema = new Schema({
   testimonials: {type: [testimonialSchema]},
   technicalSkills: [{
     skill: {type: technicalSkillSchema},
-    level:{type: Number, required: false, min: 0, max: 10}
-  }],
-  customSkills: [{
-    skill: {type: customSkillSchema},
     level:{type: Number, required: false, min: 0, max: 10}
   }],
   softSkills: {type: [softSkillSchema]},
