@@ -4,6 +4,7 @@ on:
       - split-workflows
     paths:
       - 'frontend/**'
+      - 'terraform/**'
 
 jobs:
   deploy:
@@ -20,6 +21,29 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION_DEV }}
+      
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.12.29
+
+    - name: Set Infrastructure Configuration To Github
+      id: set-config
+      env:
+        TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        TF_VAR_twilio_account_sid: ${{ secrets.TWILIO_ACCOUNT_SID }}
+        TF_VAR_twilio_auth_token: ${{ secrets.TWILIO_AUTH_TOKEN }}
+        TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL_DEV }}
+        TF_VAR_mailgun_api_key: ${{secrets.MAILGUN_API_KEY}}
+        TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
+        TF_VAR_linkedin_client_secret: ${{secrets.LINKEDIN_CLIENT_SECRET}}
+      run: |
+        cd terraform/infrastructure
+        terraform init
+        terraform workspace select default
+        terraform apply -target=null_resource.set_config_to_github -auto-approve -lock-timeout=120s
+        source set_config_to_github.bash
     
     - name: Build and deploy front-end
       if: startsWith(github.event.head_commit.message, 'SKIP_FRONTEND') != true
