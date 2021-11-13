@@ -132,7 +132,7 @@ export class AddProjectComponent implements OnInit {
       }
     }
 
-    this.processForm()
+    if(this.projectForm.value.skills){this.processForm()}
     if(!this.edit) {
       console.log(this.projectForm.value)
       this.projectService.addOne(this.projectForm.value).subscribe((result) => {
