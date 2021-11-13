@@ -1,0 +1,101 @@
+on:
+  push:
+    branches:
+      - split-workflows
+    paths:
+      - 'backend/**'
+      - 'terraform/**'
+
+jobs:
+  deploy:
+    name: Deploy backend
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION_DEV }}
+    
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.12.29
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+    
+    - name: Set Infrastructure Configuration To Github
+      id: set-config
+      env:
+        TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        TF_VAR_twilio_account_sid: ${{ secrets.TWILIO_ACCOUNT_SID }}
+        TF_VAR_twilio_auth_token: ${{ secrets.TWILIO_AUTH_TOKEN }}
+        TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL_DEV }}
+        TF_VAR_mailgun_api_key: ${{secrets.MAILGUN_API_KEY}}
+        TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
+        TF_VAR_linkedin_client_secret: ${{secrets.LINKEDIN_CLIENT_SECRET}}
+      run: |
+        cd terraform/infrastructure
+        terraform init
+        terraform workspace select default
+        terraform apply -target=null_resource.set_config_to_github -auto-approve -lock-timeout=120s
+        source set_config_to_github.bash
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      if: startsWith(github.event.head_commit.message, 'SKIP_BACKEND') != true
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: webipiemeecr_dev
+        APP_PORT: ${{ secrets.APP_PORT }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        TF_VAR_twilio_account_sid: ${{ secrets.TWILIO_ACCOUNT_SID }}
+        TF_VAR_twilio_auth_token: ${{ secrets.TWILIO_AUTH_TOKEN }}
+        TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL_DEV }}
+        TF_VAR_mailgun_api_key: ${{secrets.MAILGUN_API_KEY}}
+        TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
+        TF_VAR_linkedin_client_secret: ${{secrets.LINKEDIN_CLIENT_SECRET}}
+        REGION: ${{ secrets.AWS_REGION_DEV }}
+      run: |
+        cd terraform/infrastructure
+        terraform init
+        terraform workspace select default
+        # mkdir ../../backend/configuration
+        terraform apply -target null_resource.index -auto-approve -lock-timeout=120s
+        terraform apply -target null_resource.task_definition -auto-approve -lock-timeout=120s
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        cd ../../backend
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:latest"
+
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      if: startsWith(github.event.head_commit.message, 'SKIP_BACKEND') != true
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: backend/task-definition.json
+        container-name: devwebipieme
+        image: ${{ steps.build-image.outputs.image }}
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      if: startsWith(github.event.head_commit.message, 'SKIP_BACKEND') != true
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: devwebipieme
+        cluster: devwebipieme
+        wait-for-service-stability: true
