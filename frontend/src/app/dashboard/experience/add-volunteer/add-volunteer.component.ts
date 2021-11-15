@@ -71,7 +71,7 @@ export class AddVolunteerComponent implements OnInit {
   public fillEditForm(volunteerId: string): void {
     this.volunteerExperience = (JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences.filter((volunteer: VolunteeringExperienceModel) => volunteer.id === volunteerId ))[0];
     this.beginDate = new Date(this.volunteerExperience.beginDate!);
-    this.endDate = this.volunteerExperience ? new Date(this.volunteerExperience.endDate): undefined;
+    this.endDate = this.volunteerExperience.endDate ? new Date(this.volunteerExperience.endDate): undefined;
   }
 
   images: File[] = [];

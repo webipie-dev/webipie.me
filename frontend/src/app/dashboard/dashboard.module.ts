@@ -185,7 +185,7 @@ import {
   faArrowAltCircleLeft,
   faAsterisk,
   faCheck,
-  faUsers, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faFaceGrinTears
+  faUsers, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt
 } from '@fortawesome/free-solid-svg-icons';
 import { AddSoftSkillComponent } from './skills/add-soft-skill/add-soft-skill.component';
 import { AddHardSkillComponent } from './skills/add-hard-skill/add-hard-skill.component';

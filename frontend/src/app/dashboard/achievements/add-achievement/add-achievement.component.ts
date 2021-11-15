@@ -28,6 +28,7 @@ export class AddAchievementComponent implements OnInit {
   // check if we are editing a testimonial or adding a new one
   edit = false;
   achievement: AchievementModel = {} as AchievementModel;
+  date: any;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -40,6 +41,7 @@ export class AddAchievementComponent implements OnInit {
 
   public fillEditForm(achievementId: string): void {
     this.achievement = (JSON.parse(localStorage.getItem('portfolio')!).achievements.filter((achievement: AchievementModel) => achievement.id === achievementId ))[0];
+    this.date = new Date(this.achievement.date!);
   }
 
   images: File[] = [];
