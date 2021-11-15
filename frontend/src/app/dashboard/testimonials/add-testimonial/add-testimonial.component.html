@@ -63,13 +63,10 @@
           <div class="form-group">
             <label for="image">Image</label>
             <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
-                <img style="width: 160px;" *ngIf="iconUrl; else iconPreview"  src="{{ iconUrl }}">
-                <ngx-dropzone-label *ngIf="iconUrl">Click here to upload a new image!</ngx-dropzone-label>
-              <ng-template #iconPreview>
-                <ngx-dropzone-label *ngIf="images.length === 0">Click or drag images here to upload!</ngx-dropzone-label>
-                <ngx-dropzone-image-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
-                </ngx-dropzone-image-preview>
-              </ng-template>
+              <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
+              <ngx-dropzone-image-preview *ngFor="let f of images" [file]="f" [removable]="true" (removed)="onRemove(f)">
+
+              </ngx-dropzone-image-preview>
             </ngx-dropzone>
             <small class="form-text mb-3">Only jpeg or png images.</small>
           </div>
