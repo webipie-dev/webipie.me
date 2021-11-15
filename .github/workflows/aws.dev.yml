@@ -40,7 +40,6 @@ jobs:
         TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL_DEV }}
         TF_VAR_mailgun_api_key: ${{secrets.MAILGUN_API_KEY}}
         TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
-        TF_VAR_linkedin_client_secret: ${{secrets.LINKEDIN_CLIENT_SECRET}}
       run: |
         cd terraform/infrastructure
         terraform init
@@ -64,7 +63,6 @@ jobs:
         TF_VAR_mongo_db_url: ${{ secrets.MONGO_DB_URL_DEV }}
         TF_VAR_mailgun_api_key: ${{secrets.MAILGUN_API_KEY}}
         TF_VAR_mailgun_domain_name: ${{secrets.MAILGUN_DOMAIN_NAME}}
-        TF_VAR_linkedin_client_secret: ${{secrets.LINKEDIN_CLIENT_SECRET}}
         REGION: ${{ secrets.AWS_REGION_DEV }}
       run: |
         cd terraform/infrastructure
