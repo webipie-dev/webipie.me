@@ -142,3 +142,12 @@ joyride-step{
   content:" *";
   color: red;
 }
+
+// image inside the preview dropzone
+ngx-dropzone-image-preview{
+  height: 90% !important;
+  width: 300px !important;
+  overflow: hidden !important;
+  border: 2px solid lightgrey !important;
+}
+

@@ -21,6 +21,8 @@ export class AddTestimonialComponent implements OnInit {
   // check if we are editing a testimonial or adding a new one
   edit = false;
   testimonial: TestimonialModel = {} as TestimonialModel;
+  iconUrl: any;
+  thumbs: string | undefined = '';
 
   testimonialForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -39,14 +41,22 @@ export class AddTestimonialComponent implements OnInit {
   }
 
   public fillEditForm(testimonialId: string): void {
+    console.log('TEstomniql: ', (JSON.parse(localStorage.getItem('portfolio')!).testimonials.filter((testimonial: TestimonialModel) => testimonial.id === testimonialId )))
     this.testimonial = (JSON.parse(localStorage.getItem('portfolio')!).testimonials.filter((testimonial: TestimonialModel) => testimonial.id === testimonialId ))[0];
+    console.log('this:testi/ ', this.testimonial)
+    this.iconUrl = this.testimonial.photo;
   }
 
   images: File[] = [];
 
   onSelect(event: any) {
+    console.log(event)
+    const check = this.uploadService.imageCheckType(event.addedFiles[0].type);
     this.images = [];
-    this.images.push(...event.addedFiles);
+    if(check){
+      this.images.push(...event.addedFiles);
+      this.iconUrl = '';
+    }
     console.log(this.images);
   }
 

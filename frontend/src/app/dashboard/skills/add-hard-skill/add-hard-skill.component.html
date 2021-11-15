@@ -16,12 +16,16 @@
             <label class="required">Title</label>
             <ng-select [(ngModel)]="selectedSkill"
                        bindLabel="name"
-                       bindValue="id"
                        [items]="skills"
                        name="title"
                        [addTag] ="true"
+                       loadingText="Loading..."
             >
             </ng-select>
+<!--            <ng-select [(ngModel)]="selectedSkill" bindLabel="name" bindValue="id">-->
+<!--              <ng-option *ngFor="let skill of skills" [value]="skill.name"><img style="width: 3rem; height: 3rem; padding-right: 1rem;" [src]="skill.icon">{{skill.name}}</ng-option>-->
+<!--            </ng-select>-->
+
             <!-- Error Handling -->
             <div *ngIf="!selectedSkill" class="alert isa_error">
               This field is required

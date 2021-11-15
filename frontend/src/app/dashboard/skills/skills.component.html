@@ -24,6 +24,7 @@
                   <div class="d-flex align-items-center">
                     <div>
                       <a [routerLink]="" class="font-weight-bold text-black" title="...">
+                        <img *ngIf="hardSkill.skill.icon" [src]="hardSkill.skill.icon" style="width: 2rem; height: 2rem" alt="">
                         {{hardSkill.skill.name}}
                       </a>
                     </div>

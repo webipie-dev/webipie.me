@@ -40,7 +40,10 @@ export class AddHardSkillComponent implements OnInit {
       this.skills = result;
       if(this.edit) {
         // selected skill should take the id of the hard skill
-        this.selectedSkill = this.skills.filter((value: TechnicalSkillModel) => value.id === this.technicalSkill.skill.id)[0].id;
+      
+        //this.selectedSkill = this.skills.filter((value: TechnicalSkillModel) => value.id === this.technicalSkill.skill.id)[0].name;
+        this.selectedSkill = this.technicalSkill.skill;
+        console.log(this.selectedSkill)
       }
       
     });
@@ -57,36 +60,44 @@ export class AddHardSkillComponent implements OnInit {
     if (this.selectedSkill === '') {
       this.validForm = false;
     }
+
     if(!this.edit) {
-      this.technicalSkillsService.addOne({skill: {id: this.selectedSkill, level: this.selectLevel? this.level: undefined}}).subscribe((result) => {
+      console.log(this.selectedSkill)
+      this.technicalSkillsService.addOne(
+        {
+          skill: 
+            {
+              id: this.selectedSkill.id, level: this.selectLevel? this.level: undefined, name: this.selectedSkill.name
+            }
+            
+        })
+        .subscribe((result) => {
         localStorage.setItem('portfolio', JSON.stringify(result));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
-        this.spinner.hide();
-        Swal.fire({
-          title: 'Error!',
-          text: error.error.errors[0].message,
-          icon: 'error',
-          confirmButtonText: 'Okay',
-          footer: '<a href="/dashboard/support-request">Contact Support</a>'
-        });
+        this.onFailure(error)
       });
     } else {
-      this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill, level: this.selectLevel?this.level: undefined}).subscribe(result => {
+      this.technicalSkillsService.edit(this.technicalSkill._id, {id: this.selectedSkill.id, level: this.selectLevel?this.level: undefined}).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
         this.router.navigate(['..'], {relativeTo: this.route}).then(r => console.log(r));
       }, error => {
-        this.spinner.hide();
-        Swal.fire({
-          title: 'Error!',
-          text: error.error.errors[0].message,
-          icon: 'error',
-          confirmButtonText: 'Okay',
-          footer: '<a href="/dashboard/support-request">Contact Support</a>'
-        });
+        this.onFailure(error)
       })
     }
+    
+  }
+
+  onFailure(error: any){
+    this.spinner.hide();
+    Swal.fire({
+      title: 'Error!',
+      text: error.error.errors[0].message,
+      icon: 'error',
+      confirmButtonText: 'Okay',
+      footer: '<a href="/dashboard/support-request">Contact Support</a>'
+    });
   }
 }
