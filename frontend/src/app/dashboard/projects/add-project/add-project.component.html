@@ -44,11 +44,11 @@
 
           <div class="form-group">
             <label for="image">Images</label>
-            <div class="my-3 mx-3" style="display: flex; align-items: center">
+            <div *ngIf="project.imgs" class="my-3 mx-3" style="display: flex; align-items: center">
               <div *ngFor="let image of project.imgs" style="position: relative;">
-                <img [src]="image" class="mx-1" style="width:100px; height: 100px; object-fit: cover; border-radius: 3px">
-                <button style="border: none; background: none; position: absolute; right: 8px">
-                  <fa-icon [icon]="['fas','times']" style="font-size: large;"></fa-icon>
+                <img [src]="image" class="mx-1 project-images" >
+                <button class="remove-project">
+                  <fa-icon [icon]="['fas','times']"></fa-icon>
                 </button>
               </div>
             </div>
