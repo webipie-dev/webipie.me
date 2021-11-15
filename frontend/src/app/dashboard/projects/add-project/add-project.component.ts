@@ -43,6 +43,7 @@ export class AddProjectComponent implements OnInit {
   })
   skills: TechnicalSkillModel[] = [];
   selectedSkills = [];
+  deletedImages: any = [];
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -90,6 +91,12 @@ export class AddProjectComponent implements OnInit {
       else
         return skill;
     })
+  }
+
+  removeImage(event: any, image: any){
+    this.project.imgs = this.project.imgs ? this.project.imgs?.filter(o => o!== image): [];
+    this.deletedImages.push(image);
+    event.preventDefault();
   }
 
 
@@ -159,6 +166,7 @@ export class AddProjectComponent implements OnInit {
         });
       })
     } else {
+      if(this.deletedImages.length > 0) this.projectForm.value.deletedImages = this.deletedImages;
       this.projectService.edit(this.project.id, this.projectForm.value).subscribe(result => {
         localStorage.setItem('portfolio', JSON.stringify(result.portfolio));
         this.spinner.hide();
