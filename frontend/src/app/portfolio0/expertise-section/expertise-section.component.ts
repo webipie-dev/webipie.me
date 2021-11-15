@@ -16,10 +16,9 @@ export class ExpertiseSectionComponent implements OnInit {
   softSkillsTemplate?= 1;
   secondaryColor: any;
   primaryColor: any;
-  font = 'Montserrat';
+  font='Montserrat';
   technicalSkillsDisabled?: boolean;
   softSkillsDisabled?: boolean;
-  hasHardSkillsLevel = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -31,12 +30,6 @@ export class ExpertiseSectionComponent implements OnInit {
     this.softSkillsTemplate = JSON.parse(localStorage.getItem('portfolio')!).template.softSkills;
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
-    const hardSkillsNumber = this.hardSkills ? this.hardSkills.filter(hardSkill => {
-      return hardSkill.level;
-    }) : 0;
-    if (hardSkillsNumber && hardSkillsNumber.length) {
-      this.hasHardSkillsLevel = true;
-    }
   }
 
 }

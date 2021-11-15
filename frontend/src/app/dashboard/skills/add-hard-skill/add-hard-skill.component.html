@@ -15,7 +15,6 @@
           <div class="position-relative form-group">
             <label class="required">Title</label>
             <ng-select [(ngModel)]="selectedSkill"
-                       (clear)="setCleared()"
                        bindLabel="name"
                        [items]="skills"
                        name="title"
@@ -28,16 +27,16 @@
 <!--            </ng-select>-->
 
             <!-- Error Handling -->
-            <div *ngIf="!validForm" class="alert isa_error">
+            <div *ngIf="!selectedSkill" class="alert isa_error">
               This field is required
             </div>
             <!-- /Error handling -->
           </div>
           <div class="position-relative form-group">
-            <input
-              type="checkbox"
-              name=""
-              id=""
+            <input 
+              type="checkbox" 
+              name="" 
+              id="" 
               class="level-checkbox"
               [(ngModel)]="selectLevel"
             >
@@ -65,8 +64,7 @@
       <div class="info-container">
         <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
         <h1>Tips & Information</h1>
-        <p>When hiring new employees, employers pay considerable attention to candidates' <strong>hard talents</strong>.
-          <br>
+        <p>When hiring new employees, employers pay considerable attention to candidates' hard talents.
           Although there are exceptions, most candidates who lack the requisite hard skills will struggle to acquire the position.</p>
       </div>
     </div>
