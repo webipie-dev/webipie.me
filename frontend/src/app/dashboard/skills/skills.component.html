@@ -24,19 +24,15 @@
                   <div class="d-flex align-items-center">
                     <div>
                       <a [routerLink]="" class="font-weight-bold text-black" title="...">
-                        <img [src]="hardSkill.skill.icon" style="width: 2rem; height: 2rem" alt="">
+                        <img *ngIf="hardSkill.skill.icon" [src]="hardSkill.skill.icon" style="width: 2rem; height: 2rem" alt="">
                         {{hardSkill.skill.name}}
                       </a>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <progressbar *ngIf="hardSkill.level" [value]="hardSkill.level * 10" class="progress-bar-rounded" type="info">{{hardSkill.level?hardSkill.level * 10:'unset'}}%</progressbar>
-                  <div *ngIf="!hardSkill.level" class="d-flex align-items-center">
-                      <span class="text-black" title="...">
-                        Not Specified
-                      </span>
-                  </div>
+                  <progressbar [value]="hardSkill.level * 10" class="progress-bar-rounded" type="info">{{hardSkill.level?hardSkill.level * 10:'unset'}}%</progressbar>
+
                 </td>
                 <td class="text-center">
                   <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editHardSkill(hardSkill._id)">

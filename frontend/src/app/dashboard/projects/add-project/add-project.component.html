@@ -44,8 +44,13 @@
 
           <div class="form-group">
             <label for="image">Images</label>
-            <div class="my-2 mx-2">
-              <img *ngFor="let image of project.imgs" [src]="image" class="mx-1" style="width:40px; height: 40px">
+            <div *ngIf="project.imgs" class="my-3 mx-3" style="display: flex; align-items: center">
+              <div *ngFor="let image of project.imgs" style="position: relative;">
+                <img [src]="image" class="mx-1 project-images" >
+                <button class="remove-project" (click)="removeImage($event, image)">
+                  <fa-icon [icon]="['fas','times']"></fa-icon>
+                </button>
+              </div>
             </div>
             <ngx-dropzone  (change)="onSelectImage($event)">
               <ngx-dropzone-label>Click or drag images here to upload!</ngx-dropzone-label>
