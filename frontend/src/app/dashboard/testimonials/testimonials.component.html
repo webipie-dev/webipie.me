@@ -18,7 +18,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let testimonial of testimonials">
+          <tr *ngFor="let testimonial of testimonials; let i=index">
             <td>
               <div class="d-flex align-items-center">
                 <div *ngIf="testimonial.photo" class="avatar-icon-wrapper avatar-icon-sm mr-3">
@@ -34,6 +34,17 @@
               {{ ( testimonial.description.length>30)? ( testimonial.description  | slice:0:30)+' ...':( testimonial.description ) }}
             </td>
             <td class="text-center">
+              <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upTestimonial(i)">
+                <span class="btn-wrapper--icon">
+                  <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+                </span>
+              </button>
+              <button *ngIf="i!==testimonials!.length-1" (click)="downTestimonial(i)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+                <span class="btn-wrapper--icon">
+                  <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+                </span>
+              </button>
+
               <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editTestimonial(testimonial.id)">
                 <span class="btn-wrapper--icon">
                   <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
