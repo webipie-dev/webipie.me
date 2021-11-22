@@ -18,11 +18,11 @@
           <th class="text-center">Start Date</th>
           <th class="text-center">End Date</th>
           <th class="text-left" style="width:40%">Description</th>
-          <th class="text-right">Actions</th>
+          <th class="text-center">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let work of workExperiences">
+        <tr *ngFor="let work of workExperiences; let i=index">
           <td>
             <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{work.company}}</a>
               <span class="text-black-50 d-block">{{work.position}}</span></div>
@@ -36,7 +36,18 @@
           <td class="text-left">
             <span class="font-weight-regular">{{ (work.description.length>30)? (work.description | slice:0:30)+' ...':(work.description) }}</span>
           </td>
-          <td class="text-right">
+          <td class="text-center">
+            <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upExperience(i, 'work')">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button *ngIf="i!==workExperiences!.length-1" (click)="downExperience(i, 'work')" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+
             <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editWork(work.id)">
                           <span class="btn-wrapper--icon">
                               <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
@@ -84,11 +95,11 @@
           <th class="text-center">Start Date</th>
           <th class="text-center">End Date</th>
           <th class="text-left" style="width:40%">Description</th>
-          <th class="text-right">Actions</th>
+          <th class="text-center">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let volunteering of volunteeringExperiences">
+        <tr *ngFor="let volunteering of volunteeringExperiences; let i=index">
           <td>
             <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{volunteering.organisation}}</a>
               <span class="text-black-50 d-block">{{volunteering.position}}</span></div>
@@ -102,7 +113,18 @@
           <td class="text-left">
             <span class="font-weight-regular">{{ (volunteering.description.length>30)? (volunteering.description | slice:0:30)+' ...':(volunteering.description) }}</span>
           </td>
-          <td class="text-right">
+          <td class="text-center">
+            <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upExperience(i, 'volunteer')">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button *ngIf="i!==volunteeringExperiences!.length-1" (click)="downExperience(i, 'volunteer')" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+
             <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editVolunteer(volunteering.id)">
               <span class="btn-wrapper--icon">
                 <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
