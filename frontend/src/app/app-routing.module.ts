@@ -29,6 +29,13 @@ const routes: Routes = [
     loadChildren: () => import('./templates/templates.module')
       .then(m => m.TemplatesModule),
     data: {preload: true}
+  },
+  {
+    path: 'portfolio1',
+    loadChildren: () => {
+      return import('./portfolio1/portfolio1.module')
+            .then(m => m.Portfolio1Module);
+    }
   }
 ];
 

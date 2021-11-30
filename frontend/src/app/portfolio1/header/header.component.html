@@ -1,0 +1,24 @@
+<nav #mynav>
+        <h1 class="logo-name">
+            John Doe
+        </h1>
+
+        <div class="cos-right {{shown?'shown':''}}">
+            <ul>
+                <a 
+                    href="" 
+                    *ngFor="let button of buttons;let i= index;"
+                    [ngStyle]="{transitionDelay: i*30+'ms'}"    
+                >
+                    {{button.name}}
+                </a>
+                
+            </ul>
+            <div class="show-button" (click)="switch()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+   
+</nav>
