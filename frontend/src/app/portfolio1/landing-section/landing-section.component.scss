@@ -1,0 +1,128 @@
+
+
+.ryker_tm_section{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+    z-index: 1
+}
+
+/*---------------------------------------------------*/
+/*	04) RYKER HERO
+/*---------------------------------------------------*/
+
+.ryker_tm_hero{
+	width: 100%;
+	height: 100vh;
+	float: left;
+	position: relative;
+	//background-color: #f9f9f9;
+}
+.ryker_tm_hero .container{
+	height: 100vh;
+}
+.ryker_tm_hero .content{
+	width: 100%;
+	height: 100%;
+	clear: both;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.ryker_tm_hero .texts{
+	padding-right: 50px;
+}
+.ryker_tm_hero .job{
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+.ryker_tm_hero video{
+	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	-o-object-fit: cover;
+    object-fit: cover;
+  	-o-object-position: center;
+    object-position: center;
+}
+.ryker_tm_hero .job h3{
+	background-color: #f9f9f9;
+	mix-blend-mode: screen;
+	position: relative;
+	z-index: 5;
+	font-size: 72px;
+	font-weight: 900;
+	line-height: 1.3;
+}
+.ryker_tm_hero .desc{
+	width: 100%;
+	float: left;
+	margin-bottom: 40px;
+}
+.ryker_tm_hero .desc p{
+	max-width: 550px;
+	font-size: 17px;
+}
+.ryker_tm_button{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.ryker_tm_button a{
+	text-decoration: none;
+	color: #fff;
+	background-color: #d1701f;
+	border: 2px solid #d1701f;
+	display: inline-block;
+	padding: 15px 50px;
+	font-family: "Poppins";
+	border-radius: 50px;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.ryker_tm_button a:hover{
+	background-color: transparent;
+	color: #000;
+}
+.ryker_tm_hero .avatar{
+	min-width: 450px;
+	min-height: 450px;
+	position: relative;
+	border-radius: 100%;
+}
+.ryker_tm_hero .avatar .image{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-position:center;
+	background-size: cover;
+	animation: morph 8s ease-in-out infinite 1s;
+	background-blend-mode: multiply;
+	-webkit-box-shadow: inset 0px 0px 0px 18px rgba(255,255,255,.3);
+    -moz-box-shadow: inset 0px 0px 0px 18px rgba(255,255,255,.3);
+    box-shadow: inset 0px 0px 0px 18px rgba(255,255,255,.3);
+}
+@keyframes morph {
+	 0% {
+		 border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+	 50% {
+		 border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+	}
+	 100% {
+		 border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+}
+
