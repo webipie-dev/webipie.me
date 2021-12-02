@@ -50,8 +50,16 @@
     object-position: center;
 }
 .ryker_tm_hero .job h3{
-	background-color: #f9f9f9;
-	mix-blend-mode: screen;
+	//background-color: #f9f9f9;
+    //color: blue;
+    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+    background-size: cover;
+    background-size: cover;
+	color: transparent;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+
+	//mix-blend-mode: screen;
 	position: relative;
 	z-index: 5;
 	font-size: 72px;
