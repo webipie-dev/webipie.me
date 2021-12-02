@@ -31,7 +31,7 @@ resource "aws_autoscaling_group" "this" {
     availability_zones = ["${var.aws_region}a"]
     name = "ECS ${aws_ecs_cluster.this.name}"
     min_size = "1"
-    max_size = "3"
+    max_size = "1"
     desired_capacity = "1"
     health_check_type = "EC2"
     launch_configuration = aws_launch_configuration.this.name

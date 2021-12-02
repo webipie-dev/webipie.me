@@ -1,5 +1,5 @@
 <div class="cos-container">
-    <div class="cos-left" style="align-items: center;text-align: left;">
+    <div class="cos-left" style="display: flex;flex-wrap: nowrap;align-items: center;text-align: left;">
         <!-- CHange this for icon later and change condition-->
         <!-- <fa-icon *ngIf="icon" [icon]="skill" [style]="'color:'+primaryColor+';font-size:3rem !important'"></fa-icon> -->
         <div class="image-container" style="text-align: center;">
@@ -10,7 +10,7 @@
             <h2 [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font ">{{hardSkill.skill.name}}</h2>
         </div>
     </div>
-
+    
     <div class="cos-right" *ngIf="hardSkill.level!== undefined">
 
         <div *ngIf="hardSkillsTemplate == 1" class="loading">

@@ -20,3 +20,39 @@
         color: #62b085;
     }
 }
+
+.project-images{
+    width:100px; 
+    height: 100px; 
+    object-fit: cover; 
+    border-radius: 3px;
+    &:hover{
+        &+.remove-project{
+            background-color: aliceblue;
+            border-radius: 50%;
+        }
+    }
+}
+
+.remove-project{
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none; 
+    border-radius: 50%;
+    background: none; 
+    position: absolute; 
+    right: 3px;
+    top: 3px;
+    transition: background-color 300ms ease;
+    fa-icon{
+        font-size: large;
+        height: 23px;
+    }
+    &:hover{      
+        background-color: aliceblue;
+        border-radius: 50%;       
+    }
+}

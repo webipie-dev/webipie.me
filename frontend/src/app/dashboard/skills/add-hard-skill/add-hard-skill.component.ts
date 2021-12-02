@@ -20,10 +20,10 @@ export class AddHardSkillComponent implements OnInit {
   edit = false;
   validForm = true;
   technicalSkill: TechnicalSkillDeveloperModel = {} as TechnicalSkillDeveloperModel;
-
+  
   selectLevel : boolean = true ;
   level = 5;
-  selectedSkill: any = null;
+  selectedSkill: any;
   skills: TechnicalSkillModel[] = [];
 
 
@@ -45,7 +45,7 @@ export class AddHardSkillComponent implements OnInit {
         this.selectedSkill = this.technicalSkill.skill;
         console.log(this.selectedSkill)
       }
-
+      
     });
   }
 
@@ -99,9 +99,5 @@ export class AddHardSkillComponent implements OnInit {
       confirmButtonText: 'Okay',
       footer: '<a href="/dashboard/support-request">Contact Support</a>'
     });
-  }
-
-  setCleared() {
-    this.validForm = false;
   }
 }

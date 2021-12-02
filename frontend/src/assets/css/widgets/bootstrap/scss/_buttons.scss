@@ -34,7 +34,6 @@
   &.disabled,
   &:disabled {
     opacity: $btn-disabled-opacity;
-    cursor: not-allowed;
     @include box-shadow(none);
   }
 

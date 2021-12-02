@@ -1,14 +1,4 @@
-:root {
-  --big-font: 2.5rem;
-  --bigger-font: 3rem;
-}
 
-@media(max-width: 500px){
-  :root {
-    --big-font: 6vw;
-    --bigger-font:7vw;
-  }
-}
 /* You can add global styles to this file, and also import other style files */
 *{
     margin:0px;
@@ -153,4 +143,11 @@ joyride-step{
   color: red;
 }
 
+// image inside the preview dropzone
+ngx-dropzone-image-preview{
+  height: 90% !important;
+  width: 300px !important;
+  overflow: hidden !important;
+  border: 2px solid lightgrey !important;
+}
 
