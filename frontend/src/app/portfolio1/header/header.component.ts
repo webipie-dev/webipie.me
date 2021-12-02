@@ -8,8 +8,11 @@ import { Component, OnInit, ViewChild,AfterViewInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   shown: boolean = true; 
+  preloaded: boolean = false; 
   @ViewChild('mynav') mynav:any;
+  @ViewChild('preloader') preloader:any;
 
+  // TODO: remove the button and the ngFor
   buttons = [
     {
       name: "About me",
@@ -54,6 +57,21 @@ export class HeaderComponent implements OnInit {
       }
       
     })
+	
+	  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+    const preloader = this.preloader.nativeElement; 
+    
+    if (!isMobile) {
+      setTimeout(() => {
+        this.preloaded = true;
+      }, 800);
+      setTimeout(function() {
+        preloader.remove();
+      }, 2000);
+
+    } else {
+      preloader.remove();
+    }
     
   }
 
