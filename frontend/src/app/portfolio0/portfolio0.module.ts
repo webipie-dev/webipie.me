@@ -24,6 +24,9 @@ import {
   faLightbulb,
   faPuzzlePiece,
   faUsers,
+  faGavel,
+  faProjectDiagram,
+  faUserClock,
   faBalanceScale,
   faHandshake,
   faCommentMedical,
@@ -79,6 +82,6 @@ import { CopyrightsComponent } from './copyrights/copyrights.component';
 })
 export class Portfolio0Module {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faBalanceScale, faHandshake, faCommentMedical, faGraduationCap, faUserShield, faAssistiveListeningSystems, faHourglass, faPoll, faPaperPlane, faArrowsAlt, faTasks, faBook, faClock, faDoorOpen, faWrench, faDirections, faRandom, faUserGraduate, faUserLock);
+    library.addIcons(faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faBalanceScale, faHandshake, faCommentMedical, faGraduationCap, faUserShield, faAssistiveListeningSystems, faHourglass, faPoll, faPaperPlane, faArrowsAlt, faTasks, faBook, faClock, faDoorOpen, faWrench, faDirections, faRandom, faUserGraduate, faUserLock, faGavel, faProjectDiagram, faUserClock);
   }
 }

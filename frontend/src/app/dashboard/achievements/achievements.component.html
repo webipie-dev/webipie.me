@@ -17,12 +17,12 @@
           <th>Achievements</th>
           <th class="text-center">Date</th>
           <th class="text-left" style="width:50%">Description</th>
-          <th class="text-right">Actions</th>
+          <th class="text-center">Actions</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr *ngFor="let achievement of achievements">
+        <tr *ngFor="let achievement of achievements; let i=index">
           <td>
             <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{achievement.title}} </span></div>
           </td>
@@ -32,7 +32,18 @@
           <td class="text-left">
             <span class="font-weight-regular">{{ ( achievement.description!.length>30)? ( achievement.description  | slice:0:30)+' ...':( achievement.description ) }}</span>
           </td>
-          <td class="text-right">
+          <td class="text-center">
+            <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upAchievement(i)">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button *ngIf="i!==achievements!.length-1" (click)="downAchievement(i)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+
             <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editAchievement(achievement.id)">
               <span class="btn-wrapper--icon">
                 <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
