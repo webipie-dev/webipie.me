@@ -36,14 +36,13 @@ export class ProjectComponent implements OnInit,OnChanges,AfterViewInit {
   minus : number = 0 ;
 
   ngOnInit(): void {
-    console.log(this.project);
     this.secondaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[1];
     this.primaryColor = JSON.parse(localStorage.getItem('portfolio')!).template.colorChart[0];
     this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
     this.button = JSON.parse(localStorage.getItem('portfolio')!).template.project.button;
     this.template = JSON.parse(localStorage.getItem('portfolio')!).template.project.popupCard;
-    if(this.project.imgs){
-      this.displayImg = this.project.imgs[0];
+    if(this.project.imgs!.length !== 0){
+      this.displayImg = this.project.imgs![0];
     }
     this.minus = this.project.video ? 0 : 1 ;
   }
