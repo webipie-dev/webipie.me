@@ -18,7 +18,16 @@
   //background-color: #f9f9f9;
 }
 .ryker_tm_hero .container {
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+@media (max-width:800px) {
+	.ryker_tm_hero .container{
+		margin-top:100px;
+	}
 }
 .ryker_tm_hero .content {
   width: 100%;
@@ -26,7 +35,7 @@
   clear: both;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap-reverse;
 }
 .ryker_tm_hero .texts {
@@ -138,9 +147,9 @@
   color: #000;
 }
 .ryker_tm_hero .avatar {
-	width:100%;
+  width: 100%;
   min-width: 200px;
-  min-height: 450px;
+  height: 50vh;
   max-width: 450px;
   position: relative;
   border-radius: 100%;
