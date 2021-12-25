@@ -26,6 +26,10 @@ export class AuthService extends GenericService<any>{
     return this.http.post(this.getUrl() + this.suffix + '/signin', credentials) as Observable<any>;
   }
 
+  public forgotPassword(email: string): Observable<any> {
+    return this.http.post(this.getUrl() + this.suffix + '/forgot-password', {email}) as Observable<any>;
+  }
+
   public sendConfirmation(token: any): Observable<any> {
     return this.http.get(this.getUrl() + this.suffix + '/confirmation/' + token) as Observable<any>;
   }

@@ -4,6 +4,7 @@ const {JWT_SECRET, EMAIL} = require('../configuration/index');
 const bcrypt = require('bcrypt');
 const ApiError = require("../errors/api-error");
 const {sendEmail} = require('./email');
+const generator = require('generate-password');
 const Portfolio = require('../models/portfolio');
 const querystring = require('querystring');
 const axios = require('axios');
@@ -109,6 +110,63 @@ module.exports = {
             httpOnly: true
         });
         return res.status(200).json({token, verified: newUser.verified});
+    },
+
+    sendNewPassword: async (req, res, next) => {
+        const { email } = req.body
+        // check whether the email exists in DB
+        const user = await User.findOne({ email });
+        if (!user) {
+            return next(ApiError.NotFound('User Not Found'));
+        }
+
+        // Generate new password and save it to DB
+        const newPassword = generator.generate({
+            length: 10,
+            numbers: true
+        });
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash(newPassword, salt);
+        await User.updateOne({email}, {password: passwordHash});
+
+        const name = user.name;
+        // Send Email containing new password
+        let emailError = sendEmail(
+            EMAIL.USER, email, 'New Password',
+            `   
+<div class="cos-card" style="background-color: #1b3721; color: white ; padding: 50px 0;">
+    <div class="cos-header-container" >
+        <div class="cos-header" style="display: flex; width: fit-content; margin:0 auto; align-items:center; ">
+            <div class="cos-left">
+                <img src="https://webipie.me/assets/SVG/logo.png" alt="logo" style="width:150px">
+            </div>
+            <div class="cos-right" style="margin : 40px 0 0 80px">
+                <a href="#" style="font-size: 2vw; color: white;text-decoration:none">Go back to the website</a>
+            </div>
+        </div>
+    </div>
+    <div class="cos-body" style="text-align:center">
+        <!-- <img src="https://webipie.me/assets/SVG/email.svg"> -->
+        <img src="https://webipie.me/assets/email.png" style="width:18vw; height:18vw; object-fit:cover ;background-color: white; border-radius:50%">
+        <h1 style="width:90%; margin: auto;color: white;">Hello ${name}, We create a new password for you !</h1>
+        <p style="font-size:25px; width:90%; margin: 20px auto;color:white;">New Password: <strong>${newPassword}</strong></p>
+        <h3 style="width:90%; margin: auto;color: white;">Make sure you change it ASAP !</h3>
+        <hr style="margin-top:25px">
+    </div>
+    <div class="cos-footer">
+        <div class="icons">
+            <fa-icon [icon]="facebook"></fa-icon>
+            <fa-icon [icon]="twitter"></fa-icon>
+            <fa-icon [icon]="linkedin"></fa-icon>
+        </div>
+    </div>
+</div>`
+        )
+        if (emailError)
+            return res.status(500).send({msg: 'Technical Issue!, Please click on resend for verify your Email.'});
+
+
+        return res.status(200).json({success: "success"});
     },
 
     signIn: async (req, res, next) => {
@@ -286,8 +344,8 @@ module.exports = {
             return next(ApiError.BadRequest('you are not connected locally'));
         }
 
-        const password_comp = await bcrypt.compare(oldPassword, req.user.password);
-        if (!password_comp) {
+        const passwordComp = await bcrypt.compare(oldPassword, req.user.password);
+        if (!passwordComp) {
             return next(ApiError.BadRequest('old password is not correct'));
         }
 
