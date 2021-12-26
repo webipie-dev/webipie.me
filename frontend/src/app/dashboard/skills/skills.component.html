@@ -19,7 +19,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let hardSkill of hardSkills">
+              <tr *ngFor="let hardSkill of hardSkills; let i=index">
                 <td>
                   <div class="d-flex align-items-center">
                     <div>
@@ -35,6 +35,17 @@
 
                 </td>
                 <td class="text-center">
+                  <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upSkill(i, 'hard')">
+                    <span class="btn-wrapper--icon">
+                      <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+                    </span>
+                  </button>
+                  <button *ngIf="i!==hardSkills!.length-1" (click)="downSkill(i, 'hard')" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+                    <span class="btn-wrapper--icon">
+                      <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+                    </span>
+                  </button>
+
                   <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editHardSkill(hardSkill._id)">
                     <span class="btn-wrapper--icon">
                       <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>
@@ -81,7 +92,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let softSkill of softSkills">
+              <tr *ngFor="let softSkill of softSkills; let i=index">
                 <td class="font-weight-bold">
                   <fa-icon [icon]="['fas', softSkill.icon]"></fa-icon>
                   {{softSkill.title}}
@@ -90,11 +101,17 @@
                 <!--                {{softSkill.description}}-->
                 <!--              </td>-->
                 <td class="text-center">
-                  <!--                <button class="btn p-0 btn-animated-icon btn-animated-icon&#45;&#45;dark d-30" tooltip="modify">-->
-                  <!--                  <span class="btn-wrapper&#45;&#45;icon">-->
-                  <!--                    <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>-->
-                  <!--                  </span>-->
-                  <!--                </button>-->
+                  <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upSkill(i, 'soft')">
+                    <span class="btn-wrapper--icon">
+                      <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+                    </span>
+                  </button>
+                  <button *ngIf="i!==softSkills!.length-1" (click)="downSkill(i, 'soft')" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+                    <span class="btn-wrapper--icon">
+                      <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+                    </span>
+                  </button>
+
                   <button (click)="removeSoftSkill(softSkill.id)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="Remove">
                   <span class="btn-wrapper--icon">
                     <fa-icon [icon]="['fas', 'times']" class="font-size-sm"></fa-icon>

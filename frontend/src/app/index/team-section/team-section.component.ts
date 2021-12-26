@@ -11,21 +11,21 @@ export class TeamSectionComponent implements OnInit {
     {
       name: 'Nour Karoui',
       picture: 'assets/nour.jpg',
-      position: 'Co-founder & Full Stack Developer',
+      position: 'Full Stack Developer',
       githublink: 'https://github.com/nour-karoui',
       linkedinlink: 'https://www.linkedin.com/in/nourkaroui/'
     },
     {
       name: 'Jawher Bouhouch',
       picture: 'assets/jawher.jpg',
-      position: 'Co-founder & Backend Developer',
+      position: 'Full Stack Developer',
       githublink: 'https://github.com/butterjack',
       linkedinlink: 'https://www.linkedin.com/in/jawher-bouhouch/'
     },
     {
       name: 'Alaeddine Abdessalem',
       picture: 'assets/ala.jpg',
-      position: 'Co-founder & Solutions Architect',
+      position: 'Solutions Architect',
       githublink: 'https://github.com/alaeddine-13',
       linkedinlink: 'https://www.linkedin.com/in/alaeddine-abdessalem-549b65169/'
     },

@@ -36,6 +36,7 @@ export class AddHardSkillComponent implements OnInit {
         this.fillEditForm(params['hardSkillId']);
       }
     });
+    this.spinner.show("loading");
     this.technicalSkillsService.getMany().subscribe(result => {
       this.skills = result;
       if(this.edit) {
@@ -45,6 +46,7 @@ export class AddHardSkillComponent implements OnInit {
         this.selectedSkill = this.technicalSkill.skill;
         console.log(this.selectedSkill)
       }
+      this.spinner.hide("loading")
       
     });
   }
