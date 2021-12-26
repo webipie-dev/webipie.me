@@ -15,9 +15,13 @@
 	height: auto;
 	clear: both;
 	display: flex;
+	flex-wrap: wrap;
 }
 .ryker_tm_services .left{
-	width: 50%;
+	flex: 50%;
+	width:100%;
+	max-width:400px;
+	min-width:200px;
 	margin-right: 50px;
 }
 .ryker_tm_services .text{
@@ -94,6 +98,14 @@
 	float: left;
 	padding-left: 50px;
 	position: relative;
+}
+@media (max-width:800px) {
+	.ryker_tm_services .right ul li{
+		width: 100%;
+		padding-left: 50px;
+		margin:auto;
+		margin-top:50px;
+	}
 }
 .ryker_tm_services .right ul li:nth-child(1){
 	margin-top: 50px;
