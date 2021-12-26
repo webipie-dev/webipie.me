@@ -11,6 +11,9 @@
                     <h5 *ngIf="work.company" [style]="'color:'+primaryColor+'!important;filter:brightness(70%)'+';font-family:'+font">{{work.company}}</h5>
                     <h6 *ngIf="work.position" [style]="'font-family:'+font">{{work.position}}</h6>
                   <p [style]="'color:'+primaryColor">{{work.description}}</p>
+                  <div class="cos-nav">
+                    <div *ngFor="let skill of work.skills;" class="cos-btn" [style.borderColor]="primaryColor+'!important'" [style]="'color:white;background-color:'+primaryColor"><p>{{skill}}</p></div>
+                  </div>
                 </div>
                 <div class="cos-middle">
                     <div class="cos-line"></div>
