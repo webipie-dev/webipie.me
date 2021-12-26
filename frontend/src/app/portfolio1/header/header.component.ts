@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild,AfterViewInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  shown: boolean = true; 
+  shown: boolean = false; 
   preloaded: boolean = false; 
   @ViewChild('mynav') mynav:any;
   @ViewChild('preloader') preloader:any;

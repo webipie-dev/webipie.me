@@ -24,6 +24,7 @@ import {
   faPuzzlePiece,
   faUsers
 } from "@fortawesome/free-solid-svg-icons";
+import { ProjectListComponent } from './project-section/project-list/project-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {
     LandingSectionComponent,
     ProjectSectionComponent,
     TestimonialsSectionComponent,
-    Portfolio1Component
+    Portfolio1Component,
+    ProjectListComponent
   ],
   imports: [
     CommonModule,
