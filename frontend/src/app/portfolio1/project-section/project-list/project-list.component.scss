@@ -4,7 +4,6 @@
     flex-wrap: wrap;
     margin-top: 100px;
     position: relative;
-    z-index:1;
 }
 
 .project_element {
@@ -13,6 +12,7 @@
     width: $size;
     height: $size; 
     max-width: 100%;
+    z-index:1;
 
     position: relative;
     margin-bottom: 50px;
@@ -157,3 +157,196 @@
         justify-content: center;
     }
   }
+
+
+
+
+
+  //modal box stuff
+
+  .ryker_tm_modalbox .description_wrap::-webkit-scrollbar{
+    width: 11px;
+  }
+  .ryker_tm_modalbox .description_wrap{
+    scrollbar-width: thin;
+    scrollbar-color: #999 #fff;
+  }
+  .ryker_tm_modalbox .description_wrap:-webkit-scrollbar-track{
+    background: #fff;
+  }
+  .ryker_tm_modalbox .description_wrap::-webkit-scrollbar-thumb{
+    background-color: #999;
+    border-radius: 6px;
+    border: 3px solid #fff;
+  }
+  .ryker_tm_modalbox{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0,0,0,.8);
+    opacity: 0;
+    visibility: hidden;
+    
+    -webkit-transition: all .3s ease;
+       -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+         -o-transition: all .3s ease;
+            transition: all .3s ease;
+  }
+  .ryker_tm_modalbox.opened{
+    opacity: 1;
+    visibility: visible;
+  }
+  .ryker_tm_modalbox .box_inner{
+    position: absolute;
+    top: 70px;
+    bottom: 70px;
+    width: 968px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: -20px;
+    transition-delay: .3s;
+    
+    -webkit-transition: all .3s ease;
+       -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+         -o-transition: all .3s ease;
+            transition: all .3s ease;
+  }
+  .ryker_tm_modalbox.opened .box_inner{
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0px;
+  }
+  .ryker_tm_modalbox .close{
+    position: fixed;
+    left: 100%;
+    top: 0px;
+    margin-left: 40px;
+    z-index: 111111;
+  }
+  .ryker_tm_modalbox .close a{
+    text-decoration: none;
+    color: #fff;
+  }
+  .ryker_tm_modalbox .close .svg{
+    width: 50px;
+    height: 50px;
+  }
+  .ryker_tm_modalbox .description_wrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    padding: 50px;
+    overflow-y: scroll;
+  }
+  .ryker_tm_modalbox .details{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+  }
+  .ryker_tm_modalbox .description_wrap .image{
+    position: relative;
+    max-height: 450px;
+    z-index: -1;
+    margin-bottom: 28px;
+  }
+  .ryker_tm_modalbox .description_wrap .image img{
+    min-width: 100%;
+    opacity: 0;
+  }
+  .ryker_tm_modalbox .description_wrap .image .main{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+  }
+  .ryker_tm_modalbox .details .title{
+    font-weight: 600;
+    font-size: 23px;
+    margin-bottom: 9px;
+  }
+  .ryker_tm_modalbox .details span{
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  .ryker_tm_modalbox .details span a{
+    text-decoration: none;
+    color: #7E7E7E;
+    position: relative;
+    display: inline-block;
+  }
+  .ryker_tm_modalbox .details span a:before{
+    position: relative;
+    content: ".";
+    font-size: 40px;
+    top: -3px;
+    color: #7e7e7e;
+    padding: 0px 9px 0px 5px;
+  }
+  .ryker_tm_news .hide_content{
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: -11;
+    display: none;
+  }
+  .ryker_tm_modalbox .hide_content{
+    width: 100%;
+    float: left;
+  }
+  .ryker_tm_modalbox .hide_content .descriptions{
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+  }
+  .ryker_tm_modalbox .hide_content .descriptions .bigger{
+    color: #888;
+    font-size: 20px;		
+    margin-bottom: 31px;
+  }
+  .ryker_tm_modalbox .hide_content .descriptions p{
+    margin-bottom: 18px;
+  }
+  .ryker_tm_modalbox .hide_content .quotebox{
+    width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .ryker_tm_modalbox .hide_content .quotebox p{
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 18px;
+    border-left: 2px solid #d1701f;
+    padding-left: 30px;
+    color: #000;
+  }
+  .ryker_tm_modalbox .hide_content .icon{
+    position: absolute;
+    left: 0px;
+    top: 10px;
+  }
+  .ryker_tm_modalbox .hide_content .icon .svg{
+    width: 50px;
+    height: 50px;
+  }
+  .ryker_tm_modalbox .button{display: none;}
