@@ -155,6 +155,9 @@
 }
 .cos-element:nth-child(even){
     flex-direction: row-reverse;
+    .cos-nav{
+        justify-content: flex-start;
+    }
     .cos-bubble{
         margin-right:0px;
         margin-left:auto;
@@ -174,6 +177,9 @@
     height:0px !important;
 }
 .cos-element:nth-child(odd){
+    .cos-nav{
+        justify-content: flex-end;
+    }
     .cos-triangle{
         left:-20px !important;
     }
@@ -294,6 +300,7 @@ fa-icon{
     cursor: pointer;
     transition: background-color 0.5s ease;
     margin-bottom:10px;
+    margin-right: 5px;
   }
   .cos-btn:hover , .active{
     color:white !important;
@@ -307,7 +314,6 @@ fa-icon{
   .cos-nav{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
