@@ -8,7 +8,7 @@
         <div class="cos-left">
             <h1 [style]="'color:'+primaryColor+';filter:brightness(70%)'"><div class="cos-firstletter" [style]="'color:'+secondaryColor+';filter:brightness(130%)'">A</div>bout me</h1>
             <h2 *ngIf="position" [style]="'color:'+primaryColor+';filter:brightness(70%)'">I'm {{preposition}} {{position}}</h2>
-            <p [style]="'color:'+primaryColor+';font-family:'+font">{{description}}</p>
+            <div [style]="'color:'+primaryColor+';font-family:'+font" [innerHTML]="description"></div>
             <div class="links">
             <a *ngIf="github" class="cos-btn"  href="{{github | url}}" target="_blank"><fa-icon [icon]="gitHub"></fa-icon></a>
             <a *ngIf="linkedin" class="cos-btn"  href="{{linkedin | url}}" target="_blank"><fa-icon [icon]="linkedIn"></fa-icon></a>

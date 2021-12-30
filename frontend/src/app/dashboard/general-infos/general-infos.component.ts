@@ -7,6 +7,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 
 import Swal from 'sweetalert2';
 
+const descLength = 1500;
+
 @Component({
   selector: 'app-general-infos',
   templateUrl: './general-infos.component.html',
@@ -14,6 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class GeneralInfosComponent implements OnInit {
 
+  descLength = descLength;
   portfolio : PortfolioModel = {} as PortfolioModel;
   portfolioForm = this.formBuilder.group({
     userName: ['',Validators.required],
@@ -24,7 +27,7 @@ export class GeneralInfosComponent implements OnInit {
     linkedIn: [''],
     picture: [''],
     CV: [''],
-    description: ['',[Validators.minLength(10),Validators.maxLength(300)]]
+    description: ['',[Validators.minLength(10),Validators.maxLength(descLength)]]
   });
   submitted = false;
 
