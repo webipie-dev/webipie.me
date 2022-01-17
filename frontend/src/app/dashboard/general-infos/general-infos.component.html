@@ -44,10 +44,10 @@
     <div class="form-row">
       <div class="col-md-12 ">
         <div class="position-relative form-group"><label for="email">About you </label>
-          <app-explanation text="A short paragraph to describe your motivation"></app-explanation>
+          <app-explanation text="A short paragraph to describe your motivation (Use html to format it)"></app-explanation>
         <textarea id="description"
         name="description"
-        placeholder="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat vitae impedit iste esse officiis, eaque dicta at eos. Dolor fugit itaque deserunt asperiores soluta, modi natus error velit. Aut, ad!"
+        placeholder="<h2>this is a title</h2> <p>this is a paragraph</p>"
         type="textarea"
         formControlName="description"
         autosize [minRows]="5"
