@@ -204,7 +204,8 @@
     position: absolute;
     top: 70px;
     bottom: 70px;
-    width: 968px;
+    max-width: 968px;
+    width:100%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
