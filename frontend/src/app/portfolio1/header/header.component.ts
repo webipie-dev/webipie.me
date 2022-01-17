@@ -9,6 +9,7 @@ export class HeaderComponent implements OnInit {
 
   shown: boolean = false; 
   preloaded: boolean = false; 
+  name : string = "John Doe";
   @ViewChild('mynav') mynav:any;
   @ViewChild('preloader') preloader:any;
 
@@ -43,7 +44,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+    this.name = JSON.parse(localStorage.getItem('portfolio')!).userName;
   }
 
   ngAfterViewInit(){

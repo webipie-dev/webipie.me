@@ -5,7 +5,7 @@
             <div class="about_inner">
                 <div class="left wow fadeInLeft" data-wow-duration="1.5s">
                     <div class="image">
-                        <img src="assets/jawher.jpg" alt=""
+                        <img src="{{picture}}" alt=""
                             class="about_image"
                             style=""
                         >
@@ -31,16 +31,16 @@
                 <div class="right wow fadeInRight" data-wow-duration="1.5s">
                     <div class="ryker_tm_title">
                         <span>About Me</span>
-                        <h3>A passionate Senior Designer and Front-End Developer based In NYC, USA</h3>
+                        <h3> I'm {{preposition}} {{position}} </h3>
                     </div>
                     <div class="text">
-                        <p>I am passionate Senior Designer, and I'm very passionate and dedicated to my work. With 7 years experience as a professional Web developer, I have acquired the skills and knowledge necessary to make your project a success.</p>
+                        <p> {{description}} </p>
                     </div>
                     <div class="signature">
                         <img src="img/signature.png" alt="" />
                     </div>
                     <div class="ryker_tm_button">
-                        <a href="#" class="download-btn">Download CV</a>
+                        <a *ngIf="cv" href="{{cv}}" target="_blank" class="download-btn">Download CV</a>
                     </div>
                 </div>
             </div>
