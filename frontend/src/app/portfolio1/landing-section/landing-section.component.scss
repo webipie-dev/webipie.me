@@ -4,6 +4,7 @@
 .ryker_tm_section{
 	width: 100%;
 	height: auto;
+  min-height: 100vh;
 	clear: both;
 	float: left;
     z-index: 1;
@@ -26,6 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f9f9f9;
   
 }
 @media (max-width:800px) {
@@ -77,7 +79,7 @@
   //mix-blend-mode: screen;
   position: relative;
   z-index: 5;
-  font-size: 72px;
+  font-size: calc(40px + 2vw);
   font-weight: 900;
   line-height: 1.3;
 }
