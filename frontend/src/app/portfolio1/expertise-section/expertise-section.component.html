@@ -6,23 +6,29 @@
                 <div class="left">
                     <div class="ryker_tm_title">
                         <span>Services</span>
-                        <h3>I offer a Full-cycle of Web Development Services</h3>
                     </div>
                     <div class="text">
-                        <p>For more than 20 years our experts have been accomplishing enough with modern Web Development, new generation programming language, and Full Stack developers to deliver cost-effective solutions.</p>
+                        <p>For more than 20 years our experts have been accomplishing enough with modern Web
+                            Development, new generation programming language, and Full Stack developers to deliver
+                            cost-effective solutions.</p>
                     </div>
                     <div class="ryker_progress">
-                        <div class="progress_inner" data-value="95">
-                            <span><span class="label">HTML &amp; CSS</span><span class="number">95%</span></span>
-                            <div class="background"><div class="bar"><div class="bar_in"></div></div></div>
-                        </div>
-                        <div class="progress_inner" data-value="80" >
-                            <span><span class="label">JavaScript</span><span class="number">80%</span></span>
-                            <div class="background"><div class="bar"><div class="bar_in"></div></div></div>
-                        </div>
-                        <div class="progress_inner" data-value="90">
-                            <span><span class="label">WordPress</span><span class="number">90%</span></span>
-                            <div class="background"><div class="bar"><div class="bar_in"></div></div></div>
+                        
+                        <div *ngFor="let skill of hardSkills" class="progress_inner">
+                            <span>
+                                <span class="label">{{skill.skill.name}}</span>
+                                <span *ngIf="skill.level" class="number">{{skill.level*10}}%</span>
+                            </span>
+                            <div class="background">
+                                
+                                    <div class="bar_in"
+                                        *ngIf="skill.level"    
+                                        [ngStyle]="{
+                                            'width': skill.level*10+'%'
+                                        }"
+                                    ></div>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

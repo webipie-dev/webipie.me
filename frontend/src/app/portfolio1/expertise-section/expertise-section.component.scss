@@ -63,9 +63,11 @@
 	border-radius: 50px;
 }
 .progress_inner .background .bar_in{
+	position:absolute;
+	top:0;left:0;
 	height:100%;
 	background:#d1701f;
-	width:0px;
+	width:0%;
 	overflow:hidden;
 	border-radius: 50px;
 }
