@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   faBolt,
   faComments,
+  faDrawPolygon,
   faHandsHelping,
   faHourglassStart,
   faLightbulb,
@@ -51,6 +52,6 @@ import { ProjectListComponent } from './project-section/project-list/project-lis
 })
 export class Portfolio1Module { 
   constructor(library: FaIconLibrary){
-    library.addIcons(faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt);
+    library.addIcons(faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faDrawPolygon);
   }
 }
