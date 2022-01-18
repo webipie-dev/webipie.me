@@ -21,7 +21,7 @@ export class ExpertiseSectionComponent implements OnInit {
   ngOnInit(): void {
     this.hardSkills = JSON.parse(localStorage.getItem('portfolio')!).technicalSkills;
     this.softSkills = JSON.parse(localStorage.getItem('portfolio')!).softSkills;
-    console.log(this.hardSkills)
+    console.log(this.softSkills)
   }
 
 }

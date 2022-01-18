@@ -15,6 +15,7 @@
 	height: auto;
 	clear: both;
 	display: flex;
+	justify-content: space-between;
 	flex-wrap: wrap;
 }
 .ryker_tm_services .left{
@@ -93,30 +94,51 @@
 .ryker_tm_services .right ul{
 	margin: 0px 0px 0px -50px;
 	list-style-type: none;
+	display:flex;
+	flex-wrap:wrap;
+	max-width:600px;
+
 }
 .ryker_tm_services .right ul li{
 	margin: 0px 0px 50px 0px;
+	flex-shrink: 0;
 	width: 50%;
-	float: left;
 	padding-left: 50px;
 	position: relative;
 }
-@media (max-width:800px) {
-	.ryker_tm_services .right ul li{
+.ryker_tm_services .right ul li:nth-of-type(even){
+	transform: translateY(30px)
+}
+@media (max-width:1280px) {
+	.ryker_tm_services .services_inner{
+		flex-direction: column;
+		align-items: center;
 		width: 100%;
-		padding-left: 50px;
-		margin:auto;
-		margin-top:50px;
+	}
+	.ryker_tm_services .right{
+		margin:0;
+		width:100%;
+	}
+	.ryker_tm_services .right ul{
+		max-width:90vw;
+		width:fit-content;
+		justify-content: space-around;
+		margin-top: 50px;
+		li{
+			padding:0;
+			margin: 30px;
+			width:fit-content
+		}
+		li:nth-of-type(even){
+			transform: none;
+		}
 	}
 }
-.ryker_tm_services .right ul li:nth-child(1){
-	margin-top: 50px;
-}
+
 .ryker_tm_services .right ul li .list_inner{
-	width: 100%;
-	height: auto;
+	width: 250px;
+	height: 220px;
 	clear: both;
-	float: left;
 	position: relative;
 	background-color: #fff;
 	box-shadow: 0px 0px 20px rgba(0,0,0,.1);
