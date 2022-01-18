@@ -31,32 +31,7 @@
                 </div>
                 <div class="right">
                     <ul >
-                        <li >
-                            <div class="list_inner">
-                                <fa-icon [icon]="design" class="svg"></fa-icon>
-                                <h3 class="title">Design</h3>
-                            </div>
-                        </li>
-                        <li >
-                            <div class="list_inner">
-                                <fa-icon [icon]="design" class="svg"></fa-icon>
-                                <h3 class="title">Development</h3>
-                            </div>
-                        </li>
-                        <li >
-                            <div class="list_inner">
-                                <fa-icon [icon]="star" class="svg"></fa-icon>
-                                <h3 class="title">Quality</h3>
-                            </div>
-                        </li>
-                        <!-- <li >
-                            <div class="list_inner">
-                                <fa-icon [icon]="gears" class="svg"></fa-icon>
-                                <h3 class="title">Maintain</h3>
-                            </div>
-                        </li> -->
-                        <li *ngFor="let skill of softSkills ; let i=index;"
-                            >
+                        <li *ngFor="let skill of softSkills ; let i=index;">
                             <div class="list_inner">
                                 <fa-icon [icon]="skill.icon" class="svg"></fa-icon>
                                 <h3 class="title"> {{skill.title}} </h3>

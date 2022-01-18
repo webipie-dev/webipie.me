@@ -1,7 +1,8 @@
 <!-- CAREER -->
-<section id="career" class="resume-section">
-    <h2 class="text-center font-weight-bold pt-4 vivify fadeIn delay-150" style="color: var(--blue-color);">
-        Career</h2>
+<section id="career" class="resume-section" style="padding: 100px 0;">
+    <h2
+        style="text-align: center;margin-top: 20px;"
+    >Career</h2>
     <div class="resume container">
         <div class="resume_right">
             <div class="row">
@@ -11,99 +12,26 @@
                             <p class="bold">Work Experience</p>
                         </div>
                         <ul>
-                            <li>
+                            <li *ngFor="let work of workExperiences">
                                 <div class="info">
-                                    <p class="semi-bold">Deep Learning Engineer</p>
+                                    <p class="semi-bold">{{work.title}}</p>
                                     <br>
                                     <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">Core Inteligence</i>
+                                    <i style="font-size: 17px;" class="resume-tag">{{work.company}}</i>
 
                                     <br>
                                     <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">07/2021 - Present</i>
+                                    <i style="font-size: 17px" class="resume-tag">{{work.beginDate | date}} - {{work.endDate? (work.endDate | date): 'Present'}}</i>
 
                                     <br>
-                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Australia ( Remotely
-                                        )</i>
-
-                                    <div class="mx-2 mt-4"> • Contributed in designing and implementing
-                                        reinforcement learning models around a 4X game.
-                                    </div>
-                                    <div class="mx-2 mt-1"> • Enhanced performance for existing deep learning models.
-                                    </div>
-                                    <div class="mx-2 mt-1"> • Researched methods for implementing structural causal
-                                        models.
-                                    </div>
+                                    <br>
+                                    <p>{{work.description}}</p>
+                                    <p> skills: </p>
+                                    <ul>
+                                        <div *ngFor="let skill of work.skills"> • {{skill}}</div>
+                                    </ul>
                                 </div>
                             </li>
-
-                            <li>
-                                <div class="info">
-                                    <p class="semi-bold">Software Engineering Intern</p>
-                                    <br>
-                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">University of Michigan</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">06/2021 - 07/2021</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Michigan, USA ( Remotely )</i>
-
-                                    <div class="mx-2 mt-4"> • Represent a decision tree model as an expert rule system.
-                                    </div>
-                                    <div class="mx-2 mt-1"> • Develop the interface with electronjs.
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="info">
-                                    <p class="semi-bold">Software Engineering Intern</p>
-                                    <br>
-                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">FinGenesis</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">04/2021 - 06/2021</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Singapore ( Remotely )</i>
-
-                                    <div class="mx-2 mt-4"> • Monitoring and auditing their system with grafana tool.
-                                    </div>
-                                    <div class="mx-2 mt-1"> • Building an api service with Django.</div>
-                                    <div class="mx-2 mt-1"> • Testing and evaluating their models.</div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="info">
-                                    <p class="semi-bold">Deep Learning Intern</p>
-                                    <br>
-                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">KaizenData</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">06/2020 - 09/2020</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Tunis Tunisia</i>
-
-                                    <div class="mx-2 mt-4"> • Scraping data for AI surveillance project.</div>
-                                    <div class="mx-2 mt-1"> • Social media users profiling.</div>
-                                    <div class="mx-2 mt-1"> • analyze similarity between profiles.</div>
-                                    <div class="mx-2 mt-1"> • Contributed in labeling and cleaning data.</div>
-                                </div>
-                            </li>
-
                         </ul>
                     </div>
                     <div class="resume_item resume_work">
@@ -111,17 +39,13 @@
                             <p class="bold">Achievements</p>
                         </div>
                         <ul>
-                            <li>
+                            <li *ngFor="let ach of achievements">
                                 <div class="info">
-                                    <p class="semi-bold">3rd phase of the Open Start-up Tunisia pre-incubator
-                                        program</p>
-                                    <br>
-                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">OST Tunisia Pre-incubator</i>
+                                    <p class="semi-bold"> {{ach.title}} </p>
 
                                     <br>
                                     <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">06/2020</i>
+                                    <i style="font-size: 17px" class="resume-tag">{{ach.date | date}}</i>
                                 </div>
                             </li>
 
@@ -135,21 +59,20 @@
                             <p class="bold">Education</p>
                         </div>
                         <ul>
-                            <li>
+                            <li *ngFor="let ed of education">
                                 <div class="info">
-                                    <p class="semi-bold">Software Engineering Degree</p>
+                                    <p class="semi-bold">{{ed.level}}</p>
                                     <br>
                                     <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">National Institute of Applied
-                                        Science and Technology</i>
+                                    <i style="font-size: 17px;" class="resume-tag">{{ed.title}}</i>
 
                                     <br>
                                     <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">09/2017 - Present</i>
+                                    <i style="font-size: 17px" class="resume-tag">{{ed.beginDate | date}} - {{ed.endDate | date}}</i>
 
                                     <br>
                                     <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Tunis, Tunisia</i>
+                                    <i style="font-size: 17px" class="resume-tag">{{ed.city}}</i>
                                 </div>
                             </li>
                         </ul>
@@ -159,70 +82,24 @@
                             <p class="bold">Volunteer Experience</p>
                         </div>
                         <ul>
-                            <li>
+                            <li *ngFor="let exp of volunteeringExperiences">
                                 <div class="info">
-                                    <p class="semi-bold">Engineering team member</p>
+                                    <p class="semi-bold"> {{exp.position}} </p>
                                     <br>
                                     <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">DataColab</i>
+                                    <i style="font-size: 17px;" class="resume-tag"> {{exp.organisation}} </i>
 
                                     <br>
                                     <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Tunis, Tunisia</i>
-
-                                    <div class="mx-2 mt-4"> • Raising awareness about artificial intelligence.
-                                    </div>
-                                    <div class="mx-2 mt-1"> • Mentoring learning team members.
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="info">
-                                    <p class="semi-bold">Member</p>
-                                    <br>
-                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">Insat Juinor entreprise</i>
+                                    <i style="font-size: 17px" class="resume-tag">{{exp.city}}</i>
 
                                     <br>
-                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Tunis, Tunisia</i>
-
-                                    <div class="mx-2 mt-4"> • Core member in the development team.</div>
-                                    <div class="mx-2 mt-4"> • Participating in several events.</div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="info">
-                                    <p class="semi-bold">Mentor</p>
                                     <br>
-                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">DataOverflow</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Tunis, Tunisia</i>
-
-                                    <div class="mx-2 mt-4"> • Creating the first cohort alongside the team.</div>
-                                    <div class="mx-2 mt-4"> • Teaching freshmen students Python and ML basics.</div>
-
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="info">
-                                    <p class="semi-bold">Program team member</p>
-                                    <br>
-                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
-                                    <i style="font-size: 17px;" class="resume-tag">CSTC</i>
-
-                                    <br>
-                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
-                                    <i style="font-size: 17px" class="resume-tag">Tunis, Tunisia</i>
-
-                                    <div class="mx-2 mt-4"> • Organize and prepare the program for the event.</div>
-
+                                    <p> {{exp.description}} </p>
+                                    <p> skills: </p>
+                                    <ul>
+                                        <div *ngFor="let skill of exp.skills"> • {{skill}}</div>
+                                    </ul>
                                 </div>
                             </li>
 
