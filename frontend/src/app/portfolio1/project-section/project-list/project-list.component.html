@@ -1,54 +1,37 @@
-<div class="portfolio_list">
-    <div class="project_element" style=""
-        *ngFor="let project of projects; let i=index"
-        (click)="openProject(i)"
-    >
-        <img src="assets/dali.png" alt="" >
-        <div class="backgrounds"></div>
-        <div class="overlay">
-           <h3>{{project.title}}</h3>
-           <p>{{project.status}}</p> 
-        </div>
-    </div>
-    
+<div class="portfolio_list" *ngIf="projects">
+<div class="project_element" style="" *ngFor="let project of projects; let i=index" (click)="openProject(i)">
+	<img *ngIf="project.imgs" [src]="project.imgs[0]" alt="">
+	<div class="backgrounds"></div>
+	<div class="overlay">
+		<h3>{{project.name}}</h3>
+		<p>{{project.name}}</p>
+	</div>
+</div>
 
-    <!-- add opened to display -->
-    <div class="ryker_tm_modalbox {{opened?'opened':''}}"> 
-		<div class="box_inner">
-			<div class="close" style="border-radius: 50%;">
-				<a href="#"
-                    (click)="closeProject($event)"
-                ><img class="svg" src="assets/SVG/cancel.svg" alt=""
-                    style="background-color: white; border-radius: 50%;"
-                ></a>
+
+<!-- add opened to display -->
+<div class="ryker_tm_modalbox {{opened?'opened':''}}">
+	<div class="box_inner">
+		<div class="close" style="border-radius: 50%;">
+			<a href="#" (click)="closeProject($event)"><img class="svg" src="assets/SVG/cancel.svg" alt=""
+					style="background-color: white; border-radius: 50%;"></a>
+		</div>
+		<div class="description_wrap">
+			<div class="image" style="position: relative; min-height: 300px; background-color: #ccc; border-radius: 15px;">
+				<img *ngIf="selectedProject.imgs" [src]="selectedProject.imgs[0]" alt=""
+					style="position: absolute; top:0; left: 0; object-fit: contain; width: 100%; height: 100%; opacity: 1;"
+				>
 			</div>
-			<div class="description_wrap">
-								<div class="image"
-                                    style="min-height: 300px; background-color: #ccc; border-radius: 15px;"
-                                >
-									<img src="img/thumbs/4-3.jpg" alt="">
-									<div class="main" data-img-url="img/news/1.jpg" style="background-image: url(&quot;img/news/1.jpg&quot;);"></div>
-									<a class="ryker_tm_full_link" href="#"></a>
-								</div>
-								<div class="details">
-									<span>{{selectedProject.date}} <a href="#">{{selectedProject.status}}</a></span>
-									<h3 class="title">{{selectedProject.title}}</h3>
-								</div>
-								<div class="hide_content">
-									<div class="descriptions">
-										<p class="bigger"> {{selectedProject.bigP}} </p>
-										<div class="quotebox">
-											<p
-                                                *ngIf="selectedProject.quote"
-                                            >{{selectedProject.quote}}</p>
-										</div>	
-                                        <p *ngFor="let p of selectedProject.ps">
-                                            {{p}}
-                                        </p>									
-									</div>
-								</div>
-							</div>
+			<div class="details">
+				<h3 class="title">{{selectedProject.name}}</h3>
+			</div>
+			<div class="hide_content">
+				<div class="descriptions">
+					<p class="bigger"> {{selectedProject.description}} </p>
+				</div>
+			</div>
 		</div>
 	</div>
-    
+</div>
+
 </div>

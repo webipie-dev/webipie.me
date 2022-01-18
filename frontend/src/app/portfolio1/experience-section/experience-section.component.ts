@@ -22,6 +22,5 @@ export class ExperienceSectionComponent implements OnInit {
     this.volunteeringExperiences = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences;
     this.education = JSON.parse(localStorage.getItem('portfolio')!).education
     this.achievements = JSON.parse(localStorage.getItem('portfolio')!).achievements;
-    console.log(this.education, this.achievements)
   }
 }
