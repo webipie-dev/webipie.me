@@ -1,1 +1,74 @@
-<p>testimonials-section works!</p>
+<!-- TESTIMONIALS -->
+<div class="ryker_tm_section">
+  <div class="ryker_tm_testimonials">
+    <div id="grouploop">
+      <div class="item-wrap">
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+      </div>
+    </div>
+    <div class="col-xl-12">
+      <div class="testimonials_list">
+        <div class="wrapper owl-carousel">
+          <ngx-slick-carousel [config]="config">
+            <div *ngFor="let slide of slides; let i = index" ngxSlickItem>
+              <div class="wr_in item">
+                <div class="list_inner">
+                  <ul class="stars">
+                    <li>
+                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                    </li>
+                    <li>
+                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                    </li>
+                    <li>
+                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                    </li>
+
+                    <li>
+                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                    </li>
+                    <li>
+                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                    </li>
+                  </ul>
+                  <div class="text">
+                    <p>
+                      I rarely like to write reviews, but the developer truly
+                      deserve a standing ovation for their customer support,
+                      customisation and most importantly, friendliness and
+                      professionalism. Very satisfying!!!
+                    </p>
+                  </div>
+                  <div class="details">
+                    <h3 class="author"><span>Albert Einstein</span></h3>
+                    <h3 class="job"><span>Freelancer</span></h3>
+                  </div>
+                  <div class="avatar">
+                    <div class="image" [style]="'background-image:url(assets/about/2.jpg)'"></div>
+                  </div>
+                  <img class="svg myquote" src="assets/svg/quote.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

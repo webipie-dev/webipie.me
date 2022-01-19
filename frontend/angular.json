@@ -34,9 +34,13 @@
               "node_modules/flag-icon-css/css/flag-icon.min.css",
               "node_modules/pe7-icon/dist/scss/pe-icon-7-stroke.scss",
               "src/styles.scss",
+              "node_modules/ionicons/dist/scss/ionicons.scss",
               "./node_modules/ngx-ui-switch/ui-switch.component.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
+            ]
           },
           "configurations": {
             "production": {

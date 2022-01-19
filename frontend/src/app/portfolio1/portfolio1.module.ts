@@ -12,10 +12,15 @@ import { LandingSectionComponent } from './landing-section/landing-section.compo
 import { ProjectSectionComponent } from './project-section/project-section.component';
 import { TestimonialsSectionComponent } from './testimonials-section/testimonials-section.component';
 import { Portfolio1Component } from './portfolio1.component';
-import { Portfolio1RoutingModule } from "./porftolio1-routing.module";
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Portfolio1RoutingModule } from './porftolio1-routing.module';
+import {
+  FaIconLibrary,
+  FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
+  faAngleLeft,
+  faAngleRight,
   faBolt,
   faComments,
   faDrawPolygon,
@@ -23,9 +28,11 @@ import {
   faHourglassStart,
   faLightbulb,
   faPuzzlePiece,
-  faUsers
-} from "@fortawesome/free-solid-svg-icons";
+  faUsers,
+} from '@fortawesome/free-solid-svg-icons';
 import { ProjectListComponent } from './project-section/project-list/project-list.component';
+import { CarouselComponent, CarouselModule } from 'ngx-bootstrap/carousel';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -41,17 +48,29 @@ import { ProjectListComponent } from './project-section/project-list/project-lis
     ProjectSectionComponent,
     TestimonialsSectionComponent,
     Portfolio1Component,
-    ProjectListComponent
+    ProjectListComponent,
   ],
   imports: [
     CommonModule,
     Portfolio1RoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    SlickCarouselModule,
+  ],
 })
-export class Portfolio1Module { 
-  constructor(library: FaIconLibrary){
-    library.addIcons(faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faDrawPolygon);
+export class Portfolio1Module {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(
+      faComments,
+      faUsers,
+      faLightbulb,
+      faPuzzlePiece,
+      faHourglassStart,
+      faHandsHelping,
+      faBolt,
+      faDrawPolygon,
+      faAngleRight,
+      faAngleLeft
+    );
   }
 }
