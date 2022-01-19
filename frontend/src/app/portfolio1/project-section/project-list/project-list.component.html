@@ -1,6 +1,7 @@
 <div class="portfolio_list" *ngIf="projects">
 <div class="project_element" style="" *ngFor="let project of projects; let i=index" (click)="openProject(i)">
 	<img *ngIf="project.imgs" [src]="project.imgs[0]" alt="">
+	<img *ngIf="!project.imgs" src="assets/wallpaper.jpg" alt="">
 	<div class="backgrounds"></div>
 	<div class="overlay">
 		<h3>{{project.name}}</h3>
@@ -21,6 +22,10 @@
 				<img *ngIf="selectedProject.imgs" [src]="selectedProject.imgs[0]" alt=""
 					style="position: absolute; top:0; left: 0; object-fit: contain; width: 100%; height: 100%; opacity: 1;"
 				>
+				<img *ngIf="!selectedProject.imgs" src="assets/wallpaper.jpg" alt=""
+					style="border-radius: 10px; position: absolute; top:0; left: 0; object-fit: contain; width: 100%; height: 100%; opacity: 1;"
+
+					>
 			</div>
 			<div class="details">
 				<h3 class="title">{{selectedProject.name}}</h3>
