@@ -254,12 +254,19 @@
     width: 100%;
     float: left;
     margin-bottom: 20px;
+    &>a>fa-icon {
+      margin: 0 5px;
+      font-size: 20px;
+      &:hover {
+        color: #d1701f;
+      }
+    }
   }
   .ryker_tm_modalbox .description_wrap .image{
     position: relative;
     max-height: 450px;
     z-index: -1;
-    margin-bottom: 28px;
+    margin-bottom: 0;
   }
   .ryker_tm_modalbox .description_wrap .image img{
     min-width: 100%;
@@ -351,3 +358,48 @@
     height: 50px;
   }
   .ryker_tm_modalbox .button{display: none;}
+
+
+  .flex-images {
+    position: absolute;
+    width: 100%; height: 100%;
+    top:0; left: 0;
+    display:flex;
+    overflow:hidden;
+    border: 4px solid grey;
+    border-radius: 15px;
+    &>img{
+      object-fit: cover; 
+      width: 100%; 
+      height: 100%; 
+      opacity: 1 !important;
+      transition: transform 1000ms ease;
+    }
+  }
+
+
+  .select-image-div{
+    text-align:center;
+    margin: 10px 0;
+  }
+  .image-select-btn{
+    border: none ;
+    width: 15px;height:15px;
+    background-color: #7E7E7E;
+    border-radius: 50%;
+    margin: 0 10px;
+    &:focus {
+      outline: 2px solid lightskyblue
+    }
+    &.highlighted {
+      background-color: #d1701f;
+    }
+  }
+
+  .project-skill{
+    border: 1px solid #d1701f;
+    color : #d1701f;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-right: 5px;
+  }
