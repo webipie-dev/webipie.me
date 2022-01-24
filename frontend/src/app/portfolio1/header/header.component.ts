@@ -17,24 +17,23 @@ export class HeaderComponent implements OnInit {
   buttons = [
     {
       name: "About me",
+      selector: "about"
     },
     {
       name: "Expertise",
+      selector: "expertise"
     },
     {
-      name: "Experience",
-    },
-    {
-      name: "Education",
-    },
-    {
-      name: "Portfolio",
+      name: "Career",
+      selector: "career"
     },
     {
       name: "Testimonials",
+      selector: "testimonials"
     },
     {
       name: "Contact me",
+      selector: "contact"
     },
   ]
 
@@ -84,6 +83,18 @@ export class HeaderComponent implements OnInit {
     }
 
     this.shown = !this.shown
+    
+  }
+
+  goto(e:any,selector:string ){
+    e.preventDefault();
+    const element = document.querySelector('#'+selector)
+    if(element){
+      console.log(element)
+      element.scrollIntoView({
+        behavior:'smooth'
+      })
+    }
     
   }
 
