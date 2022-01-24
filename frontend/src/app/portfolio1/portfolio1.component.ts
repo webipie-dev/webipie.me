@@ -12,4 +12,12 @@ export class Portfolio1Component implements OnInit {
   ngOnInit(): void {
   }
 
+  get projectDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).projectDisabled as boolean;
+  }
+  
+  get testimonialsDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).testimonialsDisabled as boolean;
+  }
+  
 }

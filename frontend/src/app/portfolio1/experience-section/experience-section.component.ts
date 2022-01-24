@@ -23,4 +23,20 @@ export class ExperienceSectionComponent implements OnInit {
     this.education = JSON.parse(localStorage.getItem('portfolio')!).education
     this.achievements = JSON.parse(localStorage.getItem('portfolio')!).achievements;
   }
+
+  get educationDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).educationDisabled as boolean;
+  }
+
+  get achievementsDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).achievementsDisabled as boolean;
+  }
+
+  get workExperiencesDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).workExperiencesDisabled as boolean;
+  }
+  
+  get volunteeringExperiencesDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiencesDisabled as boolean;
+  }
 }

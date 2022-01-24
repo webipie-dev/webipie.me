@@ -14,13 +14,10 @@
         <app-experience-section></app-experience-section>
     </div>
     <div #project>
-        <app-project-section></app-project-section>
+        <app-project-section *ngIf="!projectDisabled"></app-project-section>
     </div>
 
     <div #testimonials>
-        <app-testimonials-section></app-testimonials-section>
-    </div>
-    <div style="height:200vh; background-color:rgb(240, 240, 240);">
-
+        <app-testimonials-section *ngIf="!testimonialsDisabled"></app-testimonials-section>
     </div>
 </div>

@@ -31,4 +31,8 @@ export class Portfolio0Component implements OnInit {
   scroll(el : HTMLElement){
     el.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
+
+  get projectDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).projectDisabled as boolean;
+  }
 }

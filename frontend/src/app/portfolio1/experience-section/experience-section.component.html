@@ -6,7 +6,7 @@
         <div class="resume_right">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="resume_item resume_work">
+                    <div class="resume_item resume_work" *ngIf="!workExperiencesDisabled">
                         <div class="title">
                             <p class="bold">Work Experience</p>
                         </div>
@@ -33,7 +33,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="resume_item resume_work">
+                    <div class="resume_item resume_work" *ngIf="!achievementsDisabled">
                         <div class="title">
                             <p class="bold">Achievements</p>
                         </div>
@@ -52,8 +52,8 @@
                     </div>
 
                 </div>
-                <div class="col-md-6">
-                    <div class="resume_item resume_education">
+                <div class="col-md-6" >
+                    <div class="resume_item resume_education" *ngIf="!educationDisabled">
                         <div class="title">
                             <p class="bold">Education</p>
                         </div>
@@ -76,7 +76,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="resume_item resume_education">
+                    <div class="resume_item resume_education" *ngIf="!volunteeringExperiencesDisabled">
                         <div class="title">
                             <p class="bold">Volunteer Experience</p>
                         </div>

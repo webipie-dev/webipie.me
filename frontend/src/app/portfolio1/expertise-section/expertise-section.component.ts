@@ -23,4 +23,11 @@ export class ExpertiseSectionComponent implements OnInit {
     this.softSkills = JSON.parse(localStorage.getItem('portfolio')!).softSkills;
   }
 
+  get technicalSkillsDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).technicalSkillsDisabled as boolean;
+  }
+  
+  get softSkillsDisabled() {
+    return JSON.parse(localStorage.getItem('portfolio')!).softSkillsDisabled as boolean;
+  }
 }
