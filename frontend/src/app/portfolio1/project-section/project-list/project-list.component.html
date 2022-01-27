@@ -23,17 +23,18 @@
 					style="position: relative; min-height: 500px; background-color: #ccc; border-radius: 15px;">
 					<div class="flex-images" *ngIf="selectedProject.imgs">
 						<img 
-							*ngFor="let img of selectedProject.imgs"
+							*ngFor="let img of selectedProject.imgs; let i=index"
 							[src]="img" 
 							alt=""
 							[ngStyle]="{
-								'transform':'translateX(-'+ 100*currentImageIndex +'%)'
+								'transform':'translateX(-'+ 100*currentImageIndex +'%)',
+								'opacity': (currentImageIndex===i)?1:0 
 							}"
 						>
 					</div>
 					
 					<img *ngIf="!selectedProject.imgs" src="assets/wallpaper.jpg" alt=""
-						style="border-radius: 10px; position: absolute; top:0; left: 0; object-fit: contain; width: 100%; height: 100%; opacity: 1;">
+						style="border-radius: 10px; position: absolute; top:0; left: 0; object-fit: cover; width: 100%; height: 100%; opacity: 1;">
 				</div>
 				<div *ngIf="selectedProject.imgs"
 					class="select-image-div"

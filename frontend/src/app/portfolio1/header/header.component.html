@@ -11,10 +11,11 @@
 
         <div class="cos-right {{shown?'shown':''}}">
             <ul>
-                <a 
-                    href="" 
+                <a
                     *ngFor="let button of buttons;let i= index;"
-                    [ngStyle]="{transitionDelay: i*30+'ms'}"    
+                    [ngStyle]="{transitionDelay: i*30+'ms'}"
+                    (click) = "goto($event, button.selector)"
+                    style="cursor:pointer"
                 >
                     {{button.name}}
                 </a>
