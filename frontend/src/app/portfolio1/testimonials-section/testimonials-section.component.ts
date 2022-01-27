@@ -16,7 +16,17 @@ export class TestimonialsSectionComponent implements OnInit {
     nextArrow:
       "<button type='button' class='slick-next'><i class='ion-ios-arrow-forward font-size-xl'></i></fa-icon></button>",
   };
+  square : boolean = true;
+  textAlign : string = 'center';
+  font="Montserrat";
+  testimonials = JSON.parse(localStorage.getItem('portfolio')!).testimonials ?? [];
+  
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.font = JSON.parse(localStorage.getItem('portfolio')!).template.font;
+
+    if(JSON.parse(localStorage.getItem('portfolio')!).template.testimonials.picture == 'rounded') this.square = false;
+    this.textAlign = JSON.parse(localStorage.getItem('portfolio')!).template.testimonials.textAlign;
+  }
 }

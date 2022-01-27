@@ -1451,7 +1451,6 @@ h6 {
   clear: both;
   float: left;
   margin-bottom: 150px;
-  
 }
 #grouploop {
   width: 100%;
@@ -1469,7 +1468,7 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
-  animation : loop 10s infinite linear;
+  animation: loop 10s infinite linear;
 }
 @keyframes loop {
   0% {
@@ -2441,4 +2440,26 @@ h6 {
   .ryker_tm_modalbox .description_wrap {
     padding: 20px;
   }
+}
+.cos-container {
+  width: 90vw;
+  max-width: 280px;
+}
+.cos-container img {
+  border-radius: 200px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.356);
+  margin-bottom: 10px;
+}
+.cos-container h4 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+.cos-container p {
+  margin-top: 20px;
+  text-align: left;
+  word-wrap: break-word;
+}
+.square {
+  border-radius: 200px !important;
 }

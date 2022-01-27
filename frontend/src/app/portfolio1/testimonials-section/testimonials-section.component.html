@@ -1,5 +1,5 @@
 <!-- TESTIMONIALS -->
-<div class="ryker_tm_section" style="background-color: white;">
+<div class="ryker_tm_section" style="background-color: white">
   <div class="ryker_tm_testimonials">
     <div id="grouploop">
       <div class="item-wrap">
@@ -25,43 +25,64 @@
       <div class="testimonials_list">
         <div class="wrapper owl-carousel">
           <ngx-slick-carousel [config]="config">
-            <div *ngFor="let slide of slides; let i = index" ngxSlickItem>
+            <div
+              *ngFor="let testimonial of testimonials; let i = index"
+              ngxSlickItem
+            >
               <div class="wr_in item">
                 <div class="list_inner">
                   <ul class="stars">
                     <li>
-                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
                     </li>
                     <li>
-                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
                     </li>
                     <li>
-                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
                     </li>
 
                     <li>
-                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
                     </li>
                     <li>
-                      <img class="svg" src="assets/svg/star.svg" alt="" />
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
                     </li>
                   </ul>
                   <div class="text">
-                    <p>
-                      I rarely like to write reviews, but the developer truly
-                      deserve a standing ovation for their customer support,
-                      customisation and most importantly, friendliness and
-                      professionalism. Very satisfying!!!
+                    <p [style.textAlign]="textAlign === 'right'? 'left':'center'" [style.fontFamily]="font">
+                      {{ testimonial.description }}
                     </p>
                   </div>
                   <div class="details">
-                    <h3 class="author"><span>Albert Einstein</span></h3>
-                    <h3 class="job"><span>Freelancer</span></h3>
+                    <h4
+                      class="author"
+                      [style.textAlign]="textAlign === 'right'? 'left':'center'"
+                      [style.fontFamily]="font"
+                    >
+                      <span>{{ testimonial.name }}</span>
+                    </h4>
+                    <h4
+                      class="job"
+                      [style.textAlign]="textAlign === 'right'? 'left':'center'"
+                      [style.fontFamily]="font"
+                    >
+                      <span>{{ testimonial.position }}</span>
+                    </h4>
                   </div>
-                  <div class="avatar">
-                    <div class="image" [style]="'background-image:url(assets/about/2.jpg)'"></div>
+                  <div [class]="!square ? 'avatar square' : 'avatar'">
+                    <div
+                      class="image"
+                      [style]="
+                        'background-image:url(' +
+                        (testimonial.photo
+                          ? testimonial.photo
+                          : 'assets/johndoe.jpg') +
+                        ')'
+                      "
+                    ></div>
                   </div>
-                  <img class="svg myquote" src="assets/svg/quote.svg" alt="" />
+                  <img class="svg myquote" src="assets/SVG/quote.svg" alt="" />
                 </div>
               </div>
             </div>
@@ -71,4 +92,3 @@
     </div>
   </div>
 </div>
-
