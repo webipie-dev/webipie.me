@@ -36,13 +36,13 @@ const addProject = async (req, res, next) => {
     next(ApiError.NotFound('Portfolio Not Found'));
     return;
   }
-
+  if(!req.body.imgs) {
+    delete req.body.imgs;
+  }
   const project = new Project({
     ...req.body,
     "portfolio": portfolioId
   });
-
-
 
   await project.save();
   portfolio = await Portfolio.findOneAndUpdate({"_id":portfolioId}, { $push: { projects: project } }, {new: true})
@@ -58,7 +58,6 @@ const editOneProject = async (req, res, next) => {
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
-
   if (!project) {
     next(ApiError.NotFound('Project Not Found'));
     return;
@@ -87,7 +86,7 @@ const editOneProject = async (req, res, next) => {
       await bulkQueries.push({
         updateOne: {
           "filter": { _id: id},
-          "update": { $addToSet: {imgs: {$each: imgs} } }
+          "update": { $addToSet : {imgs: {$each: imgs} } }
         }
       })
     }
@@ -99,19 +98,19 @@ const editOneProject = async (req, res, next) => {
         }
       })
     }
-   
+
 
   const projectEdited = await Project.bulkWrite(bulkQueries, {ordered: false})
     .catch((err) => {
       res.status(400).json({errors: [{ message: err.message }]});
     });
-  
-  project = await Project.findById(id);  
+
+  project = await Project.findById(id);
   const portfolio = await Portfolio.findByIdAndUpdate(
-    {"_id": project.portfolio}, 
-    { $set: { "projects.$[elem]" : project } } , 
+    {"_id": project.portfolio},
+    { $set: { "projects.$[elem]" : project } } ,
     { arrayFilters: [ { "elem._id": project._id } ] , new: true}
-  );  
+  );
 
   res.status(200).send({projectEdited, portfolio});
 };
@@ -127,14 +126,14 @@ const deleteManyProjects = async (req, res, next) => {
     });
 
   const portfolio = await Portfolio.findByIdAndUpdate(
-    {"_id": portfolioId}, 
+    {"_id": portfolioId},
     {
-      $pull: { 
-        projects: { 
+      $pull: {
+        projects: {
           _id: { $in: ids }
         }
       }
-    },  
+    },
     {new: true}
   );
 

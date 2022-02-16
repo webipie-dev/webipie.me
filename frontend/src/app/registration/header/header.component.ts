@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { faAngleRight, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from "../../_shared/services/auth.service";
