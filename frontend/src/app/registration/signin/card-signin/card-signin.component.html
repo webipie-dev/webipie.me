@@ -1,25 +1,31 @@
 <div [class]="delay? 'cardd':'cardd hidden'">
-    <h1>Welcome</h1>
-    <h3>Login to Webipie</h3>
-    <!-- Error msg design
-    <div class="error">
-        <p>error</p>
-    </div>
-    -->
-    <p>Enter details</p>
-    <form>
-        <div class="input"><input type="email" name="email" [(ngModel)]="email" placeholder="Email Adress"></div>
-        <div class="input"><input type="password" name="password" [(ngModel)]="password" placeholder="Password"></div>
-        <button type="submit" (click)="signIn()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()">Login</button>
-    </form>
-    <p style="margin: auto;margin-top:20px">Don't have an account? sign up <a [routerLink]="['/register/signup']" style="color:#3aaf85;font-weight:700">here</a></p>
+  <h1>Welcome</h1>
+  <h3>Login to Webipie</h3>
+  <!-- Error msg design
+  <div class="error">
+      <p>error</p>
+  </div>
+  -->
+  <p>Enter details</p>
+  <form>
+    <div class="input"><input [(ngModel)]="email" name="email" placeholder="Email Adress" type="email"></div>
+    <div class="input"><input [(ngModel)]="password" name="password" placeholder="Password" type="password"></div>
+    <button (click)="signIn()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()" type="submit">
+      Login
+    </button>
+  </form>
+  <p style="margin: auto;margin-top:20px">Don't have an account? sign up <a [routerLink]="['/register/signup']"
+                                                                            style="color:#3aaf85;font-weight:700">here</a>
+  </p>
+  <p style="margin: auto;margin-top:20px"><a [routerLink]="['/register/forget-password']" style="color:#3aaf85;font-weight:700; cursor: pointer;">Forgot Password ?</a></p>
 
-    <div class="line"></div>
-    <p style="margin:auto;margin-bottom:5px;">Or login using</p>
-    <div class="logos">
-        <fa-icon style="color:#DB4437; opacity: 0.3" [icon]="google" ></fa-icon>
-        <fa-icon style="color:#0072b1; opacity: 0.3" [icon]="linkedin" ></fa-icon>
-    </div>
+  <div class="line"></div>
+  <p style="margin:auto;margin-bottom:5px;">Or login using</p>
+  <div class="logos">
+    <fa-icon [icon]="google" style="color:#DB4437; opacity: 0.3"></fa-icon>
+    <fa-icon [icon]="linkedin" style="color:#0072b1; opacity: 0.3"></fa-icon>
+  </div>
 
 </div>
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+<ngx-spinner [fullScreen]="true" bdColor="rgba(0, 0, 0, 0.8)" color="#3aaf85" size="medium" type="square-jelly-box"><p
+  style="color: white"> Saving... </p></ngx-spinner>

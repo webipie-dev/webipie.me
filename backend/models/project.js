@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const projectSchema = Schema({
         name: {type: String, required: true},
         description: {type: String, required: true},
-        imgs: {type: [String], required: false},
+        imgs: {type: [String], default: []},
         video: {type: String, required: false},
         skills: {type: [String], required: false},
         link: {type: String, required: false},

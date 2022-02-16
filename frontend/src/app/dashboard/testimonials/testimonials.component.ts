@@ -38,4 +38,36 @@ export class TestimonialsComponent extends ToggleSection implements OnInit {
     })
   }
 
+  upTestimonial(i: number){
+    let aux = this.testimonials![i];
+    this.testimonials![i] = this.testimonials![i-1]
+    this.testimonials![i-1] = aux
+  }
+
+  downTestimonial(i: number){
+    let aux = this.testimonials![i];
+    this.testimonials![i] = this.testimonials![i+1]
+    this.testimonials![i+1] = aux
+  }
+
+  compareArrays(array1: any, array2: any){
+    return array1.length === array2.length && array1.every((value: any, index: any) => { 
+      return value._id===array2[index]._id && value.id===array2[index].id
+    })
+  }
+
+  ngOnDestroy(): void {
+    let portfolio: any = JSON.parse(localStorage.getItem('portfolio')!);
+    let body: any = {}
+    if(!this.compareArrays(this.testimonials, JSON.parse(localStorage.getItem('portfolio')!).testimonials)){ 
+      body.testimonials = this.testimonials
+    }
+    if(Object.keys(body).length !== 0){
+      this.portfolioService.edit(portfolio.id, body).subscribe(
+        (result) => {
+          localStorage.setItem('portfolio', JSON.stringify(result));
+        }
+      );
+    }
+  }
 }

@@ -1,9 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WorkExperienceModel} from "../../_shared/models/work-experience.model";
 import {VolunteeringExperienceModel} from "../../_shared/models/volunteering-experience.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {SoftSkillService} from "../../_shared/services/soft-skill.service";
-import {TechnicalSkillService} from "../../_shared/services/technical-skill.service";
 import {VolunteeringExperienceService} from "../../_shared/services/volunteering-experience.service";
 import {WorkExperienceService} from "../../_shared/services/work-experience.service";
 import { DoubleToggleSection } from '../double-toggle-section/double-toggle-section';
@@ -15,7 +13,7 @@ import {NgxSpinnerService} from "ngx-spinner";
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss']
 })
-export class ExperienceComponent extends DoubleToggleSection implements OnInit {
+export class ExperienceComponent extends DoubleToggleSection implements OnInit, OnDestroy {
 
   constructor(private router: Router, private route: ActivatedRoute,
               private volunteeringExperienceService: VolunteeringExperienceService,
@@ -29,7 +27,6 @@ export class ExperienceComponent extends DoubleToggleSection implements OnInit {
 
   ngOnInit(): void {
     this.workExperiences = JSON.parse(localStorage.getItem('portfolio')!).workExperiences;
-    console.log(this.workExperiences);
     this.volunteeringExperiences = JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences;
   }
 
@@ -57,5 +54,53 @@ export class ExperienceComponent extends DoubleToggleSection implements OnInit {
       this.spinner.hide();
       this.ngOnInit();
     })
+  }
+
+  upExperience(i: number, type: any){
+    if(type == "work"){
+      let aux = this.workExperiences![i];
+      this.workExperiences![i] = this.workExperiences![i-1]
+      this.workExperiences![i-1] = aux
+    }else if(type == "volunteer"){
+      let aux = this.volunteeringExperiences![i];
+      this.volunteeringExperiences![i] = this.volunteeringExperiences![i-1]
+      this.volunteeringExperiences![i-1] = aux
+    }
+  }
+
+  downExperience(i: number, type: any){
+    if(type == "work"){
+      let aux = this.workExperiences![i];
+      this.workExperiences![i] = this.workExperiences![i+1]
+      this.workExperiences![i+1] = aux
+    }else if(type == "volunteer"){
+      let aux = this.volunteeringExperiences![i];
+      this.volunteeringExperiences![i] = this.volunteeringExperiences![i+1]
+      this.volunteeringExperiences![i+1] = aux
+    }
+  }
+
+  compareArrays(array1: any, array2: any){
+    return array1.length === array2.length && array1.every((value: any, index: any) => { 
+      return value._id===array2[index]._id && value.id===array2[index].id
+    })
+  }
+
+  ngOnDestroy(): void {
+    let portfolio: any = JSON.parse(localStorage.getItem('portfolio')!);
+    let body: any = {}
+    if(!this.compareArrays(this.workExperiences, JSON.parse(localStorage.getItem('portfolio')!).workExperiences)){ 
+      body.workExperiences = this.workExperiences
+    }
+    if(!this.compareArrays(this.volunteeringExperiences, JSON.parse(localStorage.getItem('portfolio')!).volunteeringExperiences)){ 
+      body.volunteeringExperiences = this.volunteeringExperiences
+    }
+    if(Object.keys(body).length !== 0){
+      this.portfolioService.edit(portfolio.id, body).subscribe(
+        (result) => {
+          localStorage.setItem('portfolio', JSON.stringify(result));
+        }
+      );
+    }
   }
 }

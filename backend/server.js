@@ -48,8 +48,9 @@ mongoose.connect(mongoURL, {
   .then(() => {
     console.log('everything in place');
   })
-  .catch(() => {
+  .catch((e) => {
     console.log('connection failed');
+    console.log(e);
   });
 
   const onListening = () => {

@@ -6,6 +6,7 @@ import { RegistrationComponent } from "./registration.component";
 import {ConfirmationComponent} from "./confirmation/confirmation.component";
 import {LoginAuthGuardService as LoginAuthGuard} from "../_shared/services/login-auth-guard.service";
 import {LinkedinVerifComponent} from "./linkedin-verif/linkedin-verif.component";
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 
 const routes: Routes = [{
   path: '',
@@ -28,6 +29,10 @@ const routes: Routes = [{
     {
       path: 'linkedin-verif',
       component: LinkedinVerifComponent
+    },
+    {
+      path: 'forget-password',
+      component: ForgotPasswordComponent
     }
   ]
 }];
