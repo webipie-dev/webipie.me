@@ -155,6 +155,9 @@
 }
 .cos-element:nth-child(even){
     flex-direction: row-reverse;
+    .cos-nav{
+        justify-content: flex-start;
+    }
     .cos-bubble{
         margin-right:0px;
         margin-left:auto;
@@ -174,6 +177,9 @@
     height:0px !important;
 }
 .cos-element:nth-child(odd){
+    .cos-nav{
+        justify-content: flex-end;
+    }
     .cos-triangle{
         left:-20px !important;
     }
@@ -284,3 +290,31 @@ fa-icon{
         transform : translateY(-2px);
     }
 }
+
+.cos-btn{
+    padding:5px;
+    padding-right:20px;
+    padding-left:20px;
+    border:2px solid #202e37;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    margin-bottom:10px;
+    margin-right: 5px;
+  }
+  .cos-btn:hover , .active{
+    color:white !important;
+    background-color: #202e37 !important;
+  }
+  .cos-btn p{
+    padding:0px;
+    margin:0px;
+  }
+
+  .cos-nav{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
