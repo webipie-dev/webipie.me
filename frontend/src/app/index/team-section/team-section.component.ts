@@ -31,7 +31,7 @@ export class TeamSectionComponent implements OnInit {
     },
     {
       name: 'Med Amine Hamdouni',
-      picture: 'https://media-exp1.licdn.com/dms/image/C4D03AQEmmk2DS-OP7g/profile-displayphoto-shrink_800_800/0/1617576000611?e=1637798400&v=beta&t=GeYyCd8DT1a6lLZpvocy5ZJFXc0qMtJB9SmRRAEFxsw',
+      picture: 'assets/amine.jpg',
       position: 'Frontend Developer',
       githublink: 'https://github.com/Dopeamin',
       linkedinlink: 'https://www.linkedin.com/in/aminehmd/'
