@@ -17,7 +17,7 @@ export class CardSigninComponent implements OnInit {
 
   delay=false;
   google=faGoogle;
-  linkedin=faLinkedinIn
+  linkedin=faLinkedinIn;
   email: string = '';
   password: string = '';
   constructor(
@@ -99,5 +99,4 @@ export class CardSigninComponent implements OnInit {
       );
     })
   }
-
 }
