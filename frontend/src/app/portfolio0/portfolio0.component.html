@@ -12,8 +12,8 @@
 <div #education>
 <app-education-section></app-education-section>
 </div>
-<div #portfolio>
-<app-project-section></app-project-section>
+<div  #portfolio>
+<app-project-section *ngIf="!projectDisabled"></app-project-section>
 </div>
 <div #achievements>
     <app-achievements-section></app-achievements-section>

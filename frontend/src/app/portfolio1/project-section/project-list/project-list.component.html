@@ -1,0 +1,74 @@
+<div class="portfolio_list" *ngIf="projects">
+	<div class="project_element" style="" *ngFor="let project of projects; let i=index" (click)="openProject(i)">
+		<img *ngIf="project.imgs" [src]="project.imgs[0]" alt="">
+		<img *ngIf="!project.imgs" src="assets/wallpaper.jpg" alt="">
+		<div class="backgrounds"></div>
+		<div class="overlay">
+			<h3>{{project.name}}</h3>
+			<p>{{project.name}}</p>
+		</div>
+	</div>
+
+	<!-- add opened to display -->
+	<div class="ryker_tm_modalbox {{opened?'opened':''}}" >
+		<div
+			style="position: absolute; top:0; left:0; width: 100%;height:100%;z-index:-1"
+			(click)="closeProject($event)"
+		>
+
+		</div>
+		<div class="box_inner" >
+			<div class="description_wrap">
+				<div class="image"
+					style="position: relative; min-height: 500px; background-color: #ccc; border-radius: 15px;">
+					<div class="flex-images" *ngIf="selectedProject.imgs">
+						<img 
+							*ngFor="let img of selectedProject.imgs; let i=index"
+							[src]="img" 
+							alt=""
+							[ngStyle]="{
+								'transform':'translateX(-'+ 100*currentImageIndex +'%)',
+								'opacity': (currentImageIndex===i)?1:0 
+							}"
+						>
+					</div>
+					
+					<img *ngIf="!selectedProject.imgs" src="assets/wallpaper.jpg" alt=""
+						style="border-radius: 10px; position: absolute; top:0; left: 0; object-fit: cover; width: 100%; height: 100%; opacity: 1;">
+				</div>
+				<div *ngIf="selectedProject.imgs"
+					class="select-image-div"
+				>
+					<button 
+						*ngFor="let img of selectedProject.imgs; let i =index;"
+						(click)="selectImg(i)"
+						class="image-select-btn {{(i===currentImageIndex)&&'highlighted'}} " 
+					>
+						
+					</button>
+				</div>
+				<div class="details">
+					<h3 class="title" style="display:inline-block">{{selectedProject.name}}</h3>
+					<a *ngIf="selectedProject.github" target="_blank" href="{{selectedProject.github}}">
+						<fa-icon [icon]="faGithub"></fa-icon>
+					</a>
+					<a *ngIf="selectedProject.link" target="_blank" href="{{selectedProject.link}}">
+						<fa-icon [icon]="faLink"></fa-icon>
+					</a>
+					<div *ngIf="selectedProject.skills">
+						<span
+							class="project-skill" 
+							*ngFor="let skill of selectedProject.skills">
+							{{skill}}
+						</span>
+					</div>
+				</div>
+				<div class="hide_content">
+					<div class="descriptions">
+						<p class="bigger"> {{selectedProject.description}} </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

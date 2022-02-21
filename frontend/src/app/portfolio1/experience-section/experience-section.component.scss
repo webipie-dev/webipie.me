@@ -1,0 +1,113 @@
+ul {
+	list-style-type: none;
+}
+
+
+.bold {
+	font-weight: 700;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.semi-bold {
+	font-weight: 700;
+	font-size: 19px;
+	background-color: #d1701f;
+	color: #ffffff;
+	opacity: 0.8;
+	border-radius: 20px;
+	display: inline-block;
+	padding: 4px 30px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	cursor: pointer;
+}
+
+.semi-bold:hover {
+	opacity: 1;
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+}
+
+.resume {
+	height: auto;
+	display: block;
+}
+
+.resume .resume_item {
+	padding: 25px 0;
+	border-bottom: 2px solid #d1701f;
+	color: #000000;
+}
+
+.resume .resume_right .resume_item:last-child {
+	border-bottom: 0px;
+}
+
+.resume .icon i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.resume .resume_right {
+	padding: 25px;
+}
+
+.resume .resume_right .bold {
+	color: #d1701f;
+}
+
+.resume .resume_right .resume_work ul,
+.resume .resume_right .resume_education ul {
+	padding-left: 40px;
+	overflow: hidden;
+}
+
+.resume .resume_right ul li {
+	position: relative;
+}
+
+.resume .resume_right ul li .date {
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+
+.resume .resume_right ul li .info {
+	margin-bottom: 20px;
+}
+
+.resume .resume_right ul li:last-child .info {
+	margin-bottom: 0;
+}
+
+.resume .resume_right .resume_work ul li:before,
+.resume .resume_right .resume_education ul li:before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: -25px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 2px solid #d1701f;
+}
+
+.resume .resume_right .resume_work ul li:after,
+.resume .resume_right .resume_education ul li:after {
+	content: "";
+	position: absolute;
+	top: 14px;
+	left: -21px;
+	width: 2px;
+	height: 90%;
+	background: #d1701f;
+}
+
+.resume-tag {
+	color: #d1701f;
+	opacity: 0.9;
+}
+
+
+

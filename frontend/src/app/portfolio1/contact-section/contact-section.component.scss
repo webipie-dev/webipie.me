@@ -1,0 +1,207 @@
+.ryker_tm_contact{
+	width: 100%;
+	height: fit-content;
+	clear: both;
+	float: left;
+	padding: 140px 0px 150px 0px;
+    background-color: #f8f8f8;
+}
+
+.ryker_tm_contact .short_info{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding-top: 90px;
+}
+.ryker_tm_contact .short_info ul{
+	margin: 0px 0px 0px -50px;
+	list-style-type: none;
+}
+.ryker_tm_contact .short_info ul li{
+	margin: 0px 0px 50px 0px;
+	width: 33.3333%;
+	float: left;
+	padding-left: 50px;
+}
+.ryker_tm_contact .short_info ul li .list_inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	display: flex;
+	align-items: center;
+}
+.ryker_tm_contact .short_info ul li .logo{
+	display: inline-block;
+	width: 65px;
+    height: 65px;
+    background-color: #fff;
+    border-radius: 100%;
+    position: relative;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 9%);
+}
+.ryker_tm_contact .short_info ul li .svg{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 25px;
+    height: 25px;
+	color: #d1701f;
+	display: block;
+}
+.ryker_tm_contact .short_info ul li .info{
+	padding-left: 30px;
+}
+.ryker_tm_contact .short_info ul li .info h3{
+	font-size: 16px;
+}
+.ryker_tm_contact .short_info ul li .info span{
+	font-family: "Poppins";
+}
+.ryker_tm_contact .wrapper{
+	width: 100%;
+	height: auto;
+	clear: both;
+	display: flex;
+	padding-top: 43px;
+}
+.ryker_tm_contact .desc{
+	max-width: 50%;
+	float: left;
+	padding-top: 73px;
+}
+.ryker_tm_contact .wrapper .left{
+	width: 50%;
+	padding-right: 25px;
+}
+.ryker_tm_contact .fields{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.ryker_tm_contact .fields .first{
+	width: 100%;
+	float: left;
+}
+.ryker_tm_contact .fields ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.ryker_tm_contact .fields ul li{
+	width: 100%;
+	margin: 0px 0px 30px 0px;
+	float: left;
+}
+.ryker_tm_contact .fields ul li input{
+	width: 100%;
+	border: 1px solid rgba(0,0,0,.2);
+	background-color: #fff;
+	border-radius: 10px;
+}
+.ryker_tm_contact .fields ul li input:focus{
+	outline: none;
+	border: 1px solid rgba(0,0,0,.5);
+}
+.ryker_tm_contact .fields .last textarea{
+	width: 100%;
+	border: 1px solid rgba(0,0,0,.2);
+	height: 120px;
+	resize: none;
+	margin-bottom: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+}
+.ryker_tm_contact .fields .last textarea:focus{
+	outline: none;
+	border: 1px solid rgba(0,0,0,.5);
+} 
+.ryker_tm_contact .empty_notice{
+	color: #F52225;
+	margin-bottom: 7px;
+	display: none;
+	text-align: left;
+	font-weight: 500;
+}
+.ryker_tm_contact .contact_error{
+	color: #F52225;
+	text-align: left;
+	font-weight: 500;
+}
+.ryker_tm_contact .returnmessage{
+	color:#3A00FF;
+	margin-bottom: 7px;
+	text-align: left;
+	font-weight: 500;
+}
+.ryker_tm_contact .right{
+	width: 50%;
+	padding-left: 25px;
+	position: relative;
+	top:6px;
+}
+.ryker_tm_contact .map_wrap .map{
+  	min-height: 359px;
+  	width: 100%;
+	border-radius: 10px;
+}
+
+.ryker_tm_title span {
+    font-family: "Poppins";
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #d1701f;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.ryker_tm_title h3 {
+    font-weight: 700;
+    width: 100%;
+    max-width: 700px;
+    font-family: "Poppins";
+}
+
+input,textarea{
+    padding: 10px;
+}
+
+.ryker_tm_button button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #d1701f;
+    border: 2px solid #d1701f;
+    display: inline-block;
+    padding: 15px 50px;
+    font-family: "Poppins";
+    border-radius: 50px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.ryker_tm_button button:hover {
+    background-color: transparent;
+    color: #000;
+}
+
+@media (max-width: 1040px){
+    .ryker_tm_contact .short_info ul li {
+        width: 100%;
+    }
+    .ryker_tm_contact .wrapper .left {
+        width: 100%;
+        padding-right: 0px;
+        margin-bottom: 50px;
+    }
+}
+
+.disabled{
+    background-color: #ddd !important;
+    color: #999 !important;
+    border-color: #999 !important;
+}
