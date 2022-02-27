@@ -30,7 +30,7 @@ passport.use(new JwtStrategy({
       }
 
       // If user did not approve concent, return error
-      if(user.consent === false){
+      if(user.approved === false) {
         return done(ApiError.Forbidden('You must approve consent!'), false);
       }
 

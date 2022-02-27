@@ -18,6 +18,7 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ForgotPasswordCardComponent } from './forgot-password/forgot-password-card/forgot-password-card.component';
+import { ConsentComponent } from './consent/consent.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ForgotPasswordCardComponent } from './forgot-password/forgot-password-c
     LinkedinVerifComponent,
     ForgotPasswordComponent,
     ForgotPasswordCardComponent,
+    ConsentComponent,
   ],
   imports: [
     SlickCarouselModule,
