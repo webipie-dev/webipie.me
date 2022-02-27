@@ -29,6 +29,11 @@ passport.use(new JwtStrategy({
         return done(ApiError.Forbidden('email must be verified!'), false);
       }
 
+      // If user did not approve concent, return error
+      if(user.consent === false){
+        return done(ApiError.Forbidden('You must approve consent!'), false);
+      }
+
       // Otherwise, return the user
       req.user = user;
       done(null, user);

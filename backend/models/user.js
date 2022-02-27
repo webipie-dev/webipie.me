@@ -18,6 +18,7 @@ const userSchema = new Schema({
   verified: { type: Boolean, default: false },
   profilePicture: { type: String, required: false },
   password: { type: String, required: false },
+  approved: { type: Boolean, default: false },
   linkedinId: { type: String, required: false},
   googleId: { type: String, required: false },
   portfolioID: {

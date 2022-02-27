@@ -251,6 +251,15 @@ module.exports = {
         }
     },
 
+    approveConsent: async (req, res, next) => {
+        try {
+            await User.findByIdAndUpdate(req.user.id, { consent: true })
+            res.status(201).send({ success: true })
+        } catch (error) {
+            return next(ApiError.BadRequest('Something went wrong when updating consent'));
+        }
+    },
+
     linkedinOAuth: async (req, res, next) => {
         // get the token from frontend
         const {token} = req.body
