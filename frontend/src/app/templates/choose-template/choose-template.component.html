@@ -14,7 +14,7 @@
             <div class="cos-carousel" [style.width]="carouselwidth+'px'" [style.transform]="'translateX(-'+positionY+'px)'">
 
             <div  *ngFor="let card of selected; let i = index" >
-                <app-card-templates (selectEmitter)="select(i,$event)" [selected]="selected[i]"></app-card-templates>
+                <app-card-templates (selectEmitter)="select(i,$event)" [selected]="selected[i]" [index]="i"></app-card-templates>
             </div>
             <div #target style="position: absolute;top:0;left:0px;opacity:0;z-index:-1"><app-card-templates ></app-card-templates></div>
             </div>

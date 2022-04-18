@@ -1,0 +1,30 @@
+<div class="portfolio1" style="overflow-x: hidden;">
+    <app-header></app-header>
+    <app-landing-section></app-landing-section>
+
+    <div #aboutme>
+        <app-aboutme-section></app-aboutme-section>
+    </div>
+
+    <div #expertise>
+        <app-expertise-section></app-expertise-section>
+    </div>
+
+    <div #experience>
+        <app-experience-section></app-experience-section>
+    </div>
+    <div #project>
+        <app-project-section *ngIf="!projectDisabled"></app-project-section>
+    </div>
+
+    <div #testimonials>
+        <app-testimonials-section *ngIf="!testimonialsDisabled"></app-testimonials-section>
+
+    </div>
+    <div #contact>
+        <app-contact-section></app-contact-section>
+    </div>
+    <div #copyrights>
+        <app-copyrights></app-copyrights>
+    </div>
+</div>

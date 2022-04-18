@@ -103,7 +103,7 @@ export class ChooseTemplateComponent implements OnInit {
     if(this.selectedTemplate){
       const portfolioId = localStorage.getItem('portfolioId') as string;
       if(localStorage.getItem('portfolioId')){
-        this.portfolioService.changeTemplate(portfolioId, {template: this.selectedTemplate}).subscribe(
+        this.portfolioService.changeTemplate(portfolioId, {templateId: this.selectedTemplate.id}).subscribe(
           result => {
             this.router.navigate(['dashboard', 'home']);
           }
