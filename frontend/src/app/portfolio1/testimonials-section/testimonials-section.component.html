@@ -1,0 +1,94 @@
+<!-- TESTIMONIALS -->
+<div class="ryker_tm_section" id="testimonials" style="background-color: white;">
+  <div class="ryker_tm_testimonials">
+    <div id="grouploop">
+      <div class="item-wrap">
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+        <div class="item"><span>Testimonials</span></div>
+      </div>
+    </div>
+    <div class="col-xl-12">
+      <div class="testimonials_list">
+        <div class="wrapper owl-carousel">
+          <ngx-slick-carousel [config]="config">
+            <div
+              *ngFor="let testimonial of testimonials; let i = index"
+              ngxSlickItem
+            >
+              <div class="wr_in item">
+                <div class="list_inner">
+                  <ul class="stars">
+                    <li>
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
+                    </li>
+                    <li>
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
+                    </li>
+                    <li>
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
+                    </li>
+
+                    <li>
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
+                    </li>
+                    <li>
+                      <img class="svg" src="assets/SVG/star.svg" alt="" />
+                    </li>
+                  </ul>
+                  <div class="text">
+                    <p [style.textAlign]="textAlign === 'right'? 'left':'center'" [style.fontFamily]="font">
+                      {{ testimonial.description }}
+                    </p>
+                  </div>
+                  <div class="details">
+                    <h4
+                      class="author"
+                      [style.textAlign]="textAlign === 'right'? 'left':'center'"
+                      [style.fontFamily]="font"
+                    >
+                      <span>{{ testimonial.name }}</span>
+                    </h4>
+                    <h4
+                      class="job"
+                      [style.textAlign]="textAlign === 'right'? 'left':'center'"
+                      [style.fontFamily]="font"
+                    >
+                      <span>{{ testimonial.position }}</span>
+                    </h4>
+                  </div>
+                  <div [class]="!square ? 'avatar square' : 'avatar'">
+                    <div
+                      class="image"
+                      [style]="
+                        'background-image:url(' +
+                        (testimonial.photo
+                          ? testimonial.photo
+                          : 'assets/johndoe.jpg') +
+                        ')'
+                      "
+                    ></div>
+                  </div>
+                  <img class="svg myquote" src="assets/SVG/quote.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

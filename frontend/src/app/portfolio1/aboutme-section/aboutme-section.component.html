@@ -1,0 +1,55 @@
+<!-- ABOUT -->
+<div class="ryker_tm_section" id="about">
+    <div class="ryker_tm_about">
+        <div class="container">
+            <div class="about_inner">
+                <div class="left wow fadeInLeft" data-wow-duration="1.5s">
+                    <div class="image">
+                        <img src="{{picture}}" alt=""
+                            class="about_image"
+                            style=""
+                        >
+                       <!--  <div class="experience">
+                            <h3 class="year" data-img-url="img/about/2.jpg">7</h3>
+                            <div id="circle">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+                                    <defs>
+                                        <path id="circlePath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+                                    </defs>
+                                    <circle cx="150" cy="100" r="75" fill="none"/>
+                                    <g>
+                                        <use xlink:href="#circlePath" fill="none"/>
+                                        <text fill="#000">
+                                            <textpath xlink:href="#circlePath">Years of best and successful work experience</textpath>
+                                        </text>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="right wow fadeInRight" data-wow-duration="1.5s">
+                    <div class="ryker_tm_title">
+                        <span>About Me</span>
+                        <h3> I'm {{preposition}} {{position}} </h3>
+                    </div>
+                    <div class="text">
+                        <p> {{description}} </p>
+                    </div>
+                    <div class="signature">
+                        <img src="img/signature.png" alt="" />
+                    </div>
+                    <div class="ryker_tm_button">
+                        <a *ngIf="cv" href="{{cv}}" target="_blank" class="download-btn">Download CV</a>
+                    </div>
+                    <!-- TODO: FIX CSS -->
+                    <div class="links">
+                        <a *ngIf="github" class="cos-btn"  href="{{github | url}}" target="_blank"><fa-icon [icon]="gitHub"></fa-icon></a>
+                        <a *ngIf="linkedin" class="cos-btn"  href="{{linkedin | url}}" target="_blank"><fa-icon [icon]="linkedIn"></fa-icon></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ABOUT -->

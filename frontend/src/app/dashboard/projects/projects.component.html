@@ -17,12 +17,12 @@
           <th class="text-center">Description</th>
           <th class="text-center">Github</th>
           <th class="text-center">Link</th>
-          <th class="text-right">Actions</th>
+          <th class="text-center">Actions</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr *ngFor="let project of projects">
+        <tr *ngFor="let project of projects; let i=index">
           <td>
             <div><span [routerLink]="" class="font-weight-bold text-black" title="...">{{ project.name }}</span></div>
           </td>
@@ -35,7 +35,18 @@
           <td class="text-center">
             <span class="font-weight-regular">{{ project.link }}</span>
           </td>
-          <td class="text-right">
+          <td class="text-center">
+            <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upProject(i)">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button *ngIf="i!==projects!.length-1" (click)="downProject(i)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+
             <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editProject(project.id)">
               <span class="btn-wrapper--icon">
                 <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>

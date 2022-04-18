@@ -1,0 +1,162 @@
+/*---------------------------------------------------*/
+/*	06) RYKER SERVICES
+/*---------------------------------------------------*/
+
+.ryker_tm_services{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	background-color: #f9f9f9;
+	padding: 140px 0px 103px 0px;
+}
+.ryker_tm_services .services_inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+.ryker_tm_services .left{
+	flex: 50%;
+	width:100%;
+	max-width:400px;
+	min-width:200px;
+	margin-right: 50px;
+}
+.ryker_tm_services .text{
+	width: 100%;
+	float: left;
+	margin-top: 30px;
+	margin-bottom: 37px;
+}
+.ryker_progress{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.progress_inner{
+	width:100%;
+	margin-bottom:25px;
+}
+.progress_inner:last-child{
+	margin-bottom: 0px;
+}
+.progress_inner > span{
+	margin:0px 0px 5px 0px;
+	width:100%;
+	display:block;
+	text-align:left;
+	color: #000;
+	font-family: "Poppins";
+}
+.progress_inner span.number{
+	float: right;
+}
+.progress_inner .background{
+	background:rgba(0,0,0,.09);
+	width:100%;
+	min-width:100%;
+	position:relative;
+	height:7px;
+	border-radius: 50px;
+}
+.progress_inner .background .bar_in{
+	position:absolute;
+	top:0;left:0;
+	height:100%;
+	background:#d1701f;
+	width:0%;
+	overflow:hidden;
+	border-radius: 50px;
+}
+.progress_inner .background .bar{
+	width:0px;
+	height:100%;
+}
+.progress_inner .background .bar.open{
+	-webkit-animation: wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* Safari 4+ */
+	-moz-animation:    wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* Fx 5+ */
+	animation:         wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* IE 10+ */
+	width:100%;	
+}
+
+@-webkit-keyframes wow {0%{ width:0%; } 100%{ width:100%; }}
+@-moz-keyframes wow {0%{ width:0%; } 100%{ width:100%; }}
+@keyframes wow {0%{ width:0%; } 100%{ width:100%; }}
+
+.ryker_tm_services .right{
+	width: 50%;
+	margin-left: 50px;
+}
+.ryker_tm_services .right ul{
+	margin: 0px 0px 0px -50px;
+	list-style-type: none;
+	display:flex;
+	flex-wrap:wrap;
+	max-width:600px;
+
+}
+.ryker_tm_services .right ul li{
+	margin: 0px 0px 50px 0px;
+	flex-shrink: 0;
+	width: 50%;
+	padding-left: 50px;
+	position: relative;
+}
+.ryker_tm_services .right ul li:nth-of-type(even){
+	transform: translateY(30px)
+}
+@media (max-width:1280px) {
+	.ryker_tm_services .services_inner{
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+	.ryker_tm_services .right{
+		margin:0;
+		width:100%;
+	}
+	.ryker_tm_services .left {
+		margin: 0
+	}
+	.ryker_tm_services .right ul{
+		max-width:90vw;
+		width:fit-content;
+		justify-content: space-around;
+		margin:0;
+		margin-top: 50px;
+		li{
+			padding:0;
+			margin: 30px;
+			width:fit-content
+		}
+		li:nth-of-type(even){
+			transform: none;
+		}
+	}
+}
+
+.ryker_tm_services .right ul li .list_inner{
+	width: 250px;
+	height: 220px;
+	clear: both;
+	position: relative;
+	background-color: #fff;
+	box-shadow: 0px 0px 20px rgba(0,0,0,.1);
+	padding: 55px 40px;
+	border-radius: 10px;
+}
+.ryker_tm_services .right ul li .svg{
+	width: 50px;
+	height: 50px;
+	color: #d1701f;
+	margin-bottom: 30px;
+	display: block;
+	font-size:3rem;
+}
+.ryker_tm_services .right ul li .title{
+	font-size: 20px;
+}

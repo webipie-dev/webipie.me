@@ -4,6 +4,7 @@
     margin:0px;
     padding:0px;
     font-family:'Montserrat',sans-serif;
+    word-break: break-word;
 }
 a{
     text-decoration: none;
@@ -151,3 +152,10 @@ ngx-dropzone-image-preview{
   border: 2px solid lightgrey !important;
 }
 
+.portfolio1 *{
+  font-family: 'Mulish' ,sans-serif;
+}
+
+.poppins-font{
+  font-family: 'Poppins',sans-serif;
+}

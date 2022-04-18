@@ -17,12 +17,12 @@
           <th>Title</th>
           <th class="text-center">Start Date</th>
           <th class="text-center">End Date</th>
-          <th class="text-right">Actions</th>
+          <th class="text-center">Actions</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr *ngFor="let education of educationList">
+        <tr *ngFor="let education of educationList; let i=index">
           <td>
             <div><a [routerLink]="" class="font-weight-bold text-black" title="...">{{ education.title }}</a></div>
           </td>
@@ -32,7 +32,18 @@
           <td class="text-center">
             <span class="font-weight-bold">{{ education.endDate | date }}</span>
           </td>
-          <td class="text-right">
+          <td class="text-center">
+            <button *ngIf="i!==0" class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="up" (click)="upEducation(i)">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+            <button *ngIf="i!==educationList!.length-1" (click)="downEducation(i)" class="btn p-0 btn-animated-icon btn-animated-icon--primary d-30" tooltip="down">
+              <span class="btn-wrapper--icon">
+                <fa-icon [icon]="['fas', 'arrow-down']" class="font-size-sm"></fa-icon>
+              </span>
+            </button>
+
             <button class="btn p-0 btn-animated-icon btn-animated-icon--dark d-30" tooltip="modify" (click)="editEducation(education.id)">
                           <span class="btn-wrapper--icon">
                               <fa-icon [icon]="['fas', 'cog']" class="font-size-sm"></fa-icon>

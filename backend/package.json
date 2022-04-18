@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
     "express-validator": "^6.12.0",
+    "generate-password": "^1.7.0",
     "geoip-lite": "^1.4.2",
     "google-auth-library": "^7.3.0",
     "http": "0.0.1-security",

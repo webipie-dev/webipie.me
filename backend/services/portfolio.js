@@ -5,7 +5,8 @@ const { User } = require('../models/user');
 const { createDomain } = require('../services/domain');
 const {clientHostname} = require('../configuration');
 const geoip = require('geoip-lite');
-const date = require('date-and-time')
+const date = require('date-and-time');
+const { METHODS } = require('http');
 
 const getPortfolioUrls = async (req,res) => {
   const urls =await Portfolio.find({}).select({ "url": 1, "_id": 0})
@@ -140,9 +141,12 @@ const editPortfolio = async (req, res, next) => {
   for (const key in req.body) {
     if (key !== 'id') {
       edits[key] = req.body[key];
+      
+      if (Array.isArray(edits[key])){
+        edits[key] = edits[key].map((o) => {return {...o, _id: o.id}})
+      }
     }
   }
-
 
   const portfolio = await Portfolio.updateOne({_id: id}, { $set: edits })
     .catch((err) => {
@@ -178,7 +182,7 @@ const changeTemplate = async (req, res, next) => {
     next(ApiError.NotFound('Template not Found'));
     return;
   }
-  const portfolio = await Portfolio.updateOne({id}, { $set: {
+  const portfolio = await Portfolio.updateOne({_id: id}, { $set: {
     template: template
     } })
     .catch((err) => {

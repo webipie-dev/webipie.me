@@ -23,11 +23,34 @@ import {
   faHourglassStart,
   faLightbulb,
   faPuzzlePiece,
-  faUsers
+  faUsers,
+  faGavel,
+  faProjectDiagram,
+  faUserClock,
+  faBalanceScale,
+  faHandshake,
+  faCommentMedical,
+  faGraduationCap,
+  faUserShield,
+  faAssistiveListeningSystems,
+  faHourglass,
+  faPoll,
+  faPaperPlane,
+  faArrowsAlt,
+  faTasks,
+  faBook,
+  faClock,
+  faDoorOpen,
+  faWrench,
+  faDirections,
+  faRandom,
+  faUserGraduate,
+  faUser,
+  faUserLock
 } from "@fortawesome/free-solid-svg-icons";
 import { ReactiveFormsModule } from '@angular/forms';
-import {UrlPipe} from "../_shared/pipes/urlPipe";
 import { CopyrightsComponent } from './copyrights/copyrights.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -47,18 +70,18 @@ import { CopyrightsComponent } from './copyrights/copyrights.component';
     ContactSectionComponent,
     EducationSectionComponent,
     AchievementsSectionComponent,
-    UrlPipe,
     CopyrightsComponent
   ],
   imports: [
     CommonModule,
     Portfolio0RoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class Portfolio0Module {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt);
+    library.addIcons(faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faBalanceScale, faHandshake, faCommentMedical, faGraduationCap, faUserShield, faAssistiveListeningSystems, faHourglass, faPoll, faPaperPlane, faArrowsAlt, faTasks, faBook, faClock, faDoorOpen, faWrench, faDirections, faRandom, faUserGraduate, faUserLock, faGavel, faProjectDiagram, faUserClock);
   }
 }

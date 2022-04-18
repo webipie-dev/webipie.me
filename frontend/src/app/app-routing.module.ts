@@ -29,6 +29,13 @@ const routes: Routes = [
     loadChildren: () => import('./templates/templates.module')
       .then(m => m.TemplatesModule),
     data: {preload: true}
+  },
+  {
+    path: 'portfolio1',
+    loadChildren: () => {
+      return import('./portfolio1/portfolio1.module')
+            .then(m => m.Portfolio1Module);
+    }
   }
 ];
 
@@ -36,8 +43,13 @@ const templateRoutes: Routes = [
   {
     path: '',
     loadChildren: () => {
-      return import('./portfolio0/portfolio0.module')
-            .then(m => m.Portfolio0Module);
+      const template = JSON.parse(localStorage.getItem('portfolio')!).template.name;
+      if (template === 'template1')
+      return import('./portfolio1/portfolio1.module')
+              .then(m => m.Portfolio1Module);
+      else 
+        return import('./portfolio0/portfolio0.module')
+              .then(m => m.Portfolio0Module);
     }
   }
 ];
