@@ -14,6 +14,7 @@
         <form>
           <div class="position-relative form-group">
             <label class="required">Title</label>
+            
             <ng-select [(ngModel)]="selectedSkill"
                        bindLabel="name"
                        [items]="skills"
@@ -72,3 +73,4 @@
 </div>
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
 
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "ball-scale" [fullScreen] = "true" name="loading"><p style="color: white" > Loading... </p></ngx-spinner>

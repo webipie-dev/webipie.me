@@ -22,6 +22,9 @@ router.route('/signup')
 router.route('/signin')
     .post(passportSignIn, handleErrors(userService.signIn));
 
+router.route('/forgot-password')
+    .post(userService.sendNewPassword);
+
 router.route('/confirmation/:token')
     .get(userService.confirmEmail);
 

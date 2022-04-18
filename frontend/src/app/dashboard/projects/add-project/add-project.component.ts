@@ -28,7 +28,7 @@ export class AddProjectComponent implements OnInit {
   bsRangeValue!: Date[];
   maxDate = new Date();
 
-  // check if we are editing a testimonial or adding a new one
+  // check if we are editing a project or adding a new one
   edit = false;
   project: ProjectModel = {} as ProjectModel;
 
@@ -65,11 +65,9 @@ export class AddProjectComponent implements OnInit {
 
   onSelectImage(event: any) {
     this.images.push(...event.addedFiles);
-    console.log(this.images);
   }
 
   onRemoveImage(event: any) {
-    console.log(event);
     this.images.splice(this.images.indexOf(event), 1);
   }
 

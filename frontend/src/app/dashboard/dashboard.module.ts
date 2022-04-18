@@ -185,7 +185,29 @@ import {
   faArrowAltCircleLeft,
   faAsterisk,
   faCheck,
-  faUsers, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faDoorOpen
+  faUsers, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt,
+  faBalanceScale,
+  faHandshake,
+  faComment,
+  faCommentMedical,
+  faGraduationCap,
+  faUserShield,
+  faAssistiveListeningSystems,
+  faHourglass,
+  faPoll,
+  faPaperPlane,
+  faArrowsAlt,
+  faTasks,
+  faBook,
+  faDoorOpen,
+  faWrench,
+  faDirections,
+  faRandom,
+  faUserGraduate,
+  faUserLock,
+  faGavel, 
+  faProjectDiagram, 
+  faUserClock
 } from '@fortawesome/free-solid-svg-icons';
 import { AddSoftSkillComponent } from './skills/add-soft-skill/add-soft-skill.component';
 import { AddHardSkillComponent } from './skills/add-hard-skill/add-hard-skill.component';
@@ -356,6 +378,6 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
 })
 export class DashboardModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faFacebookF,faCalendarCheck,faAsterisk,faCheck,faCheckCircle,faArrowAltCircleLeft,faExclamation,faExclamationCircle,faStopwatch, faBell, faLinkedinIn, faCalendarAlt, faFacebook, faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faTwitter, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager,  faAngular, faVuejs, faReact, faHtml5, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faGoogle, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon, faUser, faKeyboard, faEye, faChartBar, faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faDoorOpen);
+    library.addIcons(faFacebookF,faCalendarCheck,faAsterisk,faCheck,faCheckCircle,faArrowAltCircleLeft,faExclamation,faExclamationCircle,faStopwatch, faBell, faLinkedinIn, faCalendarAlt, faFacebook, faPrint, faAlignCenter, faMapMarkerAlt, faTachometerAlt, faExternalLinkAlt, faShareSquare, faSitemap, faInfoCircle, faLifeRing, faTwitter, faQuoteRight, faStarHalfAlt, faSync, faShapes, faCarBattery, faTable, faCubes, faPager,  faAngular, faVuejs, faReact, faHtml5, faCheckCircle, faTimesCircle, faBomb, faNetworkWired, faBusAlt, faBirthdayCake, faEyeDropper, faThumbsUp, faCameraRetro, faUnlockAlt, faDownload, faUpload, faReply, faGoogle, faFileImage, faFolderOpen, faBars, faTrashAlt, faSave, faPlayCircle, faEllipsisV, faEllipsisH, faSlidersH, faFileArchive, faAward, faCaretRight, faInstagram, faPinterest, faYoutube, faDiscord, faSlack, faDribbble, faGithub, faPlus, faFolder, faTimes, faEnvelope, faAddressCard, faMap, faCalendarAlt, faImages, faFilm, faClock, faSearch, faChevronRight, faChevronUp, faChevronLeft, faChevronDown, faLink, faLightbulb, faGem, faCog, faDotCircle, faArrowsAltH, faComments, faCommentDots, faKeyboard, faObjectGroup, faUser, faUserCircle, faQuestionCircle, faBuilding, faBell, faFileExcel, faFileAudio, faFileVideo, faFileWord, faFilePdf, faFileCode, faFileAlt, faEye, faChartBar, faPlusCircle, faAngleRight, faAngleUp, faAngleLeft, faAngleDown, faArrowUp, faArrowDown, faArrowRight, faArrowLeft, faStar, faSignOutAlt, faLemon, faUser, faKeyboard, faEye, faChartBar, faComments, faUsers, faLightbulb, faPuzzlePiece, faHourglassStart, faHandsHelping, faBolt, faBalanceScale, faHandshake, faCommentMedical,faGraduationCap, faUserShield, faAssistiveListeningSystems, faHourglass, faPoll, faPaperPlane, faArrowsAlt, faTasks, faBook, faClock, faDoorOpen, faWrench, faDirections,faRandom, faUserGraduate, faUserLock, faGavel, faProjectDiagram, faUserClock);
   }
 }
