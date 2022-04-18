@@ -33,6 +33,7 @@ import {
 import { ProjectListComponent } from './project-section/project-list/project-list.component';
 import { CarouselComponent, CarouselModule } from 'ngx-bootstrap/carousel';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     FontAwesomeModule,
     ReactiveFormsModule,
     SlickCarouselModule,
+    SharedModule,
   ],
 })
 export class Portfolio1Module {

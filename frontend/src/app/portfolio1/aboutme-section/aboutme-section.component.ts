@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'app-aboutme-section',
@@ -12,6 +14,11 @@ export class AboutmeSectionComponent implements OnInit {
   position : string = '';
   preposition = "a";
   cv ="";
+  github ="";
+  linkedin = "";
+
+  gitHub = faGithub;
+  linkedIn = faLinkedin;
 
   constructor() { }
 
@@ -23,6 +30,8 @@ export class AboutmeSectionComponent implements OnInit {
     if(this.position) {
       this.preposition = this.startsWithVowel(this.position) ? 'an' : 'a';
     }
+    this.github = JSON.parse(localStorage.getItem('portfolio')!).github;
+    this.linkedin = JSON.parse(localStorage.getItem('portfolio')!).linkedIn;
   }
 
   startsWithVowel(word: string) {
