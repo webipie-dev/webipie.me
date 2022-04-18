@@ -19,7 +19,7 @@ export class ConfirmationCardComponent implements OnInit {
     if(token){
       this.authService.sendConfirmation(token).subscribe((res) => {
         if(this.authService.isLoggedIn())
-          this.router.navigate(['/templates', 'choose-template']);
+          this.router.navigate(['/register', 'give-consent']);
         else
           this.router.navigate(['/register', 'signin']).then(() =>{
             Swal.fire({
@@ -74,7 +74,10 @@ export class ConfirmationCardComponent implements OnInit {
   emailConfirmed() {
     // fetch user from jwt
     this.authService.isVerified().subscribe(res => {
-      if (res.verified) {
+      if (!res.consent) {
+        this.router.navigate(['/register', 'give-consent'])
+      }
+      else if (res.verified) {
         if(localStorage.getItem('portfolioId')){
           this.router.navigate(['/dashboard', 'home'])
         }else{

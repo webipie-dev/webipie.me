@@ -19,6 +19,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ForgotPasswordCardComponent } from './forgot-password/forgot-password-card/forgot-password-card.component';
 import { ConsentComponent } from './consent/consent.component';
+import { CardConsentComponent } from './consent/card-consent/card-consent.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ConsentComponent } from './consent/consent.component';
     ForgotPasswordComponent,
     ForgotPasswordCardComponent,
     ConsentComponent,
+    CardConsentComponent,
   ],
   imports: [
     SlickCarouselModule,

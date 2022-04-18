@@ -34,6 +34,10 @@ export class AuthService extends GenericService<any>{
     return this.http.get(this.getUrl() + this.suffix + '/confirmation/' + token) as Observable<any>;
   }
 
+  public giveConsent(): Observable<any> {
+    return this.http.patch(this.getUrl() + this.suffix + '/give-consent/', {}, GenericService.addJWT()) as Observable<any>;
+  }
+
   public resendConfirmation(): Observable<any> {
     const token = localStorage.getItem('token')
     return this.http.get(this.getUrl() + this.suffix + '/confirmation/resend/' + token) as Observable<any>;
@@ -61,7 +65,7 @@ export class AuthService extends GenericService<any>{
     return this.http.post(this.getUrl() + this.suffix + '/oauth/linkedin', { token: linkedinToken }) as Observable<any>;
   }
 
-  public isVerified(): Observable<{verified: boolean}> {
+  public isVerified(): Observable<{verified: boolean, consent: boolean}> {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')!
@@ -69,7 +73,7 @@ export class AuthService extends GenericService<any>{
     const httpOptions = {
       headers: httpHeaders
     };
-    return this.http.get(this.getUrl() + this.suffix + '/verified', httpOptions) as unknown as Observable<{verified: boolean}>;
+    return this.http.get(this.getUrl() + this.suffix + '/verified', httpOptions) as unknown as Observable<{verified: boolean, consent: boolean}>;
   }
 
   public changePassword(body: any): Observable<any> {

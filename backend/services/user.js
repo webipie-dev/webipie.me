@@ -175,8 +175,7 @@ module.exports = {
         res.cookie('access_token', token, {
             httpOnly: true
         });
-
-        res.status(200).json({token, portfolioId: req.user.portfolioID, verified: req.user.verified});
+        res.status(200).json({token, portfolioId: req.user.portfolioID, verified: req.user.verified, consent: req.user.consent});
     },
 
     confirmEmail: async (req, res, next) => {
@@ -253,8 +252,8 @@ module.exports = {
 
     approveConsent: async (req, res, next) => {
         try {
-            await User.findByIdAndUpdate(req.user.id, { consent: true })
-            res.status(201).send({ success: true })
+            const user = await User.findByIdAndUpdate(req.user.id, { consent: true })
+            res.status(201).send({ user, success: true })
         } catch (error) {
             return next(ApiError.BadRequest('Something went wrong when updating consent'));
         }
@@ -422,7 +421,7 @@ module.exports = {
     userVerified: async (req, res, next) => {
         const token = req.user;
         if(token.verified) {
-            return res.status(200).json({verified: true});
+            return res.status(200).json({verified: true, consent: token.consent});
         } else {
             return res.status(200).json({verified: false});
         }

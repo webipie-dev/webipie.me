@@ -1,25 +1,24 @@
-<div [ngClass]="{
-    'app-footer--shadow' : globals.footerShadow,
-    'app-footer--opacity-bg' : globals.footerTransparentBg
-  }" class="app-footer text-black-50">
-  <div class="app-footer--first">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/dashboard/faq']">FAQ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="show()">Terms Of Service</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/dashboard/support-request']">Contact Us</a>
-      </li>
-    </ul>
+<div [class]="delay? 'cardd':'cardd hidden'">
+  <h1>Welcome</h1>
+  <h3>Terms & Conditions</h3>
+  <!-- Error msg design
+  <div class="error">
+      <p>error</p>
   </div>
-  <div class="app-footer--second">
-    <span>Webipie User Dashboard</span> © 2021
-  </div>
+  -->
+  <form>
+    <div class="input">
+      <a (click)="show()"><input [(ngModel)]="consent" name="consent" type="checkbox"> I agree to terms and conditions</a>
+    </div>
+    <button (click)="giveConsent()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()" type="submit">
+      Give Consent
+    </button>
+  </form>
+
 </div>
-<div [class]="shown? 'overlay active':'overlay'" (click)="show()">
+<ngx-spinner [fullScreen]="true" bdColor="rgba(0, 0, 0, 0.8)" color="#3aaf85" size="medium" type="square-jelly-box"><p
+  style="color: white"> Saving... </p></ngx-spinner>
+<div [class]="shown? 'overlay active':'hidden'">
   <div class="card">
 
     <h2 style="text-align: center;"><b>TERMS AND CONDITIONS</b></h2>
@@ -112,6 +111,5 @@
     <p>27. <b>Contact Us</b></p>
     <p>Please send your feedback, comments, requests for technical support by email: <b>contact@webipie.me</b>.</p>
     <p style="margin-top: 5em; font-size: 0.7em;">These <a href="https://policymaker.io/terms-and-conditions/">Terms of Service</a> were created for <b>webipie.me</b> by <a href="https://policymaker.io">PolicyMaker.io</a> on 2021-09-21.</p>
-    <button class="btn btn-success">Okay</button>
   </div>
 </div>

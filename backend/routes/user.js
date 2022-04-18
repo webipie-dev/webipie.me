@@ -28,6 +28,9 @@ router.route('/forgot-password')
 router.route('/confirmation/:token')
     .get(userService.confirmEmail);
 
+router.route('/give-consent')
+    .patch(passportJWT, userService.approveConsent);
+
 router.route('/confirmation/resend/:token')
     .get(userService.resend);
 
@@ -41,7 +44,7 @@ router.route('/username')
     .get(authOnly, userService.getUsername);
 
 router.route('/firstvisit')
-    .get(passportJWT, userService.verifyFirstVisit)
+    .get(passportJWT, userService.verifyFirstVisit);
 
 router.route('/guidetour')
     .get(passportJWT, userService.markGuideTourDone);

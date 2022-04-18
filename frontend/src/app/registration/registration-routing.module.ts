@@ -28,6 +28,10 @@ const routes: Routes = [{
       component: ConfirmationComponent
     },
     {
+      path: 'give-consent',
+      component: ConsentComponent
+    },
+    {
       path: 'linkedin-verif',
       component: LinkedinVerifComponent
     },
