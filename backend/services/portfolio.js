@@ -178,7 +178,7 @@ const changeTemplate = async (req, res, next) => {
     next(ApiError.NotFound('Template not Found'));
     return;
   }
-  const portfolio = await Portfolio.updateOne({id}, { $set: {
+  const portfolio = await Portfolio.updateOne({_id: id}, { $set: {
     template: template
     } })
     .catch((err) => {
