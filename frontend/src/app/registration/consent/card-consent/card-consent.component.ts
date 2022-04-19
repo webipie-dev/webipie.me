@@ -65,4 +65,9 @@ export class CardConsentComponent implements OnInit {
   show(){
     this.shown = !this.shown;
   }
+
+  setConsentTrue(){
+    this.consent = true;
+    this.shown = false;
+  }
 }

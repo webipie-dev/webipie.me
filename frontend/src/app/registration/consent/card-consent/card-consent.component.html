@@ -7,7 +7,7 @@
   </div>
   -->
   <form>
-    <div class="input">
+    <div class="input flex">
       <a (click)="show()"><input [(ngModel)]="consent" name="consent" type="checkbox"> I agree to terms and conditions</a>
     </div>
     <button (click)="giveConsent()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()" type="submit">
@@ -18,7 +18,7 @@
 </div>
 <ngx-spinner [fullScreen]="true" bdColor="rgba(0, 0, 0, 0.8)" color="#3aaf85" size="medium" type="square-jelly-box"><p
   style="color: white"> Saving... </p></ngx-spinner>
-<div [class]="shown? 'overlay active':'hidden'">
+<div [class]="shown? 'overlay active':'hidden'" *ngIf="shown">
   <div class="card">
 
     <h2 style="text-align: center;"><b>TERMS AND CONDITIONS</b></h2>
@@ -111,5 +111,8 @@
     <p>27. <b>Contact Us</b></p>
     <p>Please send your feedback, comments, requests for technical support by email: <b>contact@webipie.me</b>.</p>
     <p style="margin-top: 5em; font-size: 0.7em;">These <a href="https://policymaker.io/terms-and-conditions/">Terms of Service</a> were created for <b>webipie.me</b> by <a href="https://policymaker.io">PolicyMaker.io</a> on 2021-09-21.</p>
+    <button (click)="setConsentTrue()" type="submit">
+      Give Consent
+    </button>
   </div>
 </div>
