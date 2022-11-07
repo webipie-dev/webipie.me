@@ -55,7 +55,7 @@ jobs:
           echo "installing angular"
           npm install @angular/cli
           echo "installing dependencies"
-          npm install --force
+          npm install --legacy-peer-deps
           echo "building project"
           npm run build:dev
           aws s3 cp dist/frontend "s3://devwebipie.me" --recursive --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
