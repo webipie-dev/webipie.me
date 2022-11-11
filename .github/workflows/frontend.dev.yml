@@ -5,6 +5,7 @@ on:
     paths:
       - "frontend/**"
       - "terraform/**"
+      - ".github/**"
 
 jobs:
   deploy:
