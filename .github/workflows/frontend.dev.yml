@@ -55,7 +55,6 @@ jobs:
           echo "installing angular"
           npm install @angular/cli --legacy-peer-deps
           echo "installing dependencies"
-          npm list --depth=0
           npm install --legacy-peer-deps
           echo "building project"
           npm run build:dev
