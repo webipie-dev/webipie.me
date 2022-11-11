@@ -5,6 +5,7 @@ on:
     paths:
       - "frontend/**"
       - "terraform/**"
+      - ".github/**"
   workflow_dispatch:
 
 jobs:
@@ -53,7 +54,7 @@ jobs:
         run: |
           cd frontend
           echo "installing angular"
-          npm install @angular/cli
+          npm install @angular/cli --legacy-peer-deps
           echo "installing dependencies"
           npm install --legacy-peer-deps
           echo "building project"
