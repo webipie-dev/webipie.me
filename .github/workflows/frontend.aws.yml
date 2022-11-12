@@ -5,6 +5,7 @@ on:
     paths:
       - "frontend/**"
       - "terraform/**"
+      - ".github/**"
   workflow_dispatch:
 
 name: Frontend Deployment Prod
