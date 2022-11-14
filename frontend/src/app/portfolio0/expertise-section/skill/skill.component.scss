@@ -1,0 +1,130 @@
+.cos-container{
+    display: flex;
+    width:100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:20px;
+}
+.cos-middle{
+  h2{
+    font-size:1.4rem
+  }
+}
+@media(max-width: 950px){
+  .cos-container{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .cos-middle{
+    h2{
+      font-size:5vw;
+    }
+  }
+  .cos-left{
+    margin-bottom: 10px;
+  }
+}
+
+.cos-left,.cos-right{
+    
+    width:90%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.image-container {
+  width: 150px;
+}
+.cos-left{
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    h2{
+      margin-left:20px;
+      margin-right:20px;
+    }
+    
+}
+@media screen and (max-width:500px) {
+  .cos-left{
+    justify-content: center;
+  }
+  .cos-right{
+    p{
+      padding-left:5px;
+      text-align: center;
+      font-size:1.1rem !important;
+    }
+  }
+}
+.cos-right{
+    max-width:700px;
+}
+.stars {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fa-icon {
+      color: #f2b63f;
+      font-size: calc(2vw + 20px);
+        margin:5px;
+      input {
+        margin: none;
+      }
+    }
+  
+    .form-check {
+      position: absolute;
+      bottom: 40px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  
+    p {
+        font-size: calc(1.5vw + 20px) !important;
+      padding: 0px;
+      margin: 4px;
+      color: #f2b63f;
+      font-weight: 700;
+      margin-left: 20px !important;
+    }
+    .btn{
+        font-size:calc(1vw + 20px) !important;
+        text-align: left;
+    }
+  }
+.cos-right p{
+    padding:0px;
+    margin:0px;
+    color:#f2b63f;
+    font-weight: 700;
+    font-size:1.3rem;
+}
+.loading{
+    width:80%;
+    background-color: #f1f5f8;
+    border-radius: 30px;
+    height:40px;
+    position: relative;
+}
+
+.level{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:60%;
+    height:100%;
+    background-color: #f2b63f;
+    box-shadow: 0 0 10px #f2b63f;
+    border-radius: 30px;
+}
+

@@ -1,0 +1,115 @@
+<!-- CAREER -->
+
+<section  class="resume-section" style="padding: 100px 0;">
+    <h2 style="text-align: center;position:relative; top: 30px;z-index: -1">Career</h2>
+    <div class="resume container" id="career">
+        <div class="resume_right">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="resume_item resume_work" *ngIf="!workExperiencesDisabled">
+                        <div class="title">
+                            <p class="bold">Work Experience</p>
+                        </div>
+                        <ul>
+                            <li *ngFor="let work of workExperiences">
+                                <div class="info">
+                                    <p class="semi-bold">{{work.title}}</p>
+                                    <br>
+                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
+                                    <i style="font-size: 17px;" class="resume-tag">{{work.company}}</i>
+
+                                    <br>
+                                    <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
+                                    <i style="font-size: 17px" class="resume-tag">{{work.beginDate | date}} - {{work.endDate? (work.endDate | date): 'Present'}}</i>
+
+                                    <br>
+                                    <br>
+                                    <p>{{work.description}}</p>
+                                    <p> skills: </p>
+                                    <ul>
+                                        <div *ngFor="let skill of work.skills"> • {{skill}}</div>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="resume_item resume_work" *ngIf="!achievementsDisabled">
+                        <div class="title">
+                            <p class="bold">Achievements</p>
+                        </div>
+                        <ul>
+                            <li *ngFor="let ach of achievements">
+                                <div class="info">
+                                    <p class="semi-bold"> {{ach.title}} </p>
+
+                                    <br>
+                                    <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
+                                    <i style="font-size: 17px" class="resume-tag">{{ach.date | date}}</i>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-6" >
+                    <div class="resume_item resume_education" *ngIf="!educationDisabled">
+                        <div class="title">
+                            <p class="bold">Education</p>
+                        </div>
+                        <ul>
+                            <li *ngFor="let ed of education">
+                                <div class="info">
+                                    <p class="semi-bold">{{ed.level}}</p>
+                                    <br>
+                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
+                                    <i style="font-size: 17px;" class="resume-tag">{{ed.title}}</i>
+
+                                    <br>
+                                    <i class=" resume-tag mx-2 fas fa-stopwatch mt-3"></i>
+                                    <i style="font-size: 17px" class="resume-tag">{{ed.beginDate | date}} - {{ed.endDate | date}}</i>
+
+                                    <br>
+                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
+                                    <i style="font-size: 17px" class="resume-tag">{{ed.city}}</i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="resume_item resume_education" *ngIf="!volunteeringExperiencesDisabled">
+                        <div class="title">
+                            <p class="bold">Volunteer Experience</p>
+                        </div>
+                        <ul>
+                            <li *ngFor="let exp of volunteeringExperiences">
+                                <div class="info">
+                                    <p class="semi-bold"> {{exp.position}} </p>
+                                    <br>
+                                    <i class="mx-2 fas fa-map-marker-alt resume-tag"></i>
+                                    <i style="font-size: 17px;" class="resume-tag"> {{exp.organisation}} </i>
+
+                                    <br>
+                                    <i class=" resume-tag mx-2 fas fa-globe-americas mt-3"></i>
+                                    <i style="font-size: 17px" class="resume-tag">{{exp.city}}</i>
+
+                                    <br>
+                                    <br>
+                                    <p> {{exp.description}} </p>
+                                    <p> skills: </p>
+                                    <ul>
+                                        <div *ngFor="let skill of exp.skills"> • {{skill}}</div>
+                                    </ul>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- /CAREER -->

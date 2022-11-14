@@ -1,0 +1,35 @@
+//  Core
+
+.br-rating-vertical-alternate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .br-units {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  .br-unit {
+    display: block;
+    width: 64px;
+    height: 12px;
+    margin: 1px;
+    text-align: center;
+    transition: $transition-base;
+    @include border-radius($border-radius-xs);
+  }
+
+  .br-text {
+    clear: both;
+    width: 100%;
+    font-size: $font-size-lg;
+    text-align: center;
+    font-weight: 500;
+    display: block;
+    padding-top: ($spacer / 2);
+  }
+}

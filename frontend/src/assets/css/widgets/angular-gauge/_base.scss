@@ -1,0 +1,102 @@
+mwl-gauge {
+  flex: 1;
+  display: block;
+}
+mwl-gauge > .gauge > .dial {
+  stroke: var(--light);
+  stroke-width: 2;
+  fill: rgba(255, 255, 255, 0);
+}
+mwl-gauge > .gauge > .value {
+  stroke: var(--first);
+  stroke-width: 2;
+  fill: rgba(255, 255, 255, 0);
+}
+mwl-gauge > .gauge > .value-text {
+  fill: var(--first);
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+mwl-gauge.two {
+}
+mwl-gauge.two > .gauge > .dial {
+  stroke: var(--light);
+  stroke-width: 10;
+}
+mwl-gauge.two > .gauge > .value {
+  stroke: var(--warning);
+  stroke-dasharray: none;
+  stroke-width: 13;
+}
+mwl-gauge.two > .gauge > .value-text {
+  fill: var(--warning);
+}
+
+mwl-gauge.three {
+}
+mwl-gauge.three > .gauge > .dial {
+  stroke: var(--light);
+  stroke-width: 2;
+}
+mwl-gauge.three > .gauge > .value {
+  stroke: var(--success);
+  stroke-width: 5;
+}
+mwl-gauge.three > .gauge > .value-text {
+  fill: var(--success);
+}
+
+mwl-gauge.four > .gauge > .dial {
+  stroke: var(--light);
+  stroke-width: 5;
+}
+mwl-gauge.four > .gauge > .value {
+  stroke: var(--danger);
+  stroke-dasharray: none;
+  stroke-width: 5;
+}
+mwl-gauge.four > .gauge > .value-text {
+  fill: var(--danger);
+}
+
+mwl-gauge.five > .gauge > .dial {
+  stroke: var(--light);
+  stroke-width: 5;
+}
+mwl-gauge.five > .gauge > .value {
+  stroke: var(--info);
+  stroke-dasharray: 25 1;
+  stroke-width: 5;
+}
+mwl-gauge.five > .gauge > .value-text {
+  fill: var(--info);
+  font-size: 0.7em;
+}
+
+mwl-gauge.six > .gauge > .dial {
+  stroke: var(--light);
+  fill: var(--light);
+  stroke-width: 20;
+}
+mwl-gauge.six > .gauge > .value {
+  stroke: var(--dark);
+  stroke-width: 20;
+}
+mwl-gauge.six > .gauge > .value-text {
+  fill: var(--dark);
+  font-size: 0.7em;
+}
+
+mwl-gauge.seven > .gauge > .dial {
+  stroke: transparent;
+  stroke-width: 5;
+  transform: scale(0.9, 0.9) translate3d(5.5px, 5.5px, 0);
+  fill: var(--gray);
+}
+mwl-gauge.seven > .gauge > .value {
+  stroke: var(--primary);
+  stroke-dasharray: none;
+  stroke-width: 5;
+}

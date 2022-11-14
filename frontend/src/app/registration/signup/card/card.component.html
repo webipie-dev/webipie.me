@@ -1,0 +1,27 @@
+<div [class]="delay? 'cardd':'cardd hidden'">
+    <h1>Welcome</h1>
+    <h3>Sign up to Webipie</h3>
+    <!-- Error msg design
+    <div class="error">
+        <p>error</p>
+    </div>
+    -->
+    <p>Enter details</p>
+
+    <form>
+        <div class="input"><input type="text" name="name" [(ngModel)]="name" placeholder="Full Name"></div>
+        <div class="input"><input type="email" name="email" [(ngModel)]="email" placeholder="Email Address"></div>
+        <div class="input pass" style="margin-right:3%"><input type="password" name="password" [(ngModel)]="password" placeholder="Password"></div>
+        <div class="input pass"><input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Repeat Password"></div>
+        <button type="submit" (click)="signUp()" [class.disabled-button]="!isValidForm()" [disabled]="!isValidForm()">Sign Up</button>
+    </form>
+    <p style="margin: auto;margin-top:20px">Already have an account ? Login <a [routerLink]="['/register/signin']" style="color:#3aaf85;font-weight:700">here</a></p>
+    <div class="line"></div>
+    <p style="margin:auto;margin-bottom:5px;">Or sign up using</p>
+    <div class="logos">
+        <fa-icon style="color:#DB4437; opacity: 0.3"  [icon]="google"></fa-icon>
+        <fa-icon style="color:#0072b1; opacity: 0.3" [icon]="linkedin"></fa-icon>
+    </div>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>
+

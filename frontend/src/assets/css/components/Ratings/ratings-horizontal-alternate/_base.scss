@@ -1,0 +1,32 @@
+//  Core
+
+.br-rating-horizontal-alternate {
+  display: block;
+
+  .br-units {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .br-unit {
+    display: block;
+    width: 32px;
+    height: 6px;
+    float: left;
+    margin: 1px;
+    text-align: center;
+    transition: $transition-base;
+    @include border-radius($border-radius-xs);
+  }
+
+  .br-text {
+    font-size: $font-size-base;
+    clear: both;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    display: block;
+    padding-top: ($spacer / 2);
+  }
+}

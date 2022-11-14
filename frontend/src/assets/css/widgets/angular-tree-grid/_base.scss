@@ -1,0 +1,17 @@
+// Angular Tree Grid
+
+.db-tree-view {
+  width: 100%;
+
+  thead {
+    tr {
+      td {
+        padding: ($spacer / 3);
+
+        input {
+          @include border-radius($border-radius-sm);
+        }
+      }
+    }
+  }
+}

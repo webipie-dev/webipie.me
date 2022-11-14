@@ -1,0 +1,10 @@
+app-header{
+    position: fixed;
+    top:0px;
+    left:0px;
+    z-index: 20;
+}
+.body{
+    position: relative;
+    z-index:2;
+}

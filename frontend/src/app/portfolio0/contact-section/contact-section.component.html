@@ -1,0 +1,52 @@
+<div class="cos-container">
+    <div class="cos-content">
+
+        <h1>Get in Touch!</h1>
+        <h3>Contact me for a quick reponse</h3>
+        <div class="cos-contact">
+            <fa-icon [icon]="phone"></fa-icon>
+            <h4>{{phoneNumber}}</h4>
+            <fa-icon [icon]="mail"></fa-icon>
+            <h4>{{email}}</h4>
+        </div>
+        <div class="cos-card {{card}}">
+            <h2>Contact Form</h2>
+            <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+            <div class="cos-form">
+                <div class="cos-left">
+                    <label>Your name</label>
+                    <input type="text" formControlName="name" placeholder="Your Name" [class]='card'/>
+                  <div>
+                    <label for="email">Mail</label>
+                    <input
+                      id="email"
+                      name="email"
+                      placeholder="Email"
+                      type="email"
+                      formControlName="email"
+                      [class]="!f.email.touched? 'form-control':(f.email.errors?.required || f.email.errors?.email)? 'form-control invalid':'form-control valid'">
+                    <!-- Error Handling -->
+                    <div *ngIf="f.email.errors?.required && f.email.touched" class="alert isa_error">
+                      Email is required.
+                    </div>
+                    <div *ngIf="f.email.errors?.email" class="alert isa_error">
+                      Sould be a valid email
+                    </div>
+                    <!-- /Error handling -->
+                  </div>
+
+                  <label>Subject</label>
+                    <input type="text" formControlName="subject" placeholder="Subject" [class]='card'/>
+                </div>
+                <div class="cos-right">
+                    <label>Message</label>
+                    <textarea formControlName="message" placeholder="Your Message" [class]='card'></textarea>
+                </div>
+            </div>
+            <div class="cos-btn-container">
+            <button type="submit" class="cos-btn" [class]='card' [disabled]="!contactForm.valid" [ngClass]="{'disabled' : !contactForm.valid}">Send Message</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

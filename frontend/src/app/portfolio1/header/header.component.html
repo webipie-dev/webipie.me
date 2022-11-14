@@ -1,0 +1,31 @@
+<!-- PRELOADER -->
+<div id="preloader" #preloader [ngClass]="{'preloaded': this.preloaded}">
+    <div class="loader_line"></div>
+</div>
+<!-- /PRELOADER -->
+
+<nav #mynav>
+        <h1 class="logo-name">
+            {{name}}
+        </h1>
+
+        <div class="cos-right {{shown?'shown':''}}">
+            <ul>
+                <a
+                    *ngFor="let button of buttons;let i= index;"
+                    [ngStyle]="{transitionDelay: i*30+'ms'}"
+                    (click) = "goto($event, button.selector)"
+                    style="cursor:pointer"
+                >
+                    {{button.name}}
+                </a>
+                
+            </ul>
+            <div class="show-button" (click)="switch()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+   
+</nav>

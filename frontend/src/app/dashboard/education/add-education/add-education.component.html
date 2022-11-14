@@ -1,0 +1,123 @@
+<div class="row col-xl-12 col-md-12 m-2">
+  <a routerLink='../'  class="back-btn"><fa-icon [icon]="['fas','angle-left']"></fa-icon></a>
+</div>
+<div class="row col-xl-12 col-md-12 justify-content-center wrap-reverse">
+
+  <div class="col-xl-6">
+    <div class="card card-box mb-5">
+      <div class="card-body"><h5 class="card-title font-weight-bold font-size-lg mb-4">Add education</h5>
+        <form (ngSubmit)="onSubmit()" [formGroup]="educationForm">
+          <div class="position-relative form-group"><label class="required" for="exampleEmail">Institute</label>
+            <input class="form-control"
+                   formControlName="title"
+                   id="exampleEmail"
+                   name="name"
+                   placeholder="Title"
+                   type="text"
+                   [(ngModel)]="education.title"
+            >
+            <!-- Error Handling -->
+            <div *ngIf="educationForm.controls.title.errors?.required && educationForm.controls.title.touched" class="alert isa_error">
+              Title is required.
+            </div>
+            <!-- /Error handling -->
+          </div>
+          <div class="position-relative form-group"><label class="required" for="examplePassword">Degree & Field of study</label>
+            <input class="form-control"
+                   formControlName="level"
+                   id="examplePassword"
+                   name="level"
+                   placeholder="Ex; Bachelor in Software Engineering"
+                   type="text"
+                   [(ngModel)]="education.level"
+            >
+            <!-- Error Handling -->
+            <div *ngIf="educationForm.controls.level.errors?.required && educationForm.controls.level.touched" class="alert isa_error">
+              Level is required.
+            </div>
+            <!-- /Error handling -->
+          </div>
+          <div class="row">
+            <div class="form-group col-xl-6 col-md-12">
+              <label class="required">Start Date</label>
+              <div class="input-group input-group-lg mb-5">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
+                                                          class="mx-auto"></fa-icon></span>
+                </div>
+                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }"
+                       bsDatepicker
+                       class="form-control"
+                       placeholder="Select date"
+                       type="text"
+                       formControlName="beginDate"
+                       [(ngModel)]="beginDate"
+                >
+                <!-- Error Handling -->
+                <div *ngIf="educationForm.controls.beginDate.errors?.required && educationForm.controls.beginDate.touched" class="alert isa_error">
+                  Star Date is required.
+                </div>
+                <!-- /Error handling -->
+              </div>
+            </div>
+
+
+            <div class="form-group col-xl-6 col-md-12">
+              <label>End Date</label>
+              <div class="input-group input-group-lg mb-5">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><fa-icon [icon]="['fas', 'calendar-alt']"
+                                                          class="mx-auto"></fa-icon></span>
+                </div>
+                <input [bsConfig]="{ containerClass: 'theme-primary', isAnimated: true }"
+                       bsDatepicker
+                       class="form-control"
+                       placeholder="Select date"
+                       type="text"
+                       formControlName="endDate"
+                       [(ngModel)]="endDate"
+                >
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-group"><label for="city">City</label>
+            <input class="form-control"
+                   formControlName="city"
+                   id="city"
+                   name="password"
+                   placeholder="City"
+                   type="text"
+                   [(ngModel)]="education.city"
+            >
+          </div>
+          <button [disabled]="!educationForm.valid" class="mt-1 btn btn-slack">
+            <span *ngIf="!edit">Add</span>
+            <span *ngIf="edit">Edit</span>
+            Education
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row m-2 col-xl-5 col-md-12">
+    <div class="card-info">
+      <div class="info-container">
+        <fa-icon [icon]="['fas','exclamation-circle']"></fa-icon>
+        <h1>Tips & Information</h1>
+        <p>
+          <strong>Renowned Schools</strong> in your portfolio reflect what a serious person you are.
+          <br>
+          <br>
+          However, <strong>they are not the only important thing</strong> so don't rely solely on them.
+          <br>
+          <br>
+          We advise you to add <strong>no more than 2 institutes</strong>, preferably, include the most relevant ones.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

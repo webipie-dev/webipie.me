@@ -1,0 +1,108 @@
+//  Core
+
+.wizard-alternate-2 {
+  display: block;
+
+  .steps-indicator {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: ($spacer / 2) ($spacer / 1.5) 0 0;
+      flex-grow: 1;
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      a {
+        display: flex;
+        flex-direction: column-reverse;
+        text-align: left;
+        font-size: $font-size-base;
+        color: $gray-900;
+        background: rgba($white, 0.5);
+        cursor: pointer;
+        padding: ($spacer * 1.5) ($spacer * 3);
+        @include border-top-radius($border-radius);
+        transition: $transition-base;
+
+        .step-indicator {
+          .stepper-wrapper {
+            transition: $transition-base;
+            background: $primary-neutral;
+            color: color-yiq($primary-neutral);
+          }
+        }
+      }
+
+      &.current a,
+      a:hover {
+        background: $white;
+        color: $primary;
+
+        .step-indicator {
+          .stepper-wrapper {
+            color: color-yiq($primary);
+            background: $primary;
+          }
+        }
+      }
+
+      &.done a {
+        background: $white;
+        color: $success;
+
+        .step-indicator {
+          .stepper-wrapper {
+            color: color-yiq($success);
+            background: $success !important;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      flex-wrap: wrap;
+      margin: (-$spacer / 2) (-$spacer / 2) $spacer;
+
+      li {
+        padding: 0;
+        width: 50%;
+
+        a {
+          @include border-radius($border-radius);
+          padding: $spacer;
+          margin: ($spacer / 2);
+        }
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+
+      li {
+        padding: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .wizard-steps {
+    margin: 0;
+    background: $white;
+    padding-top: 1.5rem;
+    @include border-bottom-radius($border-radius);
+
+    @include media-breakpoint-down(lg) {
+      @include border-radius($border-radius);
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

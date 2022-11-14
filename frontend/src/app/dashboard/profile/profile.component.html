@@ -1,0 +1,231 @@
+<div class="row">
+  <div class="col-xl-5 col-lg-6 mb-3">
+    <div class="bg-vicious-stance p-3 rounded text-white h-100">
+      <div class="d-flex align-items-start justify-content-between">
+        <div class="avatar-icon-wrapper d-100">
+          <span class="badge badge-circle badge-success">Online</span>
+          <div class="avatar-icon d-100">
+            <img alt="..." [src]="picture" style="object-fit: cover;"/>
+          </div>
+        </div>
+      </div>
+      <div class="font-weight-bold font-size-lg d-flex align-items-center mt-2 mb-0">
+        <span>{{username}}</span>
+      </div>
+      <p class="mb-4 font-size-md text-white-50">{{portfolio.position || " "}}</p>
+      <a [routerLink]="['/dashboard/support-request']" class="btn btn-sm btn-outline-light shadow-none mr-2">
+        Contact support
+      </a>
+      <!--<a [routerLink]="" class="btn btn-sm btn-success shadow-none" tooltip="Add to favourites">
+        <fa-icon [icon]="['fas', 'star']"></fa-icon>
+      </a>-->
+
+      <div *ngIf="showEllipsis; else noEllipsis" class="text-white-50 mb-0 py-4">
+        <div
+          ellipsis="... Show more!"
+          [ellipsis-content]="portfolio.description || '...'"
+          (ellipsis-click-more)="showEllipsis = false"
+          style="height: 50px;"></div>
+      </div>
+      <ng-template #noEllipsis>
+        <div class="text-white-50 mb-0 py-4">
+          {{portfolio.description || '...'}}
+          <button (click)="showEllipsis = true" class="btn" style="color: #3aaf85">Show less</button>
+        </div>
+      </ng-template>
+
+      <div class="font-weight-bold font-size-lg d-flex align-items-center mb-3">
+        <span>Information</span>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="['/dashboard/experience']" class="text-white">Work Experiences</a>
+                            </span>
+          <span class="badge badge-dark">
+                                {{portfolio.workExperiences!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="['/dashboard/projects']" class="text-white">Projects</a>
+                            </span>
+          <span class="badge badge-dark">
+                                {{portfolio.projects!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="['/dashboard/experience']" class="text-white">Volunteering Experiences</a>
+                            </span>
+          <span class="badge badge-dark">
+                                {{portfolio.volunteeringExperiences!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="['/dashboard/skills']" class="text-white">Technical Skills</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{portfolio.technicalSkills!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="['/dashboard/skills']" class="text-white">Soft Skills</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{portfolio.softSkills!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="['/dashboard/achievements']" class="text-white">Achievements</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{portfolio.achievements!.length || 0}}
+                            </span>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="d-flex justify-content-between">
+                            <span class="d-block">
+                                <a [routerLink]="['/dashboard/testimonials']" class="text-white">Testimonials</a>
+                            </span>
+          <span class="badge badge-dark">
+                            {{portfolio.testimonials!.length || 0}}
+                            </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-xl-6 col-lg-6">
+   <!--  <div class="row mt-5">
+      <div class="col-lg-12 col-md-6 col-xl-6">
+        <div class="rounded card card-box bg-white mb-5">
+          <div class="p-4">
+            <div class="align-box-row">
+              <div class="font-weight-bold">
+                <small class="text-black-50 d-block mt-2 mb-2 text-uppercase">Total Views</small>
+                <span class="font-size-xxl ">586,356</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <fa-icon [icon]="['fas', 'arrow-up']" class="text-danger"></fa-icon>
+              <span class="text-success pr-1">15.4%</span>
+              <span class="text-black-50">increase since last year</span>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-pill btn-outline-dark" type="button">
+                                <span class="btn-wrapper--label">
+                                    View report
+                                </span>
+                <span class="btn-wrapper--icon">
+                                    <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
+                                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-6 col-xl-6">
+        <div class="rounded card card-box bg-white mb-5">
+          <div class="p-4">
+            <div class="align-box-row">
+              <div class="font-weight-bold">
+                <small class="text-black-50 d-block mt-2 mb-2 text-uppercase">Views This Week</small>
+                <span class="font-size-xxl ">86,356</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <fa-icon [icon]="['fas', 'arrow-up']" class="text-danger"></fa-icon>
+              <span class="text-success pr-1">15.4%</span>
+              <span class="text-black-50">increase since last week</span>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-pill btn-outline-dark" type="button">
+                                <span class="btn-wrapper--label">
+                                    View report
+                                </span>
+                <span class="btn-wrapper--icon">
+                                    <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
+                                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="card card-box justify-content-center">
+      <div class="card-header bg-light ">
+        <div class="card-header--title">
+          <small>Profile</small>
+          <b class="font-size-lg d-flex align-items-center">Change password</b>
+        </div>
+        <div class="card-header--actions">
+          <!-- <a [routerLink]="" class="btn btn-link btn-link-primary p-0 font-size-xl text-primary" tooltip="View options">
+            <fa-icon [icon]="['fas', 'ellipsis-h']"></fa-icon>
+          </a>-->
+        </div>
+      </div>
+      <div class="col-xl-12 col-lg-12">
+        <form [formGroup]="newPasswordForm" (ngSubmit)="onSubmit()">
+          <div class="px-5 pt-5 no-padding-mobile">
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="old_password">Old Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control"
+                  id="old_password"
+                  name="old_password"
+                  placeholder="Old Password"
+                  type="password"
+                  formControlName="old_password"
+                  [(ngModel)]="old_password">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="new_password">New Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control"
+                  id="new_password"
+                  name="new_password"
+                  placeholder="New Password"
+                  type="password"
+                  formControlName="new_password"
+                  [(ngModel)]="new_password">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="position-relative form-group"><label for="password">Confirm Password <span style="color: red">*</span></label>
+                <input
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Confirm Password"
+                  type="password"
+                  formControlName="password"
+                  [(ngModel)]="password">
+              </div>
+            </div>
+
+            <button [disabled]="!newPasswordForm.valid || new_password != password" class="mx-3 my-3 btn btn-slack">Save</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

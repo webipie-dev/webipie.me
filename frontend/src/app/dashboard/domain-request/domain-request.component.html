@@ -1,0 +1,47 @@
+<div class="cos-container">
+    <div class="cos-content">
+
+        <h1>Request Domain Name</h1>
+        <h3>Contact us if you want us to set you a Domain Name</h3>
+        <div class="cos-contact">
+            <fa-icon [icon]="phone"></fa-icon>
+            <h4>+21699739801</h4>
+            <fa-icon [icon]="mail"></fa-icon>
+            <h4>alaeddine.abdessalem@gmail.com</h4>
+        </div>
+        <div class="cos-card {{card}}">
+            <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+            <div class="cos-form">
+                <div class="cos-left">
+                    <label>Your name</label>
+                    <input type="text" formControlName="name" placeholder="Your Name" [class]='card'/>
+                  <div>
+                    <label for="email">Mail</label>
+                    <input
+                      id="email"
+                      name="email"
+                      placeholder="Email"
+                      type="email"
+                      formControlName="email"
+                      [class]="!f.email.touched? 'form-control':(f.email.errors?.required || f.email.errors?.email)? 'form-control invalid':'form-control valid'">
+                    <!-- Error Handling -->
+                    <div *ngIf="f.email.errors?.required && f.email.touched" class="alert isa_error">
+                      Email is required.
+                    </div>
+                    <div *ngIf="f.email.errors?.email" class="alert isa_error">
+                      Sould be a valid email
+                    </div>
+                    <!-- /Error handling -->
+                  </div>
+
+                  <label>Domain Name</label>
+                    <input type="text" formControlName="domain" placeholder="example.com" [class]='card'/>
+                </div>
+            </div>
+            <div class="cos-btn-container">
+            <button type="submit" class="cos-btn" [class]='card' [disabled]="!contactForm.valid" [ngClass]="{'disabled' : !contactForm.valid}">Submit Request</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

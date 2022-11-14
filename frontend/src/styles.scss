@@ -1,0 +1,161 @@
+
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin:0px;
+    padding:0px;
+    font-family:'Montserrat',sans-serif;
+    word-break: break-word;
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+.disabled-button {
+  cursor: not-allowed;
+  color: #779164 !important;
+  background-color: #b3c1b2 !important;
+  border-color: #b3c1b2 !important;
+}
+.disabled-button:hover {
+  cursor: not-allowed;
+  color: #779164 !important;
+  background-color: #adbaac !important;
+  border-color: #b3c1b2 !important;
+}
+body{
+    overflow-x: hidden !important;
+}
+body::-webkit-scrollbar {
+    width: 10px;
+}
+body::-webkit-scrollbar-track{
+    background-color: rgb(231, 231, 231);
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(153, 153, 153);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.back-btn{
+  font-size:2rem;
+  padding-bottom:20px;
+  box-sizing: border-box;
+  height:50px;
+  width:40px;
+  display: block;
+  box-shadow: 0 0 0px white;
+  transition: transform 0.5s ease,color 0.5s ease;
+}
+.back-btn:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px white;
+  color:rgb(145, 145, 145);
+}
+.wrap-reverse{
+  flex-wrap: wrap-reverse;
+}
+.alert{
+  width:100%;
+  font-size:1rem;
+  padding:10px;
+  border:none;
+  border-radius: 0px !important;
+  box-sizing: border-box;
+  position: relative;
+  top:10px;
+  animation: show 0.5s ease-out;
+  left:0px;
+}
+.isa_info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+.isa_success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+.isa_warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.isa_error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+.invalid{
+  border-color: #D8000C !important;
+  color: #D8000C;
+}
+.valid{
+  border-color: #4F8A10 !important;
+  color: #4F8A10;
+}
+joyride-step{
+  z-index: 10000;
+  position: relative;
+}
+.backdrop-container{
+  z-index:10000 !important;
+}
+@keyframes show {
+  0%{
+    opacity:0;
+    transform: translateY(-10px);
+  }100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+
+
+  &::-webkit-scrollbar {
+      width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+      background: white;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+      background: rgb(12, 159, 12);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+      background: rgb(72, 166, 72);
+  }
+}
+.required:after {
+  content:" *";
+  color: red;
+}
+
+// image inside the preview dropzone
+ngx-dropzone-image-preview{
+  height: 90% !important;
+  width: 300px !important;
+  overflow: hidden !important;
+  border: 2px solid lightgrey !important;
+}
+
+.portfolio1 *{
+  font-family: 'Mulish' ,sans-serif;
+}
+
+.poppins-font{
+  font-family: 'Poppins',sans-serif;
+}

@@ -1,0 +1,33 @@
+.overlay{
+    position: fixed;
+    top:0px;
+    left:0px;
+    background-color: rgba(0, 0, 0, 0.151);
+    width:100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index:-1;
+    transition: opacity 0.75s ease;
+}
+a{
+    cursor: pointer;
+}
+.active{
+    z-index:9001;
+    opacity: 1 !important;
+}
+.card{
+    background-color: white;
+    width:80%;
+    height:fit-content;
+    box-sizing: border-box;
+    max-width: 1000px;
+    border:1px solid lightgray;
+    border-radius: 10px;
+    padding:30px;
+    max-height: 90vh;
+    overflow: auto;
+}

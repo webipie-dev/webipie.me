@@ -1,0 +1,10 @@
+//  Core
+
+.joyride-button {
+  @include border-radius($btn-border-radius !important);
+}
+
+.joyride-step__container {
+  @include border-radius($card-border-radius !important);
+  box-shadow: $modal-content-box-shadow-xs !important;
+}

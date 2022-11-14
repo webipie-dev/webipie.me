@@ -1,0 +1,73 @@
+<div class="row col-xl-12 col-md-12 m-2">
+    <strong>Personalize your instant site and the appearance of your portfolio to mark your unique application. Need some inspiration? <a href="https://johndoe.webipie.me/" target="_blank">View instant demo site</a> </strong>
+</div>
+<accordion [closeOthers]="true" [isAnimated]="true" class="accordion mb-5">
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>General</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-general></app-general>
+    </accordion-group>
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>Skills Section</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-skills-section></app-skills-section>
+    </accordion-group>
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>Testimonials Section</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-testimonials-section></app-testimonials-section>
+    </accordion-group>
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>Experience Section</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-experience-section></app-experience-section>
+    </accordion-group>
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>Education Section</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-education-section></app-education-section>
+    </accordion-group>
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>Achievements Section</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-achievements-section></app-achievements-section>
+    </accordion-group>
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>Projects Section</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-projects-section></app-projects-section>
+    </accordion-group>
+    <accordion-group class="card card-box">
+        <button accordion-heading class="btn btn-link btn-lg d-flex align-items-center justify-content-between"
+                type="button">
+            <span>Contact Section</span>
+            <fa-icon [icon]="['fas', 'angle-up']" class="font-size-xl"></fa-icon>
+        </button>
+        <app-contact-section></app-contact-section>
+    </accordion-group>
+</accordion>
+<app-wrapper-seamless class="row flew-layout justify-content-center fixed-on-page designing-save {{designEditService.testChange()?'':'shown'}}">
+  <button class="btn m-2 btn-square btn-slack " (click)="submitChanges()" type="button" [disabled]="designEditService.testChange()">Save</button>
+</app-wrapper-seamless>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#3aaf85" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Saving... </p></ngx-spinner>

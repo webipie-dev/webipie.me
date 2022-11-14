@@ -1,0 +1,118 @@
+.footer{
+    width:100vw;
+    background-color:#3b6c46;
+    color:white;
+    font-family: 'Montserrat',sans-serif;
+    text-align: center;
+    font-size: 14px;
+}
+.content{
+    width:90%;
+    margin:auto;
+    padding-top:50px;
+    padding-bottom:50px;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    color:white;
+    flex-flow:wrap;
+    
+}
+h1{
+    letter-spacing: 10px;
+    margin-bottom:15px;
+}
+.icons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    width:150px;
+    div{
+        background-color: white;
+        border-radius: 100px;
+        color:black;
+        font-size:16px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:30px;
+        height:30px;
+        margin-right:auto;
+        margin-left: 0px;
+        box-sizing: border-box;
+        margin-bottom:10px;
+        transition: background-color 0.5s ease;
+    }
+    div:hover{
+        background-color: transparent;
+        color:white;
+        cursor: pointer;
+    }
+}
+.element{
+    margin-top:30px;
+    text-align: left;
+    display: block;
+    
+    max-width: 200px;
+    margin-right:auto;
+    margin-left:auto;
+    text-align: left;
+    
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+p{
+    margin-top:15px;
+}
+h2{
+    color:white;
+    font-weight: 700;
+    font-size:20px;
+}
+a p{
+    margin-bottom:2px;
+}
+
+@media  (max-width: 600px) {
+    .content {
+        flex-direction: column !important;
+        flex-flow: nowrap;
+        align-items: center;
+        .element{
+            margin: 15px 0;
+            text-align: center;
+        }
+    }
+    h1{
+        letter-spacing: 5px;
+    }
+    .icons{
+        margin: auto;
+    }
+}
+
+.link-button{
+    margin-right: auto;
+    background: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 300ms ease;
+    fa-icon{
+        color: black ;
+    }
+    &:hover{
+        background-color: transparent;
+        fa-icon{
+            color: white;
+        }
+    }
+}

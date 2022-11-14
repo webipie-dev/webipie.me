@@ -1,0 +1,119 @@
+.cos-container{
+    background-color: white;
+    width: 100vw;
+    min-height: 100vh;
+    color:#202e37;
+}
+.cos-content{
+    margin:auto;
+    width:80%;
+    min-height: 100vh;
+    max-width: 1300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+.cos-content h3{
+    margin-top:100px;
+    font-size: 1rem;
+    color:#7b7b7b;
+}
+.cos-content h1{
+    font-size:calc(40px + 3vw);
+    font-weight: 700;
+    letter-spacing: -5px;
+}
+.cos-element{
+    max-width: 400px;
+    width:100%;
+    text-align: left;
+    overflow: hidden;
+    box-sizing: content-box;
+    position: relative;
+    border-radius: 10px;
+    padding:10px;
+    margin:10px;
+    .img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        overflow: hidden;
+        height: 80px;
+    
+        img {
+          width: 100%;
+          object-position: center;
+          object-fit: cover;
+          height: 100%;
+        }
+      }
+}
+.iconed{
+    justify-content: left !important;
+    h2{
+        margin-left:20px;
+    }
+}
+@media screen and (max-width:400px) {
+    .iconed{
+        justify-content: center !important;
+        h2{
+            margin:0px;
+        }
+    }
+}
+.shadow{
+    box-shadow:0 0 7px lightgrey !important;
+    transition: transform 0.75s ease-out;
+    cursor: pointer;
+}
+.shadow:hover{
+    transform: translateY(-10px) rotateZ(-2deg);
+}
+.cos-element p{
+    position: relative;
+    margin-top:10px;
+    padding:10px;
+}
+.cos-title{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width:100%;
+}
+.cos-title h2{
+    font-size:calc(20px + 0.6vw);
+    font-weight:600;
+}
+.cos-text-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top:50px;
+    width:100%;
+}
+fa-icon{
+    padding:15px;
+    padding-right:25px;
+    padding-left:25px;
+    background-color: #d4eff6;
+    border-radius: 20px;
+    color:#72dde7;
+    font-size:2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    width:65px;
+    height:65px;
+}
+.cos-skill-container{
+    width:100%;
+    margin-top: 50px;
+}
