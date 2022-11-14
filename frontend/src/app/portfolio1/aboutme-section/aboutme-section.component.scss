@@ -188,6 +188,16 @@ $download-btn-color: #d1701f;
 	}
 }
 
+.right{
+	.links {
+		margin-top: 25px;
+		fa-icon {
+			font-size: 40px;
+			margin: 5px;
+		}
+	}
+}
+
 @media (max-width:990px){
 	.about_inner{
 		flex-direction: column;
