@@ -12,9 +12,10 @@ export class CardTemplatesComponent implements OnInit {
 
   url!: string;
   @Input() selected=false;
+  @Input() index!: number;
   @Output() selectEmitter = new EventEmitter<boolean>();
   ngOnInit(): void {
-    this.url = environment.protocol + '://johndoe.webipie.me' + environment.PORT;
+    this.url = `${environment.protocol}://johndoe${this.index}.${environment.websiteDomainName}${environment.PORT}`;
   }
 
   select(){

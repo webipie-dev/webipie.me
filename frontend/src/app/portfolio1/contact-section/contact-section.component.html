@@ -1,0 +1,74 @@
+<div class="ryker_tm_section" >
+    <div class="ryker_tm_contact" id="contact">
+        <div class="container">
+            <div class="ryker_tm_title">
+                <span>Contact</span>
+                <h3>Feel free to contact me if any assistance is needed in the future</h3>
+            </div>
+            <div class="short_info wow fadeInUp" data-wow-duration="1.5s">
+                <ul>
+                    <li *ngIf="phoneNumber">
+                        <div class="list_inner">
+                            <div class="logo">
+                                <img class="svg" src="assets/SVG/telephone-2.svg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h3>Phone</h3>
+                                <span> {{phoneNumber}} </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="email">
+                        <div class="list_inner">
+                            <div class="logo">
+                                <img class="svg" src="assets/SVG/email-2.svg" alt="" />
+                            </div>
+                            <div class="info">
+                                <h3>Mail</h3>
+                                <span>{{email}}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="wrapper">
+                <div class="left wow fadeInUp" data-wow-duration="1.5s">
+                    <div class="fields">
+                        <form (ngSubmit)="onSubmit()" [formGroup]="contactForm" class="contact_form" id="contact_form">
+                            <div class="returnmessage" data-success="Your message has been received, We will contact you soon."></div>
+                            <div class="empty_notice"><span>Please Fill Required Fields</span></div>
+                            <div class="first">
+                                <ul>
+                                    <li>
+                                        <input id="name" formControlName="name" type="text" placeholder="Name" autocomplete="off">
+                                    </li>
+                                    <li>
+                                        <input id="email" formControlName="email" type="text" placeholder="Email" autocomplete="off">
+                                        <div *ngIf="f.email.errors?.required && f.email.touched" class="alert isa_error">
+                                            Email is required.
+                                          </div>
+                                          <div *ngIf="f.email.errors?.email" class="alert isa_error">
+                                            Sould be a valid email
+                                          </div>
+                                    </li>
+                                    <li>
+                                        <input id="subject" formControlName="subject" type="text" placeholder="Subject" autocomplete="off">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="last">
+                                <textarea id="message" placeholder="Message" formControlName="message"></textarea>
+                            </div>
+                            <div class="ryker_tm_button" data-color="dark">
+                                <button type="submit" class="cos-btn" [disabled]="!contactForm.valid" [ngClass]="{'disabled' : !contactForm.valid}">Send Message</button>
+                            </div>
+
+                            <!-- If you want change mail address to yours, just open "modal" folder >> contact.php and go to line 4 and change detail to yours.  -->
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
