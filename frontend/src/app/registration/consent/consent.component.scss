@@ -1,0 +1,32 @@
+.containerr{
+  display: flex;
+  width:98%;
+  margin: auto;
+  max-width: 1400px;
+  padding-top:calc(5vh + 100px);
+  align-items: center;
+  flex-wrap: wrap;
+  min-height:100vh;
+  align-items: flex-start;
+  .card-wrapper{
+    width:100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+img{
+  max-width: 700px;
+  width:90%;
+}
+@media screen and (max-width:1350px) {
+  .left{
+    display: none;
+  }
+}
+.right{
+  width:98%;
+  max-width: 500px;
+  margin: auto;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+}

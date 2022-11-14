@@ -7,6 +7,7 @@ import {ConfirmationComponent} from "./confirmation/confirmation.component";
 import {LoginAuthGuardService as LoginAuthGuard} from "../_shared/services/login-auth-guard.service";
 import {LinkedinVerifComponent} from "./linkedin-verif/linkedin-verif.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {ConsentComponent} from "./consent/consent.component";
 
 const routes: Routes = [{
   path: '',
@@ -27,12 +28,20 @@ const routes: Routes = [{
       component: ConfirmationComponent
     },
     {
+      path: 'give-consent',
+      component: ConsentComponent
+    },
+    {
       path: 'linkedin-verif',
       component: LinkedinVerifComponent
     },
     {
       path: 'forget-password',
       component: ForgotPasswordComponent
+    },
+    {
+      path: 'consent',
+      component: ConsentComponent
     }
   ]
 }];
