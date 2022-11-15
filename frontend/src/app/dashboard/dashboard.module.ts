@@ -9,7 +9,6 @@ import {SidebarUserboxComponent} from './sidebar/sidebar-userbox/sidebar-userbox
 import {HeaderSearchComponent} from './header/header-search/header-search.component';
 import {HeaderMenuComponent} from './header/header-menu/header-menu.component';
 import {HeaderUserboxComponent} from './header/header-userbox/header-userbox.component';
-import {SidebarCollapsedComponent} from './sidebar/sidebar-collapsed/sidebar-collapsed.component';
 import {SidebarComponent} from './sidebar/sidebar/sidebar.component';
 import {ErrorModalComponent} from '../_shared/components/error-modal/error-modal.component';
 import {SuccessModalComponent} from '../_shared/components/success-modal/success-modal.component';
@@ -17,47 +16,12 @@ import {WarningModalComponent} from '../_shared/components/warning-modal/warning
 import {InfoModalComponent} from '../_shared/components/info-modal/info-modal.component';
 import {HeaderNotificationComponent} from './header/header-notification/header-notification.component';
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {FeatherModule} from 'angular-feather';
-import {
-  Activity,
-  Bell,
-  Box,
-  Briefcase,
-  Calendar,
-  CloudDrizzle,
-  Coffee,
-  Grid,
-  Layers,
-  LifeBuoy,
-  Printer,
-  Search,
-  Settings,
-  Users
-} from 'angular-feather/icons';
 import {HeaderComponent} from './header/header/header.component';
 import {NgApexchartsModule} from 'ng-apexcharts';
 import {NgProgressModule} from '@ngx-progressbar/core';
 import {NgProgressRouterModule} from '@ngx-progressbar/router';
 import {NgxFlagIconCssModule} from 'ngx-flag-icon-css';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
-
-const icons = {
-   Calendar,
-   Activity,
-   Bell,
-   Settings,
-   Search,
-   Grid,
-   Users,
-   LifeBuoy,
-   CloudDrizzle,
-   Coffee,
-   Box,
-   Briefcase,
-   Layers,
-   Printer
-};
 
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -270,7 +234,6 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   declarations: [
     DashboardComponent,
     SidebarComponent,
-    SidebarCollapsedComponent,
     SidebarHeaderComponent,
     SidebarFooterComponent,
     SidebarMenuComponent,
@@ -329,7 +292,6 @@ const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
     PerfectScrollbarModule,
     NgxDropzoneModule,
     AccordionModule.forRoot(),
-    FeatherModule.pick(icons),
     FontAwesomeModule,
     UiSwitchModule,
     NouisliderModule,
