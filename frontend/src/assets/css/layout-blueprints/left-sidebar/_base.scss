@@ -71,15 +71,6 @@ body {
     }
   }
 }
-// Collapsed sidebar
-
-@include media-breakpoint-up(lg) {
-  .app-sidebar-collapsed {
-    .app-content {
-      padding-left: $sidebar-width-collapsed;
-    }
-  }
-}
 // Routes animations
 
 router-outlet + * {
