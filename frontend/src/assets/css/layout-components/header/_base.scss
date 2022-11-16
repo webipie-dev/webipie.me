@@ -69,30 +69,6 @@
   }
 }
 
-// Collapsed sidebar
-
-@include media-breakpoint-up(lg) {
-  .app-sidebar-collapsed:not(.app-header-fixed) {
-    .app-header {
-      margin-left: $sidebar-width-collapsed;
-      left: 0;
-    }
-
-    &.app-header-fixed {
-      .app-header {
-        left: $sidebar-width-collapsed;
-        margin-left: 0;
-      }
-    }
-  }
-  .app-sidebar-collapsed {
-    &.app-header-fixed {
-      .app-header {
-        left: $sidebar-width-collapsed;
-      }
-    }
-  }
-}
 // Responsive
 
 @include media-breakpoint-down(md) {
