@@ -23,7 +23,7 @@ let projectValidation = {
   description: util.promisify(
     check('description')
       .not().isEmpty().withMessage('Description not provided')
-      .isLength({ max: 5000 }).withMessage('Description is too short or too long')
+      .isLength({ max: 5000 }).withMessage('Description is too long')
   ),
 };
 
