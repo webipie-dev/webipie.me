@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../_shared/services/auth.service';
 
 @Component({
   selector: 'app-templates',
@@ -11,10 +13,14 @@ export class TemplatesComponent implements OnInit {
   arrowleft = faArrowAltCircleLeft;
   positionY = 0;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log('hello')
+    this.authService.isVerified().subscribe((res)=>{
+      if(!res.consent){
+        this.router.navigate(["/register/give-consent"])
+      }
+    })
   }
   rightArrow(el:HTMLElement){
     this.positionY += el.offsetWidth;
