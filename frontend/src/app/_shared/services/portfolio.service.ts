@@ -87,8 +87,8 @@ export class PortfolioService extends BaseService {
     });
   }
 
-  changeTemplate(id: string, body: any){
-    return this.http.patch(this.getUrl() + this.suffix + '/change-template/' + id, body, PortfolioService.addJWT());
+  changeTemplate(id: string, body: any): Observable<PortfolioModel>{
+    return this.http.patch(this.getUrl() + this.suffix + '/change-template/' + id, body, PortfolioService.addJWT()) as Observable<PortfolioModel>;
   }
 
   editTemplate(id: string, body: { template: TemplateModel }): Observable<PortfolioModel> {
