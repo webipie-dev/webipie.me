@@ -162,13 +162,15 @@ const editPortfolio = async (req, res, next) => {
 const editPortfolioDesign = async (req, res, next) => {
   const {id} = req.params;
   const {template} = req.body;
-  const portfolio = await Portfolio.findById(id);
-  if(!portfolio) {
-    return next(ApiError.NotFound('Portfolio not Found'));
+  let portfolio
+  try {
+    portfolio = await Portfolio.findByIdAndUpdate(id, {template});
+    if(!portfolio) {
+      return next(ApiError.NotFound('Portfolio not Found'));
+    }
+  } catch (error) {
+    return res.status(500).send(error)
   }
-
-  portfolio.template = template;
-  await portfolio.save();
 
   res.status(200).send(portfolio);
 };

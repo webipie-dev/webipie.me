@@ -43,21 +43,6 @@ export class TeamSectionComponent implements OnInit {
       githublink: 'https://github.com/dalideco',
       linkedinlink: 'https://www.linkedin.com/in/dalideco/'
     },
-    {
-      name: 'Chedy Hammami',
-      picture: 'assets/shadi.jpg',
-      position: 'Honorable Mentions',
-      githublink: 'https://github.com/bishkou',
-      linkedinlink: 'https://www.linkedin.com/in/chedyhm/'
-    },
-    {
-      name: 'Yassine Gabsi',
-      picture: 'assets/yassine.jpg',
-      position: 'Honorable Mentions',
-      githublink: 'https://github.com/YassineGabsi',
-      linkedinlink: 'https://www.linkedin.com/in/yassine-gabsi/'
-    },
-
   ]
   constructor() { }
 

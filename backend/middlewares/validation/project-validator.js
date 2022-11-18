@@ -11,7 +11,7 @@ let projectValidation = {
   name: util.promisify(
     check('name')
       .not().isEmpty().withMessage('Name not provided')
-      .isLength({ min: 3 ,max :30}).withMessage('name is too short or too long')
+      .isLength({ max :200 }).withMessage('name is too long')
   ),
 
   /**
@@ -23,7 +23,7 @@ let projectValidation = {
   description: util.promisify(
     check('description')
       .not().isEmpty().withMessage('Description not provided')
-      .isLength({ min: 5, max: 5000 }).withMessage('Description is too short or too long')
+      .isLength({ max: 5000 }).withMessage('Description is too long')
   ),
 };
 

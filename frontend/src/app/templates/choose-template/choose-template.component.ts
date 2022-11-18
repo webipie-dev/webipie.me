@@ -2,6 +2,7 @@ import { Component, ContentChild, ElementRef, OnInit, ViewChild } from '@angular
 import { Router } from '@angular/router';
 import { faArrowAltCircleRight, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { TemplateModel } from 'src/app/_shared/models/template.model';
+import { DesignEditService } from 'src/app/_shared/services/design-edit.service';
 import { PortfolioService } from 'src/app/_shared/services/portfolio.service';
 import { TemplateService } from 'src/app/_shared/services/template.service';
 import Swal from 'sweetalert2';
@@ -26,7 +27,8 @@ export class ChooseTemplateComponent implements OnInit {
   @ViewChild('target',{static:true}) target ?: ElementRef<HTMLElement>;
   constructor(private templateService: TemplateService,
     private portfolioService: PortfolioService,
-    private router: Router) { }
+    private router: Router,
+    private editTemplateService: DesignEditService) { }
 
 
   ngOnInit(): void {
@@ -105,6 +107,7 @@ export class ChooseTemplateComponent implements OnInit {
       if(localStorage.getItem('portfolioId')){
         this.portfolioService.changeTemplate(portfolioId, {templateId: this.selectedTemplate.id}).subscribe(
           result => {
+            this.editTemplateService.updateTemplate(result.template)
             this.router.navigate(['dashboard', 'home']);
           }
         );
