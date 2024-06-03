@@ -14,6 +14,8 @@ export class SectionTogglesComponent extends MultipleToggleSection implements On
     super(portfolioService,["technicalSkills","softSkills","education","workExperiences","volunteeringExperiences","achievements","testimonials"], localStorageService);
 }
   ngOnInit(): void {
+    console.log(this.togglesOff);
+    
   }
 
 }
